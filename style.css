@@ -1,94 +1,60 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
+/* ------------- RESET ------------- */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:#222;background:#fafafa}
 
-.header {
-    background-color: #333;
-    color: white;
-    padding: 1em;
-}
+/* ------------- UTILS ------------- */
+.container{max-width:1100px;margin:auto;padding:0 1rem}
+.section{padding:80px 0}.alt{background:#f5f5f5}
+.section-title{text-align:center;margin-bottom:40px;font-size:2rem;color:#111}
+.btn{display:inline-block;padding:.8rem 1.6rem;border-radius:4px;font-size:.9rem;transition:.3s}
+.btn.primary{background:#0077ff;color:#fff}
+.btn.ghost{background:transparent;border:2px solid #0077ff;color:#0077ff}
+.btn:hover{transform:translateY(-2px)}
+.btn.small{padding:.5rem 1rem;font-size:.8rem}
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* ------------- HEADER ------------- */
+header{position:fixed;top:0;width:100%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);z-index:1000}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem}
+.logo{font-weight:700;font-size:1.3rem;color:#111}
+.logo span{color:#0077ff}
+nav ul{display:flex;gap:2rem;list-style:none}
+nav a{color:#222;font-weight:500}
+nav a:hover{color:#0077ff}
+.hamburger{display:none;font-size:1.5rem;cursor:pointer}
 
-.menu {
-    display: flex;
-}
+/* ------------- HERO ------------- */
+.hero{height:100vh;display:flex;align-items:center;text-align:center;padding-top:70px}
+.hero-img{width:160px;border-radius:50%;border:4px solid #0077ff;margin-bottom:1rem}
+.hero h1{font-size:2.4rem;margin:.5rem 0}
+.hero .highlight{color:#0077ff}
+.typewrite{font-size:1.2rem;color:#555;margin-bottom:1.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
-.menu-list {
-    list-style: none;
-    display: flex;
-}
+/* ------------- SKILL TAGS ------------- */
+.skill-tags{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+.skill-tags span{background:#e1ecff;color:#0050c7;padding:.4rem .8rem;border-radius:20px;font-size:.9rem}
 
-.menu-list li {
-    margin: 0 1em;
-}
+/* ------------- CARDS ------------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:.3s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:160px;object-fit:cover}
+.card-body{padding:1rem}
+.card-body h3{margin-bottom:.5rem;font-size:1.1rem}
+.card-body p{margin-bottom:.8rem;color:#555}
 
-.menu-list a {
-    color: white;
-    text-decoration: none;
-}
+/* ------------- SOCIALS ------------- */
+.socials{display:flex;justify-content:center;gap:1.2rem;font-size:2rem}
+.socials a{color:#0077ff;transition:.3s}
+.socials a:hover{color:#0050c7;transform:scale(1.1)}
 
-.hamburger {
-    display: none;
-}
+/* ------------- FOOTER ------------- */
+footer{background:#111;color:#fff;text-align:center;padding:1.5rem 0;font-size:.9rem}
 
-.hero {
-    text-align: center;
-    padding: 2em;
-    background-color: #f4f4f4;
-}
-
-.portfolio, .about, .skills, .contact {
-    margin: 2em;
-    padding: 1em;
-    background-color: white;
-    border-radius: 5px;
-}
-
-.btn {
-    padding: 0.5em 1em;
-    margin: 0.5em;
-    cursor: pointer;
-}
-
-.common-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-}
-
-.ghost-btn {
-    background: none;
-    border: 1px solid #007bff;
-    color: #007bff;
-}
-
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-    }
-
-    .menu.active {
-        display: block;
-    }
-
-    .hamburger {
-        display: block;
-    }
-}
-
-.dark-theme {
-    background-color: #222;
-    color: white;
-}
-
-.dark-theme .portfolio, .dark-theme .about, .dark-theme .skills, .dark-theme .contact {
-    background-color: #333;
+/* ------------- RESPONSIVE ------------- */
+@media(max-width:768px){
+  nav ul{position:fixed;right:-100%;top:60px;flex-direction:column;background:#fff;width:200px;height:100vh;padding:2rem;transition:.3s}
+  nav ul.active{right:0}
+  .hamburger{display:block}
 }

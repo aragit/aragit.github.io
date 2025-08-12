@@ -1,88 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arash Nicoomanesh | AI Engineer Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arash Nicoomanesh | AI Engineer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <h2>Arash Nicoomanesh</h2>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars hamburger-icon"></i>
-                <i class="fas fa-times cross-icon"></i>
-            </div>
-            <div class="menu">
-                <ul class="menu-list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="intro">
-            <h3>Hello, I'm</h3>
-            <h1>Arash Nicoomanesh</h1>
-            <h4>AI Engineer | Generative AI Enthusiast</h4>
-            <div class="intro-buttons">
-                <button class="btn common-btn">Hire Me</button>
-                <a href="assets/resume.pdf" download><button class="btn ghost-btn">Get Resume</button></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <h1>Featured Portfolio</h1>
-        <div class="portfolio-content">
-            <div class="my-card">
-                <h3>LLM-Powered RAG-Based Research Assistant</h3>
-                <p>Built a RAG-based assistant using LangChain, FAISS, and Gemma2.</p>
-                <a href="https://github.com/aragit/your-repo">GitHub</a>
-            </div>
-            <!-- Add other projects as needed -->
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h1>About Me</h1>
-        <p>I'm a passionate AI Engineer with 15 years of experience building intelligent systems, specializing in Generative AI, LLMs, and MLOps. I focus on ethical AI and healthcare solutions.</p>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h1>Skills & Qualifications</h1>
+  <!-- ------------- HEADER ------------- -->
+  <header>
+    <div class="container header-inner">
+      <a href="#home" class="logo">Arash<span>Nicoomanesh</span></a>
+      <nav id="navbar">
         <ul>
-            <li>Python, PyTorch, TensorFlow, LangChain</li>
-            <li>GCP, Hugging Face, FastAPI, Kubernetes</li>
-            <li>Open-Source Contributions: Dataform, PyTorch, Hatena</li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-    </section>
+      </nav>
+      <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
+    </div>
+  </header>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h1>Contact Me</h1>
-        <div class="contact-links">
-            <a href="https://linkedin.com/in/your-profile">LinkedIn</a>
-            <a href="https://kaggle.com/your-profile">Kaggle</a>
-            <!-- Add other links -->
+  <!-- ------------- HERO ------------- -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <img src="assets/profile.jpg" alt="Arash" class="hero-img" />
+      <h1>Hi, I'm <span class="highlight">Arash Nicoomanesh</span></h1>
+      <p class="typewrite" data-period="2000" data-type='["AI Engineer","Generative-AI Fan","MLOps Geek","Ethical-AI Advocate"]'></p>
+      <div class="hero-btns">
+        <a href="assets/resume.pdf" download class="btn primary">Download CV</a>
+        <a href="#contact" class="btn ghost">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------- ABOUT ------------- -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p>
+        I’m a passionate AI Engineer with 15+ years crafting intelligent systems.
+        My playground: Generative AI, LLMs, and production-grade MLOps.
+        I care deeply about ethical AI, especially in healthcare.
+      </p>
+    </div>
+  </section>
+
+  <!-- ------------- SKILLS ------------- -->
+  <section id="skills" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Skills & Qualifications</h2>
+      <div class="skill-tags">
+        <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>LangChain</span>
+        <span>GCP</span><span>Hugging Face</span><span>FastAPI</span><span>Kubernetes</span>
+        <span>Open-Source</span><span>Dataform</span><span>PyTorch</span><span>Haten</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------- PORTFOLIO ------------- -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Portfolio</h2>
+      <div class="cards">
+        <!-- Card 1 -->
+        <div class="card">
+          <img src="assets/rag-assistant.jpg" alt="RAG Assistant" />
+          <div class="card-body">
+            <h3>LLM-Powered RAG Research Assistant</h3>
+            <p>LangChain + FAISS + Gemma2</p>
+            <a href="https://github.com/aragit/rag-assistant" target="_blank" class="btn small">GitHub <i class="fab fa-github"></i></a>
+          </div>
         </div>
-    </section>
+        <!-- Add more cards the same way -->
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- ------------- CONTACT ------------- -->
+  <section id="contact" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="socials">
+        <a href="https://linkedin.com/in/arashnic" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://kaggle.com/aragit" target="_blank"><i class="fab fa-kaggle"></i></a>
+        <a href="https://github.com/aragit" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:arash@example.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------- FOOTER ------------- -->
+  <footer>
+    <p>© <span id="year"></span> Arash Nicoomanesh. Built with ❤️ and GitHub Pages.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
- 
