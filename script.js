@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const typeEl = document.querySelector('#typewrite');
   if (!typeEl) return;
 
-  const roles = ["AI Engineer", "Generative-AI Engineer", "Agentic-AI Researcher", "MLOps Specialist"];
+  const roles = ["LLM Engineer", "Agentic-AI Researcher", "Ethical AI Advocate"];
   let i = 0, j = 0, forward = true;
 
   function tick() {
