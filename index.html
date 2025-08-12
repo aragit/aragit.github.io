@@ -1,17 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arash Nicoomanesh | AI Engineer Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arash Nicoomanesh</title>
+
+  <!-- Font Awesome 6.5.1 (brands + solid) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Century Gothic via Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Century+Gothic:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* --- RESET --- */
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Century Gothic","Poppins",sans-serif;
+      line-height:1.6;
+      color:#f5f5f5;
+      background:#121212;
+    }
+
+    /* --- UTILS --- */
+    .container{max-width:1100px;margin:auto;padding:0 1rem}
+    .section{padding:80px 0}
+    .alt{background:#1a1a1a}
+    .section-title{text-align:center;margin-bottom:40px;font-size:2rem;font-weight:400;color:#fff}
+    .about-text p{max-width:800px;margin:0 auto;text-align:center;font-size:1.1rem;line-height:1.8;color:#ddd}
+
+    /* --- HEADER --- */
+    header{position:fixed;top:0;width:100%;background:#121212;box-shadow:0 2px 8px rgba(0,0,0,.4);z-index:1000}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem}
+    .logo{font-weight:400;font-size:1.4rem;color:#fff;text-decoration:none}
+    .logo span{color:#ff6b00}
+    nav ul{display:flex;gap:2rem;list-style:none}
+    nav a{color:#ccc;font-weight:400;text-decoration:none}
+    nav a:hover{color:#ff6b00}
+    .hamburger{display:none;font-size:1.5rem;cursor:pointer;color:#fff}
+
+    /* --- HERO --- */
+    .hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:70px}
+    .hero h1{font-size:2.8rem;font-weight:400;margin-bottom:0.5rem;color:#fff}
+    .hero .highlight{color:#ff6b00}
+    .typewrite{font-size:1.4rem;font-weight:400;color:#ccc}
+
+    /* --- SKILLS --- */
+    .skill-tags{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center}
+    .skill-tags span{background:#ffffff;color:#121212;padding:0.4rem 0.9rem;border-radius:20px;font-size:0.9rem;font-weight:400}
+
+    /* --- CARDS --- */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+    .card{background:#1e1e1e;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:.3s;display:flex;flex-direction:column;align-items:center}
+    .card:hover{transform:translateY(-5px)}
+    .card-icon{padding:1.5rem 0 0.5rem;color:#ff6b00;font-size:2.2rem}
+    .card-body{padding:0 1rem 1.5rem;text-align:center;color:#ddd}
+    .card-body h3{margin-bottom:0.5rem;font-size:1.1rem;font-weight:400}
+    .card-body p{font-size:0.9rem;line-height:1.4;color:#aaa}
+
+    /* --- CONTACT --- */
+    .contact-small .section-title{font-size:1.6rem;font-weight:400}
+    .socials{display:flex;justify-content:center;gap:1.2rem;font-size:1.4rem}
+    .socials a{color:#ff6b00;transition:.3s}
+    .socials a:hover{color:#ff8c00;transform:scale(1.1)}
+
+    /* --- FOOTER --- */
+    footer{background:#0a0a0a;color:#fff;text-align:center;padding:1.5rem 0 1rem;font-size:0.9rem}
+
+    /* --- RESPONSIVE --- */
+    @media(max-width:768px){
+      nav ul{position:fixed;right:-100%;top:60px;flex-direction:column;background:#121212;width:200px;height:100vh;padding:2rem;transition:.3s}
+      nav ul.active{right:0}
+      .hamburger{display:block}
+      .hero h1{font-size:2.2rem}
+    }
+  </style>
 </head>
 <body>
-  <!-- ------------- HEADER ------------- -->
+
+  <!-- HEADER -->
   <header>
     <div class="container header-inner">
-      <a href="#home" class="logo">Arash<span>Nicoomanesh</span></a>
+      <a href="#home" class="logo">Arash Nicoomanesh Portfolio</a>
       <nav id="navbar">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -25,80 +95,136 @@
     </div>
   </header>
 
-  <!-- ------------- HERO ------------- -->
+  <!-- HERO -->
   <section id="home" class="hero">
-    <div class="container hero-inner">
-      <img src="assets/profile.jpg" alt="Arash" class="hero-img" />
-      <h1>Hi, I'm <span class="highlight">Arash Nicoomanesh</span></h1>
-      <p class="typewrite" data-period="2000" data-type='["AI Engineer","Generative-AI Fan","MLOps Geek","Ethical-AI Advocate"]'></p>
-      <div class="hero-btns">
-        <a href="assets/resume.pdf" download class="btn primary">Download CV</a>
-        <a href="#contact" class="btn ghost">Contact Me</a>
-      </div>
+    <div class="container">
+      <h1>Arash&nbsp;<span class="highlight">Nicoomanesh</span></h1>
+      <p class="typewrite"
+         data-period="2000"
+         data-type='["AI & Generative-AI Engineer","Agentic-AI Researcher","LLMOps Specialist", "Ethical AI Advocate"]'></p>
     </div>
   </section>
 
-  <!-- ------------- ABOUT ------------- -->
+  <!-- ABOUT -->
   <section id="about" class="section">
-    <div class="container">
+    <div class="container about-text">
       <h2 class="section-title">About Me</h2>
       <p>
-        I’m a passionate AI Engineer with 15+ years crafting intelligent systems.
-        My playground: Generative AI, LLMs, and production-grade MLOps.
-        I care deeply about ethical AI, especially in healthcare.
+        AI & ML Engineer with about 15 years of experience in modeling and delivering scalable, AI solutions
+        across healthcare, finance, and marketing. Deep expertise in traditional machine learning,
+        predictive modeling and Generative AI and LLM-based applications. Proven track record of
+        mentoring cross-functional teams, collaborating with stakeholders, and optimizing
+        pipelines on both on-premises and cloud infrastructures to support high-volume deployments.
       </p>
     </div>
   </section>
 
-  <!-- ------------- SKILLS ------------- -->
+  <!-- SKILLS -->
   <section id="skills" class="section alt">
     <div class="container">
-      <h2 class="section-title">Skills & Qualifications</h2>
+      <h2 class="section-title">Core Skills</h2>
       <div class="skill-tags">
-        <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>LangChain</span>
-        <span>GCP</span><span>Hugging Face</span><span>FastAPI</span><span>Kubernetes</span>
-        <span>Open-Source</span><span>Dataform</span><span>PyTorch</span><span>Haten</span>
+        <span>LLM Engineering</span><span>LoRA / QLoRA / DoRA</span><span>TensorRT-LLM / vLLM / HF TGI</span>
+        <span>Agentic RAG</span><span>Vector Search (Faiss, Weaviate, Pinecone)</span>
+        <span>LangChain / LangGraph / CrewAI</span><span>Vertex AI / GCP</span>
+        <span>MLflow / Weights & Biases</span><span>Kubernetes / Docker</span>
+        <span>Time-Series Forecasting</span><span>Recommendation Engines</span>
+        <span>Marketing Attribution & Uplift</span>
       </div>
     </div>
   </section>
 
-  <!-- ------------- PORTFOLIO ------------- -->
+  <!-- PORTFOLIO -->
   <section id="portfolio" class="section">
     <div class="container">
-      <h2 class="section-title">Featured Portfolio</h2>
+      <h2 class="section-title">Featured Projects</h2>
       <div class="cards">
-        <!-- Card 1 -->
         <div class="card">
-          <img src="assets/rag-assistant.jpg" alt="RAG Assistant" />
+          <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
           <div class="card-body">
-            <h3>LLM-Powered RAG Research Assistant</h3>
-            <p>LangChain + FAISS + Gemma2</p>
-            <a href="https://github.com/aragit/rag-assistant" target="_blank" class="btn small">GitHub <i class="fab fa-github"></i></a>
+            <h3>Medical Triage & Diagnosis Agent</h3>
+            <p>Hybrid conversational agent using Gemini 1.5 Pro, CoT prompting, and SNOMED/ICD-10 entity linking. Deployed on GKE & Cloud Run.</p>
           </div>
         </div>
-        <!-- Add more cards the same way -->
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-pills"></i></div>
+          <div class="card-body">
+            <h3>Conversational Drug Repurposing</h3>
+            <p>GPTQ-quantized Gemma2 & Zephyr for alternative therapy recommendations from real-world EHR data.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="card-body">
+            <h3>ICU Metrics Forecasting</h3>
+            <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-comments"></i></div>
+          <div class="card-body">
+            <h3>Multi-Turn Product-QA Bot</h3>
+            <p>Fine-tuned Gemma & Mistral with hybrid retrieval and K8s deployment for scalable inference.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-university"></i></div>
+          <div class="card-body">
+            <h3>Banking CLTV & Churn</h3>
+            <p>End-to-end customer lifetime value & churn prediction using PySpark MLlib plus uplift modeling & MCMC attribution.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ------------- CONTACT ------------- -->
-  <section id="contact" class="section alt">
+  <!-- CONTACT -->
+  <section id="contact" class="section alt contact-small">
     <div class="container">
       <h2 class="section-title">Contact Me</h2>
       <div class="socials">
         <a href="https://linkedin.com/in/arashnic" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://kaggle.com/aragit" target="_blank"><i class="fab fa-kaggle"></i></a>
         <a href="https://github.com/aragit" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://huggingface.co/Arnic" target="_blank"><i class="fab fa-hugging-face"></i></a>
         <a href="mailto:arash@example.com"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- ------------- FOOTER ------------- -->
+  <!-- FOOTER -->
   <footer>
     <p>© <span id="year"></span> Arash Nicoomanesh. Built with ❤️ and GitHub Pages.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    /* Mobile nav toggle */
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.querySelector('nav ul');
+    hamburger.addEventListener('click', () => nav.classList.toggle('active'));
+
+    /* Typewriter effect */
+    const typeEl = document.querySelector('.typewrite');
+    const strings = JSON.parse(typeEl.getAttribute('data-type'));
+    let txt = '', loop = 0, del = false;
+    function tick() {
+      const full = strings[loop];
+      txt = del ? full.slice(0, -1) : full.slice(0, txt.length + 1);
+      typeEl.textContent = txt;
+      let delta = del ? 100 : 150;
+      if (!del && txt === full) delta = 2000;
+      if (del && txt === '') { del = false; loop = (loop + 1) % strings.length; delta = 500; }
+      else if (!del && txt === full) del = true;
+      setTimeout(tick, delta);
+    }
+    document.addEventListener('DOMContentLoaded', tick);
+
+    /* Footer year */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

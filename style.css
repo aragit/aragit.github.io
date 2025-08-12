@@ -1,60 +1,61 @@
-/* ------------- RESET ------------- */
+/* --- RESET --- */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:#222;background:#fafafa}
+body{
+  font-family:"Century Gothic","Poppins",sans-serif;
+  line-height:1.6;
+  color:#f5f5f5;
+  background:#121212;
+}
 
-/* ------------- UTILS ------------- */
 .container{max-width:1100px;margin:auto;padding:0 1rem}
-.section{padding:80px 0}.alt{background:#f5f5f5}
-.section-title{text-align:center;margin-bottom:40px;font-size:2rem;color:#111}
-.btn{display:inline-block;padding:.8rem 1.6rem;border-radius:4px;font-size:.9rem;transition:.3s}
-.btn.primary{background:#0077ff;color:#fff}
-.btn.ghost{background:transparent;border:2px solid #0077ff;color:#0077ff}
-.btn:hover{transform:translateY(-2px)}
-.btn.small{padding:.5rem 1rem;font-size:.8rem}
+.section{padding:80px 0}
+.alt{background:#1a1a1a}
+.section-title{text-align:center;margin-bottom:40px;font-size:2rem;font-weight:400;color:#fff}
+.about-text p{max-width:800px;margin:0 auto;text-align:center;font-size:1.1rem;line-height:1.8;color:#ddd}
 
-/* ------------- HEADER ------------- */
-header{position:fixed;top:0;width:100%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);z-index:1000}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem}
-.logo{font-weight:700;font-size:1.3rem;color:#111}
-.logo span{color:#0077ff}
+/* --- HEADER --- */
+header{position:fixed;top:0;width:100%;background:#121212;box-shadow:0 2px 8px rgba(0,0,0,.4);z-index:1000}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem}
+.logo{font-weight:400;font-size:1.4rem;color:#fff;text-decoration:none}
+.logo span{color:#ff6b00}
 nav ul{display:flex;gap:2rem;list-style:none}
-nav a{color:#222;font-weight:500}
-nav a:hover{color:#0077ff}
-.hamburger{display:none;font-size:1.5rem;cursor:pointer}
+nav a{color:#ccc;font-weight:400;text-decoration:none}
+nav a:hover{color:#ff6b00}
+.hamburger{display:none;font-size:1.5rem;cursor:pointer;color:#fff}
 
-/* ------------- HERO ------------- */
-.hero{height:100vh;display:flex;align-items:center;text-align:center;padding-top:70px}
-.hero-img{width:160px;border-radius:50%;border:4px solid #0077ff;margin-bottom:1rem}
-.hero h1{font-size:2.4rem;margin:.5rem 0}
-.hero .highlight{color:#0077ff}
-.typewrite{font-size:1.2rem;color:#555;margin-bottom:1.5rem}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+/* --- HERO --- */
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:70px}
+.hero h1{font-size:2.8rem;font-weight:400;margin-bottom:0.5rem;color:#fff}
+.hero .highlight{color:#ff6b00}
+.typewrite{font-size:1.4rem;font-weight:400;color:#ccc}
 
-/* ------------- SKILL TAGS ------------- */
-.skill-tags{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
-.skill-tags span{background:#e1ecff;color:#0050c7;padding:.4rem .8rem;border-radius:20px;font-size:.9rem}
+/* --- SKILLS --- */
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center}
+.skill-tags span{background:#fff;color:#121212;padding:0.4rem 0.9rem;border-radius:20px;font-size:0.9rem;font-weight:400}
 
-/* ------------- CARDS ------------- */
+/* --- CARDS --- */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
-.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:.3s}
+.card{background:#1e1e1e;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:.3s;display:flex;flex-direction:column;align-items:center}
 .card:hover{transform:translateY(-5px)}
-.card img{width:100%;height:160px;object-fit:cover}
-.card-body{padding:1rem}
-.card-body h3{margin-bottom:.5rem;font-size:1.1rem}
-.card-body p{margin-bottom:.8rem;color:#555}
+.card-icon{padding:1.5rem 0 0.5rem;color:#ff6b00;font-size:1.8rem}
+.card-body{padding:0 1rem 1.5rem;text-align:center;color:#ddd}
+.card-body h3{margin-bottom:0.5rem;font-size:1.1rem;font-weight:400}
+.card-body p{font-size:0.9rem;line-height:1.4;color:#aaa}
 
-/* ------------- SOCIALS ------------- */
-.socials{display:flex;justify-content:center;gap:1.2rem;font-size:2rem}
-.socials a{color:#0077ff;transition:.3s}
-.socials a:hover{color:#0050c7;transform:scale(1.1)}
+/* --- CONTACT --- */
+.contact-small .section-title{font-size:1.6rem;font-weight:400}
+.socials{display:flex;justify-content:center;gap:1.2rem;font-size:1.4rem}
+.socials a{color:#ff6b00;transition:.3s}
+.socials a:hover{color:#ff8c00;transform:scale(1.1)}
 
-/* ------------- FOOTER ------------- */
-footer{background:#111;color:#fff;text-align:center;padding:1.5rem 0;font-size:.9rem}
+/* --- FOOTER --- */
+footer{background:#0a0a0a;color:#fff;text-align:center;padding:1.5rem 0 1rem;font-size:0.9rem}
 
-/* ------------- RESPONSIVE ------------- */
+/* --- RESPONSIVE --- */
 @media(max-width:768px){
-  nav ul{position:fixed;right:-100%;top:60px;flex-direction:column;background:#fff;width:200px;height:100vh;padding:2rem;transition:.3s}
+  nav ul{position:fixed;right:-100%;top:60px;flex-direction:column;background:#121212;width:200px;height:100vh;padding:2rem;transition:.3s}
   nav ul.active{right:0}
   .hamburger{display:block}
+  .hero h1{font-size:2.2rem}
 }
