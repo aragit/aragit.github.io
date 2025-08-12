@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+}
+
+.menu-list li {
+    margin: 0 1em;
+}
+
+.menu-list a {
+    color: white;
+    text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+}
+
+.hero {
+    text-align: center;
+    padding: 2em;
+    background-color: #f4f4f4;
+}
+
+.portfolio, .about, .skills, .contact {
+    margin: 2em;
+    padding: 1em;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    cursor: pointer;
+}
+
+.common-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.ghost-btn {
+    background: none;
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .menu.active {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+.dark-theme {
+    background-color: #222;
+    color: white;
+}
+
+.dark-theme .portfolio, .dark-theme .about, .dark-theme .skills, .dark-theme .contact {
+    background-color: #333;
+}
