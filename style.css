@@ -12,6 +12,7 @@ body {
   line-height: 1.6;
   color: #f5f5f5;
   background: #121212;
+  font-weight: 400; /* no bold anywhere */
 }
 
 /* ---------- UTILS ---------- */
@@ -119,12 +120,13 @@ nav a:hover {
   justify-content: center;
 }
 .skill-tags span {
-  background: #ffffff;
-  color: #121212;
+  background: #2a2a2a;          /* dark gray */
+  color: #d0d0d0;               /* light gray text */
   padding: 0.4rem 0.9rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 400;
+  border: 1px solid #444;
 }
 
 /* ---------- CARDS ---------- */
@@ -179,11 +181,15 @@ nav a:hover {
   font-size: 1.4rem;
 }
 .socials a {
-  color: #ff6b00;
+  color: transparent;              /* hollow fill */
+  -webkit-text-stroke: 1px #bbb;
+  text-stroke: 1px #bbb;
   transition: 0.3s;
 }
 .socials a:hover {
-  color: #ff8c00;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  text-stroke: 1px #fff;
   transform: scale(1.1);
 }
 
@@ -219,5 +225,3 @@ footer {
     font-size: 2.2rem;
   }
 }
-
-
