@@ -5,28 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arash Nicoomanesh</title>
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome 6.5.1 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <!-- Web-font -->
-  <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet"/>
+
+  <!-- Century Gothic -->
+  <link href="https://fonts.googleapis.com/css2?family=Century+Gothic:wght@300;400;600&display=swap" rel="stylesheet"/>
 
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
-  <!-- Neural motion background -->
-  <div id="neural-bg"></div>
-
   <!-- HEADER -->
   <header>
     <div class="container header-inner">
-      <a href="#home" class="logo">Portfolio</a>
+      <a href="#home" class="logo">Profile</a>
       <nav id="navbar">
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#portfolio">Featured Projects</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -38,12 +35,16 @@
   <section id="home" class="hero">
     <div class="container">
       <h1>Arash&nbsp;<span class="highlight">Nicoomanesh</span></h1>
-      <p class="typewrite" id="typewrite"></p>
+      <p id="typewrite"></p>
 
-      <!-- Game-theory quote -->
-      <p class="quote">
-        “Game theory gives AI the vocabulary of strategy, cooperation, and fair equilibrium; when we train agents to maximize collective payoff instead of individual gain, the same math that once conquered chess now negotiates traffic flows, balances power grids, and designs organ-donor chains—turning every byte of data into a Nash equilibrium of human benefit.”
-      </p>
+      <!-- Quote -->
+      <blockquote class="hero-quote">
+        <span class="quote-line"></span>
+        <p>
+          Game theory gives AI the vocabulary of strategy, cooperation, and fair equilibrium; when we train agents to maximize collective payoff instead of individual gain, the same math that once conquered chess now negotiates traffic flows, balances power grids, and designs organ-donor chains—turning every byte of data into a Nash equilibrium of human benefit.
+        </p>
+        <span class="quote-line"></span>
+      </blockquote>
     </div>
   </section>
 
@@ -52,25 +53,26 @@
     <div class="container about-text">
       <h2 class="section-title">About Me</h2>
       <p>
-        AI & ML Engineer with about 15 years of experience in modeling and delivering scalable, AI solutions
-        across healthcare, finance, and marketing. Deep expertise in traditional machine learning,
-        predictive modeling and Generative AI and LLM-based applications. Proven track record of
-        mentoring cross-functional teams, collaborating with stakeholders, and optimizing
+        AI & ML Engineer with about 15 years of experience in modeling and delivering scalable AI solutions
+        across healthcare, finance, and marketing. 
+        Deep expertise in traditional machine learning,predictive modeling, Generative AI and LLM-based applications.
+        Proven track record of mentoring cross-functional teams, collaborating with stakeholders, and optimizing
         pipelines on both on-premises and cloud infrastructures to support high-volume deployments.
       </p>
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- SKILLS (dark-grey tags) -->
   <section id="skills" class="section alt">
     <div class="container">
       <h2 class="section-title">Core Areas of Expertise</h2>
-      <div class="skill-tags">
-        <span>LLM Engineering</span>
-        <span>RAG & Context Engineering</span><span>Prompt Engineering</span>
-        <span>GCP Services</span><span>Agentic AI & Multi-Agent Systems</span>
-        <span>LLMOps & Evaluation</span>
-        <span>Time-Series Forecasting</span><span>Recommendation Engines</span>
+      <div class="skill-tags dark">
+        <span>LLM Engineering</span><span>Prompt Engineering</span><span>RAG & Context Engineering</span>
+        <span>Agentic AI</span><span>Vector DBs</span>
+        <span>Agentic RAG</span><span>GCP Services</span>
+        <span>LLMOps</span>
+        <span>Time-Series</span><span>Recommendation Systems</span>
+        
       </div>
     </div>
   </section>
@@ -87,7 +89,6 @@
             <p>Hybrid conversational agent using Gemini 1.5 Pro, CoT prompting, and SNOMED/ICD-10 entity linking. Deployed on GKE & Cloud Run.</p>
           </div>
         </div>
-
         <div class="card">
           <div class="card-icon"><i class="fas fa-pills"></i></div>
           <div class="card-body">
@@ -95,7 +96,6 @@
             <p>GPTQ-quantized Gemma2 & Zephyr for alternative therapy recommendations from real-world EHR data.</p>
           </div>
         </div>
-
         <div class="card">
           <div class="card-icon"><i class="fas fa-chart-line"></i></div>
           <div class="card-body">
@@ -103,7 +103,6 @@
             <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables.</p>
           </div>
         </div>
-
         <div class="card">
           <div class="card-icon"><i class="fas fa-comments"></i></div>
           <div class="card-body">
@@ -111,7 +110,6 @@
             <p>Fine-tuned Gemma & Mistral with hybrid retrieval and K8s deployment for scalable inference.</p>
           </div>
         </div>
-
         <div class="card">
           <div class="card-icon"><i class="fas fa-university"></i></div>
           <div class="card-body">
@@ -128,19 +126,18 @@
     <div class="container">
       <h2 class="section-title">Contact Me</h2>
       <div class="socials">
-        <!-- LinkedIn text “in” -->
-        <a href="https://www.linkedin.com/in/arashnicoomanesh/" target="_blank" class="linkedin-text">in</a>
-
-        <a href="https://kaggle.com/arashnic" target="_blank"><i class="fab fa-kaggle"></i></a>
-        <a href="https://github.com/aragit" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://medium.com/@anicomanesh" target="_blank"><i class="fab fa-medium"></i></a>
-        <a href="mailto:anicomanesh@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/arashnicoomanesh/"   aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/aragit"        aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.kaggle.com/arashnic"        aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+        <a href="mailto:arash@example.com"        aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://medium.com/@anicomanesh" aria-label="Medium"><i class="fab fa-medium"></i></a>
+        <a href="https://anicomanesh.substack.com/about" aria-label="BrainPixel Labs"><i class="fas fa-globe"></i></a>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© <span id="year"></span> Arash Nicoomanesh</p>
+    <p>© <span id="year"></span> Arash Nicoomanesh.</p>
   </footer>
 
   <script src="script.js"></script>
