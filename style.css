@@ -6,7 +6,6 @@
 }
 html { scroll-behavior: smooth; }
 
-/* Universal font = Didact Gothic (web) ≈ Century Gothic */
 body, h1, h2, h3, .section-title, .skill-tags span,
 .card-body h3, .logo, nav a, .typewrite {
   font-family: "Didact Gothic", "Century Gothic", sans-serif;
@@ -43,7 +42,7 @@ header {
   top: 0;
   width: 100%;
   background: #121212;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 8px rgba(0,0,0,.4);
   z-index: 1000;
 }
 .header-inner {
@@ -52,11 +51,7 @@ header {
   justify-content: space-between;
   padding: 0.7rem 1rem;
 }
-.logo {
-  font-size: 1.4rem;
-  color: #fff;
-  text-decoration: none;
-}
+.logo { font-size: 1.4rem; color: #fff; text-decoration: none; }
 .logo span { color: #ff6b00; }
 nav ul { display: flex; gap: 2rem; list-style: none; }
 nav a { color: #ccc; text-decoration: none; }
@@ -76,6 +71,29 @@ nav a:hover { color: #ff6b00; }
 .hero h1 { font-size: 2.8rem; margin-bottom: 0.5rem; color: #fff; }
 .hero .highlight { color: #ff6b00; }
 .typewrite { font-size: 1.4rem; color: #ccc; }
+
+/* ---------- GAME-THEORY QUOTE ---------- */
+.quote {
+  max-width: 900px;
+  margin: 4rem auto 0;
+  padding: 0 1rem;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #bbb;
+  text-align: center;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+.quote::before,
+.quote::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: #ff6b00;
+  margin: 1.2rem auto;
+  opacity: 0.6;
+}
 
 /* ---------- SKILL TAGS ---------- */
 .skill-tags {
@@ -103,7 +121,7 @@ nav a:hover { color: #ff6b00; }
   background: #1e1e1e;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
   transition: 0.3s;
   display: flex;
   flex-direction: column;
@@ -115,13 +133,13 @@ nav a:hover { color: #ff6b00; }
 .card-body h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
 .card-body p { font-size: 0.9rem; line-height: 1.4; color: #aaa; }
 
-/* ---------- CONTACT ---------- */
+/* ---------- CONTACT (larger icons, no square border on LinkedIn) ---------- */
 .contact-small .section-title { font-size: 1.6rem; }
 .socials {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
-  font-size: 1.4rem;
+  gap: 2rem;
+  font-size: 2rem; /* larger icons */
 }
 .socials a {
   color: transparent;
@@ -133,7 +151,17 @@ nav a:hover { color: #ff6b00; }
   color: transparent;
   -webkit-text-stroke: 1px #fff;
   text-stroke: 1px #fff;
-  transform: scale(1.1);
+  transform: scale(1.15);
+}
+.linkedin-text {
+  font-size: 2rem;
+  letter-spacing: -0.05em;
+  -webkit-text-stroke: 1px #bbb;
+  text-stroke: 1px #bbb;
+}
+.linkedin-text:hover {
+  -webkit-text-stroke: 1px #fff;
+  text-stroke: 1px #fff;
 }
 
 /* ---------- FOOTER ---------- */
