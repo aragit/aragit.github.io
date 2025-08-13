@@ -133,35 +133,38 @@ nav a:hover { color: #ff6b00; }
 .card-body h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
 .card-body p { font-size: 0.9rem; line-height: 1.4; color: #aaa; }
 
-/* ---------- CONTACT (larger icons, no square border on LinkedIn) ---------- */
+/* ---------- CONTACT ---------- */
 .contact-small .section-title { font-size: 1.6rem; }
 .socials {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  font-size: 2rem; /* larger icons */
+  align-items: center;
+  gap: 2.2rem;
+  font-size: 1.45rem; /* uniform, moderate size */
 }
 .socials a {
-  color: transparent;
-  -webkit-text-stroke: 1px #bbb;
-  text-stroke: 1px #bbb;
+  color: #ffffff;
+  -webkit-text-stroke: 1.5px #ffffff;
+  text-stroke: 1.5px #ffffff;
+  text-decoration: none; /* remove underline */
   transition: 0.3s;
 }
 .socials a:hover {
-  color: transparent;
-  -webkit-text-stroke: 1px #fff;
-  text-stroke: 1px #fff;
+  color: #ffffff;
+  -webkit-text-stroke: 1.5px #ffffff;
+  text-stroke: 1.5px #ffffff;
   transform: scale(1.15);
 }
 .linkedin-text {
-  font-size: 2rem;
+  font-size: 1.45rem;
   letter-spacing: -0.05em;
-  -webkit-text-stroke: 1px #bbb;
-  text-stroke: 1px #bbb;
+  -webkit-text-stroke: 1.5px #ffffff;
+  text-stroke: 1.5px #ffffff;
+  text-decoration: none;
 }
 .linkedin-text:hover {
-  -webkit-text-stroke: 1px #fff;
-  text-stroke: 1px #fff;
+  -webkit-text-stroke: 1.5px #ffffff;
+  text-stroke: 1.5px #ffffff;
 }
 
 /* ---------- FOOTER ---------- */
