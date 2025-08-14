@@ -37,14 +37,14 @@ body {
   text-align: center;
   margin-bottom: 40px;
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 300;
   color: #fff;
 }
 .about-text p {
   max-width: 800px;
-  margin: 0 auto 1.5rem auto;
+  margin: 0 auto 0.95rem auto;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   line-height: 1.8;
   color: #ddd;
 }
@@ -120,13 +120,14 @@ nav a:hover {
 
 /* VALUE PROPOSITION */
 .value-prop {
+  
   margin: 1.5rem 0;
   text-align: center;
 }
 .main-prop {
   font-size: 1.5rem;
   color: #fff;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.3;
 }
 
@@ -137,7 +138,7 @@ nav a:hover {
 }
 #typewrite {
   font-family: "Courier New", Courier, monospace; 
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: #ccc;
     min-height: 3rem; 
