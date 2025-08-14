@@ -11,7 +11,17 @@ body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
   color: #f5f5f5;
-  background: #121212;
+  background: transparent; /* Make the body background see-through */
+}
+
+/* ---------- PARTICLES BACKGROUND CANVAS ---------- */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* CRITICAL: Places the canvas behind all other content */
 }
 
 .container {
@@ -23,7 +33,7 @@ body {
   padding: 80px 0;
 }
 .alt {
-  background: #1a1a1a;
+  background: rgba(26, 26, 26, 0.7); /* Semi-transparent background */
 }
 .section-title {
   text-align: center;
@@ -46,7 +56,8 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #121212;
+  background: rgba(18, 18, 18, 0.8); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   z-index: 1000;
 }
@@ -94,35 +105,40 @@ nav a:hover {
   justify-content: center;
   text-align: center;
   padding-top: 70px;
+  background: transparent; /* Hero section is fully transparent */
 }
 .hero h1 {
+  
   font-size: 2.8rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 0.5rem;
   color: #fff;
 }
 .hero .highlight {
   color: #ff6b00;
 }
-.typewrite {
-  font-size: 1.6rem;
+#typewrite {
+  font-family: "Courier New", Courier, monospace; 
+  font-size: 1.5rem; /* Your desired font size */
   font-weight: 400;
   color: #ccc;
+  min-height: 3rem; /* Add this to prevent content below from jumping */
 }
 
-/* ---------- STYLISH QUOTE (no quotes, double orange ribbon) ---------- */
+/* ---------- STYLISH QUOTE ---------- */
 .hero-quote {
   max-width: 800px;
   margin: 2.5rem auto 0;
   padding: 1.5rem 1.5rem 1.5rem 2rem;
   position: relative;
-  background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(18, 18, 18, 0.7) 100%);
   border-left: 4px solid #ff6b00;
   border-right: 4px solid #ff6b00;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .hero-quote p {
+    
   font-size: 1.1rem;
   font-weight: 300;
   line-height: 1.7;
@@ -135,7 +151,7 @@ nav a:hover {
   }
 }
 
-/* ---------- SKILL TAGS (dark grey) ---------- */
+/* ---------- SKILL TAGS ---------- */
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -158,7 +174,8 @@ nav a:hover {
   gap: 2rem;
 }
 .card {
-  background: #1e1e1e;
+  background: rgba(30, 30, 30, 0.75); /* Semi-transparent cards */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -169,6 +186,7 @@ nav a:hover {
 }
 .card:hover {
   transform: translateY(-5px);
+  border-color: rgba(255, 107, 0, 0.5);
 }
 .card-icon {
   padding: 1.5rem 0 0.5rem;
@@ -214,7 +232,7 @@ nav a:hover {
 
 /* ---------- FOOTER ---------- */
 footer {
-  background: #0a0a0a;
+  background: rgba(10, 10, 10, 0.8); /* Semi-transparent footer */
   color: #fff;
   text-align: center;
   padding: 1.5rem 0 1rem;
@@ -226,9 +244,10 @@ footer {
   nav ul {
     position: fixed;
     right: -100%;
-    top: 60px;
+    top: 60px; /* Match header height */
     flex-direction: column;
-    background: #121212;
+    background: rgba(18, 18, 18, 0.9); /* Semi-transparent mobile nav */
+    backdrop-filter: blur(10px);
     width: 200px;
     height: 100vh;
     padding: 2rem;
