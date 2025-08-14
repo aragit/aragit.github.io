@@ -17,7 +17,9 @@
   <!-- HEADER -->
   <header>
     <div class="container header-inner">
-      <a href="#home" class="logo">Profile</a>
+      <a href="#home" class="logo">
+        <i class="fas fa-microchip"></i>
+      </a>
       <nav id="navbar">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -39,37 +41,35 @@
       <div class="value-prop">
         <p class="main-prop">Scalable AI Solutions</p>
         
-        <p class="sub-prop">Divergence & Diversity</p>
+        <!-- ROLE ROTATION -->
+        <div class="role-container">
+          <p id="typewrite"></p>
+        </div>
+        
+        <!-- CALL TO ACTION BUTTONS -->
+        <div class="hero-cta">
+          <a href="#portfolio" class="cta-button">View My Work</a>
+          <a href="#contact" class="cta-secondary">Let's Collaborate</a>
+        </div>
+        
+        <!-- DECORATIVE SEPARATOR -->
+        <div class="hero-separator">
+          <div class="separator-line"></div>
+          <i class="fas fa-rocket separator-icon"></i>
+          <div class="separator-line"></div>
+        </div>
+        
+        <!-- QUOTE -->
+        <blockquote class="hero-quote">
+          <span class="quote-line"></span>
+          <p>
+            "Game theory gives AI the vocabulary of strategy, cooperation, and fair equilibrium; 
+            when we train agents to maximize collective payoff instead of individual gain, the same math that once conquered chess now negotiates 
+            traffic flows, balances power grids, and designs organ-donor chains—turning every byte of data into a Nash equilibrium of human benefit."
+          </p>
+          <span class="quote-line"></span>
+        </blockquote>
       </div>
-      
-      <!-- ROLE ROTATION -->
-      <div class="role-container">
-        <p id="typewrite"></p>
-      </div>
-      
-      <!-- CALL TO ACTION BUTTONS -->
-      <div class="hero-cta">
-        <a href="#portfolio" class="cta-button">View My Work</a>
-        <a href="#contact" class="cta-secondary">Let's Collaborate</a>
-      </div>
-      
-      <!-- DECORATIVE SEPARATOR -->
-      <div class="hero-separator">
-        <div class="separator-line"></div>
-        <i class="fas fa-rocket separator-icon"></i>
-        <div class="separator-line"></div>
-      </div>
-      
-      <!-- QUOTE -->
-      <blockquote class="hero-quote">
-        <span class="quote-line"></span>
-        <p>
-          "Game theory gives AI the vocabulary of strategy, cooperation, and fair equilibrium; 
-          when we train agents to maximize collective payoff instead of individual gain, the same math that once conquered chess now negotiates 
-          traffic flows, balances power grids, and designs organ-donor chains—turning every byte of data into a Nash equilibrium of human benefit."
-        </p>
-        <span class="quote-line"></span>
-      </blockquote>
     </div>
   </section>
   
@@ -113,8 +113,8 @@
           <h3>Specialized Domains</h3>
           <div class="skill-tags dark">
             <span>Time-Series</span><span>Recommendation Systems</span>
-            <span>Healthcare AI</span><span>Marketing Solutions</span>
-            <span>Financial Modeling</span><span>Manufacturing Optimization</span>
+            <span>Healthcare AI</span>
+            <span>Financial Modeling</span>
           </div>
         </div>
       </div>
@@ -178,20 +178,27 @@
       <h2 class="section-title">Contact Me</h2>
       <div class="contact-grid">
         <div class="contact-item">
-          <i class="fas fa-calendar-alt"></i>
+          <i class="fas fa-handshake"></i>
           <span>Available for consulting</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone" onclick="showPhoneNumber()"></i>
+          <span>Phone</span>
         </div>
       </div>
       <div class="socials">
         <a href="https://www.linkedin.com/in/arashnicoomanesh/"   aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/aragit"        aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.kaggle.com/arashnic"        aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+        
         <a href="mailto:anicomanesh@gmail.com"        aria-label="Email"><i class="fas fa-envelope"></i></a>
         <a href="https://medium.com/@anicomanesh" aria-label="Medium"><i class="fab fa-medium"></i></a>
         <a href="https://anicomanesh.substack.com/about" aria-label="BrainPixel Labs"><i class="fas fa-globe"></i></a>
       </div>
     </div>
   </section>
+
+    
   
   <footer>
     <p>© <span id="year"></span> Arash Nicoomanesh.</p>

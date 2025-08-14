@@ -69,11 +69,13 @@ header {
 }
 .logo {
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   color: #fff;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
-.logo span {
+.logo i {
   color: #ff6b00;
 }
 nav ul {
@@ -128,55 +130,6 @@ nav a:hover {
   line-height: 1.3;
 }
 
-/* INDUSTRIES STYLING */
-.industries-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-.industry-box {
-  background: rgba(255, 107, 0, 0.1);
-  border: 1px solid rgba(255, 107, 0, 0.3);
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 400;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.industry-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, rgba(255, 107, 0, 0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-}
-.industry-box:hover::before {
-  transform: translateX(100%);
-}
-.industry-box:hover {
-  border-color: #ff6b00;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
-}
-
-.sub-prop {
-  font-size: 1.1rem;
-  color: #ddd;
-  margin-top: 0.8rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* ROLE CONTAINER */
 .role-container {
   margin: 1.5rem 0;
@@ -187,6 +140,7 @@ nav a:hover {
   font-size: 1.5rem;
   font-weight: 400;
   color: #ccc;
+    min-height: 3rem; 
 }
 
 /* HERO CTA */
@@ -271,16 +225,6 @@ nav a:hover {
   .main-prop {
     font-size: 1.3rem;
   }
-  .sub-prop {
-    font-size: 1rem;
-  }
-  .industries-container {
-    gap: 0.5rem;
-  }
-  .industry-box {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-  }
   .separator-line {
     width: 60px;
   }
@@ -364,6 +308,8 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
   margin-bottom: 2rem;
 }
 .contact-item {
@@ -373,23 +319,18 @@ nav a:hover {
   gap: 0.8rem;
   color: #ddd;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 .contact-item i {
   color: #fff;
   font-size: 1.2rem;
+  cursor: pointer;
+}
+.contact-item i:hover {
+  color: #ff6b00;
 }
 .contact-item span {
   font-size: 1rem;
-}
-.contact-item a {
-  color: #ddd;
-  text-decoration: none;
-}
-.contact-item a:hover {
-  color: #ff6b00;
 }
 .contact-small .section-title {
   font-size: 1.6rem;
@@ -404,7 +345,7 @@ nav a:hover {
 .socials a {
   color: #ff6b00;
   font-size: 1.4rem;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 .socials a:hover {
   color: #ff8c00;

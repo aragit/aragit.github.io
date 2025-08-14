@@ -102,3 +102,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* ---------- FOOTER YEAR ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- PHONE NUMBER FUNCTION ---------- */
+function showPhoneNumber() {
+  alert('Phone: +1 (555) 123-4567');
+}
