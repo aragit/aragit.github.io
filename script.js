@@ -5,15 +5,13 @@ hamburger?.addEventListener('click', () => nav.classList.toggle('active'));
 
 /* ---------- ON CONTENT LOAD ---------- */
 window.addEventListener('DOMContentLoaded', () => {
-
   /* ---------- PARTICLES ENGINE CONFIG ---------- */
-  // This configuration creates the orange/blue wavy network effect
   tsParticles.load({
     id: "particles-js",
     options: {
       particles: {
         number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: ["#ff6b00", "#4dabf7"] }, // Orange and Blue colors from your image
+        color: { value: ["#ff6b00", "#4dabf7"] },
         shape: { type: "circle" },
         opacity: {
           value: 0.6,
@@ -40,14 +38,10 @@ window.addEventListener('DOMContentLoaded', () => {
           straight: false,
           out_mode: "out",
           attract: { enable: false, rotateX: 600, rotateY: 1200 },
-          // This adds the wavy, flowing motion
           path: {
             enable: true,
             delay: {
-              random: {
-                enable: true,
-                minimumValue: 0.5
-              },
+              random: { enable: true, minimumValue: 0.5 },
               value: 1
             },
             generator: "perlinNoise",
@@ -79,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
       },
       retina_detect: true,
       background: {
-        color: "#121212", // The solid background color behind the particles
+        color: "#121212",
       },
     },
   });
@@ -87,14 +81,11 @@ window.addEventListener('DOMContentLoaded', () => {
   /* ---------- TYPEWRITER ---------- */
   const typeEl = document.querySelector('#typewrite');
   if (!typeEl) return;
-
   const roles = ["AI Engineer","Agentic AI Researcher", "Ethical AI Advocate", "KaggleX Advisor", "Kaggle Grandmaster"];
   let i = 0, j = 0, forward = true;
-
   function tick() {
     const cur = roles[i];
     typeEl.textContent = forward ? cur.slice(0, ++j) : cur.slice(0, --j);
-
     if (forward && j === cur.length) {
       setTimeout(tick, 1500);
       forward = false;

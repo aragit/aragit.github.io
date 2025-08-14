@@ -11,9 +11,8 @@ body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
   color: #f5f5f5;
-  background: transparent; /* Make the body background see-through */
+  background: transparent;
 }
-
 /* ---------- PARTICLES BACKGROUND CANVAS ---------- */
 #particles-js {
   position: fixed;
@@ -21,9 +20,8 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: -1; /* CRITICAL: Places the canvas behind all other content */
+  z-index: -1;
 }
-
 .container {
   max-width: 1100px;
   margin: auto;
@@ -33,7 +31,7 @@ body {
   padding: 80px 0;
 }
 .alt {
-  background: rgba(26, 26, 26, 0.7); /* Semi-transparent background */
+  background: rgba(26, 26, 26, 0.7);
 }
 .section-title {
   text-align: center;
@@ -44,19 +42,21 @@ body {
 }
 .about-text p {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem auto;
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.8;
   color: #ddd;
 }
-
+.about-text p:last-child {
+  margin-bottom: 0;
+}
 /* ---------- HEADER ---------- */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(18, 18, 18, 0.8); /* Glassmorphism effect */
+  background: rgba(18, 18, 18, 0.8);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   z-index: 1000;
@@ -95,7 +95,6 @@ nav a:hover {
   cursor: pointer;
   color: #fff;
 }
-
 /* ---------- HERO ---------- */
 .hero {
   height: 100vh;
@@ -105,10 +104,9 @@ nav a:hover {
   justify-content: center;
   text-align: center;
   padding-top: 70px;
-  background: transparent; /* Hero section is fully transparent */
+  background: transparent;
 }
 .hero h1 {
-  
   font-size: 2.8rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -117,19 +115,141 @@ nav a:hover {
 .hero .highlight {
   color: #ff6b00;
 }
-#typewrite {
-  font-family: "Courier New", Courier, monospace; 
-  font-size: 1.5rem; /* Your desired font size */
+
+/* VALUE PROPOSITION */
+.value-prop {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+.main-prop {
+  font-size: 1.5rem;
+  color: #fff;
   font-weight: 400;
-  color: #ccc;
-  min-height: 3rem; /* Add this to prevent content below from jumping */
+  line-height: 1.3;
 }
 
-/* ---------- STYLISH QUOTE ---------- */
+/* INDUSTRIES STYLING */
+.industries-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.industry-box {
+  background: rgba(255, 107, 0, 0.1);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.industry-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 107, 0, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.industry-box:hover::before {
+  transform: translateX(100%);
+}
+.industry-box:hover {
+  border-color: #ff6b00;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+}
+
+.sub-prop {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-top: 0.8rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ROLE CONTAINER */
+.role-container {
+  margin: 1.5rem 0;
+  min-height: 2rem;
+}
+#typewrite {
+  font-family: "Courier New", Courier, monospace; 
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #ccc;
+}
+
+/* HERO CTA */
+.hero-cta {
+  margin: 3rem 0 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.cta-button {
+  background: #ff6b00;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+.cta-button:hover {
+  background: #e55a00;
+  transform: translateY(-2px);
+}
+.cta-secondary {
+  color: #ccc;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid #444;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+.cta-secondary:hover {
+  border-color: #ff6b00;
+  color: #ff6b00;
+}
+
+/* DECORATIVE SEPARATOR */
+.hero-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+.separator-line {
+  height: 1px;
+  width: 100px;
+  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
+}
+.separator-icon {
+  color: #ff6b00;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* QUOTE */
 .hero-quote {
-  max-width: 800px;
-  margin: 2.5rem auto 0;
-  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  max-width: 700px;
+  margin: 2rem auto 3rem;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
   position: relative;
   background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(18, 18, 18, 0.7) 100%);
   border-left: 4px solid #ff6b00;
@@ -138,8 +258,7 @@ nav a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .hero-quote p {
-    
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.7;
   color: #e8e8e8;
@@ -147,11 +266,41 @@ nav a:hover {
 }
 @media (max-width: 600px) {
   .hero-quote p {
+    font-size: 0.9rem;
+  }
+  .main-prop {
+    font-size: 1.3rem;
+  }
+  .sub-prop {
+    font-size: 1rem;
+  }
+  .industries-container {
+    gap: 0.5rem;
+  }
+  .industry-box {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  .separator-line {
+    width: 60px;
+  }
+  .separator-icon {
     font-size: 1rem;
   }
 }
 
-/* ---------- SKILL TAGS ---------- */
+/* ---------- SKILLS SECTION ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.skill-category h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ff6b00;
+  font-weight: 500;
+}
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -174,7 +323,7 @@ nav a:hover {
   gap: 2rem;
 }
 .card {
-  background: rgba(30, 30, 30, 0.75); /* Semi-transparent cards */
+  background: rgba(30, 30, 30, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -183,6 +332,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 .card:hover {
   transform: translateY(-5px);
@@ -210,6 +360,37 @@ nav a:hover {
 }
 
 /* ---------- CONTACT ---------- */
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: #ddd;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.contact-item i {
+  color: #fff;
+  font-size: 1.2rem;
+}
+.contact-item span {
+  font-size: 1rem;
+}
+.contact-item a {
+  color: #ddd;
+  text-decoration: none;
+}
+.contact-item a:hover {
+  color: #ff6b00;
+}
 .contact-small .section-title {
   font-size: 1.6rem;
   font-weight: 400;
@@ -232,7 +413,7 @@ nav a:hover {
 
 /* ---------- FOOTER ---------- */
 footer {
-  background: rgba(10, 10, 10, 0.8); /* Semi-transparent footer */
+  background: rgba(10, 10, 10, 0.8);
   color: #fff;
   text-align: center;
   padding: 1.5rem 0 1rem;
@@ -244,9 +425,9 @@ footer {
   nav ul {
     position: fixed;
     right: -100%;
-    top: 60px; /* Match header height */
+    top: 60px;
     flex-direction: column;
-    background: rgba(18, 18, 18, 0.9); /* Semi-transparent mobile nav */
+    background: rgba(18, 18, 18, 0.9);
     backdrop-filter: blur(10px);
     width: 200px;
     height: 100vh;
@@ -261,5 +442,13 @@ footer {
   }
   .hero h1 {
     font-size: 2.2rem;
+  }
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cta-button, .cta-secondary {
+    width: 80%;
+    text-align: center;
   }
 }
