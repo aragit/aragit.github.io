@@ -1,6 +1,6 @@
 /* ---------- MOBILE NAV ---------- */
 const hamburger = document.getElementById('hamburger');
-const nav = document.querySelector('nav ul');
+const nav       = document.querySelector('nav ul');
 hamburger?.addEventListener('click', () => nav.classList.toggle('active'));
 
 /* ---------- ON CONTENT LOAD ---------- */
@@ -16,19 +16,19 @@ window.addEventListener('DOMContentLoaded', () => {
         opacity: {
           value: 0.6,
           random: true,
-          anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false },
+          anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
         },
         size: {
           value: 3,
           random: true,
-          anim: { enable: false },
+          anim: { enable: false }
         },
         line_linked: {
           enable: true,
           distance: 150,
           color: "#ffffff",
           opacity: 0.2,
-          width: 1,
+          width: 1
         },
         move: {
           enable: true,
@@ -40,10 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
           attract: { enable: false, rotateX: 600, rotateY: 1200 },
           path: {
             enable: true,
-            delay: {
-              random: { enable: true, minimumValue: 0.5 },
-              value: 1
-            },
+            delay: { random: { enable: true, minimumValue: 0.5 }, value: 1 },
             generator: "perlinNoise",
             options: {
               width: 100,
@@ -54,34 +51,32 @@ window.addEventListener('DOMContentLoaded', () => {
               amplitude: 1
             }
           }
-        },
+        }
       },
       interactivity: {
         detect_on: "canvas",
         events: {
           onhover: { enable: true, mode: "grab" },
           onclick: { enable: true, mode: "push" },
-          resize: true,
+          resize: true
         },
         modes: {
           grab: { distance: 140, line_opacity: 0.5 },
           bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
           repulse: { distance: 200, duration: 0.4 },
           push: { particles_nb: 4 },
-          remove: { particles_nb: 2 },
-        },
+          remove: { particles_nb: 2 }
+        }
       },
       retina_detect: true,
-      background: {
-        color: "#121212",
-      },
-    },
+      background: { color: "#121212" }
+    }
   });
 
   /* ---------- TYPEWRITER ---------- */
   const typeEl = document.querySelector('#typewrite');
   if (!typeEl) return;
-  const roles = ["AI Engineer","Agentic AI Researcher", "Ethical AI Advocate", "KaggleX Advisor", "Kaggle Grandmaster"];
+  const roles = ["AI Engineer", "Agentic AI Researcher", "Ethical AI Advocate", "KaggleX Advisor", "Kaggle Grandmaster"];
   let i = 0, j = 0, forward = true;
   function tick() {
     const cur = roles[i];
@@ -98,6 +93,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
   tick();
+
+  /* ---------- FOUC-FIX: reveal page only after fonts & particles ready ---------- */
+  window.addEventListener('load', () => {
+    document.documentElement.classList.add('font-loaded');
+  });
 });
 
 /* ---------- FOOTER YEAR ---------- */
