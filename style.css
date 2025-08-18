@@ -313,7 +313,7 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 .contact-item {
@@ -398,7 +398,7 @@ footer {
   }
 }
 
-/* ===== NEW STYLES for hero badge, footer link, course links ===== */
+/* NEW STYLES for hero badge, footer link */
 .hero-latest {
   margin-top: 1rem;
   font-size: 1rem;
@@ -408,12 +408,10 @@ footer {
   color: #ff6b00;
   text-decoration: underline;
 }
-
 footer a {
   color: #ff6b00;
   text-decoration: underline;
 }
-
 .skill-tags a {
   text-decoration: none;
 }
