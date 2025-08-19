@@ -38,8 +38,8 @@ body {
 .section-title {
   text-align: center;
   margin-bottom: 40px;
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: #fff;
 }
 .about-text p {
@@ -113,13 +113,13 @@ nav a:hover {
   background: transparent;
 }
 .hero h1 {
-  font-size: 2.8rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  font-size: 2.0rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
   color: #fff;
 }
 .hero .highlight {
-  color: #ff6b00;
+  color: #ffff;
 }
 
 /* VALUE PROPOSITION */
@@ -402,14 +402,14 @@ footer {
 .hero-latest {
   margin-top: 1rem;
   font-size: 1rem;
-  color: #ff6b00;
+  color: #bbb;
 }
 .hero-latest a {
-  color: #ff6b00;
+  color: #bbb;
   text-decoration: underline;
 }
 footer a {
-  color: #ff6b00;
+  color: #bbb;
   text-decoration: underline;
 }
 .skill-tags a {
