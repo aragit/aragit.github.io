@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arash Nicoomanesh</title>
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Century Gothic -->
+  <link href="https://fonts.googleapis.com/css2?family=Century+Gothic:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-inner">
+      <a href="#home" class="logo">Portfolio</a>
+      <nav id="navbar">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Featured Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Arash&nbsp;<span class="highlight">Nicoomanesh</span></h1>
+      <p class="typewrite" id="typewrite"></p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container about-text">
+      <h2 class="section-title">About Me</h2>
+      <p>
+        AI & ML Engineer with about 15 years of experience in modeling and delivering scalable, AI solutions
+        across healthcare, finance, and marketing. Deep expertise in traditional machine learning,
+        predictive modeling and Generative AI and LLM-based applications. Proven track record of
+        mentoring cross-functional teams, collaborating with stakeholders, and optimizing
+        pipelines on both on-premises and cloud infrastructures to support high-volume deployments.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Core Areas of Expertise</h2>
+      <div class="skill-tags">
+        <span>LLM Engineering</span>
+        <span>RAG & Context Engineering</span><span>Prompt Engineering</span>
+        <span>GCP Services</span><span>Agentic AI & Multi-Agent Systems</span>
+        <span>LLMOps & Evaluation</span>
+        <span>Time-Series Forecasting</span><span>Recommendation Engines</span>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
+          <div class="card-body">
+            <h3>Medical Triage & Diagnosis Agent</h3>
+            <p>Hybrid conversational agent using Gemini 1.5 Pro, CoT prompting, and SNOMED/ICD-10 entity linking. Deployed on GKE & Cloud Run.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-pills"></i></div>
+          <div class="card-body">
+            <h3>Conversational Drug Repurposing</h3>
+            <p>GPTQ-quantized Gemma2 & Zephyr for alternative therapy recommendations from real-world EHR data.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="card-body">
+            <h3>ICU Metrics Forecasting</h3>
+            <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-comments"></i></div>
+          <div class="card-body">
+            <h3>Multi-Turn Product-QA Bot</h3>
+            <p>Fine-tuned Gemma & Mistral with hybrid retrieval and K8s deployment for scalable inference.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-university"></i></div>
+          <div class="card-body">
+            <h3>Banking CLTV & Churn</h3>
+            <p>End-to-end customer lifetime value & churn prediction using PySpark MLlib plus uplift modeling & MCMC attribution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section alt contact-small">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/arashnicoomanesh/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://kaggle.com/arashnic" target="_blank"><i class="fab fa-kaggle"></i></a>
+        <a href="https://github.com/aragit" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://huggingface.co/Arnic" target="_blank"><i class="fab fa-hugging-face"></i></a>
+        <a href="anicomanesh@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Arash Nicoomanesh</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
