@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Case Study – Medical Triage Agent | Arash Nicoomanesh</title>
+  <meta name="description" content="Deep dive into building an autonomous AI agent for medical triage."/>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="../index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </a>
+    </div>
+  </header>
+
+  <main class="case-container">
+    <h1>Case Study: An Autonomous AI Agent for Medical Triage</h1>
+
+    <section class="hero">
+      <img src="../assets/triage-hero.svg" alt="Triage Agent Architecture" class="hero-img"/>
+    </section>
+
+    <section>
+      <h2>The Problem 🎯</h2>
+      <p>
+        Healthcare providers face high volumes of patient inquiries and long wait times for initial assessment.  
+        The business need was an automated, medically accurate triage system to reduce staff load and improve patient experience.
+      </p>
+    </section>
+
+    <section>
+      <h2>My Role 💡</h2>
+      <ul>
+        <li>Lead AI Engineer & Architect – end-to-end owner.</li>
+        <li>Designed system architecture, selected LLMs, integrated medical ontologies.</li>
+        <li>Designed scalable cloud deployment (GKE + Cloud Run).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>The Solution 🚀</h2>
+      <ol>
+        <li><strong>Clinical Reasoning:</strong> Gemini 1.5 Pro + Med-PaLM 2 with Chain-of-Thought prompting.</li>
+        <li><strong>Knowledge Layer:</strong> SNOMED-CT & ICD-10 entity linking via Google Healthcare NL.</li>
+        <li><strong>Conversation Flow:</strong> Vertex AI Agent Builder + Dialogflow CX for stateful dialogue.</li>
+        <li><strong>Deployment:</strong> Containerized on GKE (stateful) & Cloud Run (stateless).</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Results & Impact 📈</h2>
+      <ul>
+        <li><strong>40 %</strong> reduction in average triage time.</li>
+        <li><strong>95 %</strong> accuracy vs. historical nurse triage.</li>
+        <li><strong>1 000+</strong> concurrent sessions validated in stress tests.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tech Stack</h2>
+      <div class="tech-tags">
+        <span>Gemini 1.5 Pro</span><span>Med-PaLM 2</span><span>Vertex AI</span>
+        <span>Dialogflow CX</span><span>GKE</span><span>Cloud Run</span>
+        <span>SNOMED-CT</span><span>ICD-10</span>
+      </div>
+    </section>
+
+    <footer class="case-footer">
+      <a href="https://github.com/aragit/medical-triage" target="_blank" class="btn-outline">
+        <i class="fab fa-github"></i> View Code
+      </a>
+      <a href="../index.html#portfolio" class="btn-outline">Back to Portfolio</a>
+    </footer>
+  </main>
+</body>
+</html>

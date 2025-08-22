@@ -1,0 +1,14 @@
+.role-list,
+.solution-list,
+.impact-list {
+  margin-left: 1.4rem;
+  line-height: 1.8;
+}
+
+.solution-list li {
+  margin-bottom: 1rem;
+}
+
+.solution-list strong {
+  color: #ff6b00;
+}
