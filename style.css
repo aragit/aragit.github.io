@@ -448,3 +448,21 @@ footer {
   flex: 1 1 260px;
   max-width: 320px;
 }
+
+/* Add this to your style.css file */
+
+.card {
+  /* This makes the card a container for its children to flex inside */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  /* This is the magic part! It tells the body to grow and take up all available space */
+  flex-grow: 1; 
+}
+
+.card-actions {
+  /* This adds some stylish space above the buttons */
+  margin-top: 1rem;
+}
