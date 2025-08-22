@@ -288,6 +288,7 @@ nav a:hover {
   padding: 0 1rem 1.5rem;
   text-align: center;
   color: #ddd;
+  flex-grow: 1;
 }
 .card-body h3 {
   margin-bottom: 0.5rem;
@@ -298,6 +299,24 @@ nav a:hover {
   font-size: 0.9rem;
   line-height: 1.4;
   color: #aaa;
+}
+
+/* Ensure cards have consistent height and button alignment */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-actions {
+  margin-top: auto;
+  padding: 0 1rem 1.5rem;
+  width: 100%;
+  text-align: center;
 }
 
 .contact-grid {
@@ -356,7 +375,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
   nav ul {
     position: fixed;
@@ -389,136 +407,44 @@ footer {
   }
 }
 
-/* NEW STYLES for hero badge, footer link */
-.hero-latest {
-  margin-top: 1rem;
+/* --- Compact card overrides --- */
+#portfolio .card,
+#articles   .card,
+#mentoring  .card {
+  padding-bottom: 2.4rem;
+}
+#portfolio .card-body,
+#articles   .card-body,
+#mentoring  .card-body {
+  padding: 0 1rem 1rem;
+}
+#portfolio .card-body h3,
+#articles   .card-body h3,
+#mentoring  .card-body h3 {
   font-size: 1rem;
-  color: #bbb;
 }
-.hero-latest a {
-  color: #bbb;
-  text-decoration: underline;
+#portfolio .card-body p,
+#articles   .card-body p,
+#mentoring  .card-body p {
+  font-size: 0.8rem;
 }
-footer a {
-  color: #bbb;
-  text-decoration: underline;
-}
-.skill-tags a {
-  text-decoration: none;
-}
-.skill-tags a span {
-  transition: color 0.2s;
-}
-.skill-tags a:hover span {
-  color: #ff6b00;
-}
-
-/* 1. Reserve space for the button so all buttons line up */
-.card {
-  position: relative;
-  padding-bottom: 3.8rem;   /* space for button + margin */
-}
-
-/* 1. Reserve space for the button so all buttons line up */
-.card {
-  position: relative;
-  padding-bottom: 3.4rem; /* space for button */
-}
-
-.card-actions {
-  position: absolute;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-}
-
-/* 2. Rectangle transparent button: gray border, white text */
-.btn-case {
-  display: inline-block;
-  padding: 0.5rem 1.2rem;
-  background: transparent;   /* <— transparent background */
-  color: #fff;
-  border: 1px solid #555;    /* gray border */
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: border-color 0.25s, color 0.25s;
-}
-
-/* 3. Hover / active: only border & text turn orange, bg stays transparent */
-.btn-case:hover,
-.btn-case:active {
-  border-color: #ff6b00;
-  color: #ff6b00;
-}
-/* --- Compact Article Cards --- */
-#articles .card {
-  padding-bottom: 3.2rem;               /* less reserved button space */
-}
-#articles .card-body {
-  padding: 0 1.3rem 1.3rem;                 /* tighter vertical padding */
-}
-#articles .card-body h3 {
-  font-size: 1rem;                      /* smaller title */
-}
-#articles .card-body p {
-  font-size: 0.8rem;                    /* smaller blurb */
-}
-#articles .card-icon {
-  font-size: 1.8rem;                    /* smaller icon */
+#portfolio .card-icon,
+#articles   .card-icon,
+#mentoring  .card-icon {
+  font-size: 1.8rem;
   padding: 1rem 0 0.25rem;
 }
 
-/* --- Compact Featured Project Cards --- */
-#portfolio .card {
-  padding-bottom: 3.2rem;   /* less button space */
-}
-#portfolio .card-body {
-  padding: 0 1.3rem 1.3rem;     /* tighter vertical padding */
-}
-#portfolio .card-body h3 {
-  font-size: 1rem;          /* smaller title */
-}
-#portfolio .card-body p {
-  font-size: 0.8rem;        /* smaller blurb */
-}
-#portfolio .card-icon {
-  font-size: 1.8rem;        /* smaller icon */
-  padding: 1rem 0 0.25rem;
-}
-
-/* --- Compact & Centered Mentoring Cards --- */
+/* --- Centered flex for Mentoring --- */
 #mentoring .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
-  max-width: 800px;        /* keeps them together on wide screens */
+  max-width: 800px;
   margin: 0 auto;
 }
-
 #mentoring .card {
-  padding-bottom: 3.2rem;
-  flex: 1 1 260px;         /* grow/shrink, 260 px min width */
-  max-width: 320px;        /* prevents them from stretching too wide */
-}
-
-#mentoring .card-body {
-  padding: 0 1.3rem 1.3rem;
-}
-
-#mentoring .card-body h3 {
-  font-size: 1rem;
-}
-
-#mentoring .card-body p {
-  font-size: 0.8rem;
-}
-
-#mentoring .card-icon {
-  font-size: 1.8rem;
-  padding: 1rem 0 0.25rem;
+  flex: 1 1 260px;
+  max-width: 320px;
 }
