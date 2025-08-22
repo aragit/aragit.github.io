@@ -30,7 +30,7 @@ body {
   padding: 0 1rem;
 }
 .section {
-  padding: 80px 0;
+  padding: 40px 0;
 }
 .alt {
   background: rgba(26, 26, 26, 0.7);
@@ -122,7 +122,6 @@ nav a:hover {
   color: #ffff;
 }
 
-/* VALUE PROPOSITION */
 .value-prop {
   margin: 1.5rem 0;
   text-align: center;
@@ -134,7 +133,6 @@ nav a:hover {
   line-height: 1.3;
 }
 
-/* ROLE CONTAINER */
 .role-container {
   margin: 1.5rem 0;
   min-height: 2rem;
@@ -147,7 +145,6 @@ nav a:hover {
   min-height: 3rem;
 }
 
-/* HERO CTA */
 .hero-cta {
   margin: 3rem 0 2rem;
   display: flex;
@@ -182,7 +179,6 @@ nav a:hover {
   color: #ff6b00;
 }
 
-/* DECORATIVE SEPARATOR */
 .hero-separator {
   display: flex;
   align-items: center;
@@ -201,10 +197,9 @@ nav a:hover {
   opacity: 0.8;
 }
 
-/* QUOTE */
 .hero-quote {
   max-width: 700px;
-  margin: 2rem auto 3rem;
+  margin: 2rem auto 0.5rem;
   padding: 1.5rem;
   font-size: 0.1rem;
   opacity: 0.85;
@@ -237,7 +232,6 @@ nav a:hover {
   }
 }
 
-/* ---------- SKILLS SECTION ---------- */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -264,7 +258,6 @@ nav a:hover {
   font-weight: 400;
 }
 
-/* ---------- CARDS ---------- */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -307,7 +300,6 @@ nav a:hover {
   color: #aaa;
 }
 
-/* ---------- CONTACT ---------- */
 .contact-grid {
   display: flex;
   justify-content: center;
@@ -356,7 +348,6 @@ nav a:hover {
   transform: scale(1.12);
 }
 
-/* ---------- FOOTER ---------- */
 footer {
   background: rgba(10, 10, 10, 0.8);
   color: #fff;
@@ -419,5 +410,47 @@ footer a {
   transition: color 0.2s;
 }
 .skill-tags a:hover span {
+  color: #ff6b00;
+}
+
+/* 1. Reserve space for the button so all buttons line up */
+.card {
+  position: relative;
+  padding-bottom: 3.8rem;   /* space for button + margin */
+}
+
+/* 1. Reserve space for the button so all buttons line up */
+.card {
+  position: relative;
+  padding-bottom: 3.4rem; /* space for button */
+}
+
+.card-actions {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* 2. Rectangle transparent button: gray border, white text */
+.btn-case {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: transparent;   /* <— transparent background */
+  color: #fff;
+  border: 1px solid #555;    /* gray border */
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.25s, color 0.25s;
+}
+
+/* 3. Hover / active: only border & text turn orange, bg stays transparent */
+.btn-case:hover,
+.btn-case:active {
+  border-color: #ff6b00;
   color: #ff6b00;
 }
