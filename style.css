@@ -454,3 +454,71 @@ footer a {
   border-color: #ff6b00;
   color: #ff6b00;
 }
+/* --- Compact Article Cards --- */
+#articles .card {
+  padding-bottom: 3.2rem;               /* less reserved button space */
+}
+#articles .card-body {
+  padding: 0 1.3rem 1.3rem;                 /* tighter vertical padding */
+}
+#articles .card-body h3 {
+  font-size: 1rem;                      /* smaller title */
+}
+#articles .card-body p {
+  font-size: 0.8rem;                    /* smaller blurb */
+}
+#articles .card-icon {
+  font-size: 1.8rem;                    /* smaller icon */
+  padding: 1rem 0 0.25rem;
+}
+
+/* --- Compact Featured Project Cards --- */
+#portfolio .card {
+  padding-bottom: 3.2rem;   /* less button space */
+}
+#portfolio .card-body {
+  padding: 0 1.3rem 1.3rem;     /* tighter vertical padding */
+}
+#portfolio .card-body h3 {
+  font-size: 1rem;          /* smaller title */
+}
+#portfolio .card-body p {
+  font-size: 0.8rem;        /* smaller blurb */
+}
+#portfolio .card-icon {
+  font-size: 1.8rem;        /* smaller icon */
+  padding: 1rem 0 0.25rem;
+}
+
+/* --- Compact & Centered Mentoring Cards --- */
+#mentoring .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 800px;        /* keeps them together on wide screens */
+  margin: 0 auto;
+}
+
+#mentoring .card {
+  padding-bottom: 3.2rem;
+  flex: 1 1 260px;         /* grow/shrink, 260 px min width */
+  max-width: 320px;        /* prevents them from stretching too wide */
+}
+
+#mentoring .card-body {
+  padding: 0 1.3rem 1.3rem;
+}
+
+#mentoring .card-body h3 {
+  font-size: 1rem;
+}
+
+#mentoring .card-body p {
+  font-size: 0.8rem;
+}
+
+#mentoring .card-icon {
+  font-size: 1.8rem;
+  padding: 1rem 0 0.25rem;
+}
