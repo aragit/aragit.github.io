@@ -395,5 +395,37 @@
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
   <script src="script.js"></script>
+    <!-- ===== Toggle via underlined orange text ===== -->
+    <script>
+    const INITIAL = 6;
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid   = document.querySelector('#articles .cards');
+      const cards  = [...grid.children];
+      const total  = cards.length;
+    
+      if (total <= INITIAL) return;
+    
+      /* hide extras */
+      cards.slice(INITIAL).forEach(c => c.style.display = 'none');
+    
+      /* create toggle link */
+      const toggle = document.createElement('a');
+      toggle.href = '#';
+      toggle.innerHTML = `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load more`;
+      toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline;font-size:1rem;cursor:pointer';
+      grid.after(toggle);
+    
+      let expanded = false;
+      toggle.addEventListener('click', e => {
+        e.preventDefault();
+        expanded = !expanded;
+        cards.slice(INITIAL).forEach(c => c.style.display = expanded ? '' : 'none');
+        toggle.innerHTML = expanded
+          ? `<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less`
+          : `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load More`;
+      });
+    });
+    </script>
 </body>
 </html>
