@@ -281,7 +281,7 @@ nav a:hover {
   transition: 0.3s;
   display: flex;
   flex-direction: column;
-  height: 110%;
+  height: 100%;
   cursor: pointer;
 }
 #portfolio .card:hover,
@@ -320,7 +320,7 @@ nav a:hover {
 }
 .card-actions {
   margin-top: auto;
-  padding: 0 1rem 1.6rem;
+  padding: 0 1rem 3rem;
   width: 100%;
   text-align: center;
 }
