@@ -431,3 +431,20 @@ footer {
   background: linear-gradient(90deg, transparent, #ff6b00, transparent);
   margin: 10px auto 0;
 }
+
+/* orange pill button below hero quote */
+.cta-orange {
+  display: inline-block;
+  margin: 1.5rem auto 0;
+  padding: 0.7rem 1.4rem;
+  border-radius: 30px;
+  background: #ff6b00;
+  color: #fff;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: .3s;
+}
+.cta-orange:hover {
+  background: #e55a00;
+  transform: translateY(-2px);
+}
