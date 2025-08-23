@@ -410,3 +410,24 @@ footer {
     text-align: center;
   }
 }
+
+
+/* === gradient divider that survives everything === */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 170px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ff6b00, transparent) !important;
+  margin: 10px auto 0;
+}
+
+/* keep gradient divider visible at any zoom */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 170px;
+  height: 2px;                       /* 2 px survives 80 % zoom */
+  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
+  margin: 10px auto 0;
+}
