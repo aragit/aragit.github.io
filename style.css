@@ -451,7 +451,7 @@ footer {
 .hero-avatar {
   width: 130px;
   height: 130px;
-  border-radius: 70%;
+  border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
   /* border: 4px solid #ff6b00; */
