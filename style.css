@@ -448,3 +448,11 @@ footer {
   background: #e55a00;
   transform: translateY(-2px);
 }
+.hero-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 70%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  /* border: 4px solid #ff6b00; */
+}
