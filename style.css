@@ -458,20 +458,5 @@ footer {
 }
 
 @media (max-width: 600px) {
-  /* 1. let the hero itself create the safe gap */
-  .hero {
-    padding-top: 90px;   /* header ≈ 60 px + 30 px buffer */
-  }
-
-  /* 2. remove any extra margin that would push avatar again */
-  .hero-avatar {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 0.8rem; /* only bottom spacing */
-  }
-
-  /* 3. keep button well clear of Insight */
-  .cta-orange {
-    margin: 3rem auto 4rem;
-  }
+  .hero-avatar { display: none; }
 }
