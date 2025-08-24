@@ -25,16 +25,3 @@ h2 { color: #ff6b00; margin: 2rem 0 0.75rem; }
 .solution-list strong {
   color: #ff6b00;
 }
-/* override for case-study pages only */
-.case-container h2,
-.case-container h3,
-.case-container h4 {
-  color: #fff;
-  font-size: 1.2rem;     /* shrink section titles */
-  font-weight: 600;
-}
-
-/* optional: shrink all body text */
-body {
-  font-size: 0.95rem;
-}

@@ -459,16 +459,17 @@ footer {
 /* 1. keep avatar fully visible on phones */
 @media (max-width: 600px) {
   .hero-avatar {
-    width: 64px;
-    height: 64px;
+    width: 70px;
+    height: 70px;
     margin-bottom: 0.8rem;
-    margin-top: 70px;
+    margin-top: 80px;
   }
 }
 
 /* 2. push the orange button away from the Insight heading */
 @media (max-width: 600px) {
   .cta-orange {
-    margin: 2.5rem auto 2.5rem; /* more space above & below */
+    margin: 3rem auto 2.5rem; /* more space above & below */
   }
 }
+
