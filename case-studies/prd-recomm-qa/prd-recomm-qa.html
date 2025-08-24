@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-turn QA Chatbot for Cold-Start Product Recommendation</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body        { background:#121212; color:#e8e8e8; font-family:Inter,system-ui; line-height:1.7; }
+    .container  { max-width:900px; margin:0 auto; padding:0 1rem; }
+    .back-link  { color:#ff6b00; text-decoration:none; margin:1rem 0; display:inline-block; }
+    .hero-img   { width:100%; border-radius:8px; margin-bottom:2rem; }
+    .tech-tags  { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; }
+    .tech-tags span { background:#2a2a2a; color:#e8e8e8; padding:.4rem .9rem; border-radius:20px; font-size:.85rem; }
+    h1 { font-size:2.2rem; color:#fff; margin-bottom:1rem; }
+    h2 { color:#ff6b00; margin:2rem 0 .75rem; }
+    ul { margin-left:1.6rem; line-height:1.8; }
+    .case-footer { text-align:center; margin-top:3rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <a href="../index.html#portfolio" class="back-link">← Back to portfolio</a>
+
+  <div class="case-container">
+    <h1>Multi-turn QA Chatbot for Cold-Start Product Recommendation: Detailed Clarification</h1>
+
+    <h2>Project Goal & Problem Solved</h2>
+    <p>
+      The primary goal of this project is to develop a conversational AI chatbot that solves the "cold-start problem" in product recommendation. The cold-start problem refers to the difficulty of providing relevant recommendations when there's little or no historical data about a new user or a new product. Traditional recommendation systems struggle here. Your chatbot addresses this by using a multi-turn Q&A approach to dynamically gather user preferences and context, immediately matching them with product knowledge.
+    </p>
+    <h2>Architecture Overview</h2>
+     <img class="hero-img" src="prd_rec_arch.png" alt="Cold-Start QA Chatbot Architecture Diagram"
+     style="max-width: 400px; width: 100%; margin: 0 auto; display: block;">
+    <h2>Core Functionality & How it Works</h2>
+
+    <h3>1. Addressing Cold-Start via Multi-turn QA</h3>
+    <ul>
+      <li>Instead of waiting for user interaction history, the chatbot actively engages the user in a conversation.</li>
+      <li>Through a series of questions, it progressively understands the user's needs, preferences, budget, intended use, etc., even if they are a first-time user.</li>
+      <li>This immediate data gathering helps overcome the lack of historical interaction data, allowing for relevant recommendations from the very first session.</li>
+    </ul>
+
+    <h3>2. LLM Selection & Efficient Fine-tuning</h3>
+    <ul>
+      <li><strong>Models Used:</strong> The project utilizes advanced open-source Large Language Models (LLMs) like <strong>Gemma, Mistral, and Zephyr</strong>. These models are capable of understanding natural language queries and generating coherent responses.</li>
+      <li><strong>Data Preparation & Fine-tuning:</strong> The LLMs undergo <strong>efficient fine-tuning via Hugging Face Transformers</strong>. This involves:
+        <ul>
+          <li>Preparing your specific product and policy documents into a suitable format for training.</li>
+          <li>Applying efficient fine-tuning techniques (like PEFT/LoRA, as hinted at in your other expertise) to adapt these general-purpose LLMs to the specific domain of product information, customer service queries, and recommendation dialogue. This helps the models become proficient in understanding product features, common customer questions, and how to frame recommendations.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>3. Knowledge Base Preparation & Hybrid Retrieval (RAG for Recommendations)</h3>
+    <p>This is the core of how the chatbot finds relevant products and information:</p>
+    <ul>
+      <li><strong>Knowledge Base Content:</strong> This knowledge base consists of detailed <strong>product and policy documents</strong> (e.g., product specifications, feature lists, FAQs, warranty info, usage guides).</li>
+      <li><strong>Indexing for Hybrid Retrieval:</strong>
+        <ul>
+          <li><strong>Elasticsearch for Sparse Filtering (Keyword Search):</strong> Product and policy documents are indexed in Elasticsearch. This enables efficient keyword-based search. If a user explicitly mentions a product name, a specific feature (e.g., "waterproof," "4K display"), or a policy term ("return policy"), Elasticsearch can quickly pull up highly relevant documents. This is the "sparse" part of the retrieval, good for exact or near-exact matches.</li>
+          <li><strong>Pinecone for Dense-Vector Retrieval (Semantic Search):</strong> All text chunks from the product and policy documents are converted into high-dimensional numerical representations called "embeddings" using an embedding model. These embeddings are then stored in Pinecone, a specialized vector database. Pinecone enables semantic search; if a user describes a need ("a durable phone for outdoor activities"), Pinecone can find product documents that are conceptually similar, even if they don't contain those exact keywords, by matching the meaning of the user's query to the meaning of the product descriptions.</li>
+          <li><strong>LangChain for Hybrid Retrieval Orchestration:</strong> <strong>LangChain</strong> is used to orchestrate a <strong>hybrid retrieval chain</strong>. This means it intelligently combines the results from both Elasticsearch (keyword-based) and Pinecone (semantic-based) retrieval. It might use techniques like Reciprocal Rank Fusion (RRF) to merge and re-rank results, ensuring that both explicitly mentioned keywords and underlying semantic intent are considered when finding relevant product information. This significantly improves recommendation relevance, especially in cold-start scenarios where the user's initial query might be vague or broad.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>4. RetrievalQA Service & LLM-Optimized Inference</h3>
+    <ul>
+      <li><strong>RetrievalQA Service:</strong> This service acts as the bridge between the retrieved information and the LLM. When a user asks a question, the hybrid retrieval chain fetches the most relevant product/policy documents from the knowledge base. These documents are then passed as context to the fine-tuned LLM.</li>
+      <li><strong>LLM-Optimized Inference:</strong> The fine-tuned LLMs (Gemma, Mistral, Zephyr) process the user's question <em>and</em> the retrieved context. They then generate a conversational and accurate answer or recommendation based on this combined information.</li>
+      <li><strong>Containerization (Docker & LangServe):</strong>
+        <ul>
+          <li>The entire RetrievalQA service, including the LLMs, is <strong>containerized using Docker</strong>. This ensures that the application and all its dependencies are packaged together, making it portable and easy to deploy consistently across different environments.</li>
+          <li><strong>LangServe</strong> is specifically used here to deploy the LangChain-based RetrievalQA service as an API. LangServe is optimized for serving LLM applications, providing a robust and scalable way to expose your chatbot's functionality.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Scenario Example</h2>
+    <ol>
+      <li><strong>User (new customer):</strong> "I'm looking for a new laptop, but I'm not sure where to start. I need it for school and some light gaming."</li>
+      <li><strong>Chatbot (Multi-turn QA):</strong> (Recognizes cold-start, initiates Q&A) "Great! To help me narrow it down, are you looking for something very portable, or is screen size more important? And what's your approximate budget range?"</li>
+      <li><strong>User:</strong> "Portability is key, and ideally under $1000. I play games like Minecraft and Valorant."</li>
+      <li><strong>Chatbot (Internal Process):</strong>
+        <ul>
+          <li><strong>Hybrid Retrieval (LangChain):</strong> Triggers a search:
+            <ul>
+              <li><strong>Elasticsearch:</strong> Keywords like "laptop," "portable," "$1000," "Minecraft," "Valorant."</li>
+              <li><strong>Pinecone:</strong> Semantic search for "light gaming," "school work," "budget-friendly portability."</li>
+              <li>Relevant product specification documents, reviews, and FAQs are retrieved.</li>
+            </ul>
+          </li>
+          <li><strong>RetrievalQA Service:</strong> The retrieved documents are passed to the fine-tuned Gemma/Mistral/Zephyr LLM along with the user's query.</li>
+          <li><strong>LLM Inference:</strong> The LLM synthesizes the information from the retrieved documents and its fine-tuned product knowledge.</li>
+        </ul>
+      </li>
+      <li><strong>Chatbot (Recommendation):</strong> "Based on your needs for portability, light gaming (like Minecraft and Valorant), and a budget under $1000, I recommend looking at our 'UltraLight Pro' series. Specifically, the 'UltraLight Pro 13' model (product ID XXXXX) offers a great balance of performance and battery life for students and casual gaming. Would you like to know more about its specs or warranty?"</li>
+    </ol>
+
+    <h2>Technology Stack</h2>
+    <div class="tech-tags">
+      <span>Gemma / Mistral / Zephyr</span>
+      <span>LoRA Fine-tuning</span>
+      <span>LangChain</span>
+      <span>Elasticsearch</span>
+      <span>Pinecone</span>
+      <span>Docker</span>
+      <span>LangServe</span>
+    </div>
+
+    <div class="case-footer">
+      <a href="../index.html#portfolio" class="btn-outline">← Back to Projects</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

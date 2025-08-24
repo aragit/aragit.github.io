@@ -456,3 +456,18 @@ footer {
   margin-bottom: 1rem;
   /* border: 4px solid #ff6b00; */
 }
+/* 1. keep avatar fully visible on phones */
+@media (max-width: 600px) {
+  .hero-avatar {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* 2. push the orange button away from the Insight heading */
+@media (max-width: 600px) {
+  .cta-orange {
+    margin: 2.5rem auto 2.5rem; /* more space above & below */
+  }
+}
