@@ -458,17 +458,19 @@ footer {
 }
 
 @media (max-width: 600px) {
-  /* reset anything that might double-shift the section */
-  .hero { padding-top: 0; }
+  /* 1. let the hero itself create the safe gap */
+  .hero {
+    padding-top: 90px;   /* header ≈ 60 px + 30 px buffer */
+  }
 
-  /* avatar: size + single offset from header */
+  /* 2. remove any extra margin that would push avatar again */
   .hero-avatar {
     width: 70px;
     height: 70px;
-    margin: 70px auto 0.8rem; /* 70 px gap below fixed header */
+    margin: 0 auto 0.8rem; /* only bottom spacing */
   }
 
-  /* button: push it away from the next section */
+  /* 3. keep button well clear of Insight */
   .cta-orange {
     margin: 3rem auto 4rem;
   }
