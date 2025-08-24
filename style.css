@@ -456,20 +456,24 @@ footer {
   margin-bottom: 1rem;
   /* border: 4px solid #ff6b00; */
 }
-/* 1. keep avatar fully visible on phones */
+
+/* ---------- MOBILE-ONLY OVERRIDES ---------- */
 @media (max-width: 600px) {
+  /* 1. avatar sizing & placement (yours) */
   .hero-avatar {
     width: 70px;
     height: 70px;
     margin-bottom: 0.8rem;
     margin-top: 80px;
   }
-}
 
-/* 2. push the orange button away from the Insight heading */
-@media (max-width: 600px) {
+  /* 2. hero section padding to clear fixed header */
+  .hero {
+    padding-top: 120px;
+  }
+
+  /* 3. orange button spacing (updated) */
   .cta-orange {
-    margin: 3rem auto 2.5rem; /* more space above & below */
+    margin: 3rem auto 3rem; /* more above & below */
   }
 }
-
