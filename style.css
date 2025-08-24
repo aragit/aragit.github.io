@@ -458,5 +458,8 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .hero-avatar { display: none; }
+  /* make sure nothing else is overriding this */
+  .hero-avatar {
+    display: none !important;
+  }
 }
