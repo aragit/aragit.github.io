@@ -18,7 +18,24 @@
   <meta name="twitter:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare.">
   <meta name="twitter:image" content="https://aragit.github.io/og-image.png">
 
-  <link rel="manifest" href="/manifest.json">
+  <style>
+    /* hide landscape on phones */
+      @media screen and (orientation: landscape) and (max-width: 900px) {
+      html, body { overflow: hidden; }
+      body::before {
+        content: "Please rotate back to portrait";
+        position: fixed;
+        inset: 0;
+        background: var(--bg);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        z-index: 9999;
+      }
+    }
+   </style>
 
   <!-- IMMEDIATE DARK CANVAS -->
   <style>
