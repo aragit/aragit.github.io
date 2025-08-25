@@ -18,6 +18,25 @@
   <meta name="twitter:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare.">
   <meta name="twitter:image" content="https://aragit.github.io/og-image.png">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+      /* Prevent landscape rotation on mobile */
+      @media screen and (orientation: landscape) and (max-width: 900px) {
+        html {
+          transform: rotate(90deg);
+          transform-origin: left top;
+          width: 100vh;
+          height: 100vw;
+          overflow-x: hidden;
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
+      }
+    </style>
+
   <!-- IMMEDIATE DARK CANVAS -->
   <style>
     html,body{height:100%}
