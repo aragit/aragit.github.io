@@ -19,22 +19,23 @@
   <meta name="twitter:image" content="https://aragit.github.io/og-image.png">
 
   <style>
-    /* hide landscape on phones */
-      @media screen and (orientation: landscape) and (max-width: 900px) {
-      html, body { overflow: hidden; }
+    @media screen and (orientation: landscape) and (max-width: 900px) {
       body::before {
         content: "Please rotate back to portrait";
         position: fixed;
         inset: 0;
-        background: var(--bg);
-        color: var(--accent);
+        background: rgba(18, 18, 18, 0.85);
+        backdrop-filter: blur(12px);
+        color: #ff6b00;
+        font-size: 1.4rem;
+        font-weight: 700;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
         z-index: 9999;
       }
-    }
+      body > * { display: none; } /* hide everything else */
+   }
    </style>
 
   <!-- IMMEDIATE DARK CANVAS -->
