@@ -327,6 +327,50 @@
       </div>
     </div>
   </section>
+<!-- ~~~~~~~~~~ SERVICES & PACKAGES (insert before Mentoring) ~~~~~~~~~~ -->
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="section-title">Services & Packages</h2>
+    <div class="cards">
+      <!-- Quick Audit -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-search"></i></div>
+        <div class="card-body">
+          <h3>Quick Audit — 1–2 weeks</h3>
+          <p>Technical audit, architecture review, prioritized recommendations & cost estimate. Deliverable: 5-page report + roadmap.</p>
+        </div>
+        <div class="card-actions">
+          <a href="#" class="cta-secondary service-btn" data-service="Quick Audit">Request Proposal</a>
+        </div>
+      </div>
+
+      <!-- Paid POC -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-vial"></i></div>
+        <div class="card-body">
+          <h3>Paid POC — 4–8 weeks</h3>
+          <p>Runnable demo (RAG / lightweight LLM), sample dataset, evaluation & production roadmap.</p>
+        </div>
+        <div class="card-actions">
+          <a href="#" class="cta-secondary service-btn" data-service="Paid POC">Start POC</a>
+        </div>
+      </div>
+
+      <!-- Deployment & Scale -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-server"></i></div>
+        <div class="card-body">
+          <h3>Deployment & Scale — 3–6 months</h3>
+          <p>Production deployment, MLOps, monitoring, cost optimizations and team handover. Phased contracting available.</p>
+        </div>
+        <div class="card-actions">
+          <a href="#" class="cta-secondary service-btn" data-service="Deployment & Scale">Request Contract</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ~~~~~~~~~~ end SERVICES ~~~~~~~~~~ -->
 
   <!-- ~~~~~~~~~~ MENTORING SECTION ~~~~~~~~~~ -->
   <section id="mentoring" class="section alt">
@@ -416,8 +460,78 @@
       </div>
     </div>
   </section>
-
+  
   <footer><p>© <span id="year"></span> Arash Nicoomanesh</p></footer>
+
+  <!-- SERVICE MODAL (inserted; minimal styles and script) -->
+  <style>
+  /* Modal styles (keeps dark theme) */
+  #serviceModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:9999}
+  #serviceModal .modal-card{width:min(720px,96%);background:#0f1114;border-radius:12px;padding:20px;color:#eaf2fb;box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+  #serviceModal .modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  #serviceModal h3{margin:0;font-size:1.15rem}
+  .modal-row{display:flex;gap:12px;flex-wrap:wrap}
+  .modal-row .col{flex:1 1 200px;min-width:0}
+  #serviceModal input,#serviceModal textarea,#serviceModal select{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+  #serviceModal .btn-primary{background:linear-gradient(135deg,#ff4500,#ff6b00);padding:.6rem .9rem;border-radius:8px;border:none;color:#060606;font-weight:700;cursor:pointer}
+  #serviceModal .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:.5rem .8rem;border-radius:8px;color:#9aa4b2;cursor:pointer}
+  #serviceModal .modal-foot{display:flex;gap:12px;align-items:center;margin-top:12px;justify-content:flex-end}
+  #serviceModal .close-x{cursor:pointer;color:#9aa4b2;margin-left:10px}
+  @media(max-width:640px){.modal-row{flex-direction:column}}
+  </style>
+
+  <div id="serviceModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+      <div class="modal-head">
+        <h3 id="serviceModalTitle">Request Proposal</h3>
+        <div><span class="close-x" id="serviceModalClose"><i class="fas fa-times"></i></span></div>
+      </div>
+
+      <form id="serviceModalForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="modal-row">
+          <div class="col">
+            <label>Name</label>
+            <input name="name" type="text" required placeholder="Your name">
+          </div>
+          <div class="col">
+            <label>Email</label>
+            <input name="email" type="email" required placeholder="name@example.com">
+          </div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <label>Organization (optional)</label>
+          <input name="organization" placeholder="Company / org">
+        </div>
+
+        <div style="margin-top:10px;">
+          <label>Budget range</label>
+          <select name="budget">
+            <option value="<2k">&lt;$2k</option>
+            <option value="2k-6k">$2k–$6k</option>
+            <option value=">6k">&gt;$6k</option>
+          </select>
+        </div>
+
+        <div style="margin-top:10px;">
+          <label>Brief / Project description</label>
+          <textarea name="message" required placeholder="Describe the problem or goal..."></textarea>
+        </div>
+
+        <input type="hidden" name="service" id="modal_service_input" value="">
+        <input type="hidden" name="_subject" value="Website lead: Service inquiry">
+
+        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="modal-foot">
+          <button type="button" class="btn-ghost" id="modalBookBtn">Book 30-min</button>
+          <button type="submit" class="btn-primary">Send Request</button>
+        </div>
+
+        <p id="modalMsg" style="color:#9aa4b2;margin-top:8px;display:none"></p>
+      </form>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
   <script src="script.js"></script>
@@ -453,5 +567,71 @@
       });
     });
     </script>
+
+  <!-- SERVICE MODAL SCRIPT (minimal, non-intrusive) -->
+  <script>
+  (function(){
+    // wait for DOM
+    function onReady(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+    onReady(function(){
+      // service buttons open modal and set service name
+      document.querySelectorAll('.service-btn').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          var service = this.getAttribute('data-service') || this.textContent.trim();
+          var modal = document.getElementById('serviceModal');
+          var title = document.getElementById('serviceModalTitle');
+          var input = document.getElementById('modal_service_input');
+          var msg = document.getElementById('modalMsg');
+          input.value = service;
+          title.textContent = 'Inquiry — ' + service;
+          if(msg) msg.style.display='none';
+          if(modal){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); }
+        });
+      });
+
+      // close handlers
+      var closeBtn = document.getElementById('serviceModalClose');
+      if(closeBtn) closeBtn.addEventListener('click', closeModal);
+      var modalWrap = document.getElementById('serviceModal');
+      if(modalWrap) modalWrap.addEventListener('click', function(e){ if(e.target === this) closeModal(); });
+      function closeModal(){ var m = document.getElementById('serviceModal'); if(m){ m.style.display='none'; m.setAttribute('aria-hidden','true'); } }
+
+      // Book button open Calendly (replace link when ready)
+      var bookBtn = document.getElementById('modalBookBtn');
+      if(bookBtn) bookBtn.addEventListener('click', function(){ window.open('https://calendly.com/your-calendly','_blank'); });
+
+      // modal form submit via fetch (Formspree) - uses JSON accept
+      var modalForm = document.getElementById('serviceModalForm');
+      if(modalForm){
+        modalForm.addEventListener('submit', async function(e){
+          e.preventDefault();
+          var hp = modalForm.querySelector('input[name="hp_field"]').value;
+          var msgEl = document.getElementById('modalMsg');
+          if(hp !== ''){ msgEl.style.display='block'; msgEl.textContent='Spam detected'; return; }
+          msgEl.style.display='block'; msgEl.textContent='Sending...';
+          var formData = new FormData(modalForm);
+          try{
+            var res = await fetch(modalForm.action, { method:'POST', body: formData, headers: { 'Accept': 'application/json' } });
+            if(res.ok){ msgEl.textContent='Message sent — thank you!'; modalForm.reset(); setTimeout(closeModal, 1400); }
+            else { var j = await res.json(); msgEl.textContent = j.error || 'Submission error'; }
+          }catch(err){ msgEl.textContent='Network error — please try again later.'; }
+        });
+      }
+    });
+  })();
+  </script>
+
+    <!-- ===== end modal script ===== -->
+
+    <script>
+    // simple phone reveal
+    function showPhoneNumber(){
+      alert('Phone: +98-912-733-8749');
+    }
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+    
 </body>
 </html>

@@ -463,3 +463,9 @@ footer {
     display: none !important;
   }
 }
+
+/* small service tweaks */
+#services .cards { gap: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+#services .card { min-height:160px; display:flex; flex-direction:column; justify-content:space-between; }
+#services .card-icon { font-size:1.4rem; color:#ff6b00; margin-bottom:.5rem; }
+.contact-form input, .contact-form textarea, .contact-form select { border-radius:6px; }
