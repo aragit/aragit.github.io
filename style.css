@@ -469,3 +469,147 @@ footer {
 #services .card { min-height:160px; display:flex; flex-direction:column; justify-content:space-between; }
 #services .card-icon { font-size:1.4rem; color:#ff6b00; margin-bottom:.5rem; }
 .contact-form input, .contact-form textarea, .contact-form select { border-radius:6px; }
+
+
+/* ---------- Unify service buttons look (override inline styles) ---------- */
+
+/* make all action buttons pill-shaped and consistent */
+.card-actions .cta-secondary,
+.card-actions a.cta-secondary.service-btn,
+.card-actions a.service-btn.cta-secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;      /* pill */
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  background: transparent !important;    /* keep subtle */
+  color: #cfd8e3 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  box-shadow: none !important;
+}
+
+/* primary action (Request Proposal) — softer orange gradient, pill */
+.card-actions a.service-btn {
+  background: linear-gradient(135deg, #ff5a1f 0%, #ff6b00 100%) !important;
+  color: #060606 !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px !important;
+  box-shadow: 0 6px 18px rgba(255,107,0,0.08) !important;
+}
+
+/* 'Learn more' should look like secondary but slightly lighter border */
+.card-actions a.cta-secondary[href^="services/"] {
+  background: transparent !important;
+  color: #cfd8e3 !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+}
+
+/* Hover states (subtle) */
+.card-actions a.service-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(255,107,0,0.10) !important;
+}
+.card-actions a.cta-secondary:hover {
+  background: rgba(255,255,255,0.02) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* make sure small-screen keeps spacing */
+@media (max-width:720px){
+  .card-actions{ display:flex; flex-wrap:wrap; gap:8px; }
+  .card-actions a{ min-width: 46%; text-align:center; }
+}
+/* Services-only: slightly lighter black background for buttons */
+#services .card-actions {
+  /* keep spacing as before */
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* variable for easy tweaking: choose one of the three suggested values */
+#services {
+  --svc-btn-bg: rgba(255,255,255,0.035); /* <-- change this to try variants */
+  --svc-btn-border: rgba(255,255,255,0.06);
+}
+
+/* secondary 'Learn more' style (subtle filled dark background) */
+#services .card-actions a.cta-secondary[href^="services/"] {
+  background: var(--svc-btn-bg) !important;
+  border: 1px solid var(--svc-btn-border) !important;
+  color: #e6eef6 !important;
+}
+
+/* primary Request Proposal (keep the orange accent but darker card background behind it) */
+#services .card-actions a.service-btn {
+  /* keep the orange primary look but add a darker inner plate to match */
+  background: linear-gradient(135deg, #ff5a1f 0%, #ff6b00 100%) !important;
+  color: #060606 !important;
+  /* subtle backdrop behind the orange for visual balance */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.55) !important;
+}
+
+/* make sure pill shape and sizes kept consistent in services */
+#services .card-actions a {
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+}
+
+/* hover tweaks (still subtle) */
+#services .card-actions a.cta-secondary:hover {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.10) !important;
+}
+#services .card-actions a.service-btn:hover { transform: translateY(-1px); }
+
+/* Make only Request Proposal buttons in Services dark gray (override orange) */
+#services .card-actions a.service-btn {
+  background: #2f2f2f !important;   /* dark gray */
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+  transition: background .12s ease, transform .12s ease;
+}
+
+#services .card-actions a.service-btn:hover {
+  background: #444444 !important;   /* slight lighten on hover */
+  transform: translateY(-1px);
+}
+
+/* ---------- FIX: center service buttons in #services ---------- */
+/* placed at the end to override earlier conflicting rules */
+#services .card-actions {
+  display: flex !important;           /* ensure flex container */
+  justify-content: center !important; /* center horizontally */
+  align-items: center !important;     /* center vertically */
+  gap: 12px !important;               /* spacing between buttons */
+  padding: 0 1rem 2.5rem !important;  /* ensure visual spacing */
+  width: 100% !important;
+  box-sizing: border-box !important;
+  flex-wrap: wrap !important;         /* wrap nicely on small screens */
+}
+
+/* ensure each button doesn't collapse or float left */
+#services .card-actions a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+/* responsive: on narrow screens keep two per row or full width */
+@media (max-width: 720px) {
+  #services .card-actions { justify-content: space-between !important; gap: 8px !important; }
+  #services .card-actions a { min-width: 46% !important; }
+}
+
