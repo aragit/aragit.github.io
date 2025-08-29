@@ -107,3 +107,56 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function showPhoneNumber() {
   alert('Phone: +1 (555) 123-4567');
 }
+
+/* ---------- UTM + Referrer Filler ---------- */
+(function fillUtm(){
+  try{
+    const params = new URLSearchParams(location.search);
+    const setIfEl = (param, elid) => {
+      const val = params.get(param) || '';
+      const el = document.getElementById(elid);
+      if(el) el.value = val;
+    };
+    setIfEl('utm_source','hidden_utm_source');
+    setIfEl('utm_medium','hidden_utm_medium');
+    setIfEl('utm_campaign','hidden_utm_campaign');
+    const refEl = document.getElementById('hidden_referrer');
+    if(refEl) refEl.value = document.referrer || '';
+  }catch(e){ /* no-op */ }
+})();
+
+/* ---------- Improved Modal Form Submit ---------- */
+(function(){
+  var modalForm = document.getElementById('serviceModalForm');
+  if(!modalForm) return;
+  modalForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var hp = modalForm.querySelector('input[name="hp_field"]').value;
+    var msgEl = document.getElementById('modalMsg');
+    if(hp !== ''){ if(msgEl) { msgEl.style.display='block'; msgEl.textContent='Spam detected'; } return; }
+    if(msgEl){ msgEl.style.display='block'; msgEl.textContent='Sending...'; }
+    var formData = new FormData(modalForm);
+    try{
+      var res = await fetch(modalForm.action, { method:'POST', body: formData, headers: { 'Accept': 'application/json' }});
+      var json = {};
+      try{ json = await res.json(); }catch(err){ json = {}; }
+      if(res.ok){
+        if(json && json.next){
+          var nextUrl = json.next.startsWith('/') ? (location.origin + json.next) : json.next;
+          window.location.href = nextUrl;
+          return;
+        }
+        if(msgEl){ msgEl.textContent = 'Message sent — thank you!'; }
+        modalForm.reset();
+        setTimeout(function(){ 
+          var m=document.getElementById('serviceModal'); 
+          if(m){ m.style.display='none'; m.setAttribute('aria-hidden','true'); } 
+        },1200);
+      } else {
+        if(msgEl){ msgEl.textContent = (json && json.error) ? json.error : 'Submission error'; }
+      }
+    }catch(err){
+      if(msgEl) msgEl.textContent = 'Network error — please try again later.';
+    }
+  });
+})();
