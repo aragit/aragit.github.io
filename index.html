@@ -580,6 +580,37 @@
       });
     });
     </script>
+    <!-- ===== Toggle for FEATURED PROJECTS (Portfolio) ===== -->
+    <script>
+    const P_INITIAL = 3;   // how many cards to show first
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid   = document.querySelector('#portfolio .cards');
+      const cards  = [...grid.children];
+      const total  = cards.length;
+    
+      if (total <= P_INITIAL) return;
+    
+      /* hide extras */
+      cards.slice(P_INITIAL).forEach(c => c.style.display = 'none');
+    
+      /* create toggle link */
+      const toggle = document.createElement('a');
+      toggle.href = '#';
+      toggle.innerHTML = `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load more`;
+      toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline;font-size:1rem;cursor:pointer';
+      grid.after(toggle);
+    
+      let expanded = false;
+      toggle.addEventListener('click', e => {
+        e.preventDefault();
+        expanded = !expanded;
+        cards.slice(P_INITIAL).forEach(c => c.style.display = expanded ? '' : 'none');
+        toggle.innerHTML = expanded
+          ? `<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less`
+          : `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load More`;
+      });
+    });
+    </script>
 
   <!-- SERVICE MODAL SCRIPT (minimal, non-intrusive) -->
   <script>
