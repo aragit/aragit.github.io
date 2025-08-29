@@ -613,3 +613,55 @@ footer {
   #services .card-actions a { min-width: 46% !important; }
 }
 
+/* ===== Built-With ribbon ===== */
+.built-with {
+  background: rgba(18, 18, 18, 0.6);
+  padding: 0.6rem 0;
+  font-size: 0.85rem;
+}
+.built-with .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.built-with .label {
+  color: #aaa;
+  margin-right: 0.5rem;
+}
+.logo-cloud {
+  display: flex;
+  gap: 1.2rem;
+}
+.logo-cloud i {
+  color: #cccccc;
+  font-size: 1.4rem;
+  transition: color 0.2s;
+}
+.logo-cloud i:hover {
+  color: #ff6b00;
+}
+@media (max-width: 600px) {
+  .built-with .container { flex-direction: column; gap: 0.5rem; }
+}
+
+/* --- Contact dark-grey background --- */
+section.contact-small {
+  background: #1e1e1e;   /* same dark grey as .alt */
+}
+
+/* ===== Services cards = rectangle style (same as Portfolio) ===== */
+#services .card {
+  border-radius: 8px !important;      /* rectangle, not pill */
+  overflow: hidden !important;        /* mask corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,.3) !important;
+  transition: transform .3s, border-color .3s !important;
+  background: rgba(30,30,30,.75) !important;
+  border: 1px solid rgba(255,255,255,.1) !important;
+}
+
+#services .card:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(255,107,0,.5) !important;
+}
