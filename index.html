@@ -327,12 +327,14 @@
       </div>
     </div>
   </section>
-<!-- ~~~~~~~~~~ SERVICES & PACKAGES (keep layout as-is) ~~~~~~~~~~ -->
+<!-- ===== SERVICES & PACKAGES ===== -->
 <section id="services" class="section">
   <div class="container">
     <h2 class="section-title">Services & Packages</h2>
+
     <div class="cards">
-      <!-- Quick Audit -->
+
+      <!-- ===== Row 1 : original 3 packages ===== -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-search"></i></div>
         <div class="card-body">
@@ -341,11 +343,10 @@
         </div>
         <div class="card-actions">
           <a href="#" class="cta-secondary service-learn" data-service="Quick Audit">Learn More</a>
-          <a href="#" class="cta-secondary service-btn" data-service="Quick Audit">Request Proposal</a>
+          <a href="#" class="cta-secondary service-btn"    data-service="Quick Audit">Request Proposal</a>
         </div>
       </div>
 
-      <!-- Paid POC -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-vial"></i></div>
         <div class="card-body">
@@ -354,11 +355,10 @@
         </div>
         <div class="card-actions">
           <a href="#" class="cta-secondary service-learn" data-service="Paid POC">Learn More</a>
-          <a href="#" class="cta-secondary service-btn" data-service="Paid POC">Start POC</a>
+          <a href="#" class="cta-secondary service-btn"    data-service="Paid POC">Start POC</a>
         </div>
       </div>
 
-      <!-- Deployment & Scale -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-server"></i></div>
         <div class="card-body">
@@ -367,47 +367,49 @@
         </div>
         <div class="card-actions">
           <a href="#" class="cta-secondary service-learn" data-service="Deployment & Scale">Learn More</a>
-          <a href="#" class="cta-secondary service-btn" data-service="Deployment & Scale">Request Contract</a>
+          <a href="#" class="cta-secondary service-btn"    data-service="Deployment & Scale">Request Contract</a>
         </div>
       </div>
+
+      <!-- ===== Row 2 : centered mentoring card ===== -->
+      <!-- invisible placeholders -->
+      <div class="placeholder"></div>
+
+      <div class="card mentoring-center">
+        <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+        <div class="card-body">
+          <h3>Mentoring</h3>
+          <p>1-to-1 coaching tailored to your goals— ML engineers or data scientists who want to level-up fast Or LLM Engineers who want to build a custom curriculum and meet weekly for 4–8 weeks.</p>
+        </div>
+        <div class="card-actions">
+          <a href="#" class="cta-secondary service-learn" data-service="Individual Mentoring">Learn More</a>
+          <a href="#" class="cta-secondary service-btn"    data-service="Individual Mentoring">Book Mentoring</a>
+        </div>
+      </div>
+
+      <div class="placeholder"></div>
+
     </div>
   </div>
 </section>
-<!-- ~~~~~~~~~~ end SERVICES ~~~~~~~~~~ -->
+
+<!-- ===== tiny helper CSS (append to <style> or style.css) ===== -->
+<style>
+/* invisible placeholders that collapse on narrow screens */
+.cards .placeholder {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .cards .placeholder {
+    display: none;          /* let card go full-width on mobile */
+  }
+}
+</style>
 
 
 
-  <!-- ~~~~~~~~~~ MENTORING SECTION ~~~~~~~~~~ -->
-  <section id="mentoring" class="section alt">
-    <div class="container">
-      <h2 class="section-title">Mentoring</h2>
-      <div class="cards">
-        <!-- ML Fundamentals -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-          <div class="card-body">
-            <h3>ML Fundamentals</h3>
-            <p>Beginner-friendly, hands-on course covering core machine-learning concepts.</p>
-          </div>
-          <div class="card-actions">
-            <a href="https://github.com/aragit/course-ml-fundamentals" target="_blank" class="cta-secondary">View Course</a>
-          </div>
-        </div>
-        <!-- LLMs Essentials -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-          <div class="card-body">
-            <h3>LLMs Essentials</h3>
-            <p>Start with tokenization and embedding methods as well as looking inside SOTA LLMs.</p>
-          </div>
-          <div class="card-actions">
-            <a href="https://github.com/aragit/course-llm" target="_blank" class="cta-secondary">View Course</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  
   <!-- SKILLS -->
   <section id="skills" class="section alt">
     <div class="container">
