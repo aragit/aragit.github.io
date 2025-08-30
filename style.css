@@ -679,3 +679,11 @@ section.contact-small {
     justify-content: center !important;
   }
 }
+
+/* universal centering for all card actions */
+.card-actions {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
