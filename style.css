@@ -687,3 +687,19 @@ section.contact-small {
   gap: 12px !important;
   flex-wrap: wrap !important;
 }
+
+/* make every secondary button border the same dark-grey */
+.cta-secondary,
+.card-actions .cta-secondary {
+  border-color: #444 !important;
+}
+.cta-secondary:hover {
+  border-color: #ff6b00 !important;   /* keeps orange on hover */
+}
+
+/* universal hover state = orange border + orange text */
+.cta-secondary:hover {
+  border-color: #ff6b00 !important;
+  color: #ff6b00 !important;
+  background: transparent !important; /* keep background unchanged */
+}
