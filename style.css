@@ -688,18 +688,31 @@ section.contact-small {
   flex-wrap: wrap !important;
 }
 
-/* make every secondary button border the same dark-grey */
-.cta-secondary,
-.card-actions .cta-secondary {
-  border-color: #444 !important;
-}
-.cta-secondary:hover {
-  border-color: #ff6b00 !important;   /* keeps orange on hover */
-}
 
-/* universal hover state = orange border + orange text */
-.cta-secondary:hover {
+
+/* force ALL .cta-secondary borders to the same grey/orange cycle */
+a.cta-secondary,
+.card-actions a.cta-secondary,
+.card-actions .cta-secondary {
+  border: 1px solid #444 !important;
+  transition: border-color .2s, color .2s;
+}
+a.cta-secondary:hover,
+.card-actions a.cta-secondary:hover {
   border-color: #ff6b00 !important;
   color: #ff6b00 !important;
-  background: transparent !important; /* keep background unchanged */
+}
+
+/* services specific orange/dark buttons hover */
+#services .card-actions a.service-btn:hover {
+  background: #444 !important;    /* lighten dark grey */
+  border-color: #ff6b00 !important;
+  color: #fff !important;         /* text stays white */
+  transform: translateY(-1px);
+}
+
+/* fix Learn-More border hover */
+.card-actions a.cta-secondary:not(.service-btn):hover {
+  border-color: #ff6b00 !important;
+  color: #ff6b00 !important;
 }
