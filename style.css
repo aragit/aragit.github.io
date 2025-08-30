@@ -665,3 +665,17 @@ section.contact-small {
   transform: translateY(-3px) !important;
   border-color: rgba(255,107,0,.5) !important;
 }
+
+/* center service buttons everywhere */
+#services .card-actions {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+@media (max-width: 720px) {
+  #services .card-actions {
+    flex-direction: row;   /* keep side-by-side if space */
+    justify-content: center !important;
+  }
+}
