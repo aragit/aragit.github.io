@@ -650,6 +650,144 @@ footer {
 section.contact-small {
   background: #1e1e1e;   /* same dark grey as .alt */
 }
+/* ===== Hero 3-button row (clean & responsive) ===== */
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+/* button base */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;    /* controls button width */
+  flex: 1 1 190px;     /* flexible but roughly equal */
+  max-width: 300px;
+  padding: 0.64rem 1.05rem;
+  border-radius: 28px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: transform .12s ease, box-shadow .12s ease;
+  gap: .5rem;
+}
+
+/* primary - chat */
+.btn-primary {
+  background: linear-gradient(135deg,#ff4500,#ff6b00);
+  color: #060606;
+  box-shadow: 0 10px 26px rgba(255,107,0,0.07);
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* collaborator (dark filled) */
+.btn-collab {
+  background: #2f2f2f;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ghost / view work - outlined */
+.btn-ghost {
+  background: transparent;
+  color: #cfd8e3;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* hover states */
+.btn-hero:hover { transform: translateY(-3px); }
+.btn-primary:hover { box-shadow: 0 14px 40px rgba(255,107,0,0.12); }
+.btn-collab:hover { background:#404040; }
+.btn-ghost:hover { color:#ff6b00; border-color:#ff6b00; }
+
+/* icons slightly smaller on small screens */
+.hero-cta .fas { font-size: 0.95rem; }
+
+/* mobile: stack vertically, full-width with nice spacing */
+@media (max-width: 720px) {
+  .hero-cta {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .btn-hero {
+    width: 100%;
+    max-width: none;
+    flex: none;
+  }
+}
+
+/* ===== Hero buttons: grid-based equal-height fix ===== */
+
+/* container -> grid to force equal heights across columns */
+.hero-cta {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 equal columns */
+  gap: 14px;
+  align-items: stretch;   /* THIS makes all buttons equal height */
+  justify-items: stretch; /* make buttons fill their grid cell */
+  margin: 2rem 0;
+}
+
+/* make buttons fill the grid cell and center content */
+.btn-hero {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.56rem 1rem;
+  border-radius: 28px;
+  min-height: 52px;       /* baseline height */
+  box-sizing: border-box;
+  white-space: normal;    /* allow wrapping */
+  /* responsive, slightly smaller text for long labels */
+  font-size: clamp(0.86rem, 0.9vw + 0.6rem, 0.95rem);
+  line-height: 1.12;
+}
+
+/* icon spacing */
+.hero-cta .fas { margin-right: 0.5rem; flex-shrink: 0; }
+
+/* keep primary / collab / ghost styles (colors) */
+.btn-primary { background: linear-gradient(135deg,#ff4500,#ff6b00); color: #fff; }
+.btn-collab  { background: #2f2f2f; color: #fff; border: 1px solid rgba(255,255,255,0.04); }
+.btn-ghost   { background: transparent; color: #cfd8e3; border: 1px solid rgba(255,255,255,0.06); }
+
+/* hover polish */
+.btn-hero:hover { transform: translateY(-3px); }
+
+/* MOBILE: stack on small screens */
+@media (max-width: 720px) {
+  .hero-cta {
+    grid-template-columns: 1fr;     /* single column stack */
+  }
+  .btn-hero {
+    min-height: 48px;
+    width: 100%;
+  }
+}
+
+
+/* Force chat button text to white (higher priority) */
+.hero-cta .btn-primary {
+  color: #ffffff !important;
+  background: linear-gradient(135deg,#ff4500,#ff6b00) !important;
+  border: 1px solid rgba(255,255,255,0.02) !important;
+  box-shadow: 0 10px 26px rgba(255,107,0,0.07) !important;
+}
+
+/* small-screen: stack but keep same padding */
+@media (max-width: 720px) {
+  .hero-cta { flex-direction: column; gap: 12px; align-items: stretch; }
+  .hero-cta .btn-hero { width: 100%; max-width: none; }
+}
+
 
 /* ===== Services cards = rectangle style (same as Portfolio) ===== */
 #services .card {
@@ -716,3 +854,75 @@ a.cta-secondary:hover,
   border-color: #ff6b00 !important;
   color: #ff6b00 !important;
 }
+
+/* ===== Hero CTA: ordered + unified dark styles for view & collaborate ===== */
+
+/* grid-based equal-height layout (3 columns) */
+.hero-cta {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+  justify-items: stretch;
+  margin: 2rem 0;
+}
+
+/* button base: fill cell and center content */
+.btn-hero {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.56rem 1rem;
+  border-radius: 28px;
+  min-height: 52px;
+  box-sizing: border-box;
+  white-space: normal;
+  font-size: clamp(0.86rem, 0.9vw + 0.6rem, 0.95rem);
+  line-height: 1.12;
+  gap: .5rem;
+}
+
+/* icon spacing */
+.hero-cta .fas { margin-right: 0.5rem; flex-shrink: 0; }
+
+/* Primary (chat) — bright orange, white text */
+.btn-primary {
+  background: linear-gradient(135deg,#ff4500,#ff6b00);
+  color: #ffffff !important;     /* ensure white text */
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 10px 26px rgba(255,107,0,0.07);
+}
+
+/* Collab / View (dark filled) — same style for both */
+.btn-collab {
+  background: #2f2f2f;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: none;
+}
+
+/* Hover states */
+.btn-hero:hover { transform: translateY(-3px); }
+.btn-primary:hover { box-shadow: 0 14px 40px rgba(255,107,0,0.12); }
+.btn-collab:hover { background:#404040; }
+
+/* Responsive: stack on small screens in the same left-to-right order */
+@media (max-width: 720px) {
+  .hero-cta { grid-template-columns: 1fr; }
+  .btn-hero { min-height: 48px; width: 100%; }
+}
+/* Minimal hero divider + tighten gap */
+.hero + .section { padding-top: 18px !important; } /* reduce gap */
+
+.hero-divider-minimal{
+  max-width: 900px;
+  margin: 12px auto 6px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,107,0,0.85), transparent);
+  opacity: .9;
+  border-radius: 2px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35) inset;
+}
+@media(max-width:720px){ .hero-divider-minimal{ margin:10px auto 6px; width:80% } }
+
