@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Paid POC — Arash Nicoomanesh</title>
+  <meta name="description" content="Paid Proof-of-Concept (POC) — runnable demo, evaluation, production roadmap." />
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    html,body{height:100%}
+    body{background:#121212;color:#eaf2fb}
+    .page-wrap{padding-top:88px;max-width:980px;margin:0 auto;padding-left:1rem;padding-right:1rem}
+    h1.page-title{font-size:1.3rem;margin:0 0 .4rem;color:#fff}
+    .muted{color:#cbd6df}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+    .specs ul{color:#bfcbd7;margin-left:1rem}
+    .page-cta-dark{display:inline-block;padding:.6rem 1rem;border-radius:30px;background:#2f2f2f;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,0.04);font-weight:700;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .cta-primary{background:linear-gradient(135deg,#ff4500,#ff6b00);color:#060606;padding:.6rem 1rem;border-radius:30px;border:none;font-weight:700;text-decoration:none}
+    @media(max-width:720px){ .two-col{grid-template-columns:1fr} .form-row{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <main class="page-wrap">
+    <a href="../index.html" style="color:#ff6b00;text-decoration:none">&larr; Back</a>
+    <header style="margin:18px 0 6px">
+      <h1 class="page-title">Paid POC — 4–8 weeks</h1>
+      <p class="muted">Deliver a runnable demo that proves technical feasibility and business impact on sample data.</p>
+    </header>
+
+    <section class="two-col">
+      <div>
+        <h3>Deliverables</h3>
+        <ul class="specs">
+          <li>Runnable demo (RAG / LLM pipeline) with test dataset</li>
+          <li>Evaluation metrics and a short demo video</li>
+          <li>Production roadmap (infra, costs, handover plan)</li>
+          <li>Lightweight docs and runbook for testers</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Scope & methodology</h3>
+        <p class="muted"><strong>Duration:</strong> 4–8 weeks. <strong>Investment:</strong> $2k–$6k depending on scope and compute needs. Payment typically 30% upfront.</p>
+        <p class="muted">We run a focused experiment: data ingestion → retrieval/embedding → model selection → evaluation → demo. Emphasis on reproducibility and cost-aware inference.</p>
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <h3>Milestones (example)</h3>
+      <ol style="color:#bfcbd7;margin-left:1rem">
+        <li>Week 0–1: kickoff, data sample & success criteria</li>
+        <li>Week 1–3: prototype RAG/LLM pipeline + evaluation</li>
+        <li>Week 3–4: demo, feedback, roadmap to production</li>
+      </ol>
+    </section>
+
+    <section style="margin-top:18px">
+      <h3>Start a POC</h3>
+
+      <form action="https://formspree.io/f/xwpnvzwl" method="POST" style="margin-top:12px;max-width:820px">
+        <div class="form-row">
+          <input name="name" type="text" placeholder="Your name" required style="padding:.6rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit">
+          <input name="email" type="email" placeholder="name@example.com" required style="padding:.6rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit">
+        </div>
+
+        <div style="margin-top:10px">
+          <input name="organization" placeholder="Company / org" style="width:100%;padding:.6rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit">
+        </div>
+
+        <div style="margin-top:10px">
+          <select name="budget" style="width:100%;padding:.6rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit">
+            <option value="2k-6k">$2k–$6k</option>
+            <option value=">6k">&gt;$6k</option>
+            <option value="<2k">&lt;$2k</option>
+          </select>
+        </div>
+
+        <div style="margin-top:10px">
+          <textarea name="message" required placeholder="Dataset, goal, key constraints" style="width:100%;min-height:140px;padding:.6rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit"></textarea>
+        </div>
+
+        <input type="hidden" name="service" value="Paid POC">
+        <input type="hidden" name="_subject" value="Website lead: Paid POC">
+        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
+        <input type="hidden" name="utm_source" id="hidden_utm_source" value="">
+        <input type="hidden" name="utm_medium" id="hidden_utm_medium" value="">
+        <input type="hidden" name="utm_campaign" id="hidden_utm_campaign" value="">
+        <input type="hidden" name="referrer" id="hidden_referrer" value="">
+
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:center;">
+          <button type="submit" class="cta-primary">Start POC</button>
+          <a href="https://calendly.com/your-calendly" target="_blank" class="cta-secondary">Book 30-min call</a>
+        </div>
+      </form>
+    </section>
+
+    <footer style="margin-top:28px;color:#9aa4b2;font-size:.95rem">
+      Note: if you need an on-premise or privacy-first pipeline we can scope that as part of the POC — mention it in the form.
+    </footer>
+  </main>
+
+  <script>
+    (function fillUtm(){
+      try{
+        const params = new URLSearchParams(location.search);
+        document.getElementById('hidden_utm_source').value = params.get('utm_source') || '';
+        document.getElementById('hidden_utm_medium').value = params.get('utm_medium') || '';
+        document.getElementById('hidden_utm_campaign').value = params.get('utm_campaign') || '';
+        document.getElementById('hidden_referrer').value = document.referrer || '';
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
