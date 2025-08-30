@@ -532,7 +532,7 @@
       /* create toggle link */
       const toggle = document.createElement('a');
       toggle.href = '#';
-      toggle.innerHTML = `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load more`;
+      toggle.innerHTML = `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More `;
       toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline;font-size:1rem;cursor:pointer';
       grid.after(toggle);
     
@@ -543,7 +543,7 @@
         cards.slice(INITIAL).forEach(c => c.style.display = expanded ? '' : 'none');
         toggle.innerHTML = expanded
           ? `<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less`
-          : `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load More`;
+          : `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More`;
       });
     });
     </script>
@@ -563,7 +563,7 @@
       /* create toggle link */
       const toggle = document.createElement('a');
       toggle.href = '#';
-      toggle.innerHTML = `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load more`;
+      toggle.innerHTML = `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More`;
       toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline;font-size:1rem;cursor:pointer';
       grid.after(toggle);
     
@@ -574,7 +574,7 @@
         cards.slice(P_INITIAL).forEach(c => c.style.display = expanded ? '' : 'none');
         toggle.innerHTML = expanded
           ? `<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less`
-          : `<i class="fas fa-chevron-down" style="margin-right:.3rem"></i>Load More`;
+          : `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More`;
       });
     });
     </script>
