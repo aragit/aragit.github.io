@@ -6,7 +6,7 @@
 }
 html {
   scroll-behavior: smooth;
-  zoom: 80%;
+  zoom: 100%;
   -moz-transform: scale(0.8);
   -moz-transform-origin: 0 0;
 }
