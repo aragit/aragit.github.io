@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Forge — Bespoke LLM Solution Development — Arash Nicoomanesh</title>
+  <title>The Forge — Bespoke LLM Solution — Arash Nicoomanesh</title>
   <meta name="description" content="Engineering and development phase where we build robust, custom LLM solutions based on your strategic blueprint." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -42,9 +42,9 @@
       padding: 0 20px;
     }
     
-    /* Header */
+    /* Header - Changed to black */
     header {
-      background: var(--header-gradient);
+      background: #000000 !important; /* Black background */
       padding: 24px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       position: sticky;
@@ -72,10 +72,9 @@
       color: var(--accent);
     }
     
-    /* Hero Section */
+    /* Hero Section - Changed to purple/black gradient and white text */
     .hero {
-      background: linear-gradient(to bottom, rgba(30, 27, 75, 0.9), rgba(74, 4, 78, 0.95)), 
-                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231E1B4B" width="100" height="100"/><path fill="%234A044E" d="M0 0L100 100" stroke-width="0.5"/></svg>');
+      background: linear-gradient(135deg, #4A044E 0%, #1a1a1a 100%) !important; /* Purple/black gradient */
       padding: 80px 0 60px;
       text-align: center;
       position: relative;
@@ -84,9 +83,7 @@
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 16px;
-      background: linear-gradient(90deg, #F97316, #FB923C);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: white !important; /* White text instead of gradient */
       font-weight: 700;
     }
     
@@ -117,11 +114,12 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       height: 100%;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 极速0.4);
     }
     
     h3 {
@@ -131,6 +129,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     h3 i {
@@ -140,6 +139,7 @@
     .specs {
       list-style: none;
       color: #bfcbd7;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .specs li {
@@ -147,6 +147,7 @@
       padding-left: 32px;
       position: relative;
       line-height: 1.5;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .specs li::before {
@@ -160,6 +161,7 @@
     
     .specs strong {
       color: white;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     /* Capabilities Grid */
@@ -177,6 +179,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .capability-card:hover {
@@ -194,6 +197,14 @@
       font-size: 1.3rem;
       margin-bottom: 15px;
       color: white;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
+    }
+    
+    .capability-card p {
+      color: #cbd6df;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
+      font-weight: 400;
+      line-height: 1.6;
     }
     
     /* Process Section */
@@ -221,6 +232,7 @@
       justify-content: center;
       font-weight: bold;
       flex-shrink: 0;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .step-content {
@@ -231,6 +243,13 @@
       font-size: 1.2rem;
       margin-bottom: 10px;
       color: white;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
+    }
+    
+    .step-content p {
+      color: #cbd6df;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
+      font-weight: 400;
     }
     
     /* Form Styling */
@@ -241,6 +260,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.05);
       margin-bottom: 50px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .form-row {
@@ -272,6 +292,7 @@
       font-size: 0.9rem;
       color: #cbd6df;
       margin-bottom: 8px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .btn-primary {
@@ -286,6 +307,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .btn-primary:hover {
@@ -306,6 +328,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .btn-secondary:hover {
@@ -320,6 +343,7 @@
       color: #9aa4b2;
       font-size: 0.95rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     /* Responsive */
@@ -384,7 +408,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <h1>Bespoke LLM Solution Development</h1>
+      <h1>The Forge — Bespoke AI Solution Development</h1>
       <p>Engineering and development phase where we build robust, custom LLM solutions based on your strategic blueprint.</p>
     </div>
   </section>
@@ -400,8 +424,8 @@
 
       <div class="card">
         <h3><i class="fas fa-cogs"></i> Development Process</h3>
-        <p style="color: #cbd6df; margin-bottom: 20px;"><strong>Duration:</strong> 4-12 weeks depending on complexity</p>
-        <p style="color: #cbd6df;">We follow an agile development methodology with bi-weekly demos, continuous integration, and thorough testing to ensure we're building the right solution efficiently.</p>
+        <p style="color: #极速cbd6df; margin-bottom: 20px;"><strong>Duration:</strong> 4-12 weeks depending on complexity</p>
+        <极速p style="color: #cbd6df;">We follow an agile development methodology with bi-weekly demos, continuous integration, and thorough testing to ensure we're building the right solution efficiently.</p>
       </div>
     </section>
 
@@ -438,7 +462,7 @@
           <div class="capability-icon">
             <i class="fas fa-comment-alt"></i>
           </div>
-          <h4>Expert Prompt Engineering</h4>
+          <h4>Expert Prompt Engineering</极速h4>
           <p style="color: #cbd6df;">This is foundational to all our work. We design, test, and refine complex prompt chains and templates that extract the most accurate, consistent, and reliable behavior from the LLM, reducing errors and hallucinations.</p>
         </div>
         
@@ -451,7 +475,7 @@
         </div>
         
         <div class="capability-card">
-          <div class="capability-icon">
+          <div class极速="capability-icon">
             <i class="fas fa-tachometer-alt"></i>
           </div>
           <h4>Performance Optimization</h4>
@@ -491,7 +515,7 @@
         <div class="process-step">
           <div class="step-number">4</div>
           <div class="step-content">
-            <h4>Documentation & Knowledge Transfer</h4>
+            <h4极速>Documentation & Knowledge Transfer</h4>
             <p style="color: #cbd6df;">We provide detailed documentation and conduct knowledge transfer sessions to ensure your team can maintain and extend the solution after delivery.</p>
           </div>
         </div>

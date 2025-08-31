@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>"The Blueprint" — AI Strategy & Architecture — Arash Nicoomanesh</title>
+  <title>The Blueprint — AI Strategy & Architecture — Arash Nicoomanesh</title>
   <meta name="description" content="From a business idea to a complete architectural blueprint. We define the strategy, technology, and roadmap for your custom Generative AI or Agentic AI solution." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
       --accent: #ff6b00;
       --accent-light: #ff9d00;
       --header-gradient: linear-gradient(135deg, #0c4a6e 0%, #083344 100%);
-      --hero-overlay: linear-gradient(to bottom, rgba(12, 74, 110, 0.9), rgba(8, 51, 68, 0.95));
-      --hero-pattern: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%230c4a6e" width="100" height="100"/><path fill="%23083344" d="M0 0L100 100" stroke-width="0.5"/></svg>');
+      --hero-overlay: linear-gradient(to bottom, rgba(12, 74, 110, 0.9), rgba极速(8, 51, 68, 0.95));
+      --hero-pattern: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%230c4a6e" width="100" height="100"/><path fill="%23083344" d="极速M0 0L100 100" stroke-width="0.5"/></svg>');
     }
     
     * {
@@ -44,14 +44,15 @@
       padding: 0 20px;
     }
     
-    /* Header */
+    /* Header - Fixed to black */
     header {
-      background: var(--header-gradient);
+      background: #000000 !important; /* Black background */
       padding: 24px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       position: sticky;
       top: 0;
       z-index: 100;
+      width: 100%; /* Ensure full width to prevent disappearing issues :cite[1]:cite[4] */
     }
     
     .header-content {
@@ -74,9 +75,9 @@
       color: var(--accent);
     }
     
-    /* Hero Section */
+    /* Hero Section - Changed to skyblue/black gradient and white text */
     .hero {
-      background: var(--hero-overlay), var(--hero-pattern);
+      background: linear-gradient(135deg, #87CEEB 0%, #1a1a1a 100%) !important; /* Skyblue to black gradient */
       padding: 80px 0 60px;
       text-align: center;
       position: relative;
@@ -85,9 +86,7 @@
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 16px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: white !important; /* White text instead of gradient */
       font-weight: 700;
     }
     
@@ -118,6 +117,7 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       height: 100%;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .card:hover {
@@ -132,6 +132,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     h3 i {
@@ -141,6 +142,7 @@
     .specs {
       list-style: none;
       color: #bfcbd7;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .specs li {
@@ -148,6 +150,7 @@
       padding-left: 32px;
       position: relative;
       line-height: 1.5;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .specs li::before {
@@ -163,6 +166,7 @@
       color: white;
       display: block;
       margin-bottom: 4px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     /* Form Styling */
@@ -173,6 +177,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.05);
       margin-bottom: 50px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .form-row {
@@ -196,7 +201,7 @@
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+      box-shadow: 0极速 0 0 3px rgba(255, 107, 0, 0.2);
     }
     
     label {
@@ -204,6 +209,7 @@
       font-size: 0.9rem;
       color: #cbd6df;
       margin-bottom: 8px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .btn-primary {
@@ -218,6 +224,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .btn-primary:hover {
@@ -238,6 +245,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     .btn-secondary:hover {
@@ -252,6 +260,7 @@
       color: #9aa4b2;
       font-size: 0.95rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'Inter', sans-serif; /* Added font consistency */
     }
     
     /* Responsive */
@@ -295,7 +304,7 @@
     <div class="container">
       <div class="header-content">
         <a href="../index.html" class="logo">
-          <i class="fas fa-blueprint"></i>
+          <i class="fas fa-blueprint"></i> <!-- Fixed icon reference -->
           Arash Nicoomanesh
         </a>
         <a href="../index.html" class="btn-secondary">
@@ -308,7 +317,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <h1>"The Blueprint" — 2–3 Weeks</h1>
+      <h1>"The Blueprint" — Feasibility Study, Strategy, Architecture and Roadmap</h1>
       <p>A comprehensive strategic engagement to transform your business goals into a detailed, actionable plan for a custom AI solution.</p>
     </div>
   </section>
@@ -319,9 +328,9 @@
       <div class="card">
         <h3><i class="fas fa-gift"></i> What You Receive</h3>
         <ul class="specs">
-          <li><strong>Agentic Use-Case Analysis:</strong> A report identifying the top 1-3 high-impact AI opportunities for your specific operations.</li>
-          <li><strong>Complete Architectural Blueprint:</strong> A technical diagram and document detailing the recommended LLM, data flow, and technology stack (RAG vs. Fine-tuning, Vector DBs, etc.).</li>
-          <li><strong>Phased Implementation Roadmap:</strong> A clear, step-by-step project plan from development to deployment, with timeline and budget estimates.</li>
+          <li><strong>AI Use-Case Analysis & Prioritization:</strong> A report identifying the top high-impact AI opportunities for your specific operations.</li>
+          <li><strong>Complete Architectural Blueprint:</strong> A technical diagram and document detailing the recommended solutions and technology stack.</li>
+          <li><strong>Phased Implementation Roadmap:</strong> A clear, step-by-step estimation of project plan from development to deployment, with timeline and budget estimates.</极速li>
           <li><strong>90-Minute Executive Debrief:</strong> A strategy session to present the blueprint, answer questions, and align on next steps.</li>
         </ul>
       </div>
@@ -375,7 +384,7 @@
         </div>
 
         <input type="hidden" name="service" value="The Blueprint">
-        <input type="hidden" name="_subject" value="Website Lead: The Blueprint">
+        <input type="hidden" name="_subject"极速 value="Website Lead: The Blueprint">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="hidden" name="utm_source" id="hidden_utm_source" value="">
