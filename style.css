@@ -926,3 +926,47 @@ a.cta-secondary:hover,
 }
 @media(max-width:720px){ .hero-divider-minimal{ margin:10px auto 6px; width:80% } }
 
+/* Stylish hero divider (dark theme) */
+.hero-divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 0;           /* space above/below divider */
+  gap: 12px;
+  pointer-events: none;
+}
+
+.hero-divider .line {
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,107,0,0.9), rgba(255,255,255,0.03));
+  border-radius: 2px;
+  max-width: 420px;
+  opacity: 0.95;
+}
+
+.hero-divider .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b00, #ff9d00);
+  box-shadow: 0 6px 18px rgba(255,107,0,0.16), 0 1px 4px rgba(0,0,0,0.4);
+  transform-origin: center;
+  animation: heroDotPulse 2000ms infinite;
+}
+
+/* subtle pulse */
+@keyframes heroDotPulse {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.24); opacity: 0.75; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive spacing */
+@media (max-width: 640px){
+  .hero-divider { margin: 12px 0; }
+  .hero-divider .line { max-width: 220px; }
+  .hero-divider .dot { width: 8px; height: 8px; }
+}
+
