@@ -18,6 +18,10 @@
       --gray: #9ca3af;
       --accent: #ff6b00;
       --accent-light: #ff9d00;
+      --hero-yellow: #ffb020; /* warm yellow */
+      --hero-orange: #ff6b00; /* orange */
+      --hero-red: #e11d48;    /* warm red */
+      --hero-darkred: #7f1d1d;/* dark red */
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -44,15 +48,25 @@
     .logo { font-weight:700; font-size:1.25rem; color:white; text-decoration:none; display:flex; align-items:center; gap:10px; }
     .logo i { color:var(--accent); }
 
-    /* Hero */
+    /* Hero: warm gradient (yellow → orange → red → dark red) with dark overlay for contrast */
     .hero {
-      background: linear-gradient(135deg, #0c4a6e 0%, #0a0a0a 100%);
+      background: linear-gradient(135deg, var(--hero-yellow) 0%, var(--hero-orange) 36%, var(--hero-red) 68%, var(--hero-darkred) 100%);
       padding: 72px 0 48px;
       text-align: center;
       position: relative;
+      overflow: hidden;
     }
+    /* subtle dark overlay to keep text readable */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.20), rgba(0,0,0,0.45));
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 2; }
     .hero h1 { font-size:2.6rem; margin-bottom:12px; color:white; font-weight:700; }
-    .hero p { font-size:1.05rem; max-width:820px; margin:0 auto; color:#cbd6df; }
+    .hero p { font-size:1.05rem; max-width:820px; margin:0 auto; color:#fff6f3; opacity:0.95; }
 
     /* Main */
     .main-content { padding:48px 0 80px; }
@@ -128,12 +142,9 @@
       display:flex; align-items:center; justify-content:center;
       padding:18px; background:rgba(255,255,255,0.02); border-radius:10px;
       border:1px solid rgba(255,255,255,0.02);
+      min-height:200px;
     }
     .visual img { max-width:100%; border-radius:8px; }
-
-    .faq { margin-top:20px; color:#cbd6df; }
-    .faq dt { font-weight:600; color:#fff; margin-top:14px; }
-    .faq dd { margin-left:0; margin-bottom:10px; color:#cbd6df; }
 
     .page-footer { text-align:center; padding:28px 0; color:#9aa4b2; font-size:0.95rem; border-top:1px solid rgba(255,255,255,0.05); }
 
@@ -196,17 +207,20 @@
       </div>
     </section>
 
+    <!-- Architecture placeholder: image area left intentionally blank for you to drop final image later -->
     <section class="card" style="margin-bottom:28px;">
       <h3><i class="fas fa-project-diagram"></i> Architecture & Integration</h3>
-      <div class="visual" style="margin-bottom:16px;">
-        <!-- put an architecture image in assets and reference with ../assets/ -->
-        <img src="../assets/prd_rec_arch.png" alt="Agentic architecture diagram (example)" onerror="this.style.display='none'">
+      <div class="two-col" style="grid-template-columns: 1fr; gap:12px;">
+        <div class="two-col visual" style="min-height:240px;">
+          <!-- IMAGE PLACEHOLDER: Replace src or drop an image into ../assets/ and update the src attribute -->
+          <!-- Example: <img src="../assets/agentic-architecture.png" alt="Agentic architecture diagram"> -->
+          <div style="color:#cbd6df; text-align:center; padding:18px;">
+            <strong>Image placeholder</strong>
+            <div style="margin-top:8px; color:#99a6b3; font-size:0.95rem;">Drop your architecture diagram into <code>../assets/</code> and update the <code>img</code> src here.</div>
+          </div>
+        </div>
       </div>
-      <ul class="specs">
-        <li><strong>Core stack:</strong> LLM (hosted or on-prem), LangChain/agent orchestration, Vector DB (FAISS/Chroma/Weaviate), tool runners, and a state controller (retry/idempotency).</li>
-        <li><strong>Security:</strong> TLS, API keys, RBAC, optional on-prem inference for PHI, and audit logs for every agent decision.</li>
-        <li><strong>Observability:</strong> Decision trace logging, metric alerts (task success, latency, escalation rate) and versioned model cards.</li>
-      </ul>
+      <!-- NOTE: Bulleted details intentionally removed per request -->
     </section>
 
     <section class="card" style="margin-bottom:28px;">
@@ -273,16 +287,6 @@
         </div>
       </form>
 
-      <dl class="faq" style="margin-top:18px;">
-        <dt>How do you keep agents safe and auditable?</dt>
-        <dd>We combine prompt & policy constraints, deterministic tool calls, human-in-loop steps, and comprehensive decision logging so every action is traceable.</dd>
-
-        <dt>Can agents connect to our EHR or internal APIs?</dt>
-        <dd>Yes — we provide secure adapters for REST APIs and HL7/FHIR integration. For PHI-sensitive workflows we support on-prem inference and strict data controls.</dd>
-
-        <dt>What is the fastest way to validate an idea?</dt>
-        <dd>A scoped 2-week POC focusing on a single workflow (1–2 integrations) with clear success criteria — we ship a demo and test harness to evaluate impact.</dd>
-      </dl>
     </section>
   </main>
 
