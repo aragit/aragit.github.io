@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Frontier - Arash Nicoomanesh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2a2a2a;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+        
+        .back-to-main {
+            background: #ff6b00;
+            color: #121212;
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-to-main:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+        }
+        
+        /* Blog Hero Section */
+        .blog-hero {
+            text-align: center;
+            padding: 150px 0 80px;
+            background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(74, 74, 240, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(240, 74, 74, 0.15) 0%, transparent 50%);
+        }
+        
+        .blog-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
+        }
+        
+        .blog-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #cccccc;
+        }
+        
+        /* Blog Filters */
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: #2a2a2a;
+            color: #ccc;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #ff6b00;
+            color: #121212;
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px 0 80px;
+        }
+        
+        .blog-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card-img {
+            height: 200px;
+            background: linear-gradient(45deg, #2c2c2c, #3d3d3d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b00;
+            font-size: 40px;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background: #2a2a2a;
+            color: #ff6b00;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        
+        .card-content p {
+            color: #aaaaaa;
+            margin-bottom: 20px;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: #ff6b00;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Load More Button */
+        .load-more {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .load-more-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #ff6b00;
+            color: #ff6b00;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .load-more-btn:hover {
+            background: #ff6b00;
+            color: #121212;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #2a2a2a;
+        }
+        
+        footer p {
+            color: #888;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-filters {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Main</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="../index.html#about"><i class="fas fa-user"></i> About</a></li>
+                        <li><a href="../index.html#services"><i class="fas fa-cog"></i> Services</a></li>
+                        <li><a href="../index.html#portfolio"><i class="fas fa-briefcase"></i> Solutions</a></li>
+                        <li><a href="index.html" class="active"><i class="fas fa-blog"></i> Blog</a></li>
+                        <li><a href="../index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>AI Frontier</h1>
+            <p>Exploring the cutting edge of Artificial Intelligence, Large Language Models, and practical machine learning solutions for healthcare, finance, and beyond.</p>
+        </div>
+    </section>
+
+    <!-- Blog Filters -->
+    <div class="container">
+        <div class="blog-filters">
+            <button class="filter-btn active" data-filter="all">All Articles</button>
+            <button class="filter-btn" data-filter="llm">LLMs & NLP</button>
+            <button class="filter-btn" data-filter="agentic">Agentic AI</button>
+            <button class="filter-btn" data-filter="healthcare">Healthcare AI</button>
+            <button class="filter-btn" data-filter="tutorial">Tutorials</button>
+            <button class="filter-btn" data-filter="finance">Finance AI</button>
+        </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <section class="container">
+        <div class="blog-grid">
+            <!-- Blog Post 1 -->
+            <div class="blog-card" data-category="llm">
+                <div class="card-img">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-tags">
+                        <span class="tag">LLMs</span>
+                        <span class="tag">AI</span>
+                    </div>
+                    <h3>Understanding Transformer Architectures</h3>
+                    <p>A deep dive into the architecture that powers modern large language models and their applications in today's AI systems.</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-clock"></i> 12 min read</span>
+                        <span>May 15, 2024</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="blog-card" data-category="healthcare">
+                <div class="card-img">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-tags">
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">AI</span>
+                    </div>
+                    <h3>AI in Medical Diagnosis</h3>
+                    <p>How machine learning is revolutionizing diagnostic medicine and improving patient outcomes through advanced algorithms.</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                        <span>May 10, 2024</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="blog-card" data-category="finance">
+                <div class="card-img">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-tags">
+                        <span class="tag">Finance</span>
+                        <span class="tag">ML</span>
+                    </div>
+                    <h3>Predictive Analytics in Trading</h3>
+                    <p>Exploring how machine learning models are used to predict market trends and inform trading strategies in real-time.</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                        <span>May 5, 2024</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 4 -->
+            <div class="blog-card" data-category="agentic">
+                <div class="card-img">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-tags">
+                        <span class="tag">Agentic AI</span>
+                        <span class="tag">Systems</span>
+                    </div>
+                    <h3>Building Autonomous AI Agents</h3>
+                    <p>Learn how to create AI systems that can make decisions and take actions autonomously in complex environments.</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-clock"></i> 15 min read</span>
+                        <span>April 28, 2024</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 5 -->
+            <div class="blog-card" data-category="tutorial">
+                <div class="card-img">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-tags">
+                        <span class="tag">Tutorial</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    <h3>Fine-Tuning LLMs with Python</h3>
+                    <p>A step-by-step guide to fine-tuning large language models for specific tasks using Python and popular ML frameworks.</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-clock"></i> 20 min read</span>
+                        <span>April 22, 2024</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 6 -->
+            <div class="blog-card" data-category="healthcare">
+                <div class="card-img">
+                    <i class="fas fa-laptop-medical"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-tags">
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                    <h3>NLP for Medical Documentation</h3>
+                    <p>How natural language processing is transforming medical record keeping and clinical documentation processes.</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-clock"></i> 11 min read</span>
+                        <span>April 18, 2024</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more">
+            <button class="load-more-btn">Load More Articles</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Arash Nicoomanesh. Exploring the AI Frontier.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Filter cards
+                    blogCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Load more functionality
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            let visibleCards = 6;
+            const totalCards = blogCards.length;
+            
+            // Initially hide cards beyond the first 6
+            for (let i = visibleCards; i < totalCards; i++) {
+                blogCards[i].style.display = 'none';
+            }
+            
+            loadMoreBtn.addEventListener('click', () => {
+                visibleCards += 3;
+                
+                // Show additional cards
+                for (let i = 0; i < visibleCards && i < totalCards; i++) {
+                    blogCards[i].style.display = 'block';
+                }
+                
+                // Hide button if all cards are visible
+                if (visibleCards >= totalCards) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            });
+            
+            // Animation for cards on scroll
+            const options = {
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            // Observe blog cards
+            document.querySelectorAll('.blog-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
