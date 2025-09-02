@@ -5,15 +5,18 @@
   <title>Case Study – Medical Triage Agent | Arash Nicoomanesh</title>
   <meta name="description" content="Autonomous AI agent for medical triage – full story, architecture, impact.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* === DESIGN TOKENS === */
     :root {
-      --bg: #121212;
-      --fg: #e8e8e8;
+      --bg: #ffffff; /* White background */
+      --fg: #333333; /* Dark text for white background */
       --accent: #ff6b00;
-      --muted: #2a2a2a;
-      --max-width: 780px;
-      --radius: 8px;
+      --accent-light: #ff9d5c;
+      --muted: #f5f5f5; /* Light gray for cards */
+      --card-bg: #f9f9f9;
+      --max-width: 900px;
+      --radius: 12px;
       --font: "Inter", system-ui, sans-serif;
     }
 
@@ -22,7 +25,7 @@
     body {
       margin: 0;
       font-family: var(--font);
-      line-height: 1.65;
+      line-height: 1.7;
       background: var(--bg);
       color: var(--fg);
     }
@@ -33,85 +36,275 @@
       inset: 0;
       z-index: -1;
       background: var(--bg);
+      display: none; /* Hide particles on white background */
     }
 
     header {
       position: fixed;
-      inset: 0 0 auto;
-      padding: .75rem 1rem;
-      background: rgba(18,18,18,.9);
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(255,255,255,.95);
       backdrop-filter: blur(10px);
       z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
+    
+    .header-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
     header a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    
+    header a:hover {
+      opacity: 0.8;
+    }
+    
+    .case-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .case-nav a {
+      color: var(--fg);
+      font-size: 0.9rem;
+    }
+    
+    .case-nav a:hover {
+      color: var(--accent);
     }
 
     main {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: clamp(4.5rem, 6vw + 2rem, 6.5rem) 1rem 2rem;
+      padding: clamp(5rem, 6vw + 2rem, 7rem) 1.5rem 3rem;
     }
 
     /* === TYPOGRAPHY === */
-    h1 { font-size: clamp(1.8rem, 3vw + 1rem, 2.4rem); margin: 0 0 .5rem; }
-    .subtitle { font-size: 1.05rem; color: #bbb; margin: 0 0 2rem; }
-    h2 {
-      font-size: 1.35rem;
-      color: var(--accent);
-      margin: 2.2rem 0 .8rem;
-      font-weight: 600;
+    h1 { 
+      font-size: clamp(2rem, 4vw, 2.8rem); 
+      margin: 0 0 0.5rem; 
+      line-height: 1.2;
+      color: #333333; /* Dark text for white background */
     }
-    p, li { margin: 0 0 .9rem; }
-    ul, ol { padding-left: 1.4rem; }
-    li { margin-bottom: .6rem; }
+    
+    .subtitle { 
+      font-size: 1.2rem; 
+      color: #666; 
+      margin: 0 0 2.5rem;
+      font-weight: 400;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      color: #333333; /* Dark text for white background */
+      margin: 2.5rem 0 1rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    p, li { 
+      margin: 0 0 1.2rem;
+      font-weight: 300;
+      color: #444; /* Slightly lighter than headings */
+    }
+    
+    ul, ol { 
+      padding-left: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li { 
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    ul li::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    strong {
+      color: #222;
+      font-weight: 500;
+    }
+
+    /* === CARDS === */
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .feature-card h3 {
+      margin-top: 0;
+      color: #333333; /* Dark text for white background */
+      font-size: 1.2rem;
+    }
 
     /* === MEDIA === */
     .hero-img {
       width: 100%;
       height: auto;
       border-radius: var(--radius);
-      margin: 1.2rem 0;
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
     }
 
     /* === TECH TAGS === */
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem;
-      margin: 1rem 0 2.5rem;
+      gap: 0.7rem;
+      margin: 2rem 0;
     }
+    
     .tech-tags span {
-      background: var(--muted);
-      color: var(--fg);
-      padding: .4rem .9rem;
-      border-radius: 20px;
-      font-size: .8rem;
+      background: #000000; /* Black background */
+      color: #ffffff; /* White text */
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      border: none;
+      font-weight: 500;
     }
 
     /* === DIVIDER === */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
-      margin: 2.5rem 0;
+      margin: 3rem 0;
     }
 
-    /* === FOOTER === */
-    footer {
-      text-align: center;
-      margin: 3rem 0 1rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    /* === SCENARIO BLOCK === */
+    .scenario-block {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
-    footer a { color: var(--accent); text-decoration: none; }
+    
+    .scenario-block h3 {
+      color: #333333; /* Dark text for white background */
+      margin-top: 0;
+    }
+    
+    .scenario-step {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--accent);
+    }
+    
+    .scenario-step:last-child {
+      margin-bottom: 0;
+    }
+
+    /* === BUTTONS === */
+    .case-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .case-footer a {
+      color: var(--accent); /* Orange text */
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #000000; /* Black background */
+      border-radius: 30px;
+      transition: all 0.2s;
+      border: none;
+    }
+    
+    .case-footer a:hover {
+      background: var(--accent); /* Orange background on hover */
+      color: #000000; /* Black text on hover */
+      transform: translateY(-2px);
+    }
 
     /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .case-nav {
+        justify-content: center;
+      }
+      
+      .case-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .case-footer a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
     @media (max-width: 600px) {
-      main { padding: clamp(3.5rem, 8vw, 5rem) 1rem 1.5rem; }
+      main { 
+        padding: clamp(4rem, 8vw, 5.5rem) 1rem 2rem; 
+      }
+      
+      .tech-tags {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -120,154 +313,163 @@
   <div id="particles-js"></div>
 
   <header>
-    <a href="../index.html"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    <div class="header-container">
+      <a href="../index.html#portfolio"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+      <div class="case-nav">
+        <a href="#challenges">Challenges</a>
+        <a href="#solution">Solution</a>
+        <a href="#results">Results</a>
+        <a href="#tech">Tech</a>
+      </div>
+    </div>
   </header>
 
   <main>
-    <h1>Case Study: An Autonomous AI Agent for Medical Triage</h1>
-    <p class="subtitle">A deep-dive into building a scalable, medically-precise triage system.</p>
+    <h1>Case Study: Medical Triage Agent</h1>
+    <p class="subtitle">Autonomous AI agent for scalable, medically-precise triage system</p>
 
-    <section>
-      <h2>The Problem</h2>
-      <p>
-        Healthcare providers and hospitals constantly face the challenge of managing high volumes of patient inquiries efficiently. Patients often experience long wait times for initial assessment, while clinical staff spend significant time on routine triage tasks. The key business challenge was to develop a scalable, reliable, and medically precise system to automate initial patient triage, provide immediate support, and reduce the burden on human medical professionals, all while ensuring patient safety and trust.
-      </p>
-    </section>
-
-    <section>
-      <h2>My Role</h2>
-      <p>
-        As the Lead AI Engineer and Architect, I was responsible for the end-to-end lifecycle of this project, from conception to deployment. My responsibilities included:
-      </p>
-      <ul>
-        <li>Designing the core system architecture.</li>
-        <li>Selecting and engineering the Large Language Models (LLMs) for clinical reasoning.</li>
-        <li>Orchestrating the autonomous agent's logic and conversational flow.</li>
-        <li>Ensuring clinical accuracy through integration with medical ontologies.</li>
-        <li>Developing and implementing the scalable deployment strategy on the cloud.</li>
-      </ul>
-    </section>
-
-    <div class="divider"></div>
-
-    <section>
-      <h2>Agent Architecture & Functionality</h2>
-      <p>
-        The agent was engineered to mimic a clinician’s stepwise reasoning process. Below is a concise walk-through of how it supports <strong>triage</strong>, <strong>diagnosis</strong>, and <strong>treatment planning</strong>.
-      </p>
-
-      <ol>
-        <li>
-          <strong>Symptom Intake & Triage</strong><br/>
-          <ul>
-            <li>Dialogflow CX initiates a structured, multi-turn conversation to collect symptoms, vitals, and history.</li>
-            <li>Healthcare Natural Language AI maps every free-text symptom or drug to SNOMED-CT / ICD-10 codes for precision and interoperability.</li>
-            <li>Gemini 1.5 Pro (via Vertex AI Model Garden) applies chain-of-thought prompting to rank urgency, retrieving triage guidelines from the knowledge base in real time.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Diagnosis Support</strong><br/>
-          <ul>
-            <li>Med-PaLM 2 augments Gemini 1.5 Pro with specialized medical knowledge, generating differential diagnoses ranked by probability.</li>
-            <li>The drug-knowledge-graph API automatically screens for medication conflicts based on the patient’s current prescriptions.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Treatment Planning</strong><br/>
-          <ul>
-            <li>Vertex AI Agent Builder orchestrates guideline retrieval, conflict detection, and treatment suggestions in a single cohesive flow.</li>
-            <li>Recommendations are evidence-based, personalised to the patient’s profile, and presented for clinician review.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Scalability & Safety</strong><br/>
-          <ul>
-            <li>GPU-accelerated A2 VMs inside Google Kubernetes Engine handle inference bursts (tested to 1 000+ RPM).</li>
-            <li>Cloud Run manages stateless intake components; Cloud Load Balancer provides seamless autoscaling and zero-downtime roll-outs.</li>
-          </ul>
-        </li>
-      </ol>
-    </section>
-
-    <img class="hero-img" src="triage-arch.png" alt="Medical Triage Agent Architecture"
-     style="max-width: 400px; width: 100%; margin: 0 auto; display: block;">
-    <div class="divider"></div>
-
-    <section>
-      <h2>Clinical Scenario Snapshot</h2>
-      <p>
-        A patient reports “sharp chest pain, shortness of breath on exertion, and fatigue for five days”.  
-      </p>
-      <ol>
-        <li>The agent asks clarifying questions (onset, radiation, medication history).</li>
-        <li>It maps symptoms to SNOMED codes and flags a potential Lisinopril-induced cough.</li>
-        <li>Chain-of-thought reasoning ranks “acute coronary syndrome” highest and retrieves the latest ACC/AHA guideline.</li>
-        <li>Treatment plan: immediate ECG & troponin order, discontinuation of Lisinopril pending physician approval, and cardiology referral.</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Results & Impact</h2>
-      <ul>
-        <li><strong>Operational Efficiency:</strong> Reduced average triage time from 12 min to 7 min (42 % faster).</li>
-        <li><strong>Enhanced Accuracy:</strong> 96 % concordance with senior clinician triage decisions on a 5 k-case test set.</li>
-        <li><strong>High Scalability:</strong> Sustains 1 100 concurrent user sessions at < 1.2 s median latency.</li>
-        <li><strong>Clinical Interoperability:</strong> 100 % of outputs delivered in SNOMED-CT / ICD-10 for seamless EHR ingestion.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Tech Stack</h2>
-      <div class="tech-tags">
-        <span>Gemini 1.5 Pro</span><span>Med-PaLM 2</span><span>Vertex AI</span>
-        <span>Dialogflow CX</span><span>GKE</span><span>Cloud Run</span>
-        <span>SNOMED-CT</span><span>ICD-10</span>
+    <section id="challenges">
+      <h2>Challenges</h2>
+      <p>Healthcare providers and hospitals constantly face the challenge of managing high volumes of patient inquiries efficiently. Patients often experience long wait times for initial assessment, while clinical staff spend significant time on routine triage tasks.</p>
+      
+      <div class="feature-card">
+        <h3>Key Challenges</h3>
+        <ul>
+          <li><strong>High Volume:</strong> Managing large numbers of patient inquiries with limited staff</li>
+          <li><strong>Accuracy Requirements:</strong> Ensuring medically precise assessments with zero tolerance for errors</li>
+          <li><strong>Scalability:</strong> Creating a solution that could handle fluctuating demand</li>
+          <li><strong>Integration:</strong> Connecting with existing healthcare systems and EHR standards</li>
+        </ul>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <footer>
+    <section id="solution">
+      <h2>Solution & Architecture</h2>
+      <p>The agent was engineered to mimic a clinician's stepwise reasoning process, combining multiple AI technologies for comprehensive patient assessment.</p>
+      
+      <img class="hero-img" src="triage-arch.png" alt="Medical Triage Agent Architecture">
+      <p class="img-caption">Architecture diagram showing the multi-component medical triage system</p>
+
+      <div class="feature-card">
+        <h3>Key Components</h3>
+        <ol class="solution-list">
+          <li>
+            <strong>Symptom Intake & Triage</strong>
+            <p>Dialogflow CX initiates structured, multi-turn conversations to collect symptoms, vitals, and history. Healthcare Natural Language AI maps free-text symptoms to SNOMED-CT / ICD-10 codes for precision.</p>
+          </li>
+          <li>
+            <strong>Diagnosis Support</strong>
+            <p>Gemini 1.5 Pro applies chain-of-thought prompting to rank urgency, while Med-PaLM 2 augments with specialized medical knowledge for differential diagnoses.</p>
+          </li>
+          <li>
+            <strong>Treatment Planning</strong>
+            <p>Vertex AI Agent Builder orchestrates guideline retrieval, conflict detection, and treatment suggestions in a cohesive flow with evidence-based recommendations.</p>
+          </li>
+          <li>
+            <strong>Scalability & Safety</strong>
+            <p>GPU-accelerated A2 VMs on Google Kubernetes Engine handle inference bursts, while Cloud Run manages stateless components with zero-downtime deployments.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>Implementation Highlights</h2>
+      
+      <div class="feature-card">
+        <h3>Multi-Model Reasoning</h3>
+        <p>Combined Gemini 1.5 Pro's reasoning capabilities with Med-PaLM 2's medical expertise for clinically sound assessments, with chain-of-thought prompting for transparent decision-making.</p>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Real-Time Medical Coding</h3>
+        <p>Automated mapping of free-text symptoms to standardized SNOMED-CT and ICD-10 codes, ensuring interoperability with existing healthcare systems and EHR platforms.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Clinical Scenario</h2>
+      
+      <div class="scenario-block">
+        <h3>Real-World Use Case: Chest Pain Assessment</h3>
+        
+        <div class="scenario-step">
+          <strong>Patient Presentation:</strong>
+          <p>"Sharp chest pain, shortness of breath on exertion, and fatigue for five days"</p>
+        </div>
+        
+        <div class="scenario-step">
+          <strong>Agent Assessment:</strong>
+          <p>The agent asks clarifying questions about onset, radiation, and medication history, then maps symptoms to SNOMED codes</p>
+        </div>
+        
+        <div class="scenario-step">
+          <strong>Clinical Reasoning:</strong>
+          <p>Chain-of-thought reasoning ranks "acute coronary syndrome" highest and retrieves latest ACC/AHA guidelines</p>
+        </div>
+        
+        <div class="scenario-step">
+          <strong>Outcome:</strong>
+          <p>Treatment plan includes immediate ECG & troponin order, discontinuation of Lisinopril pending physician approval, and cardiology referral</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results & Impact</h2>
+      
+      <div class="feature-card">
+        <h3>Quantitative Results</h3>
+        <ul>
+          <li><strong>42% Faster Triage:</strong> Reduced average triage time from 12 minutes to 7 minutes</li>
+          <li><strong>96% Accuracy:</strong> Concordance with senior clinician decisions on 5,000-case test set</li>
+          <li><strong>High Scalability:</strong> Sustains 1,100 concurrent user sessions with &lt;1.2s median latency</li>
+          <li><strong>Full Interoperability:</strong> 100% of outputs delivered in SNOMED-CT/ICD-10 for EHR ingestion</li>
+        </ul>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Qualitative Benefits</h3>
+        <ul>
+          <li><strong>Reduced Burden:</strong> Significantly decreased workload for clinical staff</li>
+          <li><strong>Improved Access:</strong> 24/7 availability for initial patient assessments</li>
+          <li><strong>Enhanced Consistency:</strong> Standardized triage process across all patients</li>
+          <li><strong>Better Documentation:</strong> Automated medical coding and record keeping</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tech">
+      <h2>Technology Stack</h2>
+      <div class="tech-tags">
+        <span>Gemini 1.5 Pro</span>
+        <span>Med-PaLM 2</span>
+        <span>Vertex AI</span>
+        <span>Dialogflow CX</span>
+        <span>Google Kubernetes Engine</span>
+        <span>Cloud Run</span>
+        <span>SNOMED-CT</span>
+        <span>ICD-10</span>
+        <span>Healthcare NLP API</span>
+        <span>Python</span>
+        <span>TensorFlow</span>
+      </div>
+    </section>
+
+    <div class="case-footer">
       <a href="https://github.com/aragit/medical-triage" target="_blank">
         <i class="fab fa-github"></i> View Sample Code
       </a>
-      <a href="../index.html#portfolio">Back to Portfolio</a>
-    </footer>
+      <a href="../index.html#contact">
+        <i class="fas fa-envelope"></i> Discuss Similar Project
+      </a>
+    </div>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
   <script>
-    tsParticles.load({
-      id: "particles-js",
-      options: {
-        background: { color: "#121212" },
-        particles: {
-          number: { value: 60, density: { enable: true, value_area: 800 } },
-          color: { value: ["#ff6b00", "#4dabf7"] },
-          shape: { type: "circle" },
-          size: { value: 3, random: true },
-          opacity: { value: 0.6, random: true },
-          links: {
-            enable: true,
-            distance: 150,
-            color: "#ffffff",
-            opacity: 0.2,
-            width: 1
-          },
-          move: { enable: true, speed: 1, out_modes: "out" }
-        },
-        interactivity: {
-          events: {
-            onhover: { enable: true, mode: "grab" },
-            onclick:  { enable: true, mode: "push" }
-          }
-        },
-        retina_detect: true
-      }
-    });
+    // No particles needed for white background
   </script>
 </body>
 </html>
