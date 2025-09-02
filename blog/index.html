@@ -26,69 +26,56 @@
             padding: 0 20px;
         }
         
-        /* Header Styles */
+        /* Updated Header Styles - Simplified */
         header {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #2a2a2a;
-            position: fixed;
-            width: 100%;
+            background: #000000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
+            width: 100%;
         }
         
-        .header-inner {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            gap: 12px;
         }
         
         .logo {
-            font-size: 28px;
-            color: #fff;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        nav a {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        nav a:hover, nav a.active {
-            color: #fff;
+        .logo i {
+            color: #ff6b00;
         }
         
         .back-to-main {
-            background: #ff6b00;
-            color: #121212;
-            padding: 8px 16px;
-            border-radius: 30px;
-            text-decoration: none;
+            background: transparent;
+            color: #cbd6df;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 18px;
+            border-radius: 40px;
             font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
+            text-decoration: none;
+            display: inline-flex;
             gap: 8px;
+            align-items: center;
+            transition: all 0.3s;
+            font-size: 0.95rem;
         }
         
         .back-to-main:hover {
-            background: #ff8c00;
-            transform: translateY(-2px);
+            border-color: #ff6b00;
+            color: #ff6b00;
         }
         
         /* Blog Hero Section */
@@ -268,10 +255,6 @@
                 font-size: 2.5rem;
             }
             
-            nav ul {
-                gap: 15px;
-            }
-            
             .blog-grid {
                 grid-template-columns: 1fr;
             }
@@ -285,32 +268,26 @@
                 font-size: 0.9rem;
             }
             
-            .header-inner {
+            .header-content {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Updated Header -->
     <header>
         <div class="container">
-            <div class="header-inner">
+            <div class="header-content">
                 <a href="../index.html" class="logo">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Back to Main</span>
+                    <i class="fas fa-blog"></i>
+                    Arash Nicoomanesh Blog
                 </a>
-                <nav>
-                    <ul>
-                        <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="../index.html#about"><i class="fas fa-user"></i> About</a></li>
-                        <li><a href="../index.html#services"><i class="fas fa-cog"></i> Services</a></li>
-                        <li><a href="../index.html#portfolio"><i class="fas fa-briefcase"></i> Solutions</a></li>
-                        <li><a href="index.html" class="active"><i class="fas fa-blog"></i> Blog</a></li>
-                        <li><a href="../index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </nav>
+                <a href="../index.html" class="back-to-main">
+                    <i class="fas fa-arrow-left"></i> Back to main
+                </a>
             </div>
         </div>
     </header>
@@ -388,8 +365,8 @@
                         <span class="tag">Finance</span>
                         <span class="tag">ML</span>
                     </div>
-                    <h3>Predictive Analytics in Trading</h3>
-                    <p>Exploring how machine learning models are used to predict market trends and inform trading strategies in real-time.</p>
+                    <h3>Predictive Analytics in Marketing</h3>
+                    <p>Exploring how machine learning models are used to predict market trends and inform marketing strategies in real-time.</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 10 min read</span>
                         <span>May 5, 2024</span>
@@ -408,7 +385,7 @@
                         <span class="tag">Agentic AI</span>
                         <span class="tag">Systems</span>
                     </div>
-                    <h3>Building Autonomous AI Agents</h3>
+                    <h3>Building Autonomous AI Agents with CrewAI</h3>
                     <p>Learn how to create AI systems that can make decisions and take actions autonomously in complex environments.</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 15 min read</span>
@@ -428,8 +405,8 @@
                         <span class="tag">Tutorial</span>
                         <span class="tag">Python</span>
                     </div>
-                    <h3>Fine-Tuning LLMs with Python</h3>
-                    <p>A step-by-step guide to fine-tuning large language models for specific tasks using Python and popular ML frameworks.</p>
+                    <h3>Efficient LLMs in 2025</h3>
+                    <p>Exploring techniques and frameworks to enhance the efficiency of LLMs</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 20 min read</span>
                         <span>April 22, 2024</span>
@@ -448,8 +425,8 @@
                         <span class="tag">Healthcare</span>
                         <span class="tag">NLP</span>
                     </div>
-                    <h3>NLP for Medical Documentation</h3>
-                    <p>How natural language processing is transforming medical record keeping and clinical documentation processes.</p>
+                    <h3>Game Theory for AI: Strategy, Cooperation, and the Collective Good</h3>
+                    <p>From Nash Equilibrium to Agentic AI</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 11 min read</span>
                         <span>April 18, 2024</span>
