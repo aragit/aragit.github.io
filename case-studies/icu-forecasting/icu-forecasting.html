@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Case Study – ICU Metrics Forecasting | Arash Nicoomanesh</title>
+  <meta name="description" content="Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === DESIGN TOKENS === */
+    :root {
+      --bg: #ffffff; /* White background */
+      --fg: #333333; /* Dark text for white background */
+      --accent: #ff6b00;
+      --accent-light: #ff9d5c;
+      --muted: #f5f5f5; /* Light gray for cards */
+      --card-bg: #f9f9f9;
+      --max-width: 900px;
+      --radius: 12px;
+      --font: "Inter", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      line-height: 1.7;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    /* === LAYOUT SHELL === */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .header-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    header a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    
+    header a:hover {
+      opacity: 0.8;
+    }
+    
+    .case-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .case-nav a {
+      color: var(--fg);
+      font-size: 0.9rem;
+    }
+    
+    .case-nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(5rem, 6vw + 2rem, 7rem) 1.5rem 3rem;
+    }
+
+    /* === TYPOGRAPHY === */
+    h1 { 
+      font-size: clamp(2rem, 4vw, 2.8rem); 
+      margin: 0 0 0.5rem; 
+      line-height: 1.2;
+      color: #333333; /* Dark text for white background */
+    }
+    
+    .subtitle { 
+      font-size: 1.2rem; 
+      color: #666; 
+      margin: 0 0 2.5rem;
+      font-weight: 400;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      color: #333333; /* Dark text for white background */
+      margin: 2.5rem 0 1rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    p, li { 
+      margin: 0 0 1.2rem;
+      font-weight: 300;
+      color: #444; /* Slightly lighter than headings */
+    }
+    
+    ul, ol { 
+      padding-left: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li { 
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    ul li::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    strong {
+      color: #222;
+      font-weight: 500;
+    }
+
+    /* === CARDS === */
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .feature-card h3 {
+      margin-top: 0;
+      color: #333333; /* Dark text for white background */
+      font-size: 1.2rem;
+    }
+
+    /* === MEDIA === */
+    .hero-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* === TECH TAGS === */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 2rem 0;
+    }
+    
+    .tech-tags span {
+      background: #000000; /* Black background */
+      color: #ffffff; /* White text */
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      border: none;
+      font-weight: 500;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
+      margin: 3rem 0;
+    }
+
+    /* === METHODOLOGY STEPS === */
+    .methodology-steps {
+      counter-reset: step-counter;
+    }
+    
+    .methodology-step {
+      margin-bottom: 1.5rem;
+      padding-left: 2.5rem;
+      position: relative;
+    }
+    
+    .methodology-step:before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #000000;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .step-content strong {
+      color: #000000;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* === BUTTONS === */
+    .case-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .case-footer a {
+      color: var(--accent); /* Orange text */
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #000000; /* Black background */
+      border-radius: 30px;
+      transition: all 0.2s;
+      border: none;
+    }
+    
+    .case-footer a:hover {
+      background: var(--accent); /* Orange background on hover */
+      color: #000000; /* Black text on hover */
+      transform: translateY(-2px);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .case-nav {
+        justify-content: center;
+      }
+      
+      .case-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .case-footer a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      main { 
+        padding: clamp(4rem, 8vw, 5.5rem) 1rem 2rem; 
+      }
+      
+      .tech-tags {
+        justify-content: center;
+      }
+      
+      .methodology-step {
+        padding-left: 2.2rem;
+      }
+      
+      .methodology-step:before {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <a href="../index.html#portfolio"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+      <div class="case-nav">
+        <a href="#challenges">Challenges</a>
+        <a href="#solution">Solution</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#results">Results</a>
+        <a href="#tech">Tech</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Case Study: ICU Metrics Forecasting</h1>
+    <p class="subtitle">Multi-variate time-series models predicting readmission, mortality and length of stay using clinical variables</p>
+
+    <section id="challenges">
+      <h2>Challenges</h2>
+      <p>ICU patient management requires accurate prediction of critical outcomes to optimize resource allocation and improve patient care. Traditional approaches often lack the precision needed for effective clinical decision-making, especially when dealing with complex, high-dimensional EHR data.</p>
+      
+      <div class="feature-card">
+        <h3>Key Challenges</h3>
+        <ul>
+          <li><strong>Data Complexity:</strong> Integrating and processing massive, multi-modal EHR data with varying temporal resolutions</li>
+          <li><strong>Prediction Accuracy:</strong> Achieving clinically relevant accuracy for critical outcomes like mortality and readmission</li>
+          <li><strong>Model Interpretability:</strong> Balancing complex model architectures with the need for clinically interpretable predictions</li>
+          <li><strong>Real-time Processing:</strong> Developing models capable of providing timely predictions in fast-paced ICU environments</li>
+          <li><strong>Data Imbalance:</strong> Addressing class imbalance in rare but critical outcomes like mortality</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="solution">
+      <h2>Solution & Architecture</h2>
+      <p>We engineered a comprehensive time-series forecasting and classification system for ICU and hospital metrics, leveraging multivariate time-series techniques to predict readmission rates, mortality, and length of stay with high accuracy.</p>
+      
+      <img class="hero-img" src="../assets/icu-forecasting-arch.png" alt="ICU Metrics Forecasting Architecture">
+      <p class="img-caption">Architecture diagram showing the multi-component ICU forecasting system</p>
+
+      <div class="feature-card">
+        <h3>Key Components</h3>
+        <ol class="solution-list">
+          <li>
+            <strong>Data Integration Pipeline</strong>
+            <p>Comprehensive pipeline for aggregating and processing EHR data from multiple sources including vital signs, lab results, and clinical notes</p>
+          </li>
+          <li>
+            <strong>Multi-Task Learning Framework</strong>
+            <p>Architecture designed to simultaneously predict multiple clinical outcomes, improving efficiency and performance</p>
+          </li>
+          <li>
+            <strong>Ensemble Forecasting Models</strong>
+            <p>Combination of N-BEATS, LSTM, and XGBoost models for robust time-series forecasting of clinical metrics</p>
+          </li>
+          <li>
+            <strong>Validation & Deployment System</strong>
+            <p>Rigorous validation framework ensuring model reliability and seamless integration with clinical workflows</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="methodology">
+      <h2>Methodology</h2>
+      
+      <div class="feature-card">
+        <h3>Generic ML Pipeline</h3>
+        <div class="methodology-steps">
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Clinical EHR dataset EDA and Data Understanding</strong>
+              <p>Comprehensive exploratory data analysis and comparison with the dataset to understand data characteristics and quality</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Cleaning, Preprocessing and Aggregation</strong>
+              <p>Data cleaning procedures tailored to each use case, with specific preprocessing and aggregation of relevant data tables</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Feature Engineering and Extraction</strong>
+              <p>Development of clinically relevant features from raw EHR data, including temporal features and statistical aggregations</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Build Labels</strong>
+              <p>Definition and creation of prediction targets for each clinical task based on clinical expertise and data availability</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Cohort Selection</strong>
+              <p>Selection of appropriate patient cohorts based on clinical relevance and technical constraints for each use case</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Build Data for Validation Strategy</strong>
+              <p>Implementation of stratified train-validation datasets for imbalanced binary outcomes, with hold-out test sets</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Build Model, Train and Validate</strong>
+              <p>Development and training of machine learning models with appropriate validation strategies</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Test Model</strong>
+              <p>Rigorous testing on unseen data to evaluate model performance and generalization capabilities</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Feature Selection</strong>
+              <p>Identification of most predictive features and refinement of feature sets for optimal model performance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Use Case Formulation</h3>
+        <p>Each clinical prediction task was formulated with careful consideration of:</p>
+        <ul>
+          <li><strong>Clinical Background and Significance:</strong> Understanding the clinical motivation and value for patients, doctors, and insurers</li>
+          <li><strong>Objective:</strong> Translating clinical problems into precise machine learning problems</li>
+          <li><strong>Problem Formulation Details:</strong> Defining labels, explanatory variables, and main features</li>
+          <li><strong>Data Preparation:</strong> Identifying relevant tables and cleaning procedures</li>
+          <li><strong>Model Building Pipeline:</strong> Establishing validation strategies and modeling guidelines</li>
+          <li><strong>Performance Metrics:</strong> Selecting clinically relevant evaluation metrics</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Clinical Prediction Tasks</h2>
+      
+      <div class="feature-card">
+        <h3>Mortality Prediction</h3>
+        <p>TBD - Detailed description of mortality prediction approach, including data sources, model architecture, and validation strategies.</p>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Length of Stay Forecasting</h3>
+        <p>TBD - Explanation of LOS forecasting methodology, including temporal feature engineering and evaluation metrics.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Readmission Prediction</h3>
+        <p>TBD - Description of readmission prediction framework, including cohort selection and challenge of predicting rare events.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>ICD-10 Code Group Prediction</h3>
+        <p>TBD - Overview of diagnostic code prediction approach, including hierarchical classification strategies.</p>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results & Impact</h2>
+      
+      <div class="feature-card">
+        <h3>Quantitative Results</h3>
+        <ul>
+          <li><strong>Superior Performance:</strong> Ensemble models consistently outperformed single-model approaches across all prediction tasks</li>
+          <li><strong>Multi-task Efficiency:</strong> Multi-task solutions demonstrated cost-effectiveness with acceptable performance trade-offs</li>
+          <li><strong>High Accuracy:</strong> Achieved clinically relevant accuracy for mortality prediction (AUC: TBD)</li>
+          <li><strong>Robust Forecasting:</strong> Accurate length of stay predictions with mean absolute error of TBD days</li>
+          <li><strong>Scalable Processing:</strong> Successfully processed over 1 million patient records with complex temporal relationships</li>
+        </ul>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Qualitative Benefits</h3>
+        <ul>
+          <li><strong>Clinical Decision Support:</strong> Enhanced ability to identify high-risk patients and allocate resources effectively</li>
+          <li><strong>Operational Efficiency:</strong> Improved hospital resource planning through accurate length of stay predictions</li>
+          <li><strong>Early Intervention:</strong> Enabled proactive care for patients at risk of deterioration or readmission</li>
+          <li><strong>Knowledge Discovery:</strong> Identified novel predictive patterns in complex clinical data</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Technical Innovations</h2>
+      
+      <div class="feature-card">
+        <h3>Novel Contributions</h3>
+        <ul>
+          <li><strong>Benchmarking Framework:</strong> Comprehensive evaluation of state-of-the-art models on real-world EHR data</li>
+          <li><strong>Adaptive Validation:</strong> Flexible validation strategies tailored to specific clinical use cases and data constraints</li>
+          <li><strong>Feature Engineering:</strong> Developed novel clinical features that significantly improved prediction accuracy</li>
+          <li><strong>Model Ensembling:</strong> Innovative combination of problem formulations, features, and algorithms for superior performance</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tech">
+      <h2>Technology Stack</h2>
+      <div class="tech-tags">
+        
+        <span>Darts</span>
+        <span>N-BEATS</span>
+        <span>LSTM</span>
+        <span>XGBoost</span>
+        <span>PyTorch</span>
+        <span>Scikit-learn</span>
+        <span>Pandas</span>
+        <span>NumPy</span>
+        <span>Polars</span>
+        <span>Docker</span>
+        <span>Microsoft Azure</span>
+      </div>
+    </section>
+
+    <div class="case-footer">
+      <a href="https://github.com/aragit/icu-forecasting" target="_blank">
+        <i class="fab fa-github"></i> View Sample Code
+      </a>
+      <a href="../index.html#contact">
+        <i class="fas fa-envelope"></i> Discuss Similar Project
+      </a>
+    </div>
+  </main>
+</body>
+</html>

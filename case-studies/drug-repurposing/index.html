@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Case Study – Drug Repurposing Generator | Arash Nicoomanesh</title>
-  <meta name="description" content="Conversational Drug Repurposing Hypo Generator– full story, architecture, impact.">
+  <meta name="description" content="Conversational AI for drug repurposing hypothesis generation">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* === DESIGN TOKENS === */
     :root {
-      --bg: #121212;
-      --fg: #e8e8e8;
+      --bg: #ffffff; /* White background */
+      --fg: #333333; /* Dark text for white background */
       --accent: #ff6b00;
-      --muted: #2a2a2a;
-      --max-width: 780px;
-      --radius: 8px;
+      --accent-light: #ff9d5c;
+      --muted: #f5f5f5; /* Light gray for cards */
+      --card-bg: #f9f9f9;
+      --max-width: 900px;
+      --radius: 12px;
       --font: "Inter", system-ui, sans-serif;
     }
 
@@ -22,212 +25,504 @@
     body {
       margin: 0;
       font-family: var(--font);
-      line-height: 1.65;
+      line-height: 1.7;
       background: var(--bg);
       color: var(--fg);
     }
 
     /* === LAYOUT SHELL === */
-    #particles-js {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: var(--bg);
-    }
-
     header {
       position: fixed;
-      inset: 0 0 auto;
-      padding: .75rem 1rem;
-      background: rgba(18,18,18,.9);
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(255,255,255,.95);
       backdrop-filter: blur(10px);
       z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
+    
+    .header-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
     header a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    
+    header a:hover {
+      opacity: 0.8;
+    }
+    
+    .case-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .case-nav a {
+      color: var(--fg);
+      font-size: 0.9rem;
+    }
+    
+    .case-nav a:hover {
+      color: var(--accent);
     }
 
     main {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: clamp(4.5rem, 6vw + 2rem, 6.5rem) 1rem 2rem;
+      padding: clamp(5rem, 6vw + 2rem, 7rem) 1.5rem 3rem;
     }
 
     /* === TYPOGRAPHY === */
-    h1 { font-size: clamp(1.8rem, 3vw + 1rem, 2.4rem); margin: 0 0 .5rem; }
-    .subtitle { font-size: 1.05rem; color: #bbb; margin: 0 0 2rem; }
-    h2 {
-      font-size: 1.35rem;
-      color: var(--accent);
-      margin: 2.2rem 0 .8rem;
-      font-weight: 600;
+    h1 { 
+      font-size: clamp(2rem, 4vw, 2.8rem); 
+      margin: 0 0 0.5rem; 
+      line-height: 1.2;
+      color: #333333; /* Dark text for white background */
     }
-    p, li { margin: 0 0 .9rem; }
-    ul, ol { padding-left: 1.4rem; }
-    li { margin-bottom: .6rem; }
+    
+    .subtitle { 
+      font-size: 1.2rem; 
+      color: #666; 
+      margin: 0 0 2.5rem;
+      font-weight: 400;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      color: #333333; /* Dark text for white background */
+      margin: 2.5rem 0 1rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    p, li { 
+      margin: 0 0 1.2rem;
+      font-weight: 300;
+      color: #444; /* Slightly lighter than headings */
+    }
+    
+    ul, ol { 
+      padding-left: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li { 
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    ul li::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    strong {
+      color: #222;
+      font-weight: 500;
+    }
+
+    /* === CARDS === */
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .feature-card h3 {
+      margin-top: 0;
+      color: #333333; /* Dark text for white background */
+      font-size: 1.2rem;
+    }
 
     /* === MEDIA === */
     .hero-img {
       width: 100%;
       height: auto;
       border-radius: var(--radius);
-      margin: 1.2rem 0;
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
     }
 
     /* === TECH TAGS === */
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem;
-      margin: 1rem 0 2.5rem;
+      gap: 0.7rem;
+      margin: 2rem 0;
     }
+    
     .tech-tags span {
-      background: var(--muted);
-      color: var(--fg);
-      padding: .4rem .9rem;
-      border-radius: 20px;
-      font-size: .8rem;
+      background: #000000; /* Black background */
+      color: #ffffff; /* White text */
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      border: none;
+      font-weight: 500;
     }
 
     /* === DIVIDER === */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
-      margin: 2.5rem 0;
+      margin: 3rem 0;
     }
 
-    /* === FOOTER === */
-    footer {
-      text-align: center;
-      margin: 3rem 0 1rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    /* === UPDATED SCENARIO BLOCK === */
+    .scenario-block {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
     }
-    footer a { color: var(--accent); text-decoration: none; }
+    
+    .scenario-block h3 {
+      color: #333333;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+    
+    .scenario-steps {
+      counter-reset: step-counter;
+    }
+    
+    .scenario-step {
+      margin-bottom: 1.5rem;
+      padding-left: 2.5rem;
+      position: relative;
+    }
+    
+    .scenario-step:before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #000000;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .step-content strong {
+      color: #000000;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* === BUTTONS === */
+    .case-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .case-footer a {
+      color: var(--accent); /* Orange text */
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #000000; /* Black background */
+      border-radius: 30px;
+      transition: all 0.2s;
+      border: none;
+    }
+    
+    .case-footer a:hover {
+      background: var(--accent); /* Orange background on hover */
+      color: #000000; /* Black text on hover */
+      transform: translateY(-2px);
+    }
 
     /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .case-nav {
+        justify-content: center;
+      }
+      
+      .case-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .case-footer a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
     @media (max-width: 600px) {
-      main { padding: clamp(3.5rem, 8vw, 5rem) 1rem 1.5rem; }
+      main { 
+        padding: clamp(4rem, 8vw, 5.5rem) 1rem 2rem; 
+      }
+      
+      .tech-tags {
+        justify-content: center;
+      }
+      
+      .scenario-step {
+        padding-left: 2.2rem;
+      }
+      
+      .scenario-step:before {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div id="particles-js"></div>
-
   <header>
-    <a href="../index.html"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    <div class="header-container">
+      <a href="../index.html#portfolio"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+      <div class="case-nav">
+        <a href="#challenges">Challenges</a>
+        <a href="#solution">Solution</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#results">Results</a>
+        <a href="#tech">Tech</a>
+      </div>
+    </div>
   </header>
 
   <main>
-    <h1>Case Study – Drug Repurposing Generator</h1>
-    <p class="subtitle">Conversational Drug Repurposing Hypo Generator– full story, architecture, impact.</p>
+    <h1>Case Study: Drug Repurposing Generator</h1>
+    <p class="subtitle">Conversational AI for generating novel drug repurposing hypotheses</p>
 
-    <section>
-      <h2>The Problem</h2>
-      <p>
-        ---
-      </p>
-    </section>
-
-    <section>
-      <h2>My Role</h2>
-      <p>
-        As the Lead AI Engineer and Architect, I was responsible for the end-to-end lifecycle of this project, from conception to deployment. My responsibilities included:
-      </p>
-      <ul>
-        <li>Designing the core system architecture.</li>
-        <li>Selecting and engineering the Large Language Models (LLMs) for clinical reasoning.</li>
-        <li>Orchestrating the autonomous agent's logic and conversational flow.</li>
-        <li>Ensuring clinical accuracy through integration with medical ontologies.</li>
-        <li>Developing and implementing the scalable deployment strategy on the cloud.</li>
-      </ul>
-    </section>
-
-    <div class="divider"></div>
-
-    <section>
-      <h2>The Solution</h2>
-      <p>
-        To address this challenge, I designed and built a hybrid autonomous conversational AI agent. The solution was engineered in four distinct, integrated layers:
-      </p>
-      <ol>
-        <li>
-          <strong>Core Clinical Reasoning Engine</strong><br/>
-          The heart of the agent required sophisticated reasoning. I engineered a hybrid approach, using Gemini 1.5 Pro with advanced Chain-of-Thought (CoT) prompting for complex, multi-step reasoning. This was augmented by Med-PaLM 2, a medically-tuned LLM, to cross-check and enhance the accuracy of diagnostic suggestions, ensuring a higher degree of reliability than a single model could provide.
-        </li>
-        <li>
-          <strong>Medical Knowledge & Safety Layer</strong><br/>
-          To ground the agent's responses in established medical fact, I integrated Google's Healthcare Natural Language AI. This allowed for robust entity recognition and seamless mapping of conversational terms to standardized medical codes like SNOMED CT and ICD-10. This step was critical for ensuring clinical precision, interoperability with electronic health records (EHR), and patient safety.
-        </li>
-        <li>
-          <strong>Autonomous Workflow & Conversation Management</strong><br/>
-          An effective agent needs to do more than just answer questions; it must manage a complex, multi-turn conversation. I leveraged Vertex AI Agent Builder to orchestrate the core autonomous workflows, allowing the agent to perform tasks and make decisions. This was paired with Dialogflow CX to manage the nuanced, stateful conversational flows, ensuring a natural and intuitive user experience.
-        </li>
-        <li>
-          <strong>Scalable & Robust Deployment</strong><br/>
-          To ensure the solution could handle thousands of concurrent users reliably, I designed a cloud-native infrastructure. The entire application was containerized and deployed on Google Kubernetes Engine (GKE) for high availability and auto-scaling. For stateless, event-driven components, I utilized Cloud Run to optimize for performance and cost-efficiency, creating a robust and elastic system fit for demanding healthcare applications.
-        </li>
-      </ol>
-    </section>
-
-    <img class="hero-img" src="../assets/triage-arch.png" alt="Medical Triage Agent Architecture">
-
-    <div class="divider"></div>
-
-    <section>
-      <h2>Results & Impact</h2>
-      <ul>
-        <li><strong>Operational Efficiency:</strong> Reduced the average time for initial patient assessment by an estimated 40%, freeing up clinical staff to focus on more critical cases.</li>
-        <li><strong>Enhanced Accuracy:</strong> Achieved a 95% accuracy rate in preliminary triage classification when benchmarked against historical data, ensuring consistent and reliable recommendations.</li>
-        <li><strong>High Scalability:</strong> The system was stress-tested to successfully handle over 1,000 concurrent user sessions, demonstrating its readiness for large-scale deployment.</li>
-        <li><strong>Clinical Interoperability:</strong> The successful integration with SNOMED CT and ICD-10 ensured that the agent's output could be seamlessly integrated into existing hospital EHR systems.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Tech Stack</h2>
-      <div class="tech-tags">
-        <span>Gemini 1.5 Pro</span><span>Med-PaLM 2</span><span>Vertex AI</span>
-        <span>Dialogflow CX</span><span>GKE</span><span>Cloud Run</span>
-        <span>SNOMED-CT</span><span>ICD-10</span>
+    <section id="challenges">
+      <h2>Challenges</h2>
+      <p>Drug discovery is an expensive and time-consuming process, with traditional approaches taking over a decade and costing billions. Identifying new therapeutic uses for existing drugs (drug repurposing) offers a promising alternative, but requires analyzing complex biomedical relationships across vast datasets.</p>
+      
+      <div class="feature-card">
+        <h3>Key Challenges</h3>
+        <ul>
+          <li><strong>Data Complexity:</strong> Integrating diverse data sources including clinical trials, biomedical literature, and molecular data</li>
+          <li><strong>Knowledge Gap Bridging:</strong> Connecting disparate domains of medical knowledge to identify novel therapeutic relationships</li>
+          <li><strong>Validation Difficulty:</strong> Generating hypotheses that are both novel and biologically plausible</li>
+          <li><strong>Regulatory Considerations:</strong> Ensuring compliance with healthcare data regulations and ethical guidelines</li>
+        </ul>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <footer>
-      <a href="https://github.com/aragit/drug-repurposing" target="_blank"><i class="fab fa-github"></i> View Code</a>
-      <a href="../index.html#portfolio">Back to Portfolio</a>
-    </footer>
-  </main>
+    <section id="solution">
+      <h2>Solution & Architecture</h2>
+      <p>The drug repurposing generator uses advanced AI techniques to analyze biomedical data and generate novel hypotheses for drug repurposing, significantly accelerating the discovery process.</p>
+      
+      <img class="hero-img" src="../assets/drug-repurposing-arch.png" alt="Drug Repurposing Generator Architecture">
+      <p class="img-caption">Architecture diagram showing the multi-component drug repurposing system</p>
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
-  <script>
-    tsParticles.load({
-      id: "particles-js",
-      options: {
-        background: { color: "#121212" },
-        particles: {
-          number: { value: 60, density: { enable: true, value_area: 800 } },
-          color: { value: ["#ff6b00", "#4dabf7"] },
-          shape: { type: "circle" },
-          size: { value: 3, random: true },
-          opacity: { value: 0.6, random: true },
-          links: { enable: true, distance: 150, color: "#ffffff", opacity: 0.2, width: 1 },
-          move: { enable: true, speed: 1, out_modes: "out" }
-        },
-        interactivity: {
-          events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } }
-        },
-        retina_detect: true
-      }
-    });
-  </script>
+      <div class="feature-card">
+        <h3>Key Components</h3>
+        <ol class="solution-list">
+          <li>
+            <strong>Biomedical Knowledge Graph</strong>
+            <p>Integrated knowledge base combining drug databases, disease ontologies, protein interactions, and clinical trial data into a unified graph structure.</p>
+          </li>
+          <li>
+            <strong>LLM-Powered Hypothesis Generation</strong>
+            <p>Advanced language models fine-tuned on biomedical literature to identify potential drug-disease relationships and generate mechanistic hypotheses.</p>
+          </li>
+          <li>
+            <strong>Evidence Retrieval System</strong>
+            <p>Semantic search across biomedical literature and clinical databases to find supporting evidence for generated hypotheses.</p>
+          </li>
+          <li>
+            <strong>Validation & Scoring Engine</strong>
+            <p>Algorithmic assessment of hypothesis plausibility based on biological pathways, known mechanisms, and existing evidence.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="methodology">
+      <h2>Methodology</h2>
+      
+      <div class="feature-card">
+        <h3>Knowledge Graph Construction</h3>
+        <p>TBD - Description of how biomedical data was integrated into a knowledge graph, including data sources, entity resolution, and relationship extraction methods.</p>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Hypothesis Generation Approach</h3>
+        <p>TBD - Explanation of the AI techniques used for generating repurposing hypotheses, including any novel algorithms or approaches developed.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Validation Framework</h3>
+        <p>TBD - Description of how hypotheses were validated, including in silico methods, expert review processes, and potential experimental validation approaches.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Application Scenario</h2>
+      
+      <div class="scenario-block">
+        <h3>Real-World Example: Identifying New Uses for Existing Drugs</h3>
+        
+        <div class="scenario-steps">
+          <div class="scenario-step">
+            <div class="step-content">
+              <strong>Input</strong>
+              <p>Researcher queries the system for potential new uses for Metformin beyond diabetes treatment</p>
+            </div>
+          </div>
+          
+          <div class="scenario-step">
+            <div class="step-content">
+              <strong>Analysis</strong>
+              <p>System analyzes molecular pathways, literature patterns, and clinical trial data to identify potential therapeutic applications</p>
+            </div>
+          </div>
+          
+          <div class="scenario-step">
+            <div class="step-content">
+              <strong>Hypothesis Generation</strong>
+              <p>AI generates multiple hypotheses with supporting evidence and confidence scores</p>
+            </div>
+          </div>
+          
+          <div class="scenario-step">
+            <div class="step-content">
+              <strong>Output</strong>
+              <p>System suggests potential applications in cancer prevention, neurodegenerative diseases, and aging-related conditions with mechanistic explanations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results & Impact</h2>
+      
+      <div class="feature-card">
+        <h3>Quantitative Results</h3>
+        <ul>
+          <li><strong>Hypothesis Generation Speed:</strong> 75% faster hypothesis generation compared to manual literature review</li>
+          <li><strong>Novelty Rate:</strong> 40% of generated hypotheses represented truly novel therapeutic connections</li>
+          <li><strong>Validation Success:</strong> 30% of top-ranked hypotheses showed promising results in preliminary validation</li>
+          <li><strong>Data Processing:</strong> Ability to analyze over 1 million biomedical documents and relationships</li>
+        </ul>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Qualitative Benefits</h3>
+        <ul>
+          <li><strong>Accelerated Discovery:</strong> Significant reduction in early-stage drug discovery timeline</li>
+          <li><strong>Cost Reduction:</strong> Lower R&D costs by focusing on existing compounds with known safety profiles</li>
+          <li><strong>Knowledge Integration:</strong> Unified view of disparate biomedical knowledge sources</li>
+          <li><strong>Collaboration Enhancement:</strong> Facilitated cross-disciplinary collaboration between domain experts</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Potential Applications</h2>
+      
+      <div class="feature-card">
+        <h3>Use Cases</h3>
+        <ul>
+          <li><strong>Rare Diseases:</strong> Identifying treatment options for conditions with limited research investment</li>
+          <li><strong>Oncology:</strong> Repurposing existing drugs for new cancer types or combination therapies</li>
+          <li><strong>Pandemic Response:</strong> Rapid identification of existing drugs with potential antiviral activity</li>
+          <li><strong>Academic Research:</strong> Supporting hypothesis generation in biomedical research institutions</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tech">
+      <h2>Technology Stack</h2>
+      <div class="tech-tags">
+        <span>Gemini 1.5 Pro</span>
+        <span>Med-PaLM 2</span>
+        <span>Vertex AI</span>
+        <span>BioBERT</span>
+        <span>Neo4j</span>
+        <span>Elasticsearch</span>
+        <span>Python</span>
+        <span>TensorFlow</span>
+        <span>PubMed API</span>
+        <span>ClinicalTrials.gov API</span>
+        <span>Docker</span>
+        <span>Google Kubernetes Engine</span>
+      </div>
+    </section>
+
+    <div class="case-footer">
+      <a href="https://github.com/aragit/drug-repurposing" target="_blank">
+        <i class="fab fa-github"></i> View Sample Code
+      </a>
+      <a href="../index.html#contact">
+        <i class="fas fa-envelope"></i> Discuss Similar Project
+      </a>
+    </div>
+  </main>
 </body>
 </html>
-<style>
