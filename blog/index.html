@@ -115,6 +115,29 @@
             color: #cccccc;
         }
         
+        /* Subscription Button in Hero */
+        .hero-subscribe-btn {
+            padding: 15px 35px;
+            background: #ff6b00;
+            color: #121212;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hero-subscribe-btn:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        }
+        
         /* Blog Filters */
         .blog-filters {
             display: flex;
@@ -412,6 +435,222 @@
             font-size: 1.1rem;
         }
         
+        /* Subscription Section */
+        .subscription-section {
+            background: linear-gradient(to right, #1a1a1a, #2a2a2a);
+            padding: 80px 0;
+            margin: 60px 0;
+            text-align: center;
+            border-radius: 12px;
+        }
+        
+        .subscription-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .subscription-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .subscription-content p {
+            color: #cccccc;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .subscription-form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .subscription-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            background: #0a0a0a;
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            border: 2px solid transparent;
+        }
+        
+        .subscription-input:focus {
+            border-color: #ff6b00;
+        }
+        
+        .subscription-btn {
+            padding: 15px 30px;
+            background: #ff6b00;
+            color: #121212;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .subscription-btn:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+        }
+        
+        .subscription-note {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Subscription Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .subscription-modal {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-overlay.active .subscription-modal {
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #ff6b00;
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .modal-header p {
+            color: #cccccc;
+        }
+        
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .modal-input {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #0a0a0a;
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            border: 2px solid transparent;
+        }
+        
+        .modal-input:focus {
+            border-color: #ff6b00;
+        }
+        
+        .modal-btn {
+            padding: 15px;
+            background: #ff6b00;
+            color: #121212;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .modal-btn:hover {
+            background: #ff8c00;
+        }
+        
+        /* Subscription Toast */
+        .subscription-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff6b00;
+            color: #121212;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .subscription-toast.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+        
+        .toast-close {
+            background: none;
+            border: none;
+            color: #121212;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
         /* Footer */
         footer {
             background: #0a0a0a;
@@ -468,6 +707,25 @@
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
+            
+            .subscription-form {
+                flex-direction: column;
+            }
+            
+            .subscription-input {
+                min-width: auto;
+            }
+            
+            .subscription-modal {
+                padding: 30px 20px;
+                margin: 0 20px;
+            }
+            
+            .subscription-toast {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -492,6 +750,11 @@
         <div class="container">
             <h1>AI Frontier</h1>
             <p>Exploring the cutting edge of Artificial Intelligence, Large Language Models, and practical machine learning solutions for healthcare, finance, and beyond.</p>
+            
+            <!-- Fixed Subscription Button in Hero -->
+            <button class="hero-subscribe-btn" id="heroSubscribeBtn">
+                <i class="fas fa-envelope"></i> Subscribe to Updates
+            </button>
         </div>
     </section>
 
@@ -633,6 +896,23 @@
         <div class="load-more">
             <button class="load-more-btn" id="blogLoadMore">Load More Articles</button>
             <button class="load-more-btn" id="blogShowLess" style="display: none;">Show Less Articles</button>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section class="subscription-section">
+        <div class="container">
+            <div class="subscription-content">
+                <h2>Stay Updated with AI Frontier</h2>
+                <p>Subscribe to our newsletter and never miss the latest developments in AI, LLMs, and machine learning applications.</p>
+                
+                <form class="subscription-form" id="subscriptionForm">
+                    <input type="email" class="subscription-input" placeholder="Your email address" required>
+                    <button type="submit" class="subscription-btn">Subscribe</button>
+                </form>
+                
+                <p class="subscription-note">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
         </div>
     </section>
 
@@ -888,10 +1168,40 @@
         </div>
     </div>
 
+    <!-- Subscription Modal -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="subscription-modal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            
+            <div class="modal-header">
+                <h3>Subscribe to AI Frontier</h3>
+                <p>Get the latest updates on AI developments delivered to your inbox.</p>
+            </div>
+            
+            <form class="modal-form" id="modalSubscriptionForm">
+                <input type="email" class="modal-input" placeholder="Your email address" required>
+                <input type="text" class="modal-input" placeholder="Your name (optional)">
+                <button type="submit" class="modal-btn">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Subscription Toast -->
+    <div class="subscription-toast" id="subscriptionToast">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span id="toastMessage">Thank you for subscribing!</span>
+        <button class="toast-close" id="toastClose">&times;</button>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Arash Nicoomanesh. Exploring the AI Frontier.</p>
+            <div style="margin-top: 20px;">
+                <button class="subscription-btn" id="footerSubscribeBtn" style="padding: 10px 20px;">
+                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
+                </button>
+            </div>
         </div>
     </footer>
 
@@ -944,7 +1254,6 @@
             const blogLoadMoreBtn = document.getElementById('blogLoadMore');
             const blogShowLessBtn = document.getElementById('blogShowLess');
             const hiddenBlogCards = document.querySelectorAll('.hidden-blog');
-            let visibleBlogCards = 3;
             
             blogLoadMoreBtn.addEventListener('click', () => {
                 // Show 3 more hidden blog cards
@@ -1105,6 +1414,112 @@
                 opensourceLoadMoreBtn.style.display = 'inline-block';
                 opensourceShowLessBtn.style.display = 'none';
             });
+            
+            // Subscription functionality - FIXED
+            const subscriptionModal = document.getElementById('subscriptionModal');
+            const heroSubscribeBtn = document.getElementById('heroSubscribeBtn');
+            const footerSubscribeBtn = document.getElementById('footerSubscribeBtn');
+            const modalClose = document.getElementById('modalClose');
+            const subscriptionForm = document.getElementById('subscriptionForm');
+            const modalSubscriptionForm = document.getElementById('modalSubscriptionForm');
+            const subscriptionToast = document.getElementById('subscriptionToast');
+            const toastClose = document.getElementById('toastClose');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            // Open modal from hero CTA - FIXED
+            if (heroSubscribeBtn) {
+                heroSubscribeBtn.addEventListener('click', () => {
+                    subscriptionModal.classList.add('active');
+                    console.log('Hero subscribe button clicked');
+                });
+            } else {
+                console.error('Hero subscribe button not found');
+            }
+            
+            // Open modal from footer CTA
+            if (footerSubscribeBtn) {
+                footerSubscribeBtn.addEventListener('click', () => {
+                    subscriptionModal.classList.add('active');
+                });
+            }
+            
+            // Close modal
+            if (modalClose) {
+                modalClose.addEventListener('click', () => {
+                    subscriptionModal.classList.remove('active');
+                });
+            }
+            
+            // Close modal when clicking outside
+            if (subscriptionModal) {
+                subscriptionModal.addEventListener('click', (e) => {
+                    if (e.target === subscriptionModal) {
+                        subscriptionModal.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Handle main subscription form
+            if (subscriptionForm) {
+                subscriptionForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = subscriptionForm.querySelector('input[type="email"]').value;
+                    
+                    if (validateEmail(email)) {
+                        // Here you would typically send this to your backend
+                        console.log('Subscription form submitted with email:', email);
+                        showToast('Thank you for subscribing to our newsletter!');
+                        subscriptionForm.reset();
+                    } else {
+                        showToast('Please enter a valid email address.');
+                    }
+                });
+            }
+            
+            // Handle modal subscription form
+            if (modalSubscriptionForm) {
+                modalSubscriptionForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = modalSubscriptionForm.querySelector('input[type="email"]').value;
+                    const name = modalSubscriptionForm.querySelector('input[type="text"]').value;
+                    
+                    if (validateEmail(email)) {
+                        // Here you would typically send this to your backend
+                        console.log('Modal subscription form submitted with email:', email, 'and name:', name);
+                        showToast('Thank you for subscribing to our newsletter!');
+                        modalSubscriptionForm.reset();
+                        subscriptionModal.classList.remove('active');
+                    } else {
+                        showToast('Please enter a valid email address.');
+                    }
+                });
+            }
+            
+            // Close toast
+            if (toastClose) {
+                toastClose.addEventListener('click', () => {
+                    subscriptionToast.classList.remove('active');
+                });
+            }
+            
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            // Show toast message
+            function showToast(message) {
+                if (toastMessage && subscriptionToast) {
+                    toastMessage.textContent = message;
+                    subscriptionToast.classList.add('active');
+                    
+                    // Auto hide after 5 seconds
+                    setTimeout(() => {
+                        subscriptionToast.classList.remove('active');
+                    }, 5000);
+                }
+            }
             
             // Animation for cards on scroll
             const options = {
