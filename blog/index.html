@@ -373,6 +373,45 @@
             color: #121212;
         }
         
+        /* Subcategory Tabs for Latest Developments */
+        .subcategory-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .subcategory-tab {
+            padding: 8px 16px;
+            background: #2a2a2a;
+            color: #ccc;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .subcategory-tab:hover, .subcategory-tab.active {
+            background: #ff6b00;
+            color: #121212;
+        }
+        
+        .subcategory-content {
+            display: none;
+        }
+        
+        .subcategory-content.active {
+            display: block;
+        }
+        
+        /* Icon styling for tools and open source */
+        .card-icon {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
         /* Footer */
         footer {
             background: #0a0a0a;
@@ -419,6 +458,15 @@
             
             .section-header h2 {
                 font-size: 1.8rem;
+            }
+            
+            .subcategory-tabs {
+                gap: 8px;
+            }
+            
+            .subcategory-tab {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -584,6 +632,7 @@
         <!-- Load More Button for Blog Articles - Fixed -->
         <div class="load-more">
             <button class="load-more-btn" id="blogLoadMore">Load More Articles</button>
+            <button class="load-more-btn" id="blogShowLess" style="display: none;">Show Less Articles</button>
         </div>
     </section>
 
@@ -654,6 +703,7 @@
                 
                 <div class="section-load-more">
                     <button class="section-load-btn" id="papersLoadMore">Load More Papers</button>
+                    <button class="section-load-btn" id="papersShowLess" style="display: none;">Show Less Papers</button>
                 </div>
             </div>
             
@@ -661,59 +711,178 @@
             <div class="column developments-column">
                 <h3 style="color: #fff; margin-bottom: 20px; font-size: 1.5rem;">Latest Developments</h3>
                 
-                <div class="white-card">
-                    <h3>AI Search With a Payout</h3>
-                    <div class="meta">
-                        <span>Industry News</span>
-                        <span>May 2024</span>
-                    </div>
-                    <p>Perplexity just announced a $42.5 million revenue-sharing program for media outlets whose content shows up in their results. It's their play to cool down copyright tensions with publishers.</p>
-                    <a href="https://techcrunch.com/2024/05/15/perplexity-revenue-sharing" class="source-link" target="_blank">Read More →</a>
+                <!-- Subcategory Tabs -->
+                <div class="subcategory-tabs">
+                    <button class="subcategory-tab active" data-subcategory="latest">Latest News</button>
+                    <button class="subcategory-tab" data-subcategory="tools">AI Tools</button>
+                    <button class="subcategory-tab" data-subcategory="opensource">Open Source</button>
                 </div>
                 
-                <div class="white-card">
-                    <h3>Prompts Get a Safety Layer</h3>
-                    <div class="meta">
-                        <span>Security</span>
-                        <span>May 2024</span>
+                <!-- Latest News Subcategory -->
+                <div class="subcategory-content active" data-subcategory="latest">
+                    <div class="white-card">
+                        <h3><span class="card-icon">🔍</span> AI Search With a Payout</h3>
+                        <div class="meta">
+                            <span>Industry News</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Perplexity just announced a $42.5 million revenue-sharing program for media outlets whose content shows up in their results. It's their play to cool down copyright tensions with publishers.</p>
+                        <a href="https://techcrunch.com/2024/05/15/perplexity-revenue-sharing" class="source-link" target="_blank">Read More →</a>
                     </div>
-                    <p>Cloudflare's new AI prompt protection keeps an eye on what you're sharing with ChatGPT, Gemini, and other AI tools, catching sensitive info before it slips out.</p>
-                    <a href="https://blog.cloudflare.com/ai-prompt-security" class="source-link" target="_blank">Read More →</a>
+                    
+                    <div class="white-card">
+                        <h3><span class="card-icon">🛡️</span> Prompts Get a Safety Layer</h3>
+                        <div class="meta">
+                            <span>Security</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Cloudflare's new AI prompt protection keeps an eye on what you're sharing with ChatGPT, Gemini, and other AI tools, catching sensitive info before it slips out, so that you don't accidentally leak company secrets.</p>
+                        <a href="https://blog.cloudflare.com/ai-prompt-security" class="source-link" target="_blank">Read More →</a>
+                    </div>
+                    
+                    <div class="white-card">
+                        <h3><span class="card-icon">👨🏻‍⚖️</span> Musk vs. Altman Goes Legal</h3>
+                        <div class="meta">
+                            <span>Legal</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>xAI just went after OpenAI and Apple with a massive lawsuit, accusing them of colluding through their ChatGPT partnership. The claim: the duo teamed up to lock rivals out of the AI market.</p>
+                        <a href="https://www.reuters.com/technology/xai-sues-openai-apple" class="source-link" target="_blank">Read More →</a>
+                    </div>
+                    
+                    <!-- Hidden latest news -->
+                    <div class="white-card hidden-development hidden-latest" style="display: none;">
+                        <h3><span class="card-icon">🌍</span> New AI Safety Standards Proposed</h3>
+                        <div class="meta">
+                            <span>Policy</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>International organizations are proposing new safety standards for AI development to ensure responsible innovation and risk mitigation.</p>
+                        <a href="https://example.com/ai-safety-standards" class="source-link" target="_blank">Read More →</a>
+                    </div>
+                    
+                    <div class="section-load-more">
+                        <button class="section-load-btn" id="latestLoadMore">Load More News</button>
+                        <button class="section-load-btn" id="latestShowLess" style="display: none;">Show Less News</button>
+                    </div>
                 </div>
                 
-                <div class="white-card">
-                    <h3>Musk vs. Altman Goes Legal</h3>
-                    <div class="meta">
-                        <span>Legal</span>
-                        <span>May 2024</span>
+                <!-- AI Tools Subcategory -->
+                <div class="subcategory-content" data-subcategory="tools">
+                    <div class="white-card">
+                        <h3><span class="card-icon">⚡</span> BrowserAct</h3>
+                        <div class="meta">
+                            <span>Web Scraping</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Lets you scrape any website with AI-powered, no-code tools that block ads, bypass restrictions, and deliver reliable results.</p>
+                        <a href="https://browseract.com" class="source-link" target="_blank">Visit Website →</a>
                     </div>
-                    <p>xAI just went after OpenAI and Apple with a massive lawsuit, accusing them of colluding through their ChatGPT partnership to lock rivals out of the AI market.</p>
-                    <a href="https://www.reuters.com/technology/xai-sues-openai-apple" class="source-link" target="_blank">Read More →</a>
+                    
+                    <div class="white-card">
+                        <h3><span class="card-icon">🧠</span> Remio</h3>
+                        <div class="meta">
+                            <span>Personal AI</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Your own private AI brain that captures everything you see, finds what's buried, and answers any questions you have.</p>
+                        <a href="https://remio.ai" class="source-link" target="_blank">Visit Website →</a>
+                    </div>
+                    
+                    <div class="white-card">
+                        <h3><span class="card-icon">📅</span> Agenda Hero</h3>
+                        <div class="meta">
+                            <span>Productivity</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Turns text, images, and PDFs into calendar events, with conversational editing that lets you bulk update events in a single phrase.</p>
+                        <a href="https://agendahero.com" class="source-link" target="_blank">Visit Website →</a>
+                    </div>
+                    
+                    <!-- Hidden AI tools -->
+                    <div class="white-card hidden-development hidden-tools" style="display: none;">
+                        <h3><span class="card-icon">🛡️</span> Disclaimr AI</h3>
+                        <div class="meta">
+                            <span>Cybersecurity</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Monitors hundreds of blogs, advisories, and news sources, then distills them into a daily cybersecurity digest.</p>
+                        <a href="https://disclaimr.ai" class="source-link" target="_blank">Visit Website →</a>
+                    </div>
+                    
+                    <div class="white-card hidden-development hidden-tools" style="display: none;">
+                        <h3><span class="card-icon">🌐</span> Hostinger</h3>
+                        <div class="meta">
+                            <span>Web Design</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Creates professional websites by turning your vision into a complete, mobile-ready design with no coding required.</p>
+                        <a href="https://hostinger.com/ai-website-builder" class="source-link" target="_blank">Visit Website →</a>
+                    </div>
+                    
+                    <div class="white-card hidden-development hidden-tools" style="display: none;">
+                        <h3><span class="card-icon">📚</span> Coral AI</h3>
+                        <div class="meta">
+                            <span>Productivity</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Saves you hours each week by creating summaries, citations, mind maps, and presentations from all of your files.</p>
+                        <a href="https://coral.ai" class="source-link" target="_blank">Visit Website →</a>
+                    </div>
+                    
+                    <div class="section-load-more">
+                        <button class="section-load-btn" id="toolsLoadMore">Load More Tools</button>
+                        <button class="section-load-btn" id="toolsShowLess" style="display: none;">Show Less Tools</button>
+                    </div>
                 </div>
                 
-                <!-- Initially hidden developments -->
-                <div class="white-card hidden-development" style="display: none;">
-                    <h3>BrowserAct: AI-Powered Web Scraping</h3>
-                    <div class="meta">
-                        <span>Tools</span>
-                        <span>May 2024</span>
+                <!-- Open Source Subcategory -->
+                <div class="subcategory-content" data-subcategory="opensource">
+                    <div class="white-card">
+                        <h3><span class="card-icon">🌐</span> SurfSense</h3>
+                        <div class="meta">
+                            <span>Knowledge Management</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>An open-source alternative to NotebookLM and Perplexity that connects to your personal tools: Slack, Gmail, Notion, GitHub, and more.</p>
+                        <a href="https://github.com/surfsense/surfsense" class="source-link" target="_blank">View Project →</a>
                     </div>
-                    <p>BrowserAct lets you scrape any website with AI-powered, no-code tools that block ads, bypass restrictions, and deliver reliable results.</p>
-                    <a href="https://browseract.com" class="source-link" target="_blank">Visit Website →</a>
-                </div>
-                
-                <div class="white-card hidden-development" style="display: none;">
-                    <h3>New AI Safety Standards Proposed</h3>
-                    <div class="meta">
-                        <span>Policy</span>
-                        <span>May 2024</span>
+                    
+                    <div class="white-card">
+                        <h3><span class="card-icon">🧠</span> Supermemory</h3>
+                        <div class="meta">
+                            <span>Personal AI</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>A second brain that's open-source and super fast, letting you add memories from URLs, PDFs, or text, and chat with them naturally.</p>
+                        <a href="https://github.com/supermemory/supermemory" class="source-link" target="_blank">View Project →</a>
                     </div>
-                    <p>International organizations are proposing new safety standards for AI development to ensure responsible innovation and risk mitigation.</p>
-                    <a href="https://example.com/ai-safety-standards" class="source-link" target="_blank">Read More →</a>
-                </div>
-                
-                <div class="section-load-more">
-                    <button class="section-load-btn" id="developmentsLoadMore">Load More Developments</button>
+                    
+                    <div class="white-card">
+                        <h3><span class="card-icon">🦸🏻</span> ToonCrafter</h3>
+                        <div class="meta">
+                            <span>Animation</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>An open-source tool that uses AI to animate cartoons with motions and occlusions that traditional methods can't handle.</p>
+                        <a href="https://github.com/tooncrafter/tooncrafter" class="source-link" target="_blank">View Project →</a>
+                    </div>
+                    
+                    <!-- Hidden open source -->
+                    <div class="white-card hidden-development hidden-opensource" style="display: none;">
+                        <h3><span class="card-icon">📊</span> DataForge</h3>
+                        <div class="meta">
+                            <span>Data Processing</span>
+                            <span>May 2024</span>
+                        </div>
+                        <p>Open-source toolkit for data preprocessing and feature engineering with an intuitive visual interface powered by AI.</p>
+                        <a href="https://github.com/dataforge/dataforge" class="source-link" target="_blank">View Project →</a>
+                    </div>
+                    
+                    <div class="section-load-more">
+                        <button class="section-load-btn" id="opensourceLoadMore">Load More Open Source</button>
+                        <button class="section-load-btn" id="opensourceShowLess" style="display: none;">Show Less Open Source</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -752,8 +921,28 @@
                 });
             });
             
-            // Load more functionality for blog posts - Fixed
+            // Subcategory tabs for Latest Developments
+            const subcategoryTabs = document.querySelectorAll('.subcategory-tab');
+            const subcategoryContents = document.querySelectorAll('.subcategory-content');
+            
+            subcategoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    subcategoryTabs.forEach(t => t.classList.remove('active'));
+                    subcategoryContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    const subcategory = tab.getAttribute('data-subcategory');
+                    document.querySelector(`.subcategory-content[data-subcategory="${subcategory}"]`).classList.add('active');
+                });
+            });
+            
+            // Load more functionality for blog posts
             const blogLoadMoreBtn = document.getElementById('blogLoadMore');
+            const blogShowLessBtn = document.getElementById('blogShowLess');
             const hiddenBlogCards = document.querySelectorAll('.hidden-blog');
             let visibleBlogCards = 3;
             
@@ -767,15 +956,27 @@
                     }
                 }
                 
-                // Hide button if no more hidden items
-                const remainingHidden = Array.from(hiddenBlogCards).filter(card => card.style.display === 'none');
-                if (remainingHidden.length === 0) {
+                // Show Show Less button if items are expanded
+                if (Array.from(hiddenBlogCards).some(card => card.style.display === 'flex')) {
                     blogLoadMoreBtn.style.display = 'none';
+                    blogShowLessBtn.style.display = 'inline-block';
                 }
+            });
+            
+            blogShowLessBtn.addEventListener('click', () => {
+                // Hide all hidden blog cards
+                hiddenBlogCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                
+                // Show Load More button and hide Show Less button
+                blogLoadMoreBtn.style.display = 'inline-block';
+                blogShowLessBtn.style.display = 'none';
             });
             
             // Load more functionality for papers
             const papersLoadMoreBtn = document.getElementById('papersLoadMore');
+            const papersShowLessBtn = document.getElementById('papersShowLess');
             const hiddenPapers = document.querySelectorAll('.hidden-paper');
             
             papersLoadMoreBtn.addEventListener('click', () => {
@@ -788,32 +989,121 @@
                     }
                 }
                 
-                // Hide button if no more hidden items
-                const remainingHidden = Array.from(hiddenPapers).filter(paper => paper.style.display === 'none');
-                if (remainingHidden.length === 0) {
+                // Show Show Less button if items are expanded
+                if (Array.from(hiddenPapers).some(paper => paper.style.display === 'block')) {
                     papersLoadMoreBtn.style.display = 'none';
+                    papersShowLessBtn.style.display = 'inline-block';
                 }
             });
             
-            // Load more functionality for developments
-            const developmentsLoadMoreBtn = document.getElementById('developmentsLoadMore');
-            const hiddenDevelopments = document.querySelectorAll('.hidden-development');
+            papersShowLessBtn.addEventListener('click', () => {
+                // Hide all hidden papers
+                hiddenPapers.forEach(paper => {
+                    paper.style.display = 'none';
+                });
+                
+                // Show Load More button and hide Show Less button
+                papersLoadMoreBtn.style.display = 'inline-block';
+                papersShowLessBtn.style.display = 'none';
+            });
             
-            developmentsLoadMoreBtn.addEventListener('click', () => {
-                // Show 2 more hidden developments
+            // Load more functionality for Latest News
+            const latestLoadMoreBtn = document.getElementById('latestLoadMore');
+            const latestShowLessBtn = document.getElementById('latestShowLess');
+            const hiddenLatest = document.querySelectorAll('.hidden-latest');
+            
+            latestLoadMoreBtn.addEventListener('click', () => {
+                // Show 2 more hidden latest news
                 let itemsToShow = 2;
-                for (let i = 0; i < hiddenDevelopments.length && itemsToShow > 0; i++) {
-                    if (hiddenDevelopments[i].style.display === 'none') {
-                        hiddenDevelopments[i].style.display = 'block';
+                for (let i = 0; i < hiddenLatest.length && itemsToShow > 0; i++) {
+                    if (hiddenLatest[i].style.display === 'none') {
+                        hiddenLatest[i].style.display = 'block';
                         itemsToShow--;
                     }
                 }
                 
-                // Hide button if no more hidden items
-                const remainingHidden = Array.from(hiddenDevelopments).filter(dev => dev.style.display === 'none');
-                if (remainingHidden.length === 0) {
-                    developmentsLoadMoreBtn.style.display = 'none';
+                // Show Show Less button if items are expanded
+                if (Array.from(hiddenLatest).some(item => item.style.display === 'block')) {
+                    latestLoadMoreBtn.style.display = 'none';
+                    latestShowLessBtn.style.display = 'inline-block';
                 }
+            });
+            
+            latestShowLessBtn.addEventListener('click', () => {
+                // Hide all hidden latest news
+                hiddenLatest.forEach(item => {
+                    item.style.display = 'none';
+                });
+                
+                // Show Load More button and hide Show Less button
+                latestLoadMoreBtn.style.display = 'inline-block';
+                latestShowLessBtn.style.display = 'none';
+            });
+            
+            // Load more functionality for AI Tools
+            const toolsLoadMoreBtn = document.getElementById('toolsLoadMore');
+            const toolsShowLessBtn = document.getElementById('toolsShowLess');
+            const hiddenTools = document.querySelectorAll('.hidden-tools');
+            
+            toolsLoadMoreBtn.addEventListener('click', () => {
+                // Show 3 more hidden tools
+                let itemsToShow = 3;
+                for (let i = 0; i < hiddenTools.length && itemsToShow > 0; i++) {
+                    if (hiddenTools[i].style.display === 'none') {
+                        hiddenTools[i].style.display = 'block';
+                        itemsToShow--;
+                    }
+                }
+                
+                // Show Show Less button if items are expanded
+                if (Array.from(hiddenTools).some(item => item.style.display === 'block')) {
+                    toolsLoadMoreBtn.style.display = 'none';
+                    toolsShowLessBtn.style.display = 'inline-block';
+                }
+            });
+            
+            toolsShowLessBtn.addEventListener('click', () => {
+                // Hide all hidden tools
+                hiddenTools.forEach(item => {
+                    item.style.display = 'none';
+                });
+                
+                // Show Load More button and hide Show Less button
+                toolsLoadMoreBtn.style.display = 'inline-block';
+                toolsShowLessBtn.style.display = 'none';
+            });
+            
+            // Load more functionality for Open Source
+            const opensourceLoadMoreBtn = document.getElementById('opensourceLoadMore');
+            const opensourceShowLessBtn = document.getElementById('opensourceShowLess');
+            const hiddenOpensource = document.querySelectorAll('.hidden-opensource');
+            
+            opensourceLoadMoreBtn.addEventListener('click', () => {
+                // Show 2 more hidden open source
+                let itemsToShow = 2;
+                for (let i = 0; i < hiddenOpensource.length && itemsToShow > 0; i++) {
+                    if (hiddenOpensource[i].style.display === 'none') {
+                        hiddenOpensource[i].style.display = 'block';
+                        itemsToShow--;
+                    }
+                }
+                
+                // Show Show Less button if items are expanded
+                if (Array.from(hiddenOpensource).some(item => item.style.display === 'block')) {
+                    opensourceLoadMoreBtn.style.display = 'none';
+                    opensourceShowLessBtn.style.display = 'inline-block';
+                }
+            });
+            
+            opensourceShowLessBtn.addEventListener('click', () => {
+                // Hide all hidden open source
+                hiddenOpensource.forEach(item => {
+                    item.style.display = 'none';
+                });
+                
+                // Show Load More button and hide Show Less button
+                opensourceLoadMoreBtn.style.display = 'inline-block';
+                opensourceShowLessBtn.style.display = 'none';
             });
             
             // Animation for cards on scroll
