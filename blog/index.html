@@ -140,12 +140,41 @@
             color: #121212;
         }
         
-        /* Blog Grid */
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: inline-block;
+            padding: 0 20px;
+            background: #0a0a0a;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            z-index: 0;
+        }
+        
+        /* Blog Grid - Fixed Card Heights */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
-            padding: 40px 0 80px;
+            padding: 40px 0;
         }
         
         .blog-card {
@@ -153,6 +182,9 @@
             border-radius: 12px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensure all cards have the same height */
         }
         
         .blog-card:hover {
@@ -168,10 +200,14 @@
             justify-content: center;
             color: #ff6b00;
             font-size: 40px;
+            flex-shrink: 0; /* Prevent image from shrinking */
         }
         
         .card-content {
             padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Allow content to grow and fill space */
         }
         
         .card-tags {
@@ -198,6 +234,7 @@
         .card-content p {
             color: #aaaaaa;
             margin-bottom: 20px;
+            flex-grow: 1; /* Allow paragraph to grow and push button down */
         }
         
         .card-meta {
@@ -205,20 +242,94 @@
             justify-content: space-between;
             color: #888;
             font-size: 0.9rem;
+            margin-bottom: 15px;
         }
         
         .read-more {
             display: inline-block;
-            margin-top: 15px;
             color: #ff6b00;
             text-decoration: none;
             font-weight: 500;
+            padding: 8px 0;
+            text-align: right;
+            transition: all 0.3s;
+            margin-top: auto; /* Push button to bottom of card */
+            align-self: flex-end;
         }
         
-        /* Load More Button */
+        .read-more:hover {
+            color: #ff8c00;
+            text-decoration: underline;
+        }
+        
+        /* Two Column Layout for New Sections */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* White Card Styles for New Sections */
+        .white-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .white-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .white-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #121212;
+        }
+        
+        .white-card p {
+            color: #333333;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .white-card .meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        .source-link {
+            display: inline-block;
+            color: #ff6b00;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .source-link:hover {
+            color: #ff8c00;
+            text-decoration: underline;
+        }
+        
+        /* Load More Button for Blog Articles - Fixed */
         .load-more {
             text-align: center;
             margin: 40px 0;
+            width: 100%;
         }
         
         .load-more-btn {
@@ -230,9 +341,34 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            display: inline-block;
         }
         
         .load-more-btn:hover {
+            background: #ff6b00;
+            color: #121212;
+        }
+        
+        /* Load More Button for New Sections */
+        .section-load-more {
+            text-align: center;
+            margin: 20px 0 40px;
+            width: 100%;
+        }
+        
+        .section-load-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid #ff6b00;
+            color: #ff6b00;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .section-load-btn:hover {
             background: #ff6b00;
             color: #121212;
         }
@@ -250,6 +386,13 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 968px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .blog-hero h1 {
                 font-size: 2.5rem;
@@ -272,6 +415,10 @@
                 flex-direction: column;
                 gap: 12px;
                 align-items: flex-start;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -315,7 +462,7 @@
     <!-- Blog Grid -->
     <section class="container">
         <div class="blog-grid">
-            <!-- Blog Post 1 -->
+            <!-- Blog Post 1 - Short Content -->
             <div class="blog-card" data-category="llm">
                 <div class="card-img">
                     <i class="fas fa-robot"></i>
@@ -326,7 +473,7 @@
                         <span class="tag">AI</span>
                     </div>
                     <h3>Understanding Transformer Architectures</h3>
-                    <p>A deep dive into the architecture that powers modern large language models and their applications in today's AI systems.</p>
+                    <p>A deep dive into the architecture that powers modern large language models.</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 12 min read</span>
                         <span>May 15, 2024</span>
@@ -335,7 +482,7 @@
                 </div>
             </div>
 
-            <!-- Blog Post 2 -->
+            <!-- Blog Post 2 - Medium Content -->
             <div class="blog-card" data-category="healthcare">
                 <div class="card-img">
                     <i class="fas fa-stethoscope"></i>
@@ -346,7 +493,7 @@
                         <span class="tag">AI</span>
                     </div>
                     <h3>AI in Medical Diagnosis</h3>
-                    <p>How machine learning is revolutionizing diagnostic medicine and improving patient outcomes through advanced algorithms.</p>
+                    <p>How machine learning is revolutionizing diagnostic medicine and improving patient outcomes through advanced algorithms and data analysis techniques.</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 8 min read</span>
                         <span>May 10, 2024</span>
@@ -355,7 +502,7 @@
                 </div>
             </div>
 
-            <!-- Blog Post 3 -->
+            <!-- Blog Post 3 - Long Content -->
             <div class="blog-card" data-category="finance">
                 <div class="card-img">
                     <i class="fas fa-chart-line"></i>
@@ -365,8 +512,8 @@
                         <span class="tag">Finance</span>
                         <span class="tag">ML</span>
                     </div>
-                    <h3>Predictive Analytics in Marketing</h3>
-                    <p>Exploring how machine learning models are used to predict market trends and inform marketing strategies in real-time.</p>
+                    <h3>Predictive Analytics in Trading</h3>
+                    <p>Exploring how machine learning models are used to predict market trends and inform trading strategies in real-time. This comprehensive analysis covers various algorithmic approaches and their practical applications in today's financial markets, including risk assessment and portfolio optimization techniques.</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 10 min read</span>
                         <span>May 5, 2024</span>
@@ -374,19 +521,19 @@
                     <a href="#" class="read-more">Read Article →</a>
                 </div>
             </div>
-
-            <!-- Blog Post 4 -->
-            <div class="blog-card" data-category="agentic">
+            
+            <!-- Hidden blog posts -->
+            <div class="blog-card hidden-blog" data-category="llm" style="display: none;">
                 <div class="card-img">
-                    <i class="fas fa-cogs"></i>
+                    <i class="fas fa-code"></i>
                 </div>
                 <div class="card-content">
                     <div class="card-tags">
-                        <span class="tag">Agentic AI</span>
-                        <span class="tag">Systems</span>
+                        <span class="tag">LLMs</span>
+                        <span class="tag">Tutorial</span>
                     </div>
-                    <h3>Building Autonomous AI Agents with CrewAI</h3>
-                    <p>Learn how to create AI systems that can make decisions and take actions autonomously in complex environments.</p>
+                    <h3>Fine-Tuning LLMs for Specific Tasks</h3>
+                    <p>Learn how to fine-tune large language models for specialized applications and improve their performance on domain-specific tasks.</p>
                     <div class="card-meta">
                         <span><i class="far fa-clock"></i> 15 min read</span>
                         <span>April 28, 2024</span>
@@ -394,53 +541,183 @@
                     <a href="#" class="read-more">Read Article →</a>
                 </div>
             </div>
-
-            <!-- Blog Post 5 -->
-            <div class="blog-card" data-category="tutorial">
+            
+            <div class="blog-card hidden-blog" data-category="healthcare" style="display: none;">
                 <div class="card-img">
-                    <i class="fas fa-code"></i>
+                    <i class="fas fa-brain"></i>
                 </div>
                 <div class="card-content">
                     <div class="card-tags">
-                        <span class="tag">Tutorial</span>
-                        <span class="tag">Python</span>
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">AI Ethics</span>
                     </div>
-                    <h3>Efficient LLMs in 2025</h3>
-                    <p>Exploring techniques and frameworks to enhance the efficiency of LLMs</p>
+                    <h3>Ethical Considerations in Medical AI</h3>
+                    <p>Exploring the ethical implications of using AI in healthcare, from patient privacy to algorithmic bias and accountability.</p>
                     <div class="card-meta">
-                        <span><i class="far fa-clock"></i> 20 min read</span>
+                        <span><i class="far fa-clock"></i> 18 min read</span>
                         <span>April 22, 2024</span>
                     </div>
                     <a href="#" class="read-more">Read Article →</a>
                 </div>
             </div>
-
-            <!-- Blog Post 6 -->
-            <div class="blog-card" data-category="healthcare">
+            
+            <div class="blog-card hidden-blog" data-category="finance" style="display: none;">
                 <div class="card-img">
-                    <i class="fas fa-laptop-medical"></i>
+                    <i class="fas fa-shield-alt"></i>
                 </div>
                 <div class="card-content">
                     <div class="card-tags">
-                        <span class="tag">Healthcare</span>
-                        <span class="tag">NLP</span>
+                        <span class="tag">Finance</span>
+                        <span class="tag">Security</span>
                     </div>
-                    <h3>Game Theory for AI: Strategy, Cooperation, and the Collective Good</h3>
-                    <p>From Nash Equilibrium to Agentic AI</p>
+                    <h3>AI-Powered Fraud Detection in Banking</h3>
+                    <p>How machine learning algorithms are revolutionizing fraud detection in the financial industry, reducing false positives and improving security.</p>
                     <div class="card-meta">
-                        <span><i class="far fa-clock"></i> 11 min read</span>
-                        <span>April 18, 2024</span>
+                        <span><i class="far fa-clock"></i> 14 min read</span>
+                        <span>April 15, 2024</span>
                     </div>
                     <a href="#" class="read-more">Read Article →</a>
                 </div>
             </div>
         </div>
 
-        <!-- Load More Button -->
+        <!-- Load More Button for Blog Articles - Fixed -->
         <div class="load-more">
-            <button class="load-more-btn">Load More Articles</button>
+            <button class="load-more-btn" id="blogLoadMore">Load More Articles</button>
         </div>
     </section>
+
+    <!-- New Sections Header -->
+    <div class="container">
+        <div class="section-header">
+            <h2>Latest AI Insights</h2>
+        </div>
+    </div>
+
+    <!-- Two Column Layout for New Sections -->
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Papers of the Month Column -->
+            <div class="column papers-column">
+                <h3 style="color: #fff; margin-bottom: 20px; font-size: 1.5rem;">Papers of the Month</h3>
+                
+                <div class="white-card">
+                    <h3>Chain-of-Thought Reasoning Without Prompting</h3>
+                    <div class="meta">
+                        <span>Zhang et al.</span>
+                        <span>May 2024</span>
+                    </div>
+                    <p>In this work, we reveal that large language models can perform chain-of-thought reasoning without explicit prompting. Our findings suggest that CoT is an emergent property rather than solely a prompting technique.</p>
+                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                </div>
+                
+                <div class="white-card">
+                    <h3>Multi-Modal Foundation Models for Medical Imaging</h3>
+                    <div class="meta">
+                        <span>Johnson et al.</span>
+                        <span>April 2024</span>
+                    </div>
+                    <p>We introduce MedFM, a foundation model that unifies various medical imaging modalities. MedFM demonstrates strong performance across 12 medical imaging tasks, outperforming modality-specific models.</p>
+                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                </div>
+                
+                <div class="white-card">
+                    <h3>Efficient Transformers with Linear Attention</h3>
+                    <div class="meta">
+                        <span>Chen & Wang</span>
+                        <span>June 2024</span>
+                    </div>
+                    <p>We propose Linear Transformer, a novel architecture that reduces the computational complexity of attention from quadratic to linear while maintaining competitive performance on language modeling benchmarks.</p>
+                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                </div>
+                
+                <!-- Initially hidden papers -->
+                <div class="white-card hidden-paper" style="display: none;">
+                    <h3>Advancements in Reinforcement Learning from Human Feedback</h3>
+                    <div class="meta">
+                        <span>Brown et al.</span>
+                        <span>June 2024</span>
+                    </div>
+                    <p>New techniques for improving RLHF that result in more aligned AI systems with reduced training costs and improved performance on complex tasks.</p>
+                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                </div>
+                
+                <div class="white-card hidden-paper" style="display: none;">
+                    <h3>Neural Architecture Search for Efficient Models</h3>
+                    <div class="meta">
+                        <span>Lee et al.</span>
+                        <span>May 2024</span>
+                    </div>
+                    <p>Automated discovery of neural network architectures that achieve state-of-the-art performance with significantly reduced computational requirements.</p>
+                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                </div>
+                
+                <div class="section-load-more">
+                    <button class="section-load-btn" id="papersLoadMore">Load More Papers</button>
+                </div>
+            </div>
+            
+            <!-- Latest Developments Column -->
+            <div class="column developments-column">
+                <h3 style="color: #fff; margin-bottom: 20px; font-size: 1.5rem;">Latest Developments</h3>
+                
+                <div class="white-card">
+                    <h3>AI Search With a Payout</h3>
+                    <div class="meta">
+                        <span>Industry News</span>
+                        <span>May 2024</span>
+                    </div>
+                    <p>Perplexity just announced a $42.5 million revenue-sharing program for media outlets whose content shows up in their results. It's their play to cool down copyright tensions with publishers.</p>
+                    <a href="https://techcrunch.com/2024/05/15/perplexity-revenue-sharing" class="source-link" target="_blank">Read More →</a>
+                </div>
+                
+                <div class="white-card">
+                    <h3>Prompts Get a Safety Layer</h3>
+                    <div class="meta">
+                        <span>Security</span>
+                        <span>May 2024</span>
+                    </div>
+                    <p>Cloudflare's new AI prompt protection keeps an eye on what you're sharing with ChatGPT, Gemini, and other AI tools, catching sensitive info before it slips out.</p>
+                    <a href="https://blog.cloudflare.com/ai-prompt-security" class="source-link" target="_blank">Read More →</a>
+                </div>
+                
+                <div class="white-card">
+                    <h3>Musk vs. Altman Goes Legal</h3>
+                    <div class="meta">
+                        <span>Legal</span>
+                        <span>May 2024</span>
+                    </div>
+                    <p>xAI just went after OpenAI and Apple with a massive lawsuit, accusing them of colluding through their ChatGPT partnership to lock rivals out of the AI market.</p>
+                    <a href="https://www.reuters.com/technology/xai-sues-openai-apple" class="source-link" target="_blank">Read More →</a>
+                </div>
+                
+                <!-- Initially hidden developments -->
+                <div class="white-card hidden-development" style="display: none;">
+                    <h3>BrowserAct: AI-Powered Web Scraping</h3>
+                    <div class="meta">
+                        <span>Tools</span>
+                        <span>May 2024</span>
+                    </div>
+                    <p>BrowserAct lets you scrape any website with AI-powered, no-code tools that block ads, bypass restrictions, and deliver reliable results.</p>
+                    <a href="https://browseract.com" class="source-link" target="_blank">Visit Website →</a>
+                </div>
+                
+                <div class="white-card hidden-development" style="display: none;">
+                    <h3>New AI Safety Standards Proposed</h3>
+                    <div class="meta">
+                        <span>Policy</span>
+                        <span>May 2024</span>
+                    </div>
+                    <p>International organizations are proposing new safety standards for AI development to ensure responsible innovation and risk mitigation.</p>
+                    <a href="https://example.com/ai-safety-standards" class="source-link" target="_blank">Read More →</a>
+                </div>
+                
+                <div class="section-load-more">
+                    <button class="section-load-btn" id="developmentsLoadMore">Load More Developments</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -450,8 +727,8 @@
     </footer>
 
     <script>
-        // Filter functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality for blog posts
             const filterButtons = document.querySelectorAll('.filter-btn');
             const blogCards = document.querySelectorAll('.blog-card');
             
@@ -467,7 +744,7 @@
                     // Filter cards
                     blogCards.forEach(card => {
                         if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                            card.style.display = 'block';
+                            card.style.display = 'flex';
                         } else {
                             card.style.display = 'none';
                         }
@@ -475,27 +752,67 @@
                 });
             });
             
-            // Load more functionality
-            const loadMoreBtn = document.querySelector('.load-more-btn');
-            let visibleCards = 6;
-            const totalCards = blogCards.length;
+            // Load more functionality for blog posts - Fixed
+            const blogLoadMoreBtn = document.getElementById('blogLoadMore');
+            const hiddenBlogCards = document.querySelectorAll('.hidden-blog');
+            let visibleBlogCards = 3;
             
-            // Initially hide cards beyond the first 6
-            for (let i = visibleCards; i < totalCards; i++) {
-                blogCards[i].style.display = 'none';
-            }
-            
-            loadMoreBtn.addEventListener('click', () => {
-                visibleCards += 3;
-                
-                // Show additional cards
-                for (let i = 0; i < visibleCards && i < totalCards; i++) {
-                    blogCards[i].style.display = 'block';
+            blogLoadMoreBtn.addEventListener('click', () => {
+                // Show 3 more hidden blog cards
+                let itemsToShow = 3;
+                for (let i = 0; i < hiddenBlogCards.length && itemsToShow > 0; i++) {
+                    if (hiddenBlogCards[i].style.display === 'none') {
+                        hiddenBlogCards[i].style.display = 'flex';
+                        itemsToShow--;
+                    }
                 }
                 
-                // Hide button if all cards are visible
-                if (visibleCards >= totalCards) {
-                    loadMoreBtn.style.display = 'none';
+                // Hide button if no more hidden items
+                const remainingHidden = Array.from(hiddenBlogCards).filter(card => card.style.display === 'none');
+                if (remainingHidden.length === 0) {
+                    blogLoadMoreBtn.style.display = 'none';
+                }
+            });
+            
+            // Load more functionality for papers
+            const papersLoadMoreBtn = document.getElementById('papersLoadMore');
+            const hiddenPapers = document.querySelectorAll('.hidden-paper');
+            
+            papersLoadMoreBtn.addEventListener('click', () => {
+                // Show 2 more hidden papers
+                let itemsToShow = 2;
+                for (let i = 0; i < hiddenPapers.length && itemsToShow > 0; i++) {
+                    if (hiddenPapers[i].style.display === 'none') {
+                        hiddenPapers[i].style.display = 'block';
+                        itemsToShow--;
+                    }
+                }
+                
+                // Hide button if no more hidden items
+                const remainingHidden = Array.from(hiddenPapers).filter(paper => paper.style.display === 'none');
+                if (remainingHidden.length === 0) {
+                    papersLoadMoreBtn.style.display = 'none';
+                }
+            });
+            
+            // Load more functionality for developments
+            const developmentsLoadMoreBtn = document.getElementById('developmentsLoadMore');
+            const hiddenDevelopments = document.querySelectorAll('.hidden-development');
+            
+            developmentsLoadMoreBtn.addEventListener('click', () => {
+                // Show 2 more hidden developments
+                let itemsToShow = 2;
+                for (let i = 0; i < hiddenDevelopments.length && itemsToShow > 0; i++) {
+                    if (hiddenDevelopments[i].style.display === 'none') {
+                        hiddenDevelopments[i].style.display = 'block';
+                        itemsToShow--;
+                    }
+                }
+                
+                // Hide button if no more hidden items
+                const remainingHidden = Array.from(hiddenDevelopments).filter(dev => dev.style.display === 'none');
+                if (remainingHidden.length === 0) {
+                    developmentsLoadMoreBtn.style.display = 'none';
                 }
             });
             
@@ -517,6 +834,14 @@
             
             // Observe blog cards
             document.querySelectorAll('.blog-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Observe white cards
+            document.querySelectorAll('.white-card').forEach(card => {
                 card.style.opacity = 0;
                 card.style.transform = 'translateY(20px)';
                 card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
