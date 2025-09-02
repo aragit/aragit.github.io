@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Case Study – COVID-19 Diagnosis with Audio Biomarkers | Arash Nicoomanesh</title>
+  <meta name="description" content="COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === DESIGN TOKENS === */
+    :root {
+      --bg: #ffffff; /* White background */
+      --fg: #333333; /* Dark text for white background */
+      --accent: #ff6b00;
+      --accent-light: #ff9d5c;
+      --muted: #f5f5f5; /* Light gray for cards */
+      --card-bg: #f9f9f9;
+      --max-width: 900px;
+      --radius: 12px;
+      --font: "Inter", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      line-height: 1.7;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    /* === LAYOUT SHELL === */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .header-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    header a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    
+    header a:hover {
+      opacity: 0.8;
+    }
+    
+    .case-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .case-nav a {
+      color: var(--fg);
+      font-size: 0.9rem;
+    }
+    
+    .case-nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(5rem, 6vw + 2rem, 7rem) 1.5rem 3rem;
+    }
+
+    /* === TYPOGRAPHY === */
+    h1 { 
+      font-size: clamp(2rem, 4vw, 2.8rem); 
+      margin: 0 0 0.5rem; 
+      line-height: 1.2;
+      color: #333333; /* Dark text for white background */
+    }
+    
+    .subtitle { 
+      font-size: 1.2rem; 
+      color: #666; 
+      margin: 0 极 2.5rem;
+      font-weight: 400;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      color: #333333; /* Dark text for white background */
+      margin: 2.5rem 0 1rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    p, li { 
+      margin: 0 0 1.2rem;
+      font-weight: 300;
+      color: #444; /* Slightly lighter than headings */
+    }
+    
+    ul, ol { 
+      padding-left: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li { 
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    ul li::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    strong {
+      color: #222;
+      font-weight: 500;
+    }
+
+    /* === CARDS === */
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .feature-card h3 {
+      margin-top: 0;
+      color: #333333; /* Dark text for white background */
+      font-size: 1.2rem;
+    }
+
+    /* === MEDIA === */
+    .hero-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* === TECH TAGS === */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 2rem 0;
+    }
+    
+    .tech-tags span {
+      background: #000000; /* Black background */
+      color: #ffffff; /* White text */
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      border: none;
+      font-weight: 500;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
+      margin: 3rem 0;
+    }
+
+    /* === METHODOLOGY STEPS === */
+    .methodology-steps {
+      counter-reset: step-counter;
+    }
+    
+    .methodology-step {
+      margin-bottom: 1.5rem;
+      padding-left: 2.5rem;
+      position: relative;
+    }
+    
+    .methodology-step:before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #000000;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .step-content strong {
+      color: #000000;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* === BUTTONS === */
+    .case-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .case-footer a {
+      color: var(--accent); /* Orange text */
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #000000; /* Black background */
+      border-radius: 30px;
+      transition: all 0.2s;
+      border: none;
+    }
+    
+    .case-footer a:hover {
+      background: var(--accent); /* Orange background on hover */
+      color: #000000; /* Black text on hover */
+      transform: translateY(-2px);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .case-nav {
+        justify-content: center;
+      }
+      
+      .case-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .case-footer a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      main { 
+        padding: clamp(4rem, 8vw, 5.5rem) 1rem 2rem; 
+      }
+      
+      .tech-tags {
+        justify-content: center;
+      }
+      
+      .methodology-step {
+        padding-left: 2.2rem;
+      }
+      
+      .methodology-step:before {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <a href="../index.html#portfolio"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+      <div class="case-nav">
+        <a href="#challenges">Challenges</a>
+        <a href="#solution">Solution</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#results">Results</a>
+        <a href="#tech">Tech</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Case Study: COVID-19 Diagnosis with Audio Biomarkers</h1>
+    <p class="subtitle">Non-invasive COVID-19 detection through acoustic analysis of breathing, cough, and speech signals</p>
+
+    <section id="challenges">
+      <h2>Challenges</h2>
+      <p>The COVID-19 pandemic highlighted the critical need for rapid, accessible, and non-invasive diagnostic tools. Traditional testing methods like PCR require specialized equipment, trained personnel, and have significant turnaround times, creating bottlenecks during pandemic surges.</p>
+      
+      <div class="feature-card">
+        <h3>Key Challenges</h3>
+        <ul>
+          <li><strong>Accessibility:</strong> Limited availability of PCR tests in remote or underserved areas</li>
+          <li><strong>Speed:</strong> Long turnaround times for lab-based testing results</li>
+          <li><strong>Cost:</strong> High expense of traditional testing methods at scale</li>
+          <li><strong>Data Scarcity:</strong> Limited availability of curated audio datasets for COVID-19 research</li>
+          <li><strong>Signal Variability:</strong> Significant differences in audio signals across age, gender, and health conditions</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="solution">
+      <h2>Solution & Architecture</h2>
+      <p>We developed a novel AI-powered solution for COVID-19 detection through acoustic analysis of breathing, cough, and speech signals, providing a rapid, non-invasive screening tool that could be deployed via mobile devices.</p>
+      
+      <img class="hero-img" src="../assets/covid-audio-arch.png" alt="COVID-19 Audio Analysis Architecture">
+      <p class="img-caption">Architecture diagram showing the audio processing and analysis pipeline</p>
+
+      <div class="feature-card">
+        <h3>Key Components</h3>
+        <ol class="solution-list">
+          <li>
+            <strong>Audio Data Collection Pipeline</strong>
+            <p>Structured approach to collecting and annotating breathing, cough, and speech samples from both COVID-positive and negative individuals</p>
+          </li>
+          <li>
+            <strong>Signal Processing Framework</strong>
+            <p>Advanced audio preprocessing, noise reduction, and feature extraction techniques optimized for respiratory sounds</p>
+          </li>
+          <li>
+            <strong>Deep Learning Classification</strong>
+            <p>Specialized neural network architectures trained to identify subtle audio biomarkers indicative of COVID-19 infection</p>
+          </li>
+          <li>
+            <strong>Mobile Deployment System</strong>
+            <p>Lightweight model optimization for deployment on mobile devices, enabling widespread accessibility</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="methodology">
+      <h2>Methodology</h2>
+      
+      <div class="feature-card">
+        <h3>Research Approach</h3>
+        <div class="methodology-steps">
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Data Collection & Curation</strong>
+              <p>Gathered and annotated a diverse dataset of respiratory audio samples from confirmed COVID-19 positive and negative individuals</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Audio Preprocessing</strong>
+              <p>Applied noise reduction, normalization, and augmentation techniques to enhance signal quality and dataset diversity</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Feature Extraction</strong>
+              <p>Extracted both traditional audio features (MFCCs, spectral features) and learned representations using deep learning</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Model Development</strong>
+              <p>Designed and trained specialized neural networks to classify COVID-19 status from audio signals</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Validation & Benchmarking</strong>
+              <p>Rigorous validation against established benchmarks and comparison with peer-reviewed approaches</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-content">
+              <strong>Clinical Correlation</strong>
+              <p>Analyzed model predictions against clinical outcomes to identify the most predictive audio biomarkers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Audio Modalities Analyzed</h3>
+        <ul>
+          <li><strong>Breathing Sounds:</strong> Analysis of forced breathing patterns for respiratory distress indicators</li>
+          <li><strong>Cough Acoustics:</strong> Examination of cough characteristics specific to COVID-19 respiratory involvement</li>
+          <li><strong>Speech Patterns:</strong> Detection of vocal changes associated with respiratory inflammation</li>
+          <li><strong>Composite Analysis:</strong> Multimodal approach combining all audio signals for improved accuracy</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Technical Approach</h2>
+      
+      <div class="feature-card">
+        <h3>Deep Learning Architecture</h3>
+        <p>TBD - Detailed description of the neural network architectures used, including CNN, RNN, or transformer-based approaches for audio analysis.</p>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Feature Engineering</h3>
+        <p>TBD - Explanation of specific audio features extracted and their clinical relevance to COVID-19 detection.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Data Augmentation Techniques</h3>
+        <p>TBD - Overview of audio augmentation methods used to increase dataset diversity and improve model generalization.</p>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results & Impact</h2>
+      
+      <div class="feature-card">
+        <h3>Quantitative Results</h3>
+        <ul>
+          <li><strong>High Accuracy:</strong> Achieved sensitivity and specificity on par with peer-reviewed benchmarks for audio-based COVID-19 detection</li>
+          <li><strong>Multi-modal Superiority:</strong> Combined analysis of breathing, cough, and speech signals outperformed single-modality approaches</li>
+          <li><strong>Robust Performance:</strong> Consistent results across different demographic groups and recording conditions</li>
+          <li><strong>Real-time Capability:</strong> Developed models capable of providing results in under 10 seconds on mobile devices</li>
+          <li><strong>Biomarker Identification:</strong> Identified specific audio features most predictive of COVID-19 infection</li>
+        </ul>
+      </div>
+      
+      <div class="feature-card">
+        <h3>Qualitative Benefits</h3>
+        <ul>
+          <li><strong>Accessibility:</strong> Potential for widespread screening in resource-limited settings</li>
+          <li><strong>Early Detection:</strong> Capability for early identification of potential infections before traditional testing</li>
+          <li><strong>Non-invasive:</strong> Comfortable testing experience without physical discomfort</li>
+          <li><strong>Scalability:</strong> Ability to scale to population-level screening through mobile deployment</li>
+          <li><strong>Continuous Monitoring:</strong> Potential for tracking disease progression or recovery through repeated testing</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Potential Applications</h2>
+      
+      <div class="feature-card">
+        <h3>Use Cases</h3>
+        <ul>
+          <li><strong>Pre-screening Tool:</strong> Rapid initial assessment before confirmatory testing</li>
+          <li><strong>Remote Monitoring:</strong> Tracking symptoms for home-based patients</li>
+          <li><strong>Public Health Surveillance:</strong> Population-level monitoring of respiratory disease prevalence</li>
+          <li><strong>Clinical Decision Support:</strong> Assisting healthcare professionals in diagnostic decisions</li>
+          <li><strong>Long COVID Assessment:</strong> Potential application for monitoring persistent respiratory symptoms</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tech">
+      <h2>Technology Stack</h2>
+      <div class="tech-tags">
+        <span>Python</span>
+        <span>TensorFlow</span>
+        <span>PyTorch</span>
+        <span>Librosa</span>
+        <span>Kaldi</span>
+        <span>Digital Signal Processing</span>
+        <span>CNN</span>
+        <span>LSTM</span>
+        <span>Transformers</span>
+        <span>Mobile Deployment</span>
+        <span>Audio Processing</span>
+        <span>Azur Cloud Computing</span>
+      </div>
+    </section>
+
+    <div class="case-footer">
+      <a href="https://github.com/aragit/covid-audio" target="_blank">
+        <i class="fab fa-github"></i> View Sample Code
+      </a>
+      <a href="../index.html#contact">
+        <i class="fas fa-envelope"></i> Discuss Similar Project
+      </a>
+    </div>
+  </main>
+</body>
+</html>
