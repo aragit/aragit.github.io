@@ -931,54 +931,55 @@
                 <h3 style="color: #fff; margin-bottom: 20px; font-size: 1.5rem;">Papers of the Month</h3>
                 
                 <div class="white-card">
-                    <h3>Chain-of-Thought Reasoning Without Prompting</h3>
+                    <h3>Deep Think with Confidence</h3>
                     <div class="meta">
-                        <span>Zhang et al.</span>
-                        <span>May 2024</span>
+                        <span>Yichao Fu, Xuewei Wang, Yuandong Tian, Jiawei Zhao
+</span>
+                        <span>21 Aug 2025</span>
                     </div>
-                    <p>In this work, we reveal that large language models can perform chain-of-thought reasoning without explicit prompting. Our findings suggest that CoT is an emergent property rather than solely a prompting technique.</p>
-                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                    <p>They crowd-source hundreds of reasoning chains, yet only the handful that survive an internal confidence cut truly matter. DeepConf lets the model vote with its own certainty, trimming the noise before it ever reaches the ballot box. With a single forward pass they save four-fifths of the compute and still hit near-perfect scores on the hardest math benchmarks.</p>
+                    <a href="https://arxiv.org/abs/2508.15260?utm_source=substack&utm_medium=email" class="source-link" target="_blank">View Paper →</a>
                 </div>
                 
                 <div class="white-card">
-                    <h3>Multi-Modal Foundation Models for Medical Imaging</h3>
+                    <h3>Memento: Fine-tuning LLM Agents without Fine-tuning LLMs</h3>
                     <div class="meta">
-                        <span>Johnson et al.</span>
-                        <span>April 2024</span>
+                        <span>Huichi Zhou et al.</span>
+                        <span>25 Aug 2025</span>
                     </div>
-                    <p>We introduce MedFM, a foundation model that unifies various medical imaging modalities. MedFM demonstrates strong performance across 12 medical imaging tasks, outperforming modality-specific models.</p>
-                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                    <p>They memorise every failure instead of retraining the model, stuffing past turns into an updatable episodic cache. Memento reads that cache like an online policy network, rewriting only the memories that steer future actions. Without a single gradient step, it tops GAIA and DeepResearcher benchmarks, proving agents can keep learning long after their weights are frozen..</p>
+                    <a href="https://arxiv.org/abs/2508.16153?utm_source=substack&utm_medium=email" class="source-link" target="_blank">View Paper →</a>
                 </div>
                 
                 <div class="white-card">
-                    <h3>Efficient Transformers with Linear Attention</h3>
+                    <h3>Memory-R1: Enhancing Large Language Model Agents to Manage and Utilize Memories via Reinforcement Learning</h3>
                     <div class="meta">
-                        <span>Chen & Wang</span>
-                        <span>June 2024</span>
+                        <span>Sikuan Yan et al.</span>
+                        <span>27 Aug 2025</span>
                     </div>
-                    <p>We propose Linear Transformer, a novel architecture that reduces the computational complexity of attention from quadratic to linear while maintaining competitive performance on language modeling benchmarks.</p>
-                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                    <p>In this paper, they introduce Memory-R1, a reinforcement-learning framework that turns a static external memory bank into an active, policy-driven workspace. Two lightweight agents—one that edits the memory and one that reads it—are fine-tuned with outcome-driven RL to decide, moment-by-moment, what to store, update, or discard. Trained on only 152 annotated examples, Memory-R1 surpasses the strongest baseline and generalizes across tasks and model backbones, offering a path to long-horizon, memory-aware reasoning without further LLM retraining.</p>
+                    <a href="https://arxiv.org/abs/2508.19828?utm_source=substack&utm_medium=email" class="source-link" target="_blank">View Paper →</a>
                 </div>
                 
                 <!-- Initially hidden papers -->
                 <div class="white-card hidden-paper" style="display: none;">
-                    <h3>Advancements in Reinforcement Learning from Human Feedback</h3>
+                    <h3>Diverse And Private Synthetic Datasets Generation for RAG evaluation: A multi-agent framework</h3>
                     <div class="meta">
-                        <span>Brown et al.</span>
-                        <span>June 2024</span>
+                        <span>Ilias Driouich et al.</span>
+                        <span>26 Aug 20254</span>
                     </div>
-                    <p>New techniques for improving RLHF that result in more aligned AI systems with reduced training costs and improved performance on complex tasks.</p>
-                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                    <p>In this paper, authors present a multi-agent pipeline that fabricates evaluation datasets for retrieval-augmented generation without leaking secrets. A diversity agent scatters questions across every semantic cluster, a privacy agent scrubs sensitive tokens, and a curation agent stitches the rest into QA pairs. The resulting sets beat baselines on coverage and confidentiality, giving regulators a ready-made benchmark for safer, private-by-design RAG systems.</p>
+                    <a href="https://arxiv.org/abs/2508.18929?utm_source=substack&utm_medium=email" class="source-link" target="_blank">View Paper →</a>
                 </div>
                 
                 <div class="white-card hidden-paper" style="display: none;">
-                    <h3>Neural Architecture Search for Efficient Models</h3>
+                    <h3>Jet-Nemotron: Efficient Language Model with Post Neural Architecture Search</h3>
                     <div class="meta">
-                        <span>Lee et al.</span>
-                        <span>May 2024</span>
+                        <span>Yuxian Gu, al.</span>
+                        <span>21 Aug 2025</span>
                     </div>
-                    <p>Automated discovery of neural network architectures that achieve state-of-the-art performance with significantly reduced computational requirements.</p>
-                    <a href="https://arxiv.org/abs/1234.56789" class="source-link" target="_blank">View Paper →</a>
+                    <p>Jet-Nemotron freezes the feed-forward layers and re-architects only the attention blocks, turning a 2 B dense model into a hybrid that keeps Llama-level accuracy. PostNAS searches layer layouts after pre-training, delivering 53× faster generation without extra training cost. The result outruns MoE giants on MMLU while fitting on a single GPU.</p>
+                    <a href="https://www.arxiv.org/abs/2508.15884?utm_source=substack&utm_medium=email" class="source-link" target="_blank">View Paper →</a>
                 </div>
                 
                 <div class="section-load-more">
