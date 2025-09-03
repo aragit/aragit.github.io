@@ -457,10 +457,34 @@ footer {
   /* border: 4px solid #ff6b00; */
 }
 
+/* Hero avatar responsive styles */
+.hero-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #ff6b00;
+  /* Ensure proper image rendering on mobile */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile responsive adjustments */
 @media (max-width: 600px) {
-  /* make sure nothing else is overriding this */
   .hero-avatar {
-    display: none !important;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.8rem;
+  }
+  
+  /* Additional mobile optimization */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  #typewrite {
+    font-size: 1.1rem;
   }
 }
 

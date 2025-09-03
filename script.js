@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', () => {
   /* ---------- TYPEWRITER ---------- */
   const typeEl = document.querySelector('#typewrite');
   if (!typeEl) return;
-  const roles = ["AI Engineer", "Agentic AI Researcher", "Ethical AI Advocate", "KaggleX Advisor", "Kaggle Grandmaster"];
+  const roles = ["LLM Engineering", "Agentic AI", "Agentic RAG", "LLMOps & Scalable Solutions", "Recommendation Systems",  "KaggleX Advisor", "Kaggle Grandmaster", "Ethical AI Advocate"];
   let i = 0, j = 0, forward = true;
   function tick() {
     const cur = roles[i];
