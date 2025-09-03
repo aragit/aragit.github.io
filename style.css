@@ -474,9 +474,9 @@ footer {
 @media (max-width: 600px) {
   .hero-avatar {
     width: 100px;
-    height: 100px;
+    height: 120px;
     margin-bottom: 0.8rem;
-    border-radius: 50% / 40%;
+    
   }
   
   /* Additional mobile optimization */
