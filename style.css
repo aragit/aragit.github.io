@@ -476,6 +476,7 @@ footer {
     width: 100px;
     height: 100px;
     margin-bottom: 0.8rem;
+    border-radius: 50% / 40%;
   }
   
   /* Additional mobile optimization */
