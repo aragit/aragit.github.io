@@ -970,3 +970,33 @@ a.cta-secondary:hover,
   .hero-divider .dot { width: 8px; height: 8px; }
 }
 
+#navbar ul li a {
+  position: relative;
+  padding: 0.5rem 0;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+  color: #ff6b00;
+}
+
+#navbar ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff6b00;
+  transition: width 0.3s ease;
+}
+
+#navbar ul li a:hover::after {
+  width: 100%;
+}
+
+a[href="blog/index.html"]:hover {
+  background-color: #ff6b00;
+  color: #121212;
+}
