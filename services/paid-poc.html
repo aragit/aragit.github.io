@@ -1,599 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Forge — Bespoke LLM Solution — Arash Nicoomanesh</title>
-  <meta name="description" content="Where architecture becomes reality. We forge your strategic blueprint into a powerful, intelligent, and custom-built AI solution that delivers tangible business value." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>The Forge – Custom LLM Build | Arash Nicoomanesh</title>
+
+  <!--  SEO + Social  -->
+  <meta name="description" content="From blueprint to production-grade LLM solution in 4-12 weeks. Fixed-price builds: RAG, fine-tuning, agentic AI, guardrails & cost-optimised infra."/>
+  <meta property="og:title" content="The Forge – Custom LLM Build"/>
+  <meta property="og:description" content="Fixed-price development of production-grade LLM systems."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aragit.github.io/services/paid-poc.html"/>
+  <meta property="og:image" content="https://aragit.github.io/og-forge.png"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --primary: #8B5CF6;
-      --primary-dark: #7C3AED;
-      --secondary: #06D6A0;
-      --dark: #121212;
-      --darker: #0a0a0a;
-      --light: #f3f4f6;
-      --gray: #9ca3af;
-      --accent: #F97316;
-      --accent-light: #FB923C;
-      --header-gradient: linear-gradient(135deg, #1E1B4B 0%, #4A044E 100%);
+    :root{
+      --primary:#8B5CF6;--primary-dark:#7C3AED;--secondary:#06D6A0;
+      --dark:#121212;--darker:#0a0a0a;--light:#f3f4f6;--gray:#9ca3af;
+      --accent:#F97316;--accent-light:#FB923C;
+      --header-gradient:linear-gradient(135deg,#1E1B4B 0%,#4A044E 100%);
     }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      background: var(--darker);
-      color: #eaf2fb;
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Header - Changed to black */
-    header {
-      background: #000000 !important; /* Black background */
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .logo i {
-      color: var(--accent);
-    }
-    
-    /* Hero Section - Changed to purple/black gradient and white text */
-    .hero {
-      background: linear-gradient(135deg, #4A044E 0%, #1a1a1a 100%) !important; /* Purple/black gradient */
-      padding: 80px 0 60px;
-      text-align: center;
-      position: relative;
-    }
-    
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 16px;
-      color: white !important; /* White text instead of gradient */
-      font-weight: 700;
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #cbd6df;
-    }
-    
-    /* Main Content */
-    .main-content {
-      padding: 60px 0;
-    }
-    
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 50px;
-    }
-    
-    .card {
-      background: linear-gradient(145deg, #1a1a1a, #141414);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      height: 100%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 极速0.4);
-    }
-    
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    h3 i {
-      color: var(--accent);
-    }
-    
-    .specs {
-      list-style: none;
-      color: #bfcbd7;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .specs li {
-      margin-bottom: 16px;
-      padding-left: 32px;
-      position: relative;
-      line-height: 1.5;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .specs li::before {
-      content: "•";
-      color: var(--accent);
-      font-size: 24px;
-      position: absolute;
-      left: 0;
-      top: -3px;
-    }
-    
-    .specs strong {
-      color: white;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    /* Capabilities Grid */
-    .capabilities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-    
-    .capability-card {
-      background: linear-gradient(145deg, #1a1a1a, #141414);
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .capability-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    }
-    
-    .capability-icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-    
-    .capability-card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-      color: white;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .capability-card p {
-      color: #cbd6df;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-      font-weight: 400;
-      line-height: 1.6;
-    }
-    
-    /* Process Section */
-    .process-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      margin: 40px 0;
-    }
-    
-    .process-step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    
-    .step-number {
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-      color: #060606;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      flex-shrink: 0;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .step-content {
-      flex: 1;
-    }
-    
-    .step-content h4 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: white;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .step-content p {
-      color: #cbd6df;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-      font-weight: 400;
-    }
-    
-    /* Form Styling */
-    .form-section {
-      background: linear-gradient(145deg, #1a1a1a, #141414);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      margin-bottom: 50px;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    
-    input, select, textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-      font-family: 'Inter', sans-serif;
-      transition: all 0.3s ease;
-    }
-    
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
-    }
-    
-    label {
-      display: block;
-      font-size: 0.9rem;
-      color: #cbd6df;
-      margin-bottom: 8px;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .btn-primary {
-      background: linear-gradient(90deg, #F97316, #FB923C);
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
-    }
-    
-    .btn-secondary {
-      background: transparent;
-      color: #cbd6df;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    
-    /* Footer */
-    .page-footer {
-      text-align: center;
-      padding: 30px 0;
-      color: #9aa4b2;
-      font-size: 0.95rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-family: 'Inter', sans-serif; /* Added font consistency */
-    }
-    
-    /* Responsive */
-    @media (max-width: 900px) {
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-      
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .capabilities-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    @media (max-width: 600px) {
-      .card, .form-section, .capability-card {
-        padding: 24px;
-      }
-      
-      .hero {
-        padding: 60px 0 40px;
-      }
-      
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .header-content {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .process-step {
-        flex-direction: column;
-      }
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--darker);color:#eaf2fb;font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    /* ---------- header ---------- */
+    header{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid rgba(255,255,255,.05)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .logo{font-weight:700;font-size:1.3rem;display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+    .logo i{color:var(--accent)}
+    .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
+    .back-btn:hover{border-color:var(--accent);color:var(--accent)}
+    /* ---------- hero ---------- */
+    .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
+    .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6df}
+    .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}
+    /* ---------- sections ---------- */
+    section{padding:clamp(50px,8vw,80px) 0}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
+    .card h3{font-size:1.4rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#fff}
+    .card h3 i{color:var(--accent)}
+    .card p{color:#bfcbd7;margin-bottom:12px}
+    .checklist{list-style:none;color:#bfcbd7}
+    .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
+    .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
+    .highlight{background:var(--accent);color:#000;padding:2px 8px;border-radius:4px;font-weight:600}
+    /* ---------- deliverables ---------- */
+    .deliver-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
+    .deliver-box h3{margin-bottom:8px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+    input,select,textarea{width:100%;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-family:inherit;transition:border .3s,box-shadow .3s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(249,115,22,.2)}
+    label{font-size:.9rem;color:#cbd6df;margin-bottom:6px;display:block}
+    ::placeholder{color:#6b7280}
+    .btn-submit{background:var(--accent);color:#fff;padding:14px 28px;border:none;border-radius:50px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:.3s}
+    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(249,115,22,.4)}
+    /* ---------- cta band ---------- */
+    .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
+    .cta-band h2{font-size:1.8rem;margin-bottom:12px}
+    .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
+    .btn-light:hover{transform:scale(1.03)}
+    /* ---------- footer ---------- */
+    footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
+    /* ---------- responsive ---------- */
+    @media(max-width:700px){.form-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="header-content">
-        <a href="../index.html" class="logo">
-          <i class="fas fa-hammer"></i>
-          Arash Nicoomanesh
-        </a>
-        <a href="../index.html" class="btn-secondary">
-          <i class="fas fa-arrow-left"></i> Back to main
-        </a>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo"><i class="fa-solid fa-hammer"></i>Arash Nicoomanesh</a>
+      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- HERO                                                         -->
+<!-- ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <span class="badge">Fixed-price build · 4–12 weeks</span>
+    <h1>The Forge</h1>
+    <p>From architecture to production-grade LLM solution. One fixed price, one delivery date, zero scope creep.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHAT YOU GET                                                 -->
+<!-- ============================================================ -->
+<section>
+  <div class="container">
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-sitemap"></i>Advanced RAG Systems</h3>
+        <ul class="checklist">
+          <li>Hybrid dense + sparse retrieval</li>
+          <li>Re-ranking & verifiable citations</li>
+          <li>Sub-100 ms latency at &gt;10 k docs</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-sliders"></i>Targeted Fine-Tuning</h3>
+        <ul class="checklist">
+          <li>LoRA / QLoRA, RLHF, DPO</li>
+          <li>Brand-voice & domain expertise</li>
+          <li>Cost-optimised inference (GPTQ, AWQ)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-robot"></i>Agentic Automation</h3>
+        <ul class="checklist">
+          <li>Multi-step reasoning & tool use</li>
+          <li>Human-in-the-loop guardrails</li>
+          <li>API, RPA, database integrations</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-shield-halved"></i>Safety & Guardrails</h3>
+        <ul class="checklist">
+          <li>Content filtering & PII redaction</li>
+          <li>Output schema validation</li>
+          <li>Toxicity & bias monitoring</li>
+        </ul>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>The Forge — Bespoke AI Solution Development</h1>
-      <p>Engineering and development phase where we build robust, custom AI solutions based on your strategic blueprint.</p>
+<!-- ============================================================ -->
+<!-- PROCESS                                                      -->
+<!-- ============================================================ -->
+<section style="background:#121212">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:40px">Delivery Process</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Dev-Ops & Data</h3>
+        <ul class="checklist">
+          <li>Cloud sandbox with CI/CD</li>
+          <li>Data pipeline & labelling</li>
+          <li>Evaluation harness</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-code-pull-request"></i>Weeks 2-3 · Core Build</h3>
+        <ul class="checklist">
+          <li>Model training / tuning</li>
+          <li>Retrieval stack & APIs</li>
+          <li>Bi-weekly demo & sign-off</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 4-X · Hardening</h3>
+        <ul class="checklist">
+          <li>Load, security & edge-case tests</li>
+          <li>Cost & latency optimisation</li>
+          <li>Monitoring & alerting</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-rocket"></i>Final · Hand-Over</h3>
+        <ul class="checklist">
+          <li>Dockerised artefacts</li>
+          <li>Run-books & docs</li>
+          <li>Knowledge-transfer session</li>
+        </ul>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Main Content -->
-  <div class="container main-content">
-    <section class="two-col">
-      <div class="card">
-        <h3><i class="fas fa-bullseye"></i> Objective</h3>
-        <p style="color: #cbd6df; margin-bottom: 20px;">To engineer and deliver a robust, custom-built AI solution based on your AI strategy.</p>
-        <p style="color: #cbd6df;">This is our core development sprint where we take the architectural plan and bring it to life through rigorous engineering, testing, and iteration.</p>
-      </div>
+<!-- ============================================================ -->
+<!-- INVESTMENT                                                   -->
+<!-- ============================================================ -->
+<section>
+  <div class="container" style="text-align:center;max-width:740px">
+    <h2 style="margin-bottom:12px">Fixed-price builds</h2>
+    <p style="font-size:1.1rem;color:#cbd6df">Typical range <span class="highlight">$8 k – $35 k</span> depending on data volume, model size and integration surface. Price locked at contract—no hourly surprises.</p>
+  </div>
+</section>
 
-      <div class="card">
-        <h3><i class="fas fa-cogs"></i> Development Process</h3>
-        <p style="color: #cbd6df; margin-bottom: 20px;"><strong>Duration:</strong> 4-12 weeks depending on complexity</p>
-        <p style="color: #cbd6df;">We follow an agile development methodology with bi-weekly demos, continuous integration, and thorough testing to ensure we're building the right solution efficiently.</p>
-      </div>
-    </section>
+<!-- ============================================================ -->
+<!-- CTA BAND                                                     -->
+<!-- ============================================================ -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to ship?</h2>
+    <p style="margin-bottom:24px">I run max <strong>three</strong> concurrent builds—reserve your slot.</p>
+    <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Book a scoping call</a>
+  </div>
+</div>
 
-    <section>
-      <h3><i class="fas fa-toolbox"></i> Core Development Capabilities</h3>
-      <p style="color: #cbd6df; margin-bottom: 30px;">Within the "Forge" phase, we apply a specific set of capabilities depending on the project's needs:</p>
-      
-      <div class="capabilities-grid">
-        <div class="capability-card">
-          <div class="capability-icon">
-            <i class="fas fa-robot"></i>
-          </div>
-          <h4>Advanced RAG Systems</h4>
-          <p style="color: #cbd6df;">Go beyond basic chatbots. We build systems that reason over your private data with unparalleled accuracy, featuring hybrid search, re-ranking, and verifiable citations to deliver trustworthy answers.</p>
-        </div>
-        
-        <div class="capability-card">
-          <div class="capability-icon">
-            <i class="fas fa-sliders-h"></i>
-          </div>
-          <h4>Targeted Model Fine-Tuning</h4>
-          <p style="color: #cbd6df;">We imbue powerful base models with your unique expertise. Ideal for capturing a specific brand voice or mastering specialized data extraction, we deliver peak performance at a minimal cost using state-of-the-art efficient tuning techniques.</p>
-        </div>
-        
-        <div class="capability-card">
-          <div class="capability-icon">
-            <i class="fas fa-code-branch"></i>
-          </div>
-          <h4>Agentic AI & Automation</h4>
-          <p style="color: #cbd6df;">Automate more than just conversation. We build autonomous agents that execute complex, multi-step business processes by intelligently interacting with your existing software, APIs, and data sources.
-
-</p>
-        </div>
-        
-        <div class="capability-card">
-          <div class="capability-icon">
-            <i class="fas fa-comment-alt"></i>
-          </div>
-          <h4>Expert Prompt Engineering</极速h4>
-          <p style="color: #cbd6df;">This is foundational to all our work. We design, test, and refine complex prompt chains and templates that extract the most accurate, consistent, and reliable behavior from the LLM, reducing errors and hallucinations.</p>
-        </div>
-        
-        <div class="capability-card">
-          <div class="capability-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h4>AI Safety & Guardrails</h4>
-          <p style="color: #cbd6df;">We implement comprehensive safety measures including content filtering, output validation, and toxicity detection to ensure your AI solutions operate within defined boundaries and ethical guidelines.</p>
-        </div>
-        
-        <div class="capability-card">
-          <div class="capability-icon">
-            <i class="fas fa-tachometer-alt"></i>
-          </div>
-          <h4>Performance Optimization</h4>
-          <p style="color: #cbd6df;">We optimize your AI solutions for speed, cost, and accuracy through techniques like model distillation, caching strategies, and efficient vector search implementations.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" style="margin: 50px 0;">
-      <h3><i class="fas fa-road"></i> Development Process</h3>
-      
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h4>Environment Setup & Tooling</h4>
-            <p style="color: #cbd6df;">We establish the development environment with version control, CI/CD pipelines, testing frameworks, and collaboration tools to ensure a smooth development process.</p>
-          </div>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h4>Iterative Development</h4>
-            <p style="color: #cbd6df;">We develop in two-week sprints with regular demos and feedback sessions to ensure we're building the right solution and can adapt to new requirements.</p>
-          </div>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <h4>Rigorous Testing</h4>
-            <p style="color: #cbd6df;">We implement comprehensive testing including unit tests, integration tests, and evaluation against your specific success metrics to ensure quality and reliability.</p>
-          </div>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">4</div>
-          <div class="step-content">
-            <h4极速>Documentation & Knowledge Transfer</h4>
-            <p style="color: #cbd6df;">We provide detailed documentation and conduct knowledge transfer sessions to ensure your team can maintain and extend the solution after delivery.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="form-section">
-      <h3><i class="fas fa-comments"></i> Start a Conversation About Your Project</h3>
-      <p style="color: #cbd6df; margin-bottom: 30px;">Ready to build your custom LLM Powered solution? Fill out the form below and I'll send you a detailed proposal.</p>
+<!-- ============================================================ -->
+<!-- REQUEST FORM                                                 -->
+<!-- ============================================================ -->
+<section id="request">
+  <div class="container">
+    <div class="deliver-box">
+      <h3><i class="fa-solid fa-paper-plane"></i>Request a build quote</h3>
+      <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page statement-of-work + calendar link within 24 h.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="form-row">
           <div>
-            <input name="name" type="text" placeholder="Your name" required>
+            <label>Your name *</label>
+            <input name="name" type="text" required placeholder="Jane Doe">
           </div>
           <div>
-            <input name="email" type="email" placeholder="name@example.com" required>
+            <label>Work email *</label>
+            <input name="email" type="email" required placeholder="jane@company.com">
           </div>
         </div>
 
-        <div style="margin-bottom: 20px;">
-          <input name="organization" placeholder="Company / Organization">
+        <div style="margin-bottom:20px">
+          <label>Company / organisation</label>
+          <input name="organisation" placeholder="Acme Inc.">
         </div>
 
-        <div style="margin-bottom: 20px;">
-          <label for="project-type">Primary Interest</label>
-          <select name="project-type">
-            <option value="rag">Advanced RAG System</option>
-            <option value="fine-tuning">Model Fine-Tuning</option>
-            <option value="agents">Intelligent Agents</option>
-            <option value="other">Other LLM Solution</option>
+        <div style="margin-bottom:20px">
+          <label>Primary capability needed</label>
+          <select name="capability">
+            <option value="rag">Advanced RAG</option>
+            <option value="fine-tune">Fine-Tuning</option>
+            <option value="agents">Agentic AI</option>
+            <option value="full">End-to-end system</option>
           </select>
         </div>
 
-        <div style="margin-bottom: 20px;">
-          <textarea name="message" required placeholder="Tell us about your project goals, data sources, and any specific requirements..." style="min-height: 140px;"></textarea>
+        <div style="margin-bottom:24px">
+          <label>Describe the system you need *</label>
+          <textarea name="message" required placeholder="e.g. multi-turn chat over 40 k technical PDFs, answer latency &lt;1 s, 500 concurrent users..." style="min-height:120px"></textarea>
         </div>
 
-        <input type="hidden" name="service" value="The Forge - Bespoke LLM Development">
-        <input type="hidden" name="_subject" value="Website Lead: The Forge Development">
-        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+        <!-- hidden fields -->
+        <input type="hidden" name="service" value="The Forge">
+        <input type="hidden" name="_subject" value="Website lead: The Forge">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
-        <input type="hidden" name="utm_source" id="hidden_utm_source" value="">
-        <input type="hidden" name="utm_medium" id="hidden_utm_medium" value="">
-        <input type="hidden" name="utm_campaign" id="hidden_utm_campaign" value="">
-        <input type="hidden" name="referrer" id="hidden_referrer" value="">
+        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
-        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <button type="submit" class="btn-primary">
-            <i class="fas fa-paper-plane"></i> Request Proposal
-          </button>
-          <a href="https://calendly.com/anicomanesh" target="_blank" class="btn-secondary">
-            <i class="fas fa-calendar"></i> Book Technical Consultation
-          </a>
-        </div>
+        <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i>Send request</button>
       </form>
-    </section>
+    </div>
   </div>
+</section>
 
-  <!-- Footer -->
-  <div class="container">
-    <footer class="page-footer">
-      <p><strong>Next Phase:</strong> After development is complete, we can transition to Phase 3: The Nexus for integration and optimization of your LLM solution.</p>
-    </footer>
-  </div>
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer>
+  © <span id="yr"></span> Arash Nicoomanesh · AI & ML Engineering Services
+</footer>
 
-  <script>
-    (function fillUtm(){
-      try{
-        const params = new URLSearchParams(location.search);
-        document.getElementById('hidden_utm_source').value = params.get('utm_source') || '';
-        document.getElementById('hidden_utm_medium').value = params.get('utm_medium') || '';
-        document.getElementById('hidden_utm_campaign').value = params.get('utm_campaign') || '';
-        document.getElementById('hidden_referrer').value = document.referrer || '';
-      }catch(e){}
-    })();
-  </script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // basic UTM grab
+  const u = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
+    const v=u.get(p),el=document.createElement('input'); 
+    if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
+  });
+</script>
 </body>
 </html>
