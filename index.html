@@ -132,11 +132,8 @@
             <i class="fas fa-handshake" aria-hidden="true"></i>
             Let's Collaborate
           </a>
-        </div>
-
-       
+        </div>       
     </div>
-        
   </section>
   <section class="holo-cube">
       <div class="cube">
@@ -147,22 +144,38 @@
         <i class="fab fa-github"  style="--x:1;--y:1;--z:-1"></i>
         <i class="fab fa-google" style="--x:-1;--y:1;--z:1"></i>
       </div>
-      
-</section>
+   </section>
 
     <style>
     .holo-cube{perspective:800px;height:160px;margin:2rem 0;text-align:center}
-    .cube{width:100px;height:100px;margin:auto;transform-style:preserve-3d;animation:spin3d 10s linear infinite}
-    .cube i{position:absolute;width:48px;height:48px;background:#12121266;border:1px solid #ff6b0066;border-radius:8px;display:grid;place-content:center;font-size:22px;color:#ff6b00;transition:.3s}
-    .cube i:nth-child(1){transform:rotateY(  0deg) translateZ(50px)}
-    .cube i:nth-child(2){transform:rotateY(180deg) translateZ(50px)}
-    .cube i:nth-child(3){transform:rotateX( 90deg) translateZ(50px)}
-    .cube i:nth-child(4){transform:rotateX(-90deg) translateZ(50px)}
-    .cube i:nth-child(5){transform:rotateY( 90deg) translateZ(50px)}
-    .cube i:nth-child(6){transform:rotateY(-90deg) translateZ(50px)}
-    @keyframes spin3d{from{transform:rotateX(0deg) rotateY(0deg)}to{transform:rotateX(360deg) rotateY(360deg)}}
+    .cube{width:100px;height:100px;margin:auto;transform-style:preserve-3d;
+          animation:spinInPlace 10s linear infinite}
+    .cube:hover{animation-play-state:paused}
+    
+    /* faces sit still inside the rotating parent */
+    .cube i{position:absolute;width:48px;height:48px;background:#12121266;
+            border:1px solid #ff6b0066;border-radius:8px;display:grid;
+            place-content:center;font-size:22px;color:#ff6b00;transition:.3s;
+            /* place each icon on its cube face */
+            inset:0;margin:auto} /* centre each face */
+    
+    .cube i:nth-child(1){transform:translateZ(50px)}      /* front  */
+    .cube i:nth-child(2){transform:rotateY(180deg) translateZ(50px)} /* back   */
+    .cube i:nth-child(3){transform:rotateX( 90deg) translateZ(50px)} /* top    */
+    .cube i:nth-child(4){transform:rotateX(-90deg) translateZ(50px)} /* bottom */
+    .cube i:nth-child(5){transform:rotateY( 90deg) translateZ(50px)} /* right  */
+    .cube i:nth-child(6){transform:rotateY(-90deg) translateZ(50px)} /* left   */
+    
+    @keyframes spinInPlace{
+      from{transform:rotateX(0deg) rotateY(0deg)}
+      to{transform:rotateX(360deg) rotateY(360deg)}
+    }
     .cube:hover i{background:#ff6b000f;border-color:#ff6b00}
-    .holo-cube p{margin-top:1rem;font-size:.9rem;color:#aaa}
+    .holo-cube p{margin-top:0.rem;font-size:.9rem;color:#aaa}
+    .holo-cube   { margin: 0 0 0 0 !important; padding: 0 0 0 0 !important; height: 100px !important; }
+    .holo-cube + #about { padding-top: 2px !important; }
+    /* tuck cube right under the buttons */
+    .holo-cube { margin-top: -26px !important; }
     </style>
   <!-- ABOUT -->
   <section id="about" class="section">

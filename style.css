@@ -1027,5 +1027,6 @@ a[href="blog/index.html"]:hover {
 }
 
 /* compact cube (top & bottom) */
-.holo-cube   { margin: 0 0 0 0 !important; padding: 0 0 0 0 !important; height: 110px !important; }
-.holo-cube + #about { padding-top: 8px !important; }
+.holo-cube { margin-top: -16px !important; }
+/* kill hero bottom padding */
+.hero { padding-bottom: 0 !important; }
