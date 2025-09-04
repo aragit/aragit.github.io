@@ -1026,3 +1026,6 @@ a[href="blog/index.html"]:hover {
   color: #121212;
 }
 
+/* compact cube (top & bottom) */
+.holo-cube   { margin: 0 0 0 0 !important; padding: 0 0 0 0 !important; height: 110px !important; }
+.holo-cube + #about { padding-top: 8px !important; }
