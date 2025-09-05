@@ -108,9 +108,10 @@
         <ul class="checklist">
           <li>Hybrid dense + sparse retrieval</li>
           <li>Re-ranking & verifiable citations</li>
-          <li>Sub-100 ms latency at &gt;10 k docs</li>
+          <li>Sub-100 ms first-token latency (≤ 500 k chunks, no re-rank in hot path)</li>
           <li>Multi-lingual & domain-specific embeddings</li>
           <li>Graph-RAG for relational knowledge</li>
+          <li>Continuous index refresh (≤ 15 min SLA)</li>
         </ul>
       </div>
 
@@ -119,10 +120,11 @@
         <p>Turn a generic foundation model into a domain expert that speaks your brand voice and respects your jargon.</p>
         <ul class="checklist">
           <li>LoRA / QLoRA, RLHF, DPO</li>
-          <li>Brand-voice & domain expertise</li>
-          <li>Cost-optimised inference (GPTQ, AWQ)</li>
-          <li>Continual-learning pipelines</li>
-          <li>Quantised 8-bit/4-bit deployment</li>
+          <li>Brand-voice & domain expertise (≥ 85 % style classifier score)</li>
+          <li>Cost-optimised inference: GPTQ 4-bit, AWQ, batch-size autoscale</li>
+          <li>Continual-learning pipelines with rehearsal buffer</li>
+          <li>Eval harness: MT-Bench + custom test set (≥ 90 % pass)</li>
+          <li>Data requirement: 3 k – 10 k high-quality samples</li>
         </ul>
       </div>
 
@@ -130,11 +132,12 @@
         <h3><i class="fa-solid fa-robot"></i>Agentic Automation</h3>
         <p>Autonomous agents that orchestrate tools, APIs and legacy systems to complete multi-step workflows.</p>
         <ul class="checklist">
-          <li>Multi-step reasoning & tool use</li>
-          <li>Human-in-the-loop guardrails</li>
-          <li>API, RPA, database integrations</li>
-          <li>Stateful conversation memory</li>
-          <li>Retry & rollback strategies</li>
+          <li>Multi-step reasoning & tool use (ReAct / OpenAI functions)</li>
+          <li>Human-in-the-loop guardrails (Slack / Teams ≤ 24 h SLA)</li>
+          <li>API, RPA, database integrations (OAuth2, SQL, SAP, UiPath)</li>
+          <li>Stateful conversation memory (last 20 turns, 32 k ctx)</li>
+          <li>Retry & rollback strategies (idempotent calls, DB transactions)</li>
+          <li>Max 10 tools / workflow, step timeout ≤ 5 s</li>
         </ul>
       </div>
 
@@ -142,11 +145,12 @@
         <h3><i class="fa-solid fa-shield-halved"></i>Safety & Guardrails</h3>
         <p>Ship with confidence—built-in filters, audits and real-time monitoring keep your model on its best behaviour.</p>
         <ul class="checklist">
-          <li>Content filtering & PII redaction</li>
-          <li>Output schema validation</li>
-          <li>Toxicity & bias monitoring</li>
-          <li>Prompt-injection detection</li>
-          <li>Audit logs for compliance</li>
+          <li>Content filtering & PII redaction (Presidio, Azure Content Safety)</li>
+          <li>Output schema validation (Pydantic / Outlines)</li>
+          <li>Toxicity & bias monitoring (weekly review dashboard)</li>
+          <li>Prompt-injection detection (heuristic + LLM judge, 90 % precision)</li>
+          <li>Audit logs: append-only, 90 d retention, AES-256 encrypted</li>
+          <li>SLA: block ≥ 95 % harmful requests</li>
         </ul>
       </div>
 
@@ -154,10 +158,12 @@
         <h3><i class="fa-solid fa-chart-line"></i>Observability & Cost-Control</h3>
         <p>Transparent metrics and spend alerts ensure your LLM workload scales without surprises.</p>
         <ul class="checklist">
-          <li>Token-level cost tracking</li>
-          <li>Latency & throughput dashboards</li>
-          <li>Auto-scaling inference endpoints</li>
-          <li>Spot-instance fallback layers</li>
+          <li>Token-level cost tracking (± 5 % accuracy vs cloud bill)</li>
+          <li>Latency & throughput dashboards (Grafana, Prometheus)</li>
+          <li>Auto-scaling inference endpoints (KEDA, 60-120 s cold start)</li>
+          <li>Spot-instance fallback layers (stateless pods, checkpoint on EFS/S3)</li>
+          <li>Budget alerts: +20 % forecast → Slack + email</li>
+          <li>Multi-region fail-over RPO ≤ 30 min</li>
         </ul>
       </div>
 
@@ -165,10 +171,12 @@
         <h3><i class="fa-solid fa-lock"></i>Compliance & Enterprise Support</h3>
         <p>Meet SOC-2, GDPR or HIPAA requirements with encrypted pipelines and on-prem options.</p>
         <ul class="checklist">
-          <li>VPC & air-gapped deployments</li>
-          <li>Key-management & encryption at rest</li>
-          <li>Role-based access controls</li>
-          <li>Annual penetration-test reports</li>
+          <li>VPC & air-gapped deployments (offline registry, HF cache mirror)</li>
+          <li>Key-management & encryption at rest (AWS KMS, AES-256)</li>
+          <li>Role-based access controls (OIDC, Kubernetes RBAC)</li>
+          <li>Annual penetration-test reports (CREST, remediation re-test)</li>
+          <li>Data residency: EU, US, APAC regions optional</li>
+          <li>Backup & DR: RPO 4 h, RTO 8 h, 7-year encrypted archive</li>
         </ul>
       </div>
     </div>
@@ -185,36 +193,39 @@
       <div class="card">
         <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Dev-Ops & Data</h3>
         <ul class="checklist">
-          <li>Cloud sandbox with CI/CD</li>
-          <li>Data pipeline & labelling</li>
-          <li>Evaluation harness</li>
+          <li>Cloud sandbox with CI/CD (Terraform, GitHub Actions, container build & lint)</li>
+          <li>Data pipeline & labelling (≤ 500 k docs, ≤ 1 k tokens/chunk, ≥ 95 % inter-annotator agreement)</li>
+          <li>Evaluation harness (hit-rate@5, answer F1, style score, MT-Bench)</li>
         </ul>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-code-pull-request"></i>Weeks 2-3 · Core Build</h3>
         <ul class="checklist">
-          <li>Model training / tuning</li>
-          <li>Retrieval stack & APIs</li>
-          <li>Bi-weekly demo & sign-off</li>
+          <li>Model training / tuning (8 × A100 40 h, eval delta ≥ +10 %)</li>
+          <li>Retrieval stack & APIs (first-token ≤ 100 ms, hybrid RRF fusion)</li>
+          <li>Bi-weekly demo & sign-off (recorded Loom + Notion stakeholder sheet)</li>
         </ul>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 4-X · Hardening</h3>
         <ul class="checklist">
-          <li>Load, security & edge-case tests</li>
-          <li>Cost & latency optimisation</li>
-          <li>Monitoring & alerting</li>
+          <li>Load, security & edge-case tests (500 CCU, p95 ≤ 1.2 s, error ≤ 0.5 %)</li>
+          <li>Cost & latency optimisation (≤ $0.002 per 1 k input tokens, spot fallback)</li>
+          <li>Monitoring & alerting (budget +20 %, RPO 30 min, block ≥ 95 % harmful)</li>
         </ul>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-rocket"></i>Final · Hand-Over</h3>
         <ul class="checklist">
-          <li>Dockerised artefacts</li>
-          <li>Run-books & docs</li>
-          <li>Knowledge-transfer session</li>
+          <li>Dockerised artifacts (SBOM, CVE < 3 high, signed images)</li>
+          <li>Run-books & docs (rollback, on-call, auto-scale thresholds)</li>
+          <li>Knowledge-transfer session (1 × 2 h live + Loom wiki, sign-off sheet)</li>
         </ul>
       </div>
     </div>
+    <p style="text-align:center; margin-top:24px; color:#9ca3af; font-size:0.9rem">
+      Assumptions: client provides cloud account, data exports within 3 days, review cycles ≤ 48 h.
+    </p>
   </div>
 </section>
 
