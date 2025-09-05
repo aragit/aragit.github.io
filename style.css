@@ -1031,3 +1031,46 @@ a[href="blog/index.html"]:hover {
 /* kill hero bottom padding */
 .hero { padding-bottom: 0 !important; }
 
+/* =========  keep the cube frame  ========= */
+.cube i.fab.fa-huggingface,
+.cube i.fab.fa-google-cloud{
+  background:#12121266 !important;
+  border:1px solid #ff6b0066 !important;
+  border-radius:8px !important;
+  display:flex !important;          /* flex centre */
+  align-items:center;
+  justify-content:center;
+  font-size:0;                      /* kill FA’s own glyph */
+  color:#ff6b00;
+}
+
+/* =========  centred mask glyph  ========= */
+.cube i.fab.fa-huggingface::before,
+.cube i.fab.fa-google-cloud::before{
+  content:"";
+  width:26px;
+  height:26px;
+  background-color:currentColor;
+  -webkit-mask-size:contain;
+  mask-size:contain;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-position:center;
+  mask-position:center;
+}
+.cube i.fab.fa-huggingface::before{
+  -webkit-mask-image:url("https://cdn.simpleicons.org/huggingface");
+  mask-image:url("https://cdn.simpleicons.org/huggingface");
+}
+.cube i.fab.fa-google-cloud::before{
+  -webkit-mask-image:url("https://cdn.simpleicons.org/googlecloud");
+  mask-image:url("https://cdn.simpleicons.org/googlecloud");
+}
+
+/* =========  hover glow  ========= */
+.cube:hover i.fab.fa-huggingface,
+.cube:hover i.fab.fa-google-cloud{
+  background:#ff6b000f !important;
+  border-color:#ff6b00 !important;
+}
+
