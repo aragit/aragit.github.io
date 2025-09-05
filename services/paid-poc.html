@@ -38,7 +38,7 @@
     .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
     .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
     .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6df}
-    .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}
+    .badge{display:inline-block;background:#000;color:#fff;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-top:1rem}
     /* ---------- sections ---------- */
     section{padding:clamp(50px,8vw,80px) 0}
     .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
@@ -50,7 +50,6 @@
     .checklist{list-style:none;color:#bfcbd7}
     .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
     .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
-    .highlight{background:var(--accent);color:#000;padding:2px 8px;border-radius:4px;font-weight:600}
     /* ---------- deliverables ---------- */
     .deliver-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
     .deliver-box h3{margin-bottom:8px}
@@ -91,9 +90,9 @@
 <!-- ============================================================ -->
 <section class="hero">
   <div class="container">
-    <span class="badge">Fixed-price build · 4–12 weeks</span>
     <h1>The Forge</h1>
     <p>From architecture to production-grade LLM solution. One fixed price, one delivery date, zero scope creep.</p>
+    <span class="badge">Fixed-price build · 4–12 weeks</span>
   </div>
 </section>
 
@@ -105,37 +104,71 @@
     <div class="grid-2">
       <div class="card">
         <h3><i class="fa-solid fa-sitemap"></i>Advanced RAG Systems</h3>
+        <p>Retrieve the right information at the right time, even across millions of heterogenous documents.</p>
         <ul class="checklist">
           <li>Hybrid dense + sparse retrieval</li>
           <li>Re-ranking & verifiable citations</li>
           <li>Sub-100 ms latency at &gt;10 k docs</li>
+          <li>Multi-lingual & domain-specific embeddings</li>
+          <li>Graph-RAG for relational knowledge</li>
         </ul>
       </div>
 
       <div class="card">
         <h3><i class="fa-solid fa-sliders"></i>Targeted Fine-Tuning</h3>
+        <p>Turn a generic foundation model into a domain expert that speaks your brand voice and respects your jargon.</p>
         <ul class="checklist">
           <li>LoRA / QLoRA, RLHF, DPO</li>
           <li>Brand-voice & domain expertise</li>
           <li>Cost-optimised inference (GPTQ, AWQ)</li>
+          <li>Continual-learning pipelines</li>
+          <li>Quantised 8-bit/4-bit deployment</li>
         </ul>
       </div>
 
       <div class="card">
         <h3><i class="fa-solid fa-robot"></i>Agentic Automation</h3>
+        <p>Autonomous agents that orchestrate tools, APIs and legacy systems to complete multi-step workflows.</p>
         <ul class="checklist">
           <li>Multi-step reasoning & tool use</li>
           <li>Human-in-the-loop guardrails</li>
           <li>API, RPA, database integrations</li>
+          <li>Stateful conversation memory</li>
+          <li>Retry & rollback strategies</li>
         </ul>
       </div>
 
       <div class="card">
         <h3><i class="fa-solid fa-shield-halved"></i>Safety & Guardrails</h3>
+        <p>Ship with confidence—built-in filters, audits and real-time monitoring keep your model on its best behaviour.</p>
         <ul class="checklist">
           <li>Content filtering & PII redaction</li>
           <li>Output schema validation</li>
           <li>Toxicity & bias monitoring</li>
+          <li>Prompt-injection detection</li>
+          <li>Audit logs for compliance</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-chart-line"></i>Observability & Cost-Control</h3>
+        <p>Transparent metrics and spend alerts ensure your LLM workload scales without surprises.</p>
+        <ul class="checklist">
+          <li>Token-level cost tracking</li>
+          <li>Latency & throughput dashboards</li>
+          <li>Auto-scaling inference endpoints</li>
+          <li>Spot-instance fallback layers</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-lock"></i>Compliance & Enterprise Support</h3>
+        <p>Meet SOC-2, GDPR or HIPAA requirements with encrypted pipelines and on-prem options.</p>
+        <ul class="checklist">
+          <li>VPC & air-gapped deployments</li>
+          <li>Key-management & encryption at rest</li>
+          <li>Role-based access controls</li>
+          <li>Annual penetration-test reports</li>
         </ul>
       </div>
     </div>
@@ -191,7 +224,7 @@
 <section>
   <div class="container" style="text-align:center;max-width:740px">
     <h2 style="margin-bottom:12px">Fixed-price builds</h2>
-    <p style="font-size:1.1rem;color:#cbd6df">Typical range <span class="highlight">$8 k – $35 k</span> depending on data volume, model size and integration surface. Price locked at contract—no hourly surprises.</p>
+    <p style="font-size:1.1rem;color:#cbd6df">Typical range $8 k – $35 k depending on data volume, model size and integration surface. Price locked at contract—no hourly surprises.</p>
   </div>
 </section>
 
@@ -201,7 +234,7 @@
 <div class="cta-band">
   <div class="container">
     <h2>Ready to ship?</h2>
-    <p style="margin-bottom:24px">I run max <strong>three</strong> concurrent builds—reserve your slot.</p>
+    <p style="margin-bottom:24px">To guarantee delivery velocity I accept a limited number of concurrent engagements—reserve your slot today.</p>
     <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Book a scoping call</a>
   </div>
 </div>
