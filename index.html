@@ -138,11 +138,11 @@
   <section class="holo-cube">
       <div class="cube">
         <i class="fab fa-python" style="--x:1;--y:1;--z:1"></i>
-        <i class="fab fa-docker" style="--x:-1;--y:1;--z:-1"></i>
+        <i class="fab fa-github"  style="--x:1;--y:1;--z:-1"></i>
         <i class="fab fa-linux" style="--x:1;--y:-1;--z:-1"></i>
         <i class="fab fa-aws"   style="--x:-1;--y:-1;--z:1"></i>
-        <i class="fab fa-github"  style="--x:1;--y:1;--z:-1"></i>
-        <i class="fab fa-google" style="--x:-1;--y:1;--z:1"></i>
+        <i class="fab fa-google-cloud" style="--x:-1;--y:1;--z:-1"></i>
+        <i class="fab fa-huggingface" style="--x:-1;--y:1;--z:1"></i> 
       </div>
    </section>
 
@@ -177,6 +177,49 @@
     /* tuck cube right under the buttons */
     .holo-cube { margin-top: -26px !important; }
     </style>
+    <style>
+        /* ---------- make HF icon keep the cube frame ---------- */
+        .cube .fab.fa-huggingface{
+          /* inherit the cube face styling */
+          width:48px;
+          height:48px;
+          background:#12121266;
+          border:1px solid #ff6b0066;
+          border-radius:8px;
+          display:grid;
+          place-content:center;
+          font-size:22px;
+          color:#ff6b00;
+          /* icon drawing */
+          -webkit-mask:url("https://cdn.simpleicons.org/huggingface") no-repeat center / 26px;
+          mask:url("https://cdn.simpleicons.org/huggingface") no-repeat center / 26px;
+          background-color:currentColor;      /* orange glyph */
+          -webkit-mask-mode:alpha;
+          mask-mode:alpha;
+        }
+        
+        /* ---------- google-cloud icon (same frame) ---------- */
+        .cube .fab.fa-google-cloud{
+          /* same cube face box */
+          width:48px;
+          height:48px;
+          background:#12121266;
+          border:1px solid #ff6b0066;
+          border-radius:8px;
+          display:grid;
+          place-content:center;
+          font-size:22px;
+          color:#ff6b00;
+          /* GCP glyph */
+          -webkit-mask:url("https://cdn.simpleicons.org/googlecloud") no-repeat center / 26px;
+          mask:url("https://cdn.simpleicons.org/googlecloud") no-repeat center / 26px;
+          background-color:currentColor;
+          -webkit-mask-mode:alpha;
+          mask-mode:alpha;
+        }
+
+  </style>
+
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container about-text">

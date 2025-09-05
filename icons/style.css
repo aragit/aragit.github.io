@@ -1,0 +1,10 @@
+.fab.fa-huggingface {
+  --fa-size: 2em; /* Adjust icon size like font-size */
+  display: inline-block;
+  width: var(--fa-size);
+  height: var(--fa-size);
+  vertical-align: -0.125em;
+  background-color: #FF6A00; /* Dark orange */
+  -webkit-mask: url("https://cdn.simpleicons.org/huggingface") no-repeat center / contain;
+  mask: url("https://cdn.simpleicons.org/huggingface") no-repeat center / contain;
+}
