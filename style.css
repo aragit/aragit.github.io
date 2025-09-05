@@ -1074,3 +1074,62 @@ a[href="blog/index.html"]:hover {
   border-color:#ff6b00 !important;
 }
 
+/* ===== HARDCODED CUBE ICONS ===== */
+.cube-icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: #12121266;
+  border: 1px solid #ff6b0066;
+  border-radius: 8px;
+  inset: 0;
+  margin: auto;
+  display: flex;              /* centre the logo */
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+}
+
+.cube-icon.hf::before,
+.cube-icon.gcp::before {
+  content: "";
+  width: 22px;                /* smaller logo */
+  height: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.cube-icon.hf::before {
+  background-image: url("https://cdn.simpleicons.org/huggingface/ff6b00");
+}
+
+.cube-icon.gcp::before {
+  background-image: url("https://cdn.simpleicons.org/googlecloud/ff6b00");
+}
+
+.cube:hover .cube-icon {
+  background-color: #ff6b000f;
+  border-color: #ff6b00;
+}
+.cube-icon.gemini::before,
+.cube-icon.langchain::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.cube-icon.gemini::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: url("Gemini.png") center / contain no-repeat;
+}
+
+.cube-icon.langchain::before {
+  background-image: url("https://cdn.simpleicons.org/langchain/ff6b00");
+}
+
