@@ -6,9 +6,9 @@
   <title>The Forge – Custom LLM Build | Arash Nicoomanesh</title>
 
   <!--  SEO + Social  -->
-  <meta name="description" content="From blueprint to production-grade LLM solution in 4-12 weeks. Fixed-price builds: RAG, fine-tuning, agentic AI, guardrails & cost-optimised infra."/>
+  <meta name="description" content="From validated blueprint to working cognitive copilot in 4-12 weeks. Fixed-price builds: RAG, fine-tuning, agentic AI, guardrails & cost-optimised infra."/>
   <meta property="og:title" content="The Forge – Custom LLM Build"/>
-  <meta property="og:description" content="Fixed-price development of production-grade LLM systems."/>
+  <meta property="og:description" content="Fixed-price development of demo-ready LLM copilots."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aragit.github.io/services/paid-poc.html"/>
   <meta property="og:image" content="https://aragit.github.io/og-forge.png"/>
@@ -91,7 +91,7 @@
 <section class="hero">
   <div class="container">
     <h1>The Forge</h1>
-    <p>From architecture to production-grade LLM solution. One fixed price, one delivery date, zero scope creep.</p>
+    <p>From validated blueprint to working cognitive copilot. One fixed price, one delivery date, zero scope creep.</p>
     <span class="badge">Fixed-price build · 4–12 weeks</span>
   </div>
 </section>
@@ -108,7 +108,7 @@
         <ul class="checklist">
           <li>Hybrid dense + sparse retrieval</li>
           <li>Re-ranking & verifiable citations</li>
-          <li>Sub-100 ms first-token latency (≤ 500 k chunks, no re-rank in hot path)</li>
+          <li>Sub-100 ms first-token latency (≤ 500 k chunks, 4 × A10G, batch = 1, no re-rank in hot path)</li>
           <li>Multi-lingual & domain-specific embeddings</li>
           <li>Graph-RAG for relational knowledge</li>
           <li>Continuous index refresh (≤ 15 min SLA)</li>
@@ -121,7 +121,7 @@
         <ul class="checklist">
           <li>LoRA / QLoRA, RLHF, DPO</li>
           <li>Brand-voice & domain expertise (≥ 85 % style classifier score)</li>
-          <li>Cost-optimised inference: GPTQ 4-bit, AWQ, batch-size autoscale</li>
+          <li>Cost-optimised inference: GPTQ 4-bit, AWQ, staging traffic ≤ 50 QPS</li>
           <li>Continual-learning pipelines with rehearsal buffer</li>
           <li>Eval harness: MT-Bench + custom test set (≥ 90 % pass)</li>
           <li>Data requirement: 3 k – 10 k high-quality samples</li>
@@ -136,7 +136,7 @@
           <li>Human-in-the-loop guardrails (Slack / Teams ≤ 24 h SLA)</li>
           <li>API, RPA, database integrations (OAuth2, SQL, SAP, UiPath)</li>
           <li>Stateful conversation memory (last 20 turns, 32 k ctx)</li>
-          <li>Retry & rollback strategies (idempotent calls, DB transactions)</li>
+          <li>Retry & rollback strategies (demo-ready rollback, SQLite WAL, no distributed saga)</li>
           <li>Max 10 tools / workflow, step timeout ≤ 5 s</li>
         </ul>
       </div>
@@ -159,24 +159,22 @@
         <p>Transparent metrics and spend alerts ensure your LLM workload scales without surprises.</p>
         <ul class="checklist">
           <li>Token-level cost tracking (± 5 % accuracy vs cloud bill)</li>
-          <li>Latency & throughput dashboards (Grafana, Prometheus)</li>
+          <li>Latency & throughput dashboards (Grafana, Prometheus, 7-day retention)</li>
           <li>Auto-scaling inference endpoints (KEDA, 60-120 s cold start)</li>
           <li>Spot-instance fallback layers (stateless pods, checkpoint on EFS/S3)</li>
           <li>Budget alerts: +20 % forecast → Slack + email</li>
-          <li>Multi-region fail-over RPO ≤ 30 min</li>
         </ul>
       </div>
 
       <div class="card">
         <h3><i class="fa-solid fa-lock"></i>Compliance & Enterprise Support</h3>
-        <p>Meet SOC-2, GDPR or HIPAA requirements with encrypted pipelines and on-prem options.</p>
+        <p>Meet GDPR and basic security requirements with encrypted pipelines and on-prem options.</p>
         <ul class="checklist">
           <li>VPC & air-gapped deployments (offline registry, HF cache mirror)</li>
           <li>Key-management & encryption at rest (AWS KMS, AES-256)</li>
           <li>Role-based access controls (OIDC, Kubernetes RBAC)</li>
-          <li>Annual penetration-test reports (CREST, remediation re-test)</li>
+          <li>Static security scan (Trivy) &lt; 3 high-severity CVEs, signed images</li>
           <li>Data residency: EU, US, APAC regions optional</li>
-          <li>Backup & DR: RPO 4 h, RTO 8 h, 7-year encrypted archive</li>
         </ul>
       </div>
     </div>
@@ -211,13 +209,13 @@
         <ul class="checklist">
           <li>Load, security & edge-case tests (500 CCU, p95 ≤ 1.2 s, error ≤ 0.5 %)</li>
           <li>Cost & latency optimisation (≤ $0.002 per 1 k input tokens, spot fallback)</li>
-          <li>Monitoring & alerting (budget +20 %, RPO 30 min, block ≥ 95 % harmful)</li>
+          <li>Monitoring & alerting (budget +20 %, SLA dashboard, block ≥ 95 % harmful)</li>
         </ul>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-rocket"></i>Final · Hand-Over</h3>
         <ul class="checklist">
-          <li>Dockerised artifacts (SBOM, CVE < 3 high, signed images)</li>
+          <li>Dockerized artifacts (SBOM, &lt; 3 high-severity CVEs, signed images)</li>
           <li>Run-books & docs (rollback, on-call, auto-scale thresholds)</li>
           <li>Knowledge-transfer session (1 × 2 h live + Loom wiki, sign-off sheet)</li>
         </ul>
