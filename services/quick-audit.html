@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>The Blueprint – AI Strategy & Architecture | Arash Nicoomanesh</title>
 
-  <!--  90 % of social traffic is mobile—make the preview card count  -->
+  <!--  SEO + Social  -->
   <meta name="description" content="15+ years building scalable AI for hospitals, banks and Fortune-500s. In 2–3 weeks you get a battle-tested architecture, cost model and go / no-go decision."/>
   <meta property="og:title" content="The Blueprint – AI Strategy & Architecture"/>
   <meta property="og:description" content="De-risk your AI build before you write a single line of code."/>
@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://aragit.github.io/services/quick-audit.html"/>
   <meta property="og:image" content="https://aragit.github.io/og-blueprint.png"/>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root{
@@ -35,13 +35,15 @@
     .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
     .back-btn:hover{border-color:var(--accent);color:var(--accent)}
     /* ---------- hero ---------- */
-    .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
+    .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center;position:relative}
     .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
     .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6df}
-    .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}
+    /* ---------- badge bar  (moved below hero, black bg, white text) ---------- */
+    .badge-bar{background:#000;color:#fff;text-align:center;padding:12px 0;font-size:.9rem;font-weight:500}
     /* ---------- sections ---------- */
     section{padding:clamp(50px,8vw,80px) 0}
     .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
     .card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
     .card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
     .card h3{font-size:1.4rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#fff}
@@ -51,6 +53,8 @@
     .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
     .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
     .highlight{background:var(--accent);color:#000;padding:2px 8px;border-radius:4px;font-weight:600}
+    .intro-links{color:#9ca3af;font-size:.95rem;text-align:center;margin:-20px auto 40px;max-width:740px} /* intro links block */
+    .read-more{color:var(--accent);text-decoration:underline}
     /* ---------- cta band ---------- */
     .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
     .cta-band h2{font-size:1.8rem;margin-bottom:12px}
@@ -91,51 +95,95 @@
 <!-- ============================================================ -->
 <section class="hero">
   <div class="container">
-    <span class="badge">Fixed-price engagement · 2–3 weeks</span>
     <h1>The Blueprint</h1>
     <p>An expert, end-to-end AI strategy package that turns your business objective into a bullet-proof technical roadmap—before you spend a dollar on code.</p>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- WHAT YOU GET                                                 -->
+<!-- BADGE BAR  (moved below hero, black bg, white text)          -->
+<!-- ============================================================ -->
+<div class="badge-bar">
+  Fixed-price engagement · 2–3 weeks
+</div>
+
+<!-- ============================================================ -->
+<!-- INTRO + GOOGLE LINKS  (centered, above cards)               -->
 <!-- ============================================================ -->
 <section>
   <div class="container">
-    <div class="grid-2">
+    <h2 style="text-align:center;margin-bottom:12px">What you’ll walk away with</h2>
+    <p class="intro-links">
+      Deep-dive frameworks inspired by Google Cloud’s AI transformation playbooks.
+      <a href="https://cloud.google.com/transform/how-to-build-an-effective-ai-strategy" target="_blank" rel="noopener" class="read-more">Read&nbsp;more&nbsp;on&nbsp;AI&nbsp;strategy&nbsp;canvas</a> and
+      <a href="https://cloud.google.com/transform/superluminal-medicine-interview-ai-drug-discovery-q-and-a-how-it-works" target="_blank" rel="noopener" class="read-more">drug-discovery&nbsp;case-study</a>.
+    </p>
+
+    <!-- 6 expanded cards -->
+    <div class="grid-3">
+      <!-- 1. Strategy & Prioritisation -->
       <div class="card">
         <h3><i class="fa-solid fa-compass-drafting"></i>Strategy & Prioritisation</h3>
         <ul class="checklist">
-          <li>AI opportunity matrix ranked by ROI, risk & data readiness</li>
-          <li>Regulatory & ethics gap analysis (HIPAA, PCI-DSS, GDPR)</li>
-          <li>TAM / SAM sizing and pay-back model for each use-case</li>
+          <li>AI opportunity matrix ranked by ROI, risk & data readiness.</li>
+          <li>Regulatory & ethics gap analysis (only where relevant):
+            <ul style="margin-top:8px;margin-left:20px;list-style:disc;color:#9ca3af;font-size:.9rem">
+              <li>HIPAA for clinical data</li>
+              <li>PCI-DSS for payment data</li>
+              <li>GDPR for EU personal data</li>
+            </ul>
+          </li>
+          <li>TAM / SAM sizing & pay-back model for board or investor decks.</li>
         </ul>
       </div>
 
+      <!-- 2. Technical Architecture -->
       <div class="card">
         <h3><i class="fa-solid fa-sitemap"></i>Technical Architecture</h3>
         <ul class="checklist">
-          <li>Component diagram (data, models, APIs, infra, security)</li>
-          <li>Stack selection with vendor-neutral pros / cons</li>
-          <li>Cost model: cloud, licences, people, maintenance</li>
+          <li>Component diagram (data, models, APIs, infra, security).</li>
+          <li>Vendor-neutral stack selection with trade-off matrix (latency vs. cost vs. privacy).</li>
+          <li>Cost model: cloud GPU, licence, people, maintenance, drift-retraining.</li>
         </ul>
       </div>
 
+      <!-- 3. Implementation Plan -->
       <div class="card">
         <h3><i class="fa-solid fa-timeline"></i>Implementation Plan</h3>
         <ul class="checklist">
-          <li>Phase-gate roadmap: PoC → Pilot → Production</li>
-          <li>Milestones, success KPIs, team shape & hiring plan</li>
-          <li>Risk register + mitigation play-book</li>
+          <li>Phase-gate roadmap: PoC → Pilot → Production with exit criteria.</li>
+          <li>Milestones, success KPIs, team shape & hiring plan.</li>
+          <li>Risk register + mitigation play-book (data drift, regulatory change, vendor lock-in).</li>
         </ul>
       </div>
 
+      <!-- 4. Executive Alignment -->
       <div class="card">
         <h3><i class="fa-solid fa-handshake"></i>Executive Alignment</h3>
         <ul class="checklist">
-          <li>90-min live walk-through with your leadership team</li>
-          <li>One-page investment memo ready for board / steering committee</li>
-          <li>Go / no-go checklist and next-step package</li>
+          <li>90-min live walk-through with your leadership team.</li>
+          <li>One-page investment memo ready for board / steering committee.</li>
+          <li>Go / no-go checklist and next-step package (procurement, talent, budget).</li>
+        </ul>
+      </div>
+
+      <!-- 5. Data & Governance -->
+      <div class="card">
+        <h3><i class="fa-solid fa-database"></i>Data & Governance</h3>
+        <ul class="checklist">
+          <li>Data-quality scorecard & lineage map.</li>
+          <li>Bias / fairness baseline and monitoring hooks.</li>
+          <li>Model governance lifecycle (versioning, audit trail, rollback).</li>
+        </ul>
+      </div>
+
+      <!-- 6. Cost & ROI Engineering -->
+      <div class="card">
+        <h3><i class="fa-solid fa-dollar-sign"></i>Cost & ROI Engineering</h3>
+        <ul class="checklist">
+          <li>Token-level cost projection and quota guardrails.</li>
+          <li>GPU vs. CPU vs. serverless break-even analysis.</li>
+          <li>Sensitivity analysis (usage ±50 %) and pay-back horizon.</li>
         </ul>
       </div>
     </div>
@@ -153,22 +201,22 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- INVESTMENT                                                   -->
+<!-- INVESTMENT  (price corrected)                               -->
 <!-- ============================================================ -->
 <section>
   <div class="container" style="text-align:center;max-width:740px">
     <h2 style="margin-bottom:12px">Flat-fee engagement</h2>
-    <p style="font-size:1.1rem;color:#cbd6df">Typical range <span class="highlight">$3 k – $7 k</span> depending on stakeholder count and technical complexity. Price locked at proposal signature—no surprises.</p>
+    <p style="font-size:1.1rem;color:#cbd6df">Typical range <strong>$2 k – $5 k</strong> depending on stakeholder count and technical complexity. Price locked at proposal signature—no surprises.</p>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- CTA BAND                                                     -->
+<!-- CTA BAND  (professional scarcity)                           -->
 <!-- ============================================================ -->
 <div class="cta-band">
   <div class="container">
     <h2>Ready to de-risk your AI investment?</h2>
-    <p style="margin-bottom:24px">Slots are first-come, first-served. I run max <strong>two</strong> Blueprints per month.</p>
+    <p style="margin-bottom:24px">Engagements are scheduled on a first-approved, first-served basis. Secure your slot early to guarantee start-date availability.</p>
     <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Reserve your Blueprint</a>
   </div>
 </div>
@@ -202,8 +250,8 @@
         <div style="margin-bottom:20px">
           <label>Estimated budget</label>
           <select name="budget">
+            <option value="2k-3k">$2 k – $3 k</option>
             <option value="3k-5k">$3 k – $5 k</option>
-            <option value="5k-7k">$5 k – $7 k</option>
             <option value="custom">Custom</option>
           </select>
         </div>
