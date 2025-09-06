@@ -10,11 +10,11 @@
   <meta property="og:title" content="The Nexus – Production LLMOps"/>
   <meta property="og:description" content="Fixed-price production package: deploy, scale, monitor, optimise."/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://aragit.github.io/services/deploy-scale.html"/>
-  <meta property="og:image" content="https://aragit.github.io/og-nexus.png"/>
+  <meta property="og:url" content="https://aragit.github.io/services/deploy-scale.html "/>
+  <meta property="og:image" content="https://aragit.github.io/og-nexus.png "/>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css "/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root{
       --primary:#0ea5e9;--primary-dark:#0369a1;--secondary:#10b981;
@@ -37,7 +37,7 @@
     /* ---------- hero ---------- */
     .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
     .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
-    .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6df}
+    .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6bf}
     .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}
     /* ---------- sections ---------- */
     section{padding:clamp(50px,8vw,80px) 0}
@@ -54,9 +54,10 @@
     /* ---------- tiers ---------- */
     .tier-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px}
     .tier-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .tier-head h3{margin:0}
+    .tier-head h3{margin:0;display:flex;align-items:center;gap:10px}
+    .tier-head h3 i{color:var(--accent);font-size:1.1rem}
     .price{background:var(--accent);color:#000;padding:6px 14px;border-radius:99px;font-weight:600}
-    .duration{color:#9ca3af;font-size:.8rem;margin-top:8px} /* NEW */
+    .duration{color:#9ca3af;font-size:.8rem;margin-top:8px}
     /* ---------- form ---------- */
     .form-box{max-width:680px;margin:0 auto;background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
     .form-box h3{margin-bottom:8px}
@@ -116,17 +117,26 @@
           <li>Blue-green & canary releases</li>
           <li>GPU / CPU autoscaling</li>
           <li>Infrastructure-as-Code (TF/Pulumi)</li>
+          <!-- NEW – complementary to Forge -->
+          <li>CDN + WAF edge protection (Cloudflare / AWS WAF)</li>
+          <li>IP allow-list & private-link ingress</li>
+          <li>DDoS shield (L7 scrubbing, 10 s mitigation)</li>
         </ul>
       </div>
+
       <div class="card">
         <h3><i class="fa-solid fa-shield-halved"></i>Security & Compliance</h3>
         <ul class="checklist">
           <li>End-to-end encryption (TLS 1.3)</li>
           <li>VPC, IAM, RBAC lock-down</li>
           <li>SOC-2 / HIPAA attestation pack</li>
-          <li>Annual penetration-test report (CREST)</li>
+          <!-- NEW – complementary to Forge -->
+          <li>SOC-2 / HIPAA attestation pack + penetration-test report (CREST)</li>
+          <li>SIEM log shipping (Splunk / Datadog, 90 d hot, 1 y cold)</li>
+          <li>Secret rotation via Vault / GSM with 30-day TTL</li>
         </ul>
       </div>
+
       <div class="card">
         <h3><i class="fa-solid fa-chart-line"></i>Observability 360°</h3>
         <ul class="checklist">
@@ -134,8 +144,13 @@
           <li>Token-cost & spend-limit alerts</li>
           <li>Model-drift & quality dashboards</li>
           <li>24 × 7 on-call rotation (Scale + Enterprise)</li>
+          <!-- NEW – complementary to Forge -->
+          <li>SLO burn-rate alerts (PagerDuty, 5 min page)</li>
+          <li>Multi-cluster metric federation (Thanos / AMP)</li>
+          <li>Error-budget auto-freeze: 90 % consumed → traffic blocked</li>
         </ul>
       </div>
+
       <div class="card">
         <h3><i class="fa-solid fa-dollar-sign"></i>Cost Guardrails</h3>
         <ul class="checklist">
@@ -143,6 +158,10 @@
           <li>Smart caching (Redis / CDN)</li>
           <li>Spot-instance + quantization savings</li>
           <li>Fin-Ops anomaly detection</li>
+          <!-- NEW – complementary to Forge -->
+          <li>Team-level charge-back / show-back dashboards</li>
+          <li>Committed-use discount automation (AWS Savings Plans, GCP CUD)</li>
+          <li>Real-time cost anomaly ML detector (± 15 % spike)</li>
         </ul>
       </div>
     </div>
@@ -213,6 +232,9 @@
 <!-- ============================================================ -->
 <!-- PROCESS  (timeline now scales)                              -->
 <!-- ============================================================ -->
+<!-- ============================================================ -->
+<!-- DELIVERY ROADMAP  (polished & overlap-free)                 -->
+<!-- ============================================================ -->
 <section>
   <div class="container">
     <h2 style="text-align:center;margin-bottom:40px">Delivery roadmap</h2>
@@ -220,33 +242,37 @@
       <div class="card">
         <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Foundation</h3>
         <ul class="checklist">
-          <li>Infrastructure-as-Code baseline</li>
-          <li>CI/CD skeleton (GitHub / GitLab)</li>
-          <li>Cost & security baselines</li>
+          <li>Prod-grade IaC baseline (Terraform / Pulumi)</li>
+          <li>Multi-account / VPC landing-zone with security guard-rails</li>
+          <li>Cost & compliance baselines (budget tags, audit trail)</li>
         </ul>
       </div>
+
       <div class="card">
         <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 2-3 · Hardening</h3>
         <ul class="checklist">
-          <li>Blue-green / canary gates</li>
-          <li>Monitoring & alerting stack</li>
-          <li>Load & chaos testing</li>
+          <li>Blue-green & canary pipelines with automated rollback</li>
+          <li>Monitoring stack (Prometheus, Grafana, Loki, Alertmanager)</li>
+          <li>Chaos & load tests (500 CCU, p95 ≤ 1.2 s, error ≤ 0.5 %)</li>
         </ul>
       </div>
+
       <div class="card">
-        <h3><i class="fa-solid fa-chart-line"></i>Weeks 3-5 · Observability</h3>
+        <h3><i class="fa-solid fa-chart-line"></i>Weeks 4-5 · Observability</h3>
         <ul class="checklist">
-          <li>SLI / SLO dashboards</li>
-          <li>Token-budget alerts</li>
-          <li>Model-drift detection</li>
+          <li>SLO burn-rate alerts (PagerDuty, 5 min page)</li>
+          <li>Token-budget & model-drift dashboards</li>
+          <li>On-call run-books + incident-response playbooks</li>
         </ul>
       </div>
+
       <div class="card">
         <h3><i class="fa-solid fa-handshake"></i>Week X · Go-Live</h3>
         <ul class="checklist">
-          <li><strong>Starter:</strong> Week 4</li>
-          <li><strong>Scale / Complex agentic:</strong> Week 6</li>
-          <li><strong>Enterprise (audit):</strong> Week 8-10</li>
+          <li><strong>Starter tier:</strong> Week 4</li>
+          <li><strong>Scale tier:</strong> Week 6</li>
+          <li><strong>Enterprise tier:</strong> Week 8-10</li>
+          <li>Final security sign-off & knowledge-transfer session</li>
         </ul>
       </div>
     </div>
@@ -273,7 +299,7 @@
       <h3><i class="fa-solid fa-paper-plane"></i>Request a tiered quote</h3>
       <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page SOW + calendar link within 24 h.</p>
 
-      <form action="https://formspree.io/f/xwpnvzwl" method="POST">
+      <form action="https://formspree.io/f/xwpnvzwl " method="POST">
         <div class="form-row">
           <div>
             <label>Your name *</label>
@@ -307,7 +333,7 @@
         <!-- hidden fields -->
         <input type="hidden" name="service" value="The Nexus">
         <input type="hidden" name="_subject" value="Website lead: The Nexus">
-        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
+        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html ">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
         <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i>Send request</button>
