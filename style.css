@@ -607,160 +607,31 @@ footer {
 }
 
 #services .card-actions a.service-btn:hover {
-  background: #444444 !important;   /* slight lighten on hover */
+  background: #444444 !important;   /* lighten dark grey */
+  border-color: #ff6b00 !important;
+  color: #fff !important;         /* text stays white */
   transform: translateY(-1px);
 }
 
-/* ---------- FIX: center service buttons in #services ---------- */
-/* placed at the end to override earlier conflicting rules */
-#services .card-actions {
-  display: flex !important;           /* ensure flex container */
-  justify-content: center !important; /* center horizontally */
-  align-items: center !important;     /* center vertically */
-  gap: 12px !important;               /* spacing between buttons */
-  padding: 0 1rem 2.5rem !important;  /* ensure visual spacing */
-  width: 100% !important;
-  box-sizing: border-box !important;
-  flex-wrap: wrap !important;         /* wrap nicely on small screens */
+/* fix Learn-More border hover */
+.card-actions a.cta-secondary:not(.service-btn):hover {
+  border-color: #ff6b00 !important;
+  color: #ff6b00 !important;
 }
 
-/* ensure each button doesn't collapse or float left */
-#services .card-actions a {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 !important;
-}
+/* ===== Hero CTA: ordered + unified dark styles for view & collaborate ===== */
 
-/* responsive: on narrow screens keep two per row or full width */
-@media (max-width: 720px) {
-  #services .card-actions { justify-content: space-between !important; gap: 8px !important; }
-  #services .card-actions a { min-width: 46% !important; }
-}
-
-/* ===== Built-With ribbon ===== */
-.built-with {
-  background: rgba(18, 18, 18, 0.6);
-  padding: 0.6rem 0;
-  font-size: 0.85rem;
-}
-.built-with .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.built-with .label {
-  color: #aaa;
-  margin-right: 0.5rem;
-}
-.logo-cloud {
-  display: flex;
-  gap: 1.2rem;
-}
-.logo-cloud i {
-  color: #cccccc;
-  font-size: 1.4rem;
-  transition: color 0.2s;
-}
-.logo-cloud i:hover {
-  color: #ff6b00;
-}
-@media (max-width: 600px) {
-  .built-with .container { flex-direction: column; gap: 0.5rem; }
-}
-
-/* --- Contact dark-grey background --- */
-section.contact-small {
-  background: #1e1e1e;   /* same dark grey as .alt */
-}
-/* ===== Hero 3-button row (clean & responsive) ===== */
-.hero-cta {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
-  flex-wrap: wrap;
-}
-
-/* button base */
-.btn-hero {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 170px;    /* controls button width */
-  flex: 1 1 190px;     /* flexible but roughly equal */
-  max-width: 300px;
-  padding: 0.64rem 1.05rem;
-  border-radius: 28px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  box-sizing: border-box;
-  transition: transform .12s ease, box-shadow .12s ease;
-  gap: .5rem;
-}
-
-/* primary - chat */
-.btn-primary {
-  background: linear-gradient(135deg,#ff4500,#ff6b00);
-  color: #060606;
-  box-shadow: 0 10px 26px rgba(255,107,0,0.07);
-  border: 1px solid rgba(255,255,255,0.02);
-}
-
-/* collaborator (dark filled) */
-.btn-collab {
-  background: #2f2f2f;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.04);
-}
-
-/* ghost / view work - outlined */
-.btn-ghost {
-  background: transparent;
-  color: #cfd8e3;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-/* hover states */
-.btn-hero:hover { transform: translateY(-3px); }
-.btn-primary:hover { box-shadow: 0 14px 40px rgba(255,107,0,0.12); }
-.btn-collab:hover { background:#404040; }
-.btn-ghost:hover { color:#ff6b00; border-color:#ff6b00; }
-
-/* icons slightly smaller on small screens */
-.hero-cta .fas { font-size: 0.95rem; }
-
-/* mobile: stack vertically, full-width with nice spacing */
-@media (max-width: 720px) {
-  .hero-cta {
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
-  }
-  .btn-hero {
-    width: 100%;
-    max-width: none;
-    flex: none;
-  }
-}
-
-/* ===== Hero buttons: grid-based equal-height fix ===== */
-
-/* container -> grid to force equal heights across columns */
+/* grid-based equal-height layout (3 columns) */
 .hero-cta {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 equal columns */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  align-items: stretch;   /* THIS makes all buttons equal height */
-  justify-items: stretch; /* make buttons fill their grid cell */
+  align-items: stretch;
+  justify-items: stretch;
   margin: 2rem 0;
 }
 
-/* make buttons fill the grid cell and center content */
+/* button base: fill cell and center content */
 .btn-hero {
   display: flex !important;
   align-items: center;
@@ -768,37 +639,43 @@ section.contact-small {
   text-align: center;
   padding: 0.56rem 1rem;
   border-radius: 28px;
-  min-height: 52px;       /* baseline height */
+  min-height: 52px;
   box-sizing: border-box;
-  white-space: normal;    /* allow wrapping */
-  /* responsive, slightly smaller text for long labels */
+  white-space: normal;
   font-size: clamp(0.86rem, 0.9vw + 0.6rem, 0.95rem);
   line-height: 1.12;
+  gap: .5rem;
 }
 
 /* icon spacing */
 .hero-cta .fas { margin-right: 0.5rem; flex-shrink: 0; }
 
-/* keep primary / collab / ghost styles (colors) */
-.btn-primary { background: linear-gradient(135deg,#ff4500,#ff6b00); color: #fff; }
-.btn-collab  { background: #2f2f2f; color: #fff; border: 1px solid rgba(255,255,255,0.04); }
-.btn-ghost   { background: transparent; color: #cfd8e3; border: 1px solid rgba(255,255,255,0.06); }
-
-/* hover polish */
-.btn-hero:hover { transform: translateY(-3px); }
-
-/* MOBILE: stack on small screens */
-@media (max-width: 720px) {
-  .hero-cta {
-    grid-template-columns: 1fr;     /* single column stack */
-  }
-  .btn-hero {
-    min-height: 48px;
-    width: 100%;
-  }
+/* Primary (chat) — bright orange, white text */
+.btn-primary {
+  background: linear-gradient(135deg,#ff4500,#ff6b00);
+  color: #ffffff !important;     /* ensure white text */
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 10px 26px rgba(255,107,0,0.07);
 }
 
+/* Collab / View (dark filled) — same style for both */
+.btn-collab {
+  background: #2f2f2f;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: none;
+}
 
+/* Hover states */
+.btn-hero:hover { transform: translateY(-3px); }
+.btn-primary:hover { box-shadow: 0 14px 40px rgba(255,107,0,0.12); }
+.btn-collab:hover { background:#404040; }
+
+/* Responsive: stack on small screens in the same left-to-right order */
+@media (max-width: 720px) {
+  .hero-cta { grid-template-columns: 1fr; }
+  .btn-hero { min-height: 48px; width: 100%; }
+}
 /* Force chat button text to white (higher priority) */
 .hero-cta .btn-primary {
   color: #ffffff !important;
@@ -1059,12 +936,12 @@ a[href="blog/index.html"]:hover {
   mask-position:center;
 }
 .cube i.fab.fa-huggingface::before{
-  -webkit-mask-image:url("https://cdn.simpleicons.org/huggingface");
-  mask-image:url("https://cdn.simpleicons.org/huggingface");
+  -webkit-mask-image:url("https://cdn.simpleicons.org/huggingface   ");
+  mask-image:url("https://cdn.simpleicons.org/huggingface   ");
 }
 .cube i.fab.fa-google-cloud::before{
-  -webkit-mask-image:url("https://cdn.simpleicons.org/googlecloud");
-  mask-image:url("https://cdn.simpleicons.org/googlecloud");
+  -webkit-mask-image:url("https://cdn.simpleicons.org/googlecloud   ");
+  mask-image:url("https://cdn.simpleicons.org/googlecloud   ");
 }
 
 /* =========  hover glow  ========= */
@@ -1101,11 +978,11 @@ a[href="blog/index.html"]:hover {
 }
 
 .cube-icon.hf::before {
-  background-image: url("https://cdn.simpleicons.org/huggingface/ff6b00");
+  background-image: url("https://cdn.simpleicons.org/huggingface/ff6b00   ");
 }
 
 .cube-icon.gcp::before {
-  background-image: url("https://cdn.simpleicons.org/googlecloud/ff6b00");
+  background-image: url("https://cdn.simpleicons.org/googlecloud/ff6b00   ");
 }
 
 .cube:hover .cube-icon {
@@ -1130,6 +1007,38 @@ a[href="blog/index.html"]:hover {
 }
 
 .cube-icon.langchain::before {
-  background-image: url("https://cdn.simpleicons.org/langchain/ff6b00");
+  background-image: url("https://cdn.simpleicons.org/langchain/ff6b00   ");
 }
 
+/* ---------- MOBILE SAFE-CUBE (NEW) ---------- */
+@media (max-width: 600px) {
+  /* wrapper keeps the 3-D perspective but shrinks with the screen */
+  .cube-wrap {
+    width: 90vw;              /* use almost full width */
+    height: 90vw;             /* keep it square */
+    max-width: 320px;         /* don’t grow bigger than this */
+    margin: 0 auto;
+    position: relative;
+  }
+  /* the cube itself now scales with its parent */
+  .cube {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate 12s infinite linear;
+  }
+  /* faces stay 1 × 1 so they still wrap the cube perfectly */
+  .cube div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(18,18,18,.55);
+    border: 1px solid rgba(255,107,0,.35);
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* (optional) kill the huge top/bottom margin on phones */
+@media (max-width: 600px) {
+  .holo-cube { margin-top: 0 !important; }
+}
