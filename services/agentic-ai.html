@@ -271,6 +271,23 @@
   </div>
 </section>
 
+<style>
+/* ---------- MOBILE FIX for tech-marquee ---------- */
+@media (max-width: 600px) {
+  .tech-marquee {
+    white-space: normal;      /* let text wrap */
+    flex-wrap: wrap;          /* allow multi-line */
+    justify-content: center;  /* centre the words */
+    font-size: 0.75rem;       /* slightly smaller */
+    padding: 8px 14px;
+    max-width: 96vw;          /* never wider than screen */
+    margin: 12px auto 0;      /* centre the strip */
+  }
+}
+</style>
+
+
+    
 <!-- ============================================================ -->
 <!-- CTA BAND  (copy refreshed)                                  -->
 <!-- ============================================================ -->
