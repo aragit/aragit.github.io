@@ -99,7 +99,7 @@
     <div class="container">
       <img src="avatar.jpg" alt="Arash" class="hero-avatar">
       <h1>Arash&nbsp;<span class="highlight">Nicoomanesh</span></h1>
-        <p class="tagline">AI Engineering Services | Research | Consulting</p>
+        <p class="tagline">AI Engineering Services & Consulting</p>
       <div class="value-prop">
         <div class="role-container"><p id="typewrite"></p></div>
 
@@ -146,78 +146,37 @@
       </div>
    </section>
 
+   
     <style>
-    .holo-cube{perspective:800px;height:160px;margin:2rem 0;text-align:center}
-    .cube{width:100px;height:100px;margin:auto;transform-style:preserve-3d;
-          animation:spinInPlace 10s linear infinite}
-    .cube:hover{animation-play-state:paused}
-    
-    /* faces sit still inside the rotating parent */
-    .cube i{position:absolute;width:48px;height:48px;background:#12121266;
-            border:1px solid #ff6b0066;border-radius:8px;display:grid;
-            place-content:center;font-size:22px;color:#ff6b00;transition:.3s;
-            /* place each icon on its cube face */
-            inset:0;margin:auto} /* centre each face */
-    
-    .cube i:nth-child(1){transform:translateZ(50px)}      /* front  */
-    .cube i:nth-child(2){transform:rotateY(180deg) translateZ(50px)} /* back   */
-    .cube i:nth-child(3){transform:rotateX( 90deg) translateZ(50px)} /* top    */
-    .cube i:nth-child(4){transform:rotateX(-90deg) translateZ(50px)} /* bottom */
-    .cube i:nth-child(5){transform:rotateY( 90deg) translateZ(50px)} /* right  */
-    .cube i:nth-child(6){transform:rotateY(-90deg) translateZ(50px)} /* left   */
-    
-    @keyframes spinInPlace{
-      from{transform:rotateX(0deg) rotateY(0deg)}
-      to{transform:rotateX(360deg) rotateY(360deg)}
-    }
-    .cube:hover i{background:#ff6b000f;border-color:#ff6b00}
-    .holo-cube p{margin-top:0.rem;font-size:.9rem;color:#aaa}
-    .holo-cube   { margin: 0 0 0 0 !important; padding: 0 0 0 0 !important; height: 100px !important; }
-    .holo-cube + #about { padding-top: 2px !important; }
-    /* tuck cube right under the buttons */
-    .holo-cube { margin-top: -26px !important; }
-    </style>
-    <style>
-        /* ---------- make HF icon keep the cube frame ---------- */
-        .cube .fab.fa-huggingface{
-          /* inherit the cube face styling */
-          width:48px;
-          height:48px;
-          background:#12121266;
-          border:1px solid #ff6b0066;
-          border-radius:8px;
-          display:grid;
-          place-content:center;
-          font-size:22px;
-          color:#ff6b00;
-          /* icon drawing */
-          -webkit-mask:url("https://cdn.simpleicons.org/huggingface") no-repeat center / 26px;
-          mask:url("https://cdn.simpleicons.org/huggingface") no-repeat center / 26px;
-          background-color:currentColor;      /* orange glyph */
-          -webkit-mask-mode:alpha;
-          mask-mode:alpha;
-        }
         
-        /* ---------- google-cloud icon (same frame) ---------- */
-        .cube .fab.fa-google-cloud{
-          /* same cube face box */
-          width:48px;
-          height:48px;
-          background:#12121266;
-          border:1px solid #ff6b0066;
-          border-radius:8px;
-          display:grid;
-          place-content:center;
-          font-size:22px;
-          color:#ff6b00;
-          /* GCP glyph */
-          -webkit-mask:url("https://cdn.simpleicons.org/googlecloud") no-repeat center / 26px;
-          mask:url("https://cdn.simpleicons.org/googlecloud") no-repeat center / 26px;
-          background-color:currentColor;
-          -webkit-mask-mode:alpha;
-          mask-mode:alpha;
+        /* 1  kill the rotating cube -------------------------------- */
+        /* Frosted-Glass Disc under hero ------------------------------------ */
+        /* 2  Liquid-Metal Swirl ---------------------------------------- */
+        #home.hero{
+          position: relative;
+          background: #121212;
+          overflow: hidden;
         }
-
+        #home.hero::before{
+          content: '';
+          position: absolute;
+          inset: -50% -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle at 50% 50%,
+                                      rgba(180,180,180,.18) 0%,
+                                      rgba(120,120,120,.08) 35%,
+                                      transparent 70%);
+          filter: blur(80px);
+          animation: swirl 20s linear infinite;
+          z-index: 0;
+        }
+        @keyframes swirl{
+          0%  { transform: rotate(0deg)   scale(1); }
+          50% { transform: rotate(180deg) scale(1.08); }
+          100%{ transform: rotate(360deg) scale(1); }
+        }
+        #home.hero .container{ position: relative; z-index: 1; }
   </style>
 
   <!-- ABOUT -->
