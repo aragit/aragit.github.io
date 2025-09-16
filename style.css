@@ -470,51 +470,23 @@ footer {
   height: auto;
 }
 
-/* ---------- HERO – viewport-safe centre ---------- */
-.hero {
-  min-height: 100vh;              /* allow natural growth */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: clamp(70px, 8vh, 120px) 1rem; /* top bar + breathing room */
-  background: transparent;
-  position: relative;
-}
-
-.hero .container {
-  width: 100%;
-  max-width: 1100px;
-  margin: auto;                   /* centre content block */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* avatar never crops */
-.hero-avatar {
-  width: clamp(80px, 10vw, 130px);
-  height: clamp(80px, 10vw, 130px);
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff6b00;
-  margin-bottom: 1rem;
-}
-
-/* buttons stay together */
-.hero-cta {
-  margin: 1rem 0 0;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* landscape tweak – give extra top space when bar appears */
-@media (max-height: 500px) and (orientation: landscape) {
-  .hero { padding-top: 120px; }
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+  .hero-avatar {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.8rem;
+    
+  }
+  
+  /* Additional mobile optimization */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  #typewrite {
+    font-size: 1.1rem;
+  }
 }
 
 /* small service tweaks */
