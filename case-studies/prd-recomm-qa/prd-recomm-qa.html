@@ -306,6 +306,72 @@
         justify-content: center;
       }
     }
+      /* remove left orange bars & make h2 underline full text width */
+    .feature-card,
+    .scenario-block {
+      border-left: none !important;
+    }
+    
+    h2 {
+      position: relative;
+      display: inline-block;          /* shrink-wrap to text */
+      max-width: 100%;
+      padding-bottom: 0.4rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;                   /* exactly the text length */
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+      /* 1  remove left orange bars ------------------------------------ */
+    .feature-card,
+    .scenario-block {
+      border-left: none !important;
+    }
+    
+    /* 2  full-width underline that aligns to text only -------------- */
+    h2 {
+      position: relative;
+      display: inline-block;          /* shrink-wrap to text length */
+      max-width: 100%;
+      padding-bottom: 0.4rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;                   /* exactly the text width */
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* 3  numbered steps instead of vertical bars -------------------- */
+    .scenario-step {
+      margin-bottom: 1rem;
+      padding-left: 1.8rem;
+      position: relative;
+      border-left: none;              /* remove old bar */
+      counter-increment: step;        /* auto-number */
+    }
+    
+    .scenario-step::before {
+      content: counter(step) '.';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--fg); 
+      font-weight: 600;
+      font-size: 1rem;
+    }
   </style>
 </head>
 

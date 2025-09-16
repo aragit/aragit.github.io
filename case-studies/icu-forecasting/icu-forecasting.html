@@ -318,6 +318,29 @@
         font-size: 0.8rem;
       }
     }
+      /* remove left orange bars & make h2 underline full text width */
+    .feature-card,
+    .scenario-block {
+      border-left: none !important;
+    }
+    
+    h2 {
+      position: relative;
+      display: inline-block;          /* shrink-wrap to text */
+      max-width: 100%;
+      padding-bottom: 0.4rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;                   /* exactly the text length */
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
   </style>
 </head>
 

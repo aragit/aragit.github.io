@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Case Study – Medical Triage Agent | Arash Nicoomanesh</title>
-  <meta name="description" content="Autonomous AI agent for medical triage – full story, architecture, impact.">
+  <meta name="description" content="Autonomous Agentic AI for medical triage – full story, architecture, impact.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -306,6 +306,39 @@
         justify-content: center;
       }
     }
+      /* === smaller architecture image === */
+    .hero-img{
+      max-width: 600px;   /* cap width on large screens */
+      width: 100%;        /* still fluid */
+      margin: 2rem auto;  /* centre the image */
+      display: block;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    /* remove left orange bars & make h2 underline full text width */
+    .feature-card,
+    .scenario-block {
+      border-left: none !important;
+    }
+    
+    h2 {
+      position: relative;
+      display: inline-block;          /* shrink-wrap to text */
+      max-width: 100%;
+      padding-bottom: 0.4rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;                   /* exactly the text length */
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }  
   </style>
 </head>
 
@@ -349,7 +382,7 @@
       <h2>Solution & Architecture</h2>
       <p>The agent was engineered to mimic a clinician's stepwise reasoning process, combining multiple AI technologies for comprehensive patient assessment.</p>
       
-      <img class="hero-img" src="triage-arch.png" alt="Medical Triage Agent Architecture">
+      <img class="hero-img" src="arch.png" alt="Medical Triage Agent Architecture">
       <p class="img-caption">Architecture diagram showing the multi-component medical triage system</p>
 
       <div class="feature-card">
@@ -391,29 +424,15 @@
 
     <section>
       <h2>Clinical Scenario</h2>
-      
-      <div class="scenario-block">
+    
+      <div class="feature-card">
         <h3>Real-World Use Case: Chest Pain Assessment</h3>
-        
-        <div class="scenario-step">
-          <strong>Patient Presentation:</strong>
-          <p>"Sharp chest pain, shortness of breath on exertion, and fatigue for five days"</p>
-        </div>
-        
-        <div class="scenario-step">
-          <strong>Agent Assessment:</strong>
-          <p>The agent asks clarifying questions about onset, radiation, and medication history, then maps symptoms to SNOMED codes</p>
-        </div>
-        
-        <div class="scenario-step">
-          <strong>Clinical Reasoning:</strong>
-          <p>Chain-of-thought reasoning ranks "acute coronary syndrome" highest and retrieves latest ACC/AHA guidelines</p>
-        </div>
-        
-        <div class="scenario-step">
-          <strong>Outcome:</strong>
-          <p>Treatment plan includes immediate ECG & troponin order, discontinuation of Lisinopril pending physician approval, and cardiology referral</p>
-        </div>
+        <ul>
+          <li><strong>Patient Presentation:</strong> Sharp chest pain, shortness of breath on exertion, and fatigue for five days</li>
+          <li><strong>Agent Assessment:</strong> The agent asks clarifying questions about onset, radiation, and medication history, then maps symptoms to SNOMED codes</li>
+          <li><strong>Clinical Reasoning:</strong> Chain-of-thought reasoning ranks "acute coronary syndrome" highest and retrieves latest ACC/AHA guidelines</li>
+          <li><strong>Outcome:</strong> Treatment plan includes immediate ECG & troponin order, discontinuation of Lisinopril pending physician approval, and cardiology referral</li>
+        </ul>
       </div>
     </section>
 
