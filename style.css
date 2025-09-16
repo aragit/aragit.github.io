@@ -905,4 +905,10 @@ a[href="blog/index.html"]:hover {
 
 
 
-
+/* ultra-specific kill – must be last line */
+body #services a.card[href^="services/"],
+body #mentoring a.card[href^="services/"] {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}

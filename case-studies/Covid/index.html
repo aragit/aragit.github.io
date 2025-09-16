@@ -342,6 +342,45 @@
       background: var(--accent);
       border-radius: 2px;
     }
+      /* 1  remove underline on "Explore my blog" button ------------- */
+    #articles .btn-hero {
+      text-decoration: none !important;
+    }
+    
+    /* 2  remove underline on service card titles + larger font ---- */
+    #services .card-body h3 {
+      text-decoration: none !important;
+      font-size: 1.05rem;          /* slightly bigger */
+      font-weight: 600;
+    }
+    
+    /* 3  tighter nav items + white icon ---------------------------- */
+    #navbar ul {
+      gap: 1.2rem;                 /* closer items */
+    }
+    
+    #navbar ul li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    #navbar ul li a::before {      /* white icon before text */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+    
+    /* assign icons (unicode) */
+    #navbar ul li:nth-child(1) a::before { content: "\f015"; } /* Home */
+    #navbar ul li:nth-child(2) a::before { content: "\f007"; } /* About */
+    #navbar ul li:nth-child(3) a::before { content: "\f085"; } /* Services */
+    #navbar ul li:nth-child(4) a::before { content: "\f0b1"; } /* Solutions */
+    #navbar ul li:nth-child(5) a::before { content: "\f781"; } /* Blog */
+    #navbar ul li:nth-child(6) a::before { content: "\f0e0"; } /* Contact */
   </style>
 </head>
 
