@@ -912,3 +912,109 @@ body #mentoring a.card[href^="services/"] {
   border-bottom: none !important;
   box-shadow: none !important;
 }
+/* ---------- NEW CHECKERED / GRADIENT / NOISE BACKGROUND ---------- */
+/* 1.  kill the old particles canvas (we’ll replace it) */
+#particles-js {
+  display: none;
+}
+
+/* 2.  new background container – fixed behind everything */
+.animated-bg {
+  position: fixed;
+  inset: 0;               /* top:0 right:0 bottom:0 left:0 */
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;            /* sit **behind** #particles-js if you keep it */
+  overflow: hidden;
+  background: #0d0f18;    /* deep dark blue-grey base */
+}
+
+/* 3.  two large radial gradients that slowly move */
+.animated-bg::before,
+.animated-bg::after {
+  content: "";
+  position: absolute;
+  inset: -100%;           /* start off-screen so edges never show */
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 107, 0, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.15) 0%, transparent 40%);
+  animation: move 25s linear infinite;
+  will-change: transform;
+  filter: blur(80px);     /* soft glow */
+}
+
+.animated-bg::after {
+  animation-delay: -12s;  /* second layer moves opposite */
+}
+
+/* 4.  subtle noise texture (1×1 SVG inlined) */
+.noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* 5.  slow drift animation */
+@keyframes move {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+  50%  { transform: translate(-4%, 4%) rotate(180deg) scale(1.08); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+/* ----------------------------------------------------------
+   HERO-ONLY animated gradient blobs (propertygpt style)
+-----------------------------------------------------------*/
+.hero {
+  position: relative;          /* create stacking context */
+  background: transparent;     /* keep your existing hero gradient */
+  overflow: hidden;            /* hide blob overflow */
+  z-index: 0;                  /* stay above body bg */
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -50%;                 /* start off-screen so edges never show */
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 107, 0, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.15) 0%, transparent 40%);
+  animation: blob-move 25s linear infinite;
+  filter: blur(80px);
+  z-index: -1;                 /* behind hero content */
+}
+
+.hero::after {
+  animation-delay: -12s;       /* second blob moves opposite */
+}
+
+/* subtle noise overlay */
+.hero .noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes blob-move {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+  50%  { transform: translate(-4%, 4%) rotate(180deg) scale(1.08); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+/* keep the rest of the page dark */
+body {
+  background: #121212; /* your existing dark colour */
+}

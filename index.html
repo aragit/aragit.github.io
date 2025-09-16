@@ -21,15 +21,39 @@
   
 
   <!-- IMMEDIATE DARK CANVAS -->
+    <!-- NEW CHECKERED / GRADIENT / NOISE BACKGROUND -->
   <style>
     html,body{height:100%}
     body{margin:0;background:#121212;color:#f5f5f5;font-family:Inter,system-ui,sans-serif}
-    #particles-js{position:fixed;inset:0;z-index:-1;background:#121212}
+    /* 1. kill old particles */
+    #particles-js{display:none}
+    /* 2. new background container */
+    .animated-bg{
+      position:fixed;inset:0;z-index:-1;
+      width:100vw;height:100vh;
+      background:#0d0f18;
+      overflow:hidden;
+    }
+    .animated-bg::before,.animated-bg::after{
+      content:"";position:absolute;inset:-100%;
+      width:200%;height:200%;
+      background:radial-gradient(circle at 20% 20%,rgba(255,107,0,.18) 0%,transparent 40%),
+                 radial-gradient(circle at 80% 80%,rgba(0,150,255,.15) 0%,transparent 40%);
+      animation:move 25s linear infinite;
+      filter:blur(80px);
+    }
+    .animated-bg::after{animation-delay:-12s}
+    .noise{position:absolute;inset:0;width:100%;height:100%;opacity:.03;
+      background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events:none}
+    @keyframes move{0%{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(-4%,4%) rotate(180deg) scale(1.08)}100%{transform:translate(0,0) rotate(360deg) scale(1)}}
+    /* keep your old utility classes */
     .hero-latest{margin-top:1rem;font-size:1rem;color:#ff6b00}
     .hero-latest a{color:#ff6b00;text-decoration:underline}
     .skill-tags a span{cursor:pointer;transition:color .2s}
     .skill-tags a:hover span{color:#ff6b00}
   </style>
+    
 
   <!-- FONTS & ICONS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -55,7 +79,10 @@
 
 <body>
   <div id="particles-js"></div>
-
+    <!-- new checkered background -->
+  <div class="animated-bg">
+    <div class="noise"></div>
+  </div>
   <!-- HEADER -->
   <header>
     <div class="container header-inner">
@@ -79,6 +106,7 @@
   <!-- HERO -->
   <section id="home" class="hero">
     <div class="container">
+      <div class="noise"></div>
       <img src="avatar.jpg" alt="Arash" class="hero-avatar">
       <h1>Arash&nbsp;<span class="highlight">Nicoomanesh</span></h1>
         <p class="tagline">AI Engineering Services & Consulting</p>
