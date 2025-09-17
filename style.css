@@ -1018,3 +1018,81 @@ body #mentoring a.card[href^="services/"] {
 body {
   background: #121212; /* your existing dark colour */
 }
+
+/* ---------- HERO DIVIDER DOUBLE-LINE + CHESS ICON ---------- */
+/* Put this at the end of style.css to override earlier rules */
+
+.hero-divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0;
+  pointer-events: none;
+  z-index: 1; /* keep it above the hero background blobs */
+}
+
+/* ==========================
+   FORCE hero divider EXACT MATCH
+   Paste this at the VERY END of style.css
+   ========================== */
+
+/* ensure hero content sits above heavy blurred blobs */
+#home.hero { position: relative; z-index: 1; }
+
+/* make divider layer sit above hero blobs (so blur doesn't thicken lines) */
+#home.hero .hero-divider { 
+  position: relative !important;
+  z-index: 5 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  pointer-events: none !important;
+  margin: 18px 0 !important;
+}
+
+/* remove any ghost pseudo-elements that might add extra thickness */
+#home.hero .hero-divider .line::before,
+#home.hero .hero-divider .line::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Exact same look & thickness as .section-title::after */
+#home.hero .hero-divider .line {
+  flex: none !important;                   /* fixed width, not flexible */
+  width: 170px !important;                 /* same as section underline */
+  max-width: 200px !important;
+  height: 2px !important;                  /* <-- exact thickness match */
+  background: linear-gradient(90deg, transparent, #ff6b00, transparent) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;             /* remove glow */
+  filter: none !important;                 /* remove blur filters */
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* chess icon: no circle, just a tiny orange knight that visually sits on the same baseline */
+#home.hero .hero-divider .chess-icon {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  color: #ff6b00 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;              /* adjust if you want slightly bigger/smaller */
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  transform: translateY(0) !important;     /* remove earlier nudges */
+}
+
+/* mobile: keep lines proportional and thin */
+@media (max-width: 720px) {
+  #home.hero .hero-divider .line { width: 120px !important; height: 2px !important; }
+  #home.hero .hero-divider .chess-icon { font-size: 14px !important; margin: 0 5px !important; }
+}
