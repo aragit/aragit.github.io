@@ -851,5 +851,51 @@
       if (e.key === 'Escape') closeChatModal();
     });
     </script>
+    <script>
+    /* ---- “Thinking…” bubble inside Gradio iframe ---- */
+    const THINKING_HTML = `
+    <div id="thinkingBubble" style="
+      display:none;
+      padding:0.6rem 1rem;
+      margin:0.5rem 0;
+      background:#222;
+      color:#aaa;
+      border-radius:8px;
+      width:fit-content;
+      font-size:0.9rem;">
+      <i class="fas fa-spinner fa-pulse"></i> Thinking…
+    </div>`;
+    
+    let iframeDoc = null;
+    
+    /* wait until iframe is loaded */
+    document.getElementById('chatFrame').addEventListener('load', () => {
+      iframeDoc = document.getElementById('chatFrame').contentDocument;
+      if (!iframeDoc) return;
+    
+      /* inject bubble into chatbot area */
+      const target = iframeDoc.querySelector('.chatbot') || iframeDoc.querySelector('[data-testid="chatbot"]');
+      if (target) target.insertAdjacentHTML('afterbegin', THINKING_HTML);
+    
+      /* watch the “Send” button (same for text or mic) */
+      const sendBtn = iframeDoc.querySelector('button[aria-label="Send"]') || iframeDoc.querySelector('button:has(.fa-paper-plane)');
+      if (sendBtn) {
+        sendBtn.addEventListener('click', () => showThinking(true));
+      }
+    
+      /* hide bubble as soon as the *last* user message gets a reply */
+      const obs = new MutationObserver(() => {
+        const userMsgs   = iframeDoc.querySelectorAll('.message.user');
+        const botMsgs    = iframeDoc.querySelectorAll('.message.assistant, .message.bot');
+        if (userMsgs.length > 0 && botMsgs.length >= userMsgs.length) showThinking(false);
+      });
+      obs.observe(target, {childList: true, subtree: true});
+    });
+    
+    function showThinking(on) {
+      const bubble = iframeDoc?.getElementById('thinkingBubble');
+      if (bubble) bubble.style.display = on ? 'block' : 'none';
+    }
+    </script>
 </body>
 </html>
