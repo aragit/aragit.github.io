@@ -1096,3 +1096,66 @@ body {
   #home.hero .hero-divider .line { width: 120px !important; height: 2px !important; }
   #home.hero .hero-divider .chess-icon { font-size: 14px !important; margin: 0 5px !important; }
 }
+
+/* === Hero : add breathing room above avatar === */
+.hero .container {
+    padding-top: 10vh;          /* 10 % of viewport height – tweak at will */
+}
+
+<!-- Add this to the <style> block in index.html or append to style.css -->
+<style>
+/* Increase distance between header/background and hero avatar by adding padding-top to hero container */
+.hero .container {
+  padding-top: 3rem; /* Adjust this value (e.g., 4rem or 5rem) to increase the space above the photo */
+}
+
+/* Add gridlines on both sides of the main page (vertical dashed lines, similar to modern web designs with side grids) */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px; /* Thin vertical line */
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 4px,  /* Transparent gaps for 'grid' effect */
+    rgba(255, 255, 255, 0.1) 4px 8px  /* Faint white dashes; adjust opacity for subtlety */
+  );
+  z-index: -1; /* Behind all content */
+  pointer-events: none;
+}
+
+body::before {
+  left: 5%; /* Position on left side; adjust percentage for distance from edge */
+}
+
+body::after {
+  right: 5%; /* Position on right side; adjust percentage for distance from edge */
+}
+
+/* Optional: Add horizontal gridlines at the bottom (if that's what "buthon" means; adjust as needed) */
+footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px; /* Thin horizontal line */
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0 4px,
+    rgba(255, 255, 255, 0.1) 4px 8px
+  );
+  z-index: -1;
+}
+
+/* Responsive adjustments: Hide or adjust gridlines on small screens if they overlap content */
+@media (max-width: 768px) {
+  body::before,
+  body::after {
+    left: 2%; /* Closer on mobile */
+    right: 2%;
+  }
+}
+</style>
