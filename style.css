@@ -1101,61 +1101,39 @@ body {
 .hero .container {
     padding-top: 10vh;          /* 10 % of viewport height – tweak at will */
 }
-
-<!-- Add this to the <style> block in index.html or append to style.css -->
-<style>
-/* Increase distance between header/background and hero avatar by adding padding-top to hero container */
-.hero .container {
-  padding-top: 3rem; /* Adjust this value (e.g., 4rem or 5rem) to increase the space above the photo */
+/* ===== REMOVE CIRCULAR WAVES FROM HOME SECTION ONLY ===== */
+#home.hero::before,
+#home.hero::after {
+    content: none !important;   /* obliterate the pseudo-elements */
+    animation: none !important;
+    background: none !important;
 }
 
-/* Add gridlines on both sides of the main page (vertical dashed lines, similar to modern web designs with side grids) */
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 1px; /* Thin vertical line */
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0 4px,  /* Transparent gaps for 'grid' effect */
-    rgba(255, 255, 255, 0.1) 4px 8px  /* Faint white dashes; adjust opacity for subtlety */
-  );
-  z-index: -1; /* Behind all content */
-  pointer-events: none;
+/* ===== SUBTLE DASHED GRIDLINES ===== */
+body{position:relative;}
+
+body::before,body::after{
+    content:"";
+    position:fixed;
+    top:0;bottom:0;
+    width:1px;                                    /* hair-line */
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent  0,
+        transparent  24px,   /* gap */
+        rgba(255,107,0,.35) 24px,
+        rgba(255,107,0,.35) 25px /* 1 px dash */
+    );
+    pointer-events:none;
+    z-index:5;                                    /* above bg, below nav */
 }
 
-body::before {
-  left: 5%; /* Position on left side; adjust percentage for distance from edge */
-}
+/* gutter positions */
+body::before{left:2.5vw;}
+body::after{right:2.5vw;}
 
-body::after {
-  right: 5%; /* Position on right side; adjust percentage for distance from edge */
+/* mobile: closer to edges */
+@media(max-width:600px){
+    body::before{left:1.5vw;}
+    body::after{right:1.5vw;}
 }
-
-/* Optional: Add horizontal gridlines at the bottom (if that's what "buthon" means; adjust as needed) */
-footer::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px; /* Thin horizontal line */
-  background: repeating-linear-gradient(
-    to right,
-    transparent 0 4px,
-    rgba(255, 255, 255, 0.1) 4px 8px
-  );
-  z-index: -1;
-}
-
-/* Responsive adjustments: Hide or adjust gridlines on small screens if they overlap content */
-@media (max-width: 768px) {
-  body::before,
-  body::after {
-    left: 2%; /* Closer on mobile */
-    right: 2%;
-  }
-}
-</style>
