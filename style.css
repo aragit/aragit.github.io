@@ -1109,31 +1109,3 @@ body {
     background: none !important;
 }
 
-/* ===== SUBTLE DASHED GRIDLINES ===== */
-body{position:relative;}
-
-body::before,body::after{
-    content:"";
-    position:fixed;
-    top:0;bottom:0;
-    width:1px;                                    /* hair-line */
-    background: repeating-linear-gradient(
-        to bottom,
-        transparent  0,
-        transparent  24px,   /* gap */
-        rgba(255,107,0,.35) 24px,
-        rgba(255,107,0,.35) 25px /* 1 px dash */
-    );
-    pointer-events:none;
-    z-index:5;                                    /* above bg, below nav */
-}
-
-/* gutter positions */
-body::before{left:2.5vw;}
-body::after{right:2.5vw;}
-
-/* mobile: closer to edges */
-@media(max-width:600px){
-    body::before{left:1.5vw;}
-    body::after{right:1.5vw;}
-}
