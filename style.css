@@ -1,17 +1,26 @@
 /* style.css — cards: NO default halo/shadow, only on hover/focus */
 
-/* ===== Design tokens ===== */
+/* ===== Design tokens – black-to-charcoal scale ===== */
 :root{
-  --bg:#0d0f18;
-  --panel: rgba(30,30,30,0.75);
-  --muted:#c7ccd1;
-  --muted-2:#bfc8cf;
-  --text:#f5f5f5;
+  /* page background = real black */
+  --bg:#000000;
+
+  /* cards / panels = very dark charcoal */
+  --panel:rgba(22,22,22,0.78);   /* #161616 + slight transparency */
+
+  /* text colours – keep the same contrast */
+  --muted:#a8aeb3;
+  --muted-2:#939ca3;
+  --text:#f2f2f2;
+
+  /* accent stays orange */
   --accent:#ff6b00;
   --accent-strong:#ff4500;
+
+  /* rest untouched */
   --radius:8px;
   --container:1100px;
-  --focus: 3px rgba(255,107,0,0.15);
+  --focus:3px rgba(255,107,0,0.15);
 }
 
 /* ---------- Reset & base ---------- */
@@ -123,3 +132,73 @@ h1{font-size:2rem;margin:.25rem 0}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 :focus{outline:none}
 button:focus,a:focus{box-shadow:var(--focus);border-radius:6px}
+
+/* ---------------------------------------------------
+   1.  KILL THE BLOBS
+---------------------------------------------------- */
+.animated-bg,
+.animated-bg::before,
+.animated-bg::after,
+.noise {
+  display: none;          /* removes blobs + noise */
+}
+
+/* ---------------------------------------------------
+   2.  GREY-SCALE STRIPES FOR SECTIONS
+---------------------------------------------------- */
+/* base page = real black */
+body {
+  background: #000;
+}
+
+/* every section gets its own grey */
+.section:nth-of-type(odd)  { background: #0a0a0a; }   /* almost black */
+.section:nth-of-type(even) { background: #111111; }   /* 1 step lighter */
+
+/* if you need finer control, target the IDs explicitly */
+#home,
+#portfolio,
+#services            { background: #080808; }
+
+#about,
+#articles,
+#contact             { background: #121212; }
+
+/* keep cards dark but slightly transparent so the section
+   colour shows through a little */
+.card {
+  background: rgba(25,25,25,.82);
+}
+
+/* ---------------------------------------------------
+   3.  (optional) tiny separator between sections
+---------------------------------------------------- */
+.section + .section {
+  box-shadow: inset 0  1px 0 0 rgba(255,255,255,.04);
+}
+
+/* ----------------------------------------------------------
+   Knight chess icon – flat, stroked, mouse-tracking
+----------------------------------------------------------- */
+.chess-chip {
+  background: none;          /* 1. kill the rectangle */
+  backdrop-filter: none;
+  box-shadow: none;
+  padding: 0;                /* keep the wrapper for positioning */
+}
+
+.chess-icon {
+  display: block;
+  font-size: 20px;
+  color: transparent;        /* 2. fill = transparent */
+  -webkit-text-stroke: 1px var(--accent); /* thin orange border */
+  text-stroke: 1px var(--accent);
+  transform-origin: 50% 50%;
+  transition: transform .15s ease-out;
+}
+
+/* 3. rotate on mouse-move (JS will add the --angle custom prop) */
+.chess-icon {
+  transform: rotate(var(--angle, 0deg));
+}
+
