@@ -1,64 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- SEO & SOCIAL META -->
-  <title>Arash Nicoomanesh | AI & ML Engineer | Generative and Agentic AI Solutions</title>
-  <meta name="description" content="15+ years building scalable AI systems: Large-Language-Models, Agentic AI, Healthcare & Finance solutions. View portfolio & case studies.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Arash Nicoomanesh | AI & ML Engineer | Generative & Agentic AI</title>
+  <meta name="description" content="15+ years building scalable AI systems: LLMs, Agentic AI, Healthcare & Finance solutions. Portfolio & case studies.">
   <link rel="canonical" href="https://aragit.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Arash Nicoomanesh – AI & ML Engineer">
-  <meta property="og:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare.">
-  <meta property="og:url" content="https://aragit.github.io/">
-  <meta property="og:image" content="https://aragit.github.io/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Arash Nicoomanesh – AI & ML Engineer">
-  <meta name="twitter:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare.">
-  <meta name="twitter:image" content="https://aragit.github.io/og-image.png">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Arash Nicoomanesh – AI & ML Engineer" />
+  <meta property="og:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare." />
+  <meta property="og:url" content="https://aragit.github.io/" />
+  <meta property="og:image" content="https://aragit.github.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arash Nicoomanesh – AI & ML Engineer" />
+  <meta name="twitter:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare." />
+  <meta name="twitter:image" content="https://aragit.github.io/og-image.png" />
 
-  
+  <!-- preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- IMMEDIATE DARK CANVAS -->
-    <!-- NEW CHECKERED / GRADIENT / NOISE BACKGROUND -->
-  <style>
-    html,body{height:100%}
-    body{margin:0;background:#121212;color:#f5f5f5;font-family:Inter,system-ui,sans-serif}
-    /* 1. kill old particles */
-    #particles-js{display:none}
-    /* 2. new background container */
-    .animated-bg{
-      position:fixed;inset:0;z-index:-1;
-      width:100vw;height:100vh;
-      background:#0d0f18;
-      overflow:hidden;
-    }
-    .animated-bg::before,.animated-bg::after{
-      content:"";position:absolute;inset:-100%;
-      width:200%;height:200%;
-      background:radial-gradient(circle at 20% 20%,rgba(255,107,0,.18) 0%,transparent 40%),
-                 radial-gradient(circle at 80% 80%,rgba(0,150,255,.15) 0%,transparent 40%);
-      animation:move 25s linear infinite;
-      filter:blur(80px);
-    }
-    .animated-bg::after{animation-delay:-12s}
-    .noise{position:absolute;inset:0;width:100%;height:100%;opacity:.03;
-      background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      pointer-events:none}
-    @keyframes move{0%{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(-4%,4%) rotate(180deg) scale(1.08)}100%{transform:translate(0,0) rotate(360deg) scale(1)}}
-    /* keep your old utility classes */
-    .hero-latest{margin-top:1rem;font-size:1rem;color:#ff6b00}
-    .hero-latest a{color:#ff6b00;text-decoration:underline}
-    .skill-tags a span{cursor:pointer;transition:color .2s}
-    .skill-tags a:hover span{color:#ff6b00}
-  </style>
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+
+
     
-
-  <!-- FONTS & ICONS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <!-- style -->
+  <link rel="stylesheet" href="style.css?v=6" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -76,826 +44,447 @@
   }
   </script>
 </head>
-
 <body>
-  <div id="particles-js"></div>
-    <!-- new checkered background -->
-  <div class="animated-bg">
-    <div class="noise"></div>
-  </div>
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Background container -->
+  <div class="animated-bg" aria-hidden="true"><div class="noise" aria-hidden="true"></div></div>
+
   <!-- HEADER -->
-  <header>
+  <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="#home" class="logo"><i class="fa fa-signature" aria-hidden="true"></i></a>
-      <nav id="navbar">
-        <nav id="navbar">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Solutions</a></li>
-            <li><a href="blog/index.html">Blog</a></li> <!-- Updated Text and Link -->
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+      <a class="logo" href="#home" aria-label="Home - Arash Nicoomanesh">
+        <i class="fa fa-signature" aria-hidden="true"></i>
+      </a>
+
+      <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <nav id="primary-nav" class="nav" role="navigation" aria-label="Primary">
+        <ul id="navbar">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Solutions</a></li>
+          <li><a href="blog/index.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
-      <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="noise"></div>
-      <img src="avatar.jpg" alt="Arash" class="hero-avatar">
-      <h1>Arash&nbsp;<span class="highlight">Nicoomanesh</span></h1>
-        <p class="tagline">AI Engineering Services & Consulting</p>
-      <div class="value-prop">
-        <div class="role-container"><p id="typewrite"></p></div>
+  <main id="main" role="main">
 
-        <!-- stylish divider (placed below the typewriter and above the CTAs) -->
-        <div class="hero-divider" aria-hidden="true">
-          <div class="line left-line" role="presentation"></div>
-        
-          <!-- small chess knight (FontAwesome) -->
-          <i class="fas fa-chess-knight chess-icon" aria-hidden="true"></i>
-        
-          <div class="line right-line" role="presentation"></div>
+    <!-- HERO -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <img src="avatar.jpg" alt="Portrait of Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130">
+        <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
+        <p class="tagline">AI Engineering Services &amp; Consulting</p>
+
+        <div class="value-prop" aria-hidden="false">
+          <div class="role-container" aria-hidden="true">
+            <p id="typewrite" aria-live="polite"></p>
+          </div>
+
+          <!-- hero divider: lines + glass knight chip -->
+          <div class="hero-divider" aria-hidden="true">
+            <div class="line" role="presentation"></div>
+            <div class="chess-chip" aria-hidden="true">
+              <i class="fas fa-chess-knight chess-icon" aria-hidden="true"></i>
+            </div>
+            <div class="line" role="presentation"></div>
+          </div>
+
+          <!-- HERO CTA — only CHAT button per request -->
+          <div class="hero-cta" role="group" aria-label="Primary calls to action">
+            <button class="btn-hero btn-primary" id="openChatBtn" title="Chat with my experience" aria-haspopup="dialog">
+              <i class="fas fa-comments" aria-hidden="true"></i>
+              Chat with my Experience
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container about-text">
+        <h2 id="about-title" class="section-title">Insight</h2>
+        <p>With over a decade of experience in modeling and delivering scalable AI solutions across healthcare, finance, and marketing, I translate uncertainty into upside. Across hospitals that can’t afford a single false negative, banks that process millions of micro-transactions a second, and brands that live or die on the next best offer, I design AI systems that transmute chaotic data into exponentially compounding value.</p>
+        <p>"Speak the Language of your Business, Discover the Lever, Prove the Signal, Ship &amp; Scale"</p>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section" aria-labelledby="portfolio-title">
+      <div class="container">
+        <h2 id="portfolio-title" class="section-title">Featured Solutions</h2>
+        <div class="cards" id="portfolio-cards">
+          <!-- 1 -->
+          <article class="card" tabindex="0">
+            <div class="card-icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Medical Triage Agent</h3>
+              <p>Hybrid conversational agent using Gemini Pro, Med-PaLM 2 and reasoning capabilities.</p>
+            </div>
+            <div class="card-actions">
+              <a class="cta-secondary" href="case-studies/medical-triage/medical-triage.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="card" tabindex="0">
+            <div class="card-icon"><i class="fas fa-pills" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Conversational Drug Repurposing</h3>
+              <p>Applying Google LLMs for alternative therapy recommendations from real-world EHR data</p>
+            </div>
+            <div class="card-actions">
+              <a class="cta-secondary" href="case-studies/drug-repurposing/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="card" tabindex="0">
+            <div class="card-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>ICU Metrics Forecasting</h3>
+              <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables</p>
+            </div>
+            <div class="card-actions">
+              <a class="cta-secondary" href="case-studies/icu-forecasting/icu-forecasting.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="card" tabindex="0">
+            <div class="card-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Multi-Turn Product Recommendation QA Bot</h3>
+              <p>Fine-tuned open source LLMs with hybrid retrieval with efficient inference and scalable deployment</p>
+            </div>
+            <div class="card-actions">
+              <a class="cta-secondary" href="case-studies/prd-recomm-qa/prd-recomm-qa.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="card" tabindex="0">
+            <div class="card-icon"><i class="fas fa-university" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Banking Resource Management System</h3>
+              <p>End-to-end customer LTV and churn prediction as well as transactional fraud detection</p>
+            </div>
+            <div class="card-actions">
+              <a class="cta-secondary" href="case-studies/banking-system.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="card" tabindex="0">
+            <div class="card-icon"><i class="fas fa-lungs" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Covid-19 Diagnosis with Audio Biomarkers</h3>
+              <p>COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals</p>
+            </div>
+            <div class="card-actions">
+              <a class="cta-secondary" href="case-studies/Covid/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
+    <section id="articles" class="section alt" aria-labelledby="articles-title">
+      <div class="container">
+        <h2 id="articles-title" class="section-title">Featured Articles</h2>
+        <div class="cards" id="articles-cards">
+
+          <!-- 🔥 New -->
+          <article class="card">
+            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>🔥 New: Fine-Tuning DeepSeek R1 Reasoning on Medical Chain of Thought Dataset</h3>
+              <p>Latest technical walkthrough on enhancing medical-reasoning LLMs with CoT fine-tuning.</p>
+              <small>Medium • 12 min read</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            </div>
+          </article>
+
+          <!-- Gemma 3n -->
+          <article class="card">
+            <div class="card-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>🔥 New: Evidence leans toward Gemma 3n's Efficient Multimodal Edge AI</h3>
+              <p>Gemma 3n enhanced by Unsloth: Low-Memory, High-Speed Training for Customer Support Bots</p>
+              <small>Kaggle • 20 min read</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            </div>
+          </article>
+
+          <!-- Prompt Engineering -->
+          <article class="card">
+            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>A Dive Into LLM Output Configuration &amp; Guardrails</h3>
+              <p>Master reasoning prompts, and guardrails for reliable LLM outputs.</p>
+              <small>Medium • 25 min read</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://medium.com/@anicomanesh/a-dive-into-advanced-prompt-engineering-techniques-for-llms-part-i-23c7b8459d51" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            </div>
+          </article>
+
+          <!-- Few-Shot & Zero-Shot -->
+          <article class="card">
+            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Mastering Few-Shot &amp; Zero-Shot Learning in LLMs</h3>
+              <p>Cross-domain generalization techniques that push LLMs beyond narrow fine-tuning.</p>
+              <small>Medium • 9 min read</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            </div>
+          </article>
+
+          <!-- Model Drift -->
+          <article class="card">
+            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Model Drift: A Survival Guide</h3>
+              <p>Practical monitoring &amp; remediation strategies for ML models in production.</p>
+              <small>Medium • 7 min read</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            </div>
+          </article>
+
+          <!-- Gemma-3 Fine-Tuning -->
+          <article class="card">
+            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Fine-Tune Gemma-3 12B for Customer Service with Unsloth</h3>
+              <p>End-to-end workflow: data prep, LoRA, TRL &amp; GPU-cost optimization.</p>
+              <small>Medium • 11 min read</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            </div>
+          </article>
+
+          <!-- Is RAG Dead?! -->
+          <article class="card">
+            <div class="card-icon"><i class="fas fa-newspaper" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Is RAG Dead?! Rethinking Documentation Q&amp;A in 2025</h3>
+              <p>Re-evaluating RAG vs. large-context LLMs &amp; search-first agents for docs Q&amp;A.</p>
+              <small>Substack • 20 min read</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            </div>
+          </article>
+
+          <!-- Talk -->
+          <article class="card">
+            <div class="card-icon"><i class="fas fa-play-circle" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Talk: Agentic RAG in Healthcare</h3>
+              <p>15-min deck delivered at Hugging Face meet-up on self-evolving retrieval agents.</p>
+              <small>Slides • 15 min watch</small>
+            </div>
+            <div class="card-actions">
+              <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID" target="_blank" rel="noopener noreferrer" class="cta-secondary">View Slides</a>
+            </div>
+          </article>
+
         </div>
 
-        
-        <!-- HERO CTA — unified 3-button row (ordered and colored as requested) -->
-        <div class="hero-cta">
-          <!-- 1. View My Work -->
-          <a class="btn-hero btn-collab" href="#portfolio" title="View My Work">
-            <i class="fas fa-briefcase" aria-hidden="true"></i>
-            View My Work
+        <!-- Move the blog CTA here (Articles section as requested) -->
+        <div style="display: flex; justify-content: center; margin-top: 3rem;">
+          <a href="blog/index.html" class="btn-hero btn-collab" style="display: inline-flex; align-items: center; gap: 0.5rem;" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-book-open" aria-hidden="true"></i>
+            Explore My Blog for More
           </a>
-        
-          <!-- 2. Chat with my experience (primary orange) -->
-          <!-- same look, but opens modal -->
-          <a class="btn-hero btn-primary" href="#" onclick="openChatModal(); return false;" title="Chat with my experience">
-             <i class="fas fa-comments"></i> Chat with my Experience 
-          </a>
-        
-          <!-- 3. Let's Collaborate -->
-          <a class="btn-hero btn-collab" href="#contact" title="Let's Collaborate">
-            <i class="fas fa-handshake" aria-hidden="true"></i>
-            Let's Collaborate
-          </a>
-        </div>       
-    </div>
-  </section>
-  
+        </div>
 
-   
-    <style>
-        
-        /* 1  kill the rotating cube -------------------------------- */
-        /* Frosted-Glass Disc under hero ------------------------------------ */
-        /* 2  Liquid-Metal Swirl ---------------------------------------- */
-        #home.hero{
-          position: relative;
-          background: #080808;
-          overflow: hidden;
-        }
-        #home.hero::before{
-          content: '';
-          position: absolute;
-          inset: -50% -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle at 50% 50%,
-                                      rgba(180,180,180,.18) 0%,
-                                      rgba(120,120,120,.08) 35%,
-                                      transparent 70%);
-          filter: blur(80px);
-          animation: swirl 20s linear infinite;
-          z-index: 0;
-        }
-        @keyframes swirl{
-          0%  { transform: rotate(0deg)   scale(1); }
-          50% { transform: rotate(180deg) scale(1.08); }
-          100%{ transform: rotate(360deg) scale(1); }
-        }
-        #home.hero .container{ position: relative; z-index: 1; }
-        /* drop this at the very end of the <style> block in index.html */
-        .hero-cta .btn-hero {
-          text-decoration: none !important; /* kill underlines */
-          font-weight: 700;                 /* bold text */
-        }
+      </div>
+    </section>
 
-        /* 1  remove underline on "Explore my blog" button ------------- */
-        #articles .btn-hero {
-          text-decoration: none !important;
-        }
-        
-        /* 2  remove underline on service card titles + larger font ---- */
-        #services .card-body h3 {
-          text-decoration: none !important;
-          font-size: 1.05rem;          /* slightly bigger */
-          font-weight: 600;
-        }
-        
-        /* 3  tighter nav items + white icon ---------------------------- */
-        #navbar ul {
-          gap: 1.2rem;                 /* closer items */
-        }
-        
-        #navbar ul li a {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.4rem;
-          color: #fff;
-          text-decoration: none;
-        }
-        
-        #navbar ul li a::before {      /* white icon before text */
-          font-family: "Font Awesome 6 Free";
-          font-weight: 900;
-          font-size: 0.9rem;
-          color: #fff;
-        }
-        
-        /* assign icons (unicode) */
-        #navbar ul li:nth-child(1) a::before { content: "\f015"; } /* Home */
-        #navbar ul li:nth-child(2) a::before { content: "\f007"; } /* About */
-        #navbar ul li:nth-child(3) a::before { content: "\f085"; } /* Services */
-        #navbar ul li:nth-child(4) a::before { content: "\f0b1"; } /* Solutions */
-        #navbar ul li:nth-child(5) a::before { content: "\f781"; } /* Blog */
-        #navbar ul li:nth-child(6) a::before { content: "\f0e0"; } /* Contact */
+    <!-- SERVICES & PACKAGES -->
+    <section id="services" class="section" aria-labelledby="services-title">
+      <div class="container">
+        <h2 id="services-title" class="section-title">Services &amp; Packages</h2>
 
-        
-  </style>
+        <div class="cards">
+          <!-- ===== Row 1 : original 3 packages ===== -->
+          <article class="card">
+            <div class="card-icon"><i class="fas fa-drafting-compass" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3> The Blueprint<br>AI Strategy</h3>
+              <p>Identify high-ROI AI opportunities and receive a detailed technical roadmap to build a powerful, custom AI solution.</p>
+            </div>
+            <div class="card-actions">
+              <a href="services/quick-audit.html" class="cta-secondary service-learn" data-service="The Blueprint" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <button class="cta-secondary service-btn" data-service="The Blueprint">Request Blueprint</button>
+            </div>
+          </article>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container about-text">
-      <h2 class="section-title">Insight</h2>
-      <p>With over a decade of experience in modeling and delivering scalable AI solutions across healthcare, finance, and marketing, I translate uncertainty into upside. Across hospitals that can’t afford a single false negative, banks that process millions of micro-transactions a second, and brands that live or die on the next best offer, I design AI systems that transmute chaotic data into exponentially compounding value.</p>
-      <p>"Speak the Language of your Business, Discover the Lever, Prove the Signal, Ship &amp; Scale"</p>
-    </div>
-  </section>
+          <article class="card">
+            <div class="card-icon"><i class="fas fa-vial" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3> The Forge<br>Solution Development</h3>
+              <p>Take the architectural plan, forge your strategic blueprint and bring it to life through rigorous engineering, testing, and iteration.</p>
+            </div>
+            <div class="card-actions">
+              <a href="services/paid-poc.html" class="cta-secondary service-learn" data-service="Paid POC" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <button class="cta-secondary service-btn" data-service="Paid POC">Start POC</button>
+            </div>
+          </article>
 
-  <!-- ~~~~~~~~~~ PORTFOLIO SECTION ~~~~~~~~~~ -->
-  <section id="portfolio" class="section">
+          <article class="card">
+            <div class="card-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3> The Nexus<br>Deployment &amp; Scale</h3>
+              <p>Production deployment, LLMOps, monitoring, cost optimizations and team handover. Phased contracting available.</p>
+            </div>
+            <div class="card-actions">
+              <a href="services/deploy-scale.html" class="cta-secondary service-learn" data-service="Deployment &amp; Scale" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <button class="cta-secondary service-btn" data-service="Deployment &amp; Scale">Request Contract</button>
+            </div>
+          </article>
+
+          <!-- ===== Row 2 : centered mentoring card ===== -->
+          <article class="card mentoring-center">
+            <div class="card-icon"><i class="fas fa-user-graduate" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3>Mentoring<br>4-week sprint</h3>
+              <p>1-to-1 mentoring tailored to your goals— ML engineers or data scientists who want to level-up fast Or LLM Engineers who want to build a custom curriculum and meet weekly for 4–8 weeks.</p>
+            </div>
+            <div class="card-actions">
+              <a href="services/mentoring.html" class="cta-secondary service-learn" data-service="Individual Mentoring" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <button class="cta-secondary service-btn" data-service="Individual Mentoring">Book Mentoring</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3> Rapid POC Accelerator<br>2–4 week Proof of Concept</h3>
+              <p>Fast, focused build to validate product/technical fit. We deliver an interactive demo, integration smoke-tests, and a clear go/no-go recommendation.</p>
+            </div>
+            <div class="card-actions">
+              <a href="services/rapid-poc.html" class="cta-secondary service-learn" data-service="Rapid POC Accelerator" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <button class="cta-secondary service-btn" data-service="Rapid POC Accelerator">Start POC</button>
+            </div>
+          </article>
+
+          <article class="card" role="article" aria-labelledby="agentic-title">
+            <div class="card-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+            <div class="card-body">
+              <h3 id="agentic-title">Specialized Agentic AI Solutions<br>Tool-enabled agents</h3>
+              <p>Design and ship multi-step agents that reason, call tools, and integrate with systems (APIs). Focused on observability, guardrails, and safe human escalation so agents can operate reliably in production.</p>
+            </div>
+            <div class="card-actions">
+              <a href="services/agentic-ai.html" class="cta-secondary service-learn" data-service="Agentic AI — Autonomous &amp; Auditable Agents" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <button class="cta-secondary service-btn" data-service="Agentic AI — Autonomous &amp; Auditable Agents">Start POC</button>
+            </div>
+          </article>
+
+          <div class="placeholder" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT: removed phone icon; social icons use original muted color -->
+    <section id="contact" class="section contact-small" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title">Contact Me</h2>
+
+        <div class="socials" role="list">
+          <a href="https://www.linkedin.com/in/arashnicoomanesh/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="https://github.com/aragit" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="https://www.kaggle.com/arashnic" aria-label="Kaggle" target="_blank" rel="noopener noreferrer"><i class="fab fa-kaggle" aria-hidden="true"></i></a>
+          <a href="mailto:anicomanesh@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+          <a href="https://medium.com/@anicomanesh" aria-label="Medium" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
     <div class="container">
-      <h2 class="section-title">Featured Solutions</h2>
-      <div class="cards">
-        <!-- 1 -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
-          <div class="card-body">
-            <h3>Medical Triage Agent</h3>
-            <p>Hybrid conversational agent using Gemini Pro, Med-PaLM 2 and reasoning capabilities.</p>
-          </div>
-          <div class="card-actions">
-            <a href="case-studies/medical-triage/medical-triage.html" class="cta-secondary">View Case Study</a>
-          </div>
-        </div>
-        <!-- 2 -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-pills"></i></div>
-          <div class="card-body">
-            <h3>Conversational Drug Repurposing</h3>
-            <p>Applying Google LLMs for alternative therapy recommendations from real-world EHR data</p>
-          </div>
-          <div class="card-actions">
-            <a href="case-studies/drug-repurposing/index.html" class="cta-secondary">View Case Study</a>
-          </div>
-        </div>
-        <!-- 3 -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-          <div class="card-body">
-            <h3>ICU Metrics Forecasting</h3>
-            <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables</p>
-          </div>
-          <div class="card-actions">
-            <a href="case-studies/icu-forecasting/icu-forecasting.html" class="cta-secondary">View Case Study</a>
-          </div>
-        </div>
-        <!-- 4 -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-comments"></i></div>
-          <div class="card-body">
-            <h3>Multi-Turn Product Recommendation QA Bot</h3>
-            <p>Fine-tuned open source LLMs with hybrid retrieval with efficient inference and scalable deployment</p>
-          </div>
-          <div class="card-actions">
-            <a href="case-studies/prd-recomm-qa/prd-recomm-qa.html" class="cta-secondary">View Case Study</a>
-          </div>
-        </div>
-        <!-- 5 -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-university"></i></div>
-          <div class="card-body">
-            <h3>Banking Resource Management System</h3>
-            <p>End-to-end customer LTV and churn prediction as well as transactional fraud detection</p>
-          </div>
-          <div class="card-actions">
-            <a href="case-studies/banking-system.html" class="cta-secondary">View Case Study</a>
-          </div>
-        </div>
-        <!-- 6 -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-lungs"></i></div>
-          <div class="card-body">
-            <h3>Covid-19 Diagnosis with Audio Biomarkers</h3>
-            <p>COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals</p>
-          </div>
-          <div class="card-actions">
-            <a href="case-studies/Covid/index.html" class="cta-secondary">View Case Study</a>
-          </div>
-        </div>
-        <!-- Latest Insights & Talk cards removed -->
-      </div>
+      <p>© <span id="year"></span> Arash Nicoomanesh</p>
     </div>
-  </section>
+  </footer>
 
-  <!-- ~~~~~~~~~~ ARTICLES SECTION ~~~~~~~~~~ -->
-  <section id="articles" class="section alt">
-    <div class="container">
-      <h2 class="section-title">Featured Articles</h2>
-      <div class="cards">
-
-        <!-- 🔥 New -->
-        <div class="card">
-          <div class="card-icon"><i class="fab fa-medium"></i></div>
-          <div class="card-body">
-            <h3>🔥 New: Fine-Tuning DeepSeek R1 Reasoning on Medical Chain of Thought Dataset</h3>
-            <p>Latest technical walkthrough on enhancing medical-reasoning LLMs with CoT fine-tuning.</p>
-            <small>Medium • 12 min read</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2" target="_blank" class="cta-secondary">Read More</a>
-          </div>
-        </div>
-
-        <!-- Gemma 3n -->
-        <div class="card">
-          <div class="card-icon">
-            <i class="fas fa-code"></i>
-          </div>
-          <div class="card-body">
-            <h3>🔥 New: Evidence leans toward Gemma 3n's Efficient Multimodal Edge AI</h3>
-            <p>Gemma 3n enhanced by Unsloth: Low-Memory, High-Speed Training for Customer Support Bots</p>
-            <small>Kaggle • 20 min read</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant" target="_blank" class="cta-secondary">Read More</a>
-          </div>
-        </div>
-
-        <!-- Prompt Engineering -->
-        <div class="card">
-          <div class="card-icon"><i class="fab fa-medium"></i></div>
-          <div class="card-body">
-            <h3>A Dive Into LLM Output Configuration & Guardrails</h3>
-            <p>Master reasoning prompts, and guardrails for reliable LLM outputs.</p>
-            <small>Medium • 25 min read</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://medium.com/@anicomanesh/a-dive-into-advanced-prompt-engineering-techniques-for-llms-part-i-23c7b8459d51" target="_blank" class="cta-secondary">Read More</a>
-          </div>
-        </div>
-
-        <!-- Few-Shot & Zero-Shot -->
-        <div class="card">
-          <div class="card-icon"><i class="fab fa-medium"></i></div>
-          <div class="card-body">
-            <h3>Mastering Few-Shot & Zero-Shot Learning in LLMs</h3>
-            <p>Cross-domain generalization techniques that push LLMs beyond narrow fine-tuning.</p>
-            <small>Medium • 9 min read</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259" target="_blank" class="cta-secondary">Read More</a>
-          </div>
-        </div>
-
-        <!-- Model Drift -->
-        <div class="card">
-          <div class="card-icon"><i class="fab fa-medium"></i></div>
-          <div class="card-body">
-            <h3>Model Drift: A Survival Guide</h3>
-            <p>Practical monitoring & remediation strategies for ML models in production.</p>
-            <small>Medium • 7 min read</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0" target="_blank" class="cta-secondary">Read More</a>
-          </div>
-        </div>
-
-        <!-- Gemma-3 Fine-Tuning -->
-        <div class="card">
-          <div class="card-icon"><i class="fab fa-medium"></i></div>
-          <div class="card-body">
-            <h3>Fine-Tune Gemma-3 12B for Customer Service with Unsloth</h3>
-            <p>End-to-end workflow: data prep, LoRA, TRL & GPU-cost optimization.</p>
-            <small>Medium • 11 min read</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6" target="_blank" class="cta-secondary">Read More</a>
-          </div>
-        </div>
-
-        <!-- Is RAG Dead?! -->
-        <div class="card">
-          <div class="card-icon">
-            <i class="fas fa-newspaper"></i>
-          </div>
-          <div class="card-body">
-            <h3>Is RAG Dead?! Rethinking Documentation Q&A in 2025</h3>
-            <p>Re-evaluating RAG vs. large-context LLMs & search-first agents for docs Q&A.</p>
-            <small>Substack • 20 min read</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation" target="_blank" class="cta-secondary">Read More</a>
-          </div>
-        </div>
-          
-        
-
-          
-        <!-- Talk -->
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-play-circle"></i></div>
-          <div class="card-body">
-            <h3>Talk: Agentic RAG in Healthcare</h3>
-            <p>15-min deck delivered at Hugging Face meet-up on self-evolving retrieval agents.</p>
-            <small>Slides • 15 min watch</small>
-          </div>
-          <div class="card-actions">
-            <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID" target="_blank" class="cta-secondary">View Slides</a>
-          </div>
-        </div>
-
-      </div>
-        <!-- ADD THIS CODE -->
-      <div style="display: flex; justify-content: center; margin-top: 3rem;">
-        <a href="blog/index.html" class="btn-hero btn-collab" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-          <i class="fas fa-book-open"></i>
-          Explore My Blog for More
-        </a>
-      </div>
-      <!-- END OF ADDED CODE -->
-    </div>
-  </section>
-
-    
-<!-- ===== SERVICES & PACKAGES ===== -->
-<section id="services" class="section">
-  <div class="container">
-    <h2 class="section-title">Services & Packages</h2>
-
-    <div class="cards">
-
-      <!-- ===== Row 1 : original 3 packages ===== -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-drafting-compass"></i></div>
-      <div class="card-body">
-        <h3><span style="color: white; font-weight: bold; text-decoration: underline;">The Blueprint</span><br>AI Strategy</h3>
-        <p>Identify high-ROI AI opportunities and receive a detailed technical roadmap to build a powerful, custom AI solution.</p>
-      </div>
-      <div class="card-actions">
-        <a href="services/quick-audit.html" class="cta-secondary service-learn" data-service="The Blueprint">Learn More</a>
-        <a href="#" class="cta-secondary service-btn" data-service="The Blueprint">Request Blueprint</a>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-vial"></i></div>
-      <div class="card-body">
-        <h3><span style="color: white; font-weight: bold; text-decoration: underline;">The Forge</span><br>Solution Development</h3>
-        <p>Take the architectural plan, forge your strategic blueprint and bring it to life through rigorous engineering, testing, and iteration.</p>
-      </div>
-      <div class="card-actions">
-        <a href="services/paid-poc.html" class="cta-secondary service-learn" data-service="Paid POC">Learn More</a>
-        <a href="#" class="cta-secondary service-btn" data-service="Paid POC">Start POC</a>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-server"></i></div>
-      <div class="card-body">
-        <h3><span style="color: white; font-weight: bold; text-decoration: underline;">The Nexus</span><br>Deployment & Scale</h3>
-        <p>Production deployment, LLMOps, monitoring, cost optimizations and team handover. Phased contracting available.</p>
-      </div>
-      <div class="card-actions">
-        <a href="services/deploy-scale.html" class="cta-secondary service-learn" data-service="Deployment & Scale">Learn More</a>
-        <a href="#" class="cta-secondary service-btn" data-service="Deployment & Scale">Request Contract</a>
-      </div>
-    </div>
-
-      <!-- ===== Row 2 : centered mentoring card ===== -->
-      <!-- invisible placeholders -->
-      <div class="card mentoring-center">
-          <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
-          <div class="card-body">
-            <h3><span style="font-weight:700;text-decoration:underline;text-underline-offset:3px;color:#ffffff;">Mentoring</span><br>4-week sprint</h3>
-            <p>1-to-1 mentoring tailored to your goals— ML engineers or data scientists who want to level-up fast Or LLM Engineers who want to build a custom curriculum and meet weekly for 4–8 weeks.</p>
-          </div>
-          <div class="card-actions">
-            <a href="services/mentoring.html" class="cta-secondary service-learn" data-service="Individual Mentoring">Learn More</a>
-            <a href="#" class="cta-secondary service-btn"    data-service="Individual Mentoring">Book Mentoring</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-icon"><i class="fas fa-rocket"></i></div>
-          <div class="card-body">
-            <h3><span style="color: white; font-weight: bold; text-decoration: underline;">Rapid POC Accelerator</span><br>2–4 week Proof of Concept</h3>
-            <p>Fast, focused build to validate product/technical fit. We deliver an interactive demo, integration smoke-tests, and a clear go/no-go recommendation.</p>
-          </div>
-          <div class="card-actions">
-            <a href="services/rapid-poc.html" class="cta-secondary service-learn" data-service="Rapid POC Accelerator">Learn More</a>
-            <a href="#" class="cta-secondary service-btn" data-service="Rapid POC Accelerator">Start POC</a>
-          </div>
-        </div>
-
-        <div class="card" role="article" aria-labelledby="agentic-title">
-          <div class="card-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
-          <div class="card-body">
-            <h3 id="agentic-title">
-              <span style="color: white; font-weight: bold; text-decoration: underline;">
-                Specialized Agentic AI Solutions
-              </span><br>
-              Tool-enabled agents 
-            </h3>
-            <p>Design and ship multi-step agents that reason, call tools, and integrate with systems (APIs). Focused on observability, guardrails, and safe human escalation so agents can operate reliably in production.</p>
-          </div>
-          <div class="card-actions">
-            <a href="services/agentic-ai.html" class="cta-secondary service-learn" data-service="Agentic AI — Autonomous & Auditable Agents">Learn More</a>
-            <a href="#" class="cta-secondary service-btn" data-service="Agentic AI — Autonomous & Auditable Agents">Start POC</a>
-          </div>
-        </div>
-
-        
-                
-      <div class="placeholder"></div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== tiny helper CSS (append to <style> or style.css) ===== -->
-<style>
-/* invisible placeholders that collapse on narrow screens */
-.cards .placeholder {
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .cards .placeholder {
-    display: none;          /* let card go full-width on mobile */
-  }
-}
-</style>
-
-
- 
-  
-  
-
-  <!-- CONTACT -->
-  <section id="contact" class="section contact-small">
-    <div class="container">
-      <h2 class="section-title">Contact Me</h2>
-      
-      <div class="socials">
-        <a href="https://www.linkedin.com/in/arashnicoomanesh/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/aragit" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.kaggle.com/arashnic" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
-        <a href="mailto:anicomanesh@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://medium.com/@anicomanesh" aria-label="Medium"><i class="fab fa-medium"></i></a>
-        <!-- Phone icon moved here -->
-        
-        <a href="#" aria-label="Phone" onclick="showPhoneNumber()"><i class="fas fa-phone"></i></a>
-      </div>
-    </div>
-  </section>
-  
-  <footer><p>© <span id="year"></span> Arash Nicoomanesh</p></footer>
-
-  <!-- SERVICE MODAL (inserted; minimal styles and script) -->
-  <style>
-  /* Modal styles (keeps dark theme) */
-  #serviceModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:9999}
-  #serviceModal .modal-card{width:min(720px,96%);background:#0f1114;border-radius:12px;padding:20px;color:#eaf2fb;box-shadow:0 10px 40px rgba(0,0,0,0.6)}
-  #serviceModal .modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  #serviceModal h3{margin:0;font-size:1.15rem}
-  .modal-row{display:flex;gap:12px;flex-wrap:wrap}
-  .modal-row .col{flex:1 1 200px;min-width:0}
-  #serviceModal input,#serviceModal textarea,#serviceModal select{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-  #serviceModal .btn-primary{background:linear-gradient(135deg,#ff4500,#ff6b00);padding:.6rem .9rem;border-radius:8px;border:none;color:#060606;font-weight:700;cursor:pointer}
-  #serviceModal .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:.5rem .8rem;border-radius:8px;color:#9aa4b2;cursor:pointer}
-  #serviceModal .modal-foot{display:flex;gap:12px;align-items:center;margin-top:12px;justify-content:flex-end}
-  #serviceModal .close-x{cursor:pointer;color:#9aa4b2;margin-left:10px}
-  @media(max-width:640px){.modal-row{flex-direction:column}}
-    
-  </style>
-
-  <div id="serviceModal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+  <!-- SERVICE MODAL -->
+  <div id="serviceModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="serviceModalTitle">
+    <div class="modal-card" role="document">
       <div class="modal-head">
         <h3 id="serviceModalTitle">Request Proposal</h3>
-        <div><span class="close-x" id="serviceModalClose"><i class="fas fa-times"></i></span></div>
+        <button class="close" id="serviceModalClose" aria-label="Close dialog"><i class="fas fa-times" aria-hidden="true"></i></button>
       </div>
 
       <form id="serviceModalForm" action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="modal-row">
-          <div class="col">
-            <label>Name</label>
-            <input name="name" type="text" required placeholder="Your name">
-          </div>
-          <div class="col">
-            <label>Email</label>
-            <input name="email" type="email" required placeholder="name@example.com">
-          </div>
+          <label class="sr-only">Name<input name="name" type="text" required placeholder="Your name"></label>
+          <label class="sr-only">Email<input name="email" type="email" required placeholder="name@example.com"></label>
         </div>
 
-        <div style="margin-top:10px;">
-          <label>Organization (optional)</label>
-          <input name="organization" placeholder="Company / org">
-        </div>
+        <label class="sr-only">Organization (optional)<input name="organization" placeholder="Company / org"></label>
 
-        <div style="margin-top:10px;">
-          <label>Budget range</label>
+        <label class="sr-only">Budget range
           <select name="budget">
             <option value="<2k">&lt;$2k</option>
             <option value="2k-6k">$2k–$6k</option>
             <option value=">6k">&gt;$6k</option>
           </select>
-        </div>
+        </label>
 
-        <div style="margin-top:10px;">
-          <label>Brief / Project description</label>
-          <textarea name="message" required placeholder="Describe the problem or goal..."></textarea>
-        </div>
+        <label class="sr-only">Brief / Project description
+          <textarea name="message" required placeholder="Describe the problem or goal..." rows="4"></textarea>
+        </label>
 
         <input type="hidden" name="service" id="modal_service_input" value="">
         <input type="hidden" name="_subject" value="Website lead: Service inquiry">
-
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
-        <!-- redirect to your thank-you page -->
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
-        
-        <!-- tracking / attribution -->
-        <input type="hidden" name="utm_source" id="hidden_utm_source" value="">
-        <input type="hidden" name="utm_medium" id="hidden_utm_medium" value="">
-        <input type="hidden" name="utm_campaign" id="hidden_utm_campaign" value="">
-        <input type="hidden" name="referrer" id="hidden_referrer" value="">
 
         <div class="modal-foot">
           <button type="button" class="btn-ghost" id="modalBookBtn">Book 30-min</button>
           <button type="submit" class="btn-primary">Send Request</button>
         </div>
-
-        <p id="modalMsg" style="color:#9aa4b2;margin-top:8px;display:none"></p>
+        <p id="modalMsg" class="form-msg" aria-live="polite"></p>
       </form>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
-  <script src="script.js"></script>
-    <!-- ===== Toggle via underlined orange text ===== -->
-    <script>
-    const INITIAL = 3;
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid   = document.querySelector('#articles .cards');
-      const cards  = [...grid.children];
-      const total  = cards.length;
-    
-      if (total <= INITIAL) return;
-    
-      /* hide extras */
-      cards.slice(INITIAL).forEach(c => c.style.display = 'none');
-    
-      /* create toggle link */
-      const toggle = document.createElement('a');
-      toggle.href = '#';
-      toggle.innerHTML = `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More `;
-      toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline;font-size:1rem;cursor:pointer';
-      grid.after(toggle);
-    
-      let expanded = false;
-      toggle.addEventListener('click', e => {
-        e.preventDefault();
-        expanded = !expanded;
-        cards.slice(INITIAL).forEach(c => c.style.display = expanded ? '' : 'none');
-        toggle.innerHTML = expanded
-          ? `<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less`
-          : `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More`;
-      });
-    });
-    </script>
-    <!-- ===== Toggle for FEATURED PROJECTS (Portfolio) ===== -->
-    <script>
-    const P_INITIAL = 3;   // how many cards to show first
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid   = document.querySelector('#portfolio .cards');
-      const cards  = [...grid.children];
-      const total  = cards.length;
-    
-      if (total <= P_INITIAL) return;
-    
-      /* hide extras */
-      cards.slice(P_INITIAL).forEach(c => c.style.display = 'none');
-    
-      /* create toggle link */
-      const toggle = document.createElement('a');
-      toggle.href = '#';
-      toggle.innerHTML = `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More`;
-      toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline;font-size:1rem;cursor:pointer';
-      grid.after(toggle);
-    
-      let expanded = false;
-      toggle.addEventListener('click', e => {
-        e.preventDefault();
-        expanded = !expanded;
-        cards.slice(P_INITIAL).forEach(c => c.style.display = expanded ? '' : 'none');
-        toggle.innerHTML = expanded
-          ? `<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less`
-          : `<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More`;
-      });
-    });
-    </script>
-
-  <!-- SERVICE MODAL SCRIPT (minimal, non-intrusive) -->
-  <script>
-  (function(){
-    // wait for DOM
-    function onReady(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
-    onReady(function(){
-      // service buttons open modal and set service name
-      document.querySelectorAll('.service-btn').forEach(function(btn){
-        btn.addEventListener('click', function(e){
-          e.preventDefault();
-          var service = this.getAttribute('data-service') || this.textContent.trim();
-          var modal = document.getElementById('serviceModal');
-          var title = document.getElementById('serviceModalTitle');
-          var input = document.getElementById('modal_service_input');
-          var msg = document.getElementById('modalMsg');
-          input.value = service;
-          title.textContent = 'Inquiry — ' + service;
-          if(msg) msg.style.display='none';
-          if(modal){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); }
-        });
-      });
-
-      // close handlers
-      var closeBtn = document.getElementById('serviceModalClose');
-      if(closeBtn) closeBtn.addEventListener('click', closeModal);
-      var modalWrap = document.getElementById('serviceModal');
-      if(modalWrap) modalWrap.addEventListener('click', function(e){ if(e.target === this) closeModal(); });
-      function closeModal(){ var m = document.getElementById('serviceModal'); if(m){ m.style.display='none'; m.setAttribute('aria-hidden','true'); } }
-
-      // Book button open Calendly (replace link when ready)
-      var bookBtn = document.getElementById('modalBookBtn');
-      if(bookBtn) bookBtn.addEventListener('click', function(){ window.open('https://calendly.com/your-calendly','_blank'); });
-
-      // modal form submit via fetch (Formspree) - uses JSON accept
-      var modalForm = document.getElementById('serviceModalForm');
-      if(modalForm){
-        modalForm.addEventListener('submit', async function(e){
-          e.preventDefault();
-          var hp = modalForm.querySelector('input[name="hp_field"]').value;
-          var msgEl = document.getElementById('modalMsg');
-          if(hp !== ''){ msgEl.style.display='block'; msgEl.textContent='Spam detected'; return; }
-          msgEl.style.display='block'; msgEl.textContent='Sending...';
-          var formData = new FormData(modalForm);
-          try{
-            var res = await fetch(modalForm.action, { method:'POST', body: formData, headers: { 'Accept': 'application/json' } });
-            if(res.ok){ msgEl.textContent='Message sent — thank you!'; modalForm.reset(); setTimeout(closeModal, 1400); }
-            else { var j = await res.json(); msgEl.textContent = j.error || 'Submission error'; }
-          }catch(err){ msgEl.textContent='Network error — please try again later.'; }
-        });
-      }
-    });
-  })();
-  </script>
-
-    <!-- ===== end modal script ===== -->
-
-    <script>
-    // simple phone reveal
-    function showPhoneNumber(){
-      alert('Phone: +1-912-733-8749');
-    }
-    // set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-    <!-- ===== Chat Modal ===== -->
-    <div id="chatModal" class="chat-modal" aria-hidden="true">
-      <div class="chat-modal-content">
-        <span class="chat-close" aria-label="Close chat">&times;</span>
-        <iframe id="chatFrame"
-                src="https://e34720a03c18e1a496.gradio.live"
-                title="Chat with my experience"
-                allow="camera; microphone; clipboard-read; clipboard-write"
-                loading="lazy">
-        </iframe>
-      </div>
+  <!-- CHAT MODAL -->
+  <div id="chatModal" class="chat-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="chatModalTitle">
+    <div class="chat-modal-content">
+      <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+      <div id="parentThinkingBubble" class="thinking-bubble" aria-hidden="true"><i class="fas fa-spinner fa-pulse" aria-hidden="true"></i> Thinking…</div>
+      <iframe id="chatFrame"
+        src="https://e34720a03c18e1a496.gradio.live"
+        title="Chat with my experience"
+        allow="camera; microphone; clipboard-read; clipboard-write"
+        loading="lazy"></iframe>
     </div>
-    
-    <style>
-    /* ---- Chat Modal ---- */
-    .chat-modal{
-      position:fixed; inset:0;
-      background:rgba(2,6,23,.85);
-      backdrop-filter:blur(4px);
-      z-index:9999;
-      display:none;
-      align-items:center;
-      justify-content:center;
-    }
-    .chat-modal-content{
-      position:relative;
-      width:min(95vw, 900px);
-      height:min(95vh, 700px);
-      background:#0f1114;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 10px 40px rgba(0,0,0,.6);
-    }
-    #chatFrame{width:100%; height:100%; border:none;}
-    .chat-close{
-      position:absolute; top:12px; right:16px;
-      font-size:1.8rem; color:#9aa4b2; cursor:pointer;
-      z-index:1;
-    }
-    .chat-close:hover{color:#ff6b00;}
-    @media(max-width:600px){
-      .chat-modal-content{width:100vw; height:100vh; border-radius:0;}
-    }
-    </style>
-    
-    <script>
-    function openChatModal(){
-      const m = document.getElementById('chatModal');
-      m.style.display = 'flex';
-      m.setAttribute('aria-hidden','false');
-    }
-    function closeChatModal(){
-      const m = document.getElementById('chatModal');
-      m.style.display = 'none';
-      m.setAttribute('aria-hidden','true');
-    }
-    /* click × or outside modal → close */
-    document.addEventListener('click', e => {
-      if (e.target.matches('.chat-close, .chat-modal')) closeChatModal();
-    });
-    /* ESC key → close */
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeChatModal();
-    });
-    </script>
-    <script>
-    /* ---- “Thinking…” bubble inside Gradio iframe ---- */
-    const THINKING_HTML = `
-    <div id="thinkingBubble" style="
-      display:none;
-      padding:0.6rem 1rem;
-      margin:0.5rem 0;
-      background:#222;
-      color:#aaa;
-      border-radius:8px;
-      width:fit-content;
-      font-size:0.9rem;">
-      <i class="fas fa-spinner fa-pulse"></i> Thinking…
-    </div>`;
-    
-    let iframeDoc = null;
-    
-    /* wait until iframe is loaded */
-    document.getElementById('chatFrame').addEventListener('load', () => {
-      iframeDoc = document.getElementById('chatFrame').contentDocument;
-      if (!iframeDoc) return;
-    
-      /* inject bubble into chatbot area */
-      const target = iframeDoc.querySelector('.chatbot') || iframeDoc.querySelector('[data-testid="chatbot"]');
-      if (target) target.insertAdjacentHTML('afterbegin', THINKING_HTML);
-    
-      /* watch the “Send” button (same for text or mic) */
-      const sendBtn = iframeDoc.querySelector('button[aria-label="Send"]') || iframeDoc.querySelector('button:has(.fa-paper-plane)');
-      if (sendBtn) {
-        sendBtn.addEventListener('click', () => showThinking(true));
-      }
-    
-      /* hide bubble as soon as the *last* user message gets a reply */
-      const obs = new MutationObserver(() => {
-        const userMsgs   = iframeDoc.querySelectorAll('.message.user');
-        const botMsgs    = iframeDoc.querySelectorAll('.message.assistant, .message.bot');
-        if (userMsgs.length > 0 && botMsgs.length >= userMsgs.length) showThinking(false);
-      });
-      obs.observe(target, {childList: true, subtree: true});
-    });
-    
-    function showThinking(on) {
-      const bubble = iframeDoc?.getElementById('thinkingBubble');
-      if (bubble) bubble.style.display = on ? 'block' : 'none';
-    }
-    </script>
+  </div>
+
+  <script src="script.js?v=6"></script>
 </body>
 </html>

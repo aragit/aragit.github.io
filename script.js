@@ -1,162 +1,240 @@
-/* ---------- MOBILE NAV ---------- */
-const hamburger = document.getElementById('hamburger');
-const nav       = document.querySelector('nav ul');
-hamburger?.addEventListener('click', () => nav.classList.toggle('active'));
+/* script.js — consolidated frontend behaviour (vanilla JS) */
+(() => {
+  // Utilities
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-/* ---------- ON CONTENT LOAD ---------- */
-window.addEventListener('DOMContentLoaded', () => {
-  /* ---------- PARTICLES ENGINE CONFIG ---------- */
-  tsParticles.load({
-    id: "particles-js",
-    options: {
-      particles: {
-        number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: ["#ff6b00", "#4dabf7"] },
-        shape: { type: "circle" },
-        opacity: {
-          value: 0.6,
-          random: true,
-          anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: { enable: false }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#ffffff",
-          opacity: 0.2,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          attract: { enable: false, rotateX: 600, rotateY: 1200 },
-          path: {
-            enable: true,
-            delay: { random: { enable: true, minimumValue: 0.5 }, value: 1 },
-            generator: "perlinNoise",
-            options: {
-              width: 100,
-              height: 100,
-              increment: 0.004,
-              type: "simplex",
-              frequency: 0.05,
-              amplitude: 1
-            }
-          }
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" },
-          resize: true
-        },
-        modes: {
-          grab: { distance: 140, line_opacity: 0.5 },
-          bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-          repulse: { distance: 200, duration: 0.4 },
-          push: { particles_nb: 4 },
-          remove: { particles_nb: 2 }
-        }
-      },
-      retina_detect: true,
-      background: { color: "#121212" }
-    }
-  });
+  // DOM elements
+  const yearEl = $('#year');
+  const hamburger = $('#hamburger');
+  const navUl = document.querySelector('nav.nav ul');
+  const openChatBtn = $('#openChatBtn');
+  const chatModal = $('#chatModal');
+  const chatFrame = $('#chatFrame');
+  const chatClose = $('#chatClose');
+  const parentThinking = $('#parentThinkingBubble');
+  const serviceModal = $('#serviceModal');
+  const serviceModalForm = $('#serviceModalForm');
+  const serviceModalClose = $('#serviceModalClose');
+  const modalBookBtn = $('#modalBookBtn');
+  const modalServiceInput = $('#modal_service_input');
+  const serviceBtns = $$('.service-btn');
+  const phoneBtn = $('#phoneRevealBtn');
+  const phonePopover = $('#phonePopover');
 
-  /* ---------- TYPEWRITER ---------- */
-  const typeEl = document.querySelector('#typewrite');
-  if (!typeEl) return;
-  const roles = ["LLM Engineering", "Agentic AI", "Agentic RAG", "LLMOps & Scalable Solutions", "Recommendation Systems",  "KaggleX Advisor", "Kaggle Grandmaster", "Ethical AI Advocate"];
-  let i = 0, j = 0, forward = true;
-  function tick() {
-    const cur = roles[i];
-    typeEl.textContent = forward ? cur.slice(0, ++j) : cur.slice(0, --j);
-    if (forward && j === cur.length) {
-      setTimeout(tick, 1500);
-      forward = false;
-    } else if (!forward && j === 0) {
-      i = (i + 1) % roles.length;
-      forward = true;
-      setTimeout(tick, 300);
-    } else {
-      setTimeout(tick, 80);
-    }
+  // Set year
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* --------------------
+     Hamburger / responsive nav
+     -------------------- */
+  if (hamburger && navUl) {
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      navUl.classList.toggle('active');
+    });
+    // close nav on link click (mobile)
+    navUl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navUl.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }));
   }
-  tick();
 
-  /* ---------- FOUC-FIX: reveal page only after fonts & particles ready ---------- */
-  window.addEventListener('load', () => {
-    document.documentElement.classList.add('font-loaded');
+  /* --------------------
+     Unified "show more" toggles for cards (articles/portfolio)
+     -------------------- */
+  function initCardToggler(containerSelector, initial = 3) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+    const cards = Array.from(container.children);
+    if (cards.length <= initial) return;
+    // hide extras
+    cards.slice(initial).forEach(c => c.style.display = 'none');
+    // create toggle link
+    const toggle = document.createElement('a');
+    toggle.href = '#';
+    toggle.className = 'toggle-more';
+    toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline';
+    toggle.innerHTML = '<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More';
+    container.after(toggle);
+    let expanded = false;
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      expanded = !expanded;
+      cards.slice(initial).forEach(c => c.style.display = expanded ? '' : 'none');
+      toggle.innerHTML = expanded
+        ? '<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less'
+        : '<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More';
+    });
+  }
+  initCardToggler('#articles .cards', 6); // show 6 initially on articles
+  initCardToggler('#portfolio .cards', 3);
+
+  /* --------------------
+     Modal: open, close, focus trap, accessible
+     -------------------- */
+  let lastFocused = null;
+  function trapFocus(modal) {
+    const focusable = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const nodes = Array.from(modal.querySelectorAll(focusable));
+    if (nodes.length === 0) return () => {};
+    const first = nodes[0], last = nodes[nodes.length - 1];
+    function keyListener(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      } else if (e.key === 'Escape') {
+        closeModal(modal);
+      }
+    }
+    document.addEventListener('keydown', keyListener);
+    return () => document.removeEventListener('keydown', keyListener);
+  }
+
+  function openModal(modal) {
+    if (!modal) return;
+    lastFocused = document.activeElement;
+    modal.setAttribute('aria-hidden', 'false');
+    // focus first focusable
+    const input = modal.querySelector('input, button, textarea, select, [tabindex]');
+    if (input) input.focus();
+    // trap focus
+    const release = trapFocus(modal);
+    modal._releaseFocus = release;
+  }
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.setAttribute('aria-hidden', 'true');
+    if (modal._releaseFocus) modal._releaseFocus();
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  }
+
+  // Service buttons open modal & set service name
+  serviceBtns.forEach(btn => btn.addEventListener('click', (e) => {
+    const service = btn.getAttribute('data-service') || btn.textContent.trim();
+    modalServiceInput.value = service;
+    $('#serviceModalTitle').textContent = 'Inquiry — ' + service;
+    openModal(serviceModal);
+  }));
+  // modal close handlers
+  if (serviceModalClose) serviceModalClose.addEventListener('click', () => closeModal(serviceModal));
+  if (serviceModal) serviceModal.addEventListener('click', e => { if (e.target === serviceModal) closeModal(serviceModal); });
+
+  // Book button (Calendly placeholder)
+  if (modalBookBtn) modalBookBtn.addEventListener('click', () => {
+    window.open('https://calendly.com/your-calendly', '_blank', 'noopener');
   });
-});
 
-/* ---------- FOOTER YEAR ---------- */
-document.getElementById('year').textContent = new Date().getFullYear();
+  // Formspree AJAX submit (non-blocking)
+  if (serviceModalForm) {
+    serviceModalForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msgEl = $('#modalMsg');
+      const hp = serviceModalForm.querySelector('input[name="hp_field"]').value;
+      if (hp !== '') { msgEl.textContent = 'Spam detected'; return; }
+      msgEl.textContent = 'Sending...';
+      try {
+        const fd = new FormData(serviceModalForm);
+        const res = await fetch(serviceModalForm.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          msgEl.textContent = 'Message sent — thank you!';
+          serviceModalForm.reset();
+          setTimeout(() => closeModal(serviceModal), 1400);
+        } else {
+          const j = await res.json().catch(() => ({}));
+          msgEl.textContent = j.error || 'Submission error';
+        }
+      } catch (err) {
+        msgEl.textContent = 'Network error — please try again later.';
+      }
+    });
+  }
 
-/* ---------- PHONE NUMBER FUNCTION ---------- */
-function showPhoneNumber() {
-  alert('Phone: +1 (555) 123-4567');
-}
+  /* --------------------
+     Chat modal: open/close + safe postMessage handling
+     -------------------- */
+  function openChat() {
+    chatModal.setAttribute('aria-hidden', 'false');
+    // request status from iframe (non-blocking). If iframe is cross-origin, this won't throw.
+    try { chatFrame.contentWindow.postMessage({ type: 'request-status' }, '*'); } catch (e) {}
+  }
+  function closeChat() {
+    chatModal.setAttribute('aria-hidden', 'true');
+  }
+  if (openChatBtn) openChatBtn.addEventListener('click', openChat);
+  if (chatClose) chatClose.addEventListener('click', closeChat);
+  // also close by clicking overlay
+  if (chatModal) chatModal.addEventListener('click', e => { if (e.target === chatModal) closeChat(); });
 
-/* ---------- UTM + Referrer Filler ---------- */
-(function fillUtm(){
-  try{
-    const params = new URLSearchParams(location.search);
-    const setIfEl = (param, elid) => {
-      const val = params.get(param) || '';
-      const el = document.getElementById(elid);
-      if(el) el.value = val;
-    };
-    setIfEl('utm_source','hidden_utm_source');
-    setIfEl('utm_medium','hidden_utm_medium');
-    setIfEl('utm_campaign','hidden_utm_campaign');
-    const refEl = document.getElementById('hidden_referrer');
-    if(refEl) refEl.value = document.referrer || '';
-  }catch(e){ /* no-op */ }
-})();
+  // Listen for messages from iframe. Only handle known types.
+  window.addEventListener('message', (e) => {
+    if (!e.data || typeof e.data.type !== 'string') return;
+    if (e.data.type === 'thinking:on') {
+      parentThinking.setAttribute('aria-hidden', 'false');
+    } else if (e.data.type === 'thinking:off') {
+      parentThinking.setAttribute('aria-hidden', 'true');
+    } else if (e.data.type === 'chat:loaded') {
+      // hide thinking indicator if chat reports loaded
+      parentThinking.setAttribute('aria-hidden', 'true');
+    }
+  });
 
-/* ---------- Improved Modal Form Submit ---------- */
-(function(){
-  var modalForm = document.getElementById('serviceModalForm');
-  if(!modalForm) return;
-  modalForm.addEventListener('submit', async function(e){
-    e.preventDefault();
-    var hp = modalForm.querySelector('input[name="hp_field"]').value;
-    var msgEl = document.getElementById('modalMsg');
-    if(hp !== ''){ if(msgEl) { msgEl.style.display='block'; msgEl.textContent='Spam detected'; } return; }
-    if(msgEl){ msgEl.style.display='block'; msgEl.textContent='Sending...'; }
-    var formData = new FormData(modalForm);
-    try{
-      var res = await fetch(modalForm.action, { method:'POST', body: formData, headers: { 'Accept': 'application/json' }});
-      var json = {};
-      try{ json = await res.json(); }catch(err){ json = {}; }
-      if(res.ok){
-        if(json && json.next){
-          var nextUrl = json.next.startsWith('/') ? (location.origin + json.next) : json.next;
-          window.location.href = nextUrl;
+  /* If iframe doesn't send messages, fallback: show local "loading" bubble for a couple seconds */
+  chatFrame.addEventListener('load', () => {
+    parentThinking.setAttribute('aria-hidden', 'false');
+    setTimeout(() => parentThinking.setAttribute('aria-hidden', 'true'), 2200);
+  });
+
+  /* --------------------
+     Phone reveal (inline popover instead of alert)
+     -------------------- */
+  if (phoneBtn && phonePopover) {
+    phoneBtn.addEventListener('click', () => {
+      const shown = phonePopover.getAttribute('aria-hidden') === 'false';
+      phonePopover.setAttribute('aria-hidden', String(!shown));
+      phonePopover.style.display = shown ? 'none' : 'block';
+    });
+  }
+
+  /* --------------------
+     Typewriter small helper (rotating roles)
+     -------------------- */
+  (function typewriter(elId, words = [], speed = 60, pause = 1800) {
+    const el = document.getElementById(elId);
+    if (!el || !words.length) return;
+    let w = 0, pos = 0, deleting = false;
+    const step = () => {
+      const current = words[w];
+      if (!deleting) {
+        el.textContent = current.slice(0, pos + 1);
+        pos++;
+        if (pos === current.length) {
+          deleting = true;
+          setTimeout(step, pause);
           return;
         }
-        if(msgEl){ msgEl.textContent = 'Message sent — thank you!'; }
-        modalForm.reset();
-        setTimeout(function(){ 
-          var m=document.getElementById('serviceModal'); 
-          if(m){ m.style.display='none'; m.setAttribute('aria-hidden','true'); } 
-        },1200);
       } else {
-        if(msgEl){ msgEl.textContent = (json && json.error) ? json.error : 'Submission error'; }
+        el.textContent = current.slice(0, pos - 1);
+        pos--;
+        if (pos === 0) { deleting = false; w = (w + 1) % words.length; }
       }
-    }catch(err){
-      if(msgEl) msgEl.textContent = 'Network error — please try again later.';
-    }
-  });
-})();
+      setTimeout(step, deleting ? speed / 1.5 : speed);
+    };
+    step();
+  })('typewrite', [
+    'LLM Engineer · Architect · Mentor',
+    'Agentic AI • RAG • LLMOps',
+    'Healthcare & Finance ML Systems',
+  ], 45, 1600);
+
+  /* --------------------
+     Small accessibility: close modal on 'Escape' globally
+     -------------------- */
+  document.addEventListener('keydown', (e) => {
+    if (e.key
