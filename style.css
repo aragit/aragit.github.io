@@ -1,4 +1,4 @@
-/* style.css — updated: non-rotating halo, improved typewriter visibility, no hover orange border */
+/* style.css — cards: NO default halo/shadow, only on hover/focus */
 
 /* ===== Design tokens ===== */
 :root{
@@ -32,7 +32,7 @@ a:hover{color:var(--accent)}
     radial-gradient(circle at 80% 80%, rgba(0,150,255,0.10) 0%, transparent 35%);
   filter:blur(80px);animation:move 28s linear infinite;will-change:transform}
 .animated-bg::after{animation-delay:-14s}
-.noise{position:absolute;inset:0;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none}
+.noise{position:absolute;inset:0;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none}
 @keyframes move{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(-3%,4%) rotate(180deg)}100%{transform:translate(0,0) rotate(360deg)}}
 
 /* ---------- Header ---------- */
@@ -52,28 +52,11 @@ nav.nav a:hover{color:var(--accent)}
 h1{font-size:2rem;margin:.25rem 0}
 .highlight{color:var(--text)}
 .tagline{color:var(--muted);margin:0 0 1rem}
-
-/* typewrite — ensure readable color and original monospace */
 #typewrite{font-family:"Courier New", Courier, monospace;color:#e6eef6;min-height:2.2rem;font-size:1.12rem}
-
-/* hero divider */
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:1rem 0;pointer-events:none}
 .hero-divider .line{width:170px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-/* chess chip: glass blur + larger icon */
-.chess-chip{
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(6px);
-  padding:10px;
-  border-radius:10px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-  transform: translateY(0);
-}
+.chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
 .chess-icon{color:var(--accent);font-size:20px}
-
-/* CTA grid: only CHAT button now */
 .hero-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:1.5rem;justify-items:center}
 .btn-hero{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border-radius:28px;font-weight:700;min-height:52px}
 .btn-primary{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 26px rgba(255,107,0,0.07)}
@@ -84,92 +67,27 @@ h1{font-size:2rem;margin:.25rem 0}
 .section{padding:40px 0}
 .section-title{text-align:center;margin-bottom:40px;font-size:1.6rem;font-weight:400;color:#fff}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-.card{
-  background:var(--panel);
-  border-radius:var(--radius);
-  padding:1rem;
-  display:flex;
-  flex-direction:column;
-  min-height:140px;
-  transition:transform .18s,border-color .18s,box-shadow .22s;
-  position:relative;
-  overflow:visible;
-  border:2px solid transparent; /* keep transparent default so hover doesn't show orange line */
-}
-.card:hover{transform:translateY(-6px)} /* keep lift on hover but no orange border change */
-
-/* improved icon & body contrast */
+.card{background:var(--panel);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;min-height:140px;transition:transform .18s,border-color .18s,box-shadow .22s;position:relative;overflow:visible;border:2px solid transparent}
+.card:hover{transform:translateY(-6px)}
 .card-icon{font-size:1.3rem;color:var(--accent);text-align:center;padding-top:.6rem}
 .card-body{flex:1;padding:.6rem 0;text-align:center;color:var(--muted-2)}
-/* service / package card title: remove underline and keep heavier weight */
-#services .card-body h3, #portfolio .card-body h3, #articles .card-body h3 {
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin: .2rem 0;
-}
-.card-body p{font-size:.95rem;color:#dbe7ef} /* lighter so readable */
+#services .card-body h3, #portfolio .card-body h3, #articles .card-body h3 {text-decoration:none;font-size:1.05rem;font-weight:600;color:#fff;margin:.2rem 0}
+.card-body p{font-size:.95rem;color:#dbe7ef}
 .card-actions{text-align:center;padding-top:.6rem}
-
-/* buttons inside cards - keep orange text visible and readable */
 .cta-secondary{display:inline-block;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.04);color:var(--muted-2);background:transparent}
 .cta-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.card-actions .service-btn,
-.card-actions a.service-btn,
-button.service-btn {
-  background:#2f2f2f;
-  color:var(--accent);
-  border:1px solid rgba(255,255,255,0.04);
-  padding:.5rem 1rem;
-  border-radius:999px;
-  font-weight:700;
-}
-.card-actions .service-btn:hover,
-.card-actions a.service-btn:hover,
-button.service-btn:hover {
-  background:#444444;
-  color:var(--accent);
-  border-color:var(--accent);
-  transform:translateY(-2px);
-}
+.card-actions .service-btn, .card-actions a.service-btn, button.service-btn{background:#2f2f2f;color:var(--accent);border:1px solid rgba(255,255,255,0.04);padding:.5rem 1rem;border-radius:999px;font-weight:700}
+.card-actions .service-btn:hover, .card-actions a.service-btn:hover, button.service-btn:hover{background:#444;color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
 
-/* ---------- halo effect: static gradient and fade-in on "appear" class ---------- */
-/* non-rotating colorful halo behind the card */
+/* ---------- Halo: invisible until hover/focus ---------- */
 .card::before{
-  content:"";
-  position:absolute;
-  inset:-8px;
-  border-radius:calc(var(--radius) + 8px);
+  content:"";position:absolute;inset:-8px;border-radius:calc(var(--radius) + 8px);
   background: conic-gradient(from 0deg, #ff6b00, #ff0000, #00bfff, #007bff, #ff6b00);
-  opacity:0;
-  filter: blur(12px);
-  z-index:-1;
-  transition:opacity .35s cubic-bezier(.2,.9,.2,1), transform .35s ease;
-  transform: scale(.98);
-  pointer-events:none;
-}
-
-/* cards receive .appear when we want halo to show (staggered by JS) */
-.card.appear::before{
-  opacity: 0.7;
-  transform: scale(1.00);
-}
-
-/* stronger visible halo when focused via keyboard or active */
-.card:focus-within::before, .card:active::before{
-  opacity: 0.98;
-  transform: scale(1.02);
-  filter: blur(8px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-  border-color: transparent; /* ensure no orange border line is introduced */
-}
-
-/* ensure keyboard focus outline remains accessible */
-.card:focus-within{
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(255,107,0,0.08);
-}
+  opacity:0;filter: blur(12px);z-index:-1;transition:opacity .35s cubic-bezier(.2,.9,.2,1), transform .35s ease;
+  transform: scale(.98);pointer-events:none}
+.card:hover::before,.card:focus-within::before{opacity:0.7;transform:scale(1)}
+.card:active::before{opacity:0.98;transform:scale(1.02);filter:blur(8px)}
+.card.appear{} /* keeps JS timing intact – no visual effect */
 
 /* ---------- CONTACT / SOCIALS ---------- */
 .socials{display:flex;gap:1.2rem;justify-content:center;align-items:center;padding-top:.5rem}
@@ -186,8 +104,6 @@ button.service-btn:hover {
 .modal-row input,.modal-row select,.modal-card input,.modal-card textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text)}
 .modal-foot{display:flex;gap:.75rem;justify-content:flex-end;margin-top:0.75rem}
 .form-msg{color:var(--muted);margin-top:.5rem}
-
-/* chat modal */
 .chat-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.85);z-index:10000}
 .chat-modal[aria-hidden="false"]{display:flex}
 .chat-modal-content{width:min(95vw,900px);height:min(95vh,720px);background:#0f1114;border-radius:12px;overflow:hidden;position:relative}
@@ -206,4 +122,4 @@ button.service-btn:hover {
 /* ---------- Accessibility helpers ---------- */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 :focus{outline:none}
-button:focus, a:focus{box-shadow:var(--focus);border-radius:6px}
+button:focus,a:focus{box-shadow:var(--focus);border-radius:6px}
