@@ -47,8 +47,40 @@ a:hover{color:var(--accent)}
 /* ---------- Header ---------- */
 header.site-header{position:fixed;top:0;width:100%;background:rgba(12,12,12,0.68);backdrop-filter:blur(8px);z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem}
-.logo{font-size:1.4rem;color:var(--text);display:flex;align-items:center;gap:.5rem}
-.logo i{color:var(--accent)}
+/* ---------- LOGO – tiny halo instead of orange icon ---------- */
+.logo{
+  position: relative;                /* halo anchor */
+  font-size: 1.4rem;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;                       /* same height as navbar */
+  height: 44px;
+}
+.logo::before{                       /* the halo */
+  content: "";
+  position: absolute;
+  inset: -4px;                       /* 4 px bigger than logo box */
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ff6b00, #ff0000, #00bfff, #007bff, #ff6b00);
+  filter: blur(6px);
+  opacity: .75;
+  z-index: -1;
+  animation: halo-spin 12s linear infinite;
+}
+.logo i{                             /* knight icon itself */
+  font-size: 20px;                   /* slightly smaller */
+  color: transparent;                /* hollow glyph */
+  -webkit-text-stroke: 1.5px var(--accent);
+          text-stroke: 1.5px var(--accent);
+  z-index: 1;
+}
+
+/* slow spin for subtle motion */
+@keyframes halo-spin{
+  to{ transform: rotate(360deg); }
+}
 .hamburger{display:none;background:transparent;border:0;color:var(--text);font-size:1.3rem}
 nav.nav ul{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0}
 nav.nav a{padding:.25rem .25rem;color:var(--muted)}
