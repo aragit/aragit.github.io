@@ -1,209 +1,503 @@
-/* script.js — cards: NO default halo, only on hover/focus */
+/**
+ * script.js — consolidated, accessible, and robust site behaviors
+ *
+ * - Single DOMContentLoaded initializer
+ * - Hamburger (mobile nav) accessible toggling + keyboard
+ * - Service modal: open from .service-btn, trap focus, ESC to close, return focus
+ * - Chat modal: safe iframe handling via postMessage, parent-level "thinking" bubble
+ * - Typewriter for #typewrite (respects prefers-reduced-motion)
+ * - Footer year injection
+ * - Defensive programming & graceful failure
+ */
 
 (() => {
-  const $ = sel => document.querySelector(sel);
-  const $$ = sel => Array.from(document.querySelectorAll(sel));
+  'use strict';
 
-  const yearEl = $('#year');
-  const hamburger = $('#hamburger');
-  const navUl = document.querySelector('nav.nav ul');
-  const openChatBtn = $('#openChatBtn');
-  const chatModal = $('#chatModal');
-  const chatFrame = $('#chatFrame');
-  const chatClose = $('#chatClose');
-  const parentThinking = $('#parentThinkingBubble');
-  const serviceModal = $('#serviceModal');
-  const serviceModalForm = $('#serviceModalForm');
-  const serviceModalClose = $('#serviceModalClose');
-  const modalBookBtn = $('#modalBookBtn');
-  const modalServiceInput = $('#modal_service_input');
+  /* -------------------------
+     Utilities
+     ------------------------- */
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const isReducedMotion = () => (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  /* focusable elements selector for trapping */
+  const FOCUSABLE_SELECTORS = [
+    'a[href]',
+    'area[href]',
+    'input:not([type="hidden"]):not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    'button:not([disabled])',
+    'iframe',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
 
-  document.addEventListener('DOMContentLoaded', () => {
+  /* -------------------------
+     State & cached elements
+     ------------------------- */
+  let lastFocusedTrigger = null; // element that opened a modal
+  let modalFocusTrap = null;     // current trap function for cleanup
 
-    /* --- nav hamburger --- */
-    if (hamburger && navUl) {
-      hamburger.addEventListener('click', () => {
-        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', String(!expanded));
-        navUl.classList.toggle('active');
-      });
-      navUl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        navUl.classList.remove('active');
+  /* -------------------------
+     Init (single entry point)
+     ------------------------- */
+  document.addEventListener('DOMContentLoaded', init);
+
+  function init() {
+    // Basic UX pieces
+    safeSetYear();
+    initHamburger();
+    initServiceModal();
+    initChatModal();
+    initTypewriter();
+    attachFormUX();
+    heroGridDebug();
+    // other initializers can be added here...
+  }
+
+  /* -------------------------
+     Year injection
+     ------------------------- */
+  function safeSetYear() {
+    try {
+      const y = new Date().getFullYear();
+      const el = document.getElementById('year');
+      if (el) el.textContent = String(y);
+    } catch (err) {
+      console.warn('Year init failed', err);
+    }
+  }
+
+  /* -------------------------
+     Hamburger / mobile nav
+     ------------------------- */
+  function initHamburger() {
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('primary-nav');
+    const navbarUl = document.getElementById('navbar');
+    if (!hamburger || !navbarUl) return;
+
+    // Toggle function
+    const toggleNav = (open) => {
+      const isOpen = typeof open === 'boolean' ? open : !navbarUl.classList.contains('active');
+      if (isOpen) {
+        navbarUl.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.classList.add('is-active');
+        // trap focus inside nav for keyboard users
+        // focus first link
+        const firstLink = navbarUl.querySelector('a, button');
+        if (firstLink) firstLink.focus();
+      } else {
+        navbarUl.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
-      }));
-    }
-
-    /* --- card toggles (show more / less) --- */
-    function initCardToggler(containerSelector, initial = 3) {
-      const container = document.querySelector(containerSelector);
-      if (!container) return;
-      const cards = Array.from(container.children);
-      if (cards.length <= initial) return;
-      cards.slice(initial).forEach(c => c.style.display = 'none');
-      const toggle = document.createElement('a');
-      toggle.href = '#';
-      toggle.className = 'toggle-more';
-      toggle.style.cssText = 'display:block;text-align:center;margin:2rem auto;color:#aaa;text-decoration:underline';
-      toggle.innerHTML = '<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More';
-      container.after(toggle);
-      let expanded = false;
-      toggle.addEventListener('click', e => {
-        e.preventDefault();
-        expanded = !expanded;
-        cards.slice(initial).forEach(c => c.style.display = expanded ? '' : 'none');
-        toggle.innerHTML = expanded
-          ? '<i class="fas fa-chevron-up" style="margin-right:.3rem"></i>Show Less'
-          : '<i class="fas fa-chevron-circle-down" style="margin-right:.3rem"></i>More';
-      });
-    }
-    initCardToggler('#articles .cards', 6);
-    initCardToggler('#portfolio .cards', 3);
-
-    /* --- staggered entry: keeps timing, no visual until hover/focus --- */
-    (function staggerCards() {
-      const allCards = Array.from(document.querySelectorAll('.card'));
-      if (!allCards.length) return;
-      allCards.forEach((card, i) => {
-        card.classList.remove('appear');
-        const delay = 120 * i + 200;
-        setTimeout(() => card.classList.add('appear'), delay);
-      });
-    })();
-
-    /* --- typewriter --- */
-    (function typewriter(elId, words = [], speed = 60, pause = 1600) {
-      const el = document.getElementById(elId);
-      if (!el) return;
-      if (el.textContent.trim() === '') el.textContent = '';
-      let w = 0, pos = 0, deleting = false;
-      const step = () => {
-        const current = words[w] || '';
-        if (!deleting) {
-          el.textContent = current.slice(0, pos + 1);
-          pos++;
-          if (pos === current.length) { deleting = true; setTimeout(step, pause); return; }
-        } else {
-          el.textContent = current.slice(0, pos - 1);
-          pos--;
-          if (pos === 0) { deleting = false; w = (w + 1) % words.length; }
-        }
-        setTimeout(step, deleting ? Math.max(20, speed / 1.5) : speed);
-      };
-      setTimeout(() => step(), 100);
-    })('typewrite', [
-      'LLM Engineer · Architect · Mentor',
-      'Agentic AI • RAG • LLMOps',
-      'Healthcare & Finance ML Systems',
-    ], 45, 1500);
-
-    /* --- modals & focus-trap helpers --- */
-    let lastFocused = null;
-    function trapFocus(modal) {
-      const focusable = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-      const nodes = Array.from(modal.querySelectorAll(focusable));
-      if (nodes.length === 0) return () => {};
-      const first = nodes[0], last = nodes[nodes.length - 1];
-      function keyListener(e) {
-        if (e.key === 'Tab') {
-          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-        } else if (e.key === 'Escape') closeModal(modal);
+        hamburger.classList.remove('is-active');
+        hamburger.focus();
       }
-      document.addEventListener('keydown', keyListener);
-      return () => document.removeEventListener('keydown', keyListener);
-    }
-    function openModal(modal) {
-      if (!modal) return;
-      lastFocused = document.activeElement;
-      modal.setAttribute('aria-hidden', 'false');
-      const input = modal.querySelector('input, button, textarea, select, [tabindex]');
-      if (input) input.focus();
-      const release = trapFocus(modal);
-      modal._releaseFocus = release;
-    }
-    function closeModal(modal) {
-      if (!modal) return;
-      modal.setAttribute('aria-hidden', 'true');
-      if (modal._releaseFocus) modal._releaseFocus();
-      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    }
+    };
 
-    /* --- service modal wiring --- */
-    const serviceBtns = Array.from(document.querySelectorAll('.service-btn'));
-    serviceBtns.forEach(btn => btn.addEventListener('click', () => {
-      const service = btn.getAttribute('data-service') || btn.textContent.trim();
-      if (modalServiceInput) modalServiceInput.value = service;
-      const titleEl = $('#serviceModalTitle');
-      if (titleEl) titleEl.textContent = 'Inquiry — ' + service;
-      openModal(serviceModal);
-    }));
-    if (serviceModalClose) serviceModalClose.addEventListener('click', () => closeModal(serviceModal));
-    if (serviceModal) serviceModal.addEventListener('click', e => { if (e.target === serviceModal) closeModal(serviceModal); });
-    if (modalBookBtn) modalBookBtn.addEventListener('click', () => window.open('https://calendly.com/your-calendly ', '_blank', 'noopener'));
-    if (serviceModalForm) {
-      serviceModalForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const msgEl = $('#modalMsg');
-        const hp = serviceModalForm.querySelector('input[name="hp_field"]')?.value || '';
-        if (hp !== '') { if (msgEl) msgEl.textContent = 'Spam detected'; return; }
-        if (msgEl) msgEl.textContent = 'Sending...';
-        try {
-          const fd = new FormData(serviceModalForm);
-          const res = await fetch(serviceModalForm.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
-          if (res.ok) {
-            if (msgEl) msgEl.textContent = 'Message sent — thank you!';
-            serviceModalForm.reset();
-            setTimeout(() => closeModal(serviceModal), 1400);
-          } else {
-            const j = await res.json().catch(() => ({}));
-            if (msgEl) msgEl.textContent = j.error || 'Submission error';
-          }
-        } catch (err) {
-          if (msgEl) msgEl.textContent = 'Network error — please try again later.';
-        }
-      });
-    }
-
-    /* --- chat modal --- */
-    function openChat() { if (chatModal) { chatModal.setAttribute('aria-hidden', 'false'); try { chatFrame.contentWindow.postMessage({ type: 'request-status' }, '*'); } catch (e) {} } }
-    function closeChat() { if (chatModal) chatModal.setAttribute('aria-hidden', 'true'); }
-    if (openChatBtn) openChatBtn.addEventListener('click', openChat);
-    if (chatClose) chatClose.addEventListener('click', closeChat);
-    if (chatModal) chatModal.addEventListener('click', e => { if (e.target === chatModal) closeChat(); });
-    window.addEventListener('message', (e) => {
-      if (!e.data || typeof e.data.type !== 'string') return;
-      if (e.data.type === 'thinking:on') { if (parentThinking) parentThinking.setAttribute('aria-hidden', 'false'); }
-      else if (e.data.type === 'thinking:off') { if (parentThinking) parentThinking.setAttribute('aria-hidden', 'true'); }
-      else if (e.data.type === 'chat:loaded') { if (parentThinking) parentThinking.setAttribute('aria-hidden', 'true'); }
-    });
-    if (chatFrame && parentThinking) {
-      chatFrame.addEventListener('load', () => {
-        parentThinking.setAttribute('aria-hidden', 'false');
-        setTimeout(() => parentThinking.setAttribute('aria-hidden', 'true'), 2200);
-      });
-    }
-
-    /* --- global ESC --- */
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (serviceModal && serviceModal.getAttribute('aria-hidden') === 'false') closeModal(serviceModal);
-        if (chatModal && chatModal.getAttribute('aria-hidden') === 'false') closeChat();
+    hamburger.addEventListener('click', () => toggleNav());
+    hamburger.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        toggleNav();
+      } else if (ev.key === 'Escape') {
+        toggleNav(false);
       }
     });
 
-    /* --- auto-close mobile nav on wide resize --- */
+    // close nav when clicking a link (mobile)
+    navbarUl.addEventListener('click', (ev) => {
+      if (ev.target && ev.target.matches('a')) {
+        // close menu for mobile
+        if (window.innerWidth <= 900) toggleNav(false);
+      }
+    });
+
+    // close on resize to large screens
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 900 && navUl && navUl.classList.contains('active')) {
-        navUl.classList.remove('active');
-        if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      if (window.innerWidth > 900) {
+        navbarUl.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* -------------------------
+     Service Modal (accessible)
+     ------------------------- */
+  function initServiceModal() {
+    const modal = document.getElementById('serviceModal');
+    if (!modal) return;
+
+    const modalCard = modal.querySelector('.modal-card');
+    const closeBtn = document.getElementById('serviceModalClose');
+    const form = document.getElementById('serviceModalForm');
+    const modalServiceInput = document.getElementById('modal_service_input');
+    const bookBtn = document.getElementById('modalBookBtn');
+
+    // open triggers: buttons with .service-btn (buttons) — prefer data-service attr
+    const openButtons = $$('.service-btn');
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        lastFocusedTrigger = btn;
+        const serviceName = btn.dataset.service || btn.getAttribute('aria-label') || btn.textContent.trim();
+        if (modalServiceInput) modalServiceInput.value = serviceName;
+        openModal(modal, modalCard);
+      });
+    });
+
+    // allow service-learn anchors to prefill the modal when they are used to "learn" then request. (optional)
+    $$('.service-learn').forEach(a => {
+      a.addEventListener('click', (ev) => {
+        // let the link act normally (it opens a page). If you prefer to open modal instead, preventDefault and open modal.
+        // Optionally we could prefill; but we keep default behavior.
+        // Example: set modal field for the lead capture that might come from the same page later.
+        const serviceName = a.dataset.service || a.textContent.trim();
+        if (modalServiceInput) modalServiceInput.value = serviceName;
+      });
+    });
+
+    // close handlers
+    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(modal));
+    modal.addEventListener('click', (ev) => {
+      // close when clicking backdrop (but not the modal content)
+      if (ev.target === modal) closeModal(modal);
+    });
+
+    // ESC key closes
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+        ev.preventDefault();
+        closeModal(modal);
       }
     });
 
-  }); // end DOMContentLoaded
+    // Book button: open calendar / scheduling — safe fallback to mailto if no external link
+    if (bookBtn) {
+      bookBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        // If you use a Calendly or scheduling URL, plug it here; otherwise open mailto prefilled
+        const schedUrl = 'https://calendly.com/your-scheduling-link'; // <-- replace with real Calendly if desired
+        // if schedUrl is placeholder, fallback to mailto
+        if (schedUrl.includes('your-scheduling-link')) {
+          // fallback: open mail compose with service in subject
+          const subj = encodeURIComponent(`Request: ${modalServiceInput ? modalServiceInput.value : 'Service inquiry'}`);
+          const body = encodeURIComponent('Hi Arash,%0A%0AI would like to schedule a 30-minute call to discuss: ' + (modalServiceInput ? modalServiceInput.value : '') + '%0A%0AThanks.');
+          window.open(`mailto:anicomanesh@gmail.com?subject=${subj}&body=${body}`, '_blank', 'noopener,noreferrer');
+        } else {
+          window.open(schedUrl, '_blank', 'noopener,noreferrer');
+        }
+      });
+    }
 
-  if (!document.querySelector('#chatFrame')) console.warn('chatFrame not present');
-  if (!document.querySelector('#serviceModalForm')) console.warn('serviceModalForm not present');
+    // form submit UX: show sending and disable to avoid duplicate submissions
+    if (form) {
+      form.addEventListener('submit', (ev) => {
+        try {
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const msgEl = document.getElementById('modalMsg');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
+          }
+          if (msgEl) msgEl.textContent = 'Sending request…';
+          // allow form to submit normally (Formspree handles redirect)
+          // re-enable after a short time in case of non-navigation
+          setTimeout(() => {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Request';
+            }
+          }, 6000);
+        } catch (e) {
+          console.error('Form submit handler error', e);
+        }
+      });
+    }
+
+    /* --- focus trap helpers --- */
+    function trapFocus(modalEl) {
+      const focusable = Array.from(modalEl.querySelectorAll(FOCUSABLE_SELECTORS)).filter(el => !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length));
+      if (!focusable.length) return null;
+      let first = focusable[0];
+      let last = focusable[focusable.length - 1];
+
+      // save existing tabindex on triggers? not necessary since we only move focus
+      first.focus();
+
+      function handleKey(e) {
+        if (e.key === 'Tab') {
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        } else if (e.key === 'Escape') {
+          // Escape handled globally; redundant here but handy
+          closeModal(modalEl);
+        }
+      }
+
+      document.addEventListener('keydown', handleKey);
+      return () => document.removeEventListener('keydown', handleKey);
+    }
+
+    function openModal(modalEl, contentEl) {
+      try {
+        modalEl.setAttribute('aria-hidden', 'false');
+        // add visible class (CSS controls display via [aria-hidden="false"] in your CSS)
+        // trap focus
+        modalFocusTrap = trapFocus(modalEl);
+      } catch (err) {
+        console.error('Failed to open modal', err);
+      }
+    }
+
+    function closeModal(modalEl) {
+      try {
+        modalEl.setAttribute('aria-hidden', 'true');
+        if (modalFocusTrap) {
+          modalFocusTrap();
+          modalFocusTrap = null;
+        }
+        // return focus to trigger
+        if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+          lastFocusedTrigger.focus();
+          lastFocusedTrigger = null;
+        }
+      } catch (err) {
+        console.error('Failed to close modal', err);
+      }
+    }
+  }
+
+  /* -------------------------
+     Chat Modal + safe iframe handling
+     ------------------------- */
+  function initChatModal() {
+    const openBtn = document.getElementById('openChatBtn');
+    const chatModal = document.getElementById('chatModal');
+    const chatClose = document.getElementById('chatClose');
+    const chatFrame = document.getElementById('chatFrame');
+    const thinkingBubble = document.getElementById('parentThinkingBubble');
+
+    // helper to show/hide thinking bubble
+    function showThinking(on) {
+      if (!thinkingBubble) return;
+      thinkingBubble.setAttribute('aria-hidden', on ? 'false' : 'true');
+      // CSS displays based on [aria-hidden="false"]
+    }
+
+    if (!chatModal || !openBtn || !chatClose || !chatFrame) {
+      // If any piece is missing, don't error — degrade gracefully
+      if (!openBtn) console.warn('Chat open button (#openChatBtn) not found');
+      return;
+    }
+
+    // open chat
+    openBtn.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      chatModal.setAttribute('aria-hidden', 'false');
+      // set focus to close button for keyboard users
+      chatClose.focus();
+
+      // After opening, try to request status from iframe
+      try {
+        // Post a status request - iframe may ignore if not supporting postMessage
+        chatFrame.contentWindow.postMessage({ type: 'request-status' }, '*');
+      } catch (err) {
+        // Cross-origin: cannot access contentWindow? contentWindow exists but DOM access is not attempted.
+        // We don't attempt contentDocument; just show parent bubble as a fallback.
+        console.warn('postMessage to iframe failed (cross-origin?) — falling back to parent indicator', err);
+        // Show a brief thinking indicator so users know something's happening
+        showThinking(true);
+        // hide after 3s as best-effort
+        setTimeout(() => showThinking(false), 3000);
+      }
+    });
+
+    chatClose.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      chatModal.setAttribute('aria-hidden', 'true');
+      openBtn.focus();
+      showThinking(false);
+    });
+
+    // close chat on backdrop click
+    chatModal.addEventListener('click', (ev) => {
+      if (ev.target === chatModal) {
+        chatModal.setAttribute('aria-hidden', 'true');
+        openBtn.focus();
+      }
+    });
+
+    // ESC to close chat modal
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && chatModal.getAttribute('aria-hidden') === 'false') {
+        chatModal.setAttribute('aria-hidden', 'true');
+        openBtn.focus();
+        showThinking(false);
+      }
+    });
+
+    // Listen for messages from iframe (postMessage)
+    window.addEventListener('message', (e) => {
+      try {
+        if (!e || !e.data) return;
+        const data = e.data;
+        if (typeof data !== 'object') return;
+        // accepted message types: thinking:on | thinking:off
+        if (data.type === 'thinking:on') {
+          showThinking(true);
+        } else if (data.type === 'thinking:off') {
+          showThinking(false);
+        } else if (data.type === 'ready') {
+          // optional: iframe indicates readiness
+          showThinking(false);
+        }
+        // ignore other messages
+      } catch (err) {
+        // Be defensive: errors here shouldn't break the page
+        console.error('Error handling postMessage', err);
+      }
+    });
+
+    // Also attempt to request status when iframe loads (try/catch avoids cross-origin DOM attempts)
+    chatFrame.addEventListener('load', () => {
+      try {
+        chatFrame.contentWindow.postMessage({ type: 'request-status' }, '*');
+      } catch (err) {
+        // ignore — cross-origin
+      }
+    });
+  }
+
+  /* -------------------------
+     Small typewriter for #typewrite (accessible)
+     ------------------------- */
+  function initTypewriter() {
+    const el = document.getElementById('typewrite');
+    if (!el) return;
+    if (isReducedMotion()) {
+      // simple static text for reduced motion users
+      el.textContent = 'LLMs · Agentic AI · Scalable ML Systems';
+      return;
+    }
+
+    // words to cycle
+    const words = [
+      'LLMs · Agentic AI · Scalable ML Systems',
+      'Healthcare AI · Clinical Decisioning',
+      'Time-series · Forecasting · Risk',
+      'LLMOps · Observability · Cost-optimisation'
+    ];
+    let wIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const typeSpeed = 38;
+    const deleteSpeed = 22;
+    const holdDelay = 1500;
+
+    function step() {
+      const current = words[wIndex];
+      if (!deleting) {
+        charIndex++;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex >= current.length) {
+          deleting = true;
+          setTimeout(step, holdDelay);
+          return;
+        }
+      } else {
+        charIndex--;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex <= 0) {
+          deleting = false;
+          wIndex = (wIndex + 1) % words.length;
+        }
+      }
+      setTimeout(step, deleting ? deleteSpeed : typeSpeed);
+    }
+
+    // start (small initial delay so page load looks smooth)
+    setTimeout(step, 500);
+  }
+
+  /* -------------------------
+     Form UX small attach for modal forms etc.
+     ------------------------- */
+  function attachFormUX() {
+    // For any forms that redirect to a thanks page via _next, show a local "sending" message on submit
+    const forms = $$('form');
+    forms.forEach(form => {
+      form.addEventListener('submit', (ev) => {
+        try {
+          const submit = form.querySelector('button[type="submit"], input[type="submit"]');
+          if (submit) {
+            submit.disabled = true;
+            if (submit.tagName.toLowerCase() === 'button') {
+              submit.dataset._orig = submit.textContent;
+              submit.textContent = 'Sending…';
+            } else {
+              submit.value = 'Sending…';
+            }
+          }
+          // allow normal submission (no AJAX)
+          setTimeout(() => {
+            if (submit) {
+              submit.disabled = false;
+              if (submit.tagName.toLowerCase() === 'button' && submit.dataset._orig) {
+                submit.textContent = submit.dataset._orig;
+                delete submit.dataset._orig;
+              }
+            }
+          }, 6000);
+        } catch (err) {
+          console.warn('Form UX handler error', err);
+        }
+      }, { passive: true });
+    });
+  }
+
+  /* -------------------------
+     Hero grid debug helper (optional small logger)
+     ------------------------- */
+  function heroGridDebug() {
+    try {
+      const heroGrid = document.querySelector('#home.hero .hero-grid');
+      if (!heroGrid) {
+        console.warn('Hero grid not present: #home.hero .hero-grid');
+        return;
+      }
+      const nodes = document.querySelectorAll('#home.hero .node');
+      console.info('Hero grid initialized — node count:', nodes.length);
+      // ensure hero-grid visible (rare race conditions)
+      heroGrid.style.display = 'block';
+      document.documentElement.classList.add('hero-grid-ready');
+    } catch (err) {
+      console.error('heroGridDebug error', err);
+    }
+  }
+ 
+  /* -------------------------
+     Expose a few debug functions to the window (non-breaking)
+     ------------------------- */
+  window.__site = window.__site || {};
+  window.__site.showThinking = function(on) {
+    try {
+      const bubble = document.getElementById('parentThinkingBubble');
+      if (!bubble) return;
+      bubble.setAttribute('aria-hidden', on ? 'false' : 'true');
+    } catch (e) { /* ignore */ }
+  };
 
 })();
