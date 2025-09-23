@@ -1,12 +1,11 @@
-/* style.css — cleaned & consolidated
-   Dark theme with orange accent. Mobile-first.
-*/
+/* style.css — updated: non-rotating halo, improved typewriter visibility, no hover orange border */
 
 /* ===== Design tokens ===== */
 :root{
   --bg:#0d0f18;
   --panel: rgba(30,30,30,0.75);
   --muted:#c7ccd1;
+  --muted-2:#bfc8cf;
   --text:#f5f5f5;
   --accent:#ff6b00;
   --accent-strong:#ff4500;
@@ -54,8 +53,8 @@ h1{font-size:2rem;margin:.25rem 0}
 .highlight{color:var(--text)}
 .tagline{color:var(--muted);margin:0 0 1rem}
 
-/* typewrite — revert to original Courier New */
-#typewrite{font-family:"Courier New", Courier, monospace;color:var(--muted);min-height:2.2rem}
+/* typewrite — ensure readable color and original monospace */
+#typewrite{font-family:"Courier New", Courier, monospace;color:#e6eef6;min-height:2.2rem;font-size:1.12rem}
 
 /* hero divider */
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:1rem 0;pointer-events:none}
@@ -82,29 +81,40 @@ h1{font-size:2rem;margin:.25rem 0}
 .btn-hero:hover{transform:translateY(-2px)}
 
 /* ---------- SECTIONS & CARDS ---------- */
-/* restore original section-title styles requested */
 .section{padding:40px 0}
 .section-title{text-align:center;margin-bottom:40px;font-size:1.6rem;font-weight:400;color:#fff}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-.card{background:var(--panel);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;min-height:140px;transition:transform .18s,border-color .18s;position:relative;overflow:visible;border:2px solid transparent}
-.card:hover{transform:translateY(-6px)}
+.card{
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:1rem;
+  display:flex;
+  flex-direction:column;
+  min-height:140px;
+  transition:transform .18s,border-color .18s,box-shadow .22s;
+  position:relative;
+  overflow:visible;
+  border:2px solid transparent; /* keep transparent default so hover doesn't show orange line */
+}
+.card:hover{transform:translateY(-6px)} /* keep lift on hover but no orange border change */
+
+/* improved icon & body contrast */
 .card-icon{font-size:1.3rem;color:var(--accent);text-align:center;padding-top:.6rem}
-.card-body{flex:1;padding:.6rem 0;text-align:center;color:var(--muted)}
-/* service / package card title: remove underline and restore original weight & size */
+.card-body{flex:1;padding:.6rem 0;text-align:center;color:var(--muted-2)}
+/* service / package card title: remove underline and keep heavier weight */
 #services .card-body h3, #portfolio .card-body h3, #articles .card-body h3 {
   text-decoration: none;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #fff;
+  color: #ffffff;
   margin: .2rem 0;
 }
-.card-body p{font-size:.9rem;color:#b9bfc6}
+.card-body p{font-size:.95rem;color:#dbe7ef} /* lighter so readable */
 .card-actions{text-align:center;padding-top:.6rem}
 
-/* buttons inside cards - ensure orange text on service buttons (and stay visible on hover) */
-.cta-secondary{display:inline-block;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.04);color:var(--muted);background:transparent}
+/* buttons inside cards - keep orange text visible and readable */
+.cta-secondary{display:inline-block;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.04);color:var(--muted-2);background:transparent}
 .cta-secondary:hover{border-color:var(--accent);color:var(--accent)}
-/* service action buttons (buttons & anchors) — keep orange text visible */
 .card-actions .service-btn,
 .card-actions a.service-btn,
 button.service-btn {
@@ -119,13 +129,13 @@ button.service-btn {
 .card-actions a.service-btn:hover,
 button.service-btn:hover {
   background:#444444;
-  color:var(--accent); /* keep orange text visible */
+  color:var(--accent);
   border-color:var(--accent);
   transform:translateY(-2px);
 }
 
-/* ---------- colorful border halo + orange border on active/focus ---------- */
-/* animated halo (visible on hover / focus / active) */
+/* ---------- halo effect: static gradient and fade-in on "appear" class ---------- */
+/* non-rotating colorful halo behind the card */
 .card::before{
   content:"";
   position:absolute;
@@ -133,25 +143,35 @@ button.service-btn:hover {
   border-radius:calc(var(--radius) + 8px);
   background: conic-gradient(from 0deg, #ff6b00, #ff0000, #00bfff, #007bff, #ff6b00);
   opacity:0;
-  filter: blur(10px);
+  filter: blur(12px);
   z-index:-1;
-  transition:opacity .18s ease;
-  transform: rotate(0deg);
-  animation: spin 6s linear infinite;
+  transition:opacity .35s cubic-bezier(.2,.9,.2,1), transform .35s ease;
+  transform: scale(.98);
   pointer-events:none;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
 
-/* show orange border + halo on focus/active/hover */
-.card:focus-within, .card:active, .card:hover {
-  border-color: var(--accent);
+/* cards receive .appear when we want halo to show (staggered by JS) */
+.card.appear::before{
+  opacity: 0.7;
+  transform: scale(1.00);
 }
-.card:focus-within::before, .card:active::before, .card:hover::before {
-  opacity: 0.85;
+
+/* stronger visible halo when focused via keyboard or active */
+.card:focus-within::before, .card:active::before{
+  opacity: 0.98;
+  transform: scale(1.02);
+  filter: blur(8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  border-color: transparent; /* ensure no orange border line is introduced */
+}
+
+/* ensure keyboard focus outline remains accessible */
+.card:focus-within{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255,107,0,0.08);
 }
 
 /* ---------- CONTACT / SOCIALS ---------- */
-/* socials use original (muted) color — not orange by default */
 .socials{display:flex;gap:1.2rem;justify-content:center;align-items:center;padding-top:.5rem}
 .socials a{color:var(--muted);font-size:1.2rem}
 .socials a:hover{color:var(--accent)}
