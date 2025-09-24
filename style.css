@@ -321,12 +321,12 @@ body {
   position: relative;
   min-height: 2.8rem;
   box-sizing: border-box;
-  width: max-content; /* width adjusts to text length */
+  width: max-content; /* fit content width */
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
   overflow: visible;
-  white-space: nowrap; /* prevents wrapping */
+  white-space: nowrap; /* prevent breaking */
 }
 
 #typewrite .tw-inner {
@@ -345,14 +345,13 @@ body {
   hyphens: none;
 }
 
-/* On narrow screens allow small wrapping if absolutely necessary */
+/* MOBILE — scale font instead of breaking lines */
 @media (max-width: 420px) {
   #typewrite {
-    white-space: normal;
-    width: calc(100% - 32px);
+    width: auto;
   }
   #typewrite .tw-inner {
-    transform: translate(-50%, -50%);
+    font-size: 14px; /* smaller font for mobile */
   }
 }
 
