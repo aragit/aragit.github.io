@@ -310,3 +310,9 @@ body {
   pointer-events: none;
 }
 
+.hero img,
+.profile-pic {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 50%; /* keeps circular crop */
+}
