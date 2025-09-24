@@ -385,3 +385,43 @@ body {
   transform: scale(1.08);
 }
 
+/* ---------- Portfolio re-grid ---------- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.big-cards,
+.small-cards {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.big-cards { grid-template-rows: 1fr 1fr; }   /* 2 equal rows */
+.small-cards { grid-template-columns: 1fr; }  /* single column, 4 rows */
+
+/* mobile: single column */
+@media (max-width: 720px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- 1. button below subtitle (already done by markup) ---- */
+
+/* ---- 2. image fills empty card space ---- */
+.card-fill-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: .75rem;
+  object-fit: cover;
+  flex-grow: 1;          /* eat remaining vertical space */
+}
+
+/* ---- 3. kill mouse-move colour effect on ALL cards ---- */
+.card::before,
+.card:hover::before,
+.card:focus-within::before,
+.card:active::before {
+  display: none !important;
+}

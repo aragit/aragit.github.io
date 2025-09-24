@@ -164,78 +164,87 @@
       <div class="container">
         <h2 id="portfolio-title" class="section-title">Featured Solutions</h2>
         <div class="cards" id="portfolio-cards">
-          <!-- 1 -->
-          <article class="card" tabindex="0">
-            <div class="card-icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Medical Triage Agent</h3>
-              <p>Hybrid conversational agent using Gemini Pro, Med-PaLM 2 and reasoning capabilities.</p>
+          <!-- 2-column wrapper: big cards left, small cards right -->
+            <!-- 2-column wrapper: big cards left, small cards right -->
+            <div class="portfolio-grid">
+              <!-- LEFT: 2 big cards -->
+              <!-- LEFT: 2 big cards -->
+                <div class="big-cards">
+                  <!-- Card 1 -->
+                  <article class="card" tabindex="0">
+                    <div class="card-icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
+                    <div class="card-body">
+                      <h3>Medical Triage Agent</h3>
+                      <p>Hybrid conversational agent using Gemini Pro, Med-PaLM 2 and reasoning capabilities.</p>
+                      <div class="card-actions">
+                        <a class="cta-secondary" href="case-studies/medical-triage/medical-triage.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+                      </div>
+                      <!-- image fills empty space -->
+                      <img src="triage.jpeg" alt="Medical Triage Agent preview" class="card-fill-img">
+                    </div>
+                  </article>
+                
+                  <!-- Card 2 -->
+                  <article class="card" tabindex="0">
+                    <div class="card-icon"><i class="fas fa-pills" aria-hidden="true"></i></div>
+                    <div class="card-body">
+                      <h3>Conversational Drug Repurposing</h3>
+                      <p>Applying Google LLMs for alternative therapy recommendations from real-world EHR data</p>
+                      <div class="card-actions">
+                        <a class="cta-secondary" href="case-studies/drug-repurposing/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+                      </div>
+                      <img src="drug.jpg" alt="Drug Repurposing preview" class="card-fill-img">
+                    </div>
+                  </article>
+                </div>
+            
+              <!-- RIGHT: 4 small cards in ONE column -->
+              <div class="small-cards">
+                <article class="card" tabindex="0">
+                  <div class="card-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                  <div class="card-body">
+                    <h3>ICU Metrics Forecasting</h3>
+                    <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables</p>
+                  </div>
+                  <div class="card-actions">
+                    <a class="cta-secondary" href="case-studies/icu-forecasting/icu-forecasting.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+                  </div>
+                </article>
+            
+                <article class="card" tabindex="0">
+                  <div class="card-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+                  <div class="card-body">
+                    <h3>Multi-Turn Product Recommendation QA Bot</h3>
+                    <p>Fine-tuned open source LLMs with hybrid retrieval with efficient inference and scalable deployment</p>
+                  </div>
+                  <div class="card-actions">
+                    <a class="cta-secondary" href="case-studies/prd-recomm-qa/prd-recomm-qa.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+                  </div>
+                </article>
+            
+                <article class="card" tabindex="0">
+                  <div class="card-icon"><i class="fas fa-university" aria-hidden="true"></i></div>
+                  <div class="card-body">
+                    <h3>Banking Resource Management System</h3>
+                    <p>End-to-end customer LTV and churn prediction as well as transactional fraud detection</p>
+                  </div>
+                  <div class="card-actions">
+                    <a class="cta-secondary" href="case-studies/banking-system.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+                  </div>
+                </article>
+            
+                <article class="card" tabindex="0">
+                  <div class="card-icon"><i class="fas fa-lungs" aria-hidden="true"></i></div>
+                  <div class="card-body">
+                    <h3>Covid-19 Diagnosis with Audio Biomarkers</h3>
+                    <p>COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals</p>
+                  </div>
+                  <div class="card-actions">
+                    <a class="cta-secondary" href="case-studies/Covid/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
+                  </div>
+                </article>
+              </div>
             </div>
-            <div class="card-actions">
-              <a class="cta-secondary" href="case-studies/medical-triage/medical-triage.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-            </div>
-          </article>
-
-          <!-- 2 -->
-          <article class="card" tabindex="0">
-            <div class="card-icon"><i class="fas fa-pills" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Conversational Drug Repurposing</h3>
-              <p>Applying Google LLMs for alternative therapy recommendations from real-world EHR data</p>
-            </div>
-            <div class="card-actions">
-              <a class="cta-secondary" href="case-studies/drug-repurposing/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-            </div>
-          </article>
-
-          <!-- 3 -->
-          <article class="card" tabindex="0">
-            <div class="card-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>ICU Metrics Forecasting</h3>
-              <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables</p>
-            </div>
-            <div class="card-actions">
-              <a class="cta-secondary" href="case-studies/icu-forecasting/icu-forecasting.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-            </div>
-          </article>
-
-          <!-- 4 -->
-          <article class="card" tabindex="0">
-            <div class="card-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Multi-Turn Product Recommendation QA Bot</h3>
-              <p>Fine-tuned open source LLMs with hybrid retrieval with efficient inference and scalable deployment</p>
-            </div>
-            <div class="card-actions">
-              <a class="cta-secondary" href="case-studies/prd-recomm-qa/prd-recomm-qa.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-            </div>
-          </article>
-
-          <!-- 5 -->
-          <article class="card" tabindex="0">
-            <div class="card-icon"><i class="fas fa-university" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Banking Resource Management System</h3>
-              <p>End-to-end customer LTV and churn prediction as well as transactional fraud detection</p>
-            </div>
-            <div class="card-actions">
-              <a class="cta-secondary" href="case-studies/banking-system.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-            </div>
-          </article>
-
-          <!-- 6 -->
-          <article class="card" tabindex="0">
-            <div class="card-icon"><i class="fas fa-lungs" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Covid-19 Diagnosis with Audio Biomarkers</h3>
-              <p>COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals</p>
-            </div>
-            <div class="card-actions">
-              <a class="cta-secondary" href="case-studies/Covid/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-            </div>
-          </article>
-
         </div>
       </div>
     </section>
