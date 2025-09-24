@@ -394,10 +394,11 @@
 
     // words to cycle
     const words = [
+      'AI Engineering Services · Consulting' , 
       'LLM Engineering · Agentic AI · Scalable AI Systems',
-      'Medicarecare AI · Clinical Decisioning',
-      'Time-series · Recommandation Systems',
       'LLMOps · Observability · Cost-optimisation'
+      'Medicare AI & Clinical Decisioning · Marketing · Finance ',
+      
     ];
     let wIndex = 0;
     let charIndex = 0;
