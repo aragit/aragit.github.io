@@ -354,4 +354,34 @@ body {
     font-size: 14px; /* smaller font for mobile */
   }
 }
+.logo-img {
+  background: transparent !important;
+}
+.logo-img {
+  position: relative;
+}
+.logo-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: linear-gradient(130deg, rgba(255,255,255,.25) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.logo-img:hover::after {
+  opacity: 1;
+}
+.logo-img {
+  display: block;
+  height: 34px;              /* adjust size */
+  width: auto;               /* keep aspect ratio */
+  border-radius: 6px;        /* slightly rounded */
+  object-fit: contain;
+  transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
+}
+.logo-img:hover {
+  filter: drop-shadow(0 0 6px var(--accent));
+  transform: scale(1.08);
+}
 
