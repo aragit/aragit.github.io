@@ -490,12 +490,12 @@
         }
     
         // ---------- tunables ----------
-        const orangeSpacing = 24;   // grid density for orange lines
-        const blueSpacing = 96;     // spacing for blue accent lines (larger -> sparser)
-        const orangeOpacity = 0.42; // group opacity for orange lines
-        const blueOpacity = 0.34;   // group opacity for blue lines (increase to make more visible)
+        const orangeSpacing = 90;   // grid density for orange lines
+        const blueSpacing = 60;     // spacing for blue accent lines (larger -> sparser)
+        const orangeOpacity = 0.60; // group opacity for orange lines
+        const blueOpacity = 0.90;   // group opacity for blue lines (increase to make more visible)
         // fade start/end as fraction of hero height (0..1). Increase values to push fade lower.
-        const fadeStartPct = 0.55;  // start fading at 65% down the hero
+        const fadeStartPct = 0.52;  // start fading at 65% down the hero
         const fadeEndPct   = 0.90;  // be fully transparent at 90% down the hero
         // -------------------------------
     
