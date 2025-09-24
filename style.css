@@ -459,7 +459,7 @@ body {
   max-width: 280px;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  box-shadow: 0 15px 24px rgba(0,0,0,.4);
 }
 
 /* mobile: stack */
@@ -467,4 +467,11 @@ body {
   .about-split { grid-template-columns: 1fr; }
   .about-image { text-align: center; margin-top: 1.5rem; }
   .about-image img { width: 60%; }
+}
+
+/* darkest "Chat with my Experience" button - no border */
+#openChatBtn {
+  background: #0d0d0d !important;   /* pure black */
+  border: none !important;
+  box-shadow: none !important;
 }
