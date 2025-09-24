@@ -396,7 +396,7 @@
     const words = [
       'AI Engineering Services · Consulting' , 
       'LLM Engineering · Agentic AI · Scalable AI Systems',
-      'LLMOps · Observability · Cost-optimisation'
+      'LLMOps · Observability · Cost-optimisation', 
       'Medicare AI & Clinical Decisioning · Marketing · Finance ',
       
     ];
