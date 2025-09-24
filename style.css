@@ -425,3 +425,18 @@ body {
 .card:active::before {
   display: none !important;
 }
+
+/* widen big cards, shrink small cards */
+.portfolio-grid {
+  grid-template-columns: 1.5fr 1fr;   /* 2 : 1 ratio */
+  gap: 1rem;                      /* slightly wider gutter */
+}
+
+/* optional fine-tuning */
+.big-cards   .card { padding: 1rem; }
+.small-cards .card { padding: .8rem;   }
+
+/* mobile: back to even columns */
+@media (max-width: 720px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
