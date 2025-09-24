@@ -394,9 +394,9 @@
 
     // words to cycle
     const words = [
-      'LLMs · Agentic AI · Scalable ML Systems',
-      'Healthcare AI · Clinical Decisioning',
-      'Time-series · Forecasting · Risk',
+      'LLM Engineering · Agentic AI · Scalable AI Systems',
+      'Medicarecare AI · Clinical Decisioning',
+      'Time-series · Recommandation Systems',
       'LLMOps · Observability · Cost-optimisation'
     ];
     let wIndex = 0;
