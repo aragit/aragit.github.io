@@ -384,54 +384,68 @@
      Small typewriter for #typewrite (accessible)
      ------------------------- */
   function initTypewriter() {
-    const el = document.getElementById('typewrite');
-    if (!el) return;
-    if (isReducedMotion()) {
-      // simple static text for reduced motion users
-      el.textContent = 'LLMs · Agentic AI · Scalable ML Systems';
-      return;
-    }
-
-    // words to cycle
-    const words = [
-      'AI Engineering Services · Consulting' , 
-      'LLM Engineering · Agentic AI · Scalable AI Systems',
-      'LLMOps · Observability · Cost-optimisation', 
-      'Medicare AI & Clinical Decisioning · Marketing · Finance ',
-      
-    ];
-    let wIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
-
-    const typeSpeed = 38;
-    const deleteSpeed = 22;
-    const holdDelay = 1500;
-
-    function step() {
-      const current = words[wIndex];
-      if (!deleting) {
-        charIndex++;
-        el.textContent = current.slice(0, charIndex);
-        if (charIndex >= current.length) {
-          deleting = true;
-          setTimeout(step, holdDelay);
-          return;
-        }
-      } else {
-        charIndex--;
-        el.textContent = current.slice(0, charIndex);
-        if (charIndex <= 0) {
-          deleting = false;
-          wIndex = (wIndex + 1) % words.length;
-        }
+      const el = document.getElementById('typewrite');
+      if (!el) return;
+    
+      // create / ensure inner container (absolute) for stable updates
+      let inner = el.querySelector('.tw-inner');
+      if (!inner) {
+        inner = document.createElement('span');
+        inner.className = 'tw-inner';
+        el.appendChild(inner);
       }
-      setTimeout(step, deleting ? deleteSpeed : typeSpeed);
+    
+      if (isReducedMotion()) {
+        inner.textContent = 'LLMs · Agentic AI · Scalable ML Systems';
+        return;
+      }
+    
+      // words to cycle
+      const words = [
+        'LLMs Engineering · Agentic AI ',
+        'LLMOps · Observability · Cost-optimisation', 
+        'Healthcare AI · Marketing AI · Finance' ,
+      ];
+      let wIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+    
+      const typeSpeed = 38;
+      const deleteSpeed = 22;
+      const holdDelay = 1400;
+    
+      let timer = null;
+      function step() {
+        const current = words[wIndex];
+        if (!deleting) {
+          charIndex++;
+          inner.textContent = current.slice(0, charIndex);
+          if (charIndex >= current.length) {
+            deleting = true;
+            timer = setTimeout(step, holdDelay);
+            return;
+          }
+        } else {
+          charIndex--;
+          inner.textContent = current.slice(0, charIndex);
+          if (charIndex <= 0) {
+            deleting = false;
+            wIndex = (wIndex + 1) % words.length;
+          }
+        }
+        timer = setTimeout(step, deleting ? deleteSpeed : typeSpeed);
+      }
+    
+      // start after tiny delay
+      setTimeout(step, 500);
+    
+      // optional: cleanup if you re-init later (not strictly necessary here)
+      // return a stop function for debug if needed
+      return function stopTypewriter() {
+        if (timer) clearTimeout(timer);
+      };
     }
 
-    // start (small initial delay so page load looks smooth)
-    setTimeout(step, 500);
-  }
 
   /* -------------------------
      Form UX small attach for modal forms etc.

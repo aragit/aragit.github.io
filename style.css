@@ -316,3 +316,43 @@ body {
   box-shadow: none !important;
   border-radius: 50%; /* keeps circular crop */
 }
+
+#typewrite {
+  position: relative;
+  min-height: 2.8rem;
+  box-sizing: border-box;
+  width: max-content; /* width adjusts to text length */
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  overflow: visible;
+  white-space: nowrap; /* prevents wrapping */
+}
+
+#typewrite .tw-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  line-height: 1.25;
+  word-break: normal;
+  hyphens: none;
+}
+
+/* On narrow screens allow small wrapping if absolutely necessary */
+@media (max-width: 420px) {
+  #typewrite {
+    white-space: normal;
+    width: calc(100% - 32px);
+  }
+  #typewrite .tw-inner {
+    transform: translate(-50%, -50%);
+  }
+}
+
