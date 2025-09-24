@@ -471,22 +471,197 @@
   /* -------------------------
      Hero grid debug helper (optional small logger)
      ------------------------- */
-  function heroGridDebug() {
-    try {
-      const heroGrid = document.querySelector('#home.hero .hero-grid');
-      if (!heroGrid) {
-        console.warn('Hero grid not present: #home.hero .hero-grid');
-        return;
+  /* -------------------------
+   Hero grid: build SVG lines + set gradient to span full hero height
+   ------------------------- */
+    /* -------------------------
+   Hero grid: orange dim + subtle blue layer + mask-aware gradient sizing
+   ------------------------- */
+    /* -------------------------
+   Hero grid: improved blue visibility + mask positioned relative to hero height
+   ------------------------- */
+    function heroGridDebug() {
+      try {
+        const NS = 'http://www.w3.org/2000/svg';
+        const hero = document.querySelector('#home.hero');
+        if (!hero) {
+          console.warn('Hero grid not present: #home.hero');
+          return;
+        }
+    
+        // ---------- tunables ----------
+        const orangeSpacing = 24;   // grid density for orange lines
+        const blueSpacing = 96;     // spacing for blue accent lines (larger -> sparser)
+        const orangeOpacity = 0.42; // group opacity for orange lines
+        const blueOpacity = 0.34;   // group opacity for blue lines (increase to make more visible)
+        // fade start/end as fraction of hero height (0..1). Increase values to push fade lower.
+        const fadeStartPct = 0.55;  // start fading at 65% down the hero
+        const fadeEndPct   = 0.90;  // be fully transparent at 90% down the hero
+        // -------------------------------
+    
+        let heroGrid = hero.querySelector('.hero-grid');
+        let svg = hero.querySelector('.hero-grid-svg');
+        let orangeGroup = svg ? svg.querySelector('g.grid-orange') : null;
+        let blueGroup   = svg ? svg.querySelector('g.grid-blue')   : null;
+    
+        if (!svg || !orangeGroup || !blueGroup) {
+          // Defensive creation if the HTML snippet wasn't added
+          heroGrid = document.createElement('div');
+          heroGrid.className = 'hero-grid';
+          heroGrid.setAttribute('aria-hidden', 'true');
+    
+          svg = document.createElementNS(NS, 'svg');
+          svg.setAttribute('class', 'hero-grid-svg');
+          svg.setAttribute('viewBox', '0 0 1200 600');
+          svg.setAttribute('preserveAspectRatio', 'none');
+          svg.setAttribute('role', 'img');
+          svg.setAttribute('aria-hidden', 'true');
+    
+          const defs = document.createElementNS(NS, 'defs');
+          defs.innerHTML = `
+            <linearGradient id="gridGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ff6b00" stop-opacity="0.78" />
+              <stop offset="30%" stop-color="#ff6b00" stop-opacity="0.28" />
+              <stop offset="45%" stop-color="#ff6b00" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5fd3ff" stop-opacity="0.22" />
+              <stop offset="50%" stop-color="#5fd3ff" stop-opacity="0.08" />
+              <stop offset="100%" stop-color="#5fd3ff" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="maskGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop id="mask-stop-a" offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop id="mask-stop-b" offset="55%" stop-color="#ffffff" stop-opacity="0.6" />
+              <stop id="mask-stop-c" offset="85%" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
+            <mask id="fadeMask">
+              <rect x="0" y="0" width="100%" height="100%" fill="url(#maskGradient)"></rect>
+            </mask>
+          `;
+          svg.appendChild(defs);
+    
+          orangeGroup = document.createElementNS(NS, 'g');
+          orangeGroup.setAttribute('class', 'grid-orange');
+          orangeGroup.setAttribute('stroke', 'url(#gridGradient)');
+          orangeGroup.setAttribute('fill', 'none');
+          orangeGroup.setAttribute('mask', 'url(#fadeMask)');
+          svg.appendChild(orangeGroup);
+    
+          blueGroup = document.createElementNS(NS, 'g');
+          blueGroup.setAttribute('class', 'grid-blue');
+          blueGroup.setAttribute('stroke', 'url(#blueGradient)');
+          blueGroup.setAttribute('fill', 'none');
+          blueGroup.setAttribute('mask', 'url(#fadeMask)');
+          svg.appendChild(blueGroup);
+    
+          heroGrid.appendChild(svg);
+          hero.appendChild(heroGrid);
+        }
+    
+        function drawGrid() {
+          const rect = hero.getBoundingClientRect();
+          const w = Math.max(320, Math.round(rect.width));
+          const h = Math.max(200, Math.round(rect.height));
+    
+          svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    
+          // set gradients to userSpaceOnUse so y2 = hero height
+          const gradOrange = svg.querySelector('#gridGradient');
+          const gradBlue   = svg.querySelector('#blueGradient');
+          const maskGrad   = svg.querySelector('#maskGradient');
+    
+          if (gradOrange) {
+            gradOrange.setAttribute('gradientUnits', 'userSpaceOnUse');
+            gradOrange.setAttribute('y2', String(h));
+          }
+          if (gradBlue) {
+            gradBlue.setAttribute('gradientUnits', 'userSpaceOnUse');
+            gradBlue.setAttribute('y2', String(h));
+          }
+          if (maskGrad) {
+            maskGrad.setAttribute('gradientUnits', 'userSpaceOnUse');
+            maskGrad.setAttribute('y2', String(h));
+            // compute pixel positions for stops -> convert to percent for stops
+            const startPx = Math.round(h * fadeStartPct);
+            const endPx   = Math.round(h * fadeEndPct);
+            // offsets as percentages relative to y2
+            const startPct = (startPx / h) * 100;
+            const endPct = (endPx / h) * 100;
+            // update stop offsets for precise control
+            const sA = svg.querySelector('#mask-stop-a');
+            const sB = svg.querySelector('#mask-stop-b');
+            const sC = svg.querySelector('#mask-stop-c');
+            if (sA) sA.setAttribute('offset', '0%');
+            if (sB) sB.setAttribute('offset', `${Math.max(1, Math.round(startPct))}%`);
+            if (sC) sC.setAttribute('offset', `${Math.min(99, Math.round(endPct))}%`);
+          }
+    
+          // clear old lines
+          while (orangeGroup.firstChild) orangeGroup.removeChild(orangeGroup.firstChild);
+          while (blueGroup.firstChild) blueGroup.removeChild(blueGroup.firstChild);
+    
+          // draw orange (denser)
+          for (let x = 0; x <= w; x += orangeSpacing) {
+            const l = document.createElementNS(NS, 'line');
+            l.setAttribute('x1', String(x)); l.setAttribute('x2', String(x));
+            l.setAttribute('y1', '0'); l.setAttribute('y2', String(h));
+            l.setAttribute('stroke-width', '1');
+            orangeGroup.appendChild(l);
+          }
+          for (let y = 0; y <= h; y += orangeSpacing) {
+            const l = document.createElementNS(NS, 'line');
+            l.setAttribute('x1', '0'); l.setAttribute('x2', String(w));
+            l.setAttribute('y1', String(y)); l.setAttribute('y2', String(y));
+            l.setAttribute('stroke-width', '1');
+            orangeGroup.appendChild(l);
+          }
+    
+          // draw blue (sparse accent)
+          for (let x = 0; x <= w; x += blueSpacing) {
+            const l = document.createElementNS(NS, 'line');
+            // slight offset to avoid perfect overlap
+            const ox = x + Math.floor(blueSpacing / 4);
+            l.setAttribute('x1', String(ox)); l.setAttribute('x2', String(ox));
+            l.setAttribute('y1', '0'); l.setAttribute('y2', String(h));
+            l.setAttribute('stroke-width', '1.2');
+            blueGroup.appendChild(l);
+          }
+          for (let y = 0; y <= h; y += blueSpacing) {
+            const l = document.createElementNS(NS, 'line');
+            const oy = y + Math.floor(blueSpacing / 4);
+            l.setAttribute('x1', '0'); l.setAttribute('x2', String(w));
+            l.setAttribute('y1', String(oy)); l.setAttribute('y2', String(oy));
+            l.setAttribute('stroke-width', '1.2');
+            blueGroup.appendChild(l);
+          }
+    
+          // set group opacities (tweakable)
+          orangeGroup.setAttribute('opacity', String(orangeOpacity));
+          blueGroup.setAttribute('opacity', String(blueOpacity));
+    
+          if (heroGrid && heroGrid.style) heroGrid.style.display = 'block';
+          document.documentElement.classList.add('hero-grid-ready');
+        }
+    
+        // debounced resize
+        let resizeTimer = null;
+        function onResize() {
+          if (resizeTimer) clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(drawGrid, 90);
+        }
+    
+        drawGrid();
+        window.removeEventListener('resize', onResize);
+        window.addEventListener('resize', onResize, { passive: true });
+    
+        console.info('Hero grid updated — blue made visible; mask positioned relative to hero height');
+      } catch (err) {
+        console.error('heroGridDebug error', err);
       }
-      const nodes = document.querySelectorAll('#home.hero .node');
-      console.info('Hero grid initialized — node count:', nodes.length);
-      // ensure hero-grid visible (rare race conditions)
-      heroGrid.style.display = 'block';
-      document.documentElement.classList.add('hero-grid-ready');
-    } catch (err) {
-      console.error('heroGridDebug error', err);
     }
-  }
+
+
+
  
   /* -------------------------
      Expose a few debug functions to the window (non-breaking)

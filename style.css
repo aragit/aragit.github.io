@@ -238,7 +238,7 @@ body {
 #home.hero .hero-grid-svg { width: 100%; height: 100%; display: block; }
 
 /* Grid lines: ensure visible but subtle */
-#home.hero .grid-lines { opacity: 0.40; mix-blend-mode: screen; stroke-linecap: round; }
+#home.hero .grid-lines { opacity: 0.95; mix-blend-mode: screen; stroke-linecap: round; }
 
 /* Nodes: make sure SVG transforms behave consistently across browsers */
 #home.hero .node {
@@ -289,5 +289,24 @@ body {
     transform: none !important;
     opacity: .95 !important;
   }
+}
+
+#home.hero .grid-lines {
+  stroke: url(#gridGradient); /* uses the gradient defined in index.html */
+  stroke-width: 1;
+  opacity: 0.85;              /* stronger visibility */
+  mix-blend-mode: screen;
+}
+/* Fade the CSS checkerboard / subtle lines under #home so they disappear earlier */
+#home::before {
+  /* keep existing visuals but fade them vertically via mask */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 55%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 55%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  /* safety: ensure pseudo stays behind SVG grid */
+  z-index: -3;
+  pointer-events: none;
 }
 

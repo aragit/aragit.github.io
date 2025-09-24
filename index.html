@@ -79,6 +79,45 @@
 
     <!-- HERO -->
     <section id="home" class="hero" aria-labelledby="hero-title">
+        <!-- HERO GRID (drop-in) -->
+        <!-- HERO GRID (orange dim + subtle blue lines) -->
+        <!-- HERO GRID (orange dim + visible subtle blue + mask) -->
+        <div class="hero-grid" aria-hidden="true">
+          <svg class="hero-grid-svg" viewBox="0 0 1200 600" preserveAspectRatio="none"
+               xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <defs>
+              <!-- orange stroke gradient (dimmed) -->
+              <linearGradient id="gridGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#ff6b00" stop-opacity="0.78"/>
+                <stop offset="30%" stop-color="#ff6b00" stop-opacity="0.28"/>
+                <stop offset="45%" stop-color="#ff6b00" stop-opacity="0"/>
+              </linearGradient>
+        
+              <!-- more visible blue for subtle sky effect -->
+              <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#5fd3ff" stop-opacity="0.22"/>
+                <stop offset="50%" stop-color="#5fd3ff" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#5fd3ff" stop-opacity="0"/>
+              </linearGradient>
+        
+              <!-- mask will be tuned in JS to use hero height -->
+              <linearGradient id="maskGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop id="mask-stop-a" offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+                <stop id="mask-stop-b" offset="55%" stop-color="#ffffff" stop-opacity="0.6"/>
+                <stop id="mask-stop-c" offset="85%" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+              <mask id="fadeMask">
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#maskGradient)"></rect>
+              </mask>
+            </defs>
+        
+            <g class="grid-orange" stroke="url(#gridGradient)" fill="none" mask="url(#fadeMask)"></g>
+            <g class="grid-blue"   stroke="url(#blueGradient)"  fill="none" mask="url(#fadeMask)"></g>
+          </svg>
+        </div>
+
+
+
       <div class="container hero-inner">
         <img src="avatar.jpg" alt="Portrait of Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130">
         <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
