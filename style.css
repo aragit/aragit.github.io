@@ -695,3 +695,527 @@ a.card-link:hover{
   width: 100%;
   border-radius: 6px;
 }
+
+/* Services grid: responsive columns + card sizing */
+.services-grid {
+  display: grid;
+  gap: 1.25rem; /* space between cards */
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+}
+
+/* responsive breakpoints */
+@media (max-width: 1050px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* ensure cards occupy same height and don't shrink */
+.services-grid .card {
+  display: block;
+  height: 320px;          /* consistent card height — adjust as needed */
+  min-height: 280px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+
+/* small visual tuning so icons & text don't wrap oddly */
+.services-grid .card-front .card-icon { font-size: 1.4rem; margin-bottom: 0.45rem; }
+.services-grid .card-front .card-body h3 { margin: 0 0 .35rem; line-height: 1.1; }
+
+
+/* ================= Services: equal-height cards, centered pill buttons, denser faded grid ================= */
+
+/* 1) Ensure the services cards area stretches so actions align horizontally across each row */
+#services .cards {
+  display: grid; /* keep your responsive setup */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  grid-auto-rows: 1fr;         /* make rows equal-height */
+  align-items: stretch;       /* force cards to stretch to the row height */
+}
+
+/* Make each card fill its grid cell so bottom actions align */
+#services .cards .card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;    /* critical so every card has same height in row */
+  min-height: 320px !important; /* keep a comfortable default; tweak if needed */
+  padding: 1.05rem !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+}
+
+/* let the body grow so actions remain at the bottom of the card */
+#services .cards .card .card-body {
+  flex: 1 1 auto !important;
+  display: block !important;
+  margin-bottom: 0.6rem !important;
+  overflow-wrap: break-word !important;
+}
+
+/* center actions horizontally and allow wrap on small screens */
+#services .cards .card .card-actions {
+  display: flex !important;
+  justify-content: center !important;  /* center horizontally */
+  gap: .75rem !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  z-index: 4 !important; /* above overlay */
+  padding-top: .45rem !important;
+}
+
+/* Keep both buttons the same pill width/shape and avoid overflow */
+#services .cards .card .card-actions > * {
+  flex: 0 1 46% !important;    /* two buttons side-by-side on desktop */
+  min-width: 120px !important;
+  max-width: 46% !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* small screens: stack and take full width */
+@media (max-width: 560px) {
+  #services .cards .card .card-actions > * {
+    flex: 0 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  #services .cards .card { min-height: unset !important; }
+}
+
+/* 2) Unified pill button visual (shape like "View Case Study") but dark background + hero orange text */
+/* Hero orange: #ff6b00 (used for stronger consistency with head) */
+#services .cards .card .card-actions .cta-secondary,
+#services .cards .card .card-actions .service-btn,
+#services .cards .card .card-actions a.service-learn,
+#services .cards .card .card-actions button.service-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .4rem !important;
+  padding: 9px 14px !important;
+  border-radius: 999px !important;          /* exact pill shape as .cta-secondary */
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  background: linear-gradient(180deg, #2f2f2f 0%, #232323 100%) !important; /* dark grey pill */
+  color: #ff6b00 !important;                /* hero orange */
+  font-weight: 700 !important;
+  font-size: .95rem !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.38) !important;
+  z-index: 5 !important; /* ensure it sits above the grid overlay */
+  transition: transform .18s ease, box-shadow .18s ease, opacity .12s ease !important;
+}
+
+/* hover / active */
+#services .cards .card .card-actions .cta-secondary:hover,
+#services .cards .card .card-actions .service-btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.48) !important;
+  background: linear-gradient(180deg, #383838 0%, #2a2a2a 100%) !important;
+  opacity: 1 !important;
+}
+
+/* focus outline for accessibility */
+#services .cards .card .card-actions .cta-secondary:focus,
+#services .cards .card .card-actions .service-btn:focus {
+  outline: 3px solid rgba(255,107,0,0.14);
+  outline-offset: 2px;
+}
+
+/* 3) Denser, brighter grid overlay — fade top→bottom to match hero visuals */
+/* overlay pseudo placed underneath content (content z-index is > overlay) */
+#services .cards .card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;    /* below content (content is z-index 4/5 above) */
+  pointer-events: none !important;
+  border-radius: inherit !important;
+  background-repeat: repeat !important;
+  mix-blend-mode: screen !important;
+  transition: opacity .28s ease, transform .28s cubic-bezier(.2,.9,.25,1) !important;
+  opacity: 0.48 !important;
+  /* denser orange + faint blue cross-grid + subtle darker tiles */
+  background-image:
+    /* orange vertical lines (dense) */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    /* orange horizontal lines */
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    /* blue accent grid (subtle) */
+    repeating-linear-gradient(90deg, rgba(95,211,255,0.035) 0 1px, transparent 1px calc(8px)),
+    repeating-linear-gradient(0deg,  rgba(95,211,255,0.03) 0 1px, transparent 1px calc(8px)),
+    /* subtle soft tile fill to darken some cells a bit (very soft) */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%);
+  background-size: auto, auto, auto, auto, 32px 32px !important;
+  /* Fade mask: stronger at top, softer at bottom */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+}
+
+/* keep small-dot texture subtle (before pseudo) */
+#services .cards .card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  background-image: radial-gradient(circle at 6px 6px, rgba(255,255,255,0.03) 0 1px, transparent 1px);
+  background-size: 16px 16px !important;
+  opacity: 0.08 !important;
+  mix-blend-mode: screen !important;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
+}
+
+/* hover/focus: slightly stronger grid */
+#services .cards .card:hover::after,
+#services .cards .card:focus-within::after {
+  opacity: 0.72 !important;
+  transform: translateY(-6px) !important;
+}
+#services .cards .card:hover::before,
+#services .cards .card:focus-within::before {
+  opacity: 0.14 !important;
+}
+
+/* Reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  #services .cards .card::after,
+  #services .cards .card::before,
+  #services .cards .card .card-actions .cta-secondary,
+  #services .cards .card .card-actions .service-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* -------------------- Pull buttons up slightly -------------------- */
+/* Reduce spacing below the text and pull the actions up a bit */
+#services .cards .card .card-body {
+  margin-bottom: 0.25rem !important;   /* closer to actions */
+}
+#services .cards .card .card-actions {
+  padding-top: 0.12rem !important;
+  margin-top: -6px !important;         /* pulls buttons up toward the text */
+}
+
+/* If you prefer a subtler lift, use margin-top: -3px instead */
+
+/* -------------------- Make blue grid lines bolder & thicker -------------------- */
+/* Override the ::after background to increase blue line opacity/thickness and overall contrast */
+#services .cards .card::after {
+  /* keep orange lines as before, but make blue layers thicker/stronger */
+  background-image:
+    /* orange vertical (dense) */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    /* orange horizontal */
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    /* stronger blue vertical — thicker 2px strokes, closer spacing for more presence */
+    repeating-linear-gradient(90deg, rgba(95,211,255,0.14) 0 2px, transparent 2px calc(10px)),
+    /* stronger blue horizontal */
+    repeating-linear-gradient(0deg,  rgba(95,211,255,0.12) 0 2px, transparent 2px calc(10px)),
+    /* subtle tile fill (unchanged) */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%);
+  /* sizes — keep tile fairly small */
+  background-size: auto, auto, auto, auto, 32px 32px !important;
+  /* raise overall overlay contrast a touch so lines show well on the card bg */
+  opacity: 0.60 !important;
+  /* keep the top->bottom fade mask */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+}
+
+/* Slightly emphasize the blue dot texture as well (optional) */
+#services .cards .card::before {
+  background-image: radial-gradient(circle at 6px 6px, rgba(255,255,255,0.035) 0 1px, transparent 1px);
+  opacity: 0.10 !important;
+}
+
+/* ====== Services: taller cards, slightly smaller body text, buttons pulled up ====== */
+
+/* Make cards taller on desktop/tablet for more breathing room */
+#services .cards {
+  /* keep auto-fit responsive columns, only change row sizing via min-height on card */
+  grid-auto-rows: 1fr !important;
+}
+
+/* Increase the minimum card height (desktop/tablet) */
+#services .cards .card {
+  min-height: 420px !important;    /* ↑ increase this to 440px if you want even taller cards */
+  padding: 1.1rem !important;
+  height: 100% !important;         /* ensures equal row height behavior */
+  box-sizing: border-box !important;
+}
+
+/* Slightly reduce the paragraph/body text inside cards (not titles) */
+#services .cards .card .card-body p,
+#services .cards .card .card-body > p {
+  font-size: 0.92rem !important;    /* slightly smaller; change to 0.88rem if you want smaller */
+  line-height: 1.45 !important;
+  margin-bottom: 0.12rem !important; /* less space below text so buttons are closer */
+  color: inherit !important;
+}
+
+/* Reduce bottom gap from body to actions so buttons move up */
+#services .cards .card .card-body {
+  margin-bottom: 0.12rem !important;  /* was 0.25 / 0.6 previously — now much closer */
+  padding-bottom: 0 !important;
+}
+
+/* Pull the action row further up (closer to the body) */
+#services .cards .card .card-actions {
+  margin-top: -12px !important;      /* pulls buttons up; adjust -8px / -16px to taste */
+  padding-top: 0 !important;
+}
+
+/* Keep button sizing consistent after moving them */
+#services .cards .card .card-actions > * {
+  min-width: 120px !important;
+  max-width: 46% !important;
+  box-sizing: border-box !important;
+}
+
+/* Mobile: keep cards comfortable but not too tall; buttons stack */
+@media (max-width: 720px) {
+  #services .cards .card {
+    min-height: 300px !important;    /* mobile friendly */
+    padding: 0.9rem !important;
+  }
+  #services .cards .card .card-actions {
+    margin-top: 6px !important;      /* undo heavy negative margin for stacked layout */
+    flex-wrap: wrap !important;
+    gap: .5rem !important;
+  }
+  #services .cards .card .card-actions > * {
+    flex: 0 1 100% !important;
+    max-width: 100% !important;
+  }
+  #services .cards .card .card-body p {
+    font-size: 0.95rem !important;   /* slightly larger on small screens for readability */
+  }
+}
+
+/* reduced-motion safety */
+@media (prefers-reduced-motion: reduce) {
+  #services .cards .card,
+  #services .cards .card .card-actions,
+  #services .cards .card .card-body {
+    transition: none !important;
+  }
+}
+
+/* ====== Services : move buttons UP without absolute ====== */
+#services .cards .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 320px;
+    padding: 1.05rem;
+}
+
+/* 1.  remove the “spring” that pushes actions down */
+#services .cards .card .card-body {
+    flex: 0 0 auto;          /* ← kill flex:1 */
+    margin-bottom: 0.4rem;   /* small gap → buttons */
+    padding-bottom: 0;
+}
+
+/* 2.  actions now sit directly under the text */
+#services .cards .card .card-actions {
+    margin-top: 0;           /* ← remove previous -20px hack */
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    gap: .75rem;
+    flex-wrap: wrap;
+}
+
+/* 3.  slimmer, shorter buttons */
+#services .cards .card-actions .cta-secondary,
+#services .cards .card-actions .service-btn {
+    font-weight: 500;                /* lighter text */
+    font-size: .9rem;
+    padding: 7px 12px;               /* smaller pill */
+    border-radius: 999px;
+    background: linear-gradient(180deg,#2f2f2f 0%,#232323 100%);
+    color: #ff6b00;
+    border: 1px solid rgba(255,255,255,.04);
+    transition: transform .18s, box-shadow .18s;
+    flex: 0 1 auto;
+    min-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 560px) {
+    #services .cards .card-actions > * { min-width: 100%; }
+}
+
+/* ===== Services : whole card is the link ===== */
+#services .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+#services .card.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 320px;
+  padding: 1.1rem;
+  background: rgba(25,25,25,.82);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  text-decoration: none;   /* kill link underline */
+  color: inherit;
+  transition: transform .22s, border-color .22s, box-shadow .22s;
+}
+
+#services .card.service-card:hover,
+#services .card.service-card:focus-within {
+  transform: translateY(-4px);
+  border-color: #ff6b00;
+  box-shadow: 0 18px 34px rgba(255,107,0,.12);
+}
+
+#services .card.service-card .card-icon {
+  font-size: 1.3rem;
+  color: #ff6b00;
+  margin-bottom: .6rem;
+}
+
+#services .card.service-card .card-body {
+  flex: 1 1 auto;
+}
+
+#services .card.service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: .2rem 0 .4rem;
+  color: #fff;
+}
+
+#services .card.service-card p {
+  font-size: .92rem;
+  line-height: 1.45;
+  color: #dbe7ef;
+  margin: 0;
+}
+
+/* accessibility focus outline */
+#services .card.service-card:focus {
+  outline: 3px solid rgba(255,107,0,.15);
+  outline-offset: 2px;
+}
+
+/* mobile safety */
+@media (max-width: 720px) {
+  #services .card.service-card {
+    min-height: 280px;
+  }
+}
+/* ===== Services : fade starts higher (under text) ===== */
+#services .cards .card::after {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1)  0%,
+    rgba(0,0,0,1)  10%,   /* ← fully visible until mid-card */
+    rgba(0,0,0,.6) 20%,   /* ← fade STARTS here (under text) */
+    rgba(0,0,0,0)  90%    /* ← fully gone well before bottom */
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1)  0%,
+    rgba(0,0,0,1)  10%,
+    rgba(0,0,0,.6) 20%,
+    rgba(0,0,0,0)  90%
+  );
+}
+
+/* ===== Services : hide top icons ===== */
+#services .cards .card .card-icon {
+  display: none;
+}
+/* ===== Services : bigger & white text ===== */
+#services .cards .service-card .card-body h3 {
+  font-size: 1.35rem !important;   /* title */
+  line-height: 1.2 !important;
+  color: #fff !important;
+}
+
+#services .cards .service-card .card-body p {
+  font-size: 1.05rem !important;   /* paragraph */
+  line-height: 1.55 !important;
+  color: #fff !important;          /* pure white */
+  margin-top: .6rem !important;
+}
+
+/* mobile */
+@media (max-width: 720px) {
+  #services .cards .service-card .card-body h3 { font-size: 1.2rem !important; }
+  #services .cards .service-card .card-body p  { font-size: .98rem !important; }
+}
+
+/* ===== Services : final gap tweak ===== */
+#services .cards .service-card .card-body h3 {
+  margin-bottom: 3rem !important;   /* even bigger gap – tweak px */
+}
+
+#services .cards .service-card .card-body p {
+  margin-top: 0 !important;           /* ensure no browser default */
+}
+
+/* ===== Services : bottom “Learn more” pill ===== */
+#services .cards .service-card .card-actions {
+  margin-top: auto;          /* push to bottom */
+  padding-top: .8rem;
+  text-align: center;
+}
+
+#services .cards .service-card .cta-secondary {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.04);
+  background: transparent;
+  color: var(--muted-2);
+  font-size: .9rem;
+  font-weight: 500;
+  transition: all .22s;
+}
+
+#services .cards .service-card:hover .cta-secondary {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ===== Services : pull “Learn more” buttons UP ===== */
+#services .cards .service-card .card-actions {
+  margin-top: -12px !important;   /* ↑ tweak -8px … -20px to taste */
+  padding-top: 0 !important;
+}
+
+/* ===== Services : body text → light grey ===== */
+#services .cards .service-card .card-body p {
+  color: #b8b8b8 !important;   /* soft light grey – tweak to taste */
+}
+
+/* ===== Services : button font & colour override ===== */
+#services .cards .service-card .card-actions .cta-secondary {
+  font-weight: 400 !important;
+  color: #b8b8b8 !important;
+}

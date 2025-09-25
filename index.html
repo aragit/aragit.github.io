@@ -369,89 +369,95 @@
     </section>
 
     <!-- SERVICES & PACKAGES -->
+    <!-- SERVICES & PACKAGES -->
+    <!-- ==========  SERVICES & PACKAGES  ========== -->
+    <!-- ==========  SERVICES & PACKAGES  ========== -->
     <section id="services" class="section" aria-labelledby="services-title">
       <div class="container">
         <h2 id="services-title" class="section-title">Services &amp; Packages</h2>
-
-        <div class="cards">
+    
+        <!-- added services-grid + data-grid here so ALL cards share the overlay -->
+        <div class="cards services-grid" data-grid="B">
           <!-- ===== Row 1 : original 3 packages ===== -->
-          <article class="card">
-            <div class="card-icon"><i class="fas fa-drafting-compass" aria-hidden="true"></i></div>
+          <a class="card service-card"
+             href="services/quick-audit.html"
+             aria-label="The Blueprint – AI strategy roadmap">
             <div class="card-body">
-              <h3> The Blueprint<br>AI Strategy</h3>
+              <h3>The Blueprint<br>AI Strategy</h3>
               <p>Identify high-ROI AI opportunities and receive a detailed technical roadmap to build a powerful, custom AI solution.</p>
             </div>
             <div class="card-actions">
-              <a href="services/quick-audit.html" class="cta-secondary service-learn" data-service="The Blueprint" target="_blank" rel="noopener noreferrer">Learn More</a>
-              <button class="cta-secondary service-btn" data-service="The Blueprint">Request Blueprint</button>
+              <span class="cta-secondary">Learn more</span>
             </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon"><i class="fas fa-vial" aria-hidden="true"></i></div>
+          </a>
+    
+          <a class="card service-card"
+             href="services/paid-poc.html"
+             aria-label="The Forge – end-to-end solution development">
             <div class="card-body">
-              <h3> The Forge<br>Solution Development</h3>
+              <h3>The Forge<br>Solution Development</h3>
               <p>Take the architectural plan, forge your strategic blueprint and bring it to life through rigorous engineering, testing, and iteration.</p>
             </div>
             <div class="card-actions">
-              <a href="services/paid-poc.html" class="cta-secondary service-learn" data-service="Paid POC" target="_blank" rel="noopener noreferrer">Learn More</a>
-              <button class="cta-secondary service-btn" data-service="Paid POC">Start POC</button>
+              <span class="cta-secondary">Learn more</span>
             </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+          </a>
+    
+          <a class="card service-card"
+             href="services/deploy-scale.html"
+             aria-label="The Nexus – production deployment & scale">
             <div class="card-body">
-              <h3> The Nexus<br>Deployment &amp; Scale</h3>
+              <h3>The Nexus<br>Deployment &amp; Scale</h3>
               <p>Production deployment, LLMOps, monitoring, cost optimizations and team handover. Phased contracting available.</p>
             </div>
             <div class="card-actions">
-              <a href="services/deploy-scale.html" class="cta-secondary service-learn" data-service="Deployment &amp; Scale" target="_blank" rel="noopener noreferrer">Learn More</a>
-              <button class="cta-secondary service-btn" data-service="Deployment &amp; Scale">Request Contract</button>
+              <span class="cta-secondary">Learn more</span>
             </div>
-          </article>
-
+          </a>
+    
           <!-- ===== Row 2 : centered mentoring card ===== -->
-          <article class="card mentoring-center">
-            <div class="card-icon"><i class="fas fa-user-graduate" aria-hidden="true"></i></div>
+          <a class="card service-card mentoring-center"
+             href="services/mentoring.html"
+             aria-label="Individual Mentoring – 4-week sprint">
             <div class="card-body">
               <h3>Mentoring<br>4-week sprint</h3>
-              <p>1-to-1 mentoring tailored to your goals— ML engineers or data scientists who want to level-up fast Or LLM Engineers who want to build a custom curriculum and meet weekly for 4–8 weeks.</p>
+              <p>1-to-1 mentoring tailored to your goals— ML engineers or data scientists who want to level-up fast or LLM Engineers who want to build a custom curriculum and meet weekly for 4–8 weeks.</p>
             </div>
             <div class="card-actions">
-              <a href="services/mentoring.html" class="cta-secondary service-learn" data-service="Individual Mentoring" target="_blank" rel="noopener noreferrer">Learn More</a>
-              <button class="cta-secondary service-btn" data-service="Individual Mentoring">Book Mentoring</button>
+              <span class="cta-secondary">Learn more</span>
             </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+          </a>
+    
+          <a class="card service-card"
+             href="services/rapid-poc.html"
+             aria-label="Rapid POC Accelerator – 2–4 week proof of concept">
             <div class="card-body">
-              <h3> Rapid POC Accelerator<br>2–4 week Proof of Concept</h3>
+              <h3>Rapid POC Accelerator<br>2–4 week Proof of Concept</h3>
               <p>Fast, focused build to validate product/technical fit. We deliver an interactive demo, integration smoke-tests, and a clear go/no-go recommendation.</p>
             </div>
             <div class="card-actions">
-              <a href="services/rapid-poc.html" class="cta-secondary service-learn" data-service="Rapid POC Accelerator" target="_blank" rel="noopener noreferrer">Learn More</a>
-              <button class="cta-secondary service-btn" data-service="Rapid POC Accelerator">Start POC</button>
+              <span class="cta-secondary">Learn more</span>
             </div>
-          </article>
-
-          <article class="card" role="article" aria-labelledby="agentic-title">
-            <div class="card-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+          </a>
+    
+          <a class="card service-card"
+             href="services/agentic-ai.html"
+             aria-label="Agentic AI – tool-enabled autonomous agents">
             <div class="card-body">
-              <h3 id="agentic-title">Specialized Agentic AI Solutions<br>Tool-enabled agents</h3>
+              <h3>Specialized Agentic AI Solutions<br>Tool-enabled agents</h3>
               <p>Design and ship multi-step agents that reason, call tools, and integrate with systems (APIs). Focused on observability, guardrails, and safe human escalation so agents can operate reliably in production.</p>
             </div>
             <div class="card-actions">
-              <a href="services/agentic-ai.html" class="cta-secondary service-learn" data-service="Agentic AI — Autonomous &amp; Auditable Agents" target="_blank" rel="noopener noreferrer">Learn More</a>
-              <button class="cta-secondary service-btn" data-service="Agentic AI — Autonomous &amp; Auditable Agents">Start POC</button>
+              <span class="cta-secondary">Learn more</span>
             </div>
-          </article>
-
+          </a>
+    
           <div class="placeholder" aria-hidden="true"></div>
         </div>
       </div>
     </section>
+    <!-- /SERVICES & PACKAGES -->
+
 
     <!-- CONTACT: removed phone icon; social icons use original muted color -->
     <section id="contact" class="section contact-small" aria-labelledby="contact-title">
