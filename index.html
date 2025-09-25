@@ -262,125 +262,109 @@
     </section>
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
+    <!-- ARTICLES – Masonry with real random heights + bottom-left hero -->
+    <!-- ARTICLES – Masonry, no buttons, whole card clickable -->
     <section id="articles" class="section alt" aria-labelledby="articles-title">
       <div class="container">
         <h2 id="articles-title" class="section-title">Featured Articles</h2>
-        <div class="cards" id="articles-cards">
-
-          <!-- 🔥 New -->
-          <article class="card">
-            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>🔥 New: Fine-Tuning DeepSeek R1 Reasoning on Medical Chain of Thought Dataset</h3>
-              <p>Latest technical walkthrough on enhancing medical-reasoning LLMs with CoT fine-tuning.</p>
-              <small>Medium • 12 min read</small>
+    
+        <div class="masonry-grid">
+    
+          <!----------  HERO CARD (clickable) ---------->
+          <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-hero">
+            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*LriGacNJRrcGK0IUsli2tQ.png" alt="" class="masonry-hero-bg">
+            <div class="masonry-hero-overlay"></div>
+    
+            <div class="masonry-hero-bottom">
+             
+              <h3 class="masonry-hero-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h3>
+              <p class="masonry-hero-sub">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p>
             </div>
-            <div class="card-actions">
-              <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+          </a>
+    
+          <!----------  SMALL CARDS (clickable + image below text) ---------->
+          <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Gemma 3n Edge AI for Support Bots</h3>
+              <p>Low-memory, high-speed training on customer-support data</p>
             </div>
-          </article>
-
-          <!-- Gemma 3n -->
-          <article class="card">
-            <div class="card-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>🔥 New: Evidence leans toward Gemma 3n's Efficient Multimodal Edge AI</h3>
-              <p>Gemma 3n enhanced by Unsloth: Low-Memory, High-Speed Training for Customer Support Bots</p>
-              <small>Kaggle • 20 min read</small>
+            <img src="https://www.cometapi.com/wp-content/uploads/2025/05/awan_gemma_3n.webp" alt="" class="masonry-small-img">
+          </a>
+    
+          <a href="https://medium.com/@anicomanesh/a-dive-into-advanced-prompt-engineering-techniques-for-llms-part-i-23c7b8459d51"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>LLM Output Config & Guardrails</h3>
+              <p>Master reasoning prompts and guardrails for reliable outputs</p>
             </div>
-            <div class="card-actions">
-              <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            <img src="https://miro.medium.com/1*hS0mGa8A2ZVDDPAUT1rwiQ.jpeg" alt="" class="masonry-small-img">
+          </a>
+    
+          <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Few-Shot & Zero-Shot Learning Deep-Dive</h3>
+              <p>Push LLMs beyond narrow fine-tuning.</p>
+              <p>In the age of large language models (LLMs), the ability to perform complex tasks with minimal data is revolutionizing how we approach artificial intelligence. Few-shot and zero-shot learning are two pivotal techniques that push the boundaries of machine learning, enabling models to generalize across domains and perform tasks they were not explicitly trained on. This article delves into these learning paradigms, explaining their origins, mechanisms, and real-world applications</p>
             </div>
-          </article>
-
-          <!-- Prompt Engineering -->
-          <article class="card">
-            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>A Dive Into LLM Output Configuration &amp; Guardrails</h3>
-              <p>Master reasoning prompts, and guardrails for reliable LLM outputs.</p>
-              <small>Medium • 25 min read</small>
-            </div>
-            <div class="card-actions">
-              <a href="https://medium.com/@anicomanesh/a-dive-into-advanced-prompt-engineering-techniques-for-llms-part-i-23c7b8459d51" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
-            </div>
-          </article>
-
-          <!-- Few-Shot & Zero-Shot -->
-          <article class="card">
-            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Mastering Few-Shot &amp; Zero-Shot Learning in LLMs</h3>
-              <p>Cross-domain generalization techniques that push LLMs beyond narrow fine-tuning.</p>
-              <small>Medium • 9 min read</small>
-            </div>
-            <div class="card-actions">
-              <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
-            </div>
-          </article>
-
-          <!-- Model Drift -->
-          <article class="card">
-            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
-            <div class="card-body">
+            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*4irRvgoE16fQn78wwAecsQ.jpeg" alt="" class="masonry-small-img">
+          </a>
+    
+          <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
               <h3>Model Drift: A Survival Guide</h3>
-              <p>Practical monitoring &amp; remediation strategies for ML models in production.</p>
-              <small>Medium • 7 min read</small>
+              <p>Monitor & remediate production ML models</p>
             </div>
-            <div class="card-actions">
-              <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
+            <img src="https://miro.medium.com/1*Y5mFK13TLDob_SF9Dz6aFA.png" alt="" class="masonry-small-img">
+          </a>
+    
+          <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Fine-Tune Gemma-3 12B with Unsloth</h3>
+              <p>End-to-end Unsloth & TRL workflow for customer service</p>
+              <p>In this article, I have dived into the technical intricacies of Unsloth and Gemma 3, showcasing their powerful features and how they can be leveraged together to build a highly optimized, fine-tuned model for any type of customer support assistant, whether it be a sophisticated chatbot, an intelligent agent, or an interactive FAQ system. I provided a step-by-step guide through the fine-tuning process, from data preparation to model deployment, highlighting best practices and practical considerations for achieving optimal performance in real-world customer service scenarios</p>
             </div>
-          </article>
-
-          <!-- Gemma-3 Fine-Tuning -->
-          <article class="card">
-            <div class="card-icon"><i class="fab fa-medium" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Fine-Tune Gemma-3 12B for Customer Service with Unsloth</h3>
-              <p>End-to-end workflow: data prep, LoRA, TRL &amp; GPU-cost optimization.</p>
-              <small>Medium • 11 min read</small>
+            <img src="https://letsdatascience.com/wp-content/uploads/2025/03/Google-Gemma-3.webp" alt="" class="masonry-small-img">
+          </a>
+    
+          <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Is RAG Dead in 2025?</h3>
+              <p>Rethinking documentation Q&A with large-context LLMs.</p>
             </div>
-            <div class="card-actions">
-              <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
-            </div>
-          </article>
-
-          <!-- Is RAG Dead?! -->
-          <article class="card">
-            <div class="card-icon"><i class="fas fa-newspaper" aria-hidden="true"></i></div>
-            <div class="card-body">
-              <h3>Is RAG Dead?! Rethinking Documentation Q&amp;A in 2025</h3>
-              <p>Re-evaluating RAG vs. large-context LLMs &amp; search-first agents for docs Q&amp;A.</p>
-              <small>Substack • 20 min read</small>
-            </div>
-            <div class="card-actions">
-              <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read More</a>
-            </div>
-          </article>
-
-          <!-- Talk -->
-          <article class="card">
-            <div class="card-icon"><i class="fas fa-play-circle" aria-hidden="true"></i></div>
-            <div class="card-body">
+            <img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="" class="masonry-small-img">
+          </a>
+    
+          <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
               <h3>Talk: Agentic RAG in Healthcare</h3>
-              <p>15-min deck delivered at Hugging Face meet-up on self-evolving retrieval agents.</p>
-              <small>Slides • 15 min watch</small>
+              <p>15-min deck on self-evolving retrieval agents.</p>
             </div>
-            <div class="card-actions">
-              <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID" target="_blank" rel="noopener noreferrer" class="cta-secondary">View Slides</a>
-            </div>
+            <img src="triage2.png" alt="" class="masonry-small-img">
           </article>
-
-        </div>
-
-        <!-- Move the blog CTA here (Articles section as requested) -->
-        <div style="display: flex; justify-content: center; margin-top: 3rem;">
-          <a href="blog/index.html" class="btn-hero btn-collab" style="display: inline-flex; align-items: center; gap: 0.5rem;" target="_blank" rel="noopener noreferrer">
+    
+        </div><!-- /masonry-grid -->
+    
+        <div class="articles-cta">
+          <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-book-open" aria-hidden="true"></i>
             Explore My Blog for More
           </a>
         </div>
-
+    
       </div>
     </section>
 
