@@ -668,3 +668,30 @@ a.card-link:hover{
 
 /* dark-grey small cards */
 .masonry-small{ background: #1c1c1c; }
+
+/* ---------- Featured Solutions – 25 % shorter, layout untouched ---------- */
+#portfolio .card{
+  padding: .55rem;                    /* was 1 rem */
+  font-size: .85rem;                  /* was ~.95 rem */
+}
+#portfolio .card-body{
+  padding: .4rem 0;                   /* tighter vertical spacing */
+}
+#portfolio .card-actions{
+  padding-top: .4rem;                 /* bring button closer */
+}
+#portfolio .card-body h3{
+  font-size: .95rem;                  /* slightly smaller title */
+}
+#portfolio .card-fill-img{            /* optional thumb inside card */
+  max-height: 90px;                   /* keep image visible */
+  object-fit: cover;
+}
+
+/* ---------- Big cards (left column) – show full image ---------- */
+#portfolio .big-cards .card-fill-img{
+  max-height: 190px;     /* was 140 px → now fits 25 % shorter card */
+  object-fit: cover;
+  width: 100%;
+  border-radius: 6px;
+}
