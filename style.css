@@ -1335,32 +1335,424 @@ a.card-link:hover{
   transform: translateY(-3px);
 }
 
-/* ===== Tech-Stack : centre last row WITHOUT stacking ===== */
+/* ===== Tech-Stack : centre last row ===== */
 .logo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr)); /* grow & wrap */
-  gap: .8rem;
-  justify-content: center;   /* centre whole grid */
-  max-width: 1200px;         /* cap width → centre block */
-  margin: 0 auto;            /* centre grid itself */
+  justify-content: center;   /* centres incomplete row */
 }
 
-/* ===== Featured Solutions : Subtle Grid Background ===== */
-
-/* ===== Featured Solutions : Final Grid (using ::after to avoid conflicts) ===== */
-
-#portfolio .cards .card {
-  position: relative;
-  overflow: hidden;
-}
-
+/* ===== Featured Solutions : tight grey grid ===== */
 #portfolio .cards .card::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1; /* Place grid behind content */
+  z-index: -1;
   pointer-events: none;
   background:
-    repeating-linear-gradient(90deg, rgba(30, 30, 30, 1) 0 1px, transparent 1px 16px),
-    repeating-linear-gradient(0deg, rgba(30, 30, 30, 1) 0 1px, transparent 1px 16px);
+    repeating-linear-gradient(90deg, rgba(45,45,45,.30) 0 1px, transparent 5px 1px),
+    repeating-linear-gradient(0deg,  rgba(45,45,45,.30) 0 1px, transparent 5px 1px);
+}
+
+/* --- force grid to stay visible --- */
+#portfolio .cards .card {
+  position: relative;          /* ensure stacking context */
+  z-index: 0;                  /* card itself */
+  background: rgba(25,25,25,.82);
+}
+
+#portfolio .cards .card::after {
+  z-index: -1;                 /* grid sits *between* page and card */
+}
+
+/* ===== Featured Solutions : small / normal-weight / grey text ===== */
+#portfolio .cards .card-actions .cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.04);
+  background: linear-gradient(180deg,#2f2f2f 0%,#232323 100%);
+  color: #b8b8b8;          /* muted grey */
+  font-weight: 400;         /* normal weight */
+  font-size: .8rem;         /* slightly smaller */
+  transition: transform .18s, box-shadow .18s, background .18s;
+}
+
+#portfolio .cards .card-actions .cta-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.48);
+  background: linear-gradient(180deg,#383838 0%,#2a2a2a 100%);
+  color: #b8b8b8;           /* keep grey on hover */
+}
+
+/* ===== Featured Solutions : lift button row ===== */
+#portfolio .cards .card-actions {
+  margin-top: -10px;   /* ← tweak -8px … -14px to taste */
+  padding-top: 0;
+}
+
+/* ===== Featured Solutions : tighter title → subtitle ===== */
+#portfolio .cards .card-body h3 {
+  margin-bottom: .2rem;   /* was ~0.5 rem – now snug */
+}
+
+#portfolio .cards .card-body p {
+  margin-top: 0;          /* remove any browser default top margin */
+}
+
+/* ===== Featured Solutions : smaller body text ===== */
+#portfolio .cards .card-body p {
+  font-size: .8rem;      /* was ~.95 rem – adjust if you need even smaller */
+  line-height: 1.4;      /* optional: keep it readable */
+}
+
+
+
+
+/* === Fix: nicer spacing for big (left) portfolio cards === */
+.portfolio-grid .big-cards .card .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;            /* space between title/paras, actions and image */
+  align-items: stretch;
+}
+
+/* undo the negative pull and ensure comfortable spacing */
+.portfolio-grid .big-cards .card .card-actions {
+  margin-top: 0 !important;   /* override the earlier negative margin (was -10px). */
+  padding-top: 0 !important;
+  margin-bottom: 0.25rem;     /* small breathing room above the image */
+  justify-content: center;    /* keep button centered */
+}
+
+/* slightly increase space between actions and the image */
+.portfolio-grid .big-cards .card .card-fill-img {
+  margin-top: 1rem !important;
+  max-height: 180px;          /* keep image size controlled */
+  object-fit: cover;
+}
+
+/* === Align & "pull up" View Case Study buttons on small (right) cards ===
+   - Makes .card-body a vertical flex container with consistent gaps
+   - Forces .card-actions to appear before the image (visual reorder)
+   - Keeps consistent spacing across big and small cards
+*/
+.portfolio-grid .card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.6rem;              /* space between title/desc, actions, image */
+}
+
+/* visually place actions before the image so buttons sit higher */
+.portfolio-grid .card .card-actions {
+  order: 2;                 /* appear before image */
+  margin-top: 0 !important; /* override any negative pulls */
+  margin-bottom: 0.25rem;
+  justify-content: center;  /* keep button centered */
+  align-self: center;       /* center horizontally on small cards */
+}
+
+
+
+
+/* image goes after actions visually, keeping it a bit separated */
+.portfolio-grid .card .card-fill-img {
+  order: 3;
+  margin-top: 0.5rem !important;
+  max-height: 160px;
+  object-fit: cover;
+}
+
+/* ensure each card stretches equally so rows look aligned */
+.portfolio-grid { 
+  display: grid; 
+  grid-auto-rows: 1fr;
+}
+
+/* card as column so footer/actions positioning is stable */
+.portfolio-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* keep card body flexible so actions sit where we want */
+.portfolio-grid .card .card-body {
+  flex: 1 1 auto;
+}
+
+/* small-card specific tweaks (right column) to make buttons slightly more compact */
+.portfolio-grid .small-cards .card .card-actions a,
+.portfolio-grid .card .card-actions a {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.95rem;
+  border-radius: 999px; /* pill look */
+}
+
+/* >>> PATCH: Uniform card layout for #portfolio — put at END of style.css <<< */
+#portfolio .cards {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 1.25rem;
+}
+
+/* make each card a column so we can align actions consistently */
+#portfolio .cards .card {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* make card-body expand so actions sit consistently */
+#portfolio .cards .card .card-body {
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+}
+
+/* >>> PATCH: pull up "Learn more" buttons for Services & Packages (place at EOF) <<< */
+
+/* make each service/package card a vertical flex column so spacing is predictable */
+#services .cards,
+#packages .cards {
+  display: grid;         /* keep your grid layout */
+  gap: 1.0rem;
+  /* keep layout as-is — we only change internal card flow below */
+}
+
+/* make each card a column so body and actions stack predictably */
+#services .cards .card,
+#packages .cards .card {
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* tighten the card-body spacing so actions sit closer to the content */
+#services .cards .card .card-body,
+#packages .cards .card .card-body {
+  padding-top: 0.45rem;
+  padding-bottom: 0.25rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* pull up the Learn more / CTA so it sits nearer the body (not too close) */
+#services .cards .card .card-actions,
+#packages .cards .card .card-actions {
+  margin-top: -6px !important;     /* visually lifts the button */
+  padding-top: 0 !important;       /* cancel any extra top padding */
+  align-self: center;
+  order: 2;
+}
+
+/* make sure the CTA pill stays compact and consistent */
+#services .cards .card .card-actions .cta-secondary,
+#packages .cards .card .card-actions .cta-secondary {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 999px;
+}
+
+/* small screens: remove the negative lift so nothing overlaps on mobile */
+@media (max-width: 720px) {
+  #services .cards .card .card-actions,
+  #packages .cards .card .card-actions {
+    margin-top: 0 !important;
+    padding-top: .45rem !important;
+  }
+}
+/* make the services/packages grid use equal-height rows so vertical alignment works */
+#services .cards,
+#packages .cards {
+  display: grid !important;
+  grid-auto-rows: 1fr !important;
+  gap: 1rem !important;
+}
+
+/* treat each card as a vertical flex container */
+#services .cards .card,
+#packages .cards .card,
+#services .cards a.card,
+#packages .cards a.card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* make the card body take available space so actions can sit where we want */
+#services .cards .card .card-body,
+#packages .cards .card .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.45rem !important;
+  flex: 1 1 auto !important;
+  align-items: stretch !important;
+  text-align: center !important;
+}
+
+/* STRONG override: pull actions visually up, keep them centered */
+#services .cards .card .card-actions,
+#packages .cards .card .card-actions {
+  order: 2 !important;                   /* show before any image ordered later */
+  margin-top: 0 !important;             /* cancel earlier negative margins */
+  padding-top: 0 !important;
+  align-self: center !important;
+  z-index: 3 !important;
+  transform: translateY(-8px) !important; /* modest visual pull-up */
+  transition: transform .18s !important;
+}
+
+/* Make CTAs compact and consistent */
+#services .cards .card .card-actions .cta-secondary,
+#packages .cards .card .card-actions .cta-secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.38rem 0.9rem !important;
+  font-size: 0.95rem !important;
+  border-radius: 999px !important;
+}
+
+/* Ensure any images in the card body come after the actions visually */
+#services .cards .card .card-fill-img,
+#packages .cards .card .card-fill-img,
+#services .cards .card img,
+#packages .cards .card img {
+  order: 3 !important;
+  margin-top: 0.6rem !important;
+  max-height: 160px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+/* safeguard older generic .card-actions negative rule */
+.card-actions { margin-top: 0 !important; }
+
+/* MOBILE: remove transform so nothing overlaps on small screens */
+@media (max-width: 720px) {
+  #services .cards,
+  #packages .cards {
+    grid-auto-rows: auto !important;
+  }
+  #services .cards .card .card-actions,
+  #packages .cards .card .card-actions {
+    transform: none !important;
+    margin-top: 0.4rem !important;
+  }
+}
+
+/* ====== FIX: prevent Learn more buttons from overlapping text ======
+   Paste this at the VERY END of style.css (after any previous overrides)
+*/
+
+/* 1) Reserve space inside each card so pulled-up CTA doesn't cover text */
+#services .cards .card .card-body,
+#packages .cards .card .card-body {
+  padding-bottom: 1.15rem !important; /* space for the pulled-up button */
+  min-height: 5.25rem !important;     /* prevents very-short cards from collapsing */
+  box-sizing: border-box !important;
+}
+
+/* 2) Make the pull-up milder so it doesn't intrude */
+#services .cards .card .card-actions,
+#packages .cards .card .card-actions {
+  transform: translateY(-6px) !important;  /* milder lift */
+  margin-top: 0 !important;
+  z-index: 3 !important;
+}
+
+/* 3) If a card has image or extra content below, ensure the image remains after actions */
+#services .cards .card .card-fill-img,
+#packages .cards .card .card-fill-img {
+  order: 3 !important;
+  margin-top: 0.55rem !important;
+}
+
+/* MOBILE: remove the lift and relax spacing to avoid overlap on small screens */
+@media (max-width: 720px) {
+  #services .cards .card .card-body,
+  #packages .cards .card .card-body {
+    padding-bottom: 0.9rem !important;
+    min-height: 0 !important;
+  }
+  #services .cards .card .card-actions,
+  #packages .cards .card .card-actions {
+    transform: none !important;
+    margin-top: 0.4rem !important;
+  }
+}
+
+/* ===== FEATURED SOLUTIONS (small cards) — pull-up Learn/View buttons safely ===== */
+/* Add this at the very end of style.css so it wins over older rules */
+
+/* make portfolio rows equal height so vertical alignment works */
+#portfolio .cards,
+#portfolio .portfolio-grid {
+  display: grid !important;
+  grid-auto-rows: 1fr !important;
+  gap: 1rem !important;
+}
+
+/* treat small cards as vertical flex containers so flow is predictable */
+#portfolio .cards .small-cards .card,
+#portfolio .cards .small-cards a.card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Let card-body expand and reserve space at bottom for pulled button */
+#portfolio .cards .small-cards .card .card-body,
+#portfolio .cards .small-cards a.card .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.45rem !important;
+  flex: 1 1 auto !important;
+  padding-bottom: 1.05rem !important;   /* reserve space so button won't overlap text */
+  min-height: 4.5rem !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+
+/* Pull up the action button modestly and center it (won't overlap due to padding) */
+#portfolio .cards .small-cards .card .card-actions,
+#portfolio .cards .small-cards a.card .card-actions,
+#portfolio .cards .small-cards .card-body > .card-actions {
+  order: 2 !important;                   /* ensure actions appear before image visually */
+  margin-top: 0 !important;              /* cancel older negative margins */
+  padding-top: 0 !important;
+  align-self: center !important;
+  z-index: 3 !important;
+  transform: translateY(-6px) !important; /* gentle lift */
+  transition: transform .18s !important;
+}
+
+/* Keep images below actions and controlled size */
+#portfolio .cards .small-cards .card .card-fill-img,
+#portfolio .cards .small-cards .card img,
+#portfolio .cards .small-cards a.card .card-fill-img {
+  order: 3 !important;
+  margin-top: 0.5rem !important;
+  max-height: 140px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Safety fallback for older global selector */
+#portfolio .cards .card-actions { margin-top: 0 !important; }
+
+/* MOBILE: remove visual lift to avoid any risk of overlap on small screens */
+@media (max-width: 720px) {
+  #portfolio .cards,
+  #portfolio .portfolio-grid { grid-auto-rows: auto !important; }
+  #portfolio .cards .small-cards .card .card-body { padding-bottom: 0.9rem !important; min-height: 0 !important; }
+  #portfolio .cards .small-cards .card .card-actions,
+  #portfolio .cards .small-cards a.card .card-actions { transform: none !important; margin-top: 0.4rem !important; }
 }

@@ -1,0 +1,87 @@
+
+/* ====== FORCE FIX: Pull up "Learn more" buttons for Services & Packages ======
+   Place this at the VERY END of your style.css (or replace with this file).
+   This is intentionally high-specificity and uses !important where required
+   to override older rules present earlier in the stylesheet.
+*/
+
+/* make the services/packages grid use equal-height rows so vertical alignment works */
+#services .cards,
+#packages .cards {
+  display: grid !important;
+  grid-auto-rows: 1fr !important;
+  gap: 1rem !important;
+}
+
+/* treat each card as a vertical flex container */
+#services .cards .card,
+#packages .cards .card,
+#services .cards a.card,
+#packages .cards a.card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* make the card body take available space so actions can sit where we want */
+#services .cards .card .card-body,
+#packages .cards .card .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.45rem !important;
+  flex: 1 1 auto !important;
+  align-items: stretch !important;
+  text-align: center !important;
+}
+
+/* STRONG override: pull actions visually up, keep them centered */
+#services .cards .card .card-actions,
+#packages .cards .card .card-actions {
+  order: 2 !important;                   /* show before any image ordered later */
+  margin-top: 0 !important;             /* cancel earlier negative margins */
+  padding-top: 0 !important;
+  align-self: center !important;
+  z-index: 3 !important;
+  transform: translateY(-8px) !important; /* modest visual pull-up */
+  transition: transform .18s !important;
+}
+
+/* Make CTAs compact and consistent */
+#services .cards .card .card-actions .cta-secondary,
+#packages .cards .card .card-actions .cta-secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.38rem 0.9rem !important;
+  font-size: 0.95rem !important;
+  border-radius: 999px !important;
+}
+
+/* Ensure any images in the card body come after the actions visually */
+#services .cards .card .card-fill-img,
+#packages .cards .card .card-fill-img,
+#services .cards .card img,
+#packages .cards .card img {
+  order: 3 !important;
+  margin-top: 0.6rem !important;
+  max-height: 160px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+/* safeguard older generic .card-actions negative rule */
+.card-actions { margin-top: 0 !important; }
+
+/* MOBILE: remove transform so nothing overlaps on small screens */
+@media (max-width: 720px) {
+  #services .cards,
+  #packages .cards {
+    grid-auto-rows: auto !important;
+  }
+  #services .cards .card .card-actions,
+  #packages .cards .card .card-actions {
+    transform: none !important;
+    margin-top: 0.4rem !important;
+  }
+}
