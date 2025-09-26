@@ -1219,3 +1219,128 @@ a.card-link:hover{
   font-weight: 400 !important;
   color: #b8b8b8 !important;
 }
+
+/* ==========  TECH STACK  ========== */
+#tech-stack {
+  padding: 4rem 0 3rem;
+}
+
+#tech-stack .section-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: .5px;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax 90px, 1fr));
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  padding: .6rem;
+  background: rgba(255, 255, 255, .04);
+  border-radius: 8px;
+  transition: transform .22s, background .22s;
+  filter: brightness(.92) saturate(.9);
+}
+
+.logo-grid img:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 107, 0, .08);
+  filter: brightness(1) saturate(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-grid img {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: .8rem;
+  }
+}
+
+/* ===== Tech-Stack : force small grid ===== */
+.logo-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)) !important;
+  gap: .8rem !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo-grid img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: contain !important;
+  max-width: 48px !important;   /* lock icon size */
+  margin: 0 auto;               /* centre in cell */
+}
+
+/* ===== Services : tighten bottom spacing ===== */
+#services {
+  padding-bottom: 2rem !important;   /* default was ~4rem – lower as needed */
+}
+
+/* 1.  kill the placeholder spacer completely */
+#services .placeholder {
+  display: none !important;
+}
+
+/* 2.  if logo-wall lives inside services, clamp its bottom margin */
+#services .logo-wall {
+  margin-bottom: 0 !important;
+  padding-bottom: 1rem !important;   /* keep a small air-gap only */
+}
+
+/* 3.  final bottom padding of the section itself */
+#services.section {
+  padding-bottom: 3rem !important;   /* tweak 1–2 rem to taste */
+}
+
+/* ===== Contact : bigger social icons ===== */
+#contact .socials a {
+  font-size: 1.6rem !important;   /* default was ~1.2rem – adjust px/rem */
+  width: 44px;                    /* optional hit-area enlargement */
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Tech-Stack : lighter idle + white hover ===== */
+.logo-grid img {
+  background: rgba(255, 255, 255, .08) !important; /* ← lighter idle */
+  transition: background .22s, transform .22s, filter .22s;
+}
+
+.logo-grid img:hover {
+  background: #ffffff !important; /* clean white on hover */
+  filter: brightness(1.05) drop-shadow(0 0 6px rgba(255, 107, 0, .35));
+  transform: translateY(-3px);
+}
+
+/* ===== Tech-Stack : centre last row WITHOUT stacking ===== */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr)); /* grow & wrap */
+  gap: .8rem;
+  justify-content: center;   /* centre whole grid */
+  max-width: 1200px;         /* cap width → centre block */
+  margin: 0 auto;            /* centre grid itself */
+}
