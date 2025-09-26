@@ -1756,3 +1756,145 @@ a.card-link:hover{
   #portfolio .cards .small-cards .card .card-actions,
   #portfolio .cards .small-cards a.card .card-actions { transform: none !important; margin-top: 0.4rem !important; }
 }
+
+/* =========================
+   UX PATCH: hero border + button hover behavior
+   Paste this at the very END of style.css
+   ========================= */
+
+/* 1) Remove orange border on hover for the Featured Article hero card only.
+   Keep keyboard focus ring intact (only target mouse hover/active). */
+a.card-link.masonry-hero:hover,
+a.card-link.masonry-hero:active {
+  border-color: transparent !important;   /* don't show orange border on hover */
+}
+
+/* If you want to also remove when pointer device is used (modern browsers),
+   use the pointer media query (optional) */
+/*
+@media (pointer: fine) {
+  a.card-link.masonry-hero:hover { border-color: transparent !important; }
+}
+*/
+
+/* 2) Make portfolio (featured solutions) + services/packages CTAs
+      - change only border color and inner text color on hover -> var(--accent)
+      - keep the existing button background unchanged
+      - remove any hover background/box-shadow unwanted by earlier rules
+   High-specificity selectors + !important to override previous rules placed earlier. */
+
+/* Targets: CTA buttons inside portfolio / services / packages card-actions */
+#portfolio .cards .card .card-actions .cta-secondary,
+#portfolio .cards .card .card-actions a.cta-secondary,
+#portfolio .cards .card .card-actions a.service-btn,
+#portfolio .cards .card .card-actions button.service-btn,
+#services .cards .card .card-actions .cta-secondary,
+#services .cards .card .card-actions a.cta-secondary,
+#services .cards .card .card-actions a.service-btn,
+#services .cards .card .card-actions button.service-btn,
+#packages .cards .card .card-actions .cta-secondary,
+#packages .cards .card .card-actions a.cta-secondary,
+#packages .cards .card .card-actions a.service-btn,
+#packages .cards .card .card-actions button.service-btn {
+  /* ensure border exists so it can change color on hover */
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  /* keep whatever normal background you have (don't let hover change it) */
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  /* smooth color/border transition */
+  transition: color .18s ease, border-color .18s ease !important;
+}
+
+/* Hover + keyboard focus: border + text color -> accent; background unchanged */
+#portfolio .cards .card .card-actions .cta-secondary:hover,
+#portfolio .cards .card .card-actions a.cta-secondary:hover,
+#portfolio .cards .card .card-actions a.service-btn:hover,
+#portfolio .cards .card .card-actions button.service-btn:hover,
+#services .cards .card .card-actions .cta-secondary:hover,
+#services .cards .card .card-actions a.cta-secondary:hover,
+#services .cards .card .card-actions a.service-btn:hover,
+#services .cards .card .card-actions button.service-btn:hover,
+#packages .cards .card .card-actions .cta-secondary:hover,
+#packages .cards .card .card-actions a.cta-secondary:hover,
+#packages .cards .card .card-actions a.service-btn:hover,
+#packages .cards .card .card-actions button.service-btn:hover,
+#portfolio .cards .card .card-actions .cta-secondary:focus,
+#portfolio .cards .card .card-actions a.cta-secondary:focus,
+#services .cards .card .card-actions .cta-secondary:focus,
+#services .cards .card .card-actions a.cta-secondary:focus,
+#packages .cards .card .card-actions .cta-secondary:focus,
+#packages .cards .card .card-actions a.cta-secondary:focus {
+  color: var(--accent) !important;         /* inside text turns orange */
+  border-color: var(--accent) !important;  /* border turns orange */
+  /* explicitly neutralize any hover bg/box-shadow injected earlier in your file */
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  /* preserve any transform/translate if you prefer the lift effect */
+  /* If you *do not* want the button to lift, uncomment the next line:
+     transform: none !important;
+  */
+}
+
+/* 3) Extra safety: remove hover background from generic .cta-secondary hover rules later in file
+   (neutralize other conflicting definitions that may appear after this block) */
+.cta-secondary:hover,
+.card-actions .service-btn:hover,
+.card-actions a.service-btn:hover,
+button.service-btn:hover {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* 4) Small-screen safety: keep mobile spacing & no overlap */
+@media (max-width: 720px) {
+  /* ensure we don't remove focus styles for keyboard users */
+  #portfolio .cards .card .card-actions .cta-secondary:focus,
+  #services .cards .card .card-actions .cta-secondary:focus {
+    outline: 2px solid rgba(255,107,0,0.12);
+    outline-offset: 3px;
+  }
+}
+
+/* ====== Remove orange hover line for Services cards only ======
+   Paste at the very end of style.css
+   Keeps keyboard focus (focus outline) untouched for accessibility.
+*/
+
+/* target the anchor/card elements inside #services and neutralize hover/active */
+#services .cards a.card:hover,
+#services .cards a.card:active,
+#services .cards .card:hover,
+#services .cards .card:active {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;        /* only for mouse hover/active */
+  background-image: none !important;
+}
+
+/* if the orange line is applied via an inner pseudo-element, hide it on hover */
+#services .cards a.card:hover::before,
+#services .cards a.card:hover::after,
+#services .cards .card:hover::before,
+#services .cards .card:hover::after {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* Safety: override any global hover rule that targets .card-link */
+#services a.card-link:hover,
+#services a.card-link:active {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Mobile & keyboard: ensure focus remains visible (don't remove focus ring) */
+#services .cards a.card:focus,
+#services .cards .card:focus,
+#services a.card-link:focus {
+  outline: 3px solid rgba(255,107,0,0.12); /* gentle accessible focus */
+  outline-offset: 3px;
+}
+
