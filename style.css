@@ -1344,3 +1344,23 @@ a.card-link:hover{
   max-width: 1200px;         /* cap width → centre block */
   margin: 0 auto;            /* centre grid itself */
 }
+
+/* ===== Featured Solutions : Subtle Grid Background ===== */
+
+/* ===== Featured Solutions : Final Grid (using ::after to avoid conflicts) ===== */
+
+#portfolio .cards .card {
+  position: relative;
+  overflow: hidden;
+}
+
+#portfolio .cards .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* Place grid behind content */
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(30, 30, 30, 1) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(0deg, rgba(30, 30, 30, 1) 0 1px, transparent 1px 16px);
+}
