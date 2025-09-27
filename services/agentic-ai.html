@@ -33,7 +33,7 @@
     .logo i{color:var(--accent)}
     .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
     .back-btn:hover{border-color:var(--accent);color:var(--accent)}
-    .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
+    .hero{padding:clamp(60px,10vw,100px) 0;text-align:center;position:relative;overflow:hidden}
     .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
     .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#fff6f3}
     .tech-marquee{display:inline-flex;align-items:center;gap:12px;font-size:.8rem;font-weight:500;color:#fff9;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:99px;padding:8px 20px;margin-top:12px;white-space:nowrap;overflow:hidden;position:relative;animation:drift 6s ease-in-out infinite}
@@ -93,17 +93,7 @@
     <h1>Agentic AI — Autonomous & Auditable Agents</h1>
     <p>Production-grade agents that reason over your data, call internal tools, respect guardrails and leave a tamper-proof audit trail.</p>
     <!--  animated built-with strip  -->
-    <div class="tech-marquee">
-      
-      Vertex AI Agent Builder |
-      Google ADK |
-      Agents SDK |
-      Gen AI Toolbox |
-      LangGraph |
-      CrewAI |
-      Temporal
-      
-    </div>
+    
   </div>
 </section>
 
@@ -173,70 +163,17 @@
 <!-- ============================================================ -->
 <!-- FLAT-PRICE TIERS  (icons white, no duration)                -->
 <!-- ============================================================ -->
-<section style="background:#121212">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px">Flat-price tiers</h2>
-    <div class="grid-2">
-      <div class="tier-box">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-rocket"></i>POC Starter</h3>
-          <div class="price">$8 k</div>
-        </div>
-        <ul class="checklist">
-          <li>Single agent, ≤ 5 tools</li>
-          <li>One data source (docs or API)</li>
-          <li>Basic guardrails & logs</li>
-          <li>Containerised demo</li>
-        </ul>
-      </div>
-      <div class="tier-box">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-sitemap"></i>POC Plus</h3>
-          <div class="price">$15 k</div>
-        </div>
-        <ul class="checklist">
-          <li>Multi-agent orchestration</li>
-          <li>≤ 3 data sources + vector DB</li>
-          <li>Human-in-the-loop UI</li>
-          <li>Signed audit trail</li>
-        </ul>
-      </div>
-      <div class="tier-box">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-shield-halved"></i>Production Ready</h3>
-          <div class="price">$35 k</div>
-        </div>
-        <ul class="checklist">
-          <li>All POC Plus features</li>
-          <li>K8s manifests + CI/CD</li>
-          <li>Multi-region HA</li>
-          <li>SOC-2 controls & penetration test</li>
-        </ul>
-      </div>
-      <div class="tier-box" style="border:1px solid var(--accent)">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-plus"></i>Add-ons</h3>
-        </div>
-        <ul class="checklist">
-          <li>Extra tool connector: +$2 k</li>
-          <li>On-prem air-gap deploy: +$5 k</li>
-          <li>24 × 7 SRE hand-over: +$3 k</li>
-          <li>Custom compliance pack: quote</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ============================================================ -->
 <!-- DELIVERY PROCESS                                             -->
 <!-- ============================================================ -->
 <section>
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px">Delivery roadmap</h2>
+    <h2 style="text-align:center;margin-bottom:40px">Delivery Roadmap</h2>
     <div class="grid-2">
       <div class="card">
-        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1-2 · Scoping & Data</h3>
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Scoping & Data</h3>
         <ul class="checklist">
           <li>Stakeholder workshop (OKRs, success metrics)</li>
           <li>Data & API discovery (schema, rate-limits, auth)</li>
@@ -244,7 +181,7 @@
         </ul>
       </div>
       <div class="card">
-        <h3><i class="fa-solid fa-code-pull-request"></i>Week 2-3 · Core Build</h3>
+        <h3><i class="fa-solid fa-code-pull-request"></i>Core Build</h3>
         <ul class="checklist">
           <li>Agent graph & tool adapters</li>
           <li>Guardrail policies & eval harness</li>
@@ -252,21 +189,14 @@
         </ul>
       </div>
       <div class="card">
-        <h3><i class="fa-solid fa-vial-circle-check"></i>Week 3-4 · Hardening</h3>
+        <h3><i class="fa-solid fa-vial-circle-check"></i>Hardening</h3>
         <ul class="checklist">
           <li>Load test (500 CCU, p95 ≤ 1.2 s)</li>
           <li>Red-team prompt injection test</li>
           <li>Human-in-the-loop UX polish</li>
         </ul>
       </div>
-      <div class="card">
-        <h3><i class="fa-solid fa-handshake"></i>Week 4-5 · Sign-off & Hand-over</h3>
-        <ul class="checklist">
-          <li>Acceptance demo vs success criteria</li>
-          <li>Run-books, dashboards, audit logs</li>
-          <li>Knowledge-transfer session (2 h + Loom wiki)</li>
-        </ul>
-      </div>
+      
     </div>
   </div>
 </section>
@@ -305,7 +235,7 @@
 <section id="request">
   <div class="container">
     <div class="form-box">
-      <h3><i class="fa-solid fa-paper-plane"></i>Request an agent POC quote</h3>
+      <h3>Request an agent POC quote</h3>
       <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page SOW + calendar link within 24 h.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
