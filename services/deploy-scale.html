@@ -4,17 +4,15 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>The Nexus – Production LLMOps | Arash Nicoomanesh</title>
-
-  <!--  SEO + Social  -->
   <meta name="description" content="From working model to bullet-proof production. LLMOps, autoscaling, cost-guardrails, security & 24 × 7 monitoring. Fixed-price tiers."/>
   <meta property="og:title" content="The Nexus – Production LLMOps"/>
   <meta property="og:description" content="Fixed-price production package: deploy, scale, monitor, optimise."/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://aragit.github.io/services/deploy-scale.html "/>
-  <meta property="og:image" content="https://aragit.github.io/og-nexus.png "/>
+  <meta property="og:url" content="https://aragit.github.io/services/deploy-scale.html"/>
+  <meta property="og:image" content="https://aragit.github.io/og-nexus.png"/>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css "/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root{
       --primary:#0ea5e9;--primary-dark:#0369a1;--secondary:#10b981;
@@ -27,6 +25,7 @@
     body{background:var(--darker);color:#eaf2fb;font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
     img{max-width:100%;display:block}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
     /* ---------- header ---------- */
     header{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid rgba(255,255,255,.05)}
     .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
@@ -34,11 +33,13 @@
     .logo i{color:var(--accent)}
     .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
     .back-btn:hover{border-color:var(--accent);color:var(--accent)}
+
     /* ---------- hero ---------- */
     .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
     .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
     .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6bf}
     .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}
+
     /* ---------- sections ---------- */
     section{padding:clamp(50px,8vw,80px) 0}
     .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
@@ -51,6 +52,27 @@
     .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
     .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
     .highlight{background:var(--accent);color:#000;padding:2px 8px;border-radius:4px;font-weight:600}
+
+    /* ---------- roadmap timeline (NEW) ---------- */
+    .timeline-stripe{position:relative;margin:0 auto 50px;max-width:900px;height:4px;background:#222;border-radius:2px}
+    .timeline-line{position:relative;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px}
+    .marker{position:absolute;top:-8px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:3px solid var(--darker);cursor:pointer;transition:.3s}
+    .marker.done{background:var(--accent)}
+    .marker.now{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+    .marker:hover{transform:translateX(-50%) scale(1.15)}
+
+    .filter-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:40px}
+    .filter-bar .filter-btn{background:#141414;border:1px solid rgba(255,255,255,.1);color:#9ca3af;padding:8px 18px;border-radius:99px;font-size:.9rem;cursor:pointer;transition:.3s}
+    .filter-bar .filter-btn.active,.filter-bar .filter-btn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+
+    .phase-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .phase-card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
+    .phase-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
+    .phase-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .phase-header h3{margin:0;font-size:1.25rem;color:#fff;display:flex;align-items:center;gap:8px}
+    .phase-header h3 i{color:var(--accent)}
+    .phase-card .checklist{margin:0}
+
     /* ---------- tiers ---------- */
     .tier-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px}
     .tier-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -58,6 +80,7 @@
     .tier-head h3 i{color:var(--accent);font-size:1.1rem}
     .price{background:var(--accent);color:#000;padding:6px 14px;border-radius:99px;font-weight:600}
     .duration{color:#9ca3af;font-size:.8rem;margin-top:8px}
+
     /* ---------- form ---------- */
     .form-box{max-width:680px;margin:0 auto;background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
     .form-box h3{margin-bottom:8px}
@@ -68,14 +91,16 @@
     ::placeholder{color:#6b7280}
     .btn-submit{background:var(--accent);color:#fff;padding:14px 28px;border:none;border-radius:50px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:.3s}
     .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.4)}
+
     /* ---------- cta band ---------- */
     .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
     .cta-band h2{font-size:1.8rem;margin-bottom:12px}
     .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
     .btn-light:hover{transform:scale(1.03)}
+
     /* ---------- footer ---------- */
     footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
-    /* ---------- responsive ---------- */
+
     @media(max-width:700px){.form-row{grid-template-columns:1fr}}
   </style>
 </head>
@@ -98,9 +123,9 @@
 <!-- ============================================================ -->
 <section class="hero">
   <div class="container">
-    <span class="badge">Production-readiness package</span>
+    <span class="badge">Fixed-Price LLMOps</span>
     <h1>The Nexus</h1>
-    <p>From working model to bullet-proof production. LLMOps, autoscaling, cost-guardrails, security & 24 × 7 monitoring—one fixed price.</p>
+    <p>From working model to bullet-proof production. LLMOps, autoscaling, cost-guardrails, security & 24 × 7 monitoring—one turnkey package.</p>
   </div>
 </section>
 
@@ -117,7 +142,6 @@
           <li>Blue-green & canary releases</li>
           <li>GPU / CPU autoscaling</li>
           <li>Infrastructure-as-Code (TF/Pulumi)</li>
-          <!-- NEW – complementary to Forge -->
           <li>CDN + WAF edge protection (Cloudflare / AWS WAF)</li>
           <li>IP allow-list & private-link ingress</li>
           <li>DDoS shield (L7 scrubbing, 10 s mitigation)</li>
@@ -129,8 +153,6 @@
         <ul class="checklist">
           <li>End-to-end encryption (TLS 1.3)</li>
           <li>VPC, IAM, RBAC lock-down</li>
-          <li>SOC-2 / HIPAA attestation pack</li>
-          <!-- NEW – complementary to Forge -->
           <li>SOC-2 / HIPAA attestation pack + penetration-test report (CREST)</li>
           <li>SIEM log shipping (Splunk / Datadog, 90 d hot, 1 y cold)</li>
           <li>Secret rotation via Vault / GSM with 30-day TTL</li>
@@ -144,7 +166,6 @@
           <li>Token-cost & spend-limit alerts</li>
           <li>Model-drift & quality dashboards</li>
           <li>24 × 7 on-call rotation (Scale + Enterprise)</li>
-          <!-- NEW – complementary to Forge -->
           <li>SLO burn-rate alerts (PagerDuty, 5 min page)</li>
           <li>Multi-cluster metric federation (Thanos / AMP)</li>
           <li>Error-budget auto-freeze: 90 % consumed → traffic blocked</li>
@@ -158,7 +179,6 @@
           <li>Smart caching (Redis / CDN)</li>
           <li>Spot-instance + quantization savings</li>
           <li>Fin-Ops anomaly detection</li>
-          <!-- NEW – complementary to Forge -->
           <li>Team-level charge-back / show-back dashboards</li>
           <li>Committed-use discount automation (AWS Savings Plans, GCP CUD)</li>
           <li>Real-time cost anomaly ML detector (± 15 % spike)</li>
@@ -169,78 +189,43 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- TIERS  (with honest timelines)                              -->
+<!-- DELIVERY ROADMAP  (interactive timeline – NEW)              -->
 <!-- ============================================================ -->
-<section style="background:#121212">
+<section id="delivery-roadmap">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px">Flat-price tiers</h2>
-    <div class="grid-2">
-      <div class="tier-box">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-rocket"></i>Starter</h3>
-          <div class="price">$6 k</div>
-        </div>
-        <ul class="checklist">
-          <li>Single-region AWS/GCP deploy</li>
-          <li>Auto-scaling 0 → 10 replicas</li>
-          <li>CloudWatch/Grafana dashboards</li>
-          <li>Weekly back-up & restore</li>
-        </ul>
-        <p class="duration">Typical duration: <strong>4 weeks</strong></p>
-      </div>
-      <div class="tier-box">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-sitemap"></i>Scale</h3>
-          <div class="price">$14 k</div>
-        </div>
-        <ul class="checklist">
-          <li>Multi-region active-active</li>
-          <li>Canary + rollback pipelines</li>
-          <li>Custom SLIs / SLOs & paging</li>
-          <li>Cost-anomaly detection</li>
-        </ul>
-        <p class="duration">Typical duration: <strong>6 weeks</strong></p>
-      </div>
-      <div class="tier-box">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-shield-halved"></i>Enterprise</h3>
-          <div class="price">Custom</div>
-        </div>
-        <ul class="checklist">
-          <li>SOC-2 / HIPAA attestation</li>
-          <li>Private-cloud / on-prem option</li>
-          <li>24 × 7 SRE rotation</li>
-          <li>Fin-Ops & drift-autoremediation</li>
-        </ul>
-        <p class="duration">Typical duration: <strong>8-10 weeks</strong></p>
-      </div>
-      <div class="tier-box" style="border:1px solid var(--accent)">
-        <div class="tier-head">
-          <h3><i class="fa-solid fa-plus"></i>Add-ons</h3>
-        </div>
-        <ul class="checklist">
-          <li>CDN edge caching (+$1 k)</li>
-          <li>Advanced DDoS shield (+$1.5 k)</li>
-          <li>Blue-green CI/CD (+$2 k)</li>
-          <li>Custom compliance pack (quote)</li>
-        </ul>
+    <h2 style="text-align:center;margin-bottom:12px">Delivery Roadmap</h2>
+    <p style="max-width:680px;margin:0 auto 40px;text-align:center;color:#9ca3af">
+      Production journey – four phases, fixed exit criteria, zero surprises.
+    </p>
+
+    <!-- filter bar -->
+    <div class="filter-bar">
+     
+      <button class="filter-btn" data-phase="foundation">Foundation</button>
+      <button class="filter-btn" data-phase="hardening">Hardening</button>
+      <button class="filter-btn" data-phase="observability">Observability</button>
+      <button class="filter-btn" data-phase="go-live">Go-Live</button>
+    </div>
+
+    <!-- horizontal timeline -->
+    <div class="timeline-stripe">
+      <div class="timeline-line">
+        <span class="marker done" style="left:5%"  data-week="1" title="Week 1 – Foundation"></span>
+        <span class="marker done" style="left:25%" data-week="2" title="Week 2 – Hardening"></span>
+        <span class="marker done" style="left:45%" data-week="3" title="Week 3 – Hardening"></span>
+        <span class="marker now" style="left:55%" data-week="4" title="Week 4 – Observability"></span>
+        <span class="marker"      style="left:75%" data-week="5" title="Week 5 – Observability"></span>
+        <span class="marker"      style="left:95%" data-week="6-10" title="Weeks 6-10 – Go-Live"></span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============================================================ -->
-<!-- PROCESS  (timeline now scales)                              -->
-<!-- ============================================================ -->
-<!-- ============================================================ -->
-<!-- DELIVERY ROADMAP  (polished & overlap-free)                 -->
-<!-- ============================================================ -->
-<section>
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px">Delivery roadmap</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Foundation</h3>
+    <!-- phase cards -->
+    <div class="phase-grid">
+      <!-- Foundation -->
+      <div class="phase-card" data-phase="foundation">
+        <div class="phase-header">
+          <h3><i class="fa-solid fa-layer-group"></i> Foundation</h3>
+        </div>
         <ul class="checklist">
           <li>Prod-grade IaC baseline (Terraform / Pulumi)</li>
           <li>Multi-account / VPC landing-zone with security guard-rails</li>
@@ -248,8 +233,11 @@
         </ul>
       </div>
 
-      <div class="card">
-        <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 2-3 · Hardening</h3>
+      <!-- Hardening -->
+      <div class="phase-card" data-phase="hardening">
+        <div class="phase-header">
+          <h3><i class="fa-solid fa-shield-halved"></i> Hardening</h3>
+        </div>
         <ul class="checklist">
           <li>Blue-green & canary pipelines with automated rollback</li>
           <li>Monitoring stack (Prometheus, Grafana, Loki, Alertmanager)</li>
@@ -257,8 +245,11 @@
         </ul>
       </div>
 
-      <div class="card">
-        <h3><i class="fa-solid fa-chart-line"></i>Weeks 4-5 · Observability</h3>
+      <!-- Observability -->
+      <div class="phase-card" data-phase="observability">
+        <div class="phase-header">
+          <h3><i class="fa-solid fa-chart-line"></i> Observability</h3>
+        </div>
         <ul class="checklist">
           <li>SLO burn-rate alerts (PagerDuty, 5 min page)</li>
           <li>Token-budget & model-drift dashboards</li>
@@ -266,16 +257,20 @@
         </ul>
       </div>
 
-      <div class="card">
-        <h3><i class="fa-solid fa-handshake"></i>Week X · Go-Live</h3>
+      <!-- Go-Live -->
+      <div class="phase-card" data-phase="go-live">
+        <div class="phase-header">
+          <h3><i class="fa-solid fa-rocket"></i> Go-Live</h3>
+        </div>
         <ul class="checklist">
-          <li><strong>Starter tier:</strong> Week 4</li>
-          <li><strong>Scale tier:</strong> Week 6</li>
-          <li><strong>Enterprise tier:</strong> Week 8-10</li>
+          <li>Starter tier: Week 4</li>
+          <li>Scale tier: Week 6</li>
+          <li>Enterprise tier: Week 8-10</li>
           <li>Final security sign-off & knowledge-transfer session</li>
         </ul>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -296,10 +291,10 @@
 <section id="request">
   <div class="container">
     <div class="form-box">
-      <h3><i class="fa-solid fa-paper-plane"></i>Request a tiered quote</h3>
+      <h3>Request a tiered quote</h3>
       <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page SOW + calendar link within 24 h.</p>
 
-      <form action="https://formspree.io/f/xwpnvzwl " method="POST">
+      <form action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="form-row">
           <div>
             <label>Your name *</label>
@@ -333,7 +328,7 @@
         <!-- hidden fields -->
         <input type="hidden" name="service" value="The Nexus">
         <input type="hidden" name="_subject" value="Website lead: The Nexus">
-        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html ">
+        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
         <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i>Send request</button>
@@ -351,11 +346,23 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  // basic UTM grab
+  /* basic UTM grab */
   const u = new URLSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
-    const v=u.get(p),el=document.createElement('input'); 
+    const v=u.get(p),el=document.createElement('input');
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
+  });
+
+  /* roadmap filter */
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const f = btn.dataset.phase;
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.phase-card').forEach(card=>{
+        card.style.display = (f==='all' || card.dataset.phase===f) ? 'block' : 'none';
+      });
+    });
   });
 </script>
 </body>
