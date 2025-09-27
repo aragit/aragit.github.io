@@ -3,35 +3,18 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Agentic AI — 14-Day Safe Autonomous Agents | Arash Nicoomanesh</title>
+  <title>Agentic AI – Autonomous & Auditable Agents | Arash Nicoomanesh</title>
 
   <!--  SEO + Social  -->
-  <meta name="description" content="Autonomous AI agents that reason, call APIs, and leave tamper-proof audit logs. Fixed-price 14-day POC. SOC-2 controls, pen-tested, on-prem option."/>
-  <meta property="og:title" content="Agentic AI — 14-Day Safe Autonomous Agents"/>
+  <meta name="description" content="Production-grade agentic systems: multi-step reasoning, tool-use, guardrails, audit logs, 24 × 7 ops. Fixed-price POC in 2–4 weeks."/>
+  <meta property="og:title" content="Agentic AI – Autonomous & Auditable Agents"/>
   <meta property="og:description" content="Fixed-price agent builds: reasoning engines, tool-calling, human-in-the-loop, full observability."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aragit.github.io/services/agentic-ai.html"/>
   <meta property="og:image" content="https://aragit.github.io/og-agentic.png"/>
 
-  <!-- FAQPage schema for rich SERP -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"What is included in the 14-day POC?","acceptedAnswer":{"@type":"Answer","text":"A single autonomous agent, ≤ 5 tool integrations, guardrails, signed audit trail, and a go/no-go report."}},
-      {"@type":"Question","name":"Can agents run on-prem?","acceptedAnswer":{"@type":"Answer","text":"Yes. We deliver an air-gapped Kubernetes manifest for an extra $5 k."}},
-      {"@type":"Question","name":"Which compliance frameworks are covered?","acceptedAnswer":{"@type":"Answer","text":"SOC-2 Type II, HIPAA, and ISO 27001 mapping documents are included."}}
-    ]
-  }
-  </script>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-
-  <!-- Alpine.js for interactive pricing -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
   <style>
     :root{
       --primary:#ffb020;--primary-dark:#ff9d00;--secondary:#e11d48;
@@ -50,27 +33,12 @@
     .logo i{color:var(--accent)}
     .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
     .back-btn:hover{border-color:var(--accent);color:var(--accent)}
-
-    /* --- NEW HERO --- */
-    .hero-new{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
-    .hero-new h1{font-size:clamp(2.2rem,5.5vw,3.5rem);font-weight:700;margin-bottom:16px;color:#fff}
-    .hero-new .sub{font-size:1.2rem;max-width:680px;margin:0 auto 20px;color:#fff6f3}
-    .trust-belt{display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;font-size:.9rem;color:#fff8}
-    .trust-belt img{height:24px}
-    .pen-test{text-decoration:underline}
-    .btn-primary{background:var(--accent);color:#fff;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.4)}
-    .slot-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:99px;padding:8px 16px;font-size:.9rem;display:inline-block;margin-top:12px}
-    .underline-ani{background:linear-gradient(90deg,var(--accent),var(--accent)) no-repeat left bottom;background-size:0 2px;animation:draw 1.8s forwards}
-    @keyframes draw{to{background-size:100% 2px}}
-
-    /* --- INTERACTIVE PRICE CALC --- */
-    .price-calc{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;margin:30px auto 0;max-width:420px;text-align:left}
-    .price-calc p{margin-bottom:12px;font-size:1.1rem}
-    .price-calc label{display:flex;align-items:center;justify-content:space-between;font-size:.95rem;margin-bottom:10px}
-    .price-calc input[type=range]{width:120px}
-    .price-calc input[type=checkbox]{margin-left:8px}
-
+    .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
+    .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#fff6f3}
+    .tech-marquee{display:inline-flex;align-items:center;gap:12px;font-size:.8rem;font-weight:500;color:#fff9;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:99px;padding:8px 20px;margin-top:12px;white-space:nowrap;overflow:hidden;position:relative;animation:drift 6s ease-in-out infinite}
+    .tech-marquee i{font-size:1.1rem}
+    @keyframes drift{0%,100%{transform:translateX(3px)}50%{transform:translateX(-3px)}}
     section{padding:clamp(50px,8vw,80px) 0}
     .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
     .card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
@@ -100,23 +68,6 @@
     .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
     .btn-light:hover{transform:scale(1.03)}
     footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
-
-    /* --- EVIDENCE STACK --- */
-    .evidence{background:#121212}
-    .evidence h2{text-align:center;margin-bottom:40px}
-    .evidence .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px}
-    .evidence figure{text-align:center}
-    .evidence img{border-radius:8px;margin-bottom:8px}
-    .evidence figcaption{font-size:.85rem;color:#9ca3af}
-
-    /* --- COMPARISON TABLE --- */
-    .compare-table{width:100%;border-collapse:collapse;margin-top:30px;font-size:.95rem}
-    .compare-table th,.compare-table td{padding:12px 16px;border:1px solid rgba(255,255,255,.08);text-align:center}
-    .compare-table th{background:rgba(255,255,255,.05);color:var(--accent)}
-    .compare-table td{color:#cbd6df}
-    .compare-table .yes{color:#34d399}
-    .compare-table .no{color:#f87171}
-
     @media(max-width:700px){.form-row{grid-template-columns:1fr}}
   </style>
 </head>
@@ -135,42 +86,29 @@
 </header>
 
 <!-- ============================================================ -->
-<!-- NEW HERO                                                     -->
+<!-- HERO                                                         -->
 <!-- ============================================================ -->
-<section class="hero-new">
+<section class="hero">
   <div class="container">
-    <h1>Your AI agents <span class="underline-ani">hallucinated in prod</span> last night.</h1>
-    <p class="sub">We ship autonomous systems that can’t go rogue—signed decisions, human-in-the-loop, and a tamper-proof ledger.  
-    <strong>Delivered as a fixed-price POC in 14 days.</strong></p>
-
-    <div class="trust-belt">
-      <img src="https://aragit.github.io/soc2.svg" alt="SOC-2 Type II">
-      <img src="https://aragit.github.io/iso27001.svg" alt="ISO 27001">
-      <span class="pen-test">Pen-tested by <strong>Cure53</strong> → <a href="assets/cure53-report.pdf" target="_blank" style="color:inherit">report</a></span>
-    </div>
-
-    <a href="#request" class="btn-primary">Get the 14-day POC spec</a>
-    <div class="slot-badge">Next 14-day POC slot: <strong>Oct 14 – Oct 28</strong> (2 left)</div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- INTERACTIVE PRICE CALC                                       -->
-<!-- ============================================================ -->
-<section style="background:#121212">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:10px">Configure your POC price</h2>
-    <div class="price-calc" x-data="{tools:0,agents:1,region:false}">
-      <p>Estimated POC cost: <strong x-text="8+tools*2+(agents>1?7:0)+(region?5:0)+' k USD'">8 k USD</strong></p>
-      <label>Tool integrations <input type="range" x-model="tools" min="0" max="10"><span x-text="tools">0</span></label>
-      <label>Multi-agent orchestration <input type="checkbox" x-model="agents" :value="agents>1?1:2"></label>
-      <label>Multi-region HA <input type="checkbox" x-model="region"></label>
+    <h1>Agentic AI — Autonomous & Auditable Agents</h1>
+    <p>Production-grade agents that reason over your data, call internal tools, respect guardrails and leave a tamper-proof audit trail.</p>
+    <!--  animated built-with strip  -->
+    <div class="tech-marquee">
+      
+      Vertex AI Agent Builder |
+      Google ADK |
+      Agents SDK |
+      Gen AI Toolbox |
+      LangGraph |
+      CrewAI |
+      Temporal
+      
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- WHAT YOU GET (unchanged content, styled as before)          -->
+<!-- WHAT YOU GET                                                 -->
 <!-- ============================================================ -->
 <section>
   <div class="container">
@@ -233,59 +171,7 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- EVIDENCE STACK                                              -->
-<!-- ============================================================ -->
-<section class="evidence">
-  <div class="container">
-    <h2>Evidence we ship safe agents</h2>
-    <div class="grid-3">
-      <figure>
-        <a href="https://github.com/aragit/agent-audit-log-example/blob/main/log.json.sig" target="_blank">
-          <img src="https://aragit.github.io/log-sig.png" alt="Signed log entry"></a>
-        <figcaption>Signed decision log (<code>ed25519</code>)—click to verify</figcaption>
-      </figure>
-      <figure>
-        <a href="assets/cure53-report.pdf" target="_blank">
-          <img src="https://aragit.github.io/pen-test-badge.png" alt="Cure53 pen-test badge"></a>
-        <figcaption>Red-team report: 0 critical, 1 medium fixed</figcaption>
-      </figure>
-      <figure>
-        <img src="https://aragit.github.io/guardrail-demo.gif" alt="Prompt injection blocked">
-        <figcaption>Real-time guardrail blocking 200+ injection patterns</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- COMPETITIVE COMPARISON                                       -->
-<!-- ============================================================ -->
-<section style="background:#121212">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:20px">How we compare</h2>
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Arash</th>
-          <th>LangChain Consulting</th>
-          <th>CrewAI Enterprise</th>
-          <th>DIY</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Fixed-price 14-day POC</td><td class="yes">✅</td><td class="no">❌ T&M</td><td class="no">❌ T&M</td><td class="no">❌ —</td></tr>
-        <tr><td>Signed audit trail (ed25519)</td><td class="yes">✅</td><td class="no">❌ optional</td><td class="no">❌ logs only</td><td class="no">❌</td></tr>
-        <tr><td>Human-in-loop ≤ 15 min SLA</td><td class="yes">✅</td><td class="no">❌ best-effort</td><td class="no">❌</td><td class="no">❌</td></tr>
-        <tr><td>Pen-test included</td><td class="yes">✅ Cure53</td><td class="no">❌ extra $10 k</td><td class="no">❌</td><td class="no">❌</td></tr>
-        <tr><td>On-prem air-gap</td><td class="yes">✅ +$5 k</td><td class="no">❌ cloud only</td><td class="no">❌</td><td class="yes">✅</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- FLAT-PRICE TIERS                                             -->
+<!-- FLAT-PRICE TIERS  (icons white, no duration)                -->
 <!-- ============================================================ -->
 <section style="background:#121212">
   <div class="container">
@@ -385,12 +271,29 @@
   </div>
 </section>
 
+<style>
+/* ---------- MOBILE FIX for tech-marquee ---------- */
+@media (max-width: 600px) {
+  .tech-marquee {
+    white-space: normal;      /* let text wrap */
+    flex-wrap: wrap;          /* allow multi-line */
+    justify-content: center;  /* centre the words */
+    font-size: 0.75rem;       /* slightly smaller */
+    padding: 8px 14px;
+    max-width: 96vw;          /* never wider than screen */
+    margin: 12px auto 0;      /* centre the strip */
+  }
+}
+</style>
+
+
+    
 <!-- ============================================================ -->
-<!-- CTA BAND                                                     -->
+<!-- CTA BAND  (copy refreshed)                                  -->
 <!-- ============================================================ -->
 <div class="cta-band">
   <div class="container">
-    <h2>Ready to ship your safe agent?</h2>
+    <h2>Ready to ship your agent?</h2>
     <p style="margin-bottom:24px">Book a quick scoping call and receive a fixed-price proposal within 24 h.</p>
     <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Book a scoping call</a>
   </div>
@@ -437,7 +340,7 @@
         </div>
 
         <!-- hidden fields -->
-        <input type="hidden" name="service" value="Agentic AI – 14-Day Safe Autonomous Agents">
+        <input type="hidden" name="service" value="Agentic AI – Autonomous & Auditable Agents">
         <input type="hidden" name="_subject" value="Website lead: Agentic AI">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
@@ -457,9 +360,6 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  // dynamic next-slot badge
-  const slot = new Date(Date.now() + 14*86400000).toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  document.querySelector('.slot-badge strong').textContent = `Oct ${slot.split(' ')[1]} – Oct ${parseInt(slot.split(' ')[1])+14}`;
   // basic UTM grab
   const u = new URLSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
