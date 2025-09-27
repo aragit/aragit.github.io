@@ -12,7 +12,7 @@
   <meta property="og:image" content="https://aragit.github.io/og-nexus.png"/>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root{
       --primary:#0ea5e9;--primary-dark:#0369a1;--secondary:#10b981;
@@ -36,42 +36,80 @@
 
     /* ---------- hero ---------- */
     .hero{background:var(--header-gradient);padding:clamp(60px,10vw,100px) 0;text-align:center}
-    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff;font-family:'Space Grotesk',sans-serif}
     .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6bf}
     .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}
 
     /* ---------- sections ---------- */
     section{padding:clamp(50px,8vw,80px) 0}
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
-    .card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
-    .card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
-    .card h3{font-size:1.4rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#fff}
-    .card h3 i{color:var(--accent)}
-    .card p{color:#bfcbd7;margin-bottom:12px}
-    .checklist{list-style:none;color:#bfcbd7}
-    .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
-    .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
-    .highlight{background:var(--accent);color:#000;padding:2px 8px;border-radius:4px;font-weight:600}
+    /* ---------- NEW – glass-morphic 4-card row ---------- */
+    .row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .glass-card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:20px;
+      padding:28px;
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      box-shadow:0 8px 32px rgba(0,0,0,.37);
+      transition:transform .3s,box-shadow .3s,border-color .3s;
+      position:relative;
+      overflow:hidden;
+    }
+    .glass-card:hover{
+      transform:translateY(-5px);
+      border-color:var(--accent);
+      box-shadow:0 0 20px rgba(255,107,0,.45);
+    }
+    .glass-card h3{font-size:1.25rem;margin-bottom:14px;display:flex;align-items:center;gap:10px;color:#fff;font-family:'Space Grotesk',sans-serif}
+    .glass-card h3 i{color:var(--accent)}
+    .glass-card .checklist{margin-top:12px}
 
-    /* ---------- roadmap timeline (NEW) ---------- */
-    .timeline-stripe{position:relative;margin:0 auto 50px;max-width:900px;height:4px;background:#222;border-radius:2px}
+    /* ---------- SOTA roadmap section – live aurora ---------- */
+    #delivery-roadmap{position:relative;overflow:hidden}
+    #delivery-roadmap::before{
+      content:'';
+      position:absolute;
+      inset:-100%;
+      background:radial-gradient(ellipse at 20% 20%,var(--accent) 0%,transparent 40%),
+                 radial-gradient(ellipse at 80% 70%,var(--primary) 0%,transparent 40%);
+      animation:aurora 20s linear infinite;
+      z-index:0;
+      pointer-events:none;
+    }
+    @keyframes aurora{
+      0%{transform:rotate(0deg) scale(1.5)}
+      100%{transform:rotate(360deg) scale(1.5)}
+    }
+    #delivery-roadmap .container{position:relative;z-index:1}
+
+    /* ---------- timeline ---------- */
+    .timeline-stripe{position:relative;margin:0 auto 50px;max-width:900px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;z-index:1}
     .timeline-line{position:relative;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px}
-    .marker{position:absolute;top:-8px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:3px solid var(--darker);cursor:pointer;transition:.3s}
+    .marker{position:absolute;top:-8px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:3px solid var(--darker);cursor:pointer;transition:.3s;z-index:2}
     .marker.done{background:var(--accent)}
     .marker.now{background:var(--accent);box-shadow:0 0 12px var(--accent)}
     .marker:hover{transform:translateX(-50%) scale(1.15)}
 
-    .filter-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:40px}
-    .filter-bar .filter-btn{background:#141414;border:1px solid rgba(255,255,255,.1);color:#9ca3af;padding:8px 18px;border-radius:99px;font-size:.9rem;cursor:pointer;transition:.3s}
+    .filter-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:40px;z-index:1;position:relative}
+    .filter-bar .filter-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#cbd6df;padding:8px 18px;border-radius:99px;font-size:.9rem;cursor:pointer;transition:.3s}
     .filter-bar .filter-btn.active,.filter-bar .filter-btn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
 
-    .phase-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .phase-card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
-    .phase-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
+    .phase-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));z-index:1;position:relative}
+    .phase-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.37);transition:transform .3s,box-shadow .3s,border-color .3s}
+    .phase-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 0 20px rgba(255,107,0,.45)}
     .phase-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-    .phase-header h3{margin:0;font-size:1.25rem;color:#fff;display:flex;align-items:center;gap:8px}
+    .phase-header h3{margin:0;font-size:1.25rem;color:#fff;font-family:'Space Grotesk',sans-serif}
     .phase-header h3 i{color:var(--accent)}
     .phase-card .checklist{margin:0}
+
+    /* radial OKR progress */
+    .okr-radial{position:relative;width:48px;height:48px;margin-left:auto}
+    .okr-radial svg{transform:rotate(-90deg)}
+    .okr-radial circle{fill:none;stroke-width:4}
+    .okr-radial .bg{stroke:rgba(255,255,255,.1)}
+    .okr-radial .prog{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .6s ease}
+    .okr-val{position:absolute;inset:0;display:grid;place-items:center;font-size:.75rem;font-weight:600}
 
     /* ---------- tiers ---------- */
     .tier-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px}
@@ -94,14 +132,18 @@
 
     /* ---------- cta band ---------- */
     .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
-    .cta-band h2{font-size:1.8rem;margin-bottom:12px}
+    .cta-band h2{font-size:1.8rem;margin-bottom:12px;font-family:'Space Grotesk',sans-serif}
     .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
     .btn-light:hover{transform:scale(1.03)}
 
     /* ---------- footer ---------- */
     footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
 
-    @media(max-width:700px){.form-row{grid-template-columns:1fr}}
+    /* ---------- hide non-Foundation on first paint ---------- */
+    .phase-card:not([data-phase="foundation"]){display:none}
+
+    @media(max-width:900px){.row-4{grid-template-columns:1fr 1fr}}
+    @media(max-width:500px){.row-4{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -123,43 +165,43 @@
 <!-- ============================================================ -->
 <section class="hero">
   <div class="container">
-    <span class="badge">Fixed-Price LLMOps</span>
+    
     <h1>The Nexus</h1>
     <p>From working model to bullet-proof production. LLMOps, autoscaling, cost-guardrails, security & 24 × 7 monitoring—one turnkey package.</p>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- WHAT YOU GET  (production-grade)                           -->
+<!-- WHAT YOU GET  – 4 glass cards in a row                     -->
 <!-- ============================================================ -->
 <section>
   <div class="container">
-    <div class="grid-2">
-      <div class="card">
+    <div class="row-4">
+      <div class="glass-card">
         <h3><i class="fa-solid fa-server"></i>Cloud-Native Deploy</h3>
         <ul class="checklist">
           <li>Multi-region active-active (starter = single-region)</li>
           <li>Blue-green & canary releases</li>
           <li>GPU / CPU autoscaling</li>
           <li>Infrastructure-as-Code (TF/Pulumi)</li>
-          <li>CDN + WAF edge protection (Cloudflare / AWS WAF)</li>
+          <li>CDN + WAF edge protection</li>
           <li>IP allow-list & private-link ingress</li>
           <li>DDoS shield (L7 scrubbing, 10 s mitigation)</li>
         </ul>
       </div>
 
-      <div class="card">
+      <div class="glass-card">
         <h3><i class="fa-solid fa-shield-halved"></i>Security & Compliance</h3>
         <ul class="checklist">
           <li>End-to-end encryption (TLS 1.3)</li>
           <li>VPC, IAM, RBAC lock-down</li>
-          <li>SOC-2 / HIPAA attestation pack + penetration-test report (CREST)</li>
-          <li>SIEM log shipping (Splunk / Datadog, 90 d hot, 1 y cold)</li>
-          <li>Secret rotation via Vault / GSM with 30-day TTL</li>
+          <li>SOC-2 / HIPAA attestation pack + CREST pen-test</li>
+          <li>SIEM log shipping (Splunk / Datadog)</li>
+          <li>Secret rotation via Vault / GSM (30 d TTL)</li>
         </ul>
       </div>
 
-      <div class="card">
+      <div class="glass-card">
         <h3><i class="fa-solid fa-chart-line"></i>Observability 360°</h3>
         <ul class="checklist">
           <li>Latency, throughput, error-rate SLIs</li>
@@ -167,12 +209,11 @@
           <li>Model-drift & quality dashboards</li>
           <li>24 × 7 on-call rotation (Scale + Enterprise)</li>
           <li>SLO burn-rate alerts (PagerDuty, 5 min page)</li>
-          <li>Multi-cluster metric federation (Thanos / AMP)</li>
           <li>Error-budget auto-freeze: 90 % consumed → traffic blocked</li>
         </ul>
       </div>
 
-      <div class="card">
+      <div class="glass-card">
         <h3><i class="fa-solid fa-dollar-sign"></i>Cost Guardrails</h3>
         <ul class="checklist">
           <li>Usage quotas & budget hard-caps</li>
@@ -180,7 +221,7 @@
           <li>Spot-instance + quantization savings</li>
           <li>Fin-Ops anomaly detection</li>
           <li>Team-level charge-back / show-back dashboards</li>
-          <li>Committed-use discount automation (AWS Savings Plans, GCP CUD)</li>
+          <li>Committed-use discount automation</li>
           <li>Real-time cost anomaly ML detector (± 15 % spike)</li>
         </ul>
       </div>
@@ -189,19 +230,18 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- DELIVERY ROADMAP  (interactive timeline – NEW)              -->
+<!-- SOTA DELIVERY ROADMAP  –  live aurora behind glass cards    -->
 <!-- ============================================================ -->
 <section id="delivery-roadmap">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:12px">Delivery Roadmap</h2>
+    <h2 style="text-align:center;margin-bottom:12px;font-family:'Space Grotesk',sans-serif">Delivery Roadmap</h2>
     <p style="max-width:680px;margin:0 auto 40px;text-align:center;color:#9ca3af">
-      Production journey – four phases, fixed exit criteria, zero surprises.
+      Outcome-driven, risk-gated, feedback-rich: a living 10-week production journey.
     </p>
 
-    <!-- filter bar -->
+    <!-- filter bar (NO "All Phases" button) -->
     <div class="filter-bar">
-     
-      <button class="filter-btn" data-phase="foundation">Foundation</button>
+      <button class="filter-btn active" data-phase="foundation">Foundation</button>
       <button class="filter-btn" data-phase="hardening">Hardening</button>
       <button class="filter-btn" data-phase="observability">Observability</button>
       <button class="filter-btn" data-phase="go-live">Go-Live</button>
@@ -221,15 +261,20 @@
 
     <!-- phase cards -->
     <div class="phase-grid">
-      <!-- Foundation -->
+      <!-- Foundation (visible by default) -->
       <div class="phase-card" data-phase="foundation">
         <div class="phase-header">
           <h3><i class="fa-solid fa-layer-group"></i> Foundation</h3>
+          <div class="okr-radial" data-progress="100">
+            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="0"/></svg>
+            <span class="okr-val">100 %</span>
+          </div>
         </div>
         <ul class="checklist">
-          <li>Prod-grade IaC baseline (Terraform / Pulumi)</li>
-          <li>Multi-account / VPC landing-zone with security guard-rails</li>
-          <li>Cost & compliance baselines (budget tags, audit trail)</li>
+          <li>Prod-grade IaC baseline (Terraform / Pulumi) with modular, reusable components</li>
+          <li>Multi-account / VPC landing-zone with security guard-rails and automated compliance checks</li>
+          <li>Cost & compliance baselines (budget tags, audit trail, Fin-Ops anomaly detector)</li>
+          <li>Lean canvas validated: problem, solution, metrics, personas signed-off by stakeholders</li>
         </ul>
       </div>
 
@@ -237,11 +282,16 @@
       <div class="phase-card" data-phase="hardening">
         <div class="phase-header">
           <h3><i class="fa-solid fa-shield-halved"></i> Hardening</h3>
+          <div class="okr-radial" data-progress="75">
+            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="31.5"/></svg>
+            <span class="okr-val">75 %</span>
+          </div>
         </div>
         <ul class="checklist">
-          <li>Blue-green & canary pipelines with automated rollback</li>
-          <li>Monitoring stack (Prometheus, Grafana, Loki, Alertmanager)</li>
-          <li>Chaos & load tests (500 CCU, p95 ≤ 1.2 s, error ≤ 0.5 %)</li>
+          <li>Blue-green & canary pipelines with automated rollback and SLA-based promotion gates</li>
+          <li>Monitoring stack (Prometheus, Grafana, Loki, Alertmanager) + SLO burn-rate alerts</li>
+          <li>Chaos & load tests (500 CCU, p95 ≤ 1.2 s, error ≤ 0.5 %) – Game-Days every Friday</li>
+          <li>Security chaos: automated penetration tests, secret-leak simulation, credential rotation</li>
         </ul>
       </div>
 
@@ -249,11 +299,16 @@
       <div class="phase-card" data-phase="observability">
         <div class="phase-header">
           <h3><i class="fa-solid fa-chart-line"></i> Observability</h3>
+          <div class="okr-radial" data-progress="60">
+            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="50.4"/></svg>
+            <span class="okr-val">60 %</span>
+          </div>
         </div>
         <ul class="checklist">
-          <li>SLO burn-rate alerts (PagerDuty, 5 min page)</li>
-          <li>Token-budget & model-drift dashboards</li>
-          <li>On-call run-books + incident-response playbooks</li>
+          <li>Token-budget & model-drift dashboards with anomaly ML detector (± 15 % spike)</li>
+          <li>Blame-less incident reviews, run-books auto-generated from Post-Mortems</li>
+          <li>Error-budget auto-freeze: 90 % consumed → traffic blocked, exec alert fired</li>
+          <li>Continuous-feedback demos every Tuesday; backlog re-prioritised within 24 h</li>
         </ul>
       </div>
 
@@ -261,12 +316,16 @@
       <div class="phase-card" data-phase="go-live">
         <div class="phase-header">
           <h3><i class="fa-solid fa-rocket"></i> Go-Live</h3>
+          <div class="okr-radial" data-progress="30">
+            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="88.2"/></svg>
+            <span class="okr-val">30 %</span>
+          </div>
         </div>
         <ul class="checklist">
-          <li>Starter tier: Week 4</li>
-          <li>Scale tier: Week 6</li>
-          <li>Enterprise tier: Week 8-10</li>
-          <li>Final security sign-off & knowledge-transfer session</li>
+          <li>Starter tier: Week 4 – security sign-off + knowledge-transfer session recorded</li>
+          <li>Scale tier: Week 6 – committed-use discounts auto-applied, Fin-Ops hand-off</li>
+          <li>Enterprise tier: Week 8-10 – custom SLA, white-glove support, exit architecture review</li>
+          <li>Retro & next-horizon workshop: roadmap evolves, tech-debt budget locked</li>
         </ul>
       </div>
     </div>
@@ -279,7 +338,7 @@
 <!-- ============================================================ -->
 <div class="cta-band">
   <div class="container">
-    <h2>Ready to go live?</h2>
+    <h2 style="font-family:'Space Grotesk',sans-serif">Ready to go live?</h2>
     <p style="margin-bottom:24px">I deliver <strong>one Nexus package per month</strong>—reserve your slot.</p>
     <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Book a scoping call</a>
   </div>
@@ -353,17 +412,31 @@
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
   });
 
-  /* roadmap filter */
+  /* ---------- roadmap filter (no "all" logic) ---------- */
   document.querySelectorAll('.filter-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const f = btn.dataset.phase;
       document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       document.querySelectorAll('.phase-card').forEach(card=>{
-        card.style.display = (f==='all' || card.dataset.phase===f) ? 'block' : 'none';
+        card.style.display = card.dataset.phase === f ? 'block' : 'none';
       });
     });
   });
+
+  /* animate radial bars on scroll */
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const svg = e.target.querySelector('.prog');
+        const val = parseInt(e.target.dataset.progress,10);
+        const circ = 2*Math.PI*20;          // r=20
+        svg.style.strokeDashoffset = circ * (1 - val/100);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.okr-radial').forEach(r=>io.observe(r));
 </script>
 </body>
 </html>
