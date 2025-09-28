@@ -55,8 +55,9 @@
       background-position:center;
       background-repeat:no-repeat;
     }
-    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
-    .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#fff6f3}
+    .hero h1{font-size:clamp(2rem,5vw,2.5rem);font-weight:700;margin-bottom:16px;color:#fff}
+    .hero p{font-size:1.3rem;max-width:680px;margin:0 auto;color:#fff6f3}
+    .hero p{font-weight:600;}
     .tech-marquee{display:inline-flex;align-items:center;gap:12px;font-size:.8rem;font-weight:500;color:#fff9;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:99px;padding:8px 20px;margin-top:12px;white-space:nowrap;overflow:hidden;position:relative;animation:drift 6s ease-in-out infinite}
     .tech-marquee i{font-size:1.1rem}
     @keyframes drift{0%,100%{transform:translateX(3px)}50%{transform:translateX(-3px)}}
@@ -111,13 +112,184 @@
 <!-- ============================================================ -->
 <section class="hero">
   <div class="container">
-    <h1>Agentic AI — Autonomous & Auditable Agents</h1>
+    <h1>Agentic AI</h1>
     <p>Production-grade agents that reason over your data, call internal tools, respect guardrails and leave a tamper-proof audit trail.</p>
     <!--  animated built-with strip  -->
     
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!--  AGENTIC MATURITY CURVE  –  interactive + benchmarks        -->
+<!-- ============================================================ -->
+<section id="maturity">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:12px">Where Are You on the Agentic Curve?</h2>
+    <p style="max-width:680px;margin:0 auto 40px;text-align:center;color:#9ca3af;">
+      Move the slider to see the controls, metrics and deliverables that unlock each level – based on 2024 enterprise deployments.
+    </p>
+
+    <!--  INTERACTIVE SLIDER  -->
+    <div class="maturity-slider">
+      <input type="range" min="0" max="3" value="1" id="levelRange">
+      <div class="labels">
+        <span>L0<br>Chat-bot</span>
+        <span>L1<br>Retrieval</span>
+        <span>L2<br>Pilot</span>
+        <span>L3<br>Agent</span>
+      </div>
+    </div>
+
+    <!--  DYNAMIC CARD  -->
+    <div class="maturity-card" id="maturityCard">
+      <!-- content injected by JS  -->
+    </div>
+
+    <!--  BENCHMARK TABLE  (always visible)  -->
+    <table class="benchmark">
+      <thead>
+        <tr>
+          <th>Metric (industry median 2024)</th>
+          <th>L0</th>
+          <th>L1</th>
+          <th>L2</th>
+          <th>L3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Task success rate</td><td>68 %</td><td>78 %</td><td>86 %</td><td>94 %</td></tr>
+        <tr><td>p95 latency</td><td>—</td><td>4.2 s</td><td>2.1 s</td><td>1.2 s</td></tr>
+        <tr><td>Escalations / 1 k tasks</td><td>—</td><td>120</td><td>14</td><td>≤ 1</td></tr>
+        <tr><td>Token cost $ / 1 k tasks</td><td>0.20</td><td>0.55</td><td>1.10</td><td>1.40</td></tr>
+        <tr><td>Audit coverage</td><td>0 %</td><td>30 %</td><td>90 %</td><td>100 %</td></tr>
+      </tbody>
+    </table>
+
+    <!--  CTA  -->
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#request" class="btn-light"><i class="fa-solid fa-chart-line"></i>Book maturity scan → get gap report</a>
+    </div>
+  </div>
+</section>
+
+<!-- =====  INLINE CSS + JS  ===== -->
+<style>
+/* ----------  MATURITY SLIDER  ---------- */
+.maturity-slider{
+  position:relative;
+  max-width:520px;
+  margin:0 auto 40px;
+}
+.maturity-slider input[type=range]{
+  width:100%; height:8px;
+  background:rgba(255,255,255,.08);
+  border-radius:4px;
+  outline:none;
+  -webkit-appearance:none;
+}
+.maturity-slider input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:24px; height:24px;
+  background:var(--accent);
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:0 0 10px rgba(255,107,0,.5);
+}
+.maturity-slider .labels{
+  display:flex;
+  justify-content:space-between;
+  margin-top:8px;
+  font-size:.8rem;
+  color:#9ca3af;
+}
+
+/* ----------  DYNAMIC CARD  ---------- */
+.maturity-card{
+  background:linear-gradient(145deg,#1a1a1a,#141414);
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:16px;
+  padding:32px;
+  margin-bottom:40px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.maturity-card h3{color:var(--accent);margin-bottom:12px;font-size:1.3rem;}
+.maturity-card .tag{
+  display:inline-block;
+  background:rgba(255,155,0,.15);
+  color:#ff9d00;
+  padding:4px 10px;
+  border-radius:99px;
+  font-size:.75rem;
+  margin-right:8px;
+}
+
+/* ----------  BENCHMARK TABLE  ---------- */
+table.benchmark{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.9rem;
+}
+table.benchmark th, table.benchmark td{
+  padding:10px 12px;
+  border:1px solid rgba(255,255,255,.08);
+  text-align:center;
+}
+table.benchmark th{background:rgba(255,255,255,.04);}
+table.benchmark td{color:#cbd6df;}
+table.benchmark tr:nth-child(even){background:rgba(255,255,255,.02);}
+</style>
+
+<script>
+const maturityData = [
+  { // L0
+    title: "Level 0 – Fixed Rules & Repetitive Tasks",
+    desc: "Chat-bots & co-pilots with no reasoning or learning. Follow static decision trees.",
+    tags: ["FAQ bot", "Decision tree", "Zero learning"],
+    deliverables: ["Intent catalogue", "Rule engine", "Basic analytics"]
+  },
+  { // L1
+    title: "Level 1 – Information Retrieval Agent",
+    desc: "Reads from scattered data, answers with citations, recommends next actions.",
+    tags: ["RAG", "Citation", "Low reasoning"],
+    deliverables: ["Vector DB", "1 k–5 k eval Q&A", "Human-review queue"]
+  },
+  { // L2
+    title: "Level 2 – Pilot Autonomous Agent",
+    desc: "3-step planner, 5–10 tools, ≤ 3 escalations / 100 tasks, full audit trail.",
+    tags: ["ReAct", "Tool-use", "Guardrails"],
+    deliverables: ["ReAct loop", "OPA policies", "Eval harness", "HITL Slack"]
+  },
+  { // L3
+    title: "Level 3 – Production Agent",
+    desc: "10-step DAG, 20+ tools, ≤ 1 escalation / 1 k tasks, signed snapshots, 24 × 7.",
+    tags: ["Multi-step", "Saga pattern", "WORM logs"],
+    deliverables: ["DAG planner", "Red-team report", "SOC-2 mapping", "Budget alerts"]
+  }
+];
+
+const slider = document.getElementById('levelRange');
+const card   = document.getElementById('maturityCard');
+
+function renderCard(level){
+  const m = maturityData[level];
+  card.innerHTML = `
+    <h3>${m.title}</h3>
+    <p>${m.desc}</p>
+    <div style="margin:16px 0 12px;">
+      ${m.tags.map(t=>`<span class="tag">${t}</span>`).join('')}
+    </div>
+    <ul class="checklist">
+      ${m.deliverables.map(d=>`<li>${d}</li>`).join('')}
+    </ul>
+  `;
+}
+slider.addEventListener('input', e => renderCard(parseInt(e.target.value)));
+renderCard(1); // init on L1
+</script>
+
+
+
+    
 <!-- ============================================================ -->
 <!-- WHAT YOU GET                                                 -->
 <!-- ============================================================ -->
