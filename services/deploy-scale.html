@@ -35,7 +35,27 @@
     .back-btn:hover{border-color:var(--accent);color:var(--accent)}
 
     /* ---------- hero ---------- */
-    .hero{padding:clamp(60px,10vw,100px) 0;text-align:center;position:relative;overflow:hidden}
+    .hero{
+      padding:clamp(60px,10vw,100px) 0;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    
+      /* 1. background image + 2. fade mask */
+      background-image:
+        /* fade mask: black → transparent → black (top→bottom) */
+        linear-gradient(to bottom,
+          rgba(10,10,10,1) 0%,
+          rgba(10,10,10,0.25) 40%,
+          rgba(10,10,10,0) 60%,
+          rgba(10,10,10,1) 100%),
+        /* your actual image */
+        url('https://static.vecteezy.com/system/resources/previews/043/169/461/large_2x/ai-generated-chess-pieces-on-chess-board-free-photo.jpeg');          /* << change to your file */
+    
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
     .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff;font-family:'Space Grotesk',sans-serif}
     .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6bf}
     .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}

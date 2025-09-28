@@ -35,7 +35,27 @@
     .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
     .back-btn:hover{border-color:var(--accent);color:var(--accent)}
     /* ---------- hero ---------- */
-    .hero{padding:clamp(60px,10vw,100px) 0;text-align:center;position:relative;overflow:hidden}
+    .hero{
+      padding:clamp(60px,10vw,100px) 0;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    
+      /* 1. background image + 2. fade mask */
+      background-image:
+        /* fade mask: black → transparent → black (top→bottom) */
+        linear-gradient(to bottom,
+          rgba(10,10,10,1) 0%,
+          rgba(10,10,10,0.25) 40%,
+          rgba(10,10,10,0) 60%,
+          rgba(10,10,10,1) 100%),
+        /* your actual image */
+        url('https://img.freepik.com/premium-photo/digital-chessboard_332713-24722.jpg');          /* << change to your file */
+    
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
     .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:16px;color:#fff}
     .hero p{font-size:1.15rem;max-width:680px;margin:0 auto;color:#cbd6df}
     .badge{display:inline-block;background:#000;color:#fff;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-top:1rem}
