@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Case Study – COVID-19 Diagnosis with Audio Biomarkers | Arash Nicoomanesh</title>
-  <meta name="description" content="COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals">
+  <meta name="description" content="COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals (illustrative demo results)">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -94,10 +94,20 @@
     }
     
     .subtitle { 
-      font-size: 1.2rem; 
+      font-size: 1.1rem; 
       color: #666; 
-      margin: 0 极 2.5rem;
+      margin: 0 0 1rem;
       font-weight: 400;
+    }
+
+    .disclaimer {
+      font-size: 0.9rem;
+      color: #8a6d3b;
+      background: #fff4e5;
+      border-left: 4px solid #ffcc80;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
     }
     
     h2 {
@@ -121,7 +131,7 @@
     }
     
     p, li { 
-      margin: 0 0 1.2rem;
+      margin: 0 0 1rem;
       font-weight: 300;
       color: #444; /* Slightly lighter than headings */
     }
@@ -276,6 +286,22 @@
       transform: translateY(-2px);
     }
 
+    /* === TABLES === */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    table th, table td {
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid #eee;
+      font-weight: 300;
+      color: #444;
+    }
+    table th { font-weight: 600; color: #222; }
+
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
       .header-container {
@@ -319,68 +345,10 @@
       }
     }
 
-      /* remove left orange bars & make h2 underline full text width */
-    .feature-card,
-    .scenario-block {
-      border-left: none !important;
-    }
-    
-    h2 {
-      position: relative;
-      display: inline-block;          /* shrink-wrap to text */
-      max-width: 100%;
-      padding-bottom: 0.4rem;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;                   /* exactly the text length */
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-      /* 1  remove underline on "Explore my blog" button ------------- */
-    #articles .btn-hero {
-      text-decoration: none !important;
-    }
-    
-    /* 2  remove underline on service card titles + larger font ---- */
-    #services .card-body h3 {
-      text-decoration: none !important;
-      font-size: 1.05rem;          /* slightly bigger */
-      font-weight: 600;
-    }
-    
-    /* 3  tighter nav items + white icon ---------------------------- */
-    #navbar ul {
-      gap: 1.2rem;                 /* closer items */
-    }
-    
-    #navbar ul li a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: #fff;
-      text-decoration: none;
-    }
-    
-    #navbar ul li a::before {      /* white icon before text */
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      font-size: 0.9rem;
-      color: #fff;
-    }
-    
-    /* assign icons (unicode) */
-    #navbar ul li:nth-child(1) a::before { content: "\f015"; } /* Home */
-    #navbar ul li:nth-child(2) a::before { content: "\f007"; } /* About */
-    #navbar ul li:nth-child(3) a::before { content: "\f085"; } /* Services */
-    #navbar ul li:nth-child(4) a::before { content: "\f0b1"; } /* Solutions */
-    #navbar ul li:nth-child(5) a::before { content: "\f781"; } /* Blog */
-    #navbar ul li:nth-child(6) a::before { content: "\f0e0"; } /* Contact */
+    /* cosmetic adjustments kept from original template */
+    .feature-card { border-left: none !important; }
+    h2 { display: inline-block; padding-bottom: 0.4rem; max-width: 100%; }
+    h2::after { width: 100%; height: 2px; background: var(--accent); }
   </style>
 </head>
 
@@ -400,20 +368,23 @@
 
   <main>
     <h1>Case Study: COVID-19 Diagnosis with Audio Biomarkers</h1>
-    <p class="subtitle">Non-invasive COVID-19 detection through acoustic analysis of breathing, cough, and speech signals</p>
+    <p class="subtitle">Non-invasive COVID-19 screening using acoustic analysis of cough, breath and short speech recorded on consumer devices.</p>
 
+    <div class="disclaimer">
+      <strong>Demo results shown below are illustrative.</strong> The numeric values and charts on this page are scaled. They are **not** validated clinical performance 
+    </div>
+    <img class="hero-img" src="cov2.jpg" alt="COVID-19">
     <section id="challenges">
       <h2>Challenges</h2>
-      <p>The COVID-19 pandemic highlighted the critical need for rapid, accessible, and non-invasive diagnostic tools. Traditional testing methods like PCR require specialized equipment, trained personnel, and have significant turnaround times, creating bottlenecks during pandemic surges.</p>
+      <p>The COVID-19 pandemic highlighted a global need for fast, widely accessible screening tools. Acoustic analysis of respiratory sounds offers a low-cost, non-invasive option but raises several technical and ethical challenges.</p>
       
       <div class="feature-card">
         <h3>Key Challenges</h3>
         <ul>
-          <li><strong>Accessibility:</strong> Limited availability of PCR tests in remote or underserved areas</li>
-          <li><strong>Speed:</strong> Long turnaround times for lab-based testing results</li>
-          <li><strong>Cost:</strong> High expense of traditional testing methods at scale</li>
-          <li><strong>Data Scarcity:</strong> Limited availability of curated audio datasets for COVID-19 research</li>
-          <li><strong>Signal Variability:</strong> Significant differences in audio signals across age, gender, and health conditions</li>
+          <li><strong>Data scarcity & labeling:</strong> Curated, clinically-verified audio datasets are limited and heterogeneous.</li>
+          <li><strong>Confounders:</strong> Device, environment, language, age, and comorbidity create spurious correlations that can bias models.</li>
+          <li><strong>Signal variability:</strong> Breath/cough/speech acoustic signatures differ across people and recording conditions.</li>
+          <li><strong>Regulatory sensitivity:</strong> Clinical claims require external validation and ethical safeguards (IRB, consent, privacy).</li>
         </ul>
       </div>
     </section>
@@ -422,29 +393,37 @@
 
     <section id="solution">
       <h2>Solution & Architecture</h2>
-      <p>We developed a novel AI-powered solution for COVID-19 detection through acoustic analysis of breathing, cough, and speech signals, providing a rapid, non-invasive screening tool that could be deployed via mobile devices.</p>
+      <p>We built a reproducible pipeline that combines careful preprocessing, multiple baseline models (classical + CNN + self-supervised transfer), and a deployment-ready distillation recipe for a compact on-device classifier. The pipeline emphasizes patient-level evaluation, confounder analysis, and explainability.</p>
       
-      <img class="hero-img" src="../assets/covid-audio-arch.png" alt="COVID-19 Audio Analysis Architecture">
-      <p class="img-caption">Architecture diagram showing the audio processing and analysis pipeline</p>
+      <img class="hero-img" src="cov1.jpeg" alt="COVID-19">
+      <p class="img-caption">Audio pipeline: collection → segmentation → features / SSL embeddings → model training → explainability → distillation + mobile deployment.</p>
 
       <div class="feature-card">
         <h3>Key Components</h3>
         <ol class="solution-list">
           <li>
-            <strong>Audio Data Collection Pipeline</strong>
-            <p>Structured approach to collecting and annotating breathing, cough, and speech samples from both COVID-positive and negative individuals</p>
+            <strong>Audio Data Collection & Metadata</strong>
+            <p>Standardized CSV metadata (patient_id, recording_id, age, sex, covid_status, pcr_date, days_since_pcr, device_type, environment, sample_type, file_path). Patient-level identifiers are used for all splits to prevent leakage.</p>
           </li>
           <li>
-            <strong>Signal Processing Framework</strong>
-            <p>Advanced audio preprocessing, noise reduction, and feature extraction techniques optimized for respiratory sounds</p>
+            <strong>Preprocessing & Segmentation</strong>
+            <p>Resampling to 16 kHz, RMS normalization, optional high-pass denoising, and event detection (energy-based VAD or pretrained cough detector) to produce fixed-length segments for modeling.</p>
           </li>
           <li>
-            <strong>Deep Learning Classification</strong>
-            <p>Specialized neural network architectures trained to identify subtle audio biomarkers indicative of COVID-19 infection</p>
+            <strong>Feature & Embedding Extraction</strong>
+            <p>Two parallel feature tracks: (1) hand-crafted MFCC/spectral/time-domain features aggregated by segment, and (2) learned embeddings from SSL backbones (wav2vec2 / HuBERT / PANNs / AST).</p>
           </li>
           <li>
-            <strong>Mobile Deployment System</strong>
-            <p>Lightweight model optimization for deployment on mobile devices, enabling widespread accessibility</p>
+            <strong>Modeling & Evaluation</strong>
+            <p>Benchmarks include classical (MFCC + XGBoost), CNN on log-mel, and fine-tuned SSL models. Primary evaluation uses patient-level holdout and bootstrap CI reporting.</p>
+          </li>
+          <li>
+            <strong>Explainability & Biomarker Validation</strong>
+            <p>Feature importance (SHAP) for tabular models and saliency/IG for spectrogram models to validate candidate biomarkers with clinical plausibility.</p>
+          </li>
+          <li>
+            <strong>Productionization</strong>
+            <p>Distill the best model into a compact CNN, apply quantization/pruning, and benchmark latency & memory on target mobile devices.</p>
           </li>
         </ol>
       </div>
@@ -454,59 +433,59 @@
       <h2>Methodology</h2>
       
       <div class="feature-card">
-        <h3>Research Approach</h3>
+        <h3>Research workflow</h3>
         <div class="methodology-steps">
           <div class="methodology-step">
             <div class="step-content">
-              <strong>Data Collection & Curation</strong>
-              <p>Gathered and annotated a diverse dataset of respiratory audio samples from confirmed COVID-19 positive and negative individuals</p>
+              <strong>1) Dataset construction & curation</strong>
+              <p>Collect metadata with PCR-confirmed labels; perform manual QC to remove clipped/low-SNR files; store objective metadata fields and an audit trail for each recording.</p>
             </div>
           </div>
           
           <div class="methodology-step">
             <div class="step-content">
-              <strong>Audio Preprocessing</strong>
-              <p>Applied noise reduction, normalization, and augmentation techniques to enhance signal quality and dataset diversity</p>
+              <strong>2) Preprocessing & segmentation</strong>
+              <p>Resample to 16 kHz, normalize amplitude, apply optional bandpass/notch filters, run VAD/cough detector to extract 0.5–3 s cough segments and 1–10 s breath/speech segments.</p>
             </div>
           </div>
           
           <div class="methodology-step">
             <div class="step-content">
-              <strong>Feature Extraction</strong>
-              <p>Extracted both traditional audio features (MFCCs, spectral features) and learned representations using deep learning</p>
+              <strong>3) Feature extraction</strong>
+              <p>Compute MFCCs (13–40 with deltas), log-mel spectrograms (128 bins), spectral centroids, entropy, jitter/shimmer (for speech), and SSL embeddings (wav2vec2/HuBERT last hidden states aggregated by mean).</p>
             </div>
           </div>
           
           <div class="methodology-step">
             <div class="step-content">
-              <strong>Model Development</strong>
-              <p>Designed and trained specialized neural networks to classify COVID-19 status from audio signals</p>
+              <strong>4) Modeling & augmentation</strong>
+              <p>Train classical and deep models with heavy augmentation (SpecAugment, time-stretch, pitch shift, SNR schedule, Mixup/CutMix). Use patient-level splits and early stopping on validation AUROC.</p>
             </div>
           </div>
           
           <div class="methodology-step">
             <div class="step-content">
-              <strong>Validation & Benchmarking</strong>
-              <p>Rigorous validation against established benchmarks and comparison with peer-reviewed approaches</p>
+              <strong>5) Evaluation & confounder analysis</strong>
+              <p>Report AUROC, sensitivity/specificity at target operating points, F1, and 95% bootstrap CIs. Produce subgroup breakdowns (age, sex, device-type) and test whether metadata alone predicts label.</p>
             </div>
           </div>
           
           <div class="methodology-step">
             <div class="step-content">
-              <strong>Clinical Correlation</strong>
-              <p>Analyzed model predictions against clinical outcomes to identify the most predictive audio biomarkers</p>
+              <strong>6) Explainability & biomarker validation</strong>
+              <p>Apply SHAP and integrated gradients to identify important frequency bands/time regions; consult clinical literature to align acoustic findings with known respiratory physiology.</p>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="feature-card">
-        <h3>Audio Modalities Analyzed</h3>
+        <h3>Audio Modalities & Tasks</h3>
         <ul>
-          <li><strong>Breathing Sounds:</strong> Analysis of forced breathing patterns for respiratory distress indicators</li>
-          <li><strong>Cough Acoustics:</strong> Examination of cough characteristics specific to COVID-19 respiratory involvement</li>
-          <li><strong>Speech Patterns:</strong> Detection of vocal changes associated with respiratory inflammation</li>
-          <li><strong>Composite Analysis:</strong> Multimodal approach combining all audio signals for improved accuracy</li>
+          <li><strong>Breathing:</strong> forced and normal breathing segments — analyze respiratory cadence and wheeze-like signatures</li>
+          <li><strong>Cough:</strong> voluntary coughs segmented by onset energy and analyzed for spectral bursts and temporal envelope</li>
+          <li><strong>Speech:</strong> sustained vowels and short read sentences — analyze voice quality, shimmer/jitter, and spectral tilt</li>
+          <li><strong>Multimodal fusion:</strong> late-fusion ensemble combining per-modality classifiers to maximize robustness</li>
         </ul>
       </div>
     </section>
@@ -515,18 +494,42 @@
       <h2>Technical Approach</h2>
       
       <div class="feature-card">
-        <h3>Deep Learning Architecture</h3>
-        <p>TBD - Detailed description of the neural network architectures used, including CNN, RNN, or transformer-based approaches for audio analysis.</p>
-      </div>
-      
-      <div class="feature-card">
-        <h3>Feature Engineering</h3>
-        <p>TBD - Explanation of specific audio features extracted and their clinical relevance to COVID-19 detection.</p>
+        <h3>Model families evaluated</h3>
+        <p>We benchmarked the following model families. In each case we report per-segment and per-patient aggregated results (patient-level majority vote).</p>
+
+        <table>
+          <thead>
+            <tr><th>Family</th><th>Input</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Classical (XGBoost)</strong></td><td>MFCC + spectral + time-domain aggregated stats</td><td>Robust baseline for low-data regimes; SHAP for feature importance</td></tr>
+            <tr><td><strong>CNN (log-mel)</strong></td><td>Log-mel spectrogram (128 bins)</td><td>Lightweight architecture, SpecAugment, good candidate for distillation</td></tr>
+            <tr><td><strong>SSL transfer</strong></td><td>Raw waveform → wav2vec2 / HuBERT embeddings</td><td>Freeze + linear probe → fine-tune last layers; best transfer performance on small labels</td></tr>
+            <tr><td><strong>Ensemble / Distilled</strong></td><td>Teacher: fine-tuned SSL; Student: compact CNN</td><td>Knowledge distillation yields small on-device model with near-teacher accuracy</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="feature-card">
-        <h3>Data Augmentation Techniques</h3>
-        <p>TBD - Overview of audio augmentation methods used to increase dataset diversity and improve model generalization.</p>
+        <h3>Feature engineering & clinical rationale</h3>
+        <p>We used a hybrid approach to capture both physiologically interpretable features and learned representations:</p>
+        <ul>
+          <li><strong>MFCC & spectral features</strong> (centroid, bandwidth) — reflect formant and spectral energy shifts during cough/breath</li>
+          <li><strong>Temporal envelope & burst energy</strong> — capture cough onset mechanics and airflow disruptions</li>
+          <li><strong>Jitter / shimmer</strong> — detect voice quality changes related to inflammation</li>
+          <li><strong>SSL embeddings</strong> — capture complex patterns not easily hand-designed; effective when fine-tuned with small labels</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <h3>Data augmentation</h3>
+        <p>To improve generalization and reduce overfitting we applied a curated augmentation pipeline during training:</p>
+        <ul>
+          <li><strong>SpecAugment:</strong> time and frequency masking on log-mel inputs</li>
+          <li><strong>Environmental augmentation:</strong> additive noise (SNR schedule), RIR convolution to simulate rooms</li>
+          <li><strong>Time-domain transforms:</strong> small pitch shifts, ±10% time-stretch</li>
+          <li><strong>Mixup / CutMix for audio:</strong> linear combinations of same-label samples to regularize decision boundaries</li>
+        </ul>
       </div>
     </section>
 
@@ -534,24 +537,104 @@
       <h2>Results & Impact</h2>
       
       <div class="feature-card">
-        <h3>Quantitative Results</h3>
+        <h3>Evaluation protocol (summary)</h3>
         <ul>
-          <li><strong>High Accuracy:</strong> Achieved sensitivity and specificity on par with peer-reviewed benchmarks for audio-based COVID-19 detection</li>
-          <li><strong>Multi-modal Superiority:</strong> Combined analysis of breathing, cough, and speech signals outperformed single-modality approaches</li>
-          <li><strong>Robust Performance:</strong> Consistent results across different demographic groups and recording conditions</li>
-          <li><strong>Real-time Capability:</strong> Developed models capable of providing results in under 10 seconds on mobile devices</li>
-          <li><strong>Biomarker Identification:</strong> Identified specific audio features most predictive of COVID-19 infection</li>
+          <li><strong>Patient-level splits:</strong> train / val / test with no patient overlap (default 70/15/15). External cohort reserved if available.</li>
+          <li><strong>Metrics:</strong> AUROC, sensitivity & specificity at chosen thresholds, F1, and 95% bootstrap confidence intervals.</li>
+          <li><strong>Reporting:</strong> per-segment and per-patient aggregated results, plus subgroup performance by age/sex/device.</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <h3>Model benchmark (illustrative demo numbers)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Params</th>
+              <th>AUROC (95% CI)</th>
+              <th>Sensitivity @ Spec=0.90</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MFCC + XGBoost</td>
+              <td>~10k</td>
+              <td>0.68 (0.62–0.74)</td>
+              <td>0.48</td>
+              <td>Stable baseline; interpretable</td>
+            </tr>
+            <tr>
+              <td>CNN (log-mel)</td>
+              <td>~0.3M</td>
+              <td>0.73 (0.68–0.78)</td>
+              <td>0.55</td>
+              <td>Lightweight, good target for distillation</td>
+            </tr>
+            <tr>
+              <td>Wav2Vec2 (fine-tuned)</td>
+              <td>~90M + head</td>
+              <td>0.78 (0.72–0.84)</td>
+              <td>0.62</td>
+              <td>Strong transfer baseline</td>
+            </tr>
+            <tr>
+              <td>Distilled compact CNN</td>
+              <td>~1–3M</td>
+              <td>0.74 (0.69–0.79)</td>
+              <td>0.58</td>
+              <td>On-device candidate after quantization</td>
+            </tr>
+          </tbody>
+        </table>
+
+        
+      </div>
+
+      <div class="feature-card">
+        <h3>Explainability & audio biomarkers</h3>
+        <p>We validated candidate biomarkers using two complementary methods:</p>
+        <ul>
+          <li><strong>SHAP on MFCC/tabular models:</strong> ranks the most predictive handcrafted features (example top features: spectral centroid change, spectral entropy, peak envelope energy).</li>
+          <li><strong>Integrated gradients & saliency on spectrogram models:</strong> visualize frequency bands and time windows that drive positive predictions; present cropped spectrograms with overlay masks.</li>
+        </ul>
+
+        <p><strong>Example saliency figure:</strong></p>
+        <img src="../assets/cough_saliency.png" alt="Spectrogram saliency example" class="hero-img">
+        <p class="img-caption">Spectrogram with model saliency overlay (example). Highlighted band: <strong>500–2000 Hz</strong> (annotated as the most informative band in this demo example).</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Ablations & practical findings (demo)</h3>
+        <ul>
+          <li><strong>Multimodal fusion:</strong> combining cough + breath + speech improved AUROC by <strong>+0.035</strong> (≈3.5 percentage points) versus the best single modality in the demo experiments.</li>
+          <li><strong>Augmentation:</strong> SpecAugment + Mixup consistently improved validation AUROC by <strong>+0.02</strong> in these runs.</li>
+          <li><strong>Distillation:</strong> distilling the Wav2Vec2 teacher to a compact CNN preserved ≈<strong>92%</strong> of teacher AUROC while reducing model size to ≈<strong>2.1 MB</strong> after 8-bit quantization (demo numbers).</li>
         </ul>
       </div>
       
       <div class="feature-card">
-        <h3>Qualitative Benefits</h3>
+        <h3>Deployment benchmarks (example)</h3>
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Device</th><th>Size (MB)</th><th>Latency (ms)</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Distilled CNN (8-bit)</td><td>Android mid-tier (CPU)</td><td>2.1 MB</td><td>~120 ms</td><td>On-device inference, single-shot segment</td></tr>
+            <tr><td>Distilled CNN (8-bit)</td><td>iPhone mid-tier (CPU)</td><td>2.1 MB</td><td>~90 ms</td><td>On-device inference</td></tr>
+          </tbody>
+        </table>
+
+        
+      </div>
+      
+      <div class="feature-card">
+        <h3>Limitations & caution</h3>
         <ul>
-          <li><strong>Accessibility:</strong> Potential for widespread screening in resource-limited settings</li>
-          <li><strong>Early Detection:</strong> Capability for early identification of potential infections before traditional testing</li>
-          <li><strong>Non-invasive:</strong> Comfortable testing experience without physical discomfort</li>
-          <li><strong>Scalability:</strong> Ability to scale to population-level screening through mobile deployment</li>
-          <li><strong>Continuous Monitoring:</strong> Potential for tracking disease progression or recovery through repeated testing</li>
+          
+          <li>Dataset biases (device, demographic skews) can inflate reported metrics; present subgroup analyses when available.</li>
+          <li>Acoustic signatures can drift with viral variants and over time — continuous monitoring and revalidation are required for production use.</li>
         </ul>
       </div>
     </section>
@@ -560,32 +643,44 @@
       <h2>Potential Applications</h2>
       
       <div class="feature-card">
-        <h3>Use Cases</h3>
+        <h3>Use cases</h3>
         <ul>
-          <li><strong>Pre-screening Tool:</strong> Rapid initial assessment before confirmatory testing</li>
-          <li><strong>Remote Monitoring:</strong> Tracking symptoms for home-based patients</li>
-          <li><strong>Public Health Surveillance:</strong> Population-level monitoring of respiratory disease prevalence</li>
-          <li><strong>Clinical Decision Support:</strong> Assisting healthcare professionals in diagnostic decisions</li>
-          <li><strong>Long COVID Assessment:</strong> Potential application for monitoring persistent respiratory symptoms</li>
+          <li><strong>Pre-screening tool:</strong> quick triage before confirmatory testing</li>
+          <li><strong>Remote monitoring:</strong> track symptom progression for home-isolated patients</li>
+          <li><strong>Public health surveillance:</strong> low-cost population-level monitoring</li>
+          <li><strong>Clinical decision support:</strong> augment clinician workflows with non-invasive alerts</li>
         </ul>
       </div>
     </section>
 
     <section id="tech">
-      <h2>Technology Stack</h2>
+      <h2>Technology Stack & Reproducibility</h2>
+      <p>Key libraries and tools used in the project (all code and notebooks are available in the repository linked below):</p>
       <div class="tech-tags">
         <span>Python</span>
-        <span>TensorFlow</span>
         <span>PyTorch</span>
+        <span>Hugging Face</span>
         <span>Librosa</span>
-        <span>Kaldi</span>
-        <span>Digital Signal Processing</span>
-        <span>CNN</span>
-        <span>LSTM</span>
-        <span>Transformers</span>
-        <span>Mobile Deployment</span>
-        <span>Audio Processing</span>
-        <span>Azur Cloud Computing</span>
+        <span>Torchaudio</span>
+        <span>scikit-learn</span>
+        <span>XGBoost</span>
+        <span>SpecAugment</span>
+        <span>Wav2Vec2</span>
+        <span>TFLite</span>
+        <span>Docker</span>
+      </div>
+
+      <div class="feature-card">
+        <h3>Reproducibility checklist</h3>
+        <ul>
+          <li>Data README & CSV metadata (no PHI)</li>
+          <li>Preprocessing scripts (segmentation, augmentation)</li>
+          <li>Training scripts (configs, seeds, checkpoints)</li>
+          <li>Evaluation scripts (patient-level split, bootstrap CI)</li>
+          <li>Explainability scripts (SHAP, saliency)</li>
+          <li>Dockerfile / requirements.txt</li>
+          <li>Model card + dataset datasheet</li>
+        </ul>
       </div>
     </section>
 
@@ -594,7 +689,7 @@
         <i class="fab fa-github"></i> View Sample Code
       </a>
       <a href="../index.html#contact">
-        <i class="fas fa-envelope"></i> Discuss Similar Project
+        <i class="fas fa-envelope"></i> Discuss This Project
       </a>
     </div>
   </main>
