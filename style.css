@@ -2643,3 +2643,34 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* ===== INSIGHT SECTION - TUNED STYLING ===== */
+
+/* Smaller headline */
+.insight-headline {
+  font-size: 1.15rem !important;  /* was 1.35rem - now smaller */
+  line-height: 1.45;
+  margin-bottom: 30px;
+}
+
+/* Lighter/more white bullet text */
+.insight-bullets li {
+  color: #e0e0e0 !important;  /* was #a8a8a8 - now much lighter */
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Bullet point color remains orange for contrast */
+.insight-bullets li::before {
+  color: #ff8533;
+}
+
+/* Mobile adjustment */
+@media (max-width: 900px) {
+  .insight-headline {
+    font-size: 1rem !important;
+  }
+  .insight-bullets li {
+    font-size: 0.85rem;
+  }
+}
