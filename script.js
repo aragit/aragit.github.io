@@ -402,10 +402,12 @@
     
       // words to cycle
       const words = [
-        'LLMs Engineering · Agentic AI ',
-        'LLMOps · Observability · Cost-optimisation', 
-        'Healthcare AI · Marketing AI · Finance' ,
-      ];
+    'Planning-Executor • Deterministic Core • Healthcare AI',
+    'Multi-Agent Systems • Hierarchical Orchestration • Research Discovery',
+    'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise Automation',
+    'Neuro-Symbolic • Policy-as-Code Governance • Financial Compliance',
+    'LLM Engineering • Model Optimization • RAG Augmentation • Inference Optimization'
+  ];
       let wIndex = 0;
       let charIndex = 0;
       let deleting = false;
@@ -691,4 +693,6 @@
   };
 
 })();
+
+
 

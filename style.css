@@ -49,8 +49,8 @@ header.site-header{position:fixed;top:0;width:100%;background:rgba(12,12,12,0.68
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem}
 
 .hamburger{display:none;background:transparent;border:0;color:var(--text);font-size:1.3rem}
-nav.nav ul{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0}
-nav.nav a{padding:.25rem .25rem;color:var(--muted)}
+nav
+nav
 nav.nav a:hover{color:var(--accent)}
 
 /* ---------- HERO ---------- */
@@ -123,7 +123,7 @@ h1{font-size:2rem;margin:.25rem 0}
 @media (max-width:900px){
   .hero-cta{grid-template-columns:1fr;gap:10px}
   .hamburger{display:block}
-  nav.nav ul{position:fixed;right:-100%;top:60px;flex-direction:column;background:rgba(18,18,18,0.95);width:220px;height:100vh;padding:1.5rem;transition:right .25s}
+  nav
   nav.nav ul.active{right:0}
 }
 
@@ -721,12 +721,9 @@ a.card-link:hover{
   position: relative;
 }
 
-
-
 /* small visual tuning so icons & text don't wrap oddly */
 .services-grid .card-front .card-icon { font-size: 1.4rem; margin-bottom: 0.45rem; }
 .services-grid .card-front .card-body h3 { margin: 0 0 .35rem; line-height: 1.1; }
-
 
 /* ================= Services: equal-height cards, centered pill buttons, denser faded grid ================= */
 
@@ -1407,9 +1404,6 @@ a.card-link:hover{
   line-height: 1.4;      /* optional: keep it readable */
 }
 
-
-
-
 /* === Fix: nicer spacing for big (left) portfolio cards === */
 .portfolio-grid .big-cards .card .card-body {
   display: flex;
@@ -1453,9 +1447,6 @@ a.card-link:hover{
   justify-content: center;  /* keep button centered */
   align-self: center;       /* center horizontally on small cards */
 }
-
-
-
 
 /* image goes after actions visually, keeping it a bit separated */
 .portfolio-grid .card .card-fill-img {
@@ -1898,3 +1889,727 @@ button.service-btn:hover {
   outline-offset: 3px;
 }
 
+/* Hero supporting text (non-intrusive) */
+.hero-tagline {
+  margin-top: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.hero-subtitle {
+  max-width: 760px;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* HERO TYPOGRAPHY FIXES */
+.typewriter, .typewriter-orange { font-family: "Courier New", Courier, monospace; }
+
+p.hero-tagline.typewriter { 
+  font-size: 1.1rem; 
+  color: #b0b0b0; 
+  margin: 0.5rem 0; 
+}
+
+p.hero-range.typewriter-orange { 
+  font-size: 0.9rem; 
+  color: #ff6b00 !important; 
+  margin: 0.3rem 0; 
+}
+
+p.tagline.typewriter { 
+  font-size: 1rem; 
+  color: #b0b0b0; 
+  margin: 0.5rem 0 1rem; 
+}
+
+#typewrite { 
+  font-family: "Courier New", Courier, monospace; 
+  font-size: 0.9rem; 
+  color: #909090; 
+}
+
+.hero-divider { display: none !important; }
+
+/* Restore orange lines above button */
+.hero-divider {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+.hero-divider .line {
+  flex: 1;
+  max-width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
+}
+/* Hide logo if present */
+.hero-divider .chess-chip,
+.hero-divider i {
+  display: none !important;
+}
+
+/* ONLY change button background to dark grey */
+#openChatBtn,
+.btn-hero.btn-primary {
+  background: #2a2a2a !important;
+}
+
+/* LOGO STYLING ONLY */
+header .logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+@keyframes logo-float {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 5px 10px rgba(255, 107, 0, 0.3));
+  }
+  50% { 
+    transform: translateY(-10px) scale(1.05);
+    filter: drop-shadow(0 15px 25px rgba(255, 107, 0, 0.6));
+  }
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.hero-divider .line {
+  flex: 1;
+  max-width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
+}
+
+/* 3D Rotating Logo Effect */
+
+  25% {
+    transform: perspective(1000px) rotateY(90deg) rotateX(10deg);
+    filter: drop-shadow(5px 5px 20px rgba(255, 107, 0, 0.5));
+  }
+  50% {
+    transform: perspective(1000px) rotateY(180deg) rotateX(10deg);
+    filter: drop-shadow(0 5px 25px rgba(255, 107, 0, 0.6));
+  }
+  75% {
+    transform: perspective(1000px) rotateY(270deg) rotateX(10deg);
+    filter: drop-shadow(-5px 5px 20px rgba(255, 107, 0, 0.5));
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
+    filter: drop-shadow(0 5px 15px rgba(255, 107, 0, 0.3));
+  }
+}
+
+/* Logo with disk thickness effect */
+
+/* Logo disk - no glow */
+
+/* Logo disk - NO orange glow */
+
+
+/* 3D Rotating Logo - NO GLOW */
+@keyframes logo-3d-rotate {
+  0% { transform: perspective(1000px) rotateY(0deg) rotateX(10deg); }
+  25% { transform: perspective(1000px) rotateY(90deg) rotateX(10deg); }
+  50% { transform: perspective(1000px) rotateY(180deg) rotateX(10deg); }
+  75% { transform: perspective(1000px) rotateY(270deg) rotateX(10deg); }
+  100% { transform: perspective(1000px) rotateY(360deg) rotateX(10deg); }
+}
+
+  animation-play-state: paused;
+  transform: scale(1.2);
+  border-color: #ff8533 !important;
+}
+
+/* Logo with mouse tilt effect */
+
+
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+  border-color: #ff8533 !important;
+}
+
+/* Logo with mouse tilt effect */
+
+
+/* Logo - simple orange border */
+
+
+/* Hero logo with orange border */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #ff6b00;
+  background: #1a1a1a;
+  padding: 3px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hero logo with orange border */
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  border: 4px solid #ff6b00 !important;
+  background: #1a1a1a !important;
+  padding: 3px !important;
+  object-fit: cover !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Header logo - circular with orange border, no glow */
+header .logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #ff6b00;
+  object-fit: cover;
+  display: block;
+  background: #1a1a1a;
+  padding: 2px;
+  box-sizing: border-box;
+  /* NO glow effects */
+}
+
+header .logo img:hover {
+  border-color: #ff8533;
+  /* NO glow on hover */
+}
+
+/* Menu bar style - dark pill shape */
+.main-nav {
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 50px;
+  padding: 8px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.main-nav li a:hover {
+  background: rgba(255, 107, 0, 0.15);
+  color: #ff6b00;
+}
+
+.main-nav li a.active {
+  background: rgba(255, 107, 0, 0.25);
+  color: #ff6b00;
+}
+
+/* Mobile menu button style */
+.menu-toggle {
+  background: rgba(255, 107, 0, 0.2);
+  border: 1px solid rgba(255, 107, 0, 0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #ff6b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 107, 0, 0.3);
+}
+
+/* Centered pill menu style */
+.header-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+#hamburger {
+  display: none;
+}
+
+/* The pill container */
+
+
+#navbar li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Smaller bold font */
+
+
+#navbar a:hover {
+  background: rgba(255, 107, 0, 0.15);
+  color: #ff6b00;
+}
+
+/* Centered pill menu style */
+.header-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+#hamburger {
+  display: none;
+}
+
+/* The pill container */
+
+
+#navbar li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Smaller bold font */
+
+
+#navbar a:hover {
+  background: rgba(255, 107, 0, 0.15);
+  color: #ff6b00;
+}
+
+/* Centered pill menu style */
+.header-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+#hamburger {
+  display: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* The pill container */
+#navbar {
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  padding: 5px 6px;
+  list-style: none;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 50px;
+  /* NO border */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+#navbar li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Smaller bold font */
+#navbar a {
+  display: block;
+  color: #a0a0a0;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+#navbar a:hover {
+  background: rgba(255, 107, 0, 0.15);
+  color: #ff6b00;
+}
+
+/* Push hero content down */
+
+
+/* Add extra margin to avatar */
+
+
+/* Push hero content down - reduced */
+.hero-inner {
+  padding-top: 50px !important;
+  padding-bottom: 30px !important;
+}
+
+.hero-avatar {
+  margin-top: 30px !important;
+}
+
+/* Insight card styling */
+.insight-card {
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-top: 20px;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.insight-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insight-list li {
+  color: #c0c0c0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.insight-list li:last-child {
+  margin-bottom: 0;
+}
+
+.insight-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #ff6b00;
+  font-weight: bold;
+}
+
+#about-title {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: #f0f0f0;
+  margin-bottom: 12px;
+}
+
+/* Insight section new layout */
+.insight-headline {
+  text-align: center;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: #f0f0f0;
+  margin-bottom: 35px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+}
+
+/* Combined card - both text and image inside, NO border */
+.insight-card-combined {
+  background: rgba(22, 22, 22, 0.98);
+  border-radius: 16px;
+  padding: 35px 45px;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+/* Text side - smaller font */
+.insight-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.insight-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insight-bullets li {
+  color: #a8a8a8;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.insight-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.insight-bullets li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #ff6b00;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Image side - larger */
+.insight-visual {
+  flex: 0 0 48%;
+  max-width: 520px;
+}
+
+.insight-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .insight-card-combined {
+    flex-direction: column;
+    padding: 25px;
+    gap: 30px;
+  }
+  
+  .insight-visual {
+    flex: 1;
+    max-width: 100%;
+    order: -1;
+  }
+  
+  .insight-headline {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== INSIGHT SECTION - FINAL STYLES ===== */
+
+/* Headline centered above the card */
+.insight-headline {
+  text-align: center;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: #f0f0f0;
+  margin-bottom: 35px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+}
+
+/* Combined card - text and image together, NO border */
+.insight-card-combined {
+  background: rgba(22, 22, 22, 0.98);
+  border-radius: 16px;
+  padding: 35px 45px;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1150px;
+  margin: 0 auto;
+  border: none;
+}
+
+/* Text side */
+.insight-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Bullet list styling - smaller text */
+.insight-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insight-bullets li {
+  color: #a8a8a8;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.insight-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.insight-bullets li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #ff6b00;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Image side - larger (48% width) */
+.insight-visual {
+  flex: 0 0 48%;
+  max-width: 520px;
+}
+
+.insight-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .insight-card-combined {
+    flex-direction: column;
+    padding: 25px;
+    gap: 30px;
+  }
+  
+  .insight-visual {
+    flex: 1;
+    max-width: 100%;
+    order: -1;
+  }
+  
+  .insight-headline {
+    font-size: 1.1rem;
+    padding: 0 15px;
+  }
+}
+
+/* ===== INSIGHT SECTION - STYLISH BULLETS ===== */
+
+.insight-bullets li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: #ff6b00;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+/* Alternative stylish options (uncomment your preference): */
+/* Diamond: content: "◆"; font-size: 0.7rem; top: 0.3rem; */
+/* Arrow: content: "→"; font-size: 0.9rem; */
+/* Chevron: content: "›"; font-size: 1.2rem; */
+/* Double arrow: content: "»"; font-size: 0.9rem; */
+
+/* ===== HERO TEXT - WHITER/BRIGHTER ===== */
+
+/* Agentic AI Architect - main tagline */
+.hero-tagline.typewriter {
+  color: #ffffff !important;
+  font-weight: 500;
+  opacity: 0.95;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* AI Engineering Services & Consulting - subtitle */
+.tagline.typewriter {
+  color: #e0e0e0 !important;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Deterministic Core · Stochastic Range · Multi-Agent Scale - orange line */
+.hero-range.typewriter-orange {
+  color: #ff8533 !important;
+  font-weight: 500;
+  opacity: 1;
+}
+
+/* Typewriter cycling text (#typewrite) - make more visible */
+#typewrite {
+  color: #c0c0c0 !important;
+  font-size: 0.95rem;
+}
+
+#typewrite .tw-inner {
+  color: #d0d0d0 !important;
+}
+
+/* Ensure all hero text has better contrast */
+.hero-inner p {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== HERO ORANGE TEXT - LIGHTER/BRIGHTER ===== */
+
+/* Deterministic Core · Stochastic Range · Multi-Agent Scale - lighter orange */
+.hero-range.typewriter-orange {
+  color: #ffaa66 !important;  /* lighter, peachy orange */
+  font-weight: 500;
+  opacity: 1;
+  text-shadow: 0 0 15px rgba(255, 170, 102, 0.4);  /* soft glow */
+}
+
+/* Alternative: even lighter */
+/* color: #ffbb88 !important; */  /* very light apricot */
+/* color: #ff9966 !important; */  /* coral orange */
+/* color: #ffb366 !important; */  /* light salmon */
+
+/* ===== HERO ORANGE TEXT - LIGHTER & LARGER (STRONG OVERRIDE) ===== */
+
+p.hero-range.typewriter-orange,
+.hero-range,
+.typewriter-orange,
+.hero-inner .hero-range.typewriter-orange,
+.hero-inner p.hero-range {
+  color: #ffb366 !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 20px rgba(255, 179, 102, 0.5), 0 0 40px rgba(255, 107, 0, 0.2);
+  margin: 0.6rem 0;
+}
+
+/* Even lighter alternative: #ffcc88 - pale gold */
+/* Brighter alternative: #ffaa55 - bright amber */
+
+/* ===== HERO ORANGE TEXT - TUNED (darker & smaller) ===== */
+
+p.hero-range.typewriter-orange,
+.hero-range,
+.typewriter-orange,
+.hero-inner .hero-range.typewriter-orange,
+.hero-inner p.hero-range {
+  color: #ff8533 !important;  /* darker orange - more saturated */
+  font-size: 1.05rem !important;  /* smaller - closer to original */
+  font-weight: 500 !important;  /* slightly lighter weight */
+  opacity: 1 !important;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 15px rgba(255, 133, 51, 0.4);
+  margin: 0.5rem 0;
+}
