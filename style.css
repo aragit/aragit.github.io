@@ -2992,3 +2992,20 @@ img {
 .article-image {
   height: 120px;
 }
+
+/* ===== INSIGHT BULLETS - EXTRA SMALL ===== */
+
+.insight-bullets li,
+.insight-bullets-white li,
+ul.insight-bullets li {
+  color: #ffffff !important;
+  font-size: 0.75rem !important;  /* 2 degrees smaller (was 0.88rem) */
+  line-height: 1.6 !important;
+  font-weight: 400;
+}
+
+/* Bullet point size adjustment */
+.insight-bullets li::before {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
