@@ -2613,3 +2613,33 @@ p.hero-range.typewriter-orange,
   text-shadow: 0 0 15px rgba(255, 133, 51, 0.4);
   margin: 0.5rem 0;
 }
+
+/* ===== NEW IMAGES STYLING ===== */
+
+/* Insight section image */
+.insight-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  max-height: 350px;
+}
+
+/* Hero avatar - ensure MeReal2.png displays well */
+.hero-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff6b00;
+  display: block;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
+}
+
+/* Ensure images don't break layout */
+img {
+  max-width: 100%;
+  height: auto;
+}
