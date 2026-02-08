@@ -359,7 +359,7 @@
           <!----------  HERO CARD (clickable) ---------->
           <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2"
              target="_blank" rel="noopener noreferrer" class="card-link masonry-hero">
-            <img src="deepseek-medical.png" alt="" class="masonry-hero-bg">
+            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*LriGacNJRrcGK0IUsli2tQ.png" alt="" class="masonry-hero-bg">
             <div class="masonry-hero-overlay"></div>
     
             <div class="masonry-hero-bottom">
@@ -377,7 +377,7 @@
               <h3>Gemma 3n Edge AI for Support Bots</h3>
               <p>Low-memory, high-speed training on customer-support data</p>
             </div>
-            <img src="deepseek-medical.png" alt="" class="masonry-small-img">
+            <img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://cdn.brouseai.com/preview/qX_N5BbwPyrym93xiQLRS.png"
@@ -398,7 +398,7 @@
               <p>Push LLMs beyond narrow fine-tuning.</p>
               <p>In the age of large language models (LLMs), the ability to perform complex tasks with minimal data is revolutionizing how we approach artificial intelligence. Few-shot and zero-shot learning are two pivotal techniques that push the boundaries of machine learning, enabling models to generalize across domains and perform tasks they were not explicitly trained on. This article delves into these learning paradigms, explaining their origins, mechanisms, and real-world applications</p>
             </div>
-            <img src="fewshot-learning.jpeg" alt="" class="masonry-small-img">
+            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*4irRvgoE16fQn78wwAecsQ.jpeg" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
