@@ -3444,3 +3444,37 @@ ul.insight-bullets li {
 /* Maximum height option - nearly full height */
 /* top: 3% !important; */
 /* bottom: 3% !important; */
+
+/* ===== HEADLINE - MATCH ARCHITECTURE PHILOSOPHY STYLE ===== */
+
+.insight-headline {
+  text-align: center;
+  margin-bottom: 20px !important;
+}
+
+.headline-line1 {
+  display: block;
+  font-size: 1.4rem !important;    /* match Architecture Philosophy */
+  font-weight: 700 !important;      /* bold */
+  color: #ff8533;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.headline-line2 {
+  display: block;
+  font-size: 1.4rem !important;    /* match Architecture Philosophy */
+  font-weight: 700 !important;      /* bold */
+  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+/* Mobile adjustment */
+@media (max-width: 900px) {
+  .headline-line1,
+  .headline-line2 {
+    font-size: 1.2rem !important;
+  }
+}
