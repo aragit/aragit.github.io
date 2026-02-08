@@ -3021,3 +3021,68 @@ ul.insight-bullets li {
   letter-spacing: 0.01em;
   text-transform: none;
 }
+
+/* ===== INSIGHT SECTION - NUMBERED PILLARS ===== */
+
+.insight-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 10px;
+}
+
+.insight-pillar {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.pillar-number {
+  font-family: 'Courier New', 'Monaco', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff8533;
+  opacity: 0.8;
+  min-width: 28px;
+  padding-top: 2px;
+  letter-spacing: 0.05em;
+}
+
+.pillar-content {
+  flex: 1;
+}
+
+.pillar-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.pillar-desc {
+  font-size: 0.75rem;
+  color: #c0c0c0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .insight-pillar {
+    gap: 16px;
+  }
+  
+  .pillar-number {
+    font-size: 0.85rem;
+    min-width: 24px;
+  }
+  
+  .pillar-title {
+    font-size: 0.8rem;
+  }
+  
+  .pillar-desc {
+    font-size: 0.72rem;
+  }
+}
