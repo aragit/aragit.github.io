@@ -3514,3 +3514,75 @@ ul.insight-bullets li {
   top: 5% !important;
   bottom: 5% !important;
 }
+
+/* ===== AGGRESSIVE SPACE REMOVAL - SHIFT UP ===== */
+
+/* Remove ALL space from headline */
+.insight-headline {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.headline-line1 {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.headline-line2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Tighten card - minimal top padding */
+.insight-card-combined {
+  padding: 5px 30px 20px 30px !important;  /* 5px top only */
+  margin-top: 0 !important;
+}
+
+/* Remove ALL space from pillars container */
+.insight-pillars {
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 10px !important;
+}
+
+/* First pillar - absolutely no top space */
+.insight-pillar:first-child {
+  margin-top: -5px !important;  /* negative margin to pull up */
+  padding-top: 0 !important;
+}
+
+/* All pillars - no margins */
+.insight-pillar {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Content - no top space */
+.pillar-content {
+  margin-top: -2px !important;
+  padding-top: 0 !important;
+}
+
+/* Title - tight */
+.pillar-title {
+  margin: 0 0 4px 0 !important;
+  padding: 0 !important;
+  line-height: 1.3 !important;
+}
+
+/* Description - tight */
+.pillar-desc {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Vertical lines - adjust for new height */
+.insight-card-combined::before,
+.insight-card-combined::after {
+  top: 2% !important;
+  bottom: 5% !important;
+}
