@@ -4027,3 +4027,69 @@ ul.insight-bullets li {
     max-height: 350px !important;
   }
 }
+
+/* ===== FIX: Enlarge Insight Image ===== */
+
+/* Make image container larger (55% instead of 45%) */
+.insight-visual,
+.insight-visual-large {
+  flex: 0 0 55% !important;        /* Increased from 45% */
+  max-width: 580px !important;      /* Increased from 480px */
+  max-height: 400px !important;     /* Increased from 320px */
+}
+
+.insight-visual img,
+.insight-visual-large img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 400px !important;     /* Match container */
+  object-fit: contain !important;
+}
+
+/* Reduce text column to give more space to image */
+.insight-text {
+  flex: 0 0 40% !important;         /* Fixed width instead of flex: 1 */
+  min-width: 0 !important;
+}
+
+/* Compress text to fit in smaller space */
+.insight-pillars {
+  gap: 12px !important;             /* Tighter gap between pillars */
+}
+
+.pillar-title {
+  font-size: 0.88rem !important;    /* Slightly smaller title */
+  margin-bottom: 4px !important;
+  line-height: 1.25 !important;
+}
+
+.pillar-desc {
+  font-size: 0.72rem !important;    /* Smaller description text */
+  line-height: 1.4 !important;      /* Tighter line height */
+}
+
+/* Adjust card layout for better proportions */
+.insight-card-combined {
+  padding: 22px 30px !important;    /* Slightly reduced padding */
+  gap: 25px !important;             /* Gap between text and image */
+  align-items: center !important;   /* Vertically center both columns */
+}
+
+/* Mobile: stack normally */
+@media (max-width: 900px) {
+  .insight-visual,
+  .insight-visual-large {
+    flex: 1 !important;
+    max-width: 100% !important;
+    max-height: 350px !important;
+  }
+  
+  .insight-text {
+    flex: 1 !important;             /* Full width on mobile */
+  }
+  
+  .insight-visual img,
+  .insight-visual-large img {
+    max-height: 350px !important;
+  }
+}
