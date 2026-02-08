@@ -4172,3 +4172,82 @@ ul.insight-bullets li {
     font-size: 0.8rem !important;
   }
 }
+
+/* ===== FIX: Black card background, closer columns, larger text ===== */
+
+/* Make card background pure black */
+.insight-card-combined {
+  background: #000000 !important;   /* Pure black instead of rgba(22,22,22,0.98) */
+  border: 1px solid rgba(255, 107, 0, 0.15) !important; /* Subtle orange border for definition */
+  max-width: 900px !important;
+  padding: 25px 20px !important;    /* Reduced horizontal padding */
+  gap: 15px !important;             /* Smaller gap between text and image (was 20px) */
+}
+
+/* Image column slightly smaller to allow more text room */
+.insight-visual,
+.insight-visual-large {
+  flex: 0 0 58% !important;         /* Slightly reduced from 62% */
+  max-width: 540px !important;
+  max-height: 420px !important;
+}
+
+/* Text column slightly larger for bigger fonts */
+.insight-text {
+  flex: 0 0 38% !important;         /* Increased from 35% */
+  min-width: 0 !important;
+}
+
+/* Larger text with more line spacing */
+.insight-pillars {
+  gap: 14px !important;             /* Slightly more space between pillars */
+}
+
+.pillar-title {
+  font-size: 0.95rem !important;    /* Larger title (was 0.82rem) */
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+  line-height: 1.4 !important;      /* More line height */
+  color: #ffffff !important;
+}
+
+.pillar-desc {
+  font-size: 0.78rem !important;    /* Larger description (was 0.68rem) */
+  line-height: 1.6 !important;      /* More line spacing for readability */
+  color: #c0c0c0 !important;
+}
+
+/* Keep vertical orange lines subtle on black background */
+.insight-card-combined::before,
+.insight-card-combined::after {
+  opacity: 0.4 !important;          /* Slightly more visible on black */
+  width: 1px !important;            /* Thinner lines */
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .insight-card-combined {
+    gap: 20px !important;           /* More gap on mobile when stacked */
+    padding: 20px !important;
+  }
+  
+  .insight-visual,
+  .insight-visual-large {
+    flex: 1 !important;
+    max-width: 100% !important;
+  }
+  
+  .insight-text {
+    flex: 1 !important;
+  }
+  
+  .pillar-title {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+  
+  .pillar-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.55 !important;
+  }
+}
