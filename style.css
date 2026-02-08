@@ -4093,3 +4093,82 @@ ul.insight-bullets li {
     max-height: 350px !important;
   }
 }
+
+/* ===== FIX: Narrower card + larger image with 888.jpg ===== */
+
+/* Reduce overall card max-width to bring columns closer */
+.insight-card-combined {
+  max-width: 900px !important;      /* Reduced from 1150px */
+  padding: 20px 25px !important;    /* Reduced horizontal padding */
+  gap: 20px !important;             /* Smaller gap between text/image */
+  margin: 0 auto !important;
+}
+
+/* Make image column much larger (62%) */
+.insight-visual,
+.insight-visual-large {
+  flex: 0 0 62% !important;         /* Increased from 55% */
+  max-width: 560px !important;
+  max-height: 420px !important;     /* Taller */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.insight-visual img,
+.insight-visual-large img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 420px !important;
+  object-fit: contain !important;
+  border-radius: 8px !important;
+}
+
+/* Shrink text column to minimum (35%) */
+.insight-text {
+  flex: 0 0 35% !important;
+  min-width: 0 !important;
+}
+
+/* Compress text further to fit narrow column */
+.insight-pillars {
+  gap: 10px !important;
+}
+
+.pillar-title {
+  font-size: 0.82rem !important;
+  margin-bottom: 3px !important;
+  line-height: 1.2 !important;
+}
+
+.pillar-desc {
+  font-size: 0.68rem !important;    /* Very small but readable */
+  line-height: 1.35 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .insight-card-combined {
+    max-width: 100% !important;
+    padding: 20px !important;
+  }
+  
+  .insight-visual,
+  .insight-visual-large {
+    flex: 1 !important;
+    max-width: 100% !important;
+    max-height: 380px !important;
+  }
+  
+  .insight-text {
+    flex: 1 !important;
+  }
+  
+  .pillar-title {
+    font-size: 0.9rem !important;
+  }
+  
+  .pillar-desc {
+    font-size: 0.8rem !important;
+  }
+}
