@@ -4338,3 +4338,15 @@ ul.insight-bullets li {
     padding: 20px 15px !important;
   }
 }
+
+/* ===== FIX: Increase space between left orange line and text ===== */
+
+/* Increase left padding to shift text further right */
+.insight-text {
+  padding-left: 35px !important;    /* Increased from 25px to 35px */
+}
+
+/* Ensure card has enough left padding to accommodate */
+.insight-card-combined {
+  padding: 25px 15px 25px 15px !important;  /* Reduced left padding since text has more */
+}
