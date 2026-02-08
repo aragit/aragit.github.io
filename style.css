@@ -4251,3 +4251,61 @@ ul.insight-bullets li {
     line-height: 1.55 !important;
   }
 }
+
+/* ===== FIX: Restore both vertical orange lines ===== */
+
+/* Ensure card has relative positioning for absolute pseudo-elements */
+.insight-card-combined {
+  position: relative !important;
+}
+
+/* Strong override for both vertical lines */
+.insight-card-combined::before,
+.insight-card-combined::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 8% !important;
+  bottom: 8% !important;
+  width: 2px !important;
+  background: linear-gradient(180deg, 
+    transparent 0%,
+    #ff6b00 15%,
+    #ff8533 50%,
+    #ff6b00 85%,
+    transparent 100%
+  ) !important;
+  opacity: 0.8 !important;
+  display: block !important;
+  z-index: 10 !important;
+}
+
+/* LEFT line - positioned at left edge */
+.insight-card-combined::before {
+  left: 12px !important;
+  right: auto !important;
+}
+
+/* RIGHT line - positioned at right edge */
+.insight-card-combined::after {
+  right: 12px !important;
+  left: auto !important;
+}
+
+/* Mobile: keep lines visible but thinner */
+@media (max-width: 900px) {
+  .insight-card-combined::before,
+  .insight-card-combined::after {
+    width: 1px !important;
+    opacity: 0.6 !important;
+    top: 5% !important;
+    bottom: 5% !important;
+  }
+  
+  .insight-card-combined::before {
+    left: 8px !important;
+  }
+  
+  .insight-card-combined::after {
+    right: 8px !important;
+  }
+}
