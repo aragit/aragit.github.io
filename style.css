@@ -4363,3 +4363,33 @@ ul.insight-bullets li {
 #about .insight-card-combined {
   padding-left: 10px !important;    /* Minimal left padding on card */
 }
+
+/* ===== FIX: Move vertical orange lines closer to center ===== */
+
+/* Move LEFT orange line to the right (from 12px to 35px) */
+.insight-card-combined::before {
+  left: 35px !important;            /* Was 12px, now 35px from left edge */
+}
+
+/* Move RIGHT orange line to the left (from 12px to 35px) */
+.insight-card-combined::after {
+  right: 35px !important;           /* Was 12px, now 35px from right edge */
+}
+
+/* Shift text right with the left line */
+.insight-text {
+  padding-left: 55px !important;    /* Increased from 40px to match new line position + spacing */
+  padding-right: 10px !important;
+}
+
+/* Shift image left with the right line */
+.insight-visual,
+.insight-visual-large {
+  padding-right: 25px !important;   /* Add right padding to shift image left */
+  padding-left: 5px !important;
+}
+
+/* Adjust card padding to accommodate */
+.insight-card-combined {
+  padding: 25px 20px !important;    /* Balanced padding */
+}
