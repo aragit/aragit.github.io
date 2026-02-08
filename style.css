@@ -3426,3 +3426,21 @@ ul.insight-bullets li {
     padding: 15px !important;
   }
 }
+
+/* ===== VERTICAL ORANGE LINES - TALLER ===== */
+
+.insight-card-combined::before,
+.insight-card-combined::after {
+  top: 8% !important;    /* was 15% - higher start */
+  bottom: 8% !important; /* was 15% - lower end */
+  width: 2px;
+  opacity: 0.7;
+}
+
+/* Alternative: even taller lines */
+/* top: 5% !important; */
+/* bottom: 5% !important; */
+
+/* Maximum height option - nearly full height */
+/* top: 3% !important; */
+/* bottom: 3% !important; */
