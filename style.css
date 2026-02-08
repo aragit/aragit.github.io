@@ -3856,3 +3856,63 @@ ul.insight-bullets li {
 .hero-inner p {
   margin-top: 5px !important;
 }
+
+/* ===== FIX: Insight Image Sizing - Full Image Visible ===== */
+
+/* Image container - allow it to grow */
+.insight-visual,
+.insight-visual-large {
+  flex: 0 0 48% !important;
+  max-width: 520px !important;
+  display: flex !important;
+  align-items: flex-start !important; /* Align to top */
+  justify-content: center !important;
+}
+
+/* Image - ensure full height is visible */
+.insight-visual img,
+.insight-visual-large img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important; /* Remove height limit */
+  object-fit: contain !important;
+  border-radius: 8px !important;
+  display: block !important;
+}
+
+/* Card - allow natural height */
+.insight-card-combined {
+  padding: 25px 35px !important;
+  align-items: flex-start !important; /* Align columns to top */
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Text column - align with image top */
+.insight-text {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding-top: 0 !important;
+}
+
+/* Pillars - compact spacing */
+.insight-pillars {
+  gap: 12px !important;
+  margin-top: 0 !important;
+}
+
+/* Mobile - stack properly */
+@media (max-width: 900px) {
+  .insight-visual,
+  .insight-visual-large {
+    flex: 1 !important;
+    max-width: 100% !important;
+    order: -1 !important;
+  }
+  
+  .insight-card-combined {
+    flex-direction: column !important;
+    padding: 20px !important;
+  }
+}
