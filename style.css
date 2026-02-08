@@ -4350,3 +4350,16 @@ ul.insight-bullets li {
 .insight-card-combined {
   padding: 25px 15px 25px 15px !important;  /* Reduced left padding since text has more */
 }
+
+/* ===== FIX: Stronger override for left padding ===== */
+
+/* Target the text container inside the card with high specificity */
+#about .insight-card-combined .insight-text {
+  padding-left: 40px !important;    /* Increased to 40px */
+  padding-right: 10px !important;   /* Balance right side */
+}
+
+/* Also ensure the card itself doesn't have conflicting padding */
+#about .insight-card-combined {
+  padding-left: 10px !important;    /* Minimal left padding on card */
+}
