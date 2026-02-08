@@ -3786,3 +3786,35 @@ ul.insight-bullets li {
   opacity: 0.8;
 }
 */
+
+/* ===== SECTION TITLES - MATCH ARCHITECTURE PHILOSOPHY ===== */
+
+/* Case Studies section title */
+#portfolio .section-title,
+#case-studies .section-title,
+.section-title:contains("Case Studies") {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* Knowledge Base section title */
+#articles .section-title,
+#knowledge-base .section-title,
+.section-title:contains("Knowledge Base") {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* Generic section title styling to match Architecture Philosophy */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
