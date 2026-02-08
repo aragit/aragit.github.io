@@ -4502,25 +4502,3 @@ ul.insight-bullets li {
     display: none;
   }
 }
-
-/* ===== FIX: Portfolio View Case Study button background to pure black ===== */
-
-/* Target portfolio section specifically with high specificity */
-#portfolio .cards .card .card-actions .cta-secondary,
-#portfolio .portfolio-grid .card .card-actions .cta-secondary,
-#portfolio .big-cards .card .card-actions .cta-secondary,
-#portfolio .small-cards .card .card-actions .cta-secondary {
-  background: #0d0d0d !important;   /* Pure black - matches Chat button */
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  color: #b8b8b8 !important;
-  transition: all 0.2s ease !important;
-}
-
-/* Hover state - subtle orange border and text */
-#portfolio .cards .card .card-actions .cta-secondary:hover,
-#portfolio .portfolio-grid .card .card-actions .cta-secondary:hover {
-  background: #0d0d0d !important;   /* Keep black on hover */
-  border-color: #ff6b00 !important; /* Orange border on hover */
-  color: #ff6b00 !important;        /* Orange text on hover */
-  transform: translateY(-2px) !important;
-}
