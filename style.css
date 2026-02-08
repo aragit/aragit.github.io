@@ -3916,3 +3916,48 @@ ul.insight-bullets li {
     padding: 20px !important;
   }
 }
+
+/* ===== FIX: Insight Image Size Constraint ===== */
+
+/* Constrain the insight image to fit within the card */
+.insight-visual,
+.insight-visual-large {
+  flex: 0 0 45% !important;
+  max-width: 480px !important;
+  max-height: 320px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.insight-visual img,
+.insight-visual-large img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 320px !important;
+  object-fit: contain !important;  /* or 'cover' if you want it cropped */
+  border-radius: 8px !important;
+}
+
+/* Reduce card padding to give more room */
+.insight-card-combined {
+  padding: 25px 35px !important;
+  gap: 30px !important;
+  align-items: flex-start !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .insight-visual,
+  .insight-visual-large {
+    flex: 1 !important;
+    max-width: 100% !important;
+    max-height: 280px !important;
+  }
+  
+  .insight-visual img,
+  .insight-visual-large img {
+    max-height: 280px !important;
+  }
+}
