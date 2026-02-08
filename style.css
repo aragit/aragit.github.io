@@ -4309,3 +4309,32 @@ ul.insight-bullets li {
     right: 8px !important;
   }
 }
+
+/* ===== FIX: Shift text right, away from left orange line ===== */
+
+/* Add left padding to text column to shift it right */
+.insight-text {
+  padding-left: 25px !important;    /* Shift text right by 25px */
+  box-sizing: border-box !important;
+}
+
+/* Also adjust the card padding to balance the layout */
+.insight-card-combined {
+  padding: 25px 15px 25px 20px !important;  /* Reduced left padding since text has its own */
+}
+
+/* Ensure pillars don't get too cramped with the new padding */
+.insight-pillars {
+  padding-left: 5px !important;     /* Small additional indent for visual hierarchy */
+}
+
+/* Mobile: reduce padding on small screens */
+@media (max-width: 900px) {
+  .insight-text {
+    padding-left: 15px !important;  /* Less padding on mobile */
+  }
+  
+  .insight-card-combined {
+    padding: 20px 15px !important;
+  }
+}
