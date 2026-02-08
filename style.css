@@ -3819,32 +3819,17 @@ ul.insight-bullets li {
   letter-spacing: 0.01em;
 }
 
-/* ===== HERO TAGLINE - MATCH ARASH NAME STYLE ===== */
 
-/* Agentic AI Architect - match Arash Nicoomanesh style */
+/* ===== RESET: Hero Tagline to Original State ===== */
+
+/* Remove any previous hero-tagline overrides */
 .hero-tagline,
-.hero-tagline.typewriter,
+.hero-tagline.typewriter {
+  all: revert;
+}
+
+/* Let original site styles apply */
 #typewrite,
 .typewriter-text {
-  font-size: 1.6rem !important;  /* smaller than Arash (2rem) but prominent */
-  font-weight: 600 !important;   /* semi-bold */
-  color: #ffffff !important;     /* pure white */
-  letter-spacing: 0.02em !important;
-  text-align: center;
-  opacity: 1 !important;
-  text-shadow: none !important;  /* remove any glow effects */
-}
-
-/* Ensure it doesn't have the typewriter cursor effect if present */
-.hero-tagline .cursor,
-.hero-tagline::after {
-  display: none !important;
-}
-
-/* Mobile adjustment */
-@media (max-width: 900px) {
-  .hero-tagline,
-  .hero-tagline.typewriter {
-    font-size: 1.3rem !important;
-  }
+  all: revert;
 }
