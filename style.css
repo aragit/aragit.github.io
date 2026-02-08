@@ -3767,3 +3767,22 @@ ul.insight-bullets li {
   margin-top: 0 !important;
   padding-top: 35px !important;
 }
+
+/* ===== FIX VERTICAL ORANGE LINES - TALLER ===== */
+
+.insight-card-combined::before,
+.insight-card-combined::after {
+  top: 5% !important;      /* Start higher (was 10-12%) */
+  bottom: 5% !important;   /* End lower (was 10-12%) */
+  opacity: 0.75;
+}
+
+/* Alternative: Even taller - 3% from edges */
+/* 
+.insight-card-combined::before,
+.insight-card-combined::after {
+  top: 3% !important;
+  bottom: 3% !important;
+  opacity: 0.8;
+}
+*/
