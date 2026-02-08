@@ -3478,3 +3478,39 @@ ul.insight-bullets li {
     font-size: 1.2rem !important;
   }
 }
+
+/* ===== REMOVE BLANK LINE, SHIFT TEXT UP ===== */
+
+.insight-headline {
+  margin-bottom: 8px !important;    /* was 20px - reduce significantly */
+  margin-top: 0 !important;
+}
+
+/* Tighten card padding at top */
+.insight-card-combined {
+  padding: 12px 30px 20px 30px !important;  /* reduce top padding */
+}
+
+/* Remove any top margin from pillars */
+.insight-pillars {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* First pillar no top margin */
+.insight-pillar:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.pillar-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Reduce vertical lines to match new height */
+.insight-card-combined::before,
+.insight-card-combined::after {
+  top: 5% !important;
+  bottom: 5% !important;
+}
