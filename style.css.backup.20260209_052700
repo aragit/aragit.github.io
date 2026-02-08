@@ -1045,7 +1045,7 @@ a.card-link:hover{
     font-size: .9rem;
     padding: 7px 12px;               /* smaller pill */
     border-radius: 999px;
-    background: #0d0d0d;
+    background: linear-gradient(180deg,#2f2f2f 0%,#232323 100%);
     color: #ff6b00;
     border: 1px solid rgba(255,255,255,.04);
     transition: transform .18s, box-shadow .18s;
@@ -1369,7 +1369,7 @@ a.card-link:hover{
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,.04);
-  background: #0d0d0d;
+  background: linear-gradient(180deg,#2f2f2f 0%,#232323 100%);
   color: #b8b8b8;          /* muted grey */
   font-weight: 400;         /* normal weight */
   font-size: .8rem;         /* slightly smaller */
