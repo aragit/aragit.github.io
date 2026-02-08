@@ -3820,16 +3820,39 @@ ul.insight-bullets li {
 }
 
 
-/* ===== RESET: Hero Tagline to Original State ===== */
 
-/* Remove any previous hero-tagline overrides */
+/* ===== FIX: Restore Hero Layout - Prevent Overlap ===== */
+
+/* Reset any broken positioning */
 .hero-tagline,
 .hero-tagline.typewriter {
-  all: revert;
+  position: relative !important;
+  display: block !important;
+  margin-top: 12px !important;
+  margin-bottom: 8px !important;
+  padding: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  color: #e0e0e0 !important;
+  text-align: center !important;
+  line-height: 1.4 !important;
 }
 
-/* Let original site styles apply */
-#typewrite,
-.typewriter-text {
-  all: revert;
+/* Ensure typewriter text doesn't overlap */
+#typewrite {
+  display: block !important;
+  margin-top: 5px !important;
+  min-height: 1.4em !important;
+  position: relative !important;
+}
+
+/* Space between name and tagline */
+.hero-inner h1 {
+  margin-bottom: 8px !important;
+}
+
+/* The subtitle below */
+.hero-inner .tw-wrapper,
+.hero-inner p {
+  margin-top: 5px !important;
 }
