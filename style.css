@@ -3272,3 +3272,51 @@ ul.insight-bullets li {
     font-size: 0.75rem;
   }
 }
+
+/* ===== INSIGHT SECTION - REDUCED SPACING ===== */
+
+/* Reduce gap between pillars */
+.insight-pillars {
+  gap: 18px !important;  /* was 32px */
+  margin-top: 5px !important;
+}
+
+/* Reduce margin between title and desc */
+.pillar-title {
+  margin-bottom: 6px !important;  /* was 10px */
+}
+
+/* Reduce line height for tighter text */
+.pillar-desc {
+  line-height: 1.5 !important;  /* was 1.65 */
+  margin-bottom: 0;
+}
+
+/* Reduce padding inside card */
+.insight-card-combined {
+  padding: 25px 35px !important;  /* was 35px 45px */
+}
+
+/* Reduce vertical lines position */
+.insight-card-combined::before,
+.insight-card-combined::after {
+  top: 15% !important;  /* was 20% */
+  bottom: 15% !important;
+}
+
+/* Reduce gap between text and image columns */
+.insight-card-combined {
+  gap: 30px !important;  /* was 50px */
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .insight-pillars {
+    gap: 14px !important;
+  }
+  
+  .insight-card-combined {
+    padding: 20px 15px !important;
+    gap: 20px !important;
+  }
+}
