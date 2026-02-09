@@ -5076,3 +5076,47 @@ ul.insight-bullets li {
   text-align: center !important;
   align-self: center !important;
 }
+
+/* ===== SERVICE ICONS - MATCH CASE STUDY STYLE (NO CIRCLE) ===== */
+
+/* Remove circle background from service card icons */
+#services .cards .card.service-card .card-icon,
+#services .card.service-card .card-icon {
+  background: transparent !important;        /* Remove orange circle bg */
+  border: none !important;                   /* Remove border */
+  width: auto !important;                    /* Auto width */
+  height: auto !important;                   /* Auto height */
+  margin: 0 auto 0.8rem auto !important;     /* Keep centering */
+  padding: 0 !important;                     /* Remove padding */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Style the icon itself - larger and orange like case studies */
+#services .cards .card.service-card .card-icon i,
+#services .card.service-card .card-icon i {
+  font-size: 2rem !important;                /* Larger icon */
+  color: #ff6b00 !important;                 /* Orange color */
+  filter: drop-shadow(0 0 8px rgba(255, 107, 0, 0.3)) !important; /* Subtle glow */
+  transition: all 0.3s ease !important;
+}
+
+/* Hover effect - brighten icon */
+#services .cards .card.service-card:hover .card-icon i {
+  color: #ff8533 !important;                 /* Lighter orange on hover */
+  filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.5)) !important; /* Stronger glow */
+  transform: scale(1.1) !important;
+}
+
+/* Ensure card structure still works without circle */
+#services .cards .card.service-card {
+  padding-top: 1.5rem !important;            /* Space for icon at top */
+}
+
+/* Blueprint chess knight - special styling if needed */
+#services .cards .card.service-card:first-child .card-icon i,
+#services .cards .card.service-card[href*="quick-audit"] .card-icon i {
+  /* Could add specific styling for knight icon here */
+  font-size: 2.2rem !important;              /* Slightly larger for knight */
+}
