@@ -4855,3 +4855,55 @@ ul.insight-bullets li {
     padding: 1.2rem !important;
   }
 }
+
+/* ===== FIX: Blueprint Card Title Alignment ===== */
+
+/* Ensure all service cards have consistent structure */
+#services .card.service-card {
+  min-height: 280px !important;
+  justify-content: flex-start !important;
+  padding-top: 1.5rem !important;
+}
+
+/* Card icon spacing */
+#services .card.service-card .card-icon {
+  margin-bottom: 0.8rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* Card body should fill available space */
+#services .card.service-card .card-body {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+}
+
+/* Ensure title is always visible and properly styled */
+#services .card.service-card .card-body h3 {
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  line-height: 1.3 !important;
+  min-height: 1.5rem !important;
+}
+
+/* First card (Blueprint) specific fix if needed */
+#services .cards .card.service-card:first-child .card-body h3 {
+  color: #ffffff !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Push actions to bottom */
+#services .card.service-card .card-actions {
+  margin-top: auto !important;
+  padding-top: 1rem !important;
+  width: 100% !important;
+  text-align: center !important;
+}
