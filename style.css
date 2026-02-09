@@ -5120,3 +5120,33 @@ ul.insight-bullets li {
   /* Could add specific styling for knight icon here */
   font-size: 2.2rem !important;              /* Slightly larger for knight */
 }
+
+/* ===== SERVICE ICONS - REDUCE SIZE TO MATCH CASE STUDIES ===== */
+
+/* Reduce icon size to match case study cards */
+#services .cards .card.service-card .card-icon i,
+#services .card.service-card .card-icon i {
+  font-size: 1.4rem !important;                /* Reduced from 2rem to match case studies */
+  color: #ff6b00 !important;                   /* Orange color */
+  filter: drop-shadow(0 0 6px rgba(255, 107, 0, 0.25)) !important; /* Subtle glow */
+  transition: all 0.3s ease !important;
+}
+
+/* Blueprint chess knight - slightly larger for emphasis */
+#services .cards .card.service-card:first-child .card-icon i,
+#services .cards .card.service-card[href*="quick-audit"] .card-icon i {
+  font-size: 1.5rem !important;                /* Slightly larger knight */
+}
+
+/* The Nexus project-diagram icon */
+#services .cards .card.service-card[href*="deploy-scale"] .card-icon i,
+#services .cards .card.service-card:nth-child(3) .card-icon i {
+  font-size: 1.4rem !important;                /* Same size as others */
+}
+
+/* Hover effect */
+#services .cards .card.service-card:hover .card-icon i {
+  color: #ff8533 !important;                   /* Lighter orange */
+  filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.4)) !important;
+  transform: scale(1.08) !important;
+}
