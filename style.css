@@ -4657,3 +4657,24 @@ ul.insight-bullets li {
   outline: 3px solid rgba(255, 107, 0, 0.15);
   outline-offset: 3px;
 }
+
+/* ===== FIX 1: Services Cards - Lighter Button Borders ===== */
+#services .cards .card .card-actions .cta-secondary,
+#services .cards .card .card-actions .service-btn,
+#services .cards .card .card-actions a.service-learn,
+#services .cards .card .card-actions button.service-btn {
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+#services .cards .card .card-actions .cta-secondary:hover,
+#services .cards .card .card-actions .service-btn:hover {
+  border-color: rgba(255, 107, 0, 0.5) !important;
+}
+
+#services .cards .card .card-actions .cta-secondary:focus,
+#services .cards .card .card-actions .service-btn:focus {
+  border: 1px solid rgba(255, 107, 0, 0.6) !important;
+  outline: 2px solid rgba(255, 107, 0, 0.2) !important;
+  outline-offset: 2px !important;
+}
