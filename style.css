@@ -5441,3 +5441,47 @@ ul.insight-bullets li {
 #portfolio .card[style*="rotate"] {
   transform: none !important;
 }
+
+/* ===== REMOVE ALL 3D EFFECTS FROM CASE STUDY CARDS ===== */
+
+/* Force flat cards - no transform */
+#portfolio .cards .card,
+#portfolio .portfolio-grid .card,
+#portfolio .big-cards .card,
+#portfolio .small-cards .card,
+#portfolio a.card {
+  transform: none !important;
+  transform-style: flat !important;
+  perspective: none !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Remove hover transform */
+#portfolio .cards .card:hover,
+#portfolio .portfolio-grid .card:hover,
+#portfolio .big-cards .card:hover,
+#portfolio .small-cards .card:hover,
+#portfolio a.card:hover {
+  transform: none !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow only */
+}
+
+/* Remove any inline transforms added by JS */
+#portfolio .card[style*="transform"],
+#portfolio .card[style*="rotate"] {
+  transform: none !important;
+}
+
+/* Ensure card actions don't have 3D transforms */
+#portfolio .cards .card .card-actions,
+#portfolio .portfolio-grid .card .card-actions {
+  transform: none !important;
+  transform: translateZ(0) !important;
+}
+
+/* Remove spotlight effect variables */
+#portfolio .cards .card,
+#portfolio .portfolio-grid .card {
+  --mouse-x: 50% !important;
+  --mouse-y: 50% !important;
+}
