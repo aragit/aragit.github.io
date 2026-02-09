@@ -5403,3 +5403,41 @@ ul.insight-bullets li {
   display: block !important;
   margin-top: 0.2rem !important;
 }
+
+/* ===== REMOVE TILT/ROTATE AND SHADOW FROM CASE STUDY CARDS ===== */
+
+/* Remove transform/tilt effects from case study cards */
+#portfolio .small-cards .card,
+#portfolio .cards .card,
+#portfolio .portfolio-grid .card {
+  transform: none !important;           /* Remove any rotation/tilt */
+  transform-style: flat !important;     /* Disable 3D transforms */
+  transition: box-shadow 0.3s ease !important; /* Keep only subtle shadow transition */
+}
+
+/* Remove hover transform effects */
+#portfolio .small-cards .card:hover,
+#portfolio .cards .card:hover,
+#portfolio .portfolio-grid .card:hover {
+  transform: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow only */
+}
+
+/* Remove card actions transform */
+#portfolio .cards .card .card-actions,
+#portfolio .portfolio-grid .card .card-actions {
+  transform: none !important;
+  transform: translateZ(0) !important;
+}
+
+/* Remove any rotate/skew effects */
+#portfolio .cards .card *,
+#portfolio .portfolio-grid .card * {
+  transform: none !important;
+}
+
+/* Override any JavaScript-added transforms */
+#portfolio .card[style*="transform"],
+#portfolio .card[style*="rotate"] {
+  transform: none !important;
+}
