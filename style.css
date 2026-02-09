@@ -5393,3 +5393,13 @@ ul.insight-bullets li {
   font-size: 1.35rem !important;
   font-weight: 600 !important;
 }
+
+/* Services subtitle span - larger and bold */
+#services-title .services-subtitle,
+.services-subtitle {
+  font-size: 1.3rem !important;        /* One degree larger */
+  font-weight: 600 !important;         /* Bold */
+  color: #ffffff !important;
+  display: block !important;
+  margin-top: 0.2rem !important;
+}
