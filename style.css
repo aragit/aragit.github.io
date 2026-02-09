@@ -4678,3 +4678,20 @@ ul.insight-bullets li {
   outline: 2px solid rgba(255, 107, 0, 0.2) !important;
   outline-offset: 2px !important;
 }
+
+/* ===== FIX 2: Services Cards - Distinct Icons ===== */
+#services .cards .card .card-icon { display: block !important; }
+#services .card.service-card .card-icon {
+  font-size: 1.6rem; color: #ff6b00;
+  width: 50px; height: 50px; margin: 0 auto 0.8rem auto;
+  background: rgba(255, 107, 0, 0.1); border-radius: 50%;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.3s ease;
+}
+#services .card.service-card:hover .card-icon {
+  background: rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+}
