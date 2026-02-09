@@ -5179,3 +5179,67 @@ ul.insight-bullets li {
 #about h2.insight-headline span {
   color: #ffffff !important;
 }
+
+/* ===== SECTION SUBTITLES ===== */
+
+/* Architecture Philosophy subtitle */
+.insight-articles-title::after,
+#about .insight-articles-title::after {
+  content: "Architectures that Learn, not Rules that Break.";
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #a0a0a0;
+  margin-top: 0.4rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+/* Case Studies subtitle */
+#portfolio .section-title::after,
+#portfolio-title::after {
+  content: "Systems in the Real World. Real Problems, Real Constraints. How Ideas Survive Production.";
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #a0a0a0;
+  margin-top: 0.4rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+/* Knowledge Base subtitle */
+#articles .section-title::after,
+#articles-title::after {
+  content: "Foundation Theory Speeds Iteration. Understand Once, Move Faster Forever.";
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #a0a0a0;
+  margin-top: 0.4rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+/* ===== SECTION SUBTITLE STYLING ===== */
+.section-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #a0a0a0;
+  margin-top: 0.3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+/* Specific adjustments */
+#portfolio .section-subtitle {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
