@@ -5765,3 +5765,60 @@ ul.insight-bullets li {
     transform: none;
   }
 }
+
+/* ===== CASE STUDIES FIXES ===== */
+
+/* Fix 1: Equal card heights */
+.cs-grid {
+  align-items: stretch !important;
+}
+
+.cs-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.cs-card-body {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Fix 2: Centered tags */
+.cs-tags {
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.cs-header-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.cs-card h3 {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Fix 3: Consistent flagship styling */
+.cs-card--flagship {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-left: 3px solid rgba(255, 107, 0, 0.6) !important;
+}
+
+.cs-card--flagship:hover {
+  border-color: rgba(255, 107, 0, 0.6) !important;
+  border-left-color: rgba(255, 107, 0, 0.9) !important;
+}
+
+/* Fix 4: Push CTA to bottom */
+.cs-cta-row {
+  margin-top: auto !important;
+}
+
+.cs-note {
+  text-align: center !important;
+}
