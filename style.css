@@ -5822,3 +5822,62 @@ ul.insight-bullets li {
 .cs-note {
   text-align: center !important;
 }
+
+/* ===== FIX: Align CTA buttons across all cards ===== */
+
+/* Ensure card body fills height and pushes CTA to bottom */
+.cs-card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+}
+
+/* Agentic loop should grow but not push CTA beyond bounds */
+.cs-loop {
+  flex: 0 1 auto !important;
+  margin-bottom: auto !important;
+}
+
+/* Impact statement - compact spacing */
+.cs-impact {
+  flex: 0 0 auto !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+/* CTA row - always at bottom with fixed spacing */
+.cs-cta-row {
+  margin-top: auto !important;
+  margin-bottom: 8px !important;
+  flex: 0 0 auto !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Safety note - fixed at bottom */
+.cs-note {
+  flex: 0 0 auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  min-height: 2em !important;
+}
+
+/* One-line description - consistent height */
+.cs-oneline {
+  flex: 0 0 auto !important;
+  min-height: 2.7em !important;
+  margin-bottom: 8px !important;
+}
+
+/* Card header - consistent height */
+.cs-card-header {
+  flex: 0 0 auto !important;
+  margin-bottom: 12px !important;
+}
+
+/* Ensure all cards have same internal spacing */
+.cs-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
