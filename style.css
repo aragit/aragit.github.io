@@ -4706,3 +4706,29 @@ ul.insight-bullets li {
 #services .cards .card.service-card .card-body p { font-size: 0.9rem !important; text-align: center !important; }
 #services .cards .card.service-card .card-body p strong { color: #ff8533 !important; display: block !important; margin-bottom: 0.4rem !important; }
 #services .cards .card.service-card .card-actions { justify-content: center !important; }
+
+/* ===== SERVICES CARDS - CENTERED TITLES ===== */
+#services .cards .service-card .card-body {
+  text-align: center !important;
+  align-items: center !important;
+}
+#services .cards .service-card .card-body h3 {
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  margin: 0 auto 0.5rem auto !important;
+  width: 100% !important;
+}
+#services .cards .service-card .card-body p {
+  font-size: 0.9rem !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+#services .cards .service-card .card-body p strong {
+  color: #ff6b00 !important;
+  display: block !important;
+  margin-bottom: 0.3rem !important;
+  font-size: 0.95rem !important;
+}
+#services .cards .service-card .card-actions {
+  justify-content: center !important;
+}
