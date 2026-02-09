@@ -5485,3 +5485,283 @@ ul.insight-bullets li {
   --mouse-x: 50% !important;
   --mouse-y: 50% !important;
 }
+
+/* ===== CASE STUDIES - NEW AGENTIC DESIGN ===== */
+
+#portfolio {
+  padding: 40px 0;
+}
+
+#portfolio .section-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+
+#portfolio .section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 30px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cs-card {
+  background: rgba(25, 25, 25, 0.95);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-card--clinical {
+  border-left: 3px solid rgba(45, 212, 191, 0.4);
+}
+
+.cs-card--biomedical {
+  border-left: 3px solid rgba(251, 146, 60, 0.4);
+}
+
+.cs-card--business {
+  border-left: 3px solid rgba(96, 165, 250, 0.4);
+}
+
+.cs-card--flagship {
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 107, 0, 0.15);
+}
+
+.cs-card--flagship::before {
+  content: "FLAGSHIP";
+  position: absolute;
+  top: 12px;
+  right: -28px;
+  background: linear-gradient(135deg, #ff6b00, #ff8533);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 30px;
+  transform: rotate(45deg);
+  letter-spacing: 0.05em;
+}
+
+.cs-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 107, 0, 0.4);
+}
+
+.cs-card--clinical:hover {
+  border-color: rgba(45, 212, 191, 0.6);
+}
+
+.cs-card--biomedical:hover {
+  border-color: rgba(251, 146, 60, 0.6);
+}
+
+.cs-card--business:hover {
+  border-color: rgba(96, 165, 250, 0.6);
+}
+
+.cs-card--flagship:hover {
+  border-color: rgba(255, 107, 0, 0.6);
+  box-shadow: 0 20px 40px rgba(255, 107, 0, 0.25);
+}
+
+.cs-card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cs-card-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.cs-icon {
+  font-size: 1.6rem;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+  flex-shrink: 0;
+}
+
+.cs-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.cs-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.cs-tags span {
+  font-size: 0.68rem;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.cs-oneline {
+  color: #c0c0c0;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cs-loop {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 12px;
+  display: grid;
+  gap: 5px;
+}
+
+.cs-loop li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.82rem;
+  color: #b0b0b0;
+  line-height: 1.4;
+}
+
+.cs-loop li strong {
+  width: 70px;
+  color: #f0f0f0;
+  font-weight: 600;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+
+.cs-loop li span {
+  flex: 1;
+}
+
+.cs-impact {
+  margin: 8px 0;
+  color: #e0e0e0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.cs-impact strong {
+  color: #ff8533;
+  font-weight: 600;
+}
+
+.cs-cta-row {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.btn-primary {
+  background: #0d0d0d;
+  color: #e6f3ff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-primary:hover {
+  border-color: #ff6b00;
+  color: #ff6b00;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  color: #9ca3af;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #c0c0c0;
+}
+
+.cs-note {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 10px;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+@media (max-width: 980px) {
+  .cs-grid {
+    grid-template-columns: 1fr;
+  }
+  .cs-card--flagship::before {
+    right: -24px;
+    padding: 3px 24px;
+    font-size: 0.6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-card {
+    transition: none;
+  }
+  .cs-card:hover {
+    transform: none;
+  }
+}
