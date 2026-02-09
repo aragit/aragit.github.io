@@ -4695,3 +4695,25 @@ ul.insight-bullets li {
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
 }
+
+/* ===== FIX 2: Services Cards - Inline Icons (CORRECTED) ===== */
+#services .card.service-card .card-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  color: #ff6b00;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+#services .card.service-card h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#services .card.service-card:hover .card-icon {
+  transform: scale(1.1);
+  color: #ff8533;
+}
