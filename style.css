@@ -5356,3 +5356,40 @@ ul.insight-bullets li {
   font-weight: 600 !important;
   color: #ffffff !important;
 }
+
+/* ===== SERVICES TITLE - MAKE SECOND LINE LARGER ===== */
+
+/* Target the h2 and make all text larger */
+#services-title.section-title {
+  font-size: 1.4rem !important;        /* Base size larger */
+  line-height: 1.4 !important;
+}
+
+/* The second line (after <br>) - make it larger */
+#services-title.section-title br {
+  display: block !important;
+  content: "" !important;
+  margin-bottom: 0.3rem !important;
+}
+
+/* Target text nodes - make second line stand out */
+#services-title {
+  font-size: 1.3rem !important;
+}
+
+/* Use ::first-line for first part, then target rest */
+#services-title.section-title::first-line {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+
+/* Alternative: wrap second line in span via CSS content */
+#services-title.section-title {
+  position: relative !important;
+}
+
+/* Force both lines to be larger */
+#services-title.section-title {
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+}
