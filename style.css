@@ -5304,3 +5304,35 @@ ul.insight-bullets li {
   font-size: 1.1rem !important;
   font-weight: 600 !important;
 }
+
+/* ===== TITLE SENTENCES - ONE DEGREE LARGER ===== */
+
+/* Main headline: Real Agentic Systems Reason and Learn within Adaptive Architecture */
+.headline-line2,
+.insight-headline .headline-line2,
+#about .headline-line2,
+.section#about .headline-line2 {
+  font-size: 1.55rem !important;        /* One degree larger (was ~1.4rem) */
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.3 !important;
+}
+
+/* Services subtitle: Build and Operate Intelligent Systems that Last */
+#services-title + .section-subtitle,
+#services .section-subtitle,
+#services-title::after,
+#services .container > h2#services-title + p,
+#services h2#services-title + p.section-subtitle {
+  font-size: 1.25rem !important;        /* One degree larger (was ~1.15rem) */
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Target the specific subtitle text */
+#services .section-subtitle,
+#services-title ~ .section-subtitle {
+  font-size: 1.25rem !important;
+}
