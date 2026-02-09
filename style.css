@@ -6101,3 +6101,123 @@ ul.insight-bullets li {
   font-size: 0.65rem !important;
   padding: 2px 6px !important;
 }
+
+/* ===== RESTORE PREVIOUS CARD STYLING - REMOVE ICONS ===== */
+
+/* Hide all card icons in portfolio */
+#portfolio .cards .card-icon,
+#portfolio .portfolio-grid .card-icon,
+#portfolio .big-cards .card-icon,
+#portfolio .small-cards .card-icon,
+#portfolio .card .card-icon {
+  display: none !important;
+}
+
+/* Restore previous card background styling */
+#portfolio .cards .card,
+#portfolio .portfolio-grid .card,
+#portfolio .big-cards .card,
+#portfolio .small-cards .card {
+  background: rgba(25, 25, 25, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 1.2rem !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+  transform: none !important;
+  transform-style: flat !important;
+  perspective: none !important;
+}
+
+/* Hover effect - subtle lift only */
+#portfolio .cards .card:hover,
+#portfolio .portfolio-grid .card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+  border-color: rgba(255, 107, 0, 0.3) !important;
+}
+
+/* Remove any pseudo-element effects */
+#portfolio .cards .card::before,
+#portfolio .portfolio-grid .card::before,
+#portfolio .cards .card::after,
+#portfolio .portfolio-grid .card::after {
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* Card body styling */
+#portfolio .cards .card .card-body,
+#portfolio .portfolio-grid .card .card-body {
+  padding: 0.6rem 0 !important;
+  text-align: center !important;
+}
+
+/* Title styling */
+#portfolio .cards .card .card-body h3,
+#portfolio .portfolio-grid .card .card-body h3 {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  margin: 0.2rem 0 !important;
+  text-align: center !important;
+}
+
+/* Description text */
+#portfolio .cards .card .card-body p,
+#portfolio .portfolio-grid .card .card-body p {
+  font-size: 0.9rem !important;
+  color: #b0b0b0 !important;
+  line-height: 1.5 !important;
+  margin: 0.5rem 0 !important;
+}
+
+/* CTA buttons - centered at bottom */
+#portfolio .cards .card .card-actions,
+#portfolio .portfolio-grid .card .card-actions {
+  text-align: center !important;
+  padding-top: 0.8rem !important;
+  margin-top: auto !important;
+}
+
+/* Button styling - dark with orange hover */
+#portfolio .cards .card .card-actions .cta-secondary,
+#portfolio .portfolio-grid .card .card-actions .cta-secondary {
+  display: inline-block !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #0d0d0d !important;
+  color: #b8b8b8 !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+#portfolio .cards .card .card-actions .cta-secondary:hover,
+#portfolio .portfolio-grid .card .card-actions .cta-secondary:hover {
+  border-color: #ff6b00 !important;
+  color: #ff6b00 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Image styling */
+#portfolio .cards .card .card-fill-img,
+#portfolio .portfolio-grid .card .card-fill-img {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  margin-top: 0.75rem !important;
+  object-fit: cover !important;
+}
+
+/* Big cards specific */
+#portfolio .big-cards .card {
+  padding: 1.2rem !important;
+}
+
+/* Small cards specific */
+#portfolio .small-cards .card {
+  padding: 1rem !important;
+}
