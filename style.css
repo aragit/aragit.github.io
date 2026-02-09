@@ -4699,3 +4699,10 @@ ul.insight-bullets li {
   #services .cards .service-card .card-body h3 { font-size: 1rem !important; }
   #services .cards .service-card .card-body p { font-size: 0.8rem !important; }
 }
+
+/* ===== SERVICES CARDS - CENTERED TITLES FIX ===== */
+#services .cards .card.service-card .card-body { text-align: center !important; align-items: center !important; }
+#services .cards .card.service-card .card-body h3 { font-size: 1.15rem !important; text-align: center !important; margin: 0 auto 0.6rem auto !important; width: 100% !important; }
+#services .cards .card.service-card .card-body p { font-size: 0.9rem !important; text-align: center !important; }
+#services .cards .card.service-card .card-body p strong { color: #ff8533 !important; display: block !important; margin-bottom: 0.4rem !important; }
+#services .cards .card.service-card .card-actions { justify-content: center !important; }
