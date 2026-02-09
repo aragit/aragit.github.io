@@ -5243,3 +5243,64 @@ ul.insight-bullets li {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ===== SUBTITLES - LARGER, WHITE, BOLD ===== */
+
+/* All section subtitles - larger, white, bold */
+.section-subtitle,
+.insight-articles-title::after,
+#portfolio .section-title::after,
+#articles .section-title::after {
+  font-size: 1.1rem !important;        /* Larger - was 0.85rem/0.9rem */
+  font-weight: 600 !important;         /* Bold */
+  color: #ffffff !important;           /* Pure white */
+  text-align: center !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 2rem !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.5 !important;
+  text-transform: none !important;
+}
+
+/* Specific targeting for each subtitle */
+#about .section-subtitle,
+#about .insight-articles-title + .section-subtitle {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+#portfolio .section-subtitle {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  max-width: 700px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#articles .section-subtitle {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+/* If using ::after pseudo-elements */
+.insight-articles-title::after {
+  content: "Architectures that Learn, not Rules that Break." !important;
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+#portfolio .section-title::after {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+#articles .section-title::after {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
