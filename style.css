@@ -5150,3 +5150,32 @@ ul.insight-bullets li {
   filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.4)) !important;
   transform: scale(1.08) !important;
 }
+
+/* ===== CHANGE ORANGE HEADLINE TO WHITE ===== */
+
+/* Target the insight headline - change from orange to white */
+.insight-headline,
+.headline-line1,
+.headline-line2,
+#about .insight-headline,
+#about .headline-line1,
+#about .headline-line2,
+.section#about .insight-headline,
+.section#about .headline-line1 {
+  color: #ffffff !important;
+}
+
+/* Specifically target the first line if it's orange */
+.headline-line1 {
+  color: #ffffff !important;           /* Change from #ff8533/orange to white */
+}
+
+/* Second line stays white (was already white) */
+.headline-line2 {
+  color: #ffffff !important;
+}
+
+/* Ensure both lines are white */
+#about h2.insight-headline span {
+  color: #ffffff !important;
+}
