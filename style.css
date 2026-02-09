@@ -5336,3 +5336,23 @@ ul.insight-bullets li {
 #services-title ~ .section-subtitle {
   font-size: 1.25rem !important;
 }
+
+/* ===== AGGRESSIVE: LARGER TITLE SENTENCES ===== */
+
+/* Headline line 2 - larger */
+.headline-line2 {
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+}
+
+/* Services section subtitle - target various structures */
+#services .container h2 + p,
+#services .container h2 + br + p,
+#services h2#services-title + p.section-subtitle,
+#services .section-subtitle,
+#services-title ~ p,
+#services h2 ~ p.section-subtitle {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
