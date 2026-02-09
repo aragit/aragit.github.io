@@ -5929,3 +5929,89 @@ ul.insight-bullets li {
   margin: 6px 0 !important;
   min-height: 2.4em !important;
 }
+
+/* ===== AGGRESSIVE FIX: Pull up CTA buttons by one line ===== */
+
+/* Dramatically reduce agentic loop spacing */
+.cs-loop {
+  gap: 2px !important;
+  margin: 2px 0 6px !important;
+}
+
+.cs-loop li {
+  font-size: 0.78rem !important;
+  line-height: 1.25 !important;
+  margin-bottom: 1px !important;
+}
+
+.cs-loop li strong {
+  width: 65px !important;
+  font-size: 0.77rem !important;
+}
+
+/* Very compact impact */
+.cs-impact {
+  margin: 4px 0 !important;
+  font-size: 0.8rem !important;
+  line-height: 1.3 !important;
+}
+
+/* Pull CTA up significantly */
+.cs-cta-row {
+  padding-top: 6px !important;
+  margin-bottom: 4px !important;
+  margin-top: auto !important;
+}
+
+/* Compact buttons */
+.cs-btn {
+  padding: 6px 12px !important;
+  font-size: 0.8rem !important;
+}
+
+/* Very compact safety note */
+.cs-note {
+  font-size: 0.65rem !important;
+  line-height: 1.25 !important;
+  min-height: 1.5em !important;
+  margin-top: 0 !important;
+}
+
+/* Reduce card padding more */
+.cs-card {
+  padding: 12px !important;
+}
+
+/* Compact header */
+.cs-card-header {
+  margin-bottom: 6px !important;
+}
+
+.cs-icon {
+  width: 34px !important;
+  height: 34px !important;
+  font-size: 1.4rem !important;
+}
+
+.cs-card h3 {
+  font-size: 1rem !important;
+  margin-bottom: 4px !important;
+}
+
+/* Compact one-line */
+.cs-oneline {
+  margin: 4px 0 !important;
+  font-size: 0.87rem !important;
+  min-height: 2.2em !important;
+  line-height: 1.4 !important;
+}
+
+/* Compact tags */
+.cs-tags {
+  gap: 4px !important;
+}
+
+.cs-tags span {
+  font-size: 0.65rem !important;
+  padding: 2px 6px !important;
+}
