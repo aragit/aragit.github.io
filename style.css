@@ -4606,58 +4606,6 @@ ul.insight-bullets li {
   }
 }
 
-/* ===== FIX: Remove pure black hover effect - restore dark grey background ===== */
-
-#services .cards a.card:hover,
-#services .cards a.card:active,
-#services .cards .card:hover,
-#services .cards .card:active {
-  border-color: rgba(255, 107, 0, 0.15) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
-  outline: none !important;
-}
-
-#services .cards .card,
-#services .cards .service-card {
-  background: rgba(25, 25, 25, 0.95) !important;
-  background-color: rgba(25, 25, 25, 0.95) !important;
-}
-
-#services .cards .card:hover,
-#services .cards .service-card:hover {
-  background: rgba(30, 30, 30, 0.98) !important;
-  background-color: rgba(30, 30, 30, 0.98) !important;
-  transform: translateY(-4px) !important;
-  border-color: rgba(255, 107, 0, 0.25) !important;
-}
-
-#services .cards .card:hover::before,
-#services .cards .card:hover::after {
-  display: block !important;
-  opacity: 0.6 !important;
-}
-
-#services .cards .card:hover h3,
-#services .cards .card:hover p,
-#services .cards .service-card:hover h3,
-#services .cards .service-card:hover p {
-  color: #ffffff !important;
-}
-
-@media (max-width: 900px) {
-  #services .cards .card,
-  #services .cards .service-card {
-    background: rgba(25, 25, 25, 0.95) !important;
-  }
-}
-
-#services .cards a.card:focus,
-#services .cards .card:focus,
-#services a.card-link:focus {
-  outline: 3px solid rgba(255, 107, 0, 0.15);
-  outline-offset: 3px;
-}
-
 /* ===== FIX 1: Services Cards - Lighter Button Borders ===== */
 #services .cards .card .card-actions .cta-secondary,
 #services .cards .card .card-actions .service-btn,
@@ -4716,4 +4664,38 @@ ul.insight-bullets li {
 #services .card.service-card:hover .card-icon {
   transform: scale(1.1);
   color: #ff8533;
+}
+
+/* ===== SERVICES CARDS - CENTERED SMALLER TITLES ===== */
+#services .cards .service-card .card-body {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#services .cards .service-card .card-body h3 {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin: 0 auto 0.5rem auto !important;
+  line-height: 1.3 !important;
+  width: 100% !important;
+}
+#services .cards .service-card .card-body p {
+  font-size: 0.85rem !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  line-height: 1.4 !important;
+  color: #b0b0b0 !important;
+  max-width: 90% !important;
+}
+#services .cards .service-card .card-actions {
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+@media (max-width: 720px) {
+  #services .cards .service-card .card-body h3 { font-size: 1rem !important; }
+  #services .cards .service-card .card-body p { font-size: 0.8rem !important; }
 }
