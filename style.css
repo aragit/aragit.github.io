@@ -1849,46 +1849,6 @@ button.service-btn:hover {
   }
 }
 
-/* ====== Remove orange hover line for Services cards only ======
-   Paste at the very end of style.css
-   Keeps keyboard focus (focus outline) untouched for accessibility.
-*/
-
-/* target the anchor/card elements inside #services and neutralize hover/active */
-#services .cards a.card:hover,
-#services .cards a.card:active,
-#services .cards .card:hover,
-#services .cards .card:active {
-  border-color: transparent !important;
-  box-shadow: none !important;
-  outline: none !important;        /* only for mouse hover/active */
-  background-image: none !important;
-}
-
-/* if the orange line is applied via an inner pseudo-element, hide it on hover */
-#services .cards a.card:hover::before,
-#services .cards a.card:hover::after,
-#services .cards .card:hover::before,
-#services .cards .card:hover::after {
-  display: none !important;
-  opacity: 0 !important;
-}
-
-/* Safety: override any global hover rule that targets .card-link */
-#services a.card-link:hover,
-#services a.card-link:active {
-  border-color: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Mobile & keyboard: ensure focus remains visible (don't remove focus ring) */
-#services .cards a.card:focus,
-#services .cards .card:focus,
-#services a.card-link:focus {
-  outline: 3px solid rgba(255,107,0,0.12); /* gentle accessible focus */
-  outline-offset: 3px;
-}
-
 /* Hero supporting text (non-intrusive) */
 .hero-tagline {
   margin-top: 0.75rem;
@@ -4644,4 +4604,56 @@ ul.insight-bullets li {
   #portfolio .cards .card .card-actions {
     transform: none !important;
   }
+}
+
+/* ===== FIX: Remove pure black hover effect - restore dark grey background ===== */
+
+#services .cards a.card:hover,
+#services .cards a.card:active,
+#services .cards .card:hover,
+#services .cards .card:active {
+  border-color: rgba(255, 107, 0, 0.15) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+  outline: none !important;
+}
+
+#services .cards .card,
+#services .cards .service-card {
+  background: rgba(25, 25, 25, 0.95) !important;
+  background-color: rgba(25, 25, 25, 0.95) !important;
+}
+
+#services .cards .card:hover,
+#services .cards .service-card:hover {
+  background: rgba(30, 30, 30, 0.98) !important;
+  background-color: rgba(30, 30, 30, 0.98) !important;
+  transform: translateY(-4px) !important;
+  border-color: rgba(255, 107, 0, 0.25) !important;
+}
+
+#services .cards .card:hover::before,
+#services .cards .card:hover::after {
+  display: block !important;
+  opacity: 0.6 !important;
+}
+
+#services .cards .card:hover h3,
+#services .cards .card:hover p,
+#services .cards .service-card:hover h3,
+#services .cards .service-card:hover p {
+  color: #ffffff !important;
+}
+
+@media (max-width: 900px) {
+  #services .cards .card,
+  #services .cards .service-card {
+    background: rgba(25, 25, 25, 0.95) !important;
+  }
+}
+
+#services .cards a.card:focus,
+#services .cards .card:focus,
+#services a.card-link:focus {
+  outline: 3px solid rgba(255, 107, 0, 0.15);
+  outline-offset: 3px;
 }
