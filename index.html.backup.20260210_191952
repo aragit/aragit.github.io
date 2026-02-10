@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><style>/* FORCE HIDE IMAGES */ .cs-image{display:none!important;} /* FIX CARD SIZE */ .cs-card{height:280px!important;min-height:280px!important;display:flex!important;flex-direction:column!important;} .cs-link{margin-top:auto!important;}</style>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Arash Nicoomanesh | AI & ML Engineer | Generative & Agentic AI</title>
@@ -26,7 +26,7 @@
 
     
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=33?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1770718323" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -196,73 +196,17 @@
               </div>
       
       <!-- Article Cards - Deep Dive -->
-      
       <div class="insight-articles">
         <h3 class="insight-articles-title">Architecture Philosophy</h3>
         
-        <div class="command-center">
+        <div class="article-cards-grid">
           
-          <div class="manifesto-box">
-            <p class="manifesto-text">
-              Agentic AI succeeds when teams stop treating models as lone <em>“brains in a jar”</em> and instead design managed systems where LLMs provide high-level reasoning while a disciplined architecture (routers, tool registries, memory stores, verification gates, and specialist SLM executors) provides the body, constraints, and persistence required for safe, efficient action. <span class="manifesto-highlight">Pick the structural trade-off</span> (microservices for blast-radius control, actor/monolith for low-latency reasoning, serverless for cost-efficiency) to match your risk/latency/cost profile, enforce policy-as-code around tool calls, and close tight feedback loops so small models can be retrained and composed rapidly — only then do agents move past expensive “chatbot” demos into reliable, auditable systems that actually do work.
-            </p>
-          </div>
-
-          <div class="arch-figure-wrapper">
-            <img src="arch.jpg" alt="Agentic AI System Architecture" class="arch-figure-img" loading="lazy">
-          </div>
-
-          <div class="pillars-row">
-            
-            <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
-               target="_blank" rel="noopener noreferrer" class="article-card">
-              <div class="article-image">
-                <img src="x3.jpg" alt="The Planning Rubicon">
-              </div>
-              <div class="article-card-content">
-                <h4 class="article-title">The Planning Rubicon</h4>
-                <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
-                <div class="article-meta">
-                  <span class="article-tag">Architecture</span>
-                  <span class="article-read">7 min →</span>
-                </div>
-              </div>
-            </a>
-            
-            <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" 
-               target="_blank" rel="noopener noreferrer" class="article-card">
-              <div class="article-image">
-                <img src="alpha.jpg" alt="2026 Roadmap">
-              </div>
-              <div class="article-card-content">
-                <h4 class="article-title">From generative to agentic AI</h4>
-                <p class="article-summary">The 2026 roadmap: why the future of AI isn't better brains, it's better bodies.</p>
-                <div class="article-meta">
-                  <span class="article-tag">Strategy</span>
-                  <span class="article-read">12 min →</span>
-                </div>
-              </div>
-            </a>
-            
-            <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" 
-               target="_blank" rel="noopener noreferrer" class="article-card">
-              <div class="article-image">
-                <img src="reason.png" alt="Reasoning Revolution">
-              </div>
-              <div class="article-card-content">
-                <h4 class="article-title">How LLM reasoning powers agency</h4>
-                <p class="article-summary">How advanced LLMs enable true agentic behavior through reasoning and planning.</p>
-                <div class="article-meta">
-                  <span class="article-tag">Technology</span>
-                  <span class="article-read">9 min →</span>
-                </div>
-              </div>
-            </a>
-            
-          </div>
-        </div>
-      </div>
-
+          <!-- Card 1: Planning Rubicon -->
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="x3.jpg" alt="The Planning Rubicon">
+            </div>
             <div class="article-card-content">
               <h4 class="article-title">The Planning Rubicon</h4>
               <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
@@ -368,7 +312,7 @@
           <a href="#" class="link-arrow">View Case Study →</a>
         </div>
 
-        <div class="bento-item biomed-tall">
+        <div class="bento-item">
           <h3>Biomedical Hypotheses</h3>
           <p class="loop-step">Hypothesis-driven retrieval over PubMed/DrugBank for repurposing leads.</p>
           <div class="tech-tags"><span class="tag">PubMed-KB</span><span class="tag">GNN</span></div>
@@ -405,127 +349,93 @@
     
         <div class="masonry-grid">
     
+          <!----------  HERO CARD (clickable) ---------->
           <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-hero">
-            <div class="article-image">
-              <img src="one.jpg" alt="Fine-Tuning DeepSeek R1">
-            </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-hero">
+            <div class="article-image"><img src="one.jpg" alt="Fine-Tuning DeepSeek R1"></div>
+            
+    
             <div class="article-card-content">
-              <h4 class="article-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h4>
-              <p class="article-summary">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p>
-              <div class="article-meta">
-                <span class="article-tag">Deep Learning</span>
-                <span class="article-read">12 min →</span>
-              </div>
+             
+              <h4 class="article-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h4><p class="article-summary">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p><div class="article-meta"><span class="article-tag">Deep Learning</span><span class="article-read">12 min →</span></div>
+              
             </div>
           </a>
     
+          <!----------  SMALL CARDS (clickable + image below text) ---------->
           <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="Gemma 3n">
-            </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
             <div class="article-card-content">
-              <h4 class="article-title">Gemma 3n Edge AI for Support Bots</h4>
-              <p class="article-summary">Low-memory, high-speed training on customer-support data</p>
-              <div class="article-meta">
-                <span class="article-tag">Edge AI</span>
-                <span class="article-read">8 min →</span>
-              </div>
+              
+              <h4 class="article-title">Gemma 3n Edge AI for Support Bots</h4><p class="article-summary">Low-memory, high-speed training on customer-support data</p><div class="article-meta"><span class="article-tag">Edge AI</span><span class="article-read">8 min →</span></div>
+              
             </div>
+            <div class="article-image"><img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="Gemma 3n"></div>
           </a>
     
           <a href="https://cdn.brouseai.com/preview/qX_N5BbwPyrym93xiQLRS.png"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="config.jpg" alt="LLM Config">
-            </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
             <div class="article-card-content">
-              <h4 class="article-title">LLM Output Config & Guardrails</h4>
-              <p class="article-summary">Master temperature, top-p, and guardrails for reliable LLM outputs</p>
-              <div class="article-meta">
-                <span class="article-tag">LLM Engineering</span>
-                <span class="article-read">10 min →</span>
-              </div>
+              
+              <h4 class="article-title">LLM Output Config <h3>LLM Output Config & Guardrails</h3> Guardrails</h4><p class="article-summary">Master reasoning prompts and guardrails for reliable outputs</p><div class="article-meta"><span class="article-tag">LLM Engineering</span><span class="article-read">10 min →</span></div>
+              
             </div>
+            <div class="article-image"><img src="config.jpg" alt="LLM Config"></div>
           </a>
     
           <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="zero.jpg" alt="Few-Shot Learning">
-            </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
             <div class="article-card-content">
-              <h4 class="article-title">Few-Shot & Zero-Shot Learning Deep-Dive</h4>
-              <p class="article-summary">Push LLMs beyond narrow fine-tuning with cross-domain generalization</p>
-              <div class="article-meta">
-                <span class="article-tag">ML Research</span>
-                <span class="article-read">15 min →</span>
-              </div>
+              
+              <h4 class="article-title">Few-Shot <h3>Few-Shot & Zero-Shot Learning Deep-Dive</h3> Zero-Shot Learning Deep-Dive</h4><p class="article-summary">Push LLMs beyond narrow fine-tuning with cross-domain generalization</p><div class="article-meta"><span class="article-tag">ML Research</span><span class="article-read">15 min →</span></div>
+              
+              <p>In the age of large language models (LLMs), the ability to perform complex tasks with minimal data is revolutionizing how we approach artificial intelligence. Few-shot and zero-shot learning are two pivotal techniques that push the boundaries of machine learning, enabling models to generalize across domains and perform tasks they were not explicitly trained on. This article delves into these learning paradigms, explaining their origins, mechanisms, and real-world applications</p>
             </div>
-          </a>
-    
-          <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="gemma3.jpg" alt="Gemma-3 Fine-tuning">
-            </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Fine-Tune Gemma-3 12B with Unsloth</h4>
-              <p class="article-summary">End-to-end Unsloth & TRL workflow for customer service</p>
-              <div class="article-meta">
-                <span class="article-tag">Fine-Tuning</span>
-                <span class="article-read">14 min →</span>
-              </div>
-            </div>
+            <div class="article-image"><img src="zero.jpg" alt="Few-Shot Learning"></div>
           </a>
     
           <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="drift.png" alt="Model Drift">
-            </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
             <div class="article-card-content">
-              <h4 class="article-title">Model Drift: A Survival Guide</h4>
-              <p class="article-summary">Monitor & remediate production ML models before they fail</p>
-              <div class="article-meta">
-                <span class="article-tag">MLOps</span>
-                <span class="article-read">11 min →</span>
-              </div>
+              
+              <h4 class="article-title">Model Drift: A Survival Guide</h4><p class="article-summary">Monitor <h3>Model Drift: A Survival Guide</h3> remediate production ML models before they fail</p><div class="article-meta"><span class="article-tag">MLOps</span><span class="article-read">11 min →</span></div>
+              
             </div>
+            <div class="article-image"><img src="drift.png" alt="Model Drift"></div>
+          </a>
+    
+          <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="article-card-content">
+              
+              <h4 class="article-title">Fine-Tune Gemma-3 12B with Unsloth</h4><p class="article-summary">End-to-end Unsloth <h3>Fine-Tune Gemma-3 12B with Unsloth</h3> TRL workflow for customer service</p><div class="article-meta"><span class="article-tag">Fine-Tuning</span><span class="article-read">14 min →</span></div>
+              
+              <p>In this article, I have dived into the technical intricacies of Unsloth and Gemma 3, showcasing their powerful features and how they can be leveraged together to build a highly optimized, fine-tuned model for any type of customer support assistant, whether it be a sophisticated chatbot, an intelligent agent, or an interactive FAQ system. I provided a step-by-step guide through the fine-tuning process, from data preparation to model deployment, highlighting best practices and practical considerations for achieving optimal performance in real-world customer service scenarios</p>
+            </div>
+            <div class="article-image"><img src="gemma3.jpg" alt="Gemma-3 Fine-tuning"></div>
           </a>
     
           <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="RAG Future">
-            </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
             <div class="article-card-content">
-              <h4 class="article-title">Is RAG Dead in 2025?</h4>
-              <p class="article-summary">Rethinking documentation Q&A with large-context LLMs</p>
-              <div class="article-meta">
-                <span class="article-tag">RAG</span>
-                <span class="article-read">9 min →</span>
-              </div>
+              
+              <h4 class="article-title">Is RAG Dead in 2025?</h4><p class="article-summary">Rethinking documentation Q<h3>Is RAG Dead in 2025?</h3>A with large-context LLMs</p><div class="article-meta"><span class="article-tag">RAG</span><span class="article-read">9 min →</span></div>
+              
             </div>
+            <div class="article-image"><img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="RAG Future"></div>
           </a>
     
           <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="triage2.png" alt="Agentic RAG">
-            </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
             <div class="article-card-content">
-              <h4 class="article-title">Talk: Agentic RAG in Healthcare</h4>
-              <p class="article-summary">15-min deck on self-evolving retrieval agents</p>
-              <div class="article-meta">
-                <span class="article-tag">Healthcare AI</span>
-                <span class="article-read">15 min →</span>
-              </div>
+              
+              <h4 class="article-title">Talk: Agentic RAG in Healthcare</h4><p class="article-summary">15-min deck on self-evolving retrieval agents</p><div class="article-meta"><span class="article-tag">Healthcare AI</span><span class="article-read">15 min →</span></div>
+              
             </div>
-          </a>
+            <div class="article-image"><img src="triage2.png" alt="Agentic RAG"></div>
+          
     
-        </div>
+        </div><!-- /masonry-grid -->
     
         <div class="articles-cta">
           <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
@@ -824,7 +734,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1770742921?v=1770727673"></script>
+  <script src="script.js?v=10"></script>
     
 </body>
 </html>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><style>/* FORCE HIDE IMAGES */ .cs-image{display:none!important;} /* FIX CARD SIZE */ .cs-card{height:280px!important;min-height:280px!important;display:flex!important;flex-direction:column!important;} .cs-link{margin-top:auto!important;}</style>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Arash Nicoomanesh | AI & ML Engineer | Generative & Agentic AI</title>
@@ -26,7 +26,7 @@
 
     
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=33?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=19" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -196,73 +196,17 @@
               </div>
       
       <!-- Article Cards - Deep Dive -->
-      
       <div class="insight-articles">
         <h3 class="insight-articles-title">Architecture Philosophy</h3>
         
-        <div class="command-center">
+        <div class="article-cards-grid">
           
-          <div class="manifesto-box">
-            <p class="manifesto-text">
-              Agentic AI succeeds when teams stop treating models as lone <em>“brains in a jar”</em> and instead design managed systems where LLMs provide high-level reasoning while a disciplined architecture (routers, tool registries, memory stores, verification gates, and specialist SLM executors) provides the body, constraints, and persistence required for safe, efficient action. <span class="manifesto-highlight">Pick the structural trade-off</span> (microservices for blast-radius control, actor/monolith for low-latency reasoning, serverless for cost-efficiency) to match your risk/latency/cost profile, enforce policy-as-code around tool calls, and close tight feedback loops so small models can be retrained and composed rapidly — only then do agents move past expensive “chatbot” demos into reliable, auditable systems that actually do work.
-            </p>
-          </div>
-
-          <div class="arch-figure-wrapper">
-            <img src="arch.jpg" alt="Agentic AI System Architecture" class="arch-figure-img" loading="lazy">
-          </div>
-
-          <div class="pillars-row">
-            
-            <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
-               target="_blank" rel="noopener noreferrer" class="article-card">
-              <div class="article-image">
-                <img src="x3.jpg" alt="The Planning Rubicon">
-              </div>
-              <div class="article-card-content">
-                <h4 class="article-title">The Planning Rubicon</h4>
-                <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
-                <div class="article-meta">
-                  <span class="article-tag">Architecture</span>
-                  <span class="article-read">7 min →</span>
-                </div>
-              </div>
-            </a>
-            
-            <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" 
-               target="_blank" rel="noopener noreferrer" class="article-card">
-              <div class="article-image">
-                <img src="alpha.jpg" alt="2026 Roadmap">
-              </div>
-              <div class="article-card-content">
-                <h4 class="article-title">From generative to agentic AI</h4>
-                <p class="article-summary">The 2026 roadmap: why the future of AI isn't better brains, it's better bodies.</p>
-                <div class="article-meta">
-                  <span class="article-tag">Strategy</span>
-                  <span class="article-read">12 min →</span>
-                </div>
-              </div>
-            </a>
-            
-            <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" 
-               target="_blank" rel="noopener noreferrer" class="article-card">
-              <div class="article-image">
-                <img src="reason.png" alt="Reasoning Revolution">
-              </div>
-              <div class="article-card-content">
-                <h4 class="article-title">How LLM reasoning powers agency</h4>
-                <p class="article-summary">How advanced LLMs enable true agentic behavior through reasoning and planning.</p>
-                <div class="article-meta">
-                  <span class="article-tag">Technology</span>
-                  <span class="article-read">9 min →</span>
-                </div>
-              </div>
-            </a>
-            
-          </div>
-        </div>
-      </div>
-
+          <!-- Card 1: Planning Rubicon -->
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="x3.jpg" alt="The Planning Rubicon">
+            </div>
             <div class="article-card-content">
               <h4 class="article-title">The Planning Rubicon</h4>
               <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
@@ -311,90 +255,194 @@
     </section>
     <!-- PORTFOLIO -->
     <!-- CASE STUDIES - NEW AGENTIC DESIGN -->
-
-  
-  
-  <section id="portfolio" class="section">
-    <div class="container">
-      <h2 class="section-title">Agentic Solutions</h2>
-      <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
+<section id="portfolio" class="section" aria-labelledby="portfolio-title">
+  <div class="container">
+    <h2 id="portfolio-title" class="section-title">Case Studies</h2>
+    <div class="cs-grid">
       
-      <div class="bento-grid">
-        
-        <div class="bento-item card-featured">
-          <div class="featured-flex">
-            <div class="featured-info">
-              <span class="badge">EHR-Integrated</span>
-              <h3>Medical Triage Agent</h3>
-              <p style="color:var(--accent); font-weight:500;">Reasons like a clinician; prioritizes care safely.</p>
-              <div class="agent-loop">
-                <div class="loop-step"><strong>Observe:</strong> Intake notes, vitals, meds, comorbidities.</div>
-                <div class="loop-step"><strong>Reason:</strong> Risk stratification + differential hypotheses.</div>
-                <div class="loop-step"><strong>Act:</strong> Create tasks/alerts and populate triage notes.</div>
-              </div>
-              <div class="tech-tags"><span class="tag">EHR-native</span><span class="tag">RAG</span><span class="tag">Policy-gated</span></div>
-              <a href="case-studies/medical-triage/medical-triage.html" class="link-arrow">View Case Study →</a>
-              <span class="safety-note">Clinical decision support — requires provider validation.</span>
-            </div>
-            <div class="featured-terminal">
-              <div class="terminal-header" style="display:flex; gap:5px; margin-bottom:10px;">
-                <div class="dot red" style="width:8px;height:8px;background:#ff5f56;border-radius:50%"></div>
-                <div class="dot yellow" style="width:8px;height:8px;background:#ffbd2e;border-radius:50%"></div>
-                <div class="dot green" style="width:8px;height:8px;background:#27c93f;border-radius:50%"></div>
-              </div>
-              <p class="log-line">> [INIT] Agentic_Loop_v2.4</p>
-              <p class="log-line">> [DATA] EHR Patient_ID: 99x-72 linked</p>
-              <p class="log-line">> [THINK] Analyzing Vitals: BP 160/100, Temp 101F</p>
-              <p class="log-line">> [REASON] Cross-ref: Type 2 Diabetes history</p>
-              <p class="log-line">> [RISK] Sepsis Probability: 72% (Critical)</p>
-              <p class="log-line">> [PLAN] Generating Priority_Alpha alert...</p>
-              <p class="log-line blink">> Waiting for clinician auth...</p>
-            </div>
+      <!-- Card A: CBT Autonomous Agent -->
+      <article class="cs-card cs-card--clinical" role="article" aria-labelledby="cs-cbt-title">
+        <div class="cs-card-body">
+          <div class="cs-card-header">
+            <div class="cs-icon" aria-hidden="true">🧠</div>
+            <h3 id="cs-cbt-title">CBT Autonomous Agent</h3>
+            <div class="cs-tags"><span>Multi-agent</span><span>RAG</span><span>Human-in-loop</span></div>
           </div>
-        </div>
 
-        <div class="bento-item">
-          <h3>CBT Autonomous Agent</h3>
-          <p class="loop-step">Scalable, evidence-guided workflows that detect cognitive distortions and adapt to responses.</p>
-          <div class="tech-tags"><span class="tag">Multi-agent</span><span class="tag">RAG</span></div>
-          <a href="#" class="link-arrow">View Case Study →</a>
-          <span class="safety-note">Research tool — not a clinician replacement.</span>
-        </div>
+          <p class="cs-oneline">Scalable, evidence-guided CBT workflows that adapt to patient responses.</p>
 
-        <div class="bento-item">
-          <h3>Emotion-Focused Agent</h3>
-          <p class="loop-step">Supports deep emotional processing through sentiment trends and schema mapping.</p>
-          <div class="tech-tags"><span class="tag">Empathy-Engine</span><span class="tag">Ethics-Guard</span></div>
-          <a href="#" class="link-arrow">View Case Study →</a>
-        </div>
+          <ul class="cs-loop" aria-label="Agentic loop">
+            <li><strong>Observe</strong><span>Session transcripts, homework, mood logs</span></li>
+            <li><strong>Reason</strong><span>Detect cognitive distortions & patterns</span></li>
+            <li><strong>Plan</strong><span>Personalized Socratic prompts & homework</span></li>
+            <li><strong>Act</strong><span>Deliver interventions & reminders</span></li>
+            <li><strong>Adapt</strong><span>Update policy from engagement signals</span></li>
+          </ul>
 
-        <div class="bento-item biomed-tall">
-          <h3>Biomedical Hypotheses</h3>
-          <p class="loop-step">Hypothesis-driven retrieval over PubMed/DrugBank for repurposing leads.</p>
-          <div class="tech-tags"><span class="tag">PubMed-KB</span><span class="tag">GNN</span></div>
-          <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
-        </div>
+          <p class="cs-impact"><strong>Impact:</strong> Scales therapy support with traceable reasoning and clinician oversight.</p>
 
-        <div class="bento-item">
-          <h3>Marketing ROI Optimizer</h3>
-          <p class="loop-step">Continuously reallocates budget using Multi-armed bandits and real-time conversion signals.</p>
-          <div class="tech-tags"><span class="tag">Bandits</span><span class="tag">Streaming</span></div>
-          <a href="#" class="link-arrow">View Case Study →</a>
-        </div>
+          <div class="cs-cta-row">
+            <a class="btn btn-primary" href="case-studies/cbt-agent">View Case Study</a>
+            <a class="btn btn-ghost" href="case-studies/cbt-agent#details" aria-label="Details for CBT Autonomous Agent">Details</a>
+          </div>
 
-        <div class="bento-item">
-          <h3>Supply Chain Orchestrator</h3>
-          <p class="loop-step">Autonomously reroutes logistics based on inventory, weather, and telemetry.</p>
-          <div class="tech-tags"><span class="tag">Simulation</span><span class="tag">Event-driven</span></div>
-          <a href="#" class="link-arrow">View Case Study →</a>
+          <p class="cs-note">Research/augmentation tool — not a replacement for licensed clinicians.</p>
         </div>
+      </article>
 
-      </div>
+      <!-- Card B: Emotion-Focused Therapy Multi-Agent System -->
+      <article class="cs-card cs-card--clinical" role="article" aria-labelledby="cs-emotion-title">
+        <div class="cs-card-body">
+          <div class="cs-card-header">
+            <div class="cs-icon" aria-hidden="true">💙</div>
+            <h3 id="cs-emotion-title">Emotion-Focused Therapy Multi-Agent</h3>
+            <div class="cs-tags"><span>Multi-agent</span><span>Explainable</span><span>Session-memory</span></div>
+          </div>
+
+          <p class="cs-oneline">Support deep emotional processing through multi-agent empathy and somatic guidance.</p>
+
+          <ul class="cs-loop" aria-label="Agentic loop">
+            <li><strong>Observe</strong><span>Session signals, sentiment trends, physiological proxies</span></li>
+            <li><strong>Reason</strong><span>Map emotions to schemas and attachment patterns</span></li>
+            <li><strong>Plan</strong><span>Sequence interventions: grounding → exploration → integration</span></li>
+            <li><strong>Act</strong><span>Deliver guided exercises, journaling prompts, somatic tasks</span></li>
+            <li><strong>Adapt</strong><span>Refine interventions based on emotional shift metrics</span></li>
+          </ul>
+
+          <p class="cs-impact"><strong>Impact:</strong> Supports clinicians by structuring emotion work and tracking progress.</p>
+
+          <div class="cs-cta-row">
+            <a class="btn btn-primary" href="case-studies/emotion-agent">View Case Study</a>
+            <a class="btn btn-ghost" href="case-studies/emotion-agent#details" aria-label="Details for Emotion-Focused Therapy Agent">Details</a>
+          </div>
+
+          <p class="cs-note">Designed for clinician-augmented workflows; not for emergency or crisis situations.</p>
+        </div>
+      </article>
+
+      <!-- Card C: Medical Triage Agent (FLAGSHIP) -->
+      <article class="cs-card cs-card--clinical cs-card--flagship" role="article" aria-labelledby="cs-triage-title">
+        <div class="cs-card-body">
+          <div class="cs-card-header">
+            <div class="cs-icon" aria-hidden="true">🏥</div>
+            <h3 id="cs-triage-title">Medical Triage Agent</h3>
+            <div class="cs-tags"><span>EHR-native</span><span>RAG</span><span>Policy-gated</span></div>
+          </div>
+
+          <p class="cs-oneline">EHR-integrated triage that reasons like a clinician and prioritizes care safely.</p>
+
+          <ul class="cs-loop" aria-label="Agentic loop">
+            <li><strong>Observe</strong><span>Intake notes, vitals, meds, comorbidities</span></li>
+            <li><strong>Reason</strong><span>Risk stratification + differential hypotheses</span></li>
+            <li><strong>Plan</strong><span>Recommend next steps: labs, imaging, escalation</span></li>
+            <li><strong>Act</strong><span>Create tasks/alerts and populate triage notes</span></li>
+            <li><strong>Adapt</strong><span>Learn from outcomes to reduce false alarms</span></li>
+          </ul>
+
+          <p class="cs-impact"><strong>Impact:</strong> Faster, consistent triage with audit trails and governance.</p>
+
+          <div class="cs-cta-row">
+            <a class="btn btn-primary" href="case-studies/medical-triage/medical-triage.html">View Case Study</a>
+            <a class="btn btn-ghost" href="case-studies/medical-triage/medical-triage.html#details" aria-label="Details for Medical Triage Agent">Details</a>
+          </div>
+
+          <p class="cs-note">Clinical decision support — requires provider validation.</p>
+        </div>
+      </article>
+
+      <!-- Card D: Biomedical Hypothesis Agent -->
+      <article class="cs-card cs-card--biomedical" role="article" aria-labelledby="cs-bio-title">
+        <div class="cs-card-body">
+          <div class="cs-card-header">
+            <div class="cs-icon" aria-hidden="true">🧬</div>
+            <h3 id="cs-bio-title">Biomedical Hypothesis Agent</h3>
+            <div class="cs-tags"><span>RAG</span><span>Biomedical KB</span><span>Explainability</span></div>
+          </div>
+
+          <p class="cs-oneline">Hypothesis-driven retrieval and reasoning over biomedical literature for repurposing leads.</p>
+
+          <ul class="cs-loop" aria-label="Agentic loop">
+            <li><strong>Observe</strong><span>PubMed, DrugBank, clinical trial data, RWD embeddings</span></li>
+            <li><strong>Reason</strong><span>Mechanism-of-action synthesis and plausibility scoring</span></li>
+            <li><strong>Plan</strong><span>Generate prioritized hypotheses and experimental designs</span></li>
+            <li><strong>Act</strong><span>Produce audit-trailed hypotheses and evidence packs</span></li>
+            <li><strong>Adapt</strong><span>Update ranking from experimental feedback</span></li>
+          </ul>
+
+          <p class="cs-impact"><strong>Impact:</strong> Accelerates idea generation with explainable evidence trails.</p>
+
+          <div class="cs-cta-row">
+            <a class="btn btn-primary" href="case-studies/drug-repurposing/index.html">View Case Study</a>
+            <a class="btn btn-ghost" href="case-studies/drug-repurposing/index.html#details" aria-label="Details for Biomedical Hypothesis Agent">Details</a>
+          </div>
+
+          <p class="cs-note">Hypothesis generation only — not medical advice. Experimental validation required.</p>
+        </div>
+      </article>
+
+      <!-- Card E: Marketing Optimization Agent -->
+      <article class="cs-card cs-card--business" role="article" aria-labelledby="cs-marketing-title">
+        <div class="cs-card-body">
+          <div class="cs-card-header">
+            <div class="cs-icon" aria-hidden="true">📊</div>
+            <h3 id="cs-marketing-title">Marketing Optimization Agent</h3>
+            <div class="cs-tags"><span>Streaming</span><span>Multi-armed bandits</span><span>Safe-policy</span></div>
+          </div>
+
+          <p class="cs-oneline">Continuously reallocates spend to optimize ROI across channels.</p>
+
+          <ul class="cs-loop" aria-label="Agentic loop">
+            <li><strong>Observe</strong><span>Real-time campaign metrics and conversion signals</span></li>
+            <li><strong>Reason</strong><span>Attribution, uplift estimation, budget elasticity</span></li>
+            <li><strong>Plan</strong><span>Propose allocation adjustments and A/B tests</span></li>
+            <li><strong>Act</strong><span>Execute low-risk budget shifts with guardrails</span></li>
+            <li><strong>Adapt</strong><span>Learn from outcomes to improve allocation policy</span></li>
+          </ul>
+
+          <p class="cs-impact"><strong>Impact:</strong> Reduces wasted ad spend and increases campaign ROI via closed-loop optimization.</p>
+
+          <div class="cs-cta-row">
+            <a class="btn btn-primary" href="case-studies/marketing-agent">View Case Study</a>
+            <a class="btn btn-ghost" href="case-studies/marketing-agent#details" aria-label="Details for Marketing Optimization Agent">Details</a>
+          </div>
+
+          <p class="cs-note">Requires baseline performance data for effective optimization.</p>
+        </div>
+      </article>
+
+      <!-- Card F: Supply Chain Orchestration Agents -->
+      <article class="cs-card cs-card--business" role="article" aria-labelledby="cs-supply-title">
+        <div class="cs-card-body">
+          <div class="cs-card-header">
+            <div class="cs-icon" aria-hidden="true">🚚</div>
+            <h3 id="cs-supply-title">Supply Chain Orchestration Agents</h3>
+            <div class="cs-tags"><span>Event-driven</span><span>Simulation</span><span>SLA-aware</span></div>
+          </div>
+
+          <p class="cs-oneline">Autonomously reroute and reprioritize logistics to minimize disruption and cost.</p>
+
+          <ul class="cs-loop" aria-label="Agentic loop">
+            <li><strong>Observe</strong><span>Inventory, shipment telemetry, supplier KPIs, weather/events</span></li>
+            <li><strong>Reason</strong><span>Disruption analysis and cost vs. service trade-offs</span></li>
+            <li><strong>Plan</strong><span>Rebalance stock, reroute shipments, update priorities</span></li>
+            <li><strong>Act</strong><span>Trigger carrier changes, create work orders, notify stakeholders</span></li>
+            <li><strong>Adapt</strong><span>Recalibrate supplier weights and contingency heuristics</span></li>
+          </ul>
+
+          <p class="cs-impact"><strong>Impact:</strong> Improves fill-rate and reduces expedited shipping costs.</p>
+
+          <div class="cs-cta-row">
+            <a class="btn btn-primary" href="case-studies/supply-chain-agent">View Case Study</a>
+            <a class="btn btn-ghost" href="case-studies/supply-chain-agent#details" aria-label="Details for Supply Chain Orchestration Agents">Details</a>
+          </div>
+
+          <p class="cs-note">Requires integration with existing ERP/WMS systems.</p>
+        </div>
+      </article>
+
     </div>
-  </section>
-
-
-
+  </div>
+</section>
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
     <!-- ARTICLES – Masonry with real random heights + bottom-left hero -->
@@ -405,127 +453,93 @@
     
         <div class="masonry-grid">
     
+          <!----------  HERO CARD (clickable) ---------->
           <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-hero">
-            <div class="article-image">
-              <img src="one.jpg" alt="Fine-Tuning DeepSeek R1">
-            </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h4>
-              <p class="article-summary">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p>
-              <div class="article-meta">
-                <span class="article-tag">Deep Learning</span>
-                <span class="article-read">12 min →</span>
-              </div>
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-hero">
+            <img src="one.jpg" alt="" class="masonry-hero-bg">
+            <div class="masonry-hero-overlay"></div>
+    
+            <div class="masonry-hero-bottom">
+             
+              <h3 class="masonry-hero-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h3>
+              <p class="masonry-hero-sub">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p>
             </div>
           </a>
     
+          <!----------  SMALL CARDS (clickable + image below text) ---------->
           <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="Gemma 3n">
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Gemma 3n Edge AI for Support Bots</h3>
+              <p>Low-memory, high-speed training on customer-support data</p>
             </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Gemma 3n Edge AI for Support Bots</h4>
-              <p class="article-summary">Low-memory, high-speed training on customer-support data</p>
-              <div class="article-meta">
-                <span class="article-tag">Edge AI</span>
-                <span class="article-read">8 min →</span>
-              </div>
-            </div>
+            <img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://cdn.brouseai.com/preview/qX_N5BbwPyrym93xiQLRS.png"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="config.jpg" alt="LLM Config">
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>LLM Output Config & Guardrails</h3>
+              <p>Master reasoning prompts and guardrails for reliable outputs</p>
             </div>
-            <div class="article-card-content">
-              <h4 class="article-title">LLM Output Config & Guardrails</h4>
-              <p class="article-summary">Master temperature, top-p, and guardrails for reliable LLM outputs</p>
-              <div class="article-meta">
-                <span class="article-tag">LLM Engineering</span>
-                <span class="article-read">10 min →</span>
-              </div>
-            </div>
+            <img src="config.jpg" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="zero.jpg" alt="Few-Shot Learning">
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Few-Shot & Zero-Shot Learning Deep-Dive</h3>
+              <p>Push LLMs beyond narrow fine-tuning.</p>
+              <p>In the age of large language models (LLMs), the ability to perform complex tasks with minimal data is revolutionizing how we approach artificial intelligence. Few-shot and zero-shot learning are two pivotal techniques that push the boundaries of machine learning, enabling models to generalize across domains and perform tasks they were not explicitly trained on. This article delves into these learning paradigms, explaining their origins, mechanisms, and real-world applications</p>
             </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Few-Shot & Zero-Shot Learning Deep-Dive</h4>
-              <p class="article-summary">Push LLMs beyond narrow fine-tuning with cross-domain generalization</p>
-              <div class="article-meta">
-                <span class="article-tag">ML Research</span>
-                <span class="article-read">15 min →</span>
-              </div>
-            </div>
-          </a>
-    
-          <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="gemma3.jpg" alt="Gemma-3 Fine-tuning">
-            </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Fine-Tune Gemma-3 12B with Unsloth</h4>
-              <p class="article-summary">End-to-end Unsloth & TRL workflow for customer service</p>
-              <div class="article-meta">
-                <span class="article-tag">Fine-Tuning</span>
-                <span class="article-read">14 min →</span>
-              </div>
-            </div>
+            <img src="zero.jpg" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="drift.png" alt="Model Drift">
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Model Drift: A Survival Guide</h3>
+              <p>Monitor & remediate production ML models</p>
             </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Model Drift: A Survival Guide</h4>
-              <p class="article-summary">Monitor & remediate production ML models before they fail</p>
-              <div class="article-meta">
-                <span class="article-tag">MLOps</span>
-                <span class="article-read">11 min →</span>
-              </div>
+            <img src="drift.png" alt="" class="masonry-small-img">
+          </a>
+    
+          <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6"
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Fine-Tune Gemma-3 12B with Unsloth</h3>
+              <p>End-to-end Unsloth & TRL workflow for customer service</p>
+              <p>In this article, I have dived into the technical intricacies of Unsloth and Gemma 3, showcasing their powerful features and how they can be leveraged together to build a highly optimized, fine-tuned model for any type of customer support assistant, whether it be a sophisticated chatbot, an intelligent agent, or an interactive FAQ system. I provided a step-by-step guide through the fine-tuning process, from data preparation to model deployment, highlighting best practices and practical considerations for achieving optimal performance in real-world customer service scenarios</p>
             </div>
+            <img src="gemma3.jpg" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="RAG Future">
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Is RAG Dead in 2025?</h3>
+              <p>Rethinking documentation Q&A with large-context LLMs.</p>
             </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Is RAG Dead in 2025?</h4>
-              <p class="article-summary">Rethinking documentation Q&A with large-context LLMs</p>
-              <div class="article-meta">
-                <span class="article-tag">RAG</span>
-                <span class="article-read">9 min →</span>
-              </div>
-            </div>
+            <img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="triage2.png" alt="Agentic RAG">
+             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
+            <div class="masonry-small-top">
+              
+              <h3>Talk: Agentic RAG in Healthcare</h3>
+              <p>15-min deck on self-evolving retrieval agents.</p>
             </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Talk: Agentic RAG in Healthcare</h4>
-              <p class="article-summary">15-min deck on self-evolving retrieval agents</p>
-              <div class="article-meta">
-                <span class="article-tag">Healthcare AI</span>
-                <span class="article-read">15 min →</span>
-              </div>
-            </div>
-          </a>
+            <img src="triage2.png" alt="" class="masonry-small-img">
+          </article>
     
-        </div>
+        </div><!-- /masonry-grid -->
     
         <div class="articles-cta">
           <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
@@ -824,7 +838,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1770742921?v=1770727673"></script>
+  <script src="script.js?v=10"></script>
     
 </body>
 </html>

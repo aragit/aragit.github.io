@@ -511,7 +511,6 @@ body {
   backdrop-filter: blur(6px);
   padding: .5rem .75rem;
   border-radius: 8px;
-  font-size: 1.2rem;
 }
 .masonry-hero .card-body{
   padding: 1.2rem 1.5rem 0;
@@ -522,7 +521,6 @@ body {
   margin: .25rem 0 .5rem;
 }
 .masonry-hero p{
-  font-size: 1rem;
   margin-bottom: .75rem;
 }
 .masonry-hero .card-actions{
@@ -537,7 +535,6 @@ body {
   justify-content: space-between;
 }
 .masonry-small h3{
-  font-size: 1rem;
   margin: .2rem 0 .4rem;
 }
 .masonry-small p{
@@ -1103,7 +1100,6 @@ a.card-link:hover{
 
 #services .card.service-card h3 {
   font-size: 1.05rem;
-  font-weight: 600;
   margin: .2rem 0 .4rem;
   color: #fff;
 }
@@ -1193,13 +1189,11 @@ a.card-link:hover{
   background: transparent;
   color: var(--muted-2);
   font-size: .9rem;
-  font-weight: 500;
   transition: all .22s;
 }
 
 #services .cards .service-card:hover .cta-secondary {
   border-color: var(--accent);
-  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -1229,7 +1223,6 @@ a.card-link:hover{
   text-align: center;
   margin-bottom: 2.5rem;
   font-size: 1.4rem;
-  font-weight: 500;
   color: var(--muted);
   letter-spacing: .5px;
 }
@@ -1900,204 +1893,297 @@ button.service-btn:hover {
 
 
 /* Hero supporting text (non-intrusive) */
-.hero-tagline {
-  margin-top: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  opacity: 0.95;
 }
 
 .hero-subtitle {
-  max-width: 760px;
-  margin-top: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.85;
 }
 
-/* HERO TYPOGRAPHY FIXES */
-.typewriter, .typewriter-orange { font-family: "Courier New", Courier, monospace; }
-
-p.hero-tagline.typewriter { 
-  font-size: 1.1rem; 
-  color: #b0b0b0; 
-  margin: 0.5rem 0; 
+/* ===== Hero Architectural Range ===== */
+.hero-range {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0.4rem 0 0.8rem;
+  letter-spacing: 0.04em;
+  
 }
 
-p.hero-range.typewriter-orange { 
-  font-size: 0.9rem; 
-  color: #ff6b00 !important; 
-  margin: 0.3rem 0; 
+  font-size: 1.6rem;  /* slightly larger, single line */
 }
 
-p.tagline.typewriter { 
-  font-size: 1rem; 
-  color: #b0b0b0; 
-  margin: 0.5rem 0 1rem; 
+/* ===== About — Architecture Stack Rhythm ===== */
+
+/* First paragraph — the hook (endurance) */
+
+/* Second paragraph — THE SPECTRUM (key addition) */
+
+
+/* Third paragraph — the deterministic foundation */
+
+/* Fourth paragraph — application domains */
+
+/* Final paragraph — the unified principle */
+
+/* ===== HERO STYLISH TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+/* Main title — elegant serif */
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  width: 100%;
+  height: 0.08em;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.4;
 }
 
-#typewrite { 
-  font-family: "Courier New", Courier, monospace; 
-  font-size: 0.9rem; 
-  color: #909090; 
+/* Tagline — bold geometric sans */
+
+/* Range indicator — technical, spaced */
+
+
+/* Original tagline (AI Engineering Services) — refined */
+
+/* ===== PRINCIPLE QUOTE — Stylish Italic ===== */
+
+
+/* Responsive adjustment */
+@media (max-width: 720px) {
+
+/* Nicoomanesh — elegant but plain, no orange/italic/underline */
+h1#hero-title .highlight {
+  font-style: normal;
+  color: inherit;
+  position: static;
 }
 
-.hero-divider { display: none !important; }
+/* Remove any underline effect */
+h1#hero-title .highlight::after {
+  display: none;
+}
 
-/* Restore orange lines above button */
+/* ===== PRINCIPLE QUOTE — Explicit Italic ===== */
+p.principle {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-style: italic !important;
+  color: #c0c0c0;
+  letter-spacing: 0.01em;
+  
+  /* Left accent */
+  border-left: 2px solid var(--accent);
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+/* Ensure italic is not overridden */
+p.principle em,
+p.principle i {
+  font-style: italic;
+}
+
+/* AI Engineering Services & Consulting — elegant, normal case */
+
+/* About paragraphs 2 & 3 — stylish, smaller, unified */
+
+/* Keep the governance paragraph (3rd) with left border accent */
+
+/* Agentic AI Architect — white, not orange */
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 1rem 0 0.3rem;
+}
+
+/* ===== ABOUT — UNIFIED ELEGANT TYPOGRAPHY ===== */
+
+/* All body paragraphs: identical font, size, color */
+
+/* Only distinction: second paragraph has left border accent */
+
+/* Principle quote: italic variant */
+
+/* AI Engineering Services & Consulting — larger, white, prominent */
+
+/* ===== HERO TYPOGRAPHY — FINAL CLEAN STATE ===== */
+
+/* Range indicator: small, orange, technical */
+
+/* AI Engineering Services: LARGER, WHITE */
+
+/* ===== ABOUT SECTION — Clean, Consistent Typography ===== */
+
+/* Base for all about text — same font family as rest of site */
+#about .about-text {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* All paragraphs — consistent size, color, no borders */
+#about .about-text p {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #b8b8b8;
+  margin-bottom: 1.2rem;
+}
+
+/* First paragraph — slightly more prominent (the hook) */
+#about .about-text p:first-of-type {
+  font-size: 1.05rem;
+  color: #d0d0d0;
+}
+
+/* Principle quote — italic, no border, subtle color difference */
+#about .about-text p.principle {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.7;
+  color: #a0a0a0;
+  margin-top: 1.5rem;
+  border-left: none;
+  padding-left: 0;
+}
+
+/* ===== HERO TYPOGRAPHY — Clean & Consistent ===== */
+
+/* Main title */
+h1#hero-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Nicoomanesh — plain, no special styling */
+h1#hero-title .highlight {
+  font-weight: 600;
+  font-style: normal;
+  color: inherit;
+}
+
+h1#hero-title .highlight::after {
+  display: none;
+}
+
+/* Agentic AI Architect — white, bold */
+
+/* Range — small, orange, technical */
+
+/* AI Engineering Services — larger, white, normal case */
+
+/* ===== HERO TYPEWRITER TYPOGRAPHY ===== */
+
+/* Agentic AI Architect — BOLDEST (identity statement) */
+
+/* Deterministic Core · Stochastic Range · Multi-Agent Scale — MEDIUM (technical range) */
+p.hero-range {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0.3rem 0 0.8rem;
+}
+
+/* Decorative dots for range */
+p.hero-range::before,
+p.hero-range::after {
+  content: '';
+}
+
+/* AI Engineering Services & Consulting — LIGHTEST (service descriptor) */
+p.tagline {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: #b0b0b0;
+  margin-top: 0.8rem;
+}
+
+/* Name — elegant serif contrast to typewriter hero */
+h1#hero-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Nicoomanesh — plain, inherits elegance */
+h1#hero-title .highlight {
+  font-weight: 600;
+  font-style: normal;
+  color: inherit;
+}
+
+h1#hero-title .highlight::after {
+  display: none;
+}
+
+/* Agentic AI Architect — UNBOLD, smaller, typewriter */
+p.hero-tagline {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #b0b0b0;
+  margin: 1rem 0 0.4rem;
+}
+
+/* Hero logo between orange lines */
+
+
+.hero-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+
+/* Hero logo between horizontal orange lines */
 .hero-divider {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
   margin: 1.5rem 0;
-  width: 100%;
-}
-.hero-divider .line {
-  flex: 1;
-  max-width: 180px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
-}
-/* Hide logo if present */
-.hero-divider .chess-chip,
-.hero-divider i {
-  display: none !important;
-}
-
-/* LOGO STYLING */
-header .logo img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
-.hero-logo-small {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  border-radius: 4px;
-  opacity: 0.9;
-}
-
-.hero-divider {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
 }
 
 .hero-divider .line {
   flex: 1;
-  max-width: 140px;
+  max-width: 200px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
-/* Updated hero logo size */
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
+.hero-logo-inline {
+  width: 50px;
+  height: 50px;
   object-fit: contain;
-  border-radius: 6px;
-  opacity: 0.9;
+  border-radius: 8px;
 }
 
-/* LOGO ANIMATION - Neon Flicker (AI Agent vibe) */
-  10% { 
-    opacity: 0.9;
-    filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 107, 0, 1));
+@media (max-width: 720px) {
+  .hero-divider {
+    gap: 1rem;
+    margin: 1rem 0;
   }
-  20% { 
-    opacity: 1;
-    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 107, 0, 0.8));
+  .hero-divider .line {
+    max-width: 120px;
   }
-  30% { 
-    opacity: 0.8;
-    filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 107, 0, 1));
-    transform: scale(1.05);
-  }
-  40% { 
-    opacity: 1;
-    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 107, 0, 0.8));
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.9;
-    filter: brightness(1.1) drop-shadow(0 0 10px rgba(255, 107, 0, 0.9));
-  }
-  60%, 90% { 
-    opacity: 1;
-    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 107, 0, 0.8));
+  .hero-logo-inline {
+    width: 40px;
+    height: 40px;
   }
 }
-
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: contain;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 107, 0, 0.3);
-}
-
-/* LOGO ANIMATION - Floating (Elegant & Professional) */
-@keyframes logo-float {
-  0%, 100% { 
-    transform: translateY(0) scale(1);
-    filter: drop-shadow(0 5px 10px rgba(255, 107, 0, 0.3));
-  }
-  50% { 
-    transform: translateY(-10px) scale(1.05);
-    filter: drop-shadow(0 15px 25px rgba(255, 107, 0, 0.6));
-  }
-}
-
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: contain;
-  border-radius: 6px;
-  animation: logo-float 3s ease-in-out infinite;
-  transition: all 0.3s ease;
-}
-
-/* Hover pause effect */
-.hero-logo-small:hover {
-  animation-play-state: paused;
-  transform: scale(1.1);
-  filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 107, 0, 0.8));
-  cursor: pointer;
-}
-
-/* LOGO ANIMATION - Rotate with Glow */
-@keyframes logo-rotate-glow {
-  0% { 
-    transform: rotate(0deg) scale(1);
-    filter: drop-shadow(0 0 5px rgba(255, 107, 0, 0.5));
-  }
-  50% { 
-    transform: rotate(180deg) scale(1.08);
-    filter: drop-shadow(0 0 25px rgba(255, 107, 0, 0.9));
-  }
-  100% { 
-    transform: rotate(360deg) scale(1);
-    filter: drop-shadow(0 0 5px rgba(255, 107, 0, 0.5));
-  }
-}
-
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: contain;
-  border-radius: 6px;
-  animation: logo-rotate-glow 12s linear infinite;
-}
-
-.hero-logo-small:hover {
-  animation-play-state: paused;
-  transform: scale(1.15);
-  filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 107, 0, 1));
-  cursor: pointer;
-}
-

@@ -61,71 +61,6 @@ h1{font-size:2rem;margin:.25rem 0}
 .highlight{color:var(--text)}
 .tagline{color:var(--muted);margin:0 0 1rem}
 #typewrite{font-family:"Courier New", Courier, monospace;color:#e6eef6;min-height:2.2rem;font-size:1.12rem}
-.hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:1rem 0;pointer-events:none}
-.hero-divider .line{width:170px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
-.chess-icon{color:var(--accent);font-size:20px}
-.hero-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:1.5rem;justify-items:center}
-.btn-hero{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border-radius:28px;font-weight:700;min-height:52px}
-.btn-primary{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 26px rgba(255,107,0,0.07)}
-.btn-hero:focus{outline:none;box-shadow:var(--focus)}
-.btn-hero:hover{transform:translateY(-2px)}
-
-/* ---------- SECTIONS & CARDS ---------- */
-.section{padding:40px 0}
-.section-title{text-align:center;margin-bottom:40px;font-size:1.6rem;font-weight:400;color:#fff}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-.card{background:var(--panel);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;min-height:140px;transition:transform .18s,border-color .18s,box-shadow .22s;position:relative;overflow:visible;border:2px solid transparent}
-.card:hover{transform:translateY(-6px)}
-.card-icon{font-size:1.3rem;color:var(--accent);text-align:center;padding-top:.6rem}
-.card-body{flex:1;padding:.6rem 0;text-align:center;color:var(--muted-2)}
-#services .card-body h3, #portfolio .card-body h3, #articles .card-body h3 {text-decoration:none;font-size:1.05rem;font-weight:600;color:#fff;margin:.2rem 0}
-.card-body p{font-size:.95rem;color:#dbe7ef}
-.card-actions{text-align:center;padding-top:.6rem}
-.cta-secondary{display:inline-block;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.04);color:var(--muted-2);background:transparent}
-.cta-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.card-actions .service-btn, .card-actions a.service-btn, button.service-btn{background:#2f2f2f;color:var(--accent);border:1px solid rgba(255,255,255,0.04);padding:.5rem 1rem;border-radius:999px;font-weight:700}
-.card-actions .service-btn:hover, .card-actions a.service-btn:hover, button.service-btn:hover{background:#444;color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
-
-/* ---------- Halo: invisible until hover/focus ---------- */
-.card::before{
-  content:"";position:absolute;inset:-8px;border-radius:calc(var(--radius) + 8px);
-  background: conic-gradient(from 0deg, #ff6b00, #ff0000, #00bfff, #007bff, #ff6b00);
-  opacity:0;filter: blur(12px);z-index:-1;transition:opacity .35s cubic-bezier(.2,.9,.2,1), transform .35s ease;
-  transform: scale(.98);pointer-events:none}
-.card:hover::before,.card:focus-within::before{opacity:0.7;transform:scale(1)}
-.card:active::before{opacity:0.98;transform:scale(1.02);filter:blur(8px)}
-.card.appear{} /* keeps JS timing intact – no visual effect */
-
-/* ---------- CONTACT / SOCIALS ---------- */
-.socials{display:flex;gap:1.2rem;justify-content:center;align-items:center;padding-top:.5rem}
-.socials a{color:var(--muted);font-size:1.2rem}
-.socials a:hover{color:var(--accent)}
-
-/* ---------- MODALS ---------- */
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.65);z-index:9998;padding:1rem}
-.modal[aria-hidden="false"]{display:flex}
-.modal-card{width:min(760px,96%);background:#0f1114;color:#eaf2fb;padding:1rem;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.6)}
-.modal-head{display:flex;justify-content:space-between;align-items:center}
-.close{background:transparent;border:0;color:#9aa4b2;font-size:1.2rem}
-.modal-row{display:flex;gap:.75rem}
-.modal-row input,.modal-row select,.modal-card input,.modal-card textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text)}
-.modal-foot{display:flex;gap:.75rem;justify-content:flex-end;margin-top:0.75rem}
-.form-msg{color:var(--muted);margin-top:.5rem}
-.chat-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.85);z-index:10000}
-.chat-modal[aria-hidden="false"]{display:flex}
-.chat-modal-content{width:min(95vw,900px);height:min(95vh,720px);background:#0f1114;border-radius:12px;overflow:hidden;position:relative}
-#chatFrame{width:100%;height:100%;border:0}
-.thinking-bubble{position:absolute;top:12px;left:12px;padding:.5rem .75rem;background:#111;border-radius:8px;color:#cfd8e3;display:none}
-.thinking-bubble[aria-hidden="false"]{display:block}
-
-/* ---------- Responsiveness ---------- */
-@media (max-width:900px){
-  .hero-cta{grid-template-columns:1fr;gap:10px}
-  .hamburger{display:block}
-  nav.nav ul{position:fixed;right:-100%;top:60px;flex-direction:column;background:rgba(18,18,18,0.95);width:220px;height:100vh;padding:1.5rem;transition:right .25s}
-  nav.nav ul.active{right:0}
-}
 
 /* ---------- Accessibility helpers ---------- */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
@@ -271,7 +206,6 @@ body {
 #home.hero .connectors { opacity: 0.08; mix-blend-mode: screen; }
 
 /* reduce density & intensity on small screens */
-@media (max-width: 720px) {
   #home.hero .grid-lines { opacity: 0.26; }
   #home.hero .connectors { opacity: 0.05; }
   #home.hero .node { opacity: 0.95; }
@@ -288,6 +222,7 @@ body {
     animation: none !important;
     transform: none !important;
     opacity: .95 !important;
+  }
   }
 }
 
@@ -350,6 +285,7 @@ body {
   #typewrite {
     width: auto;
   }
+  }
   #typewrite .tw-inner {
     font-size: 14px; /* smaller font for mobile */
   }
@@ -402,7 +338,6 @@ body {
 .small-cards { grid-template-columns: 1fr; }  /* single column, 4 rows */
 
 /* mobile: single column */
-@media (max-width: 720px) {
   .portfolio-grid { grid-template-columns: 1fr; }
 }
 
@@ -437,7 +372,6 @@ body {
 .small-cards .card { padding: .8rem;   }
 
 /* mobile: back to even columns */
-@media (max-width: 720px) {
   .portfolio-grid { grid-template-columns: 1fr; }
 }
 
@@ -463,7 +397,6 @@ body {
 }
 
 /* mobile: stack */
-@media (max-width: 900px) {
   .about-split { grid-template-columns: 1fr; }
   .about-image { text-align: center; margin-top: 1.5rem; }
   .about-image img { width: 60%; }
@@ -511,7 +444,6 @@ body {
   backdrop-filter: blur(6px);
   padding: .5rem .75rem;
   border-radius: 8px;
-  font-size: 1.2rem;
 }
 .masonry-hero .card-body{
   padding: 1.2rem 1.5rem 0;
@@ -522,7 +454,6 @@ body {
   margin: .25rem 0 .5rem;
 }
 .masonry-hero p{
-  font-size: 1rem;
   margin-bottom: .75rem;
 }
 .masonry-hero .card-actions{
@@ -537,7 +468,6 @@ body {
   justify-content: space-between;
 }
 .masonry-small h3{
-  font-size: 1rem;
   margin: .2rem 0 .4rem;
 }
 .masonry-small p{
@@ -567,6 +497,7 @@ body {
   .masonry-hero{
     grid-column: span 1;
     grid-row: span 1;
+  }
   }
   .masonry-grid{
     grid-template-columns: 1fr;
@@ -654,14 +585,12 @@ a.card-link:hover{
 .masonry-small:nth-child(5n+2) { grid-row: span 1; }
 .masonry-small:nth-child(7n+4) { grid-row: span 2; }
 
-@media (min-width: 721px){
   .masonry-small:nth-child(11n)  { grid-column: span 2; }
   .masonry-small:nth-child(13n+6){ grid-column: span 1; }
   .masonry-small:nth-child(17n+9){ grid-column: span 2; }
 }
 
 /* mobile: single column */
-@media (max-width: 720px){
   .masonry-hero{ grid-column: span 1; grid-row: span 1; }
   .masonry-grid{ grid-template-columns: 1fr; }
 }
@@ -705,10 +634,8 @@ a.card-link:hover{
 }
 
 /* responsive breakpoints */
-@media (max-width: 1050px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 720px) {
   .services-grid { grid-template-columns: 1fr; gap: 1rem; }
 }
 
@@ -788,6 +715,7 @@ a.card-link:hover{
     flex: 0 1 100% !important;
     max-width: 100% !important;
     width: 100% !important;
+  }
   }
   #services .cards .card { min-height: unset !important; }
 }
@@ -898,6 +826,7 @@ a.card-link:hover{
     transition: none !important;
     transform: none !important;
   }
+  }
 }
 
 /* -------------------- Pull buttons up slightly -------------------- */
@@ -992,6 +921,7 @@ a.card-link:hover{
     min-height: 300px !important;    /* mobile friendly */
     padding: 0.9rem !important;
   }
+  }
   #services .cards .card .card-actions {
     margin-top: 6px !important;      /* undo heavy negative margin for stacked layout */
     flex-wrap: wrap !important;
@@ -1012,6 +942,7 @@ a.card-link:hover{
   #services .cards .card .card-actions,
   #services .cards .card .card-body {
     transition: none !important;
+  }
   }
 }
 
@@ -1059,7 +990,6 @@ a.card-link:hover{
     text-overflow: ellipsis;
 }
 
-@media (max-width: 560px) {
     #services .cards .card-actions > * { min-width: 100%; }
 }
 
@@ -1103,7 +1033,6 @@ a.card-link:hover{
 
 #services .card.service-card h3 {
   font-size: 1.05rem;
-  font-weight: 600;
   margin: .2rem 0 .4rem;
   color: #fff;
 }
@@ -1125,6 +1054,7 @@ a.card-link:hover{
 @media (max-width: 720px) {
   #services .card.service-card {
     min-height: 280px;
+  }
   }
 }
 /* ===== Services : fade starts higher (under text) ===== */
@@ -1164,7 +1094,6 @@ a.card-link:hover{
 }
 
 /* mobile */
-@media (max-width: 720px) {
   #services .cards .service-card .card-body h3 { font-size: 1.2rem !important; }
   #services .cards .service-card .card-body p  { font-size: .98rem !important; }
 }
@@ -1193,13 +1122,11 @@ a.card-link:hover{
   background: transparent;
   color: var(--muted-2);
   font-size: .9rem;
-  font-weight: 500;
   transition: all .22s;
 }
 
 #services .cards .service-card:hover .cta-secondary {
   border-color: var(--accent);
-  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -1229,7 +1156,6 @@ a.card-link:hover{
   text-align: center;
   margin-bottom: 2.5rem;
   font-size: 1.4rem;
-  font-weight: 500;
   color: var(--muted);
   letter-spacing: .5px;
 }
@@ -1264,12 +1190,14 @@ a.card-link:hover{
   .logo-grid img {
     transition: none;
   }
+  }
 }
 
 @media (max-width: 600px) {
   .logo-grid {
     grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
     gap: .8rem;
+  }
   }
 }
 
@@ -1565,6 +1493,7 @@ a.card-link:hover{
     margin-top: 0 !important;
     padding-top: .45rem !important;
   }
+  }
 }
 /* make the services/packages grid use equal-height rows so vertical alignment works */
 #services .cards,
@@ -1640,6 +1569,7 @@ a.card-link:hover{
   #packages .cards {
     grid-auto-rows: auto !important;
   }
+  }
   #services .cards .card .card-actions,
   #packages .cards .card .card-actions {
     transform: none !important;
@@ -1680,6 +1610,7 @@ a.card-link:hover{
   #packages .cards .card .card-body {
     padding-bottom: 0.9rem !important;
     min-height: 0 !important;
+  }
   }
   #services .cards .card .card-actions,
   #packages .cards .card .card-actions {
@@ -1752,6 +1683,7 @@ a.card-link:hover{
 @media (max-width: 720px) {
   #portfolio .cards,
   #portfolio .portfolio-grid { grid-auto-rows: auto !important; }
+  #portfolio .portfolio-grid { grid-auto-rows: auto !important; }
   #portfolio .cards .small-cards .card .card-body { padding-bottom: 0.9rem !important; min-height: 0 !important; }
   #portfolio .cards .small-cards .card .card-actions,
   #portfolio .cards .small-cards a.card .card-actions { transform: none !important; margin-top: 0.4rem !important; }
@@ -1772,7 +1704,6 @@ a.card-link.masonry-hero:active {
 /* If you want to also remove when pointer device is used (modern browsers),
    use the pointer media query (optional) */
 /*
-@media (pointer: fine) {
   a.card-link.masonry-hero:hover { border-color: transparent !important; }
 }
 */
@@ -1856,6 +1787,7 @@ button.service-btn:hover {
     outline: 2px solid rgba(255,107,0,0.12);
     outline-offset: 3px;
   }
+  }
 }
 
 /* ====== Remove orange hover line for Services cards only ======
@@ -1900,204 +1832,307 @@ button.service-btn:hover {
 
 
 /* Hero supporting text (non-intrusive) */
-.hero-tagline {
-  margin-top: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  opacity: 0.95;
 }
 
-.hero-subtitle {
-  max-width: 760px;
-  margin-top: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.85;
+
+/* ===== Hero Architectural Range ===== */
+.hero-range {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0.4rem 0 0.8rem;
+  letter-spacing: 0.04em;
+  
 }
 
-/* HERO TYPOGRAPHY FIXES */
-.typewriter, .typewriter-orange { font-family: "Courier New", Courier, monospace; }
-
-p.hero-tagline.typewriter { 
-  font-size: 1.1rem; 
-  color: #b0b0b0; 
-  margin: 0.5rem 0; 
+  font-size: 1.6rem;  /* slightly larger, single line */
 }
 
-p.hero-range.typewriter-orange { 
-  font-size: 0.9rem; 
-  color: #ff6b00 !important; 
-  margin: 0.3rem 0; 
+/* ===== About — Architecture Stack Rhythm ===== */
+
+/* First paragraph — the hook (endurance) */
+
+/* Second paragraph — THE SPECTRUM (key addition) */
+
+
+/* Third paragraph — the deterministic foundation */
+
+/* Fourth paragraph — application domains */
+
+/* Final paragraph — the unified principle */
+
+/* ===== HERO STYLISH TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+/* Main title — elegant serif */
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  width: 100%;
+  height: 0.08em;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.4;
 }
 
-p.tagline.typewriter { 
-  font-size: 1rem; 
-  color: #b0b0b0; 
-  margin: 0.5rem 0 1rem; 
+/* Tagline — bold geometric sans */
+
+/* Range indicator — technical, spaced */
+
+
+/* Original tagline (AI Engineering Services) — refined */
+
+/* ===== PRINCIPLE QUOTE — Stylish Italic ===== */
+
+
+/* Responsive adjustment */
+@media (max-width: 720px) {
+
+/* Nicoomanesh — elegant but plain, no orange/italic/underline */
+h1#hero-title .highlight {
+  font-style: normal;
+  color: inherit;
+  position: static;
+}
 }
 
-#typewrite { 
-  font-family: "Courier New", Courier, monospace; 
-  font-size: 0.9rem; 
-  color: #909090; 
+/* Remove any underline effect */
+h1#hero-title .highlight::after {
+  display: none;
 }
 
-.hero-divider { display: none !important; }
+/* ===== PRINCIPLE QUOTE — Explicit Italic ===== */
+p.principle {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-style: italic !important;
+  color: #c0c0c0;
+  letter-spacing: 0.01em;
+  
+  /* Left accent */
+  border-left: 2px solid var(--accent);
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+  position: relative;
+}
 
-/* Restore orange lines above button */
+/* Ensure italic is not overridden */
+p.principle em,
+p.principle i {
+  font-style: italic;
+}
+
+/* AI Engineering Services & Consulting — elegant, normal case */
+
+/* About paragraphs 2 & 3 — stylish, smaller, unified */
+
+/* Keep the governance paragraph (3rd) with left border accent */
+
+/* Agentic AI Architect — white, not orange */
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 1rem 0 0.3rem;
+}
+
+/* ===== ABOUT — UNIFIED ELEGANT TYPOGRAPHY ===== */
+
+/* All body paragraphs: identical font, size, color */
+
+/* Only distinction: second paragraph has left border accent */
+
+/* Principle quote: italic variant */
+
+/* AI Engineering Services & Consulting — larger, white, prominent */
+
+/* ===== HERO TYPOGRAPHY — FINAL CLEAN STATE ===== */
+
+/* Range indicator: small, orange, technical */
+
+/* AI Engineering Services: LARGER, WHITE */
+
+/* ===== ABOUT SECTION — Clean, Consistent Typography ===== */
+
+/* Base for all about text — same font family as rest of site */
+#about .about-text {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* All paragraphs — consistent size, color, no borders */
+#about .about-text p {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #b8b8b8;
+  margin-bottom: 1.2rem;
+}
+
+/* First paragraph — slightly more prominent (the hook) */
+#about .about-text p:first-of-type {
+  font-size: 1.05rem;
+  color: #d0d0d0;
+}
+
+/* Principle quote — italic, no border, subtle color difference */
+#about .about-text p.principle {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.7;
+  color: #a0a0a0;
+  margin-top: 1.5rem;
+  border-left: none;
+  padding-left: 0;
+}
+
+/* ===== HERO TYPOGRAPHY — Clean & Consistent ===== */
+
+/* Main title */
+h1#hero-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Nicoomanesh — plain, no special styling */
+h1#hero-title .highlight {
+  font-weight: 600;
+  font-style: normal;
+  color: inherit;
+}
+
+h1#hero-title .highlight::after {
+  display: none;
+}
+
+/* Agentic AI Architect — white, bold */
+
+/* Range — small, orange, technical */
+
+/* AI Engineering Services — larger, white, normal case */
+
+/* ===== HERO TYPEWRITER TYPOGRAPHY ===== */
+
+/* Agentic AI Architect — BOLDEST (identity statement) */
+
+/* Deterministic Core · Stochastic Range · Multi-Agent Scale — MEDIUM (technical range) */
+p.hero-range {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0.3rem 0 0.8rem;
+}
+
+/* Decorative dots for range */
+p.hero-range::before,
+p.hero-range::after {
+  content: '';
+}
+
+/* AI Engineering Services & Consulting — LIGHTEST (service descriptor) */
+p.tagline {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: #b0b0b0;
+  margin-top: 0.8rem;
+}
+
+/* Name — elegant serif contrast to typewriter hero */
+h1#hero-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Nicoomanesh — plain, inherits elegance */
+h1#hero-title .highlight {
+  font-weight: 600;
+  font-style: normal;
+  color: inherit;
+}
+
+h1#hero-title .highlight::after {
+  display: none;
+}
+
+/* Agentic AI Architect — UNBOLD, smaller, typewriter */
+p.hero-tagline {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #b0b0b0;
+  margin: 1rem 0 0.4rem;
+}
+
+/* Hero logo between orange lines */
+
+
+.hero-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+
+/* Hero logo between horizontal orange lines */
+
+
+
+@media (max-width: 720px) {
+
+/* ===== HERO DIVIDER WITH LOGO ===== */
+
 .hero-divider {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
   margin: 1.5rem 0;
   width: 100%;
 }
+}
+
 .hero-divider .line {
   flex: 1;
   max-width: 180px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
-}
-/* Hide logo if present */
-.hero-divider .chess-chip,
-.hero-divider i {
-  display: none !important;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
-/* LOGO STYLING */
-header .logo img {
+.hero-logo-inline {
+  width: 40px;
   height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
-.hero-logo-small {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  border-radius: 4px;
-  opacity: 0.9;
-}
-
-.hero-divider {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.hero-divider .line {
-  flex: 1;
-  max-width: 140px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
-}
-
-/* Updated hero logo size */
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
   object-fit: contain;
   border-radius: 6px;
-  opacity: 0.9;
+  flex-shrink: 0;
 }
 
-/* LOGO ANIMATION - Neon Flicker (AI Agent vibe) */
-  10% { 
-    opacity: 0.9;
-    filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 107, 0, 1));
+@media (max-width: 720px) {
+  .hero-divider {
+    gap: 1rem;
+    margin: 1rem 0;
   }
-  20% { 
-    opacity: 1;
-    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 107, 0, 0.8));
   }
-  30% { 
-    opacity: 0.8;
-    filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 107, 0, 1));
-    transform: scale(1.05);
+  .hero-divider .line {
+    max-width: 100px;
   }
-  40% { 
-    opacity: 1;
-    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 107, 0, 0.8));
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.9;
-    filter: brightness(1.1) drop-shadow(0 0 10px rgba(255, 107, 0, 0.9));
-  }
-  60%, 90% { 
-    opacity: 1;
-    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 107, 0, 0.8));
+  .hero-logo-inline {
+    width: 32px;
+    height: 32px;
   }
 }
-
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: contain;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 107, 0, 0.3);
-}
-
-/* LOGO ANIMATION - Floating (Elegant & Professional) */
-@keyframes logo-float {
-  0%, 100% { 
-    transform: translateY(0) scale(1);
-    filter: drop-shadow(0 5px 10px rgba(255, 107, 0, 0.3));
-  }
-  50% { 
-    transform: translateY(-10px) scale(1.05);
-    filter: drop-shadow(0 15px 25px rgba(255, 107, 0, 0.6));
-  }
-}
-
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: contain;
-  border-radius: 6px;
-  animation: logo-float 3s ease-in-out infinite;
-  transition: all 0.3s ease;
-}
-
-/* Hover pause effect */
-.hero-logo-small:hover {
-  animation-play-state: paused;
-  transform: scale(1.1);
-  filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 107, 0, 0.8));
-  cursor: pointer;
-}
-
-/* LOGO ANIMATION - Rotate with Glow */
-@keyframes logo-rotate-glow {
-  0% { 
-    transform: rotate(0deg) scale(1);
-    filter: drop-shadow(0 0 5px rgba(255, 107, 0, 0.5));
-  }
-  50% { 
-    transform: rotate(180deg) scale(1.08);
-    filter: drop-shadow(0 0 25px rgba(255, 107, 0, 0.9));
-  }
-  100% { 
-    transform: rotate(360deg) scale(1);
-    filter: drop-shadow(0 0 5px rgba(255, 107, 0, 0.5));
-  }
-}
-
-.hero-logo-small {
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: contain;
-  border-radius: 6px;
-  animation: logo-rotate-glow 12s linear infinite;
-}
-
-.hero-logo-small:hover {
-  animation-play-state: paused;
-  transform: scale(1.15);
-  filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 107, 0, 1));
-  cursor: pointer;
-}
-

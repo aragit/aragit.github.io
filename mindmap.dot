@@ -1,0 +1,18 @@
+digraph MindMap {
+    graph [rankdir=LR splines=ortho overlap=false bgcolor=transparent];
+    node [fontname="Helvetica" fontsize=9 shape=box style="rounded,filled" fillcolor="#1a1a1a" fontcolor="#e0e0e0" color="#ff6b00"];
+    edge [color="#ff6b00" arrowsize=0.8 penwidth=1.5];
+    
+    "Agentic AI Architectures" [fillcolor="#ff6b00" fontcolor="#000" fontsize=11 fontweight=bold width=2.5];
+    
+    "Reactive Agents" -> "Agentic AI Architectures" [dir=back];
+    "Deliberative" -> "Agentic AI Architectures" [dir=back];
+    "Hybrid" -> "Agentic AI Architectures" [dir=back];
+    "Hierarchical" -> "Agentic AI Architectures" [dir=back];
+    "Multi-Agent" -> "Agentic AI Architectures" [dir=back];
+    "RAG/Memory" -> "Agentic AI Architectures" [dir=back];
+    "Stochastic" -> "Agentic AI Architectures" [dir=back];
+    "Learning/RL" -> "Agentic AI Architectures" [dir=back];
+    "Embodied" -> "Agentic AI Architectures" [dir=back];
+    "Deterministic" -> "Agentic AI Architectures" [dir=back];
+}
