@@ -7897,3 +7897,55 @@ img[src*="hypoArch"],
   border-radius: 50% !important;
   flex-shrink: 0 !important;
 }
+
+/* ===== AGGRESSIVE FIX FOR TERMINAL OVERLAP ===== */
+
+/* Reset terminal box model */
+#portfolio .featured-terminal {
+  position: relative !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Terminal header as block element with proper height */
+#portfolio .featured-terminal .terminal-header {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: 2rem !important; /* Fixed height for header */
+  padding: 0.5rem 1rem !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important; /* Optional separator */
+}
+
+/* Terminal content area */
+#portfolio .featured-terminal .terminal-content,
+#portfolio .featured-terminal > div:not(.terminal-header) {
+  display: block !important;
+  padding: 1rem !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+  max-height: calc(100% - 2rem) !important; /* Subtract header height */
+}
+
+/* Ensure log lines have proper spacing */
+#portfolio .featured-terminal .log-line {
+  margin: 0.3rem 0 !important;
+  padding: 0 !important;
+  line-height: 1.5 !important;
+  display: block !important;
+}
+
+/* First log line */
+#portfolio .featured-terminal .log-line:first-of-type {
+  margin-top: 0 !important;
+}
+
+/* Last log line */
+#portfolio .featured-terminal .log-line:last-of-type {
+  margin-bottom: 0 !important;
+}
