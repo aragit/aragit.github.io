@@ -8309,22 +8309,3 @@ img[src*="hypoArch"],
   .pillars-row { grid-template-columns: 1fr; }
   .manifesto-box { padding-left: 1rem; border-left-width: 3px; }
 }
-
-.specialized-services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-/* Ensure all cards in this section maintain the left-alignment for the lifecycle look */
-#services .service-card {
-  text-align: left !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-}
-
-@media (max-width: 900px) {
-  .specialized-services-grid { grid-template-columns: 1fr; }
-}

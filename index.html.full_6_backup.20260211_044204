@@ -26,7 +26,7 @@
 
     
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=32?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=36?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -485,78 +485,78 @@
     <!-- SERVICES & PACKAGES -->
     <!-- ==========  SERVICES & PACKAGES  ========== -->
     <!-- ==========  SERVICES & PACKAGES  ========== -->
+    <section id="services" class="section" aria-labelledby="services-title">
+      <div class="container">
+        <h2 id="services-title" class="section-title">Consulting Services<br><span class="services-subtitle">Build and Operate Intelligent Systems that Last</span></h2>
     
-  <section id="services" class="section">
-    <div class="container">
-      <h2 class="section-title">Architectural Lifecycle</h2>
-      <p class="section-subtitle">A phased roadmap from strategy to autonomous production.</p>
-      
-      <div class="lifecycle-path">
-        <div class="lifecycle-flex">
-          
-          <a class="card service-card" href="services/quick-audit.html">
-            <div class="card-body">
-              <span class="phase-tag">PHASE_01 // THE BLUEPRINT</span>
-              <h3>The Blueprint</h3>
-              <p>Strategy, high-ROI opportunity mapping, and custom technical roadmaps.</p>
-            </div>
-            <div class="card-actions"><span class="cta-secondary">Learn More</span></div>
-          </a>
-
-          <a class="card service-card" href="services/paid-poc.html">
-            <div class="card-body">
-              <span class="phase-tag">PHASE_02 // THE FORGE</span>
-              <h3>The Forge</h3>
-              <p>Rapid POC development, RAG optimization, and core multi-agent construction.</p>
-            </div>
-            <div class="card-actions"><span class="cta-secondary">Learn More</span></div>
-          </a>
-
-          <a class="card service-card" href="services/deploy-scale.html">
-            <div class="card-body">
-              <span class="phase-tag">PHASE_03 // THE NEXUS</span>
-              <h3>The Nexus</h3>
-              <p>LLMOps, production monitoring, and architectural scaling.</p>
-            </div>
-            <div class="card-actions"><span class="cta-secondary">Learn More</span></div>
-          </a>
-
-        </div>
-      </div>
-
-      <div class="specialized-services-grid">
+        <!-- added services-grid + data-grid here so ALL cards share the overlay -->
         
-        <a class="card service-card" href="services/agentic-ai.html">
-          <div class="card-body">
-            <span class="phase-tag">SPECIALIZED TRACK</span>
-            <h3>Specialized Agentic AI</h3>
-            <p>Deep-tech custom agents for Healthcare, Finance, and R&D pipelines.</p>
-          </div>
-          <div class="card-actions"><span class="cta-secondary">Explore Solutions</span></div>
-        </a>
+    <div class="cards services-grid">
+      <!-- Row 1 -->
+      <a class="card service-card" href="services/quick-audit.html" aria-label="The Blueprint">
+        <div class="card-body">
+          <h3>The Blueprint</h3>
+          <p>AI Strategy & Advisory</p>
+        </div>
+        <div class="card-actions">
+          <span class="cta-secondary">Learn more</span>
+        </div>
+      </a>
 
-        <a class="card service-card" href="services/mentoring.html">
-          <div class="card-body">
-            <span class="phase-tag">EDUCATION</span>
-            <h3>Mentoring & Advisory</h3>
-            <p>Upskilling teams and providing architectural oversight for internal AI units.</p>
-          </div>
-          <div class="card-actions"><span class="cta-secondary">Inquire</span></div>
-        </a>
+      <a class="card service-card" href="services/paid-poc.html" aria-label="The Forge">
+        <div class="card-body">
+          <h3>The Forge</h3>
+          <p>Solution Development</p>
+        </div>
+        <div class="card-actions">
+          <span class="cta-secondary">Learn more</span>
+        </div>
+      </a>
 
-        <a class="card service-card" href="#contact">
-          <div class="card-body">
-            <span class="phase-tag">ON-DEMAND</span>
-            <h3>Fractional AI Architect</h3>
-            <p>Strategic leadership and engineering guidance on a recurring monthly basis.</p>
-          </div>
-          <div class="card-actions"><span class="cta-secondary">Book a Call</span></div>
-        </a>
+      <a class="card service-card" href="services/deploy-scale.html" aria-label="The Nexus">
+        <div class="card-body">
+          <h3>The Nexus</h3>
+          <p>Deployment & Scale</p>
+        </div>
+        <div class="card-actions">
+          <span class="cta-secondary">Learn more</span>
+        </div>
+      </a>
+
+      <!-- Row 2 -->
+      <a class="card service-card" href="services/mentoring.html" aria-label="Training & Knowledge Transfer">
+        <div class="card-body">
+          <h3>Training & Knowledge Transfer</h3>
+          <p>Mentoring & Education</p>
+        </div>
+        <div class="card-actions">
+          <span class="cta-secondary">Learn more</span>
+        </div>
+      </a>
+
+      <a class="card service-card" href="services/rapid-poc.html" aria-label="Rapid POC Accelerator">
+        <div class="card-body">
+          <h3>Rapid POC Accelerator</h3>
+          <p>Fast Validation</p>
+        </div>
+        <div class="card-actions">
+          <span class="cta-secondary">Learn more</span>
+        </div>
+      </a>
+
+      <a class="card service-card" href="services/agentic-ai.html" aria-label="Specialized Agentic AI Solutions">
+        <div class="card-body">
+          <h3>Specialized Agentic AI Solutions</h3>
+          <p>Agentic AI Systems</p>
+        </div>
+        <div class="card-actions">
+          <span class="cta-secondary">Learn more</span>
+        </div>
+      </a>
+    </div>
 
       </div>
-    </div>
-  </section>
-
+    </section>
     <!-- /SERVICES & PACKAGES -->
 
     <!-- ==========  TECH STACK  ========== -->
