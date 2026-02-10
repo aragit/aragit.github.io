@@ -7462,3 +7462,67 @@ img[src*="hypoArch"],
     grid-column: span 1 !important;
   }
 }
+
+/* ===== FIX DESKTOP CARD WIDTH - PREVENT STRETCHING ===== */
+
+/* Constrain the entire bento grid width on desktop */
+@media (min-width: 901px) {
+  #portfolio .bento-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(280px, 360px)) !important; /* Fixed column widths */
+    gap: 1.25rem !important;
+    justify-content: center !important; /* Center the grid */
+    max-width: 1150px !important; /* Total max width */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* Featured card spans all columns but content is constrained */
+  #portfolio .card-featured {
+    grid-column: span 3 !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ensure featured card content doesn't stretch too wide */
+  #portfolio .featured-flex {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Regular cards - fixed width */
+  #portfolio .bento-item:not(.card-featured) {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    max-width: 360px !important; /* Max card width */
+    min-width: 280px !important; /* Min card width */
+  }
+  
+  /* Terminal in featured card - constrain width */
+  #portfolio .featured-terminal {
+    max-width: 500px !important;
+  }
+}
+
+/* Large screens - keep cards from getting too wide */
+@media (min-width: 1400px) {
+  #portfolio .bento-grid {
+    grid-template-columns: repeat(3, 340px) !important; /* Fixed width columns */
+    gap: 1.5rem !important;
+    max-width: 1200px !important;
+  }
+}
+
+/* Medium desktop - slightly smaller cards */
+@media (min-width: 901px) and (max-width: 1200px) {
+  #portfolio .bento-grid {
+    grid-template-columns: repeat(3, minmax(260px, 320px)) !important;
+    gap: 1rem !important;
+    max-width: 1000px !important;
+  }
+  
+  #portfolio .bento-item:not(.card-featured) {
+    max-width: 320px !important;
+    min-width: 260px !important;
+  }
+}
