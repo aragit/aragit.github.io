@@ -8049,3 +8049,74 @@ img[src*="hypoArch"],
     padding-left: 1.25rem !important;
   }
 }
+
+/* ===== COMPREHENSIVE MOBILE INSIGHT FIX ===== */
+
+/* Desktop: Keep existing styles unchanged */
+@media (min-width: 901px) {
+  #insight .insight-arch-diagram {
+    /* Don't modify desktop styles */
+    max-width: 500px !important;
+    margin: 2rem auto 0 !important;
+  }
+}
+
+/* Mobile: Fix image alignment and overlap */
+@media (max-width: 900px) {
+  /* Reset any negative margins or positioning */
+  #insight .insight-arch-diagram {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 1.5rem auto 0 !important; /* Center with top margin */
+    padding: 0 1rem !important; /* Horizontal padding only */
+    width: calc(100% - 2rem) !important; /* Account for padding */
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+  }
+  
+  /* Ensure image is responsive and centered */
+  #insight .insight-arch-diagram img,
+  #insight .insight-arch-diagram .insight-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border-radius: 8px !important; /* Optional: maintain styling */
+  }
+  
+  /* Adjust content area to prevent overlap */
+  #insight .insight-content,
+  #insight .container {
+    overflow: visible !important; /* Allow content to flow */
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  
+  /* If there's a left border/orange line, ensure image clears it */
+  #insight {
+    position: relative !important;
+    overflow: hidden !important; /* Contain everything */
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 600px) {
+  #insight .insight-arch-diagram {
+    margin-top: 1rem !important;
+    padding: 0 0.75rem !important;
+    width: calc(100% - 1.5rem) !important;
+  }
+  
+  #insight .insight-content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
