@@ -6497,7 +6497,11 @@ ul.insight-bullets li {
   background: linear-gradient(135deg, rgba(22,22,22,1) 0%, rgba(255,107,0,0.05) 100%);
 }
 
-.featured-flex { display: flex; gap: 30px; align-items: flex-start; }
+.featured-flex {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
 .featured-info { flex: 0.8; }
 .featured-terminal {
   flex: 1.2;
@@ -6507,6 +6511,7 @@ ul.insight-bullets li {
   font-family: "Courier New", monospace;
   border: 1px solid #333;
   min-height: 220px;
+  margin-top: 45px;
 }
 
 .agent-loop { margin: 1rem 0; border-left: 2px solid var(--accent); padding-left: 12px; }
@@ -6528,7 +6533,11 @@ ul.insight-bullets li {
   grid-column: span 3;
   background: linear-gradient(135deg, rgba(22,22,22,1) 0%, rgba(255,107,0,0.05) 100%);
 }
-  .featured-flex { flex-direction: column; }
+  .featured-flex {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
 }
 @media (max-width: 600px) {
   .bento-grid { grid-template-columns: 1fr; }
