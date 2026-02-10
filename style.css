@@ -8328,3 +8328,28 @@ img[src*="hypoArch"],
 @media (max-width: 900px) {
   .specialized-services-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== RESTORED SERVICES GRID ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+
+/* Ensure original card sizing is respected */
+#services .service-card {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 280px;
+}
