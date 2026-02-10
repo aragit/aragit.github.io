@@ -8310,3 +8310,71 @@ img[src*="hypoArch"],
   .pillars-row { grid-template-columns: 1fr; }
   .manifesto-box { padding-left: 1rem; border-left-width: 3px; }
 }
+
+/* ===== ARCHITECTURE PHILOSOPHY: COMMAND CENTER ===== */
+.command-center {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.manifesto-box {
+  border-left: 4px solid var(--accent);
+  padding: 0.5rem 0 0.5rem 2rem;
+  background: linear-gradient(90deg, rgba(255,107,0,0.05) 0%, transparent 100%);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.manifesto-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #d0d0d0;
+  max-width: 95%;
+  margin: 0;
+}
+
+.manifesto-text em {
+  font-style: italic;
+  color: #fff;
+  font-weight: 600;
+}
+
+.manifesto-highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.arch-figure-wrapper {
+  position: relative;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #050505;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.arch-figure-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.arch-figure-wrapper:hover .arch-figure-img {
+  opacity: 1;
+  transform: scale(1.01);
+}
+
+.pillars-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .pillars-row { grid-template-columns: 1fr; }
+  .manifesto-box { padding-left: 1rem; border-left-width: 3px; }
+}
