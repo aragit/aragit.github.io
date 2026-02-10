@@ -26,7 +26,7 @@
 
     
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=20" />
+  <link rel="stylesheet" href="style.css?v=21" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -256,65 +256,101 @@
     <!-- PORTFOLIO -->
     <!-- CASE STUDIES - NEW AGENTIC DESIGN -->
 
+  
   <section id="portfolio" class="section">
     <div class="container">
       <h2 class="section-title">Case Studies & Solutions</h2>
-      <p class="section-subtitle">Architecting Agentic systems that solve high-stakes problems.</p>
+      <p class="section-subtitle">Architecting Agentic systems that solve high-stakes problems with traceable reasoning.</p>
       
       <div class="bento-grid">
         <div class="bento-item card-featured">
           <div class="bento-content">
-            <span class="badge">Production AI</span>
-            <h3>Medical Triage AI</h3>
-            <p>Built a production-grade Agentic system for emergency departments, reducing triage time by 40% with high-fidelity LLM reasoning and human-in-the-loop safety.</p>
-            <a href="case-studies/medical-triage/medical-triage.html" class="link-arrow">Read Case Study →</a>
-          </div>
-        </div>
-
-        <div class="bento-item card-logs">
-          <div class="terminal-header">
-            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-          </div>
-          <div class="terminal-body">
-            <p class="log-line">> Init RAG pipeline...</p>
-            <p class="log-line">> Context retrieved: ICU_v4</p>
-            <p class="log-line">> Reasoning: Analyzing risks</p>
-            <p class="log-line">> Output: Priority Alpha</p>
-            <p class="log-line blink">> Waiting for agent...</p>
+            <span class="badge">EHR-Integrated</span>
+            <h3>Medical Triage Agent</h3>
+            <span class="tagline">Reasons like a clinician; prioritizes care safely.</span>
+            <div class="agent-loop">
+              <div class="loop-step"><strong>Observe:</strong> Intake notes, vitals, meds, comorbidities.</div>
+              <div class="loop-step"><strong>Reason:</strong> Risk stratification + differential hypotheses.</div>
+              <div class="loop-step"><strong>Act:</strong> Create tasks/alerts and populate triage notes.</div>
+            </div>
+            <div class="tech-tags">
+              <span class="tag">EHR-native</span><span class="tag">RAG</span><span class="tag">Policy-gated</span>
+            </div>
+            <a href="case-studies/medical-triage/medical-triage.html" class="link-arrow">View Case Study →</a>
+            <span class="safety-note">Clinical decision support — requires provider validation.</span>
           </div>
         </div>
 
         <div class="bento-item">
-          <h3>ICU Forecasting</h3>
-          <p>Predictive analytics for intensive care demand using time-series AI.</p>
-          <a href="case-studies/icu-forecasting/icu-forecasting.html" class="link-arrow">Details →</a>
-        </div>
-
-        <div class="bento-item card-stack">
-          <div class="stack-flex">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">LangChain</span>
-            <span class="stack-tag">PyTorch</span>
-            <span class="stack-tag">GPT-4o</span>
-            <span class="stack-tag">VectorDB</span>
-            <span class="stack-tag">Agentic Loops</span>
+          <div class="bento-content">
+            <h3>CBT Autonomous Agent</h3>
+            <span class="tagline">Evidence-guided therapy workflows.</span>
+            <div class="agent-loop">
+              <div class="loop-step"><strong>Reason:</strong> Detect cognitive distortions.</div>
+              <div class="loop-step"><strong>Plan:</strong> Personalized Socratic prompts.</div>
+            </div>
+            <div class="tech-tags">
+              <span class="tag">Multi-agent</span><span class="tag">Privacy-first</span>
+            </div>
+            <a href="#" class="link-arrow">View Case Study →</a>
+            <span class="safety-note">Augmentation tool — not a clinician replacement.</span>
           </div>
         </div>
 
         <div class="bento-item">
-          <h3>Drug Discovery</h3>
-          <p>Accelerating pharmaceutical discovery through Graph Neural Networks.</p>
-          <a href="case-studies/drug-repurposing/index.html" class="link-arrow">Details →</a>
+          <div class="bento-content">
+            <h3>Biomedical Hypothesis Agent</h3>
+            <span class="tagline">Hypothesis-driven retrieval over literature.</span>
+            <div class="agent-loop">
+              <div class="loop-step"><strong>Observe:</strong> PubMed, DrugBank, Trial data.</div>
+              <div class="loop-step"><strong>Adapt:</strong> Update ranking from experimental feedback.</div>
+            </div>
+            <div class="tech-tags">
+              <span class="tag">Biomedical KB</span><span class="tag">Explainability</span>
+            </div>
+            <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
+          </div>
+        </div>
+
+        <div class="bento-item card-stack" style="grid-column: span 3; background: rgba(0,255,100,0.02);">
+          <div style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+              <h3>Marketing ROI Optimizer</h3>
+              <p>Real-time budget reallocation using Multi-armed bandits and safe-policy updates.</p>
+            </div>
+            <div class="tech-tags">
+              <span class="tag">Streaming Metrics</span><span class="tag">Closed-loop</span><span class="tag">ROI Focused</span>
+            </div>
+          </div>
         </div>
 
         <div class="bento-item">
-          <h3>E-comm RecSys</h3>
-          <p>Scalable recommendation engine serving 1M+ active users.</p>
-          <a href="case-studies/prd-recomm-qa/prd-recomm-qa.html" class="link-arrow">Details →</a>
+          <div class="bento-content">
+            <h3>Emotion-Focused Multi-Agent</h3>
+            <span class="tagline">Deep emotional & somatic guidance.</span>
+            <div class="agent-loop">
+              <div class="loop-step"><strong>Observe:</strong> Sentiment & attachment patterns.</div>
+              <div class="loop-step"><strong>Act:</strong> Guided grounding & integration tasks.</div>
+            </div>
+            <a href="#" class="link-arrow">View Case Study →</a>
+          </div>
+        </div>
+
+        <div class="bento-item">
+          <div class="bento-content">
+            <h3>Supply Chain Orchestrator</h3>
+            <span class="tagline">Autonomously reroute logistics.</span>
+            <p style="font-size: 0.85rem; color: var(--muted);">Minimizes disruption by analyzing weather, telemetry, and cost trade-offs.</p>
+            <div class="tech-tags">
+              <span class="tag">Event-driven</span><span class="tag">Simulation</span>
+            </div>
+            <a href="#" class="link-arrow">View Case Study →</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
 
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
