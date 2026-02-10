@@ -6902,3 +6902,78 @@ ul.insight-bullets li {
     margin: 8px 0;
   }
 }
+
+/* ===== BIOMEDICAL HYPOTHESES CARD - TALL VERSION ===== */
+
+/* Make the Biomedical card taller to align with bottom of second row */
+.bento-item.biomed-tall {
+  grid-row: span 2;  /* Span 2 rows in the grid */
+  min-height: 380px; /* Ensure minimum height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Ensure the card content fills the space */
+.bento-item.biomed-tall .loop-step {
+  flex: 1;
+}
+
+/* Fix architecture diagram image */
+.bento-item.biomed-tall .card-arch-diagram,
+.bento-item img[src*="hypoArch"] {
+  width: 100% !important;
+  height: 160px !important;  /* Taller image */
+  max-height: 160px !important;
+  object-fit: contain !important;
+  margin: 15px 0 !important;
+  border-radius: 8px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  padding: 12px !important;
+  border: 1px solid rgba(255, 107, 0, 0.15) !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure image is visible */
+.bento-item.biomed-tall img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hover effect for image */
+.bento-item.biomed-tall:hover .card-arch-diagram,
+.bento-item.biomed-tall:hover img[src*="hypoArch"] {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.3) !important;
+}
+
+/* Push link to bottom */
+.bento-item.biomed-tall .link-arrow {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .bento-item.biomed-tall {
+    grid-row: span 1;
+    min-height: auto;
+  }
+  
+  .bento-item.biomed-tall .card-arch-diagram,
+  .bento-item img[src*="hypoArch"] {
+    height: 140px !important;
+    max-height: 140px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-item.biomed-tall .card-arch-diagram,
+  .bento-item img[src*="hypoArch"] {
+    height: 120px !important;
+    max-height: 120px !important;
+    padding: 8px !important;
+  }
+}
