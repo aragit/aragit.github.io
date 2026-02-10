@@ -7660,3 +7660,100 @@ img[src*="hypoArch"],
     flex: 0 0 48% !important;
   }
 }
+
+/* ===== FIX TERMINAL ALIGNMENT & GRID SPACING ===== */
+
+/* Desktop: Proper spacing and alignment */
+@media (min-width: 901px) {
+  /* Featured card container - add internal padding */
+  #portfolio .card-featured {
+    padding: 2rem !important; /* Consistent padding inside card */
+    box-sizing: border-box !important;
+  }
+  
+  #portfolio .card-featured .featured-flex {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important; /* Align tops */
+    justify-content: space-between !important;
+    gap: 40px !important; /* Space between text and terminal */
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Left text content - add left padding for grid alignment */
+  #portfolio .featured-info {
+    flex: 0 0 42% !important;
+    max-width: 420px !important;
+    padding-left: 0.5rem !important; /* Small left padding for visual alignment */
+    margin: 0 !important;
+    align-self: flex-start !important;
+  }
+  
+  /* Terminal - align top with h3 title, add right padding */
+  #portfolio .featured-terminal {
+    flex: 0 0 52% !important;
+    max-width: 520px !important;
+    margin: 0 !important; /* Remove all margins */
+    padding-right: 0.5rem !important; /* Right padding for grid alignment */
+    align-self: flex-start !important;
+    /* Align with the h3 title - approximate based on typical line height */
+    margin-top: 0 !important; /* Start at same level as title */
+  }
+  
+  /* Ensure h3 has no extra top margin */
+  #portfolio .featured-info h3 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Badge alignment */
+  #portfolio .featured-info .badge {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+}
+
+/* Large screens - more generous spacing */
+@media (min-width: 1400px) {
+  #portfolio .card-featured {
+    padding: 2.5rem !important;
+  }
+  
+  #portfolio .card-featured .featured-flex {
+    gap: 60px !important;
+  }
+  
+  #portfolio .featured-info {
+    flex: 0 0 40% !important;
+    padding-left: 1rem !important;
+  }
+  
+  #portfolio .featured-terminal {
+    flex: 0 0 55% !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Medium screens - balanced spacing */
+@media (min-width: 901px) and (max-width: 1200px) {
+  #portfolio .card-featured {
+    padding: 1.5rem !important;
+  }
+  
+  #portfolio .card-featured .featured-flex {
+    gap: 30px !important;
+  }
+  
+  #portfolio .featured-info {
+    flex: 0 0 45% !important;
+    padding-left: 0.25rem !important;
+  }
+  
+  #portfolio .featured-terminal {
+    flex: 0 0 50% !important;
+    padding-right: 0.25rem !important;
+  }
+}
