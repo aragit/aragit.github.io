@@ -6292,3 +6292,45 @@ ul.insight-bullets li {
   border-color: #ff6b00 !important;
   color: #ff6b00 !important;
 }
+
+/* ===== REMOVE ICONS FROM CASE STUDY CARDS ===== */
+
+/* Hide cs-icon elements */
+.cs-icon {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Adjust card header layout without icons */
+.cs-card-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 8px !important;
+}
+
+.cs-card h3 {
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.cs-tags {
+  justify-content: center !important;
+  width: 100% !important;
+  margin-top: 4px !important;
+}
+
+/* Remove any other icon-related elements in portfolio */
+#portfolio .card-icon,
+#portfolio .cs-icon,
+#portfolio .cards .card-icon,
+#portfolio .portfolio-grid .card-icon {
+  display: none !important;
+  visibility: hidden !important;
+}
