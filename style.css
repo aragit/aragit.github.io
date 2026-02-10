@@ -7800,7 +7800,6 @@ img[src*="hypoArch"],
 /* Alternative: If terminal needs to align exactly with title top */
 @media (min-width: 901px) {
   #portfolio .featured-terminal {
-    margin-top: 0 !important; /* Reset */
     padding-top: 0 !important;
     /* The terminal header (colored dots) should align with h3 */
     position: relative !important;
@@ -8063,5 +8062,122 @@ img[src*="hypoArch"],
   .insight-visual img,
   .insight-visual-large img {
     max-height: 250px !important;
+  }
+}
+
+/* ===== DEFINITIVE TERMINAL ALIGNMENT FIX ===== */
+
+/* Desktop: Terminal aligns with "Medical Triage Agent" title */
+@media (min-width: 901px) {
+  #portfolio .card-featured {
+    padding: 2rem 2.5rem !important;
+    position: relative !important;
+  }
+  
+  #portfolio .featured-flex {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 40px !important;
+    width: 100% !important;
+  }
+  
+  /* Left side: Text content */
+  #portfolio .featured-info {
+    flex: 0 0 42% !important;
+    max-width: 420px !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    align-self: flex-start !important;
+  }
+  
+  /* Badge styling */
+  #portfolio .featured-info .badge {
+    display: inline-block !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Title styling - no extra margins */
+  #portfolio .featured-info h3 {
+    margin: 0 0 0.75rem 0 !important;
+    padding: 0 !important;
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Right side: Terminal - align with title */
+  #portfolio .featured-terminal {
+    flex: 0 0 52% !important;
+    max-width: 520px !important;
+    margin: 2.25rem 0 0 0 !important; /* Push down to align with h3 title */
+    padding: 0 !important;
+    align-self: flex-start !important;
+    position: relative !important;
+  }
+  
+  /* Terminal header with 3 colored circles */
+  #portfolio .featured-terminal .terminal-header {
+    position: absolute !important;
+    top: 0.75rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    height: 1.5rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    z-index: 10 !important;
+  }
+  
+  /* The 3 colored dots */
+  #portfolio .featured-terminal .terminal-header .dot {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Terminal content area - push below header */
+  #portfolio .featured-terminal .terminal-content {
+    padding: 2.5rem 1rem 1rem 1rem !important; /* Top padding for header */
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Individual log lines */
+  #portfolio .featured-terminal .log-line {
+    margin: 0.25rem 0 !important;
+    line-height: 1.5 !important;
+    font-size: 0.9rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* First log line spacing */
+  #portfolio .featured-terminal .log-line:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+  #portfolio .featured-terminal {
+    margin-top: 2.5rem !important; /* Slightly more for larger title */
+  }
+}
+
+/* Medium screens */
+@media (min-width: 901px) and (max-width: 1200px) {
+  #portfolio .featured-terminal {
+    margin-top: 2.1rem !important;
+  }
+  
+  #portfolio .featured-info h3 {
+    font-size: 1.4rem !important;
   }
 }
