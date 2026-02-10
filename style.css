@@ -7757,3 +7757,58 @@ img[src*="hypoArch"],
     padding-right: 0.25rem !important;
   }
 }
+
+/* ===== PRECISE TERMINAL ALIGNMENT WITH TITLE ===== */
+
+/* Desktop: Exact alignment */
+@media (min-width: 901px) {
+  #portfolio .card-featured {
+    padding: 2rem 2.5rem !important; /* More horizontal padding */
+  }
+  
+  #portfolio .featured-flex {
+    align-items: flex-start !important;
+  }
+  
+  /* Text side - consistent left padding */
+  #portfolio .featured-info {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Terminal - align with h3 title */
+  #portfolio .featured-terminal {
+    /* Adjust margin-top to align with h3 title baseline */
+    margin-top: 2.5rem !important; /* Approximate h3 line height + badge */
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Fine-tune based on actual layout */
+  #portfolio .featured-info .badge {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  #portfolio .featured-info h3 {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 1.5rem !important; /* Ensure consistent size */
+    line-height: 1.2 !important;
+  }
+}
+
+/* Alternative: If terminal needs to align exactly with title top */
+@media (min-width: 901px) {
+  #portfolio .featured-terminal {
+    margin-top: 0 !important; /* Reset */
+    padding-top: 0 !important;
+    /* The terminal header (colored dots) should align with h3 */
+    position: relative !important;
+    top: 0 !important;
+  }
+  
+  /* Add padding to terminal to push content down to match text flow */
+  #portfolio .featured-terminal .terminal-header {
+    margin-bottom: 1rem !important;
+  }
+}
