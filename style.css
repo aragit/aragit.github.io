@@ -7192,3 +7192,24 @@ ul.insight-bullets li {
 .cs-link {
   margin-top: auto !important;
 }
+
+/* ===== REMOVE BIOMEDICAL HYPOTHESES IMAGE ===== */
+
+/* Hide any hypoArch images */
+img[src*="hypoArch"],
+.bento-item img[src*="hypoArch"],
+.bento-item.biomed-tall img {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Remove tall card styling */
+.bento-item.biomed-tall {
+  min-height: unset !important;
+  grid-row: span 1 !important;
+}
