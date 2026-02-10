@@ -783,3 +783,46 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== UPDATED: 3D TILT + BRIGHT GREY SPOTLIGHT FOR PORTFOLIO CARDS =====
+
+// ===== AGGRESSIVE CARD FIX =====
+(function() {
+  function fixCards() {
+    // Remove all cs-image elements
+    document.querySelectorAll('.cs-image').forEach(function(img) {
+      img.style.display = 'none';
+      img.remove();
+    });
+    
+    // Fix card heights
+    document.querySelectorAll('.cs-card').forEach(function(card) {
+      card.style.height = '280px';
+      card.style.display = 'flex';
+      card.style.flexDirection = 'column';
+      
+      var link = card.querySelector('.cs-link');
+      if (link) link.style.marginTop = 'auto';
+    });
+    
+    // Remove duplicate subtitles
+    var subtitles = document.querySelectorAll('h2, h3, p, .subtitle');
+    var seen = {};
+    subtitles.forEach(function(el) {
+      var text = el.textContent.trim();
+      if (text === 'Foundation Theory Speeds Iteration. Understand Once, Move Faster Forever') {
+        if (seen[text]) {
+          el.style.display = 'none';
+          el.remove();
+        } else {
+          seen[text] = true;
+        }
+      }
+    });
+  }
+  
+  // Run immediately and repeatedly
+  fixCards();
+  setTimeout(fixCards, 100);
+  setTimeout(fixCards, 500);
+  setTimeout(fixCards, 1000);
+  window.addEventListener('load', fixCards);
+})();

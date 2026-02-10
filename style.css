@@ -7150,3 +7150,45 @@ ul.insight-bullets li {
 .cs-card .cs-image {
   display: none !important;
 }
+
+/* ===== AGGRESSIVE CARD FIX ===== */
+
+/* Hide ALL images in portfolio cards */
+#portfolio .cs-image,
+#portfolio .cs-card .cs-image,
+.portfolio-grid .cs-image,
+.cs-card .cs-image,
+.cs-image {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Force fixed card height */
+#portfolio .cs-card,
+.portfolio-grid .cs-card,
+.cs-card {
+  height: 280px !important;
+  min-height: 280px !important;
+  max-height: 280px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Content layout */
+#portfolio .cs-card-content,
+.cs-card-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Push link to bottom */
+#portfolio .cs-link,
+.cs-link {
+  margin-top: auto !important;
+}
