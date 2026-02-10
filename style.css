@@ -7213,3 +7213,167 @@ img[src*="hypoArch"],
   min-height: unset !important;
   grid-row: span 1 !important;
 }
+
+/* ===== AGENTIC SOLUTIONS MOBILE FIXES ===== */
+
+/* Mobile breakpoint fixes for bento grid */
+@media (max-width: 900px) {
+  /* Force single column layout */
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin-top: 1.5rem !important;
+  }
+  
+  /* All cards span single column */
+  .bento-item,
+  .card-featured,
+  .card-stack {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+  
+  /* Featured card - stack vertically */
+  .featured-flex {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .featured-info {
+    flex: 1 !important;
+    width: 100% !important;
+  }
+  
+  .featured-terminal {
+    flex: 1 !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+    min-height: auto !important;
+    max-height: 200px !important;
+    overflow: auto !important;
+  }
+  
+  /* Terminal text smaller */
+  .featured-terminal .log-line {
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* Reduce padding on mobile */
+  .bento-item {
+    padding: 1rem !important;
+  }
+  
+  /* Card titles smaller */
+  .bento-item h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Agent loop compact */
+  .agent-loop {
+    margin: 0.5rem 0 !important;
+    padding-left: 8px !important;
+  }
+  
+  .loop-step {
+    font-size: 0.8rem !important;
+    margin-bottom: 4px !important;
+  }
+  
+  /* Tech tags wrap better */
+  .tech-tags {
+    margin-top: 8px !important;
+    gap: 4px !important;
+  }
+  
+  .tag {
+    font-size: 0.65rem !important;
+    padding: 2px 6px !important;
+  }
+  
+  /* Safety note smaller */
+  .safety-note {
+    font-size: 0.65rem !important;
+    margin-top: 8px !important;
+  }
+  
+  /* Link arrow smaller */
+  .link-arrow {
+    margin-top: 0.8rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Badge smaller */
+  .badge {
+    font-size: 0.6rem !important;
+    padding: 2px 6px !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 600px) {
+  .bento-grid {
+    gap: 0.75rem !important;
+  }
+  
+  .bento-item {
+    padding: 0.875rem !important;
+    border-radius: 8px !important;
+  }
+  
+  .featured-terminal {
+    max-height: 160px !important;
+    padding: 10px !important;
+  }
+  
+  .featured-terminal .log-line {
+    font-size: 0.7rem !important;
+    margin: 2px 0 !important;
+  }
+  
+  .terminal-header {
+    margin-bottom: 8px !important;
+  }
+  
+  .terminal-header .dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  
+  /* Hide some terminal lines on very small screens */
+  .featured-terminal .log-line:nth-child(n+8) {
+    display: none !important;
+  }
+}
+
+/* Fix for horizontal overflow */
+#portfolio {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
+
+#portfolio .container {
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure cards don't overflow */
+.bento-item {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Fix for long text in terminal */
+.log-line {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
