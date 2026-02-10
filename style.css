@@ -7812,3 +7812,40 @@ img[src*="hypoArch"],
     margin-bottom: 1rem !important;
   }
 }
+
+/* ===== ALIGN TERMINAL WITH MEDICAL TRIAGE AGENT TITLE ===== */
+
+/* Desktop: Push terminal down to align with h3 title */
+@media (min-width: 901px) {
+  #portfolio .featured-terminal {
+    /* Push down by approximate height of badge + margin */
+    margin-top: 2.5rem !important; /* Adjust this value as needed */
+    align-self: flex-start !important;
+  }
+  
+  /* Fine-tune the spacing */
+  #portfolio .featured-info .badge {
+    margin-bottom: 0.75rem !important;
+    display: inline-block !important;
+  }
+  
+  #portfolio .featured-info h3 {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* Large screens - slightly more space */
+@media (min-width: 1400px) {
+  #portfolio .featured-terminal {
+    margin-top: 2.75rem !important;
+  }
+}
+
+/* Medium screens - slightly less space */
+@media (min-width: 901px) and (max-width: 1200px) {
+  #portfolio .featured-terminal {
+    margin-top: 2.25rem !important;
+  }
+}
