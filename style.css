@@ -7949,3 +7949,51 @@ img[src*="hypoArch"],
 #portfolio .featured-terminal .log-line:last-of-type {
   margin-bottom: 0 !important;
 }
+
+/* ===== FIX TERMINAL HEADER OVERLAP ===== */
+
+/* Ensure terminal has proper internal spacing */
+#portfolio .featured-terminal {
+  position: relative !important;
+  padding-top: 2.5rem !important; /* Add space at top for header */
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  padding-bottom: 1rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Position the header (colored circles) at top with proper spacing */
+#portfolio .featured-terminal .terminal-header {
+  position: absolute !important;
+  top: 0.75rem !important; /* Position from top */
+  left: 1rem !important;
+  right: 1rem !important;
+  height: 1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  z-index: 2 !important; /* Above content */
+}
+
+/* Ensure terminal content starts below header */
+#portfolio .featured-terminal .log-line {
+  margin: 0.25rem 0 !important;
+  line-height: 1.4 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* First log line needs extra top margin */
+#portfolio .featured-terminal .log-line:first-child {
+  margin-top: 0.5rem !important;
+}
+
+/* Terminal dots sizing */
+#portfolio .featured-terminal .terminal-header .dot {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
