@@ -7997,3 +7997,55 @@ img[src*="hypoArch"],
   border-radius: 50% !important;
   flex-shrink: 0 !important;
 }
+
+/* ===== FIX MOBILE INSIGHT IMAGE ALIGNMENT ===== */
+
+/* Mobile: Fix image overlapping left orange line */
+@media (max-width: 900px) {
+  #insight .insight-arch-diagram {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1rem !important; /* Add left padding to clear the orange line */
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
+  
+  /* Ensure the image itself respects container bounds */
+  #insight .insight-arch-diagram img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Adjust the insight content padding on mobile */
+  #insight .insight-content {
+    padding-left: 1.5rem !important; /* Ensure content doesn't touch the orange line */
+    padding-right: 1rem !important;
+  }
+  
+  /* If the image is inside a flex container, ensure proper stacking */
+  #insight .insight-flex,
+  #insight .insight-wrapper,
+  #insight .insight-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+}
+
+/* Extra small screens - tighter padding */
+@media (max-width: 600px) {
+  #insight .insight-arch-diagram {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  #insight .insight-content {
+    padding-left: 1.25rem !important;
+  }
+}
