@@ -7998,125 +7998,70 @@ img[src*="hypoArch"],
   flex-shrink: 0 !important;
 }
 
-/* ===== FIX MOBILE INSIGHT IMAGE ALIGNMENT ===== */
 
-/* Mobile: Fix image overlapping left orange line */
+/* ===== DEFINITIVE MOBILE INSIGHT IMAGE FIX ===== */
+
+/* Mobile breakpoint - fix image overlapping left line */
 @media (max-width: 900px) {
-  #insight .insight-arch-diagram {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 1rem !important; /* Add left padding to clear the orange line */
-    padding-right: 1rem !important;
-    box-sizing: border-box !important;
-    display: block !important;
+  /* Hide vertical lines on mobile to prevent overlap issues */
+  .insight-card-combined::before,
+  .insight-card-combined::after {
+    display: none !important;
   }
   
-  /* Ensure the image itself respects container bounds */
-  #insight .insight-arch-diagram img {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-  }
-  
-  /* Adjust the insight content padding on mobile */
-  #insight .insight-content {
-    padding-left: 1.5rem !important; /* Ensure content doesn't touch the orange line */
-    padding-right: 1rem !important;
-  }
-  
-  /* If the image is inside a flex container, ensure proper stacking */
-  #insight .insight-flex,
-  #insight .insight-wrapper,
-  #insight .insight-container {
+  /* Stack layout vertically */
+  .insight-card-combined {
     flex-direction: column !important;
-    align-items: center !important;
+    padding: 20px !important;
+    gap: 20px !important;
+  }
+  
+  /* Image container - full width, proper spacing */
+  .insight-visual,
+  .insight-visual-large {
+    flex: none !important;
     width: 100% !important;
-  }
-}
-
-/* Extra small screens - tighter padding */
-@media (max-width: 600px) {
-  #insight .insight-arch-diagram {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-  }
-  
-  #insight .insight-content {
-    padding-left: 1.25rem !important;
-  }
-}
-
-/* ===== COMPREHENSIVE MOBILE INSIGHT FIX ===== */
-
-/* Desktop: Keep existing styles unchanged */
-@media (min-width: 901px) {
-  #insight .insight-arch-diagram {
-    /* Don't modify desktop styles */
-    max-width: 500px !important;
-    margin: 2rem auto 0 !important;
-  }
-}
-
-/* Mobile: Fix image alignment and overlap */
-@media (max-width: 900px) {
-  /* Reset any negative margins or positioning */
-  #insight .insight-arch-diagram {
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    margin: 1.5rem auto 0 !important; /* Center with top margin */
-    padding: 0 1rem !important; /* Horizontal padding only */
-    width: calc(100% - 2rem) !important; /* Account for padding */
     max-width: 100% !important;
-    box-sizing: border-box !important;
-    display: block !important;
-    float: none !important;
-    clear: both !important;
+    order: -1 !important; /* Move image above text */
+    padding: 0 !important;
+    margin: 0 0 15px 0 !important;
   }
   
-  /* Ensure image is responsive and centered */
-  #insight .insight-arch-diagram img,
-  #insight .insight-arch-diagram .insight-image {
+  /* The actual image */
+  .insight-visual img,
+  .insight-visual-large img {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
+    max-height: 300px !important;
+    object-fit: contain !important;
     display: block !important;
     margin: 0 auto !important;
-    border-radius: 8px !important; /* Optional: maintain styling */
+    border-radius: 8px !important;
   }
   
-  /* Adjust content area to prevent overlap */
-  #insight .insight-content,
-  #insight .container {
-    overflow: visible !important; /* Allow content to flow */
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
+  /* Text container - full width, no left padding */
+  .insight-text {
+    flex: none !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   
-  /* If there's a left border/orange line, ensure image clears it */
-  #insight {
-    position: relative !important;
-    overflow: hidden !important; /* Contain everything */
+  /* Adjust pillars spacing for mobile */
+  .insight-pillars {
+    gap: 15px !important;
   }
 }
 
-/* Small mobile adjustments */
+/* Extra small screens */
 @media (max-width: 600px) {
-  #insight .insight-arch-diagram {
-    margin-top: 1rem !important;
-    padding: 0 0.75rem !important;
-    width: calc(100% - 1.5rem) !important;
+  .insight-card-combined {
+    padding: 15px !important;
   }
   
-  #insight .insight-content {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+  .insight-visual img,
+  .insight-visual-large img {
+    max-height: 250px !important;
   }
 }
