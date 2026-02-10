@@ -6874,3 +6874,31 @@ ul.insight-bullets li {
 #articles .masonry-small-img {
   display: none !important;
 }
+
+/* ===== BIOMEDICAL HYPOTHESES ARCHITECTURE DIAGRAM ===== */
+.card-arch-diagram {
+  width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+  margin: 12px 0;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover .card-arch-diagram {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .card-arch-diagram {
+    max-height: 100px;
+    padding: 6px;
+    margin: 8px 0;
+  }
+}
