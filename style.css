@@ -7526,3 +7526,52 @@ img[src*="hypoArch"],
     min-width: 260px !important;
   }
 }
+
+/* ===== FIX MEDICAL TRIAGE CARD TEXT ALIGNMENT ===== */
+
+/* Ensure featured card content aligns to top */
+#portfolio .card-featured .featured-flex {
+  align-items: flex-start !important; /* Align to top, not center */
+}
+
+#portfolio .featured-info {
+  align-self: flex-start !important; /* Align to top */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important; /* Content at top */
+  height: 100% !important;
+}
+
+/* Ensure all text content starts at top */
+#portfolio .featured-info .badge,
+#portfolio .featured-info h3,
+#portfolio .featured-info p,
+#portfolio .featured-info .agent-loop,
+#portfolio .featured-info .tech-tags,
+#portfolio .featured-info .link-arrow,
+#portfolio .featured-info .safety-note {
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Remove any centering that might be applied */
+#portfolio .featured-info > * {
+  align-self: flex-start !important;
+}
+
+/* Ensure the h3 is at the top */
+#portfolio .featured-info h3 {
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Featured terminal also aligns to top */
+#portfolio .featured-terminal {
+  align-self: flex-start !important;
+  margin-top: 0 !important; /* Remove the 65px margin that pushes it down */
+}
+
+/* If you want to keep some spacing at top, use padding instead of margin */
+#portfolio .featured-terminal {
+  margin-top: 20px !important; /* Reduced from 65px */
+}
