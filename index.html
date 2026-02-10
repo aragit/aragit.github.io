@@ -26,7 +26,7 @@
 
     
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=21" />
+  <link rel="stylesheet" href="style.css?v=23" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -257,99 +257,86 @@
     <!-- CASE STUDIES - NEW AGENTIC DESIGN -->
 
   
+  
   <section id="portfolio" class="section">
     <div class="container">
-      <h2 class="section-title">Case Studies & Solutions</h2>
-      <p class="section-subtitle">Architecting Agentic systems that solve high-stakes problems with traceable reasoning.</p>
+      <h2 class="section-title">Agentic Solutions</h2>
+      <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
       
       <div class="bento-grid">
+        
         <div class="bento-item card-featured">
-          <div class="bento-content">
-            <span class="badge">EHR-Integrated</span>
-            <h3>Medical Triage Agent</h3>
-            <span class="tagline">Reasons like a clinician; prioritizes care safely.</span>
-            <div class="agent-loop">
-              <div class="loop-step"><strong>Observe:</strong> Intake notes, vitals, meds, comorbidities.</div>
-              <div class="loop-step"><strong>Reason:</strong> Risk stratification + differential hypotheses.</div>
-              <div class="loop-step"><strong>Act:</strong> Create tasks/alerts and populate triage notes.</div>
+          <div class="featured-flex">
+            <div class="featured-info">
+              <span class="badge">EHR-Integrated</span>
+              <h3>Medical Triage Agent</h3>
+              <p style="color:var(--accent); font-weight:500;">Reasons like a clinician; prioritizes care safely.</p>
+              <div class="agent-loop">
+                <div class="loop-step"><strong>Observe:</strong> Intake notes, vitals, meds, comorbidities.</div>
+                <div class="loop-step"><strong>Reason:</strong> Risk stratification + differential hypotheses.</div>
+                <div class="loop-step"><strong>Act:</strong> Create tasks/alerts and populate triage notes.</div>
+              </div>
+              <div class="tech-tags"><span class="tag">EHR-native</span><span class="tag">RAG</span><span class="tag">Policy-gated</span></div>
+              <a href="case-studies/medical-triage/medical-triage.html" class="link-arrow">View Case Study →</a>
+              <span class="safety-note">Clinical decision support — requires provider validation.</span>
             </div>
-            <div class="tech-tags">
-              <span class="tag">EHR-native</span><span class="tag">RAG</span><span class="tag">Policy-gated</span>
-            </div>
-            <a href="case-studies/medical-triage/medical-triage.html" class="link-arrow">View Case Study →</a>
-            <span class="safety-note">Clinical decision support — requires provider validation.</span>
-          </div>
-        </div>
-
-        <div class="bento-item">
-          <div class="bento-content">
-            <h3>CBT Autonomous Agent</h3>
-            <span class="tagline">Evidence-guided therapy workflows.</span>
-            <div class="agent-loop">
-              <div class="loop-step"><strong>Reason:</strong> Detect cognitive distortions.</div>
-              <div class="loop-step"><strong>Plan:</strong> Personalized Socratic prompts.</div>
-            </div>
-            <div class="tech-tags">
-              <span class="tag">Multi-agent</span><span class="tag">Privacy-first</span>
-            </div>
-            <a href="#" class="link-arrow">View Case Study →</a>
-            <span class="safety-note">Augmentation tool — not a clinician replacement.</span>
-          </div>
-        </div>
-
-        <div class="bento-item">
-          <div class="bento-content">
-            <h3>Biomedical Hypothesis Agent</h3>
-            <span class="tagline">Hypothesis-driven retrieval over literature.</span>
-            <div class="agent-loop">
-              <div class="loop-step"><strong>Observe:</strong> PubMed, DrugBank, Trial data.</div>
-              <div class="loop-step"><strong>Adapt:</strong> Update ranking from experimental feedback.</div>
-            </div>
-            <div class="tech-tags">
-              <span class="tag">Biomedical KB</span><span class="tag">Explainability</span>
-            </div>
-            <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
-          </div>
-        </div>
-
-        <div class="bento-item card-stack" style="grid-column: span 3; background: rgba(0,255,100,0.02);">
-          <div style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-            <div>
-              <h3>Marketing ROI Optimizer</h3>
-              <p>Real-time budget reallocation using Multi-armed bandits and safe-policy updates.</p>
-            </div>
-            <div class="tech-tags">
-              <span class="tag">Streaming Metrics</span><span class="tag">Closed-loop</span><span class="tag">ROI Focused</span>
+            <div class="featured-terminal">
+              <div class="terminal-header" style="display:flex; gap:5px; margin-bottom:10px;">
+                <div class="dot red" style="width:8px;height:8px;background:#ff5f56;border-radius:50%"></div>
+                <div class="dot yellow" style="width:8px;height:8px;background:#ffbd2e;border-radius:50%"></div>
+                <div class="dot green" style="width:8px;height:8px;background:#27c93f;border-radius:50%"></div>
+              </div>
+              <p class="log-line">> [INIT] Agentic_Loop_v2.4</p>
+              <p class="log-line">> [DATA] EHR Patient_ID: 99x-72 linked</p>
+              <p class="log-line">> [THINK] Analyzing Vitals: BP 160/100, Temp 101F</p>
+              <p class="log-line">> [REASON] Cross-ref: Type 2 Diabetes history</p>
+              <p class="log-line">> [RISK] Sepsis Probability: 72% (Critical)</p>
+              <p class="log-line">> [PLAN] Generating Priority_Alpha alert...</p>
+              <p class="log-line blink">> Waiting for clinician auth...</p>
             </div>
           </div>
         </div>
 
         <div class="bento-item">
-          <div class="bento-content">
-            <h3>Emotion-Focused Multi-Agent</h3>
-            <span class="tagline">Deep emotional & somatic guidance.</span>
-            <div class="agent-loop">
-              <div class="loop-step"><strong>Observe:</strong> Sentiment & attachment patterns.</div>
-              <div class="loop-step"><strong>Act:</strong> Guided grounding & integration tasks.</div>
-            </div>
-            <a href="#" class="link-arrow">View Case Study →</a>
-          </div>
+          <h3>CBT Autonomous Agent</h3>
+          <p class="loop-step">Scalable, evidence-guided workflows that detect cognitive distortions and adapt to responses.</p>
+          <div class="tech-tags"><span class="tag">Multi-agent</span><span class="tag">RAG</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
+          <span class="safety-note">Research tool — not a clinician replacement.</span>
         </div>
 
         <div class="bento-item">
-          <div class="bento-content">
-            <h3>Supply Chain Orchestrator</h3>
-            <span class="tagline">Autonomously reroute logistics.</span>
-            <p style="font-size: 0.85rem; color: var(--muted);">Minimizes disruption by analyzing weather, telemetry, and cost trade-offs.</p>
-            <div class="tech-tags">
-              <span class="tag">Event-driven</span><span class="tag">Simulation</span>
-            </div>
-            <a href="#" class="link-arrow">View Case Study →</a>
-          </div>
+          <h3>Emotion-Focused Agent</h3>
+          <p class="loop-step">Supports deep emotional processing through sentiment trends and schema mapping.</p>
+          <div class="tech-tags"><span class="tag">Empathy-Engine</span><span class="tag">Ethics-Guard</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
         </div>
+
+        <div class="bento-item">
+          <h3>Biomedical Hypotheses</h3>
+          <p class="loop-step">Hypothesis-driven retrieval over PubMed/DrugBank for repurposing leads.</p>
+          <div class="tech-tags"><span class="tag">PubMed-KB</span><span class="tag">GNN</span></div>
+          <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
+        </div>
+
+        <div class="bento-item">
+          <h3>Marketing ROI Optimizer</h3>
+          <p class="loop-step">Continuously reallocates budget using Multi-armed bandits and real-time conversion signals.</p>
+          <div class="tech-tags"><span class="tag">Bandits</span><span class="tag">Streaming</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
+        </div>
+
+        <div class="bento-item">
+          <h3>Supply Chain Orchestrator</h3>
+          <p class="loop-step">Autonomously reroutes logistics based on inventory, weather, and telemetry.</p>
+          <div class="tech-tags"><span class="tag">Simulation</span><span class="tag">Event-driven</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
+        </div>
+
       </div>
     </div>
   </section>
+
 
 
 
