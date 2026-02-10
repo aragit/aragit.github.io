@@ -6977,3 +6977,86 @@ ul.insight-bullets li {
     padding: 8px !important;
   }
 }
+
+/* ===== BIOMEDICAL HYPOTHESES CARD - FIXED STRUCTURE ===== */
+
+/* The card should be tall but tags stay at top */
+.bento-item.biomed-tall,
+.bento-item:has(h3:contains("Biomedical Hypotheses")) {
+  min-height: 420px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding: 20px !important;
+}
+
+/* Ensure proper ordering: title -> desc -> tags -> image -> link */
+.bento-item.biomed-tall h3 {
+  order: 1 !important;
+  margin-bottom: 8px !important;
+}
+
+.bento-item.biomed-tall .loop-step {
+  order: 2 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Tags come BEFORE image */
+.bento-item.biomed-tall .tech-tags {
+  order: 3 !important;
+  margin-bottom: 15px !important;
+  margin-top: 0 !important;
+}
+
+/* LARGE image after tags */
+.bento-item.biomed-tall img[src*="hypoArch"],
+.bento-item.biomed-tall .card-arch-diagram {
+  order: 4 !important;
+  width: 100% !important;
+  height: 220px !important;  /* Much larger */
+  max-height: 220px !important;
+  min-height: 220px !important;
+  object-fit: contain !important;
+  margin: 0 0 15px 0 !important;
+  border-radius: 10px !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  padding: 15px !important;
+  border: 1px solid rgba(255, 107, 0, 0.2) !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Link at bottom */
+.bento-item.biomed-tall .link-arrow {
+  order: 5 !important;
+  margin-top: auto !important;
+  align-self: flex-start !important;
+}
+
+/* Hover effect */
+.bento-item.biomed-tall:hover img[src*="hypoArch"] {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.25);
+  border-color: rgba(255, 107, 0, 0.4) !important;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .bento-item.biomed-tall {
+    min-height: 380px !important;
+  }
+  .bento-item.biomed-tall img[src*="hypoArch"] {
+    height: 180px !important;
+    max-height: 180px !important;
+    min-height: 180px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-item.biomed-tall img[src*="hypoArch"] {
+    height: 150px !important;
+    max-height: 150px !important;
+    min-height: 150px !important;
+    padding: 10px !important;
+  }
+}
