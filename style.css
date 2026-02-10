@@ -6511,7 +6511,7 @@ ul.insight-bullets li {
   font-family: "Courier New", monospace;
   border: 1px solid #333;
   min-height: 220px;
-  margin-top: 45px;
+  margin-top: 65px;
 }
 
 .agent-loop { margin: 1rem 0; border-left: 2px solid var(--accent); padding-left: 12px; }
