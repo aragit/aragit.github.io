@@ -7060,3 +7060,62 @@ ul.insight-bullets li {
     padding: 10px !important;
   }
 }
+
+/* ===== ENLARGE CASE STUDY CARDS - ALIGN BOTTOMS ===== */
+
+/* Make the portfolio grid use equal height rows */
+.portfolio-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  grid-auto-rows: 1fr !important;
+  align-items: stretch !important;
+}
+
+/* Ensure all case study cards stretch to fill grid cell */
+.cs-card,
+.portfolio-grid .cs-card,
+#portfolio .cs-card {
+  height: 100% !important;
+  min-height: 520px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Card content area grows to fill space */
+.cs-card-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Image container takes available space */
+.cs-image {
+  flex: 1 !important;
+  min-height: 280px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+.cs-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Push link to bottom */
+.cs-link {
+  margin-top: auto !important;
+  padding-top: 16px !important;
+}
+
+/* Card header styling */
+.cs-card-header {
+  padding-bottom: 16px !important;
+}
+
+/* Tags styling */
+.cs-tags {
+  margin-bottom: 16px !important;
+}
