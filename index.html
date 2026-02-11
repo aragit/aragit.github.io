@@ -26,7 +26,7 @@
 
     
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1770827744?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1770828660?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -524,15 +524,13 @@
             </div>
           </a>
 
-          <a class="card service-card" href="services/mentoring.html" aria-label="Training & Knowledge Transfer">
-            <div class="card-body">
-              <h3>Training & Knowledge Transfer</h3>
-              <p>Mentoring & Education</p>
-            </div>
-            <div class="card-actions">
-              <span class="cta-secondary">Learn more</span>
-            </div>
-          </a>
+          <div class="service-register-text" style="grid-column: 1 / -1; text-align: center; padding: 2rem 1rem; background: rgba(25,25,25,0.5); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); margin-top: 1rem;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #fff;">Ready to ship your agent?</h3>
+            <p style="color: #a0a0a0; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">Book a quick scoping call and receive a fixed-price proposal within 24 h.</p>
+            <button class="btn-primary" onclick="document.getElementById('serviceModal').setAttribute('aria-hidden', 'false'); document.getElementById('modal_service_input').value='General Inquiry'; document.getElementById('serviceModalTitle').textContent='Request Proposal';" style="padding: 0.6rem 1.5rem; border-radius: 999px; background: linear-gradient(135deg,#ff4500,#ff6b00); color: #fff; border: none; font-weight: 600; cursor: pointer;">
+              Book a scoping call
+            </button>
+          </div>
 
           <a class="card service-card" href="services/llm-engineering.html" aria-label="Generative AI & LLM Engineering">
             <div class="card-body">
@@ -731,11 +729,15 @@
 
         <label class="sr-only">Organization (optional)<input name="organization" placeholder="Company / org"></label>
 
-        <label class="sr-only">Budget range
-          <select name="budget">
-            <option value="<2k">&lt;$2k</option>
-            <option value="2k-6k">$2k–$6k</option>
-            <option value=">6k">&gt;$6k</option>
+        <label class="sr-only">Preferred service
+          <select name="preferred_service" id="preferred_service_select">
+            <option value="">Select a service...</option>
+            <option value="The Blueprint">The Blueprint - AI Strategy & Advisory</option>
+            <option value="The Forge">The Forge - Solution Development</option>
+            <option value="The Nexus">The Nexus - Deployment & Scale</option>
+            <option value="Generative AI & LLM Engineering">Generative AI & LLM Engineering</option>
+            <option value="Specialized Agentic AI Solutions">Specialized Agentic AI Solutions</option>
+            <option value="Other">Other</option>
           </select>
         </label>
 
@@ -744,6 +746,7 @@
         </label>
 
         <input type="hidden" name="service" id="modal_service_input" value="">
+        <input type="hidden" name="budget" value="Not specified">
         <input type="hidden" name="_subject" value="Website lead: Service inquiry">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
@@ -770,7 +773,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1770827744?v=1770727673"></script>
+  <script src="script.js?v=1770828660?v=1770727673"></script>
     
 </body>
 </html>
