@@ -8734,3 +8734,24 @@ div#services .cards .card.card-wide .card-actions {
   text-align: left !important;
   align-self: flex-start !important;
 }
+
+/* ===== FIX: FORCE LEFT ALIGNMENT FOR DASHBOARD CARD (Override Global Center) ===== */
+#services .cards .card.card-dashboard .dashboard-content,
+#services .cards .card.card-dashboard .dashboard-content h3,
+#services .cards .card.card-dashboard .dashboard-content p {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: center !important; /* Vertically center the text block */
+}
+
+#services .cards .card.card-dashboard .dashboard-content h3 {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+/* Ensure the button stays left-aligned in this specific card */
+#services .cards .card.card-dashboard .card-actions {
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
