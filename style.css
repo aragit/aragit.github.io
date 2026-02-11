@@ -8967,3 +8967,49 @@ div#services .cards .card.card-wide .card-actions {
   background: rgba(255, 255, 255, 0.05) !important;
   color: #ccc !important;
 }
+
+/* ===== PORTFOLIO: AGENTIC THEME (Medical Triage & Others) ===== */
+
+/* 1. Green Grid Overlay */
+#portfolio .cards .card.card-agentic::after,
+.portfolio-grid .card.card-agentic::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  opacity: 0.65 !important;
+  mix-blend-mode: screen !important;
+  
+  background-image:
+    /* ORANGE LINES (Standard Brand) */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+
+    /* GREEN LINES (Cyber/Agentic Override) */
+    repeating-linear-gradient(90deg, rgba(0, 255, 136, 0.18) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(0, 255, 136, 0.16) 0 2px, transparent 2px calc(10px)),
+    
+    /* Tile Fill */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+    
+  background-size: auto, auto, auto, auto, 32px 32px !important;
+  
+  /* Fade Mask */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%);
+}
+
+/* 2. Hover Glow (Green) */
+#portfolio .cards .card.card-agentic:hover,
+.portfolio-grid .card.card-agentic:hover {
+  border-color: rgba(0, 255, 136, 0.5) !important;
+  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15) !important;
+}
+
+/* 3. Ensure Tags/Text Stand Out */
+.card.card-agentic .cs-tags span {
+  background: rgba(0, 255, 136, 0.1) !important;
+  color: #00ff88 !important;
+  border-color: rgba(0, 255, 136, 0.2) !important;
+}
