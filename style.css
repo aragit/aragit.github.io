@@ -8935,3 +8935,35 @@ div#services .cards .card.card-wide .card-actions {
   font-family: 'Courier New', monospace;
   font-weight: 600;
 }
+
+/* ===== FINAL FIX: BADGE ALIGNMENT & SUBTITLE COLOR ===== */
+
+/* 1. Force Badges to Bottom of Content Area */
+.tech-stack {
+  margin-top: auto !important;     /* Pushes badges down to the button */
+  padding-top: 1.5rem !important;
+  padding-bottom: 0.5rem !important; /* Space before button */
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  width: 100% !important;
+}
+
+/* 2. Force Specialized Agentic AI Subtitle to White */
+#services .cards .card.card-dashboard .service-subtitle {
+  color: #ffffff !important;       /* Pure White */
+  font-size: 0.9rem !important;    /* Match standard card */
+  font-weight: 700 !important;     /* Bold */
+  opacity: 1 !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* 3. Ensure Badge Styling is Clean */
+.tech-badge {
+  font-size: 0.65rem !important;
+  padding: 3px 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ccc !important;
+}
