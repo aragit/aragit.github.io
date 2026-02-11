@@ -8755,3 +8755,12 @@ div#services .cards .card.card-wide .card-actions {
   margin-left: 0 !important;
   padding-left: 0 !important;
 }
+
+/* ===== FIX: VERTICAL CENTER FOR DASHBOARD CONTENT ===== */
+#services .cards .card.card-dashboard .dashboard-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; /* Forces vertical centering */
+  align-items: flex-start !important; /* Keeps text left-aligned */
+  height: 100% !important;
+}
