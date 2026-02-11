@@ -831,49 +831,10 @@ a.card-link:hover{
 
 /* 3) Denser, brighter grid overlay — fade top→bottom to match hero visuals */
 /* overlay pseudo placed underneath content (content z-index is > overlay) */
-#services .cards .card::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 2 !important;    /* below content (content is z-index 4/5 above) */
-  pointer-events: none !important;
-  border-radius: inherit !important;
-  background-repeat: repeat !important;
-  mix-blend-mode: screen !important;
-  transition: opacity .28s ease, transform .28s cubic-bezier(.2,.9,.25,1) !important;
-  opacity: 0.48 !important;
-  /* denser orange + faint blue cross-grid + subtle darker tiles */
-  background-image:
-    /* orange vertical lines (dense) */
-    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
-    /* orange horizontal lines */
-    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
-    /* blue accent grid (subtle) */
-    repeating-linear-gradient(90deg, rgba(95,211,255,0.035) 0 1px, transparent 1px calc(8px)),
-    repeating-linear-gradient(0deg,  rgba(95,211,255,0.03) 0 1px, transparent 1px calc(8px)),
-    /* subtle soft tile fill to darken some cells a bit (very soft) */
-    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%);
-  background-size: auto, auto, auto, auto, 32px 32px !important;
-  /* Fade mask: stronger at top, softer at bottom */
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
-}
+
 
 /* keep small-dot texture subtle (before pseudo) */
-#services .cards .card::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 2 !important;
-  border-radius: inherit !important;
-  pointer-events: none !important;
-  background-image: radial-gradient(circle at 6px 6px, rgba(255,255,255,0.03) 0 1px, transparent 1px);
-  background-size: 16px 16px !important;
-  opacity: 0.08 !important;
-  mix-blend-mode: screen !important;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
-}
+
 
 /* hover/focus: slightly stronger grid */
 #services .cards .card:hover::after,
@@ -8486,3 +8447,44 @@ img[src*="hypoArch"],
   margin-top: 1rem !important;
 }
 
+
+/* ===== READY TO SHIP CARD - NO BORDER, SECTION BACKGROUND ===== */
+#services .card.service-card-cta {
+  background: #080808 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#services .card.service-card-cta::before,
+#services .card.service-card-cta::after {
+  display: none !important;
+}
+
+#services .card.service-card-cta .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  height: 100% !important;
+  justify-content: center !important;
+}
+
+#services .card.service-card-cta .link-arrow {
+  color: #ff6b00;
+  font-weight: 600;
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#services .card.service-card-cta:hover .link-arrow {
+  color: #ff8533;
+  transform: translateX(4px);
+}
+
+#services .card.service-card-cta .card-actions {
+  display: none !important;
+}
