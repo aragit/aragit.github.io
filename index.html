@@ -399,7 +399,36 @@
               <h3>Specialized Agentic AI Solutions</h3>
               <p class="service-subtitle">Agentic AI Systems</p>
               <p class="service-detail">Neuro-symbolic agents that do work. Separating the 'Brain' and reasoning from the 'Body' and execution.</p>
-            </div>
+
+            <div class="terminal-box" style="margin-top: 1.5rem; width: 100%;">
+              <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <div class="terminal-title">procurement-agent — temporal-worker — 80x24</div>
+              </div>
+              <div class="terminal-body"><span class="cmd">$ agent run --workflow=invoice_audit --id=INV-9921</span>
+
+<span class="cmt"># --- STEP 1: PERCEPTION (Multimodal) ---</span>
+<span class="kwd">[OBSERVE]</span> Scanning 'invoice_9921.pdf'...
+  └─ <span class="str">Detected:</span> Vendor="Acme Corp", Total="$12,500"
+  └─ <span class="str">Confidence:</span> 99.8%
+
+<span class="cmt"># --- STEP 2: REASONING (Chain-of-Thought) ---</span>
+<span class="kwd">[THINK]</span> "Amount > $10k. Checking approval policy..."
+<span class="kwd">[RAG]</span> Retrieved master_service_agreement (MSA_2025)
+  └─ <span class="pass">Match Found:</span> "Contract rate: $150/hr"
+
+<span class="cmt"># --- STEP 3: GOVERNANCE GATE (OPA Policy) ---</span>
+<span class="kwd">[ACTION_ATTEMPT]</span> <span class="cmd">approve_payment(amount=12500)</span>
+<span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: high_value_approval)
+  └─ <span class="str">Reason:</span> "Transactions > $10k require Director approval."
+
+<span class="cmt"># --- STEP 4: ADAPTATION & STATE ---</span>
+<span class="kwd">[PLAN_UPDATE]</span> Routing to Director for sign-off.
+<span class="pass">[EXEC]</span> Slack notification sent to @finance_dir
+<span class="cmd">[STATUS]</span> <span class="blink">Workflow PAUSED (Awaiting Signal)</span>...</div>
+            </div></div>
             <div class="card-actions">
               <span class="cta-secondary">Learn more</span>
             </div>
