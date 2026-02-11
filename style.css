@@ -8527,3 +8527,27 @@ img[src*="hypoArch"],
 #services .card.service-card-cta .card-actions {
   display: none !important;
 }
+
+/* ===== SPECIALIZED AGENTIC AI SOLUTIONS - WIDE CARD ===== */
+#services .cards .card.card-wide {
+  grid-column: span 2 !important;
+}
+
+#services .cards .card.card-wide .card-body-left {
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding-left: 1.5rem !important;
+}
+
+#services .cards .card.card-wide .card-body-left h3,
+#services .cards .card.card-wide .card-body-left p {
+  text-align: left !important;
+  width: 100% !important;
+}
+
+/* Keep button centered at bottom */
+#services .cards .card.card-wide .card-actions {
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
