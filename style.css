@@ -8764,3 +8764,40 @@ div#services .cards .card.card-wide .card-actions {
   align-items: flex-start !important; /* Keeps text left-aligned */
   height: 100% !important;
 }
+
+/* ===== FIX: TERMINAL VISUALS (Pure Black & Readable Header) ===== */
+
+/* 1. Force Pure Black Background (Opaque) */
+#services .cards .card.card-dashboard .terminal-box,
+.terminal-box {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  opacity: 1 !important;
+  border: 1px solid #333 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important; /* Stronger shadow for depth */
+}
+
+/* 2. Fix Header Visibility */
+#services .cards .card.card-dashboard .terminal-header,
+.terminal-header {
+  background-color: #1a1a1a !important; /* Solid Dark Gray (not transparent) */
+  background: #1a1a1a !important;
+  border-bottom: 1px solid #333 !important;
+  padding: 8px 12px !important;
+  opacity: 1 !important;
+}
+
+/* 3. Fix Header Text Readability */
+#services .cards .card.card-dashboard .terminal-title,
+.terminal-title {
+  color: #e0e0e0 !important; /* Bright Gray/White */
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  font-family: 'Courier New', monospace !important;
+  font-size: 0.75rem !important;
+}
+
+/* 4. Ensure Terminal Text is Crisp */
+.terminal-body {
+  color: #cccccc !important;
+}
