@@ -8467,3 +8467,7 @@ img[src*="hypoArch"],
   margin: 0 !important;
 }
 \n
+/* BOLD subtitle for Blueprint */
+#services .card.service-card p.service-subtitle {
+  font-weight: 700 !important;
+}
