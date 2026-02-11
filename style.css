@@ -8845,3 +8845,49 @@ div#services .cards .card.card-wide .card-actions {
   opacity: 1 !important;
   box-shadow: none !important;
 }
+
+/* ===== NEW: TECH STACK BADGES (Fill Empty Space) ===== */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto; /* Pushes to bottom */
+  padding-top: 1.5rem;
+}
+
+.tech-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #888;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.card:hover .tech-badge {
+  border-color: rgba(255, 107, 0, 0.3);
+  color: #ccc;
+}
+
+/* ===== FIX: SUBTITLE ALIGNMENT & COLOR ===== */
+/* Force Dashboard Subtitle to match Standard Card Subtitle exactly */
+#services .cards .card.card-dashboard .service-subtitle {
+  font-size: 0.85rem !important; /* Match standard card */
+  font-weight: 500 !important;
+  color: #ff6b00 !important; /* Match standard orange accent */
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 0.5rem !important;
+  margin-top: 0 !important;
+  opacity: 1 !important; /* Fix any transparency issues */
+}
+
+/* Ensure Title has same spacing */
+#services .cards .card.card-dashboard h3 {
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 1.25rem !important; /* Ensure consistency */
+}
