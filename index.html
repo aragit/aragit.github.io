@@ -405,36 +405,33 @@
             </div>
             
             <div class="dashboard-visual">
+            
               <div class="terminal-box">
                 <div class="terminal-header">
-                  <div class="dot red"></div>
-                  <div class="dot yellow"></div>
-                  <div class="dot green"></div>
-                  <div class="terminal-title">procurement-agent — temporal-worker — 80x24</div>
+                  <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                  <div class="terminal-title">crispr-designer — alpha-fold-3 — 80x24</div>
                 </div>
-                <div class="terminal-body"><span class="cmd">$ agent run --workflow=invoice_audit --id=INV-9921</span>
+                <div class="terminal-body"><span class="cmd">$ design_agent --target="Gene_HBB" --goal="correct_mutation"</span>
 
-<span class="cmt"># --- STEP 1: PERCEPTION (Multimodal) ---</span>
-<span class="kwd">[OBSERVE]</span> Scanning 'invoice_9921.pdf'...
-  └─ <span class="str">Detected:</span> Vendor="Acme Corp", Total="$12,500"
-  └─ <span class="str">Confidence:</span> 99.8%
+<span class="cmt"># --- STEP 1: OBSERVE & SIMULATE ---</span>
+<span class="kwd">[OBSERVE]</span> Analyzed patient genome (3.2B base pairs).
+<span class="kwd">[SIMULATE]</span> Running Cas9 binding prediction...
+  └─ <span class="str">Candidate A:</span> Efficiency 99.1% (Top Pick)
+  └─ <span class="str">Candidate B:</span> Efficiency 84.5%
 
-<span class="cmt"># --- STEP 2: REASONING (Chain-of-Thought) ---</span>
-<span class="kwd">[THINK]</span> "Amount > $10k. Checking approval policy..."
-<span class="kwd">[RAG]</span> Retrieved master_service_agreement (MSA_2025)
-  └─ <span class="pass">Match Found:</span> "Contract rate: $150/hr"
+<span class="cmt"># --- STEP 2: REASONING ---</span>
+<span class="kwd">[THINK]</span> "Candidate A is superior. Maximizes therapeutic edit rate. Preparing synthesis payload."
 
-<span class="cmt"># --- STEP 3: GOVERNANCE GATE (OPA Policy) ---</span>
-<span class="kwd">[ACTION_ATTEMPT]</span> <span class="cmd">approve_payment(amount=12500)</span>
-<span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: high_value_approval)
-  └─ <span class="str">Reason:</span> "Transactions > $10k require Director approval."
+<span class="cmt"># --- STEP 3: GOVERNANCE GATE (Safety) ---</span>
+<span class="kwd">[ACTION_ATTEMPT]</span> <span class="cmd">finalize_design(seq="GTC...AGG", candidate="A")</span>
+<span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: off_target_toxicity)
+  └─ <span class="str">Critical Risk:</span> "Candidate A has a 0.4% off-target match with 'TP53' (Tumor Suppressor). Editing this locus carries high cancer risk."
 
-<span class="cmt"># --- STEP 4: ADAPTATION & STATE ---</span>
-<span class="kwd">[PLAN_UPDATE]</span> Routing to Director for sign-off.
-<span class="pass">[EXEC]</span> Slack notification sent to @finance_dir
-<span class="cmd">[STATUS]</span> <span class="blink">Workflow PAUSED (Awaiting Signal)</span>...</div>
-              </div>
-            </div>
+<span class="cmt"># --- STEP 4: RECOVERY ---</span>
+<span class="kwd">[PLAN_UPDATE]</span> Discarding Candidate A.
+<span class="pass">[EXEC]</span> Finalizing Candidate B (Lower efficiency, zero off-target risk).
+<span class="cmd">[STATUS]</span> <span class="blink">SAFE DESIGN LOCKED</span>...</div>
+              </div></div>
           </a>
           
         </div>
