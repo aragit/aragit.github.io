@@ -8458,5 +8458,12 @@ img[src*="hypoArch"],
   font-weight: 400 !important;
   max-width: 95% !important;
   text-align: center !important;
+}\n
+/* Service subtitle - BOLD with high specificity to override existing rules */
+#services .card.service-card p.service-subtitle {
+  font-weight: 700 !important;
+  font-size: .92rem !important;
+  color: #dbe7ef !important;
+  margin: 0 !important;
 }
-
+\n
