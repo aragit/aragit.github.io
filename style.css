@@ -8353,8 +8353,6 @@ img[src*="hypoArch"],
 }
 
 /* Subtitle (original) */
-#services .cards .service-card .card-body p:not(
-
 /* Card actions always at bottom */
 #services .cards .service-card .card-actions {
   margin-top: auto !important;
@@ -8391,8 +8389,7 @@ img[src*="hypoArch"],
     padding: 1.4rem 1.2rem !important;
   }
   
-  #services .card.service-card 
-}
+  }
 
 @media (max-width: 600px) {
   #services .cards .card.service-card {
@@ -8400,8 +8397,7 @@ img[src*="hypoArch"],
     padding: 1.2rem !important;
   }
   
-  #services .card.service-card 
-}
+  }
 
 /* Service subtitle - make it bold */
 .service-subtitle {
@@ -8552,34 +8548,43 @@ img[src*="hypoArch"],
   width: 100% !important;
 }
 
-/* ===== SPECIALIZED AGENTIC AI - WIDE CARD LAYOUT ===== */
 
-/* 1. Double the width size (Desktop only to respect mobile responsiveness) */
+/* ===== SPECIALIZED AGENTIC AI - WIDE CARD LAYOUT (FIXED) ===== */
+
+/* 1. Double Width (Desktop) */
 @media (min-width: 900px) {
-  #services .cards .card.card-wide {
+  div#services .cards .card.card-wide {
     grid-column: span 2 !important;
   }
 }
 
-/* 2. Shift title, subtitle, and text aligned to the left */
-#services .cards .card.card-wide .card-body {
-  align-items: flex-start !important; /* Forces flex children to start left */
-  text-align: left !important;        /* Forces text alignment left */
-  padding-left: 2rem !important;      /* Visual balance for wide card */
+/* 2. Force Left Alignment (Overrides "text-align: center" on service-card) */
+div#services .cards .card.card-wide .card-body,
+div#services .cards .card.card-wide .card-body-left {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* Forces items left */
+  text-align: left !important;        /* Forces text left */
+  padding-left: 2.5rem !important;    /* Visual balance */
   padding-right: 2rem !important;
-  width: 100% !important;
 }
 
-#services .cards .card.card-wide .card-body h3,
-#services .cards .card.card-wide .card-body p {
+/* 3. Force Title and Subtitle Left */
+div#services .cards .card.card-wide h3,
+div#services .cards .card.card-wide .card-body h3,
+div#services .cards .card.card-wide .card-body p {
   text-align: left !important;
+  align-self: flex-start !important;
   width: 100% !important;
   margin-left: 0 !important;
 }
 
-/* 3. Leave the place of the "learn more button" unchanged (Centered) */
-#services .cards .card.card-wide .card-actions {
-  justify-content: center !important; /* Ensures button stays centered */
+/* 4. Keep Button Centered (Resetting alignment for actions) */
+div#services .cards .card.card-wide .card-actions {
+  align-self: center !important;
+  justify-content: center !important;
   text-align: center !important;
   width: 100% !important;
+  margin-top: auto !important;
+  padding-top: 1rem !important;
 }
