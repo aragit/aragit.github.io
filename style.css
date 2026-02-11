@@ -8801,3 +8801,47 @@ div#services .cards .card.card-wide .card-actions {
 .terminal-body {
   color: #cccccc !important;
 }
+
+/* ===== CRITICAL FIX: TERMINAL LAYERING & COLORS ===== */
+
+/* 1. Lift Terminal ABOVE the Card's Grid Overlay */
+#services .cards .card.card-dashboard .dashboard-visual,
+#services .cards .card.card-dashboard .terminal-box {
+  position: relative !important;
+  z-index: 20 !important; /* Higher than card::after (which is z-index 2) */
+  opacity: 1 !important;
+  isolation: isolate !important; /* Creates a new stacking context */
+}
+
+/* 2. Pure Black Body */
+.terminal-box {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  border: 1px solid #333 !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9) !important; /* Deep shadow to separate from card */
+}
+
+/* 3. Solid Header with Readable Text */
+.terminal-header {
+  background-color: #1a1a1a !important; /* Solid Dark Grey - No transparency */
+  background: #1a1a1a !important;
+  border-bottom: 1px solid #333 !important;
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+  position: relative !important;
+  z-index: 21 !important; /* Sit on top of terminal body */
+}
+
+/* 4. Fix Header Text Color */
+.terminal-title {
+  color: #eeeeee !important; /* Bright White/Grey */
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* 5. Ensure Dots are Visible */
+.terminal-header .dot {
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
