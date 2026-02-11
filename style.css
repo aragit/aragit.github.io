@@ -8704,3 +8704,33 @@ div#services .cards .card.card-wide .card-actions {
   .dashboard-visual { padding: 1rem; }
   .card.card-dashboard .card-actions { margin-top: 1rem !important; }
 }
+
+/* ===== FIXES FOR LAYOUT & TERMINAL ===== */
+
+/* 1. Uncouple row heights so Top Row is compact and Bottom Row is tall */
+#services .cards {
+  grid-auto-rows: auto !important; /* Key fix: rows size independently */
+  align-items: stretch !important; /* Cards in the SAME row match height */
+}
+
+/* 2. Pure Black Terminal Background */
+.terminal-box {
+  background-color: #000000 !important;
+  border: 1px solid #333 !important; /* Subtle border for visibility */
+}
+
+/* 3. Force Title Left Alignment for Wide Card */
+.card.card-dashboard h3,
+.card.card-dashboard .dashboard-content h3 {
+  text-align: left !important;
+  align-self: flex-start !important;
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  width: 100% !important;
+}
+
+/* 4. Ensure subtitle stays left too */
+.card.card-dashboard .service-subtitle {
+  text-align: left !important;
+  align-self: flex-start !important;
+}
