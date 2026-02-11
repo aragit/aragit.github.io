@@ -8891,3 +8891,47 @@ div#services .cards .card.card-wide .card-actions {
   margin-bottom: 0.5rem !important;
   font-size: 1.25rem !important; /* Ensure consistency */
 }
+
+/* ===== FIX: SUBTITLE & BADGE ALIGNMENT ===== */
+
+/* 1. Force Subtitle to Match "Generative AI" Style (White & Bold) */
+#services .cards .card.card-dashboard .service-subtitle {
+  color: #ffffff !important;       /* Pure White */
+  font-size: 0.95rem !important;   /* Larger to match neighbor */
+  font-weight: 700 !important;     /* Bold */
+  text-transform: none !important; /* Optional: Keep formatting clean */
+  opacity: 1 !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* 2. Badge Alignment - Force to Bottom of Content Area */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto !important;     /* Critical: Pushes badges down to align */
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;            /* Space before button */
+  width: 100%;
+}
+
+/* Ensure the card body allows the stack to grow/push */
+#services .cards .card .card-body,
+#services .cards .card.card-dashboard .dashboard-content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Make badges look cleaner */
+.tech-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #a0a0a0;
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
