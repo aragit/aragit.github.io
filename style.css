@@ -1980,7 +1980,6 @@ header .logo img {
 
 /* Logo disk - NO orange glow */
 
-
 /* 3D Rotating Logo - NO GLOW */
 @keyframes logo-3d-rotate {
   0% { transform: perspective(1000px) rotateY(0deg) rotateX(10deg); }
@@ -1997,16 +1996,13 @@ header .logo img {
 
 /* Logo with mouse tilt effect */
 
-
   box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
   border-color: #ff8533 !important;
 }
 
 /* Logo with mouse tilt effect */
 
-
 /* Logo - simple orange border */
-
 
 /* Hero logo with orange border */
   width: 40px;
@@ -2122,14 +2118,12 @@ header .logo img:hover {
 
 /* The pill container */
 
-
 #navbar li {
   margin: 0;
   padding: 0;
 }
 
 /* Smaller bold font */
-
 
 #navbar a:hover {
   background: rgba(255, 107, 0, 0.15);
@@ -2150,14 +2144,12 @@ header .logo img:hover {
 
 /* The pill container */
 
-
 #navbar li {
   margin: 0;
   padding: 0;
 }
 
 /* Smaller bold font */
-
 
 #navbar a:hover {
   background: rgba(255, 107, 0, 0.15);
@@ -2221,9 +2213,7 @@ header .logo img:hover {
 
 /* Push hero content down */
 
-
 /* Add extra margin to avatar */
-
 
 /* Push hero content down - reduced */
 .hero-inner {
@@ -2279,7 +2269,6 @@ header .logo img:hover {
 }
 
 /* Insight section new layout */
-
 
 /* Combined card - both text and image inside, NO border */
 .insight-card-combined {
@@ -2361,7 +2350,6 @@ header .logo img:hover {
 /* ===== INSIGHT SECTION - FINAL STYLES ===== */
 
 /* Headline centered above the card */
-
 
 /* Combined card - text and image together, NO border */
 .insight-card-combined {
@@ -2582,7 +2570,6 @@ img {
 /* ===== INSIGHT SECTION - TUNED STYLING ===== */
 
 /* Smaller headline */
-
 
 /* Lighter/more white bullet text */
 .insight-bullets li {
@@ -3254,11 +3241,6 @@ ul.insight-bullets li {
 
 /* Two line headline styling */
 
-
-
-
-
-
 /* Much tighter pillar spacing */
 .insight-pillars {
   gap: 10px !important;
@@ -3356,12 +3338,6 @@ ul.insight-bullets li {
 
 /* ===== HEADLINE - MATCH ARCHITECTURE PHILOSOPHY STYLE ===== */
 
-
-
-
-
-
-
 /* Mobile adjustment */
 @media (max-width: 900px) {
   .headline-line1,
@@ -3369,8 +3345,6 @@ ul.insight-bullets li {
 }
 
 /* ===== REMOVE BLANK LINE, SHIFT TEXT UP ===== */
-
-
 
 /* Tighten card padding at top */
 .insight-card-combined {
@@ -3404,11 +3378,6 @@ ul.insight-bullets li {
 /* ===== AGGRESSIVE SPACE REMOVAL - SHIFT UP ===== */
 
 /* Remove ALL space from headline */
-
-
-
-
-
 
 /* Tighten card - minimal top padding */
 .insight-card-combined {
@@ -3465,7 +3434,6 @@ ul.insight-bullets li {
 
 /* Add margin-bottom to headline to create space before the card */
 
-
 /* Ensure card has proper top padding */
 .insight-card-combined {
   padding: 30px 35px 25px 35px !important;  /* 30px top padding */
@@ -3514,7 +3482,6 @@ ul.insight-bullets li {
 
 /* Add margin-bottom to headline to create space before the card */
 
-
 /* Ensure card has proper top padding */
 .insight-card-combined {
   padding: 30px 35px 25px 35px !important;  /* 30px top padding */
@@ -3558,7 +3525,6 @@ ul.insight-bullets li {
   top: 12% !important;
   bottom: 12% !important;
 }
-
 
 /* ===== CLEAN: INSIGHT SECTION SPACING ===== */
 
@@ -3778,8 +3744,6 @@ ul.insight-bullets li {
   color: #ffffff;
   letter-spacing: 0.01em;
 }
-
-
 
 /* ===== FIX: Restore Hero Layout - Prevent Overlap ===== */
 
@@ -7997,7 +7961,6 @@ img[src*="hypoArch"],
   flex-shrink: 0 !important;
 }
 
-
 /* ===== DEFINITIVE MOBILE INSIGHT IMAGE FIX ===== */
 
 /* Mobile breakpoint - fix image overlapping left line */
@@ -8471,3 +8434,55 @@ img[src*="hypoArch"],
 #services .card.service-card p.service-subtitle {
   font-weight: 700 !important;
 }
+
+/* Services Architecture Diagram */
+.services-diagram {
+  width: 100%;
+  margin: 2.5rem 0;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(25,25,25,0.5);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.services-diagram img {
+  width: 100%;
+  height: auto;
+  max-width: 1200px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .services-diagram {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+  }
+  .services-diagram img {
+    border-radius: 4px;
+  }
+}
+
+/* ===== DEFINITIVE FIX: Bold subtitles for ALL service cards ===== */
+#services .cards .service-card .card-body p.service-subtitle,
+#services .card.service-card .card-body p.service-subtitle,
+#services .service-card .card-body p.service-subtitle {
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  color: #ffffff !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+  text-align: center !important;
+}
+
+/* Ensure description text is not bold */
+#services .cards .service-card .card-body p.service-detail {
+  font-weight: 400 !important;
+  font-size: 0.82rem !important;
+  color: #a0a0a0 !important;
+  margin-top: 1rem !important;
+}
+
