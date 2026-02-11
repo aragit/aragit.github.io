@@ -741,7 +741,7 @@ a.card-link:hover{
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;    /* critical so every card has same height in row */
-  min-height: 320px !important; /* keep a comfortable default; tweak if needed */
+  min-height: 280px !important; /* reduced from 320px to minimize empty space */
   padding: 1.05rem !important;
   box-sizing: border-box !important;
   position: relative !important;
@@ -1017,7 +1017,7 @@ a.card-link:hover{
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 320px;
+    min-height: 280px;
     padding: 1.05rem;
 }
 
@@ -1071,7 +1071,7 @@ a.card-link:hover{
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 320px;
+  min-height: 280px;
   padding: 1.1rem;
   background: rgba(25,25,25,.82);
   border: 2px solid transparent;
@@ -8357,16 +8357,7 @@ img[src*="hypoArch"],
 /* ===== BLUEPRINT CARD ENHANCEMENTS ===== */
 
 /* Service detail text styling */
-#services .card.service-card .service-detail {
-  font-size: 0.82rem !important;
-  color: #a0a0a0 !important;
-  line-height: 1.5 !important;
-  margin-top: 0.75rem !important;
-  margin-bottom: 0.5rem !important;
-  font-weight: 400 !important;
-  max-width: 95% !important;
-  text-align: center !important;
-}
+#services .card.service-card 
 
 /* All service cards - consistent height */
 #services .cards .card.service-card {
@@ -8399,12 +8390,7 @@ img[src*="hypoArch"],
 }
 
 /* Subtitle (original) */
-#services .cards .service-card .card-body p:not(.service-detail) {
-  font-size: 0.9rem !important;
-  color: #b0b0b0 !important;
-  margin: 0 !important;
-  text-align: center !important;
-}
+#services .cards .service-card .card-body p:not(
 
 /* Card actions always at bottom */
 #services .cards .service-card .card-actions {
@@ -8442,10 +8428,7 @@ img[src*="hypoArch"],
     padding: 1.4rem 1.2rem !important;
   }
   
-  #services .card.service-card .service-detail {
-    font-size: 0.8rem !important;
-    margin-top: 0.6rem !important;
-  }
+  #services .card.service-card 
 }
 
 @media (max-width: 600px) {
@@ -8454,7 +8437,26 @@ img[src*="hypoArch"],
     padding: 1.2rem !important;
   }
   
-  #services .card.service-card .service-detail {
-    font-size: 0.78rem !important;
-  }
+  #services .card.service-card 
 }
+
+/* Service subtitle - make it bold */
+.service-subtitle {
+  font-weight: 700 !important;
+  font-size: .92rem !important;
+  color: #dbe7ef !important;
+  margin: 0 !important;
+}
+
+/* Service detail - pulled down with more top margin */
+.service-detail {
+  font-size: 0.82rem !important;
+  color: #a0a0a0 !important;
+  line-height: 1.5 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: 400 !important;
+  max-width: 95% !important;
+  text-align: center !important;
+}
+
