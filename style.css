@@ -8588,3 +8588,119 @@ div#services .cards .card.card-wide .card-actions {
   margin-top: auto !important;
   padding-top: 1rem !important;
 }
+
+/* ===== DASHBOARD LAYOUT & TERMINAL FIX ===== */
+
+/* 1. Terminal Visuals (The "VS Code" Look) */
+.terminal-box {
+  background: #090909; /* Deep black to contrast with card bg */
+  border-radius: 6px;
+  border: 1px solid #333;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  overflow: hidden;
+  text-align: left;
+}
+
+.terminal-header {
+  background: #1a1a1a;
+  padding: 6px 10px;
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid #252525;
+  align-items: center;
+}
+
+.terminal-title {
+  margin-left: auto; 
+  margin-right: auto;
+  color: #666;
+  font-size: 0.65rem;
+  letter-spacing: 0.5px;
+}
+
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal-body {
+  padding: 12px;
+  color: #cccccc;
+  white-space: pre-wrap; /* Wrap long lines */
+}
+
+/* Syntax Highlighting */
+.cmd { color: #f2f2f2; }
+.cmt { color: #6a9955; }
+.kwd { color: #c586c0; }
+.str { color: #ce9178; }
+.num { color: #b5cea8; }
+.pass { color: #4ade80; font-weight: bold; }
+.fail { color: #f87171; font-weight: bold; }
+.warn { color: #facc15; font-weight: bold; }
+.blink { animation: blinker 1.5s linear infinite; color: #fbbf24; }
+@keyframes blinker { 50% { opacity: 0; } }
+
+/* 2. The Dashboard Layout (Horizontal Split) */
+/* Only active on desktop/tablet to prevent squishing */
+@media (min-width: 900px) {
+  
+  /* Make this specific card span 2 columns */
+  #services .cards .card.card-dashboard {
+    grid-column: span 2 !important;
+    display: flex !important;
+    flex-direction: row !important; /* Horizontal Split */
+    align-items: stretch !important;
+    padding: 0 !important; /* Remove padding to let children fill */
+    min-height: 340px !important; /* Reasonable height */
+    height: auto !important;
+  }
+
+  /* Left Side: Text & Controls */
+  .dashboard-content {
+    flex: 0 0 40%;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    border-right: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Right Side: The Terminal Visual */
+  .dashboard-visual {
+    flex: 0 0 60%;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2); /* Subtle darkening for the "screen" area */
+  }
+
+  /* Text Alignments */
+  .card.card-dashboard h3, 
+  .card.card-dashboard p {
+    text-align: left !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Button Position */
+  .card.card-dashboard .card-actions {
+    margin-top: 1.5rem !important;
+    justify-content: flex-start !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* Mobile Fallback (Vertical Stack) */
+@media (max-width: 899px) {
+  .dashboard-content { padding: 1.5rem; }
+  .dashboard-visual { padding: 1rem; }
+  .card.card-dashboard .card-actions { margin-top: 1rem !important; }
+}
