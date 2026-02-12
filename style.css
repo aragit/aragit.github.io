@@ -63,7 +63,7 @@ h1{font-size:2rem;margin:.25rem 0}
 #typewrite{font-family:"Courier New", Courier, monospace;color:#e6eef6;min-height:2.2rem;font-size:1.12rem}
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:1rem 0;pointer-events:none}
 .hero-divider .line{width:170px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
+.chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display: flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
 .chess-icon{color:var(--accent);font-size:20px}
 .hero-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:1.5rem;justify-items:center}
 .btn-hero{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border-radius:28px;font-weight:700;min-height:52px}
@@ -1315,7 +1315,7 @@ a.card-link:hover{
   font-size: 1.6rem !important;   /* default was ~1.2rem – adjust px/rem */
   width: 44px;                    /* optional hit-area enlargement */
   height: 44px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -1362,7 +1362,7 @@ a.card-link:hover{
 
 /* ===== Featured Solutions : small / normal-weight / grey text ===== */
 #portfolio .cards .card-actions .cta-secondary {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: .4rem;
@@ -5659,7 +5659,7 @@ ul.insight-bullets li {
 }
 
 .btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
@@ -8508,7 +8508,7 @@ img[src*="hypoArch"],
   color: #ff6b00;
   font-weight: 600;
   margin-top: 1rem;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.3rem;
   transition: all 0.2s ease;
@@ -9016,7 +9016,7 @@ div#services .cards .card.card-wide .card-actions {
 
 /* ===== ARCHITECTURE PHILOSOPHY TAGLINE - STYLISH GRID CONTAINER ===== */
 .architecture-tagline {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 1.5rem auto 2.5rem;
