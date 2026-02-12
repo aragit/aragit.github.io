@@ -9043,9 +9043,9 @@ div#services .cards .card.card-wide .card-actions {
   position: absolute;
   inset: 0;
   background-image: 
-    repeating-linear-gradient(90deg, rgba(204, 85, 0, 0.1) 0px, rgba(204, 85, 0, 0.1) 1px, transparent 1px, transparent 20px),
-    repeating-linear-gradient(0deg, rgba(204, 85, 0, 0.1) 0px, rgba(204, 85, 0, 0.1) 1px, transparent 1px, transparent 20px);
-  opacity: 0.6;
+    repeating-linear-gradient(90deg, rgba(30, 60, 114, 0.25) 0px, rgba(30, 60, 114, 0.25) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(0deg, rgba(30, 60, 114, 0.25) 0px, rgba(30, 60, 114, 0.25) 1px, transparent 1px, transparent 20px);
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -9078,6 +9078,8 @@ div#services .cards .card.card-wide .card-actions {
     padding: 0.8rem 1.5rem;
     letter-spacing: 0.08em;
     margin: 1rem auto 1.5rem;
+    max-width: 100%;
+    width: calc(100% - 30px);
   }
 }
 
