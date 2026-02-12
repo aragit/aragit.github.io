@@ -9013,3 +9013,71 @@ div#services .cards .card.card-wide .card-actions {
   color: #00ff88 !important;
   border-color: rgba(0, 255, 136, 0.2) !important;
 }
+
+/* ===== ARCHITECTURE PHILOSOPHY TAGLINE - STYLISH GRID CONTAINER ===== */
+.architecture-tagline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto 2.5rem;
+  padding: 1rem 2.5rem;
+  background: 
+    linear-gradient(135deg, rgba(204, 85, 0, 0.08) 0%, rgba(204, 85, 0, 0.02) 100%);
+  border: 1px solid rgba(204, 85, 0, 0.3);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #cc5500 !important; /* Dark orange */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 4px 15px rgba(204, 85, 0, 0.15);
+}
+
+/* Subtle grid pattern background */
+.architecture-tagline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(90deg, rgba(204, 85, 0, 0.1) 0px, rgba(204, 85, 0, 0.1) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(0deg, rgba(204, 85, 0, 0.1) 0px, rgba(204, 85, 0, 0.1) 1px, transparent 1px, transparent 20px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Corner accent lines */
+.architecture-tagline::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(204, 85, 0, 0.15);
+  pointer-events: none;
+}
+
+/* Hover effect */
+.architecture-tagline:hover {
+  border-color: rgba(204, 85, 0, 0.5);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 6px 25px rgba(204, 85, 0, 0.25);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    font-size: 0.75rem;
+    padding: 0.8rem 1.5rem;
+    letter-spacing: 0.08em;
+    margin: 1rem auto 1.5rem;
+  }
+}
+
