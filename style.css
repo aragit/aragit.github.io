@@ -9314,3 +9314,25 @@ div#services .cards .card.card-wide .card-actions {
     padding: 1.5rem;
   }
 }
+
+
+
+/* Modal base fixes */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 23, 0.85);
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex !important;
+}
+
+.rfc-modal-card {
+  z-index: 10000 !important;
+}
