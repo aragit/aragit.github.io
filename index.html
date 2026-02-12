@@ -255,8 +255,8 @@
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
       <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
-      
-      <div class="bento-grid">
+
+      <div class="bento-grid" style="margin-bottom: 3rem;">
         
         <div class="bento-item card-featured">
           <div class="featured-flex">
@@ -275,9 +275,7 @@
             </div>
             <div class="featured-terminal">
               <div class="terminal-header" style="display:flex; gap:5px; margin-bottom:10px;">
-                <div class="dot red" style="width:8px;height:8px;background:#ff5f56;border-radius:50%"></div>
-                <div class="dot yellow" style="width:8px;height:8px;background:#ffbd2e;border-radius:50%"></div>
-                <div class="dot green" style="width:8px;height:8px;background:#27c93f;border-radius:50%"></div>
+                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
               </div>
               <p class="log-line">> [INIT] Agentic_Loop_v2.4</p>
               <p class="log-line">> [DATA] EHR Patient_ID: 99x-72 linked</p>
@@ -288,14 +286,6 @@
               <p class="log-line blink">> Waiting for clinician auth...</p>
             </div>
           </div>
-        </div>
-
-        <div class="bento-item">
-          <h3>CBT Autonomous Agent</h3>
-          <p class="loop-step">Scalable, evidence-guided workflows that detect cognitive distortions and adapt to responses.</p>
-          <div class="tech-tags"><span class="tag">Multi-agent</span><span class="tag">RAG</span></div>
-          <a href="#" class="link-arrow">View Case Study →</a>
-          <span class="safety-note">Research tool — not a clinician replacement.</span>
         </div>
 
         <div class="bento-item biomed-tall">
@@ -320,8 +310,51 @@
         </div>
 
       </div>
-    </div>
-  </section>
+
+
+      <div class="command-center-interface">
+        <div class="cmd-sidebar">
+          <div class="cmd-header">SYSTEM STATUS: ACTIVE (4)</div>
+          <ul class="process-list">
+            <li class="process-item active" data-target="term-medical">
+              <span class="status-dot green"></span>
+              <div class="proc-info"><span class="proc-name">medical_triage_swarm</span><span class="proc-meta">PID: 8821 • Running</span></div>
+            </li>
+            <li class="process-item" data-target="term-bio">
+              <span class="status-dot gray"></span>
+              <div class="proc-info"><span class="proc-name">biomed_hypothesis_gen</span><span class="proc-meta">PID: 1093 • Processing</span></div>
+            </li>
+            <li class="process-item" data-target="term-market">
+              <span class="status-dot gray"></span>
+              <div class="proc-info"><span class="proc-name">marketing_roi_opt</span><span class="proc-meta">PID: 7721 • Optimization</span></div>
+            </li>
+            <li class="process-item" data-target="term-supply">
+              <span class="status-dot gray"></span>
+              <div class="proc-info"><span class="proc-name">supply_chain_orch</span><span class="proc-meta">PID: 4192 • Monitoring</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cmd-main">
+          <div class="window-bar">
+            <div class="win-buttons"><span class="win-btn close"></span><span class="win-btn min"></span><span class="win-btn max"></span></div>
+            <div class="win-title">root@portfolio:~/agents/live-monitor</div>
+          </div>
+          <div class="terminal-content">
+            <div class="cmd-line"><span class="prompt">$</span> tail -f /var/log/agent_swarm.log</div>
+            <div class="cmd-log">
+              <span class="log-info">[INFO]</span> <span class="proc-name">medical_triage</span> connected to EHR stream.
+              <span class="log-dim">[10:42:05] Patient data ingested. Vitals analyzed.</span>
+              <span class="log-action">[ACT]</span> <span class="proc-name">supply_chain</span> rerouting Shipment #992 due to weather alert.
+              <span class="log-info">[INFO]</span> <span class="proc-name">marketing_roi</span> adjusted bid cap: +15% (Signal: High Intent).
+              <span class="log-warn">[WARN]</span> <span class="proc-name">biomed_gen</span> found 2 conflicting papers. Starting resolution loop...
+              <span class="blink">_</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
     <!-- ARTICLES – Masonry with real random heights + bottom-left hero -->
