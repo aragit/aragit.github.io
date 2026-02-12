@@ -9185,6 +9185,11 @@ div#services .cards .card.card-wide .card-actions {
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
+  position: relative;
+  z-index: 10002;
+  background: #0f1114;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 107, 0, 0.1);
 }
 
 .modal-subtitle {
