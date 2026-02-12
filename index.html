@@ -2,10 +2,8 @@
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
       <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
-
-    <div class="agentic-wrapper" style="max-width: 1200px; margin: 0 auto;">
       
-      <div class="bento-grid" style="margin-bottom: 4rem;">
+      <div class="bento-grid">
         
         <div class="bento-item card-featured">
           <div class="featured-flex">
@@ -57,58 +55,60 @@
 
       </div>
 
-      <div class="command-center-interface">
-        
-        <div class="cmd-sidebar">
-          <div class="cmd-header">LIVE RUNTIME (3)</div>
-          <ul class="process-list" id="processList">
-            <li class="process-item active" onclick="switchTerminal('supply')">
-              <span class="status-dot green"></span>
-              <div class="proc-info">
-                <span class="proc-name">supply_chain_orch</span>
-                <span class="proc-meta">PID: 4192 • Optimizing</span>
-              </div>
-            </li>
-            <li class="process-item" onclick="switchTerminal('market')">
-              <span class="status-dot gray"></span>
-              <div class="proc-info">
-                <span class="proc-name">marketing_roi_opt</span>
-                <span class="proc-meta">PID: 7721 • Streaming</span>
-              </div>
-            </li>
-            <li class="process-item" onclick="switchTerminal('bio')">
-              <span class="status-dot gray"></span>
-              <div class="proc-info">
-                <span class="proc-name">biomed_hypothesis_gen</span>
-                <span class="proc-meta">PID: 1093 • Processing</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="cmd-main">
-          <div class="window-bar">
-            <div class="win-buttons">
-              <span class="win-btn close"></span>
-              <span class="win-btn min"></span>
-              <span class="win-btn max"></span>
-            </div>
-            <div class="win-title" id="termTitle">root@system:~/agents/supply-chain</div>
-          </div>
+      <div class="terminal-wrapper" style="margin-top: 4rem;">
+        <div class="command-center-interface">
           
-          <div class="terminal-content" id="termContent">
-            <div class="cmd-line"><span class="prompt">$</span> ./run_logistics_opt.sh --realtime</div>
-            <div class="cmd-log">
-              <div class="log-entry"><span class="log-time">[10:45:01]</span> <span class="log-info">[INFO]</span> Connected to WeatherAPI stream (v4).</div>
-              <div class="log-entry"><span class="log-time">[10:45:02]</span> <span class="log-warn">[WARN]</span> <strong>Storm Front Detected</strong> in Sector 7 (North Atlantic).</div>
-              <div class="log-entry"><span class="log-time">[10:45:02]</span> <span class="log-dim">Simulating 400 alternate routes...</span></div>
-              <div class="log-entry"><span class="log-time">[10:45:05]</span> <span class="log-action">[ACT]</span> Rerouting Vessel #992 -> Port of Rotterdam.</div>
-              <div class="log-entry"><span class="log-time">[10:45:05]</span> <span class="success">✓ ETA Updated: +4hrs (Acceptable)</span></div>
-              <div class="log-entry"><span class="blink">_</span></div>
+          <div class="cmd-sidebar">
+            <div class="cmd-header">LIVE RUNTIME (3)</div>
+            <ul class="process-list" id="processList">
+              <li class="process-item active" onclick="switchTerminal('supply', this)">
+                <span class="status-dot green"></span>
+                <div class="proc-info">
+                  <span class="proc-name">supply_chain_orch</span>
+                  <span class="proc-meta">PID: 4192 • Optimizing</span>
+                </div>
+              </li>
+              <li class="process-item" onclick="switchTerminal('market', this)">
+                <span class="status-dot gray"></span>
+                <div class="proc-info">
+                  <span class="proc-name">marketing_roi_opt</span>
+                  <span class="proc-meta">PID: 7721 • Streaming</span>
+                </div>
+              </li>
+              <li class="process-item" onclick="switchTerminal('bio', this)">
+                <span class="status-dot gray"></span>
+                <div class="proc-info">
+                  <span class="proc-name">biomed_hypothesis_gen</span>
+                  <span class="proc-meta">PID: 1093 • Processing</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="cmd-main">
+            <div class="window-bar">
+              <div class="win-buttons">
+                <span class="win-btn close"></span>
+                <span class="win-btn min"></span>
+                <span class="win-btn max"></span>
+              </div>
+              <div class="win-title" id="termTitle">root@system:~/agents/supply-chain</div>
+            </div>
+            
+            <div class="terminal-content" id="termContent">
+              <div class="cmd-line"><span class="prompt">$</span> ./run_logistics_opt.sh --realtime</div>
+              <div class="cmd-log">
+                <div class="log-entry"><span class="log-time">[10:45:01]</span> <span class="log-info">[INFO]</span> Connected to WeatherAPI stream (v4).</div>
+                <div class="log-entry"><span class="log-time">[10:45:02]</span> <span class="log-warn">[WARN]</span> <strong>Storm Front Detected</strong> in Sector 7 (North Atlantic).</div>
+                <div class="log-entry"><span class="log-time">[10:45:02]</span> <span class="log-dim">Simulating 400 alternate routes...</span></div>
+                <div class="log-entry"><span class="log-time">[10:45:05]</span> <span class="log-action">[ACT]</span> Rerouting Vessel #992 -> Port of Rotterdam.</div>
+                <div class="log-entry"><span class="log-time">[10:45:05]</span> <span class="success">✓ ETA Updated: +4hrs (Acceptable)</span></div>
+                <div class="log-entry"><span class="blink">_</span></div>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
       
       <script>
@@ -127,37 +127,27 @@
           }
         };
 
-        function switchTerminal(key) {
+        function switchTerminal(key, el) {
           // 1. Update Content
           document.getElementById('termTitle').innerText = termData[key].title;
           document.getElementById('termContent').innerHTML = termData[key].html;
           
           // 2. Update Sidebar Active State
           const items = document.querySelectorAll('.process-item');
-          items.forEach(el => {
-            el.classList.remove('active');
-            el.querySelector('.status-dot').classList.remove('green');
-            el.querySelector('.status-dot').classList.add('gray');
+          items.forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.status-dot').classList.remove('green');
+            item.querySelector('.status-dot').classList.add('gray');
           });
           
-          // Find the clicked element (this logic assumes simple DOM structure)
-          // For simplicity in this raw HTML injection, we rely on event bubbling or finding by text,
-          // but styling is handled by the 'active' class we just removed.
-          // The clicked element 'this' logic works better if inline.
-          // Let's re-add active to the target based on click.
-          
-          // Actually, inline onclick passes 'key', we need the element reference.
-          // Simpler: Just rely on the click target in a real app, but here we will 
-          // just let the user see the content change. 
-          // To fix the UI highlight properly without complex selectors:
-          event.currentTarget.classList.add('active');
-          event.currentTarget.querySelector('.status-dot').classList.remove('gray');
-          event.currentTarget.querySelector('.status-dot').classList.add('green');
+          // 3. Set Active on Clicked
+          el.classList.add('active');
+          el.querySelector('.status-dot').classList.remove('gray');
+          el.querySelector('.status-dot').classList.add('green');
         }
       </script>
     </div>
-
-    </section>
+</section>
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
     <!-- ARTICLES – Masonry with real random heights + bottom-left hero -->
