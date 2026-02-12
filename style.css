@@ -6321,10 +6321,29 @@ ul.insight-bullets li {
   overflow: hidden;
 }
 
+/* Dark grey grid background for Agentic Solutions cards */
+.bento-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(90deg, rgba(80, 80, 80, 0.15) 0px, rgba(80, 80, 80, 0.15) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(0deg, rgba(80, 80, 80, 0.15) 0px, rgba(80, 80, 80, 0.15) 1px, transparent 1px, transparent 20px);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .bento-item:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Ensure content stays above grid background */
+.bento-item > * {
+  position: relative;
+  z-index: 1;
 }
 
 .card-featured {
