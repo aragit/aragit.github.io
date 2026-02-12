@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1770915054?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1770920214?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -144,7 +144,83 @@
               Chat with my Experience
             </button>
           </div>
+              <!-- Architecture Philosophy Action Buttons -->
+      <div class="arch-action-buttons">
+        <button class="btn-arch btn-arch-primary" id="openRfcModal" aria-haspopup="dialog">
+          <i class="fas fa-bolt" aria-hidden="true"></i>
+          Challenge the Architecture
+        </button>
+        <a href="architecture-philosophy.html" class="btn-arch btn-arch-secondary" aria-label="Learn more about Architecture Philosophy">
+          <i class="fas fa-book-open" aria-hidden="true"></i>
+          Learn More
+        </a>
+      </div>
+      <p class="arch-subtext">Open Request for Comment (RFC-2026)</p>
+
+      <!-- RFC Modal -->
+      <div id="rfcModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="rfcModalTitle">
+        <div class="modal-card rfc-modal-card" role="document">
+          <div class="modal-head">
+            <div>
+              <h3 id="rfcModalTitle">Submit Technical Critique</h3>
+              <p class="modal-subtitle">Refine the "Grand Unified Theory" of Agentic AI.</p>
+            </div>
+            <button class="close" id="rfcModalClose" aria-label="Close dialog">
+              <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <form id="rfcForm" action="https://formspree.io/f/xwpnvzwl" method="POST">
+            <div class="rfc-section">
+              <h4 class="rfc-section-title">The Contributor</h4>
+              <div class="rfc-row">
+                <label class="rfc-label">
+                  <span class="rfc-label-text">Architect / Contributor Name</span>
+                  <input type="text" name="contributor_name" required placeholder="e.g. Grace Hopper" class="rfc-input">
+                </label>
+                <label class="rfc-label">
+                  <span class="rfc-label-text">Current Role & Org</span>
+                  <input type="text" name="role_org" required placeholder="e.g. Principal Engineer @ Stripe" class="rfc-input">
+                </label>
+              </div>
+              <label class="rfc-label">
+                <span class="rfc-label-text">Proof of Work (URL)</span>
+                <input type="url" name="proof_of_work" placeholder="GitHub, LinkedIn, or Technical Blog" class="rfc-input">
+              </label>
+            </div>
+
+            <div class="rfc-section">
+              <h4 class="rfc-section-title">The Critique</h4>
+              <label class="rfc-label">
+                <span class="rfc-label-text">Which layer of the Unified Theory is most fragile?</span>
+                <select name="fragile_layer" required class="rfc-select">
+                  <option value="">Select an architectural layer...</option>
+                  <option value="deterministic-core">🔴 The Deterministic Core (Safety/State)</option>
+                  <option value="stochastic-range">🔵 The Stochastic Range (Creativity/LLM)</option>
+                  <option value="multi-agent-scale">🟣 The Multi-Agent Scale (Concurrency/Actors)</option>
+                  <option value="theory-solid">⚪ The Theory is Solid (I want to expand it)</option>
+                </select>
+              </label>
+              <label class="rfc-label">
+                <span class="rfc-label-text">Your Technical Dissent (or Proposal)</span>
+                <textarea name="technical_dissent" rows="4" required placeholder="e.g., The Deterministic Core becomes a bottleneck at 10k agents because..." class="rfc-textarea"></textarea>
+              </label>
+            </div>
+
+            <input type="hidden" name="_subject" value="RFC Challenge: Architecture Philosophy">
+            <input type="hidden" name="_next" value="https://aragit.github.io/thanks-rfc.html">
+
+            <div class="modal-foot">
+              <button type="submit" class="btn-rfc-submit">
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                Submit for Peer Review
+              </button>
+            </div>
+            <p id="rfcModalMsg" class="form-msg" aria-live="polite"></p>
+          </form>
         </div>
+      </div>
+</div>
       </div>
     </section>
 
@@ -764,7 +840,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1770915054?v=1770727673"></script>
+  <script src="script.js?v=1770920214?v=1770727673"></script>
     
 </body>
 </html>

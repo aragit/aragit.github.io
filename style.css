@@ -9102,3 +9102,210 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
+
+/* ===== ARCHITECTURE PHILOSOPHY ACTION BUTTONS ===== */
+.arch-action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.btn-arch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  min-width: 220px;
+}
+
+.btn-arch-primary {
+  background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.35);
+}
+
+.btn-arch-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 107, 0, 0.5);
+  background: linear-gradient(135deg, #ff8533 0%, #ff6b00 100%);
+}
+
+.btn-arch-secondary {
+  background: transparent;
+  color: #ff6b00;
+  border: 2px solid #ff6b00;
+}
+
+.btn-arch-secondary:hover {
+  background: rgba(255, 107, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.2);
+}
+
+.btn-arch i {
+  font-size: 1.1rem;
+}
+
+.arch-subtext {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .arch-action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .btn-arch {
+    width: 100%;
+    max-width: 300px;
+    min-width: unset;
+  }
+}
+
+/* ===== RFC MODAL STYLES ===== */
+.rfc-modal-card {
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.rfc-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rfc-section:last-of-type {
+  border-bottom: none;
+}
+
+.rfc-section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ff6b00;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.rfc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.rfc-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.rfc-label-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rfc-input, .rfc-select, .rfc-textarea {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rfc-input:focus, .rfc-select:focus, .rfc-textarea:focus {
+  outline: none;
+  border-color: #ff6b00;
+  background: rgba(255, 107, 0, 0.05);
+}
+
+.rfc-input::placeholder, .rfc-textarea::placeholder {
+  color: #666;
+}
+
+.rfc-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.rfc-select option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.rfc-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.btn-rfc-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-rfc-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+}
+
+@media (max-width: 600px) {
+  .rfc-row {
+    grid-template-columns: 1fr;
+  }
+  .rfc-modal-card {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}

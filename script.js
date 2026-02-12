@@ -826,3 +826,64 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(fixCards, 1000);
   window.addEventListener('load', fixCards);
 })();
+
+/* ===== RFC Modal Functionality ===== */
+(function() {
+  const rfcModal = document.getElementById('rfcModal');
+  const openRfcBtn = document.getElementById('openRfcModal');
+  const closeRfcBtn = document.getElementById('rfcModalClose');
+  const rfcForm = document.getElementById('rfcForm');
+  const rfcMsg = document.getElementById('rfcModalMsg');
+
+  if (openRfcBtn && rfcModal) {
+    openRfcBtn.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      rfcModal.setAttribute('aria-hidden', 'false');
+      if (closeRfcBtn) closeRfcBtn.focus();
+    });
+  }
+
+  if (closeRfcBtn && rfcModal) {
+    closeRfcBtn.addEventListener('click', () => {
+      rfcModal.setAttribute('aria-hidden', 'true');
+      if (openRfcBtn) openRfcBtn.focus();
+    });
+  }
+
+  if (rfcModal) {
+    rfcModal.addEventListener('click', (ev) => {
+      if (ev.target === rfcModal) {
+        rfcModal.setAttribute('aria-hidden', 'true');
+        if (openRfcBtn) openRfcBtn.focus();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape' && rfcModal && rfcModal.getAttribute('aria-hidden') === 'false') {
+      rfcModal.setAttribute('aria-hidden', 'true');
+      if (openRfcBtn) openRfcBtn.focus();
+    }
+  });
+
+  if (rfcForm) {
+    rfcForm.addEventListener('submit', (ev) => {
+      try {
+        const submitBtn = rfcForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
+        }
+        if (rfcMsg) rfcMsg.textContent = 'Submitting your critique...';
+        setTimeout(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane" aria-hidden="true"></i> Submit for Peer Review';
+          }
+        }, 6000);
+      } catch (e) {
+        console.error('RFC form submission error', e);
+      }
+    });
+  }
+})();
