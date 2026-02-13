@@ -9966,3 +9966,75 @@ code.terminal::after {
     opacity: 1 !important;
   }
 }
+
+/* ===== FINAL FIX: TERMINAL TAGLINE POLISH ===== */
+.architecture-tagline {
+  /* 1. Layout: Center perfectly */
+  display: inline-block !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  margin: 1.5rem auto 2.5rem !important; /* Center horizontally */
+  
+  /* 2. Visuals: Kill the blue grid & borders */
+  background: rgba(10, 10, 10, 0.95) !important; /* Deep solid black/grey */
+  background-image: none !important;             /* REMOVE BLUE GRID */
+  border: none !important;                       /* Remove box borders */
+  box-shadow: none !important;                   /* Remove glow */
+  
+  /* 3. Status Bar: The only border we keep */
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding: 10px 20px !important;
+  
+  /* 4. Typography: Normal weight, Tech font */
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;       /* NORMAL FONT (was bold) */
+  color: #ff6b00 !important;         /* Orange text */
+  text-transform: none !important;
+  letter-spacing: 0px !important;
+  text-align: left !important;
+}
+
+/* 5. The Prompt (>_) : Brighter & Bolder */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #e0e0e0 !important;         /* Brighter/Bold White-Grey */
+  font-weight: 700 !important;       /* Bold Prompt */
+  opacity: 1 !important;             /* Fully visible */
+  margin-right: 10px !important;
+  
+  /* Fix positioning: ensure it stays inline */
+  position: static !important;
+  display: inline !important;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
+}
+
+/* 6. The Cursor (█) */
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  font-size: 0.85em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+  
+  /* Fix positioning */
+  position: static !important;
+  display: inline !important;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    display: block !important;
+    width: 90% !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+  }
+}
