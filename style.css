@@ -9447,3 +9447,16 @@ div#services .cards .card.card-wide .card-actions {
 @media (max-width: 900px) {
   .triptych-grid { grid-template-columns: 1fr; gap: 20px; }
 }
+
+/* ===== QUICK TWEAK: LARGER ARCHITECTURE TAGLINE ===== */
+.architecture-tagline {
+  font-size: 1.25rem !important; /* Increased from 1rem to 1.25rem */
+  font-weight: 500 !important;   /* Ensure it stays readable */
+}
+
+/* Adjust for mobile screens so it fits */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    font-size: 0.95rem !important; /* Slightly larger on mobile too */
+  }
+}
