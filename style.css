@@ -9460,3 +9460,11 @@ div#services .cards .card.card-wide .card-actions {
     font-size: 0.95rem !important; /* Slightly larger on mobile too */
   }
 }
+
+/* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
+.triptych-link {
+  text-transform: none !important;  /* Removes ALL CAPS */
+  font-weight: 400 !important;      /* Removes Bold */
+  font-size: 0.9rem !important;     /* Ensure readability */
+  letter-spacing: normal !important;
+}
