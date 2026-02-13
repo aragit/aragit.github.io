@@ -24,7 +24,244 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1770981115?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1770982084?v=1770727673" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Arash Nicoomanesh",
+    "jobTitle":"AI & ML Engineer",
+    "url":"https://aragit.github.io",
+    "sameAs":[
+      "https://www.linkedin.com/in/arashnicoomanesh/",
+      "https://github.com/aragit",
+      "https://www.kaggle.com/arashnic"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Skip link for keyboard users -->
+  
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Background container -->
+  <div class="animated-bg" aria-hidden="true"><div class="noise" aria-hidden="true"></div></div>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <nav id="primary-nav" class="nav" role="navigation" aria-label="Primary">
+        <ul id="navbar">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Solutions</a></li>
+          <li><a href="blog/index.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+
+    <!-- HERO -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+        <!-- HERO GRID (drop-in) -->
+        <!-- HERO GRID (orange dim + subtle blue lines) -->
+        <!-- HERO GRID (orange dim + visible subtle blue + mask) -->
+        <div class="hero-grid" aria-hidden="true">
+          <svg class="hero-grid-svg" viewBox="0 0 1200 600" preserveAspectRatio="none"
+               xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <defs>
+              <!-- orange stroke gradient (dimmed) -->
+              <linearGradient id="gridGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#ff6b00" stop-opacity="0.78"/>
+                <stop offset="30%" stop-color="#ff6b00" stop-opacity="0.28"/>
+                <stop offset="45%" stop-color="#ff6b00" stop-opacity="0"/>
+              </linearGradient>
+        
+              <!-- more visible blue for subtle sky effect -->
+              <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#5fd3ff" stop-opacity="0.22"/>
+                <stop offset="50%" stop-color="#5fd3ff" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#5fd3ff" stop-opacity="0"/>
+              </linearGradient>
+        
+              <!-- mask will be tuned in JS to use hero height -->
+              <linearGradient id="maskGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop id="mask-stop-a" offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+                <stop id="mask-stop-b" offset="55%" stop-color="#ffffff" stop-opacity="0.6"/>
+                <stop id="mask-stop-c" offset="85%" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+              <mask id="fadeMask">
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#maskGradient)"></rect>
+              </mask>
+            </defs>
+        
+            <g class="grid-orange" stroke="url(#gridGradient)" fill="none" mask="url(#fadeMask)"></g>
+            <g class="grid-blue"   stroke="url(#blueGradient)"  fill="none" mask="url(#fadeMask)"></g>
+          </svg>
+        </div>
+
+      <div class="container hero-inner">
+        <img src="Mereal1.png" alt="Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130">
+        <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
+        <p class="hero-tagline typewriter">Agentic AI Architect</p>
+        
+        <p class="tagline typewriter">AI Engineering Services &amp; Consulting</p>
+
+        <div class="value-prop" aria-hidden="false">
+          <div class="role-container" aria-hidden="true">
+            <p id="typewrite" aria-live="polite"></p>
+          </div>
+
+          <!-- hero divider: lines + glass knight chip -->
+            <!--<div class="chess-chip" aria-hidden="true"> -->
+            <!--  <i class="fas fa-chess-knight chess-icon" aria-hidden="true"></i><!--
+           <!-- </div><!-->
+            <div class="line" role="presentation"></div>
+          </div>
+
+          <!-- Orange lines -->
+          <div class="hero-divider" aria-hidden="true">
+            <div class="line" role="presentation"></div>
+            <div class="line" role="presentation"></div>
+          </div>
+
+          <!-- HERO CTA — only CHAT button per request -->
+          <div class="hero-cta" role="group" aria-label="Primary calls to action">
+            <button class="btn-hero btn-primary" id="openChatBtn" title="Chat with my experience" aria-haspopup="dialog">
+              <i class="fas fa-comments" aria-hidden="true"></i>
+              Chat with my Experience
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <!-- ABOUT / INSIGHT -->
+    <!-- ABOUT / INSIGHT -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <!-- Centered headline outside card -->
+        <h2 class="insight-headline">
+          <span class="headline-line1">Don't Build Just "Expensive Chatbots"</span>
+          <span class="headline-line2">Real Agentic Systems Reason and Learn within Adaptive Architecture</span>
+        </h2>
+        
+        <!-- Combined card with text and image side by side -->
+        <div class="insight-card-combined">
+          <div class="insight-text">
+            <div class="insight-pillars">
+          <div class="insight-pillar">
+            <div class="pillar-content">
+              <h4 class="pillar-title">Execution <span class="pillar-subtitle">over Conversation</span></h4>
+              <p class="pillar-desc">Build AI systems that read reports, flag risks, generate artifacts, and update systems autonomously while learning from outcomes. Intelligence that cannot act or improve from action is not a system; it's a demo.</p>
+            </div>
+          </div>
+          
+          <div class="insight-pillar">
+            <div class="pillar-content">
+              <h4 class="pillar-title">Planning <span class="pillar-subtitle">over Reaction</span></h4>
+              <p class="pillar-desc">Most so-called "AI agents" respond to prompts but fail to plan, execute multi-step workflows, persist state, or refine behavior over time. Stateless LLM wrappers are costly — and fragile.</p>
+            </div>
+          </div>
+          
+          <div class="insight-pillar">
+            <div class="pillar-content">
+              <h4 class="pillar-title">Control <span class="pillar-subtitle">over Cleverness</span></h4>
+              <p class="pillar-desc">Apply robust agentic architectures that separate stochastic reasoning from deterministic execution, enabling learning within explicit constraints. Governance, validation, and recovery come first.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="insight-visual insight-visual-large">
+            <img src="77.png" alt="Agentic AI Architectures Mindmap">
+          </div>
+              </div>
+      
+      <!-- Article Cards - Deep Dive -->
+      <div class="insight-articles">
+        
+        <h3 class="insight-articles-title">The Trinity of Survival</h3>
+        <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
+        
+        <div class="arch-image-container">
+          <img src="masterarchY.jpg" alt="Architecture Diagram" class="arch-diagram-img">
+        </div>
+
+        <div class="article-cards-grid triptych-grid">
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" class="article-card triptych-card" target="_blank">
+            <div class="triptych-icon">🛡️</div>
+            <div class="card-content">
+              <h4 class="card-title">Deterministic Core</h4>
+              <p class="card-excerpt">Enterprise agents cannot hallucinate state. We use rigid runtimes to enforce permissions, physics, and logic. The brain suggests; the body decides.</p>
+              <div class="card-meta">
+                <span class="read-more">Read: Why "Chatbots" Fail &rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" class="article-card triptych-card" target="_blank">
+            <div class="triptych-icon">🧠</div>
+            <div class="card-content">
+              <h4 class="card-title">Stochastic Range</h4>
+              <p class="card-excerpt">Creativity is useful, but only within bounds. We utilize SLMs and "Reasoning" engines to explore solutions, strictly constrained by the Core's schema.</p>
+              <div class="card-meta">
+                <span class="read-more">Read: The Engine of Reasoning &rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" class="article-card triptych-card" target="_blank">
+            <div class="triptych-icon">⚡</div>
+            <div class="card-content">
+              <h4 class="card-title">Multi-Agent Scale</h4>
+              <p class="card-excerpt">One agent is a toy. Ten thousand is a platform. By using Actor Models (Ray) and shared memory, we scale the "Sentinel" unit across the enterprise.</p>
+              <div class="card-meta">
+                <span class="read-more">Read: The 2026 Roadmap &rarr;</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <!doctype html>
+<html lang="en">
+<head><style>/* FORCE HIDE IMAGES */ .cs-image{display:none!important;} /* FIX CARD SIZE */ .cs-card{height:280px!important;min-height:280px!important;display:flex!important;flex-direction:column!important;} .cs-link{margin-top:auto!important;}</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Arash Nicoomanesh | AI & ML Engineer | Generative & Agentic AI</title>
+  <meta name="description" content="15+ years building scalable AI systems: LLMs, Agentic AI, Healthcare & Finance solutions. Portfolio & case studies.">
+  <link rel="canonical" href="https://aragit.github.io/">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Arash Nicoomanesh – AI & ML Engineer" />
+  <meta property="og:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare." />
+  <meta property="og:url" content="https://aragit.github.io/" />
+  <meta property="og:image" content="https://aragit.github.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arash Nicoomanesh – AI & ML Engineer" />
+  <meta name="twitter:description" content="Scalable AI solutions in LLMs, Agentic AI & Healthcare." />
+  <meta name="twitter:image" content="https://aragit.github.io/og-image.png" />
+
+  <!-- preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- style -->
+  <link rel="stylesheet" href="style.css?v=1770982084?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
