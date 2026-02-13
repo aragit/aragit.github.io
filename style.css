@@ -9861,3 +9861,19 @@ div#services .cards .card.card-wide .card-actions {
   /* Remove the orange glow shadow */
   box-shadow: none !important;
 }
+
+/* ===== TWEAK: Improve Manifesto Usability ===== */
+.manifesto-item {
+  cursor: pointer !important;       /* Show it's clickable */
+  opacity: 0.6 !important;          /* Increase readability of inactive items (was 0.5) */
+  transition: opacity 0.3s ease, transform 0.2s ease, border-left-width 0.2s ease !important;
+}
+
+.manifesto-item:hover {
+  opacity: 1 !important;            /* Fully visible on hover */
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.manifesto-item.active {
+  opacity: 1 !important;
+}

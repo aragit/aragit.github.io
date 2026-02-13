@@ -827,3 +827,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
   items.forEach(item => observer.observe(item));
 });
+
+/* ===== REFACTOR: SYNAPTIC DASHBOARD (Mouse + Scroll Support) ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.manifesto-item');
+  const visualFrame = document.getElementById('archVisualFrame');
+  const statusText = document.getElementById('arch-status-overlay');
+  
+  if (!items.length || !visualFrame) return;
+
+  // --- Helper Function: Activate a specific item ---
+  function activateItem(target) {
+    // 1. Reset all items
+    items.forEach(i => i.classList.remove('active'));
+    
+    // 2. Activate target
+    target.classList.add('active');
+
+    // 3. Extract Data
+    const status = target.dataset.status || "SYSTEM ACTIVE";
+    const color = target.dataset.color || "#ff6b00";
+
+    // 4. Update Visuals (Diagram Glow)
+    visualFrame.style.borderColor = color;
+    visualFrame.style.boxShadow = `0 0 30px ${color}20`; 
+    target.style.borderLeftColor = color; 
+
+    // 5. Update Status Text
+    if (statusText) {
+      statusText.style.color = color;
+      statusText.style.borderLeftColor = color;
+      statusText.innerText = status;
+    }
+  }
+
+  // --- Interaction 1: Scroll Observer ---
+  const observerOptions = {
+    root: null,
+    rootMargin: '-40% 0px -40% 0px', // Active when centered
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        activateItem(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  items.forEach(item => {
+    // Start observing scroll
+    observer.observe(item);
+
+    // --- Interaction 2: Mouse Hover & Click ---
+    item.addEventListener('mouseenter', () => activateItem(item));
+    item.addEventListener('click', () => activateItem(item));
+  });
+});
