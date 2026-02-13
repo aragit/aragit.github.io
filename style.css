@@ -9306,3 +9306,52 @@ div#services .cards .card.card-wide .card-actions {
     white-space: normal !important; 
   }
 }
+
+/* ===== EMERGENCY FIX: CENTER THE TAGLINE ===== */
+.architecture-tagline {
+  /* 1. Layout: Use BLOCK + MARGIN AUTO to force centering */
+  display: block !important;       /* Must be block to accept margin: auto */
+  width: fit-content !important;   /* Shrink to fit the text */
+  margin-left: auto !important;    /* Push equally from left */
+  margin-right: auto !important;   /* Push equally from right */
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+
+  /* 2. Visuals: Keep the clean terminal look */
+  background: rgba(10, 10, 10, 0.95) !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding: 10px 20px !important;
+  
+  /* 3. Text: Orange & Tech Font */
+  color: #ff6b00 !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  text-align: left !important; /* Internal text stays left (next to prompt) */
+  
+  /* 4. Reset legacy properties that cause bugs */
+  float: none !important;
+  position: static !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+/* Ensure prompt stays inline */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #e0e0e0 !important;
+  font-weight: 700 !important;
+  display: inline !important;
+}
+
+/* Ensure cursor stays inline */
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  display: inline !important;
+  animation: terminal-blink 1s step-end infinite !important;
+}
