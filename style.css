@@ -10055,3 +10055,60 @@ div#services .cards .card.card-wide .card-actions {
 @media (max-width: 900px) {
   .arch-dashboard { grid-template-columns: 1fr !important; }
 }
+
+/* ===== FINAL FIX: DASHBOARD LAYOUT & TEXT ===== */
+
+/* 1. Layout: 60% Text / 40% Image (Wider Text Column) */
+.arch-dashboard {
+  grid-template-columns: 1.2fr 0.8fr !important; /* Give text significantly more room */
+  gap: 30px !important;
+}
+
+/* 2. Principles Text: Pure White & Larger */
+.manifesto-content h4 {
+  color: #ffffff !important;
+  font-size: 1.15rem !important;
+  margin-bottom: 6px !important;
+}
+
+.manifesto-content p {
+  color: #ffffff !important;      /* Pure White */
+  opacity: 0.95 !important;
+  font-size: 1.05rem !important;  /* Larger readability */
+  line-height: 1.6 !important;
+}
+
+/* 3. Terminal: Bigger & Denser */
+.system-console {
+  background: #080808 !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  min-height: 160px !important;   /* Taller to show history */
+  padding: 15px 20px !important;
+  justify-content: flex-end !important;
+}
+
+.console-history span {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem !important;   /* Readable history size */
+  color: #777 !important;
+  margin-bottom: 3px !important;
+  line-height: 1.3 !important;
+}
+
+#console-log-text {
+  font-size: 1.1rem !important;   /* Large active line */
+  color: #00ff88 !important;      /* Bright Matrix Green */
+  font-weight: 600 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+.console-prompt {
+  font-size: 1.1rem !important;
+  color: #ff6b00 !important;
+}
+
+/* Mobile check */
+@media (max-width: 900px) {
+  .arch-dashboard { grid-template-columns: 1fr !important; }
+}
