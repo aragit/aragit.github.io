@@ -9594,3 +9594,32 @@ div#services .cards .card.card-wide .card-actions {
     white-space: normal !important;
   }
 }
+
+/* ===== DEFINITIVE FIX: ARCHITECTURE CURSOR BLINKING ===== */
+
+/* 1. Define a unique animation name to avoid conflicts */
+@keyframes arch-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* 2. Target the element with high specificity */
+.architecture-tagline::after {
+  content: " ▋" !important;      /* The cursor character */
+  color: #ff6b00 !important;      /* Orange color */
+  font-weight: 700 !important;    /* Make it thick/bold */
+  margin-left: 8px !important;
+  display: inline-block !important;
+  
+  /* 3. Apply the animation - EXACTLY like your working bento-grid */
+  animation: arch-cursor-blink 1s infinite !important;
+  
+  /* Reset any transform that might be hiding it */
+  transform: none !important;
+  opacity: 1;
+}
+
+/* Ensure the parent allows it to show */
+.architecture-tagline {
+  overflow: visible !important;
+}
