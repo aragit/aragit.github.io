@@ -9502,3 +9502,8 @@ div#services .cards .card.card-wide .card-actions {
 .arch-diagram-img {
   max-width: 900px !important; /* Increased from 600px to 900px */
 }
+
+/* ===== FINE TUNE: REDUCE ARCHITECTURE IMAGE SIZE ===== */
+.arch-diagram-img {
+  max-width: 750px !important; /* Adjusted down from 900px */
+}
