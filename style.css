@@ -9478,3 +9478,22 @@ div#services .cards .card.card-wide .card-actions {
   margin-top: auto;
   display: inline-block;
 }
+
+/* ===== RE-SKIN: Multi-Agent Scale (Green -> Orange) ===== */
+.scale-card {
+  border-top: 1px solid rgba(255, 107, 0, 0.5) !important;
+}
+
+.scale-card .triptych-icon {
+  color: #ff6b00 !important;
+  text-shadow: 0 0 15px rgba(255, 107, 0, 0.6) !important;
+}
+
+.scale-card .triptych-link {
+  color: #ff6b00 !important;
+}
+
+.scale-card:hover {
+  border-color: #ff6b00 !important;
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.2) !important;
+}
