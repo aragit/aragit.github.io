@@ -10094,3 +10094,56 @@ code.terminal::after {
     opacity: 1 !important;
   }
 }
+
+/* ===== ARCHITECTURAL TRIPTYCH STYLES ===== */
+.triptych-grid {
+  margin-top: 2rem;
+}
+
+.triptych-card {
+  text-align: center;      /* Center align for "Pillar" look */
+  padding: 2rem 1.5rem;    /* More padding for emphasis */
+  background: rgba(20, 20, 20, 0.6); /* Slightly darker background */
+  border: 1px solid #333;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.triptych-card:hover {
+  border-color: #ff6b00;   /* Brand Orange on hover */
+  transform: translateY(-5px);
+}
+
+.triptych-icon {
+  font-size: 3.5rem;       /* Large Icon */
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 107, 0, 0.2); /* Subtle glow */
+}
+
+.triptych-card .card-title {
+  color: #fff;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.triptych-card .card-excerpt {
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  min-height: 80px; /* Ensure uniform height */
+}
+
+.triptych-card .read-more {
+  color: #ff6b00;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Hover effect on the link text */
+.triptych-card:hover .read-more {
+  color: #fff;
+}
