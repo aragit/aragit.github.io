@@ -9841,3 +9841,50 @@ code.terminal::after {
     opacity: 1 !important;
   }
 }
+
+/* =========================================================
+   FIX: Architecture Philosophy live terminal (green + blink)
+   ROOT CAUSE: cursor + text rendered via ::after (not DOM)
+   ========================================================= */
+
+/* ---- Force terminal-green palette (Architecture only) ---- */
+.insight-articles .section-subtitle,
+.insight-articles .architecture-tagline {
+  color: #4dff88 !important;
+  text-shadow: 0 0 6px rgba(77,255,136,0.35) !important;
+}
+
+/* ---- Kill inherited decorative pseudo-elements ---- */
+.insight-articles .section-subtitle::before,
+.insight-articles .architecture-tagline::before {
+  content: none !important;
+}
+
+/* ---- REAL blinking cursor (override existing ::after) ---- */
+.insight-articles .section-subtitle::after,
+.insight-articles .architecture-tagline::after {
+  content: "▋" !important;
+  display: inline-block !important;
+  margin-left: 6px !important;
+  color: #4dff88 !important;
+  background: none !important;
+  text-shadow: 0 0 6px rgba(77,255,136,0.6) !important;
+  animation: arch-live-blink 1s steps(1) infinite !important;
+  opacity: 1;
+}
+
+/* ---- SINGLE source of truth for blinking ---- */
+@keyframes arch-live-blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ---- Accessibility: allow motion reduction ---- */
+@media (prefers-reduced-motion: reduce) {
+  .insight-articles .section-subtitle::after,
+  .insight-articles .architecture-tagline::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
