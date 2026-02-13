@@ -9497,3 +9497,8 @@ div#services .cards .card.card-wide .card-actions {
   border-color: #ff6b00 !important;
   box-shadow: 0 0 30px rgba(255, 107, 0, 0.2) !important;
 }
+
+/* ===== QUICK TWEAK: LARGER ARCHITECTURE IMAGE ===== */
+.arch-diagram-img {
+  max-width: 900px !important; /* Increased from 600px to 900px */
+}
