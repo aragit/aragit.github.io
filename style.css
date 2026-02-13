@@ -9692,3 +9692,43 @@ div#services .cards .card.card-wide .card-actions {
     text-align: left !important;
   }
 }
+
+/* ===== RESTORED TERMINAL STYLE (Clean & Blinking) ===== */
+.architecture-tagline {
+  display: table !important;       /* Centers perfectly */
+  margin: 1.5rem auto 2.5rem !important;
+  padding: 12px 24px !important;
+  
+  /* Visuals */
+  background: #080808 !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  
+  /* Text */
+  font-family: 'Menlo', 'Consolas', monospace !important;
+  font-size: 0.9rem !important;
+  color: #ff6b00 !important;
+  text-align: left !important;
+}
+
+/* Prompt */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #666 !important;
+  font-weight: 700 !important;
+  margin-right: 10px !important;
+}
+
+/* Cursor with UNIQUE animation name to prevent conflicts */
+@keyframes cursor-blink-final {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.architecture-tagline::after {
+  content: " ▋" !important;
+  color: #ff6b00 !important;
+  animation: cursor-blink-final 1s step-end infinite !important;
+  margin-left: 8px !important;
+}
