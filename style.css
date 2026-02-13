@@ -9807,3 +9807,19 @@ div#services .cards .card.card-wide .card-actions {
 .triptych-card:hover::before {
   opacity: 0.14 !important; /* Brighten dots */
 }
+
+/* ===== TWEAK: DARKER PURPLE GRID FOR RANGE CARD ===== */
+.range-card::after {
+  background-image:
+    /* 1. Orange Lines (Unchanged) */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    
+    /* 2. DARKER PURPLE Accent Lines (New Values) */
+    /* Changed from bright (157,0,255) to deep violet (90,0,160) */
+    repeating-linear-gradient(90deg, rgba(90, 0, 160, 0.25) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(90, 0, 160, 0.22) 0 2px, transparent 2px calc(10px)),
+    
+    /* 3. Tile Tint (Unchanged) */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+}
