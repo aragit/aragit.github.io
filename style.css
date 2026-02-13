@@ -9837,3 +9837,15 @@ div#services .cards .card.card-wide .card-actions {
     /* 3. Tile Tint (Unchanged) */
     linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
 }
+
+/* ===== FIX: Remove Orange Border/Glow on Scale Card Hover ===== */
+.scale-card:hover {
+  /* Reset border to standard base color (removes the flashing orange border) */
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  
+  /* Preserve the static Orange Top Border so it doesn't disappear */
+  border-top-color: rgba(255, 107, 0, 0.5) !important;
+  
+  /* Remove the orange glow shadow */
+  box-shadow: none !important;
+}
