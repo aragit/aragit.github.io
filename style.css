@@ -9888,3 +9888,16 @@ code.terminal::after {
     opacity: 1 !important;
   }
 }
+
+/* =========================================================
+   FIX: Subtitle cursor should be STATIC (no blinking)
+   Applies ONLY to:
+   "Architectures that Learn, not Rules that Break"
+   ========================================================= */
+
+.insight-articles .section-subtitle::after {
+  animation: none !important;
+  opacity: 1 !important;
+  color: #4dff88 !important;
+  text-shadow: 0 0 6px rgba(77,255,136,0.45);
+}
