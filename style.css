@@ -9745,3 +9745,99 @@ div#services .cards .card.card-wide .card-actions {
   color: #4DFF88;
   text-shadow: 0 0 6px rgba(77, 255, 136, 0.65);
 }
+
+/* ====== Agentic terminal palette + reliable blinking cursor ======
+   Targets span classes used in your terminal block (.cmd, .kwd, .cmt, .str, .warn, .score, .prompt)
+   and also adds fallbacks for common wrappers (pre, code, .terminal, .insight-articles).
+   Uses pseudo-element for cursor so no HTML edit required.
+   ================================================================ */
+
+:root{
+  --term-green: #4dff88;
+  --term-green-dim: rgba(77,255,136,0.45);
+}
+
+/* 1) Force terminal-style text to light terminal green (high-specificity) */
+.insight-articles .cmd,
+.insight-articles .kwd,
+.insight-articles .cmt,
+.insight-articles .str,
+.insight-articles .warn,
+.insight-articles .score,
+.insight-articles .prompt,
+.insight-articles pre,
+.insight-articles code,
+.cmd, .kwd, .cmt, .str, .warn, .score, .prompt, pre.terminal, code.terminal {
+  color: var(--term-green) !important;
+  text-shadow: 0 0 6px var(--term-green-dim) !important;
+  -webkit-text-fill-color: var(--term-green) !important;
+}
+
+/* 2) Create a reliable blinking cursor using a pseudo-element if an explicit .cursor is not present.
+      Targets last-child variants so the cursor appears at the line end. */
+.insight-articles .cmd:last-child::after,
+.insight-articles .kwd:last-child::after,
+.insight-articles .cmt:last-child::after,
+.insight-articles .str:last-child::after,
+.insight-articles .warn:last-child::after,
+.insight-articles .score:last-child::after,
+.insight-articles .prompt:last-child::after,
+.cmd:last-child::after,
+.kwd:last-child::after,
+.cmt:last-child::after,
+.str:last-child::after,
+.warn:last-child::after,
+.score:last-child::after,
+.prompt:last-child::after,
+.terminal-line::after,
+.preterminal::after,
+code.terminal::after {
+  content: "" !important;
+  display: inline-block !important;
+  width: 0.5ch !important;
+  height: 1em !important;
+  margin-left: 6px !important;
+  vertical-align: baseline !important;
+  background-color: var(--term-green) !important;
+  box-shadow: 0 0 8px var(--term-green-dim) !important;
+  border-radius: 2px !important;
+  animation: terminal-blink 1s steps(2,end) infinite !important;
+  -webkit-animation: terminal-blink 1s steps(2,end) infinite !important;
+  will-change: opacity !important;
+}
+
+/* 3) If you DO have a real element with class .cursor or .blink, ensure it blinks */
+.cursor, .blink, .terminal .cursor, .terminal .blink {
+  display: inline-block !important;
+  width: 0.5ch !important;
+  height: 1em !important;
+  background-color: var(--term-green) !important;
+  box-shadow: 0 0 8px var(--term-green-dim) !important;
+  animation: terminal-blink 1s steps(2,end) infinite !important;
+  -webkit-animation: terminal-blink 1s steps(2,end) infinite !important;
+}
+
+/* 4) Keyframes (single robust definition). If your stylesheet already defines terminal-blink,
+      this is safe because multiple identical keyframes are harmless;
+      we use a slightly different timing & step to improve visibility. */
+@keyframes terminal-blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes terminal-blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 5) Respect reduced motion preference (but you can remove this if you want forced blinking) */
+@media (prefers-reduced-motion: reduce) {
+  .cursor, .blink,
+  .insight-articles .cmd:last-child::after,
+  .insight-articles .kwd:last-child::after,
+  .cmd:last-child::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
