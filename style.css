@@ -9720,3 +9720,90 @@ div#services .cards .card.card-wide .card-actions {
   .arch-dashboard { grid-template-columns: 1fr !important; gap: 40px !important; }
   .docked-terminal { font-size: 0.8rem !important; padding: 10px !important; }
 }
+
+/* =======================================================
+   THE "BEAUTIFUL THEME" PORT (Consulting -> Triptych)
+   ======================================================= */
+
+/* 1. Base Card Setup (Dark Charcoal & Container) */
+.triptych-card {
+  position: relative !important;
+  overflow: hidden !important;
+  background: rgba(20, 20, 20, 0.95) !important; /* Deep dark base */
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  /* Ensure text sits ABOVE the grid */
+  z-index: 1 !important; 
+}
+
+/* Ensure content inside clicks/selects */
+.triptych-card > * {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* 2. LAYER 1: The Dot Matrix Texture (::before) - Applied to ALL */
+.triptych-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important; /* Behind text, above base */
+  pointer-events: none !important;
+  background-image: radial-gradient(circle at 6px 6px, rgba(255,255,255,0.035) 0 1px, transparent 1px);
+  background-size: 16px 16px !important;
+  opacity: 0.10 !important;
+  mix-blend-mode: screen !important;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
+  transition: opacity 0.3s ease !important;
+}
+
+/* 3. LAYER 2: The Grid Overlay (::after) - SHARED PROPERTIES */
+.triptych-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  mix-blend-mode: screen !important;
+  transition: opacity .28s ease, transform .28s cubic-bezier(.2,.9,.25,1) !important;
+  opacity: 0.60 !important;
+  background-size: auto, auto, auto, auto, 32px 32px !important;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+}
+
+/* 4. GRID TYPE A: Blue & Orange (Core & Scale) */
+.core-card::after,
+.scale-card::after {
+  background-image:
+    /* Orange Lines */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    /* BLUE Accent Lines */
+    repeating-linear-gradient(90deg, rgba(95,211,255,0.14) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(95,211,255,0.12) 0 2px, transparent 2px calc(10px)),
+    /* Tile Tint */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+}
+
+/* 5. GRID TYPE B: Purple & Orange (Stochastic Range) */
+.range-card::after {
+  background-image:
+    /* Orange Lines (Same) */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    /* PURPLE Accent Lines (Replaced Blue) */
+    repeating-linear-gradient(90deg, rgba(157, 0, 255, 0.2) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(157, 0, 255, 0.18) 0 2px, transparent 2px calc(10px)),
+    /* Tile Tint (Same) */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+}
+
+/* 6. Hover Interactions */
+.triptych-card:hover::after {
+  opacity: 0.72 !important;
+  transform: translateY(-6px) !important; /* Lift effect */
+}
+.triptych-card:hover::before {
+  opacity: 0.14 !important; /* Brighten dots */
+}
