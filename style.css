@@ -9877,3 +9877,70 @@ div#services .cards .card.card-wide .card-actions {
 .manifesto-item.active {
   opacity: 1 !important;
 }
+
+/* ===== DOUBLE LAYER DASHBOARD STYLES ===== */
+
+/* Top Overlay: Business Insight */
+.insight-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border-left: 3px solid #ff6b00;
+  padding: 12px 16px;
+  color: #fff;
+  font-family: 'Inter', sans-serif; /* Clean font for business text */
+  font-size: 0.95rem;
+  line-height: 1.4;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  border-radius: 0 4px 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* Bottom Console: Engineering Log */
+.system-console {
+  width: 100%;
+  background: #080808;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 12px 16px;
+  margin-top: -6px; /* Dock to image */
+  font-family: 'Courier New', monospace; /* Code font */
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  min-height: 48px; /* Ensure space for text */
+}
+
+.console-prompt {
+  color: #ff6b00;
+  font-weight: 700;
+}
+
+#console-log-text {
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.console-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #ff6b00;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

@@ -885,3 +885,54 @@ document.addEventListener('DOMContentLoaded', () => {
     item.addEventListener('click', () => activateItem(item));
   });
 });
+
+/* ===== DOUBLE LAYER INTERACTION LOGIC ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.manifesto-item');
+  const visualFrame = document.getElementById('archVisualFrame');
+  const insightOverlay = document.getElementById('insight-overlay');
+  const consoleLog = document.getElementById('console-log-text');
+  
+  if (!items.length || !visualFrame) return;
+
+  function activateItem(target) {
+    // 1. Reset & Active Class
+    items.forEach(i => i.classList.remove('active'));
+    target.classList.add('active');
+
+    // 2. Extract Data
+    const color = target.dataset.color || "#ff6b00";
+    const insight = target.dataset.insight || "";
+    const log = target.dataset.log || "";
+
+    // 3. Visual Updates (Border/Glow)
+    visualFrame.style.borderColor = color;
+    visualFrame.style.boxShadow = `0 0 30px ${color}20`; 
+    target.style.borderLeftColor = color; 
+
+    // 4. Update Top Overlay (Business Insight)
+    if (insightOverlay) {
+      insightOverlay.style.borderLeftColor = color;
+      insightOverlay.innerText = insight;
+    }
+
+    // 5. Update Bottom Console (Engineering Log)
+    if (consoleLog) {
+      consoleLog.style.color = color === '#000000' ? '#e0e0e0' : color; // Keep legible
+      consoleLog.innerText = log;
+    }
+  }
+
+  // Observers and Listeners
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) activateItem(entry.target);
+    });
+  }, { threshold: 0.5 });
+
+  items.forEach(item => {
+    observer.observe(item);
+    item.addEventListener('mouseenter', () => activateItem(item));
+    item.addEventListener('click', () => activateItem(item));
+  });
+});
