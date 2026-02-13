@@ -9152,3 +9152,11 @@ div#services .cards .card.card-wide .card-actions {
     text-align: left !important;
   }
 }
+
+/* ===== FORCE IMAGE SIZE UPDATE ===== */
+.arch-diagram-img {
+  max-width: 600px !important; /* Force smaller size */
+  width: 100% !important;      /* Maintain responsiveness */
+  height: auto !important;
+  margin: 0 auto !important;   /* Ensure centering */
+}
