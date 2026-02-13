@@ -10038,3 +10038,31 @@ code.terminal::after {
     font-size: 0.85rem !important;
   }
 }
+
+/* =========================================================
+   ABSOLUTE FINAL OVERRIDE — TAGLINE CURSOR MUST BLINK
+   ========================================================= */
+
+.insight-articles div.architecture-tagline::after {
+  content: "▋" !important;
+  display: inline-block !important;
+  color: #4dff88 !important;
+  margin-left: 6px !important;
+  opacity: 1 !important;
+  animation: arch-tagline-cursor-blink 1s steps(1,end) infinite !important;
+}
+
+/* Dedicated keyframes (do not reuse global ones) */
+@keyframes arch-tagline-cursor-blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Respect accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .insight-articles div.architecture-tagline::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
