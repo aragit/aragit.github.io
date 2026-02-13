@@ -9468,3 +9468,13 @@ div#services .cards .card.card-wide .card-actions {
   font-size: 0.9rem !important;     /* Ensure readability */
   letter-spacing: normal !important;
 }
+
+/* ===== FIX: TRIPTYCH LINKS (Refined) ===== */
+.triptych-link {
+  text-transform: none !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  font-size: 0.9rem !important;
+  margin-top: auto;
+  display: inline-block;
+}
