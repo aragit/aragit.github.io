@@ -9944,3 +9944,67 @@ div#services .cards .card.card-wide .card-actions {
 @keyframes blink {
   50% { opacity: 0; }
 }
+
+/* ===== REFINED DASHBOARD STYLES ===== */
+
+/* 1. Grid Width Fix: Give text column more space (1fr vs 1.1fr) */
+.arch-dashboard {
+  grid-template-columns: 1fr 1.1fr !important; /* Balanced 50/50-ish split */
+  gap: 50px !important;
+}
+
+/* 2. Text Color Fix: Make principle descriptions WHITE/LIGHT GREY */
+.manifesto-content p {
+  color: #e0e0e0 !important; /* Was #a0a0a0, now much brighter */
+  font-size: 1rem !important; /* Slightly larger readability */
+}
+
+/* 3. Console/Terminal Enhancements */
+.system-console {
+  min-height: 85px; /* Taller to fit multi-lines */
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align text to bottom */
+  gap: 4px;
+}
+
+.console-history {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.2;
+}
+
+.console-active-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#console-log-text {
+  font-size: 1.05rem !important; /* Larger text as requested */
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.console-prompt {
+  font-size: 1.1rem !important;
+}
+
+/* 4. Top Overlay Enhancements (More text capacity) */
+.insight-overlay {
+  font-size: 1rem !important; /* Larger text */
+  line-height: 1.5;
+  padding: 16px 20px;
+  max-width: 90%; /* Allow it to span wider */
+  background: rgba(0, 0, 0, 0.85); /* Darker background for readability */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  .arch-dashboard { grid-template-columns: 1fr !important; }
+  #console-log-text { font-size: 0.9rem !important; }
+}

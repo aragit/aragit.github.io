@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771017378?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1771018321?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -195,66 +195,97 @@
         <h3 class="insight-articles-title">The Trinity of Survival</h3>
         <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
         
-                                <div class="arch-dashboard">
+                                        <div class="arch-dashboard">
           
           <div class="arch-manifesto">
             
             <div class="manifesto-item active" 
                  data-color="#ff6b00"
-                 data-insight="Logic is frozen before action. No hallucinations in production."
+                 data-insight="Once a plan is committed, the LLM loses write access. The system transitions from a probabilistic creative mode to a deterministic execution runtime, preventing mid-flight hallucinations."
                  data-log="[INFO] CTX_FREEZE: Snapshot #8f9a committed. | MODE: Deterministic. | TOKENS: 4096. | LATENCY: 12ms">
               <span class="manifesto-num">01</span>
               <div class="manifesto-content">
                 <h4>The Planning Rubicon</h4>
-                <p>Stop the "Chat Loop." A true agent separates <span class="text-accent">reasoning</span> from <span class="text-accent">execution</span>. The LLM proposes a plan; a rigid runtime commits it.</p>
+                <p>Stop the "Chat Loop." A true agent separates <span class="text-accent">reasoning</span> from <span class="text-accent">execution</span>. The LLM proposes a plan; a rigid runtime commits it. <em>No plan? No action.</em></p>
               </div>
             </div>
 
             <div class="manifesto-item" 
                  data-color="#007bff"
-                 data-insight="The Brain thinks. The Body acts. Complete isolation."
+                 data-insight="We treat the LLM as an untrusted cognitive engine. It can suggest strategies, but the 'Body' (a rigid state machine) holds the only keys to database writes and API calls."
                  data-log="[WARN] SYSCALL_DETECT: 'exec' pattern found in payload. | ACTION: Sandbox isolation triggered. | STATUS: BLOCKED">
               <span class="manifesto-num">02</span>
               <div class="manifesto-content">
                 <h4>Neuro-Symbolic Split</h4>
-                <p>The Brain (LLM) suggests; The Body (Code) decides. We never grant the LLM root access. This separation guarantees <span class="text-accent">safety in production</span>.</p>
+                <p>The Brain (LLM) suggests; The Body (Code) decides. We never grant the LLM root access. This separation is the only way to guarantee <span class="text-accent">safety in production</span>.</p>
               </div>
             </div>
 
             <div class="manifesto-item" 
                  data-color="#dc3545"
-                 data-insight="Dangerous actions are vetoed instantly by inline policies."
+                 data-insight="Safety is not a prompt; it is a compiled policy. The Orchestrator queries OPA (Open Policy Agent) before every step, vetoing dangerous actions regardless of the LLM's intent."
                  data-log="[AUTH] OPA_EVAL: Input={'action':'DROP_TABLE', 'user':'agent_01'}. | VIOLATION: Policy #99. | DECISION: DENY">
               <span class="manifesto-num">03</span>
               <div class="manifesto-content">
                 <h4>Governance as Code</h4>
-                <p>Safety must be inline. The Orchestrator acts as the system's "conscience," using <span class="text-accent">OPA Policies</span> to veto dangerous actions before they execute.</p>
+                <p>Safety must be inline, not an afterthought. The Orchestrator acts as the system's "conscience," using <span class="text-accent">OPA Policies</span> to veto dangerous actions before they execute.</p>
               </div>
             </div>
 
             <div class="manifesto-item" 
                  data-color="#28a745"
-                 data-insight="Bad data crashes the program safely, not your database."
-                 data-log="[ERR] SCHEMA_VAL: Field 'risk' expected float(0.0-1.0), got str('high'). | Pydantic.ValidationError. | CRASH_GRACEFUL">
+                 data-insight="Inputs are not just parsed; they are strictly validated against Pydantic schemas. If a type mismatch occurs, the agent crashes gracefully rather than hallucinating a plausible parameter."
+                 data-log="[ERR] SCHEMA_VAL: Field 'risk_score' expected float(0.0-1.0), got str('high'). | Pydantic.ValidationError. | CRASH_GRACEFUL">
               <span class="manifesto-num">04</span>
               <div class="manifesto-content">
                 <h4>Strict Contracts</h4>
-                <p>Inputs must be parsed and validated (Pydantic/JSON Schema). If output doesn't validate, the program <span class="text-accent">crashes intentionally</span>.</p>
+                <p>Inputs must be parsed and validated (Pydantic/JSON Schema). If the output doesn't validate, the program <span class="text-accent">crashes intentionally</span> rather than hallucinating a parameter.</p>
               </div>
             </div>
 
             <div class="manifesto-item" 
                  data-color="#9d00ff"
-                 data-insight="The system remembers its mistakes. Self-correction is active."
+                 data-insight="The architecture creates a closed loop. Every outcome—success or error—is logged to vector memory, allowing the agent to query its own history and self-correct in real-time."
                  data-log="[DB] VECTOR_UPSERT: Embedding (dim=1536) saved. | MEMORY: Context shifted. | FEEDBACK_LOOP: Anomaly -> Correction start.">
               <span class="manifesto-num">05</span>
               <div class="manifesto-content">
                 <h4>The OODA Loop</h4>
-                <p>Observe, Orient, Decide, Act. The architecture persists state, logs outcomes, and feeds results back into memory to <span class="text-accent">anticipate failure</span>.</p>
+                <p>Observe, Orient, Decide, Act. The architecture persists state, logs outcomes, and feeds results back into memory. We build systems that <span class="text-accent">anticipate failure</span>.</p>
               </div>
             </div>
 
           </div>
+
+          <div class="arch-visual">
+            <div class="sticky-wrapper">
+              
+              <div class="arch-image-wrapper" id="archVisualFrame">
+                
+                <div id="insight-overlay" class="insight-overlay">
+                  Once a plan is committed, the LLM loses write access. The system transitions from a probabilistic creative mode to a deterministic execution runtime.
+                </div>
+                
+                <img src="masterarchY.jpg" alt="Agentic Architecture Diagram" class="arch-diagram-img">
+                <div class="scan-line"></div>
+              </div>
+              
+              <div class="system-console">
+                <div class="console-history">
+                  <span style="opacity:0.3">[SYS] KERNEL_INIT: Sentinel_v4 loaded.</span>
+                  <span style="opacity:0.5">[NET] HANDSHAKE: Port 443 open.</span>
+                </div>
+                <div class="console-active-line">
+                  <span class="console-prompt">></span>
+                  <span id="console-log-text">[INFO] SYSTEM_READY: Waiting for input...</span>
+                  <span class="console-cursor">_</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
 
           <div class="arch-visual">
             <div class="sticky-wrapper">
