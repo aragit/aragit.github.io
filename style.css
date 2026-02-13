@@ -10008,3 +10008,50 @@ div#services .cards .card.card-wide .card-actions {
   .arch-dashboard { grid-template-columns: 1fr !important; }
   #console-log-text { font-size: 0.9rem !important; }
 }
+
+/* ===== FINAL POLISH: DASHBOARD ===== */
+
+/* 1. LAYOUT: Balanced 50/50 Split (Wider text column) */
+.arch-dashboard {
+  grid-template-columns: 1fr 1fr !important; 
+  gap: 40px !important; /* Slightly tighter gap to maximize space */
+}
+
+/* 2. TEXT: Pure White for Principles */
+.manifesto-content p {
+  color: #ffffff !important; 
+  font-weight: 400 !important;
+  opacity: 0.9 !important; /* High visibility */
+}
+
+/* 3. TERMINAL: Big & readable */
+.system-console {
+  background: #050505 !important; /* Deep black */
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  min-height: 120px !important; /* Taller for history */
+}
+
+#console-log-text {
+  font-size: 1.15rem !important; /* Significantly larger */
+  color: #00ff88; /* Matrix Green for active line */
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+.console-history span {
+  display: block;
+  font-size: 0.9rem !important; /* History lines slightly smaller */
+  margin-bottom: 2px;
+}
+
+/* 4. OVERLAY: Better spacing */
+.insight-overlay {
+  font-size: 1.05rem !important;
+  padding: 20px !important;
+  background: rgba(0,0,0,0.9) !important; /* Less transparent, more readable */
+  border-left-width: 4px !important;
+}
+
+/* Mobile check */
+@media (max-width: 900px) {
+  .arch-dashboard { grid-template-columns: 1fr !important; }
+}
