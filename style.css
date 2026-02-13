@@ -9120,3 +9120,78 @@ div#services .cards .card.card-wide .card-actions {
     margin: 1rem auto 1.5rem;
   }
 }
+
+/* ===== ARCHITECTURE PHILOSOPHY: CYBER-TERMINAL STYLE ===== */
+.architecture-tagline {
+  /* 1. Reset the old boxy grid styles */
+  background: rgba(10, 10, 10, 0.6) !important; /* Deep, semi-transparent terminal black */
+  background-image: none !important;             /* Remove grid lines */
+  border: none !important;                       /* Remove full border */
+  box-shadow: none !important;                   /* Remove old shadow */
+  
+  /* 2. The "Status Bar" Anchor */
+  border-left: 3px solid #ff6b00 !important;     /* A sleek left accent line */
+  border-radius: 2px !important;                 /* Minimal rounding */
+  
+  /* 3. Typography: The "Code" Look */
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem !important;                 /* Tech-sized text */
+  font-weight: 600 !important;
+  color: #ff6b00 !important;                     /* Brand Orange */
+  letter-spacing: 0.05em !important;
+  text-transform: none !important;               /* Natural case looks more like code */
+  text-shadow: 0 0 12px rgba(255, 107, 0, 0.4) !important; /* Subtle CRT glow */
+  
+  /* 4. Positioning */
+  display: inline-block !important;
+  width: auto !important;
+  max-width: 90% !important;
+  padding: 0.75rem 1.5rem !important;
+  margin: 1.5rem auto 2.5rem !important;
+  position: relative !important;
+}
+
+/* 5. The "Prompt" Prefix ( >_ ) */
+.architecture-tagline::before {
+  content: ">_ ";
+  color: #ffffff;
+  opacity: 0.5;
+  margin-right: 8px;
+  font-weight: 400;
+}
+
+/* 6. The Blinking Cursor Suffix ( █ ) */
+.architecture-tagline::after {
+  content: " █";
+  display: inline-block;
+  margin-left: 8px;
+  color: #ff6b00;
+  opacity: 1;
+  font-size: 0.8em;
+  vertical-align: baseline;
+  animation: terminal-blink 1s step-end infinite;
+}
+
+/* 7. Hover Effect: Brighten the system */
+.architecture-tagline:hover {
+  background: rgba(20, 20, 20, 0.9) !important;
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.1) !important;
+  border-left-color: #ff8533 !important; /* Lighter orange on hover */
+  cursor: default;
+}
+
+/* The Blink Animation */
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Mobile Tweak: Prevent text overflow */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    font-size: 0.8rem !important;
+    padding: 0.6rem 1rem !important;
+    white-space: normal !important; /* Allow wrapping on small phones */
+    text-align: left !important;    /* Terminals align left */
+  }
+}
