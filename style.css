@@ -9355,3 +9355,95 @@ div#services .cards .card.card-wide .card-actions {
   display: inline !important;
   animation: terminal-blink 1s step-end infinite !important;
 }
+
+/* ===== ARCHITECTURAL TRIPTYCH STYLES ===== */
+
+.triptych-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.triptych-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.triptych-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.triptych-card h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.triptych-card p {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-align: center;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.triptych-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: auto;
+  transition: transform 0.2s ease;
+  display: block;
+}
+
+.triptych-card:hover {
+  transform: translateY(-5px);
+}
+
+.triptych-card:hover .triptych-link {
+  transform: translateX(4px);
+}
+
+/* --- Theme Colors --- */
+
+/* Core: Blue */
+.core-card { border-top: 1px solid rgba(0, 123, 255, 0.5); }
+.core-card .triptych-icon { color: #007bff; text-shadow: 0 0 15px rgba(0, 123, 255, 0.4); }
+.core-card .triptych-link { color: #007bff; }
+.core-card:hover { border-color: #007bff; box-shadow: 0 0 30px rgba(0, 123, 255, 0.15); }
+
+/* Range: Purple */
+.range-card { border-top: 1px solid rgba(157, 0, 255, 0.5); }
+.range-card .triptych-icon { color: #9d00ff; text-shadow: 0 0 15px rgba(157, 0, 255, 0.4); }
+.range-card .triptych-link { color: #9d00ff; }
+.range-card:hover { border-color: #9d00ff; box-shadow: 0 0 30px rgba(157, 0, 255, 0.15); }
+
+/* Scale: Green */
+.scale-card { border-top: 1px solid rgba(0, 255, 136, 0.5); }
+.scale-card .triptych-icon { color: #00ff88; text-shadow: 0 0 15px rgba(0, 255, 136, 0.4); }
+.scale-card .triptych-link { color: #00ff88; }
+.scale-card:hover { border-color: #00ff88; box-shadow: 0 0 30px rgba(0, 255, 136, 0.15); }
+
+/* Mobile */
+@media (max-width: 900px) {
+  .triptych-grid { grid-template-columns: 1fr; gap: 20px; }
+}
