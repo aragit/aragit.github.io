@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1770997772?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1771003399?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -195,13 +195,67 @@
         <h3 class="insight-articles-title">The Trinity of Survival</h3>
         <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
         
-        <div class="arch-image-container">
-          <img src="masterarchY.jpg" alt="Architecture Diagram" class="arch-diagram-img">
+                <div class="arch-dashboard">
+          
+          <div class="arch-manifesto">
+            
+            <div class="manifesto-item">
+              <span class="manifesto-num">01</span>
+              <div class="manifesto-content">
+                <h4>The Planning Rubicon</h4>
+                <p>Stop the "Chat Loop." A true agent separates <span class="text-accent">reasoning</span> from <span class="text-accent">execution</span>. The LLM proposes a plan; a rigid runtime commits it. <em>No plan? No action.</em></p>
+              </div>
+            </div>
+
+            <div class="manifesto-item">
+              <span class="manifesto-num">02</span>
+              <div class="manifesto-content">
+                <h4>Neuro-Symbolic Split</h4>
+                <p>The Brain (LLM) suggests; The Body (Code) decides. We never grant the LLM root access. This separation is the only way to guarantee <span class="text-accent">safety in production</span>.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-item">
+              <span class="manifesto-num">03</span>
+              <div class="manifesto-content">
+                <h4>Governance as Code</h4>
+                <p>Safety must be inline, not an afterthought. The Orchestrator acts as the system's "conscience," using <span class="text-accent">OPA Policies</span> to veto dangerous actions before they execute.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-item">
+              <span class="manifesto-num">04</span>
+              <div class="manifesto-content">
+                <h4>Strict Contracts</h4>
+                <p>Inputs must be parsed and validated (Pydantic/JSON Schema). If the output doesn't validate, the program <span class="text-accent">crashes intentionally</span> rather than hallucinating a parameter.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-item">
+              <span class="manifesto-num">05</span>
+              <div class="manifesto-content">
+                <h4>The OODA Loop</h4>
+                <p>Observe, Orient, Decide, Act. The architecture persists state, logs outcomes, and feeds results back into memory. We build systems that <span class="text-accent">anticipate failure</span>.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="arch-visual">
+            <div class="sticky-wrapper">
+              <div class="arch-image-wrapper">
+                <img src="masterarchY.jpg" alt="Agentic Architecture Diagram" class="arch-diagram-img">
+                <div class="scan-line"></div>
+              </div>
+              
+              <div class="architecture-tagline">
+                Deterministic Core · Stochastic Range · Multi-Agent Scale
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="architecture-tagline">
-          Deterministic Core · Stochastic Range · Multi-Agent Scale
-        </div>
         
                                         <div class="triptych-grid">
           
