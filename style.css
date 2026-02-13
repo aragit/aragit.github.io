@@ -9336,3 +9336,60 @@ div#services .cards .card.card-wide .card-actions {
     font-size: 0.85rem !important;
   }
 }
+
+/* ===== FIX: THIN FONT & PERFECT CENTERING ===== */
+.architecture-tagline {
+  /* 1. Layout: Lock to center */
+  display: table !important;       /* "table" centers better than block for variable width */
+  margin: 2rem auto !important;    /* Auto margins force horizontal center */
+  width: auto !important;
+  max-width: 95% !important;
+  
+  /* 2. Visuals: Deep black & Status Bar */
+  background: #080808 !important;  /* Pure matte black */
+  background-image: none !important; 
+  border: none !important;
+  border-left: 3px solid #ff6b00 !important; /* The Orange Status Bar */
+  border-radius: 2px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  
+  /* 3. Typography: The "Narrow Thin" Look */
+  /* This stack prioritizes thinner, cleaner coding fonts over Courier */
+  font-family: 'Menlo', 'Consolas', 'Monaco', 'Liberation Mono', 'Lucida Console', monospace !important;
+  font-weight: 300 !important;     /* Thin weight */
+  font-size: 0.9rem !important;    /* Slightly smaller for that sharp look */
+  color: #ff6b00 !important;       /* Orange Text */
+  letter-spacing: -0.02em !important; /* Slightly squeeze letters (Narrow) */
+  padding: 12px 24px !important;
+  text-align: left !important;
+}
+
+/* 4. The Prompt (>_) : Bright & Distinct */
+.architecture-tagline::before {
+  content: ">_" !important;
+  color: #666 !important;          /* Darker grey prompt for contrast */
+  font-weight: 600 !important;     /* Prompt stays slightly bolder */
+  margin-right: 12px !important;
+  letter-spacing: 0 !important;
+}
+
+/* 5. The Cursor (█) : Thin & Blinking */
+.architecture-tagline::after {
+  content: " ▋" !important;        /* Use a slightly thinner block character */
+  color: #ff6b00 !important;
+  font-size: 0.85em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+  opacity: 1 !important;
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    display: block !important;
+    width: 90% !important;
+    font-size: 0.8rem !important;
+    white-space: normal !important;
+  }
+}
