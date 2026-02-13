@@ -9179,3 +9179,130 @@ div#services .cards .card.card-wide .card-actions {
   box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Add depth */
   border-radius: 8px;                  /* Smooth corners */
 }
+
+/* =========================================
+   CRITICAL REFACTOR: CONSOLIDATED STYLES
+   (Replaces JS Layout Hacks & Stabilizes UI)
+   ========================================= */
+
+/* 1. Global Card Stability (Replaces JS Hack) */
+.card, 
+.cs-card, 
+#services .card, 
+#portfolio .card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 280px !important;
+  height: 100% !important;
+  background: rgba(25, 25, 25, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  box-sizing: border-box !important;
+  transform: none !important; /* Stop 3D Jitter */
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* 2. Terminal Tagline Polish (Refined) */
+.architecture-tagline {
+  display: inline-block !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  margin: 1.5rem auto 2.5rem !important;
+  background: rgba(10, 10, 10, 0.95) !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding: 10px 20px !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  color: #ff6b00 !important;
+  text-transform: none !important;
+  letter-spacing: 0px !important;
+  text-align: left !important;
+}
+
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #e0e0e0 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  margin-right: 10px !important;
+  position: static !important;
+  display: inline !important;
+}
+
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  font-size: 0.85em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+  position: static !important;
+  display: inline !important;
+}
+
+/* 3. Service Cards: Uniform Layout & Subtitles */
+#services .card.service-card {
+  align-items: center !important;
+  text-align: center !important;
+  justify-content: space-between !important;
+  padding: 2rem 1.5rem !important;
+}
+
+#services .card.service-card .card-body {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+}
+
+#services .card.service-card .card-body p.service-subtitle {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+/* 4. Medical Triage / Featured Card Alignment */
+/* Fixes the split layout on desktop */
+#portfolio .card-featured .featured-flex {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 40px !important;
+}
+
+#portfolio .featured-info {
+  flex: 0 0 45% !important;
+  text-align: left !important;
+  align-self: flex-start !important;
+}
+
+#portfolio .featured-terminal {
+  flex: 0 0 50% !important;
+  margin-top: 2.5rem !important; /* Aligns with Title */
+  background: #000 !important;
+  border: 1px solid #333 !important;
+}
+
+/* 5. Typography Fixes (Orange -> White Headlines) */
+.insight-headline, 
+.headline-line1, 
+.headline-line2 {
+  color: #ffffff !important;
+}
+
+/* 6. Mobile Tweaks */
+@media (max-width: 900px) {
+  #portfolio .card-featured .featured-flex { flex-direction: column !important; }
+  .architecture-tagline { 
+    display: block !important; 
+    width: 90% !important; 
+    white-space: normal !important; 
+  }
+}
