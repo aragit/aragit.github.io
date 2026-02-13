@@ -9529,3 +9529,68 @@ div#services .cards .card.card-wide .card-actions {
     text-align: left !important;
   }
 }
+
+/* ===== MASTER FIX: ARCHITECTURE TAGLINE (BLINKING + THIN) ===== */
+
+/* 1. DEFINE THE ANIMATION (This was missing!) */
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.architecture-tagline {
+  /* Layout: Lock to center */
+  display: table !important;
+  margin: 1.5rem auto 2.5rem !important;
+  width: auto !important;
+  max-width: 95% !important;
+  
+  /* Visuals: Deep black & Status Bar */
+  background: #080808 !important;
+  background-image: none !important;
+  border: none !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  
+  /* Typography: Thin & Modern (Not Courier) */
+  font-family: 'Menlo', 'Consolas', 'Monaco', 'Liberation Mono', 'Lucida Console', monospace !important;
+  font-weight: 300 !important;
+  font-size: 0.9rem !important;
+  color: #ff6b00 !important;
+  letter-spacing: -0.02em !important;
+  padding: 12px 24px !important;
+  text-align: left !important;
+}
+
+/* Prompt (>_) */
+.architecture-tagline::before {
+  content: ">_" !important;
+  color: #666 !important;
+  font-weight: 600 !important;
+  margin-right: 12px !important;
+  letter-spacing: 0 !important;
+  display: inline-block !important;
+}
+
+/* Cursor (▋) - Blinking Enabled */
+.architecture-tagline::after {
+  content: " ▋" !important;
+  color: #ff6b00 !important;
+  font-size: 0.85em !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+  display: inline-block !important;
+  /* Link to the @keyframes defined at the top */
+  animation: terminal-blink 1s step-end infinite !important;
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    display: block !important;
+    width: 90% !important;
+    font-size: 0.8rem !important;
+    white-space: normal !important;
+  }
+}
