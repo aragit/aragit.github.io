@@ -9083,3 +9083,72 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
+
+/* ===== FIX: TERMINAL TAGLINE OVERRIDES ===== */
+/* High specificity to overwrite previous grid styles */
+.architecture-tagline {
+  /* 1. Layout & Centering Fix */
+  display: block !important;
+  width: fit-content !important;  /* Shrink to text size */
+  margin: 2rem auto !important;   /* Force horizontal centering */
+  max-width: 95% !important;
+  
+  /* 2. Remove Old Blue Grid/Backgrounds */
+  background-image: none !important;
+  background-color: rgba(15, 15, 15, 0.9) !important; /* Solid dark terminal bg */
+  box-shadow: none !important;    /* Remove blue glow */
+  border: none !important;        /* Reset borders */
+  
+  /* 3. New Terminal Aesthetic */
+  border-left: 4px solid #ff6b00 !important; /* Thick orange status bar */
+  padding: 12px 24px !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 1rem !important;
+  color: #ff6b00 !important;
+  letter-spacing: 0px !important; /* Standard terminal spacing */
+  text-transform: none !important;
+}
+
+/* 4. CRITICAL FIX: Reset Pseudo-elements */
+/* This stops the prompt from floating "up" and overlapping text */
+.architecture-tagline::before,
+.architecture-tagline::after {
+  position: static !important;    /* Forces them to flow INLINE with text */
+  display: inline !important;
+  background: none !important;    /* Removes any lingering grid patterns */
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  box-shadow: none !important;
+  top: auto !important;
+  left: auto !important;
+  content: "" !important;         /* Reset content to be safe before redefining */
+}
+
+/* 5. Define Terminal Prompt */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #666 !important;         /* Dim grey prompt */
+  font-weight: 700 !important;
+  margin-right: 8px !important;
+}
+
+/* 6. Define Blinking Cursor */
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  font-size: 0.8em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    width: 90% !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+    text-align: left !important;
+  }
+}
