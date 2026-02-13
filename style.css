@@ -9901,3 +9901,68 @@ code.terminal::after {
   color: #4dff88 !important;
   text-shadow: 0 0 6px rgba(77,255,136,0.45);
 }
+
+/* =========================================================
+   FINAL FIX — Architecture Philosophy terminal behavior
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1) REMOVE ANY CURSOR FROM SUBTITLE COMPLETELY
+   --------------------------------------------------------- */
+.insight-articles .section-subtitle::before,
+.insight-articles .section-subtitle::after {
+  content: none !important;
+  animation: none !important;
+  display: none !important;
+}
+
+/* ---------------------------------------------------------
+   2) ARCHITECTURE TAGLINE — FORCE GREEN TEXT (already OK)
+   --------------------------------------------------------- */
+.insight-articles .architecture-tagline {
+  color: #4dff88 !important;
+  text-shadow: 0 0 6px rgba(77,255,136,0.35) !important;
+}
+
+/* ---------------------------------------------------------
+   3) RESTORE GREEN PROMPT (LEFT SIDE)
+   --------------------------------------------------------- */
+.insight-articles .architecture-tagline::before {
+  content: "> " !important;
+  display: inline-block !important;
+  color: #4dff88 !important;
+  margin-right: 4px;
+  text-shadow: 0 0 6px rgba(77,255,136,0.45);
+}
+
+/* ---------------------------------------------------------
+   4) BLINKING CURSOR (RIGHT SIDE — SINGLE SOURCE OF TRUTH)
+   --------------------------------------------------------- */
+.insight-articles .architecture-tagline::after {
+  content: "▋" !important;
+  display: inline-block !important;
+  margin-left: 6px !important;
+  color: #4dff88 !important;
+  text-shadow: 0 0 6px rgba(77,255,136,0.6) !important;
+  animation: arch-tagline-cursor-blink 1s steps(1,end) infinite !important;
+  opacity: 1 !important;
+}
+
+/* ---------------------------------------------------------
+   5) BLINK KEYFRAMES (UNIQUE NAME — NO CONFLICTS)
+   --------------------------------------------------------- */
+@keyframes arch-tagline-cursor-blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ---------------------------------------------------------
+   6) ACCESSIBILITY
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .insight-articles .architecture-tagline::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
