@@ -9732,3 +9732,16 @@ div#services .cards .card.card-wide .card-actions {
   animation: cursor-blink-final 1s step-end infinite !important;
   margin-left: 8px !important;
 }
+
+
+.architecture-terminal {
+  color: #4DFF88;
+}
+
+
+.architecture-terminal .prompt,
+.architecture-terminal .terminal-prompt,
+.architecture-terminal .score {
+  color: #4DFF88;
+  text-shadow: 0 0 6px rgba(77, 255, 136, 0.65);
+}
