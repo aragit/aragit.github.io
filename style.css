@@ -9160,3 +9160,22 @@ div#services .cards .card.card-wide .card-actions {
   height: auto !important;
   margin: 0 auto !important;   /* Ensure centering */
 }
+
+/* ===== FORCE CENTER IMAGE ===== */
+.arch-image-container {
+  display: flex !important;            /* Turn on Flexbox */
+  justify-content: center !important;  /* Center horizontally */
+  align-items: center !important;      /* Center vertically */
+  width: 100% !important;              /* Span full width of the section */
+  margin: 2rem 0 1rem 0 !important;    /* Add breathing room top/bottom */
+}
+
+.arch-diagram-img {
+  display: block !important;
+  margin: 0 auto !important;           /* Fallback centering */
+  max-width: 600px !important;         /* Restrict size */
+  width: 100% !important;              /* Responsive on mobile */
+  height: auto !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Add depth */
+  border-radius: 8px;                  /* Smooth corners */
+}
