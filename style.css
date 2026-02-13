@@ -5149,7 +5149,7 @@ ul.insight-bullets li {
 /* Architecture Philosophy subtitle */
 .insight-articles-title::after,
 #about .insight-articles-title::after {
-  content: "Architectures that Learn, not Rules that Break";
+  content: "" !important;
   display: block;
   font-size: 0.85rem;
   font-weight: 400;
@@ -5251,7 +5251,7 @@ ul.insight-bullets li {
 
 /* If using ::after pseudo-elements */
 .insight-articles-title::after {
-  content: "Architectures that Learn, not Rules that Break" !important;
+  content: "" !important;
   color: #ffffff !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
