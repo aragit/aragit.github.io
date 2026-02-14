@@ -10026,3 +10026,29 @@ div#services .cards .card.card-wide .card-actions {
     flex: 1;
   }
 }
+
+/* =========================================
+   TERMINAL TAGLINE SPECIFIC STYLES
+   ========================================= */
+.term-green-text {
+  color: #4af626 !important; /* Pure terminal green */
+  font-family: 'Fira Code', 'Courier New', monospace !important;
+  font-weight: 500 !important;
+  text-shadow: 0 0 8px rgba(74, 246, 38, 0.3) !important; /* CRT glow effect */
+}
+
+.prompt-sign {
+  font-weight: bold !important;
+  margin-right: 8px !important;
+}
+
+.cursor-blink {
+  margin-left: 4px !important;
+  animation: term-blink 1s step-end infinite !important;
+}
+
+/* The actual blinking logic */
+@keyframes term-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
