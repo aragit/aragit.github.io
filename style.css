@@ -9936,3 +9936,34 @@ div#services .cards .card.card-wide .card-actions {
   }
   .principle-icon { margin-bottom: 0; }
 }
+
+/* Fix for Tagline placement and Cursor alignment */
+.architecture-tagline {
+  display: block !important;
+  margin: 1.5rem auto 1rem auto !important;
+  text-align: center !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  color: #ff6b00 !important;
+  font-size: 1.1rem !important;
+}
+
+.architecture-tagline::after {
+  content: " █" !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+.principles-horizontal-grid {
+  margin-top: 0 !important;
+  margin-bottom: 4rem !important;
+  background: rgba(15, 15, 15, 0.6) !important;
+  border-top: 1px solid rgba(255, 107, 0, 0.2) !important;
+  border-bottom: 1px solid rgba(255, 107, 0, 0.2) !important;
+  padding: 2rem 1rem !important;
+}
+
+@keyframes terminal-blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
