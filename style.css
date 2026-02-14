@@ -9981,3 +9981,10 @@ div#services .cards .card.card-wide .card-actions {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+/* Forcefully remove any old CSS-injected prompts or cursors */
+.architecture-tagline::before,
+.architecture-tagline::after {
+  content: none !important;
+  display: none !important;
+}
