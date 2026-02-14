@@ -10052,3 +10052,42 @@ div#services .cards .card.card-wide .card-actions {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+/* =========================================
+   7TH PRINCIPLE CAPSTONE LAYOUT
+   ========================================= */
+.principle-capstone {
+  /* Forces the card to span all columns in the grid */
+  grid-column: 1 / -1 !important; 
+  background: linear-gradient(145deg, rgba(255, 107, 0, 0.08) 0%, rgba(17, 17, 17, 1) 40%) !important;
+  border-color: rgba(255, 107, 0, 0.4) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem !important;
+}
+
+.principle-capstone:hover {
+  box-shadow: 0 10px 40px rgba(255, 107, 0, 0.15) !important;
+  transform: translateY(-5px);
+}
+
+/* Desktop & Tablet Layout (Horizontal split for the wide card) */
+@media (min-width: 768px) {
+  .principle-capstone {
+    flex-direction: row;
+    text-align: left;
+    padding: 2.5rem 4rem !important;
+    gap: 3rem;
+  }
+  
+  .principle-capstone .principle-icon {
+    margin-bottom: 0 !important;
+    font-size: 3.5rem !important; /* Make the DNA icon larger to anchor the section */
+  }
+  
+  .principle-capstone .capstone-text {
+    flex: 1;
+  }
+}
