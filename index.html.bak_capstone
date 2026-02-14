@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771112658?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1771108454?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -235,72 +235,46 @@
       <h4>06. Latency Trade-Off</h4>
       <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency.</p>
     </div>
-
-      <div class="principle-item principle-capstone">
-        <div class="principle-icon"><i class="fas fa-dna"></i></div>
-        <div class="capstone-text">
-          <h4>07. Continuous Learning & Memory</h4>
-          <p>A true agent doesn't solve the same problem from scratch twice. When it successfully completes a complex workflow, it saves those exact steps into long-term memory. The system actually learns over time, turning today's slow reasoning into tomorrow's instant reflex.</p>
-        </div>
-      </div>
-
   </div>
 </div>
 
         <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
           <span class="prompt-sign">&gt;_</span> Deterministic Core &middot; Stochastic Range &middot; Multi-Agent Scale <span class="cursor-blink">&#9608;</span>
         </div>
-    <div class="execution-trace-container">
-      <div class="trace-line"></div>
 
-      <div class="trace-card left">
-        <div class="principle-icon"><i class="fas fa-route"></i></div>
-        <h4>01. Planning Rubicon</h4>
-        <p>Reasoning is strictly separate from execution. Agents must produce a committable plan before acting.</p>
-      </div>
+        <div class="triptych-grid">
+          
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" target="_blank" class="triptych-card core-card">
+            <div class="triptych-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Deterministic Core</h3>
+            <p>Enterprise autonomy requires absolute reliability. We treat the LLM as an untrusted guest within a rigid state machine, ensuring critical actions are governed by deterministic logic, not probabilistic guesses.</p>
+            <span class="triptych-link">Read: Why "Chatbots" Fail &rarr;</span>
+          </a>
 
-      <div class="trace-card right">
-        <div class="principle-icon"><i class="fas fa-microchip"></i></div>
-        <h4>02. Brain vs. Body</h4>
-        <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer controls execution.</p>
-      </div>
+          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" target="_blank" class="triptych-card range-card">
+            <div class="triptych-icon"><i class="fas fa-brain"></i></div>
+            <h3>Stochastic Range</h3>
+            <p>Intelligence is useless without constraints. We architect reasoning engines that explore solutions creatively but operate strictly within a pre-validated "Stochastic Range" to prevent hallucinations in high-stakes environments.</p>
+            <span class="triptych-link">Read: The Engine of Reasoning &rarr;</span>
+          </a>
 
-      <div class="trace-card left">
-        <div class="principle-icon"><i class="fas fa-shield-alt"></i></div>
-        <h4>03. Governance First</h4>
-        <p>Inline policy gating with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
-      </div>
+          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" target="_blank" class="triptych-card scale-card">
+            <div class="triptych-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Multi-Agent Scale</h3>
+            <p>A single agent is a toy; a swarm is a platform. We transition from isolated bots to shared-memory actor models, allowing thousands of "Sentinel" units to collaborate on complex tasks without state fragmentation.</p>
+            <span class="triptych-link">Read: The 2026 Roadmap &rarr;</span>
+          </a>
 
-      <div class="trace-card right">
-        <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
-        <h4>04. Typed Interfaces & State</h4>
-        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally.</p>
-      </div>
+        </div>
 
-      <div class="trace-card left">
-        <div class="principle-icon"><i class="fas fa-sync"></i></div>
-        <h4>05. Reflection Loops</h4>
-        <p>Self-monitoring feedback loops where the architecture observes outcomes to refine reasoning.</p>
+<div class="articles-cta" style="margin-top: 2.5rem;">
+          <a href="architecture.html" class="btn-hero btn-primary">
+            Learn More
+          </a>
+        </div>
       </div>
-
-      <div class="trace-card right">
-        <div class="principle-icon"><i class="fas fa-balance-scale"></i></div>
-        <h4>06. Latency Trade-Off</h4>
-        <p>Optimizing for blast-radius containment over speed. Enforcing safe latency via strict schemas.</p>
-      </div>
-    </div>
-
-    <div class="principle-capstone">
-      <div class="capstone-text">
-        <div class="principle-icon"><i class="fas fa-dna"></i></div>
-        <h4>07. Continuous Learning & Memory</h4>
-        <p>Agents commit architectures to long-term memory. It uses <strong>Vector DBs</strong> for context and <strong>DAGs</strong> for deterministic execution.</p>
-      </div>
-      <div class="capstone-visual">
-        <img src="images/learning.jpg" alt="Agentic Architecture" class="capstone-image">
-      </div>
-    </div>
-</section>
+      
+    </section>
     <!-- PORTFOLIO -->
     <!-- CASE STUDIES - NEW AGENTIC DESIGN -->
 
