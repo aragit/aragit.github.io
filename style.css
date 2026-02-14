@@ -9861,3 +9861,97 @@ div#services .cards .card.card-wide .card-actions {
   /* Remove the orange glow shadow */
   box-shadow: none !important;
 }
+
+/* =========================================
+   6 CORE AGENTIC PRINCIPLES GRID
+   ========================================= */
+.principles-strip {
+  margin: 4rem 0;
+  padding: 3rem 1.5rem;
+  background: rgba(10, 10, 10, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.principles-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.principles-strip-title {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.principles-strip-subtitle {
+  color: #ff6b00;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.principle-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+.principle-card:hover {
+  border-color: rgba(255, 107, 0, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 107, 0, 0.08);
+  background: #141414;
+}
+.principle-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: #ff6b00;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.principle-card:hover::before {
+  opacity: 1;
+}
+.principle-icon {
+  font-size: 1.8rem;
+  color: #ff6b00;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 107, 0, 0.1);
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+.principle-card h4 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Fira Code', monospace;
+}
+.principle-card p {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .principles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .principles-grid { grid-template-columns: 1fr; }
+  .principle-card { padding: 1.5rem; }
+  .principles-strip { padding: 2rem 1rem; }
+}
