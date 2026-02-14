@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771082694?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1771083068?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -196,11 +196,6 @@
         <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
         
                         
-        <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
-          Deterministic Core · Stochastic Range · Multi-Agent Scale
-        <div class="principles-horizontal-grid">
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-route"></i></div>
             <h4>Planning Rubicon</h4>
             <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting.</p>
           </div>
