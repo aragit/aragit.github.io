@@ -10018,3 +10018,36 @@ div#services .cards .card.card-wide .card-actions {
 @media (max-width: 600px) {
   .principles-horizontal-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
 }
+
+/* --- LOCK PRINCIPLES LAYOUT --- */
+.principles-horizontal-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important; /* Force 5 columns */
+  gap: 1.5rem !important;
+  margin: 2rem 0 3rem 0 !important;
+  padding: 2rem !important;
+  background: rgba(10, 10, 10, 0.95) !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 0 12px 12px 0 !important;
+}
+
+.principle-item {
+  display: flex !important;
+  flex-direction: column !important; /* Keep Icon over Text */
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Remove the blinking cursor from the deleted tagline */
+.architecture-tagline, .architecture-tagline::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ensure the 3 cards below (Trinity cards) keep their original container sizing */
+#trinity .triptych-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
+  width: 100% !important;
+}
