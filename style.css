@@ -9951,3 +9951,33 @@ div#services .cards .card.card-wide .card-actions {
   .principle-card { padding: 1.5rem; }
   .principles-strip { padding: 2rem 1rem; }
 }
+
+/* =========================================
+   TERMINAL TAGLINE OVERRIDES
+   ========================================= */
+.architecture-tagline {
+  border-left: none !important;       /* Removes the vertical orange line */
+  padding-left: 0 !important;         /* Removes the spacing left by the border */
+  color: #4af626 !important;          /* Terminal Green */
+  font-family: 'Fira Code', 'Courier New', monospace !important;
+  font-weight: 500 !important;
+  text-shadow: 0 0 8px rgba(74, 246, 38, 0.2); /* Slight phosphor glow */
+}
+
+.architecture-tagline .prompt-sign {
+  color: #4af626 !important;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.architecture-tagline .cursor-blink {
+  color: #4af626 !important;
+  margin-left: 4px;
+  animation: term-blink 1s step-end infinite;
+}
+
+/* The blinking animation */
+@keyframes term-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
