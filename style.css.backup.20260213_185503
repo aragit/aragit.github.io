@@ -5149,7 +5149,7 @@ ul.insight-bullets li {
 /* Architecture Philosophy subtitle */
 .insight-articles-title::after,
 #about .insight-articles-title::after {
-  content: "Architectures that Learn, not Rules that Break";
+  content: "" !important;
   display: block;
   font-size: 0.85rem;
   font-weight: 400;
@@ -5251,7 +5251,7 @@ ul.insight-bullets li {
 
 /* If using ::after pseudo-elements */
 .insight-articles-title::after {
-  content: "Architectures that Learn, not Rules that Break" !important;
+  content: "" !important;
   color: #ffffff !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
@@ -9084,6 +9084,118 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 
+/* ===== ARCHITECTURE PHILOSOPHY IMAGE ===== */
+.arch-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.arch-diagram-img {
+  display: block;
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.arch-diagram-img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(255, 107, 0, 0.15);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .arch-diagram-img {
+    max-width: 90%;
+    border-radius: 6px;
+  }
+  
+  .arch-image-container {
+    margin: 1rem auto 1.5rem;
+  }
+}
+
+/* ===== ARCHITECTURE PHILOSOPHY: CYBER-TERMINAL STYLE ===== */
+.architecture-tagline {
+  /* 1. Reset the old boxy grid styles */
+  background: rgba(10, 10, 10, 0.6) !important; /* Deep, semi-transparent terminal black */
+  background-image: none !important;             /* Remove grid lines */
+  border: none !important;                       /* Remove full border */
+  box-shadow: none !important;                   /* Remove old shadow */
+  
+  /* 2. The "Status Bar" Anchor */
+  border-left: 3px solid #ff6b00 !important;     /* A sleek left accent line */
+  border-radius: 2px !important;                 /* Minimal rounding */
+  
+  /* 3. Typography: The "Code" Look */
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem !important;                 /* Tech-sized text */
+  font-weight: 600 !important;
+  color: #ff6b00 !important;                     /* Brand Orange */
+  letter-spacing: 0.05em !important;
+  text-transform: none !important;               /* Natural case looks more like code */
+  text-shadow: 0 0 12px rgba(255, 107, 0, 0.4) !important; /* Subtle CRT glow */
+  
+  /* 4. Positioning */
+  display: inline-block !important;
+  width: auto !important;
+  max-width: 90% !important;
+  padding: 0.75rem 1.5rem !important;
+  margin: 1.5rem auto 2.5rem !important;
+  position: relative !important;
+}
+
+/* 5. The "Prompt" Prefix ( >_ ) */
+.architecture-tagline::before {
+  content: ">_ ";
+  color: #ffffff;
+  opacity: 0.5;
+  margin-right: 8px;
+  font-weight: 400;
+}
+
+/* 6. The Blinking Cursor Suffix ( █ ) */
+.architecture-tagline::after {
+  content: " █";
+  display: inline-block;
+  margin-left: 8px;
+  color: #ff6b00;
+  opacity: 1;
+  font-size: 0.8em;
+  vertical-align: baseline;
+  animation: terminal-blink 1s step-end infinite;
+}
+
+/* 7. Hover Effect: Brighten the system */
+.architecture-tagline:hover {
+  background: rgba(20, 20, 20, 0.9) !important;
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.1) !important;
+  border-left-color: #ff8533 !important; /* Lighter orange on hover */
+  cursor: default;
+}
+
+/* The Blink Animation */
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Mobile Tweak: Prevent text overflow */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    font-size: 0.8rem !important;
+    padding: 0.6rem 1rem !important;
+    white-space: normal !important; /* Allow wrapping on small phones */
+    text-align: left !important;    /* Terminals align left */
+  }
+}
+
 /* ===== FIX: TERMINAL TAGLINE OVERRIDES ===== */
 /* High specificity to overwrite previous grid styles */
 .architecture-tagline {
@@ -9153,88 +9265,52 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
-/* ===== FORCE IMAGE SIZE UPDATE ===== */
-.arch-diagram-img {
-  max-width: 600px !important; /* Force smaller size */
-  width: 100% !important;      /* Maintain responsiveness */
-  height: auto !important;
-  margin: 0 auto !important;   /* Ensure centering */
-}
-
-/* ===== FORCE CENTER IMAGE ===== */
-.arch-image-container {
-  display: flex !important;            /* Turn on Flexbox */
-  justify-content: center !important;  /* Center horizontally */
-  align-items: center !important;      /* Center vertically */
-  width: 100% !important;              /* Span full width of the section */
-  margin: 2rem 0 1rem 0 !important;    /* Add breathing room top/bottom */
-}
-
-.arch-diagram-img {
-  display: block !important;
-  margin: 0 auto !important;           /* Fallback centering */
-  max-width: 600px !important;         /* Restrict size */
-  width: 100% !important;              /* Responsive on mobile */
-  height: auto !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Add depth */
-  border-radius: 8px;                  /* Smooth corners */
-}
-
-/* =========================================
-   CRITICAL REFACTOR: CONSOLIDATED STYLES
-   (Replaces JS Layout Hacks & Stabilizes UI)
-   ========================================= */
-
-/* 1. Global Card Stability (Replaces JS Hack) */
-.card, 
-.cs-card, 
-#services .card, 
-#portfolio .card {
-  display: flex !important;
-  flex-direction: column !important;
-  min-height: 280px !important;
-  height: 100% !important;
-  background: rgba(25, 25, 25, 0.95) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 12px !important;
-  padding: 1.5rem !important;
-  box-sizing: border-box !important;
-  transform: none !important; /* Stop 3D Jitter */
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-/* 2. Terminal Tagline Polish (Refined) */
+/* ===== FINAL FIX: TERMINAL TAGLINE POLISH ===== */
 .architecture-tagline {
+  /* 1. Layout: Center perfectly */
   display: inline-block !important;
   width: fit-content !important;
   max-width: 95% !important;
-  margin: 1.5rem auto 2.5rem !important;
-  background: rgba(10, 10, 10, 0.95) !important;
-  background-image: none !important;
-  border: none !important;
-  box-shadow: none !important;
+  margin: 1.5rem auto 2.5rem !important; /* Center horizontally */
+  
+  /* 2. Visuals: Kill the blue grid & borders */
+  background: rgba(10, 10, 10, 0.95) !important; /* Deep solid black/grey */
+  background-image: none !important;             /* REMOVE BLUE GRID */
+  border: none !important;                       /* Remove box borders */
+  box-shadow: none !important;                   /* Remove glow */
+  
+  /* 3. Status Bar: The only border we keep */
   border-left: 3px solid #ff6b00 !important;
   border-radius: 0 4px 4px 0 !important;
   padding: 10px 20px !important;
+  
+  /* 4. Typography: Normal weight, Tech font */
   font-family: 'Courier New', Courier, monospace !important;
   font-size: 0.95rem !important;
-  font-weight: 400 !important;
-  color: #ff6b00 !important;
+  font-weight: 400 !important;       /* NORMAL FONT (was bold) */
+  color: #ff6b00 !important;         /* Orange text */
   text-transform: none !important;
   letter-spacing: 0px !important;
   text-align: left !important;
 }
 
+/* 5. The Prompt (>_) : Brighter & Bolder */
 .architecture-tagline::before {
   content: ">_ " !important;
-  color: #e0e0e0 !important;
-  font-weight: 700 !important;
-  opacity: 1 !important;
+  color: #e0e0e0 !important;         /* Brighter/Bold White-Grey */
+  font-weight: 700 !important;       /* Bold Prompt */
+  opacity: 1 !important;             /* Fully visible */
   margin-right: 10px !important;
+  
+  /* Fix positioning: ensure it stays inline */
   position: static !important;
   display: inline !important;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
 }
 
+/* 6. The Cursor (█) */
 .architecture-tagline::after {
   content: " █" !important;
   color: #ff6b00 !important;
@@ -9242,697 +9318,430 @@ div#services .cards .card.card-wide .card-actions {
   animation: terminal-blink 1s step-end infinite !important;
   margin-left: 8px !important;
   vertical-align: baseline !important;
+  
+  /* Fix positioning */
   position: static !important;
   display: inline !important;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
 }
 
-/* 3. Service Cards: Uniform Layout & Subtitles */
-#services .card.service-card {
-  align-items: center !important;
-  text-align: center !important;
-  justify-content: space-between !important;
-  padding: 2rem 1.5rem !important;
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    display: block !important;
+    width: 90% !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+  }
 }
 
-#services .card.service-card .card-body {
-  flex: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
+/* ===== FIX: THIN FONT & PERFECT CENTERING ===== */
+.architecture-tagline {
+  /* 1. Layout: Lock to center */
+  display: table !important;       /* "table" centers better than block for variable width */
+  margin: 2rem auto !important;    /* Auto margins force horizontal center */
+  width: auto !important;
+  max-width: 95% !important;
+  
+  /* 2. Visuals: Deep black & Status Bar */
+  background: #080808 !important;  /* Pure matte black */
+  background-image: none !important; 
+  border: none !important;
+  border-left: 3px solid #ff6b00 !important; /* The Orange Status Bar */
+  border-radius: 2px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  
+  /* 3. Typography: The "Narrow Thin" Look */
+  /* This stack prioritizes thinner, cleaner coding fonts over Courier */
+  font-family: 'Menlo', 'Consolas', 'Monaco', 'Liberation Mono', 'Lucida Console', monospace !important;
+  font-weight: 300 !important;     /* Thin weight */
+  font-size: 0.9rem !important;    /* Slightly smaller for that sharp look */
+  color: #ff6b00 !important;       /* Orange Text */
+  letter-spacing: -0.02em !important; /* Slightly squeeze letters (Narrow) */
+  padding: 12px 24px !important;
+  text-align: left !important;
 }
 
-#services .card.service-card .card-body p.service-subtitle {
-  color: #ffffff !important;
-  font-weight: 700 !important;
+/* 4. The Prompt (>_) : Bright & Distinct */
+.architecture-tagline::before {
+  content: ">_" !important;
+  color: #666 !important;          /* Darker grey prompt for contrast */
+  font-weight: 600 !important;     /* Prompt stays slightly bolder */
+  margin-right: 12px !important;
+  letter-spacing: 0 !important;
+}
+
+/* 5. The Cursor (█) : Thin & Blinking */
+.architecture-tagline::after {
+  content: " ▋" !important;        /* Use a slightly thinner block character */
+  color: #ff6b00 !important;
+  font-size: 0.85em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
   opacity: 1 !important;
 }
 
-/* 4. Medical Triage / Featured Card Alignment */
-/* Fixes the split layout on desktop */
-#portfolio .card-featured .featured-flex {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  justify-content: space-between !important;
-  gap: 40px !important;
-}
-
-#portfolio .featured-info {
-  flex: 0 0 45% !important;
-  text-align: left !important;
-  align-self: flex-start !important;
-}
-
-#portfolio .featured-terminal {
-  flex: 0 0 50% !important;
-  margin-top: 2.5rem !important; /* Aligns with Title */
-  background: #000 !important;
-  border: 1px solid #333 !important;
-}
-
-/* 5. Typography Fixes (Orange -> White Headlines) */
-.insight-headline, 
-.headline-line1, 
-.headline-line2 {
-  color: #ffffff !important;
-}
-
-/* 6. Mobile Tweaks */
-@media (max-width: 900px) {
-  #portfolio .card-featured .featured-flex { flex-direction: column !important; }
-  .architecture-tagline { 
-    display: block !important; 
-    width: 90% !important; 
-    white-space: normal !important; 
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    display: block !important;
+    width: 90% !important;
+    font-size: 0.8rem !important;
+    white-space: normal !important;
   }
 }
 
-/* ===== EMERGENCY FIX: CENTER THE TAGLINE ===== */
+/* ===== FIX: RESTORE BLINKING CURSOR & THIN FONT ===== */
+
+/* 1. Define the Blink Animation (Critical Fix) */
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 .architecture-tagline {
-  /* 1. Layout: Use BLOCK + MARGIN AUTO to force centering */
-  display: block !important;       /* Must be block to accept margin: auto */
-  width: fit-content !important;   /* Shrink to fit the text */
-  margin-left: auto !important;    /* Push equally from left */
-  margin-right: auto !important;   /* Push equally from right */
-  margin-top: 2rem !important;
-  margin-bottom: 2rem !important;
-
-  /* 2. Visuals: Keep the clean terminal look */
-  background: rgba(10, 10, 10, 0.95) !important;
+  /* Layout: Lock to center */
+  display: table !important;
+  margin: 2rem auto !important;
+  width: auto !important;
+  max-width: 95% !important;
+  
+  /* Visuals: Deep black & Status Bar */
+  background: #080808 !important;
+  background-image: none !important; 
+  border: none !important;
   border-left: 3px solid #ff6b00 !important;
-  border-radius: 0 4px 4px 0 !important;
-  padding: 10px 20px !important;
+  border-radius: 2px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
   
-  /* 3. Text: Orange & Tech Font */
+  /* Typography: The "Narrow Thin" Look */
+  font-family: 'Menlo', 'Consolas', 'Monaco', 'Liberation Mono', 'Lucida Console', monospace !important;
+  font-weight: 300 !important;
+  font-size: 0.9rem !important;
   color: #ff6b00 !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  font-size: 0.95rem !important;
-  font-weight: 500 !important;
-  text-align: left !important; /* Internal text stays left (next to prompt) */
-  
-  /* 4. Reset legacy properties that cause bugs */
-  float: none !important;
-  position: static !important;
-  box-shadow: none !important;
-  background-image: none !important;
-  border-top: none !important;
-  border-right: none !important;
-  border-bottom: none !important;
+  letter-spacing: -0.02em !important;
+  padding: 12px 24px !important;
+  text-align: left !important;
 }
 
-/* Ensure prompt stays inline */
+/* Prompt (>_) */
 .architecture-tagline::before {
-  content: ">_ " !important;
-  color: #e0e0e0 !important;
-  font-weight: 700 !important;
-  display: inline !important;
+  content: ">_" !important;
+  color: #666 !important;
+  font-weight: 600 !important;
+  margin-right: 12px !important;
+  letter-spacing: 0 !important;
+  opacity: 1 !important;
+  display: inline-block !important;
 }
 
-/* Ensure cursor stays inline */
+/* Cursor (▋) - Blinking Restored */
 .architecture-tagline::after {
-  content: " █" !important;
+  content: " ▋" !important;
   color: #ff6b00 !important;
-  display: inline !important;
+  font-size: 0.85em !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+  opacity: 1 !important;
+  display: inline-block !important;
+  /* The animation connects to the @keyframes defined above */
   animation: terminal-blink 1s step-end infinite !important;
 }
 
-/* ===== ARCHITECTURAL TRIPTYCH STYLES ===== */
-
-.triptych-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-}
-
-.triptych-card {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 2rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-}
-
-.triptych-icon {
-  font-size: 2rem;
-  margin-bottom: 1.2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.triptych-card h3 {
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.triptych-card p {
-  color: #b0b0b0;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  text-align: center;
-  flex-grow: 1;
-  margin-bottom: 1.5rem;
-}
-
-.triptych-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: auto;
-  transition: transform 0.2s ease;
-  display: block;
-}
-
-.triptych-card:hover {
-  transform: translateY(-5px);
-}
-
-.triptych-card:hover .triptych-link {
-  transform: translateX(4px);
-}
-
-/* --- Theme Colors --- */
-
-/* Core: Blue */
-.core-card { border-top: 1px solid rgba(0, 123, 255, 0.5); }
-.core-card .triptych-icon { color: #007bff; text-shadow: 0 0 15px rgba(0, 123, 255, 0.4); }
-.core-card .triptych-link { color: #007bff; }
-.core-card:hover { border-color: #007bff; box-shadow: 0 0 30px rgba(0, 123, 255, 0.15); }
-
-/* Range: Purple */
-.range-card { border-top: 1px solid rgba(157, 0, 255, 0.5); }
-.range-card .triptych-icon { color: #9d00ff; text-shadow: 0 0 15px rgba(157, 0, 255, 0.4); }
-.range-card .triptych-link { color: #9d00ff; }
-.range-card:hover { border-color: #9d00ff; box-shadow: 0 0 30px rgba(157, 0, 255, 0.15); }
-
-/* Scale: Green */
-.scale-card { border-top: 1px solid rgba(0, 255, 136, 0.5); }
-.scale-card .triptych-icon { color: #00ff88; text-shadow: 0 0 15px rgba(0, 255, 136, 0.4); }
-.scale-card .triptych-link { color: #00ff88; }
-.scale-card:hover { border-color: #00ff88; box-shadow: 0 0 30px rgba(0, 255, 136, 0.15); }
-
-/* Mobile */
-@media (max-width: 900px) {
-  .triptych-grid { grid-template-columns: 1fr; gap: 20px; }
-}
-
-/* ===== QUICK TWEAK: LARGER ARCHITECTURE TAGLINE ===== */
-.architecture-tagline {
-  font-size: 1.25rem !important; /* Increased from 1rem to 1.25rem */
-  font-weight: 500 !important;   /* Ensure it stays readable */
-}
-
-/* Adjust for mobile screens so it fits */
+/* Mobile Tweak */
 @media (max-width: 600px) {
   .architecture-tagline {
-    font-size: 0.95rem !important; /* Slightly larger on mobile too */
+    display: block !important;
+    width: 90% !important;
+    font-size: 0.8rem !important;
+    white-space: normal !important;
   }
 }
 
-/* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
-.triptych-link {
-  text-transform: none !important;  /* Removes ALL CAPS */
-  font-weight: 400 !important;      /* Removes Bold */
-  font-size: 0.9rem !important;     /* Ensure readability */
-  letter-spacing: normal !important;
-}
-
-/* ===== FIX: TRIPTYCH LINKS (Refined) ===== */
-.triptych-link {
+/* ===== FIX: TERMINAL TAGLINE OVERRIDES ===== */
+/* High specificity to overwrite previous grid styles */
+.architecture-tagline {
+  /* 1. Layout & Centering Fix */
+  display: block !important;
+  width: fit-content !important;  /* Shrink to text size */
+  margin: 2rem auto !important;   /* Force horizontal centering */
+  max-width: 95% !important;
+  
+  /* 2. Remove Old Blue Grid/Backgrounds */
+  background-image: none !important;
+  background-color: rgba(15, 15, 15, 0.9) !important; /* Solid dark terminal bg */
+  box-shadow: none !important;    /* Remove blue glow */
+  border: none !important;        /* Reset borders */
+  
+  /* 3. New Terminal Aesthetic */
+  border-left: 4px solid #ff6b00 !important; /* Thick orange status bar */
+  padding: 12px 24px !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 1rem !important;
+  color: #ff6b00 !important;
+  letter-spacing: 0px !important; /* Standard terminal spacing */
   text-transform: none !important;
-  font-weight: 400 !important;
-  letter-spacing: normal !important;
-  font-size: 0.9rem !important;
-  margin-top: auto;
-  display: inline-block;
 }
 
-/* ===== RE-SKIN: Multi-Agent Scale (Green -> Orange) ===== */
-.scale-card {
-  border-top: 1px solid rgba(255, 107, 0, 0.5) !important;
-}
-
-.scale-card .triptych-icon {
-  color: #ff6b00 !important;
-  text-shadow: 0 0 15px rgba(255, 107, 0, 0.6) !important;
-}
-
-.scale-card .triptych-link {
-  color: #ff6b00 !important;
-}
-
-.scale-card:hover {
-  border-color: #ff6b00 !important;
-  box-shadow: 0 0 30px rgba(255, 107, 0, 0.2) !important;
-}
-
-/* ===== QUICK TWEAK: LARGER ARCHITECTURE IMAGE ===== */
-.arch-diagram-img {
-  max-width: 900px !important; /* Increased from 600px to 900px */
-}
-
-/* ===== FINE TUNE: REDUCE ARCHITECTURE IMAGE SIZE ===== */
-.arch-diagram-img {
-  max-width: 750px !important; /* Adjusted down from 900px */
-}
-
-/* ===== THE LIVING BLUEPRINT: DASHBOARD LAYOUT ===== */
-
-/* 1. The Container Grid */
-.arch-dashboard {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr; /* Text left, Image slightly wider */
-  gap: 60px;
-  margin: 3rem 0 5rem 0;
-  align-items: start;
-  position: relative;
-}
-
-/* 2. Left Column: Manifesto (Text) */
-.arch-manifesto {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  padding: 10px 0;
-}
-
-.manifesto-item {
-  display: flex;
-  gap: 20px;
-  padding: 25px;
-  background: rgba(255, 255, 255, 0.02);
-  border-left: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0 12px 12px 0;
-  transition: all 0.3s ease;
-}
-
-.manifesto-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-left-color: #ff6b00;
-  transform: translateX(10px);
-}
-
-.manifesto-num {
-  font-family: 'Courier New', monospace;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.1);
-  line-height: 1;
-}
-
-.manifesto-item:hover .manifesto-num {
-  color: #ff6b00;
-}
-
-.manifesto-content h4 {
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-}
-
-.manifesto-content p {
-  color: #a0a0a0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.text-accent {
-  color: #ff6b00;
-  font-weight: 500;
-}
-
-/* 3. Right Column: Visual (Sticky) */
-.arch-visual {
-  position: relative;
-  height: 100%; /* Full height of grid to allow sticky to work */
-}
-
-.sticky-wrapper {
-  position: sticky;
-  top: 100px; /* offset from top of viewport */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.arch-image-wrapper {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-/* Ensure the image fits the container */
-.arch-diagram-img {
-  width: 100% !important;
-  max-width: 100% !important; /* Override previous 750px limit */
+/* 4. CRITICAL FIX: Reset Pseudo-elements */
+/* This stops the prompt from floating "up" and overlapping text */
+.architecture-tagline::before,
+.architecture-tagline::after {
+  position: static !important;    /* Forces them to flow INLINE with text */
+  display: inline !important;
+  background: none !important;    /* Removes any lingering grid patterns */
+  width: auto !important;
   height: auto !important;
-  display: block;
+  border: none !important;
+  box-shadow: none !important;
+  top: auto !important;
+  left: auto !important;
+  content: "" !important;         /* Reset content to be safe before redefining */
 }
 
-/* Optional: Cyberpunk Scanline Effect over the image */
-.scan-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent 50%, rgba(255, 107, 0, 0.05) 51%, transparent 51%);
-  background-size: 100% 4px;
-  pointer-events: none;
-  opacity: 0.5;
+/* 5. Define Terminal Prompt */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #666 !important;         /* Dim grey prompt */
+  font-weight: 700 !important;
+  margin-right: 8px !important;
 }
 
-/* 4. Fix Tagline inside Sticky Wrapper */
-.sticky-wrapper .architecture-tagline {
-  margin: 0 auto !important; /* Center it relative to the image */
-  width: fit-content !important;
-}
-
-/* 5. Mobile Responsiveness */
-@media (max-width: 900px) {
-  .arch-dashboard {
-    grid-template-columns: 1fr; /* Stack vertically */
-    gap: 40px;
-  }
-
-  /* On mobile, put image FIRST, then text */
-  .arch-visual {
-    order: -1; 
-  }
-
-  .sticky-wrapper {
-    position: static; /* Disable sticky on mobile */
-  }
-
-  .manifesto-item:hover {
-    transform: none; /* No hover shift on touch */
-  }
-}
-
-/* ===== THE SYNAPTIC DASHBOARD (Wider & Interactive) ===== */
-
-/* 1. Force this specific section container to be WIDER */
-#about .container {
-  max-width: 1400px !important; /* Significantly wider than standard 1100px */
-  padding: 0 2rem;
-}
-
-/* 2. Grid Ratio: More space for Image (0.7 vs 1.3) */
-.arch-dashboard {
-  grid-template-columns: 0.7fr 1.3fr !important;
-  gap: 60px !important;
-}
-
-/* 3. The Docked Terminal (Attached to Image) */
-.docked-terminal {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-top: -6px !important; /* Pull up to touch image */
-  border-top: none !important;
-  border-radius: 0 0 12px 12px !important; /* Rounded bottom only */
-  background: #080808 !important; /* Match image border darkness */
-  border: 1px solid rgba(255,255,255,0.15) !important;
-  border-top: none !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-  position: relative;
-  z-index: 2;
-}
-
-/* 4. Image Wrapper Enhancements */
-.arch-image-wrapper {
-  border: 1px solid rgba(255,255,255,0.15); /* Default border */
-  border-bottom: none; /* Open bottom for docking */
-  border-radius: 12px 12px 0 0; /* Rounded top only */
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* 5. Status Overlay (Tech Text on Image) */
-.status-overlay {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #ff6b00;
-  background: rgba(0,0,0,0.8);
-  padding: 4px 10px;
-  border-left: 3px solid #ff6b00;
-  z-index: 10;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-/* 6. Active State for Manifesto Items */
-.manifesto-item {
-  opacity: 0.5; /* Dim inactive items */
-  transform: translateX(0);
-  border-left: 2px solid rgba(255,255,255,0.1);
-}
-
-.manifesto-item.active {
-  opacity: 1;
-  background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-  border-left-width: 4px;
-  /* Border color is handled via JS for dynamic colors */
-  padding-left: 28px; /* Slight shift */
+/* 6. Define Blinking Cursor */
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  font-size: 0.8em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
 }
 
 /* Mobile Adjustments */
-@media (max-width: 1100px) {
-  #about .container { max-width: 100% !important; padding: 0 1.5rem; }
-  .arch-dashboard { grid-template-columns: 1fr !important; gap: 40px !important; }
-  .docked-terminal { font-size: 0.8rem !important; padding: 10px !important; }
+@media (max-width: 600px) {
+  .architecture-tagline {
+    width: 90% !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+    text-align: left !important;
+  }
 }
 
-/* =======================================================
-   THE "BEAUTIFUL THEME" PORT (Consulting -> Triptych)
-   ======================================================= */
+/* ===== MASTER FIX: ARCHITECTURE TAGLINE (BLINKING + THIN) ===== */
 
-/* 1. Base Card Setup (Dark Charcoal & Container) */
-.triptych-card {
-  position: relative !important;
-  overflow: hidden !important;
-  background: rgba(20, 20, 20, 0.95) !important; /* Deep dark base */
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  /* Ensure text sits ABOVE the grid */
-  z-index: 1 !important; 
+/* 1. DEFINE THE ANIMATION (This was missing!) */
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* Ensure content inside clicks/selects */
-.triptych-card > * {
-  position: relative !important;
-  z-index: 5 !important;
-}
-
-/* 2. LAYER 1: The Dot Matrix Texture (::before) - Applied to ALL */
-.triptych-card::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 2 !important; /* Behind text, above base */
-  pointer-events: none !important;
-  background-image: radial-gradient(circle at 6px 6px, rgba(255,255,255,0.035) 0 1px, transparent 1px);
-  background-size: 16px 16px !important;
-  opacity: 0.10 !important;
-  mix-blend-mode: screen !important;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
-  transition: opacity 0.3s ease !important;
-}
-
-/* 3. LAYER 2: The Grid Overlay (::after) - SHARED PROPERTIES */
-.triptych-card::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 2 !important;
-  pointer-events: none !important;
-  mix-blend-mode: screen !important;
-  transition: opacity .28s ease, transform .28s cubic-bezier(.2,.9,.25,1) !important;
-  opacity: 0.60 !important;
-  background-size: auto, auto, auto, auto, 32px 32px !important;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
-}
-
-/* 4. GRID TYPE A: Blue & Orange (Core & Scale) */
-.core-card::after,
-.scale-card::after {
-  background-image:
-    /* Orange Lines */
-    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
-    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
-    /* BLUE Accent Lines */
-    repeating-linear-gradient(90deg, rgba(95,211,255,0.14) 0 2px, transparent 2px calc(10px)),
-    repeating-linear-gradient(0deg,  rgba(95,211,255,0.12) 0 2px, transparent 2px calc(10px)),
-    /* Tile Tint */
-    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
-}
-
-/* 5. GRID TYPE B: Purple & Orange (Stochastic Range) */
-.range-card::after {
-  background-image:
-    /* Orange Lines (Same) */
-    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
-    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
-    /* PURPLE Accent Lines (Replaced Blue) */
-    repeating-linear-gradient(90deg, rgba(157, 0, 255, 0.2) 0 2px, transparent 2px calc(10px)),
-    repeating-linear-gradient(0deg,  rgba(157, 0, 255, 0.18) 0 2px, transparent 2px calc(10px)),
-    /* Tile Tint (Same) */
-    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
-}
-
-/* 6. Hover Interactions */
-.triptych-card:hover::after {
-  opacity: 0.72 !important;
-  transform: translateY(-6px) !important; /* Lift effect */
-}
-.triptych-card:hover::before {
-  opacity: 0.14 !important; /* Brighten dots */
-}
-
-/* ===== TWEAK: DARK BLUE + PURPLE GRID FOR RANGE CARD ===== */
-.range-card::after {
-  background-image:
-    /* 1. DARK BLUE Lines (Replaces Orange) */
-    repeating-linear-gradient(90deg, rgba(0, 60, 180, 0.3) 0 1px, transparent 1px calc(16px)),
-    repeating-linear-gradient(0deg,  rgba(0, 60, 180, 0.25) 0 1px, transparent 1px calc(16px)),
-    
-    /* 2. DARKER PURPLE Accent Lines (Unchanged) */
-    repeating-linear-gradient(90deg, rgba(90, 0, 160, 0.25) 0 2px, transparent 2px calc(10px)),
-    repeating-linear-gradient(0deg,  rgba(90, 0, 160, 0.22) 0 2px, transparent 2px calc(10px)),
-    
-    /* 3. Tile Tint (Unchanged) */
-    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
-}
-
-/* ===== TWEAK: DARK RED GRID FOR SCALE CARD ===== */
-.scale-card::after {
-  background-image:
-    /* 1. Orange Lines (Unchanged) */
-    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
-    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
-    
-    /* 2. DARK RED Accent Lines (Replaces Blue) */
-    repeating-linear-gradient(90deg, rgba(150, 0, 0, 0.3) 0 2px, transparent 2px calc(10px)),
-    repeating-linear-gradient(0deg,  rgba(150, 0, 0, 0.25) 0 2px, transparent 2px calc(10px)),
-    
-    /* 3. Tile Tint (Unchanged) */
-    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
-}
-
-/* ===== FIX: Remove Orange Border/Glow on Scale Card Hover ===== */
-.scale-card:hover {
-  /* Reset border to standard base color (removes the flashing orange border) */
-  border-color: rgba(255, 255, 255, 0.06) !important;
+.architecture-tagline {
+  /* Layout: Lock to center */
+  display: table !important;
+  margin: 1.5rem auto 2.5rem !important;
+  width: auto !important;
+  max-width: 95% !important;
   
-  /* Preserve the static Orange Top Border so it doesn't disappear */
-  border-top-color: rgba(255, 107, 0, 0.5) !important;
-  
-  /* Remove the orange glow shadow */
-  box-shadow: none !important;
-}
-
-/* ===== FIX: Remove Orange Border/Glow on Scale Card Hover ===== */
-.scale-card:hover {
-  /* Reset border to standard base color (removes the flashing orange border) */
-  border-color: rgba(255, 255, 255, 0.06) !important;
-  
-  /* Preserve the static Orange Top Border so it doesn't disappear */
-  border-top-color: rgba(255, 107, 0, 0.5) !important;
-  
-  /* Remove the orange glow shadow */
-  box-shadow: none !important;
-}
-
-/* =========================================
-   CORE AGENTIC PRINCIPLES (HORIZONTAL GRID)
-   ========================================= */
-.principles-horizontal-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
-  margin: 3rem 0;
-  padding: 2rem;
-  background: rgba(10, 10, 10, 0.95) !important;
+  /* Visuals: Deep black & Status Bar */
+  background: #080808 !important;
+  background-image: none !important;
+  border: none !important;
   border-left: 3px solid #ff6b00 !important;
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 2px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  
+  /* Typography: Thin & Modern (Not Courier) */
+  font-family: 'Menlo', 'Consolas', 'Monaco', 'Liberation Mono', 'Lucida Console', monospace !important;
+  font-weight: 300 !important;
+  font-size: 0.9rem !important;
+  color: #ff6b00 !important;
+  letter-spacing: -0.02em !important;
+  padding: 12px 24px !important;
+  text-align: left !important;
+}
+
+/* Prompt (>_) */
+.architecture-tagline::before {
+  content: ">_" !important;
+  color: #666 !important;
+  font-weight: 600 !important;
+  margin-right: 12px !important;
+  letter-spacing: 0 !important;
+  display: inline-block !important;
+}
+
+/* Cursor (▋) - Blinking Enabled */
+.architecture-tagline::after {
+  content: " ▋" !important;
+  color: #ff6b00 !important;
+  font-size: 0.85em !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+  display: inline-block !important;
+  /* Link to the @keyframes defined at the top */
+  animation: terminal-blink 1s step-end infinite !important;
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    display: block !important;
+    width: 90% !important;
+    font-size: 0.8rem !important;
+    white-space: normal !important;
+  }
+}
+
+/* ===== DEFINITIVE FIX: ARCHITECTURE CURSOR BLINKING ===== */
+
+/* 1. Define a unique animation name to avoid conflicts */
+@keyframes arch-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* 2. Target the element with high specificity */
+.architecture-tagline::after {
+  content: " ▋" !important;      /* The cursor character */
+  color: #ff6b00 !important;      /* Orange color */
+  font-weight: 700 !important;    /* Make it thick/bold */
+  margin-left: 8px !important;
+  display: inline-block !important;
+  
+  /* 3. Apply the animation - EXACTLY like your working bento-grid */
+  animation: arch-cursor-blink 1s infinite !important;
+  
+  /* Reset any transform that might be hiding it */
+  transform: none !important;
+  opacity: 1;
+}
+
+/* Ensure the parent allows it to show */
+.architecture-tagline {
+  overflow: visible !important;
+}
+
+/* ===== FIX: TERMINAL TAGLINE OVERRIDES ===== */
+/* High specificity to overwrite previous grid styles */
+.architecture-tagline {
+  /* 1. Layout & Centering Fix */
+  display: block !important;
+  width: fit-content !important;  /* Shrink to text size */
+  margin: 2rem auto !important;   /* Force horizontal centering */
+  max-width: 95% !important;
+  
+  /* 2. Remove Old Blue Grid/Backgrounds */
+  background-image: none !important;
+  background-color: rgba(15, 15, 15, 0.9) !important; /* Solid dark terminal bg */
+  box-shadow: none !important;    /* Remove blue glow */
+  border: none !important;        /* Reset borders */
+  
+  /* 3. New Terminal Aesthetic */
+  border-left: 4px solid #ff6b00 !important; /* Thick orange status bar */
+  padding: 12px 24px !important;
   font-family: 'Courier New', Courier, monospace !important;
+  font-size: 1rem !important;
+  color: #ff6b00 !important;
+  letter-spacing: 0px !important; /* Standard terminal spacing */
+  text-transform: none !important;
 }
 
-.principle-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 5;
+/* 4. CRITICAL FIX: Reset Pseudo-elements */
+/* This stops the prompt from floating "up" and overlapping text */
+.architecture-tagline::before,
+.architecture-tagline::after {
+  position: static !important;    /* Forces them to flow INLINE with text */
+  display: inline !important;
+  background: none !important;    /* Removes any lingering grid patterns */
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  box-shadow: none !important;
+  top: auto !important;
+  left: auto !important;
+  content: "" !important;         /* Reset content to be safe before redefining */
 }
 
-.principle-icon {
-  font-size: 1.5rem;
-  color: #ff6b00;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+/* 5. Define Terminal Prompt */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #666 !important;         /* Dim grey prompt */
+  font-weight: 700 !important;
+  margin-right: 8px !important;
 }
 
-.principle-item h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.05em;
+/* 6. Define Blinking Cursor */
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  font-size: 0.8em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
 }
 
-.principle-item p {
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: #a0a0a0;
-  margin: 0;
-}
-
-/* 5. Typography Fixes (Orange -> White Headlines) */
-.insight-headline, .headline-line1, .headline-line2 {
-  color: #ffffff !important;
-}
-
-/* 6. Mobile & Tablet Tweaks */
-@media (max-width: 1024px) {
-  .principles-horizontal-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .principles-horizontal-grid {
-    grid-template-columns: 1fr;
-    text-align: left;
-    border-left: none;
-    border-top: 3px solid #ff6b00;
-    padding: 1.5rem;
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    width: 90% !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+    text-align: left !important;
   }
-  .principle-item {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .principle-icon { margin-bottom: 0; }
+}
+
+/* ===== RESTORED TERMINAL STYLE (Clean & Blinking) ===== */
+.architecture-tagline {
+  display: table !important;       /* Centers perfectly */
+  margin: 1.5rem auto 2.5rem !important;
+  padding: 12px 24px !important;
+  
+  /* Visuals */
+  background: #080808 !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  
+  /* Text */
+  font-family: 'Menlo', 'Consolas', monospace !important;
+  font-size: 0.9rem !important;
+  color: #ff6b00 !important;
+  text-align: left !important;
+}
+
+/* Prompt */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #666 !important;
+  font-weight: 700 !important;
+  margin-right: 10px !important;
+}
+
+/* Cursor with UNIQUE animation name to prevent conflicts */
+@keyframes cursor-blink-final {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.architecture-tagline::after {
+  content: " ▋" !important;
+  color: #ff6b00 !important;
+  animation: cursor-blink-final 1s step-end infinite !important;
+  margin-left: 8px !important;
+}
+
+
+.architecture-terminal {
+  color: #4DFF88;
+}
+
+
+.architecture-terminal .prompt,
+.architecture-terminal .terminal-prompt,
+.architecture-terminal .score {
+  color: #4DFF88;
+  text-shadow: 0 0 6px rgba(77, 255, 136, 0.65);
 }

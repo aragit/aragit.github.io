@@ -1,0 +1,94 @@
+        <div class="arch-dashboard">
+          
+          <div class="arch-manifesto">
+            
+            <div class="manifesto-item active" 
+                 data-color="#ff6b00"
+                 data-insight="A true agent must produce a committable, inspectable plan. The system requires commitment, grounding, and temporality—reasoning is separate from execution."
+                 data-log="[INFO] PLAN_COMMIT: Rubicon crossed. | HASH: #a7f9 | STATUS: Locked. | Handover to Runtime: SUCCESS.">
+              <span class="manifesto-num">01</span>
+              <div class="manifesto-content">
+                <h4>The Planning Rubicon</h4>
+                <p>Stop the "Chat Loop." A true agent separates <span class="text-accent">reasoning</span> from <span class="text-accent">execution</span>. The LLM proposes a plan; a rigid runtime commits it. <em>No plan? No action.</em></p>
+              </div>
+            </div>
+
+            <div class="manifesto-item" 
+                 data-color="#007bff"
+                 data-insight="We use a neuro-symbolic architecture: probabilistic brain, deterministic body. If we conflate thinking and orchestration, we lose the ability to guarantee safety."
+                 data-log="[WARN] MEM_ACCESS: LLM attempted direct DB write. | INTERCEPT: Policy Layer. | ACTION: Redirected to Sandbox.">
+              <span class="manifesto-num">02</span>
+              <div class="manifesto-content">
+                <h4>Neuro-Symbolic Split</h4>
+                <p>The Brain (LLM) suggests; The Body (Code) decides. We never grant the LLM root access. This separation guarantees <span class="text-accent">safety in production</span>.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-item" 
+                 data-color="#dc3545"
+                 data-insight="The planner acts as the system’s conscience. OPA policy gates enforce hard safety constraints with absolute veto power, logging rejections and forcing re-planning."
+                 data-log="[CRIT] SAFETY_VETO: Policy #409 (No_Drop_Table) triggered. | ACTOR: Agent_07. | EVENT: Hard Stop initiated.">
+              <span class="manifesto-num">03</span>
+              <div class="manifesto-content">
+                <h4>Governance as Code</h4>
+                <p>Safety must be inline, not an afterthought. The Orchestrator acts as the system's "conscience," using <span class="text-accent">OPA Policies</span> to veto dangerous actions before they execute.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-item" 
+                 data-color="#28a745"
+                 data-insight="Input contracts are strict. We parse and validate via Pydantic so that if an output doesn’t validate, the program crashes intentionally rather than acting on bad data."
+                 data-log="[ERR] TYPE_MISMATCH: Expected <float>, received <string>. | VALIDATOR: Pydantic_v2. | RESULT: Graceful Crash (No Action).">
+              <span class="manifesto-num">04</span>
+              <div class="manifesto-content">
+                <h4>Strict Contracts</h4>
+                <p>Inputs must be parsed and validated (Pydantic/JSON Schema). If the output doesn't validate, the program <span class="text-accent">crashes intentionally</span> rather than hallucinating a parameter.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-item" 
+                 data-color="#9d00ff"
+                 data-insight="Agents mitigate stochasticity via feedback loops. The architecture observes outcomes, logs them, and writes self-reflections into memory to anticipate future failures."
+                 data-log="[DB] REFLECTION_SAVE: Episode #992 analyzed. | LESSON: 'Avoid ambiguous SQL'. | MEMORY: Long-term index updated.">
+              <span class="manifesto-num">05</span>
+              <div class="manifesto-content">
+                <h4>The OODA Loop</h4>
+                <p>Observe, Orient, Decide, Act. The architecture persists state, logs outcomes, and feeds results back into memory to <span class="text-accent">anticipate failure</span>.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="arch-visual">
+            <div class="sticky-wrapper">
+              
+              <div class="arch-image-wrapper" id="archVisualFrame">
+                <div id="insight-overlay" class="insight-overlay">
+                  A true agent must produce a committable, inspectable plan. The system requires commitment, grounding, and temporality.
+                </div>
+                
+                <img src="masterarchY.jpg" alt="Agentic Architecture Diagram" class="arch-diagram-img">
+                <div class="scan-line"></div>
+              </div>
+              
+              <div class="system-console">
+                <div class="console-history">
+                  <span>[BOOT] KERNEL: Sentinel_Arch_v4 initializing... [OK]</span>
+                  <span>[INIT] VECTOR_DB: Connection established (Ping: 4ms).</span>
+                  <span>[AUTH] POLICY_ENGINE: OPA Ruleset 'Strict_v2' loaded.</span>
+                  <span>[NET] LISTENER: Port 8080 active. Waiting for payload...</span>
+                  <span>[SYS] MEMORY: 14.2GB allocated. Heap stable.</span>
+                  <span>[INFO] ORCHESTRATOR: Ready state confirmed.</span>
+                  <span style="color:#666">... tail -f /var/log/sentinel.log</span>
+                </div>
+                <div class="console-active-line">
+                  <span class="console-prompt">></span>
+                  <span id="console-log-text">[INFO] PLAN_COMMIT: Rubicon crossed. | HASH: #a7f9 | STATUS: Locked.</span>
+                  <span class="console-cursor">_</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>

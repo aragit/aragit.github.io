@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771082694?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1770926458?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -61,7 +61,7 @@
       <nav id="primary-nav" class="nav" role="navigation" aria-label="Primary">
         <ul id="navbar">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">Architecture</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Solutions</a></li>
           <li><a href="blog/index.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
@@ -144,7 +144,11 @@
               Chat with my Experience
             </button>
           </div>
-        </div>
+              
+
+      <!-- RFC Modal -->
+      
+</div>
       </div>
     </section>
 
@@ -192,72 +196,74 @@
       
       <!-- Article Cards - Deep Dive -->
       <div class="insight-articles">
-        <h3 class="insight-articles-title">The Trinity of Survival</h3>
-        <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
+        <h3 class="insight-articles-title">Architecture Philosophy</h3>
+    <p class="section-subtitle architecture-tagline">Deterministic Core · Stochastic Range · Multi-Agent Scale</p>
         
-                        
-        <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
-          Deterministic Core · Stochastic Range · Multi-Agent Scale
-        <div class="principles-horizontal-grid">
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-route"></i></div>
-            <h4>Planning Rubicon</h4>
-            <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-microchip"></i></div>
-            <h4>Brain vs. Body</h4>
-            <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer strictly controls execution.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-shield-halved"></i></div>
-            <h4>Governance First</h4>
-            <p>Inline policy gating (e.g., OPA) with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
-            <h4>Typed Interfaces</h4>
-            <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-arrows-rotate"></i></div>
-            <h4>Reflection Loops</h4>
-            <p>Self-monitoring feedback loops where the architecture observes and logs outcomes to refine future reasoning.</p>
-          </div>
-        </div>
-        </div>
-
-        <div class="triptych-grid">
+        <div class="article-cards-grid">
           
-          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" target="_blank" class="triptych-card core-card">
-            <div class="triptych-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Deterministic Core</h3>
-            <p>Enterprise autonomy requires absolute reliability. We treat the LLM as an untrusted guest within a rigid state machine, ensuring critical actions are governed by deterministic logic, not probabilistic guesses.</p>
-            <span class="triptych-link">Read: Why "Chatbots" Fail &rarr;</span>
+          <!-- Card 1: Planning Rubicon -->
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="x3.jpg" alt="The Planning Rubicon">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">The Planning Rubicon</h4>
+              <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
+              <div class="article-meta">
+                <span class="article-tag">Architecture</span>
+                <span class="article-read">7 min →</span>
+              </div>
+            </div>
           </a>
-
-          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" target="_blank" class="triptych-card range-card">
-            <div class="triptych-icon"><i class="fas fa-brain"></i></div>
-            <h3>Stochastic Range</h3>
-            <p>Intelligence is useless without constraints. We architect reasoning engines that explore solutions creatively but operate strictly within a pre-validated "Stochastic Range" to prevent hallucinations in high-stakes environments.</p>
-            <span class="triptych-link">Read: The Engine of Reasoning &rarr;</span>
+          
+          <!-- Card 2: 2026 Roadmap -->
+          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="alpha.jpg" alt="2026 Roadmap">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">From generative to agentic AI</h4>
+              <p class="article-summary">The 2026 roadmap: why the future of AI isn't better brains, it's better bodies.</p>
+              <div class="article-meta">
+                <span class="article-tag">Strategy</span>
+                <span class="article-read">12 min →</span>
+              </div>
+            </div>
           </a>
-
-          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" target="_blank" class="triptych-card scale-card">
-            <div class="triptych-icon"><i class="fas fa-bolt"></i></div>
-            <h3>Multi-Agent Scale</h3>
-            <p>A single agent is a toy; a swarm is a platform. We transition from isolated bots to shared-memory actor models, allowing thousands of "Sentinel" units to collaborate on complex tasks without state fragmentation.</p>
-            <span class="triptych-link">Read: The 2026 Roadmap &rarr;</span>
+          
+          <!-- Card 3: Reasoning Revolution -->
+          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="reason.png" alt="Reasoning Revolution">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">How LLM reasoning powers agency</h4>
+              <p class="article-summary">How advanced LLMs enable true agentic behavior through reasoning and planning.</p>
+              <div class="article-meta">
+                <span class="article-tag">Technology</span>
+                <span class="article-read">9 min →</span>
+              </div>
+            </div>
           </a>
-
-        </div>
-
-<div class="articles-cta" style="margin-top: 2.5rem;">
-          <a href="architecture.html" class="btn-hero btn-primary">
-            Learn More
-          </a>
+          
         </div>
       </div>
+      
+      <!-- Architecture Philosophy Action Buttons -->
+      <div class="arch-action-buttons">
+        <button class="btn-arch btn-arch-primary" id="openRfcModal" aria-haspopup="dialog" title="Submit an RFC or Critique for the 2026 Standard" title="Submit an RFC or Critique for the 2026 Standard">
+          <i class="fas fa-bolt" aria-hidden="true"></i>
+          Challenge the Architecture
+        </button>
+        <a href="architecture-philosophy.html" class="btn-arch btn-arch-secondary" aria-label="Learn more about Architecture Philosophy">
+          <i class="fas fa-book-open" aria-hidden="true"></i>
+          Learn More
+        </a>
+      </div>
+      <p class="arch-subtext">Open Request for Comment (RFC-2026)</p>
       
     </section>
     <!-- PORTFOLIO -->
@@ -775,7 +781,70 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771082694?v=1770727673"></script>
+  <script src="script.js?v=1770926458?v=1770727673"></script>
     
+
+<div id="rfcModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="rfcModalTitle">
+        <div class="modal-card rfc-modal-card" role="document">
+          <div class="modal-head">
+            <div>
+              <h3 id="rfcModalTitle">Submit Technical Critique</h3>
+              <p class="modal-subtitle">Refine the "Grand Unified Theory" of Agentic AI.</p>
+            </div>
+            <button class="close" id="rfcModalClose" aria-label="Close dialog">
+              <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <form id="rfcForm" action="https://formspree.io/f/xwpnvzwl" method="POST">
+            <div class="rfc-section">
+              <h4 class="rfc-section-title">The Contributor</h4>
+              <div class="rfc-row">
+                <label class="rfc-label">
+                  <span class="rfc-label-text">Architect / Contributor Name</span>
+                  <input type="text" name="contributor_name" required placeholder="e.g. Grace Hopper" class="rfc-input">
+                </label>
+                <label class="rfc-label">
+                  <span class="rfc-label-text">Current Role & Org</span>
+                  <input type="text" name="role_org" required placeholder="e.g. Principal Engineer @ Stripe" class="rfc-input">
+                </label>
+              </div>
+              <label class="rfc-label">
+                <span class="rfc-label-text">Proof of Work (URL)</span>
+                <input type="url" name="proof_of_work" placeholder="GitHub, LinkedIn, or Technical Blog" class="rfc-input">
+              </label>
+            </div>
+
+            <div class="rfc-section">
+              <h4 class="rfc-section-title">The Critique</h4>
+              <label class="rfc-label">
+                <span class="rfc-label-text">Which layer of the Unified Theory is most fragile?</span>
+                <select name="fragile_layer" required class="rfc-select">
+                  <option value="">Select an architectural layer...</option>
+                  <option value="deterministic-core">🔴 The Deterministic Core (Safety/State)</option>
+                  <option value="stochastic-range">🔵 The Stochastic Range (Creativity/LLM)</option>
+                  <option value="multi-agent-scale">🟣 The Multi-Agent Scale (Concurrency/Actors)</option>
+                  <option value="theory-solid">⚪ The Theory is Solid (I want to expand it)</option>
+                </select>
+              </label>
+              <label class="rfc-label">
+                <span class="rfc-label-text">Your Technical Dissent (or Proposal)</span>
+                <textarea name="technical_dissent" rows="4" required placeholder="e.g., The Deterministic Core becomes a bottleneck at 10k agents because..." class="rfc-textarea"></textarea>
+              </label>
+            </div>
+
+            <input type="hidden" name="_subject" value="RFC Challenge: Architecture Philosophy">
+            <input type="hidden" name="_next" value="https://aragit.github.io/thanks-rfc.html">
+
+            <div class="modal-foot">
+              <button type="submit" class="btn-rfc-submit">
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                Submit for Peer Review
+              </button>
+            </div>
+            <p id="rfcModalMsg" class="form-msg" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
 </body>
 </html>

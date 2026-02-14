@@ -23,8 +23,10 @@
   <!-- icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
+
+    
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771082694?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1770847425?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -53,6 +55,7 @@
   <!-- HEADER -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
+      
 
       <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
         <i class="fas fa-bars" aria-hidden="true"></i>
@@ -61,7 +64,7 @@
       <nav id="primary-nav" class="nav" role="navigation" aria-label="Primary">
         <ul id="navbar">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">Architecture</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Solutions</a></li>
           <li><a href="blog/index.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
@@ -112,11 +115,13 @@
           </svg>
         </div>
 
+
+
       <div class="container hero-inner">
         <img src="Mereal1.png" alt="Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130">
         <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
         <p class="hero-tagline typewriter">Agentic AI Architect</p>
-        
+        <p class="hero-range typewriter-orange">Deterministic Core · Stochastic Range · Multi-Agent Scale</p>
         <p class="tagline typewriter">AI Engineering Services &amp; Consulting</p>
 
         <div class="value-prop" aria-hidden="false">
@@ -192,70 +197,58 @@
       
       <!-- Article Cards - Deep Dive -->
       <div class="insight-articles">
-        <h3 class="insight-articles-title">The Trinity of Survival</h3>
-        <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
+        <h3 class="insight-articles-title">Architecture Philosophy</h3>
         
-                        
-        <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
-          Deterministic Core · Stochastic Range · Multi-Agent Scale
-        <div class="principles-horizontal-grid">
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-route"></i></div>
-            <h4>Planning Rubicon</h4>
-            <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-microchip"></i></div>
-            <h4>Brain vs. Body</h4>
-            <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer strictly controls execution.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-shield-halved"></i></div>
-            <h4>Governance First</h4>
-            <p>Inline policy gating (e.g., OPA) with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
-            <h4>Typed Interfaces</h4>
-            <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-arrows-rotate"></i></div>
-            <h4>Reflection Loops</h4>
-            <p>Self-monitoring feedback loops where the architecture observes and logs outcomes to refine future reasoning.</p>
-          </div>
-        </div>
-        </div>
-
-        <div class="triptych-grid">
+        <div class="article-cards-grid">
           
-          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" target="_blank" class="triptych-card core-card">
-            <div class="triptych-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Deterministic Core</h3>
-            <p>Enterprise autonomy requires absolute reliability. We treat the LLM as an untrusted guest within a rigid state machine, ensuring critical actions are governed by deterministic logic, not probabilistic guesses.</p>
-            <span class="triptych-link">Read: Why "Chatbots" Fail &rarr;</span>
+          <!-- Card 1: Planning Rubicon -->
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="x3.jpg" alt="The Planning Rubicon">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">The Planning Rubicon</h4>
+              <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
+              <div class="article-meta">
+                <span class="article-tag">Architecture</span>
+                <span class="article-read">7 min →</span>
+              </div>
+            </div>
           </a>
-
-          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" target="_blank" class="triptych-card range-card">
-            <div class="triptych-icon"><i class="fas fa-brain"></i></div>
-            <h3>Stochastic Range</h3>
-            <p>Intelligence is useless without constraints. We architect reasoning engines that explore solutions creatively but operate strictly within a pre-validated "Stochastic Range" to prevent hallucinations in high-stakes environments.</p>
-            <span class="triptych-link">Read: The Engine of Reasoning &rarr;</span>
+          
+          <!-- Card 2: 2026 Roadmap -->
+          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="alpha.jpg" alt="2026 Roadmap">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">From generative to agentic AI</h4>
+              <p class="article-summary">The 2026 roadmap: why the future of AI isn't better brains, it's better bodies.</p>
+              <div class="article-meta">
+                <span class="article-tag">Strategy</span>
+                <span class="article-read">12 min →</span>
+              </div>
+            </div>
           </a>
-
-          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" target="_blank" class="triptych-card scale-card">
-            <div class="triptych-icon"><i class="fas fa-bolt"></i></div>
-            <h3>Multi-Agent Scale</h3>
-            <p>A single agent is a toy; a swarm is a platform. We transition from isolated bots to shared-memory actor models, allowing thousands of "Sentinel" units to collaborate on complex tasks without state fragmentation.</p>
-            <span class="triptych-link">Read: The 2026 Roadmap &rarr;</span>
+          
+          <!-- Card 3: Reasoning Revolution -->
+          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="reason.png" alt="Reasoning Revolution">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">How LLM reasoning powers agency</h4>
+              <p class="article-summary">How advanced LLMs enable true agentic behavior through reasoning and planning.</p>
+              <div class="article-meta">
+                <span class="article-tag">Technology</span>
+                <span class="article-read">9 min →</span>
+              </div>
+            </div>
           </a>
-
-        </div>
-
-<div class="articles-cta" style="margin-top: 2.5rem;">
-          <a href="architecture.html" class="btn-hero btn-primary">
-            Learn More
-          </a>
+          
         </div>
       </div>
       
@@ -263,6 +256,8 @@
     <!-- PORTFOLIO -->
     <!-- CASE STUDIES - NEW AGENTIC DESIGN -->
 
+  
+  
   <section id="portfolio" class="section">
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
@@ -302,7 +297,20 @@
           </div>
         </div>
 
-        
+        <div class="bento-item">
+          <h3>CBT Autonomous Agent</h3>
+          <p class="loop-step">Scalable, evidence-guided workflows that detect cognitive distortions and adapt to responses.</p>
+          <div class="tech-tags"><span class="tag">Multi-agent</span><span class="tag">RAG</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
+          <span class="safety-note">Research tool — not a clinician replacement.</span>
+        </div>
+
+        <div class="bento-item">
+          <h3>Emotion-Focused Agent</h3>
+          <p class="loop-step">Supports deep emotional processing through sentiment trends and schema mapping.</p>
+          <div class="tech-tags"><span class="tag">Empathy-Engine</span><span class="tag">Ethics-Guard</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
+        </div>
 
         <div class="bento-item biomed-tall">
           <h3>Biomedical Hypotheses</h3>
@@ -328,6 +336,9 @@
       </div>
     </div>
   </section>
+
+
+
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
     <!-- ARTICLES – Masonry with real random heights + bottom-left hero -->
@@ -369,6 +380,8 @@
               <span class="cta-secondary">Learn more</span>
             </div>
           </a>
+
+          
 
           <a class="card service-card" href="services/llm-engineering.html" aria-label="Generative AI & LLM Engineering">
             <div class="card-body">
@@ -547,7 +560,20 @@
             </div>
           </a>
     
-          
+          <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation"
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-image">
+              <img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="RAG Future">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">Is RAG Dead in 2025?</h4>
+              <p class="article-summary">Rethinking documentation Q&A with large-context LLMs</p>
+              <div class="article-meta">
+                <span class="article-tag">RAG</span>
+                <span class="article-read">9 min →</span>
+              </div>
+            </div>
+          </a>
     
           <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
              target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
@@ -586,7 +612,8 @@
           <!-- 149 logo items – alphabetical -->
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/anthropic.svg" alt="Anthropic Claude API" title="Anthropic Claude API">
-
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/azuredevops.svg" alt="Azure AI Foundry" title="Azure AI Foundry">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/azurefunctions.svg" alt="Azure ML" title="Azure ML">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bentoml.svg" alt="BentoML" title="BentoML">
@@ -612,7 +639,9 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gradio.svg" alt="Gradio" title="Gradio">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/haystack.svg" alt="Haystack (Deepset)" title="Haystack (Deepset)">
-
+          
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/huggingface.svg" alt="Hugging Face Transformers" title="Hugging Face Transformers">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/ibm.svg" alt="IBM Granite 3.0" title="IBM Granite 3.0">
           
@@ -629,10 +658,12 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/modal.svg" alt="Modal" title="Modal">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mongodb.svg" alt="MongoDB Atlas Vector Search" title="MongoDB Atlas Vector Search">
-
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nebula.svg" alt="Nebula Graph" title="Nebula Graph">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/neo4j.svg" alt="Neo4j" title="Neo4j">
-
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nginx.svg" alt="Nginx" title="Nginx">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nvidia.svg" alt="Nvidia Merlin" title="Nvidia Merlin">
@@ -643,9 +674,11 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" alt="OpenAI Swarm" title="OpenAI Swarm">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/opentelemetry.svg" alt="OpenTelemetry" title="OpenTelemetry">
-
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/postgresql.svg" alt="PGVector" title="PGVector">
-
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/posthog.svg" alt="PostHog" title="PostHog">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/prefect.svg" alt="Prefect" title="Prefect">
@@ -665,9 +698,12 @@
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/rust.svg" alt="Rust" title="Rust">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazons3.svg" alt="S3 (MinIO, AWS)" title="S3 (MinIO, AWS)">
-
+          
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoft.svg" alt="Semantic Kerne" title="Semantic Kernel">
-
+          
+                    
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/snowflake.svg" alt="Snowflake Arctic" title="Snowflake Arctic">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/sqlalchemy.svg" alt="SQLAlchemy" title="SQLAlchemy">
@@ -681,7 +717,8 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/terraform.svg" alt="Terraform" title="Terraform">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/huggingface.svg" alt="TGI (Text Generation Inference)" title="TGI (Text Generation Inference)">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pytorch.svg" alt="Torch Serve" title="Torch Serve">
-
+          
+          
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/typescript.svg" alt="TypeScript" title="TypeScript">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg" alt="Vercel AI SDK" title="Vercel AI SDK">
@@ -691,6 +728,12 @@
       </div>
     </section>
     <!-- /TECH STACK -->
+
+
+
+
+
+      
 
     <!-- CONTACT: removed phone icon; social icons use original muted color -->
     <section id="contact" class="section contact-small" aria-labelledby="contact-title">
@@ -775,7 +818,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771082694?v=1770727673"></script>
+  <script src="script.js?v=1770838636?v=1770727673"></script>
     
 </body>
 </html>

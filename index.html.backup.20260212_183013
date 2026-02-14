@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771082694?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1770888955?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -61,7 +61,7 @@
       <nav id="primary-nav" class="nav" role="navigation" aria-label="Primary">
         <ul id="navbar">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">Architecture</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Solutions</a></li>
           <li><a href="blog/index.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
@@ -116,7 +116,7 @@
         <img src="Mereal1.png" alt="Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130">
         <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
         <p class="hero-tagline typewriter">Agentic AI Architect</p>
-        
+        <p class="hero-range typewriter-orange">Deterministic Core · Stochastic Range · Multi-Agent Scale</p>
         <p class="tagline typewriter">AI Engineering Services &amp; Consulting</p>
 
         <div class="value-prop" aria-hidden="false">
@@ -192,70 +192,58 @@
       
       <!-- Article Cards - Deep Dive -->
       <div class="insight-articles">
-        <h3 class="insight-articles-title">The Trinity of Survival</h3>
-        <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
+        <h3 class="insight-articles-title">Architecture Philosophy</h3>
         
-                        
-        <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
-          Deterministic Core · Stochastic Range · Multi-Agent Scale
-        <div class="principles-horizontal-grid">
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-route"></i></div>
-            <h4>Planning Rubicon</h4>
-            <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-microchip"></i></div>
-            <h4>Brain vs. Body</h4>
-            <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer strictly controls execution.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-shield-halved"></i></div>
-            <h4>Governance First</h4>
-            <p>Inline policy gating (e.g., OPA) with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
-            <h4>Typed Interfaces</h4>
-            <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-arrows-rotate"></i></div>
-            <h4>Reflection Loops</h4>
-            <p>Self-monitoring feedback loops where the architecture observes and logs outcomes to refine future reasoning.</p>
-          </div>
-        </div>
-        </div>
-
-        <div class="triptych-grid">
+        <div class="article-cards-grid">
           
-          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" target="_blank" class="triptych-card core-card">
-            <div class="triptych-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Deterministic Core</h3>
-            <p>Enterprise autonomy requires absolute reliability. We treat the LLM as an untrusted guest within a rigid state machine, ensuring critical actions are governed by deterministic logic, not probabilistic guesses.</p>
-            <span class="triptych-link">Read: Why "Chatbots" Fail &rarr;</span>
+          <!-- Card 1: Planning Rubicon -->
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="x3.jpg" alt="The Planning Rubicon">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">The Planning Rubicon</h4>
+              <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
+              <div class="article-meta">
+                <span class="article-tag">Architecture</span>
+                <span class="article-read">7 min →</span>
+              </div>
+            </div>
           </a>
-
-          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" target="_blank" class="triptych-card range-card">
-            <div class="triptych-icon"><i class="fas fa-brain"></i></div>
-            <h3>Stochastic Range</h3>
-            <p>Intelligence is useless without constraints. We architect reasoning engines that explore solutions creatively but operate strictly within a pre-validated "Stochastic Range" to prevent hallucinations in high-stakes environments.</p>
-            <span class="triptych-link">Read: The Engine of Reasoning &rarr;</span>
+          
+          <!-- Card 2: 2026 Roadmap -->
+          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="alpha.jpg" alt="2026 Roadmap">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">From generative to agentic AI</h4>
+              <p class="article-summary">The 2026 roadmap: why the future of AI isn't better brains, it's better bodies.</p>
+              <div class="article-meta">
+                <span class="article-tag">Strategy</span>
+                <span class="article-read">12 min →</span>
+              </div>
+            </div>
           </a>
-
-          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" target="_blank" class="triptych-card scale-card">
-            <div class="triptych-icon"><i class="fas fa-bolt"></i></div>
-            <h3>Multi-Agent Scale</h3>
-            <p>A single agent is a toy; a swarm is a platform. We transition from isolated bots to shared-memory actor models, allowing thousands of "Sentinel" units to collaborate on complex tasks without state fragmentation.</p>
-            <span class="triptych-link">Read: The 2026 Roadmap &rarr;</span>
+          
+          <!-- Card 3: Reasoning Revolution -->
+          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" 
+             target="_blank" rel="noopener noreferrer" class="article-card">
+            <div class="article-image">
+              <img src="reason.png" alt="Reasoning Revolution">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">How LLM reasoning powers agency</h4>
+              <p class="article-summary">How advanced LLMs enable true agentic behavior through reasoning and planning.</p>
+              <div class="article-meta">
+                <span class="article-tag">Technology</span>
+                <span class="article-read">9 min →</span>
+              </div>
+            </div>
           </a>
-
-        </div>
-
-<div class="articles-cta" style="margin-top: 2.5rem;">
-          <a href="architecture.html" class="btn-hero btn-primary">
-            Learn More
-          </a>
+          
         </div>
       </div>
       
@@ -267,8 +255,8 @@
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
       <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
-      
-      <div class="bento-grid">
+
+      <div class="bento-grid" style="margin-bottom: 3rem;">
         
         <div class="bento-item card-featured">
           <div class="featured-flex">
@@ -287,9 +275,7 @@
             </div>
             <div class="featured-terminal">
               <div class="terminal-header" style="display:flex; gap:5px; margin-bottom:10px;">
-                <div class="dot red" style="width:8px;height:8px;background:#ff5f56;border-radius:50%"></div>
-                <div class="dot yellow" style="width:8px;height:8px;background:#ffbd2e;border-radius:50%"></div>
-                <div class="dot green" style="width:8px;height:8px;background:#27c93f;border-radius:50%"></div>
+                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
               </div>
               <p class="log-line">> [INIT] Agentic_Loop_v2.4</p>
               <p class="log-line">> [DATA] EHR Patient_ID: 99x-72 linked</p>
@@ -301,8 +287,6 @@
             </div>
           </div>
         </div>
-
-        
 
         <div class="bento-item biomed-tall">
           <h3>Biomedical Hypotheses</h3>
@@ -326,8 +310,86 @@
         </div>
 
       </div>
+
+
+      
+    <div class="terminal-wrapper" style="margin-top: 4rem; margin-bottom: 2rem;">
+      <div class="command-center-interface">
+        
+        <div class="cmd-sidebar">
+          <div class="cmd-header">SYSTEM STATUS: ACTIVE (4)</div>
+          <ul class="process-list">
+            <li class="process-item active">
+              <span class="status-dot green"></span>
+              <div class="proc-info">
+                <span class="proc-name">medical_triage_swarm</span>
+                <span class="proc-meta">PID: 8821 • Running</span>
+              </div>
+            </li>
+            <li class="process-item">
+              <span class="status-dot gray"></span>
+              <div class="proc-info">
+                <span class="proc-name">biomed_hypothesis_gen</span>
+                <span class="proc-meta">PID: 1093 • Processing</span>
+              </div>
+            </li>
+            <li class="process-item">
+              <span class="status-dot gray"></span>
+              <div class="proc-info">
+                <span class="proc-name">marketing_roi_opt</span>
+                <span class="proc-meta">PID: 7721 • Optimization</span>
+              </div>
+            </li>
+            <li class="process-item">
+              <span class="status-dot gray"></span>
+              <div class="proc-info">
+                <span class="proc-name">supply_chain_orch</span>
+                <span class="proc-meta">PID: 4192 • Monitoring</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cmd-main">
+          <div class="window-bar">
+            <div class="win-buttons">
+              <span class="win-btn close"></span>
+              <span class="win-btn min"></span>
+              <span class="win-btn max"></span>
+            </div>
+            <div class="win-title">root@portfolio:~/agents/live-monitor</div>
+          </div>
+          <div class="terminal-content">
+            <div class="cmd-line"><span class="prompt">$</span> tail -f /var/log/agent_swarm.log</div>
+            <div class="cmd-log">
+              <div class="log-entry"><span class="log-time">[10:42:01]</span> <span class="log-info">[INFO]</span> <span class="proc-name">medical_triage</span> connected to EHR stream.</div>
+              <div class="log-entry"><span class="log-time">[10:42:02]</span> <span class="log-dim">Patient data ingested. Vitals analyzed (Risk: HIGH).</span></div>
+              <div class="log-entry"><span class="log-time">[10:42:05]</span> <span class="log-action">[ACT]</span> <span class="proc-name">supply_chain</span> rerouting Shipment #992 due to weather.</div>
+              <div class="log-entry"><span class="log-time">[10:42:08]</span> <span class="log-info">[INFO]</span> <span class="proc-name">marketing_roi</span> adjusted bid cap: +15% (Signal: High Intent).</div>
+              <div class="log-entry"><span class="log-time">[10:42:12]</span> <span class="log-warn">[WARN]</span> <span class="proc-name">biomed_gen</span> found 2 conflicting papers. Resolving...</div>
+              <div class="log-entry"><span class="blink">_</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </section>
+
+          <div class="terminal-content">
+            <div class="cmd-line"><span class="prompt">$</span> tail -f /var/log/agent_swarm.log</div>
+            <div class="cmd-log">
+              <span class="log-info">[INFO]</span> <span class="proc-name">medical_triage</span> connected to EHR stream.
+              <span class="log-dim">[10:42:05] Patient data ingested. Vitals analyzed.</span>
+              <span class="log-action">[ACT]</span> <span class="proc-name">supply_chain</span> rerouting Shipment #992 due to weather alert.
+              <span class="log-info">[INFO]</span> <span class="proc-name">marketing_roi</span> adjusted bid cap: +15% (Signal: High Intent).
+              <span class="log-warn">[WARN]</span> <span class="proc-name">biomed_gen</span> found 2 conflicting papers. Starting resolution loop...
+              <span class="blink">_</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
     <!-- ARTICLES – Masonry with real random heights + bottom-left hero -->
@@ -547,7 +609,20 @@
             </div>
           </a>
     
-          
+          <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation"
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-image">
+              <img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="RAG Future">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">Is RAG Dead in 2025?</h4>
+              <p class="article-summary">Rethinking documentation Q&A with large-context LLMs</p>
+              <div class="article-meta">
+                <span class="article-tag">RAG</span>
+                <span class="article-read">9 min →</span>
+              </div>
+            </div>
+          </a>
     
           <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
              target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
@@ -775,7 +850,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771082694?v=1770727673"></script>
+  <script src="script.js?v=1770838636?v=1770727673"></script>
     
 </body>
 </html>
