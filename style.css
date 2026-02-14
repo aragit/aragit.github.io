@@ -10091,3 +10091,166 @@ div#services .cards .card.card-wide .card-actions {
     flex: 1;
   }
 }
+
+/* =========================================
+   SOTA EXECUTION TRACE (VERTICAL PIPELINE)
+   ========================================= */
+.execution-trace-container {
+  position: relative;
+  max-width: 1050px;
+  margin: 5rem auto 4rem auto;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The Glowing Phosphor Backbone */
+.trace-line {
+  position: absolute;
+  top: 0;
+  bottom: -4rem; /* Extends right into the Capstone plug */
+  left: 50%;
+  width: 2px;
+  background: #4af626;
+  transform: translateX(-50%);
+  box-shadow: 0 0 15px rgba(74, 246, 38, 0.8), 0 0 5px rgba(74, 246, 38, 0.5);
+  z-index: 1;
+}
+
+/* Glassmorphism Cards */
+.trace-card {
+  position: relative;
+  width: 42%;
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(12px); /* Apple-style frosted glass effect */
+  border: 1px solid rgba(255, 107, 0, 0.15);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 3.5rem;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.trace-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #ff6b00;
+  background: rgba(25, 25, 25, 0.9);
+  box-shadow: 0 15px 40px rgba(255, 107, 0, 0.2);
+}
+
+.trace-card.left { margin-right: auto; }
+.trace-card.right { margin-left: auto; }
+
+/* The Connection Nodes (Pulsing Dots) */
+.trace-card::before {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  width: 22px;
+  height: 22px;
+  background: #0a0a0a;
+  border: 4px solid #4af626;
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow: 0 0 12px rgba(74, 246, 38, 0.6);
+  transition: all 0.3s ease;
+}
+
+.trace-card:hover::before {
+  background: #ff6b00;
+  border-color: #ff6b00;
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.9);
+}
+
+/* Attaching nodes perfectly to the center line */
+/* 42% width leaves 8% gap to the 50% center mark */
+.trace-card.left::before { right: calc(-8% - 11px); }
+.trace-card.right::before { left: calc(-8% - 11px); }
+
+/* =========================================
+   7TH PRINCIPLE SINK (CAPSTONE WITH IMAGE)
+   ========================================= */
+.principle-capstone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 3rem 4rem;
+  background: linear-gradient(145deg, rgba(255, 107, 0, 0.08) 0%, rgba(17, 17, 17, 0.9) 40%);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  border-radius: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+/* The 'Plug' where the green line connects to the database */
+.principle-capstone::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  background: #0a0a0a;
+  border: 4px solid #4af626;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(74, 246, 38, 0.8);
+  z-index: 3;
+}
+
+.capstone-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 168, 255, 0.2); 
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 1024px) {
+  .principle-capstone {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capstone-text { flex: 1; padding-right: 3rem; }
+  .capstone-visual { flex: 1.2; display: flex; justify-content: center; }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Terminal Log Stack)
+   ========================================= */
+@media (max-width: 768px) {
+  .trace-line {
+    left: 20px; /* Snap line to the far left edge */
+    transform: none;
+  }
+  
+  .trace-card {
+    width: 85%;
+    margin-left: auto !important; /* Push all cards to the right */
+    margin-right: 0 !important;
+    padding: 1.8rem;
+  }
+  
+  /* Snap all dots to the left line */
+  .trace-card.left::before, 
+  .trace-card.right::before {
+    left: -32px; 
+    right: auto;
+  }
+  
+  /* Align the database plug to the left line */
+  .principle-capstone::before {
+    left: 20px; 
+    transform: translateX(-11px);
+  }
+  
+  .principle-capstone {
+    padding: 2.5rem 1.5rem;
+  }
+}
