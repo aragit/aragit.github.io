@@ -9988,3 +9988,41 @@ div#services .cards .card.card-wide .card-actions {
   content: none !important;
   display: none !important;
 }
+
+/* =========================================
+   7TH PRINCIPLE CAPSTONE LAYOUT
+   ========================================= */
+.principle-capstone {
+  /* Spans all available columns (3 on desktop, 2 on tablet, 1 on mobile) */
+  grid-column: 1 / -1; 
+  background: linear-gradient(145deg, rgba(255, 107, 0, 0.05) 0%, rgba(17, 17, 17, 1) 40%);
+  border-color: rgba(255, 107, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Add a subtle glow to emphasize it's the final/foundational step */
+.principle-capstone:hover {
+  box-shadow: 0 10px 40px rgba(255, 107, 0, 0.15);
+}
+
+/* Desktop & Tablet Layout for Capstone (Horizontal) */
+@media (min-width: 768px) {
+  .principle-capstone {
+    flex-direction: row;
+    text-align: left;
+    padding: 2.5rem 3rem;
+  }
+  
+  .principle-capstone .principle-icon {
+    margin-bottom: 0;
+    margin-right: 2.5rem;
+    font-size: 3rem; /* Make the DNA icon slightly larger */
+  }
+  
+  .principle-capstone .capstone-text {
+    flex: 1;
+  }
+}
