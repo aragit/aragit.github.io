@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771084101?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1771014942?v=1770727673" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -196,30 +196,8 @@
         <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
         
                         
-            <h4>Planning Rubicon</h4>
-            <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-microchip"></i></div>
-            <h4>Brain vs. Body</h4>
-            <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer strictly controls execution.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-shield-halved"></i></div>
-            <h4>Governance First</h4>
-            <p>Inline policy gating (e.g., OPA) with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
-            <h4>Typed Interfaces</h4>
-            <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state.</p>
-          </div>
-          <div class="principle-item">
-            <div class="principle-icon"><i class="fas fa-arrows-rotate"></i></div>
-            <h4>Reflection Loops</h4>
-            <p>Self-monitoring feedback loops where the architecture observes and logs outcomes to refine future reasoning.</p>
-          </div>
-        </div>
+        <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
+          Deterministic Core · Stochastic Range · Multi-Agent Scale
         </div>
 
         <div class="triptych-grid">
@@ -770,7 +748,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771082694?v=1770727673"></script>
+  <script src="script.js?v=1771004853?v=1770727673"></script>
     
 </body>
 </html>
