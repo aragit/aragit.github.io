@@ -785,44 +785,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== UPDATED: 3D TILT + BRIGHT GREY SPOTLIGHT FOR PORTFOLIO CARDS =====
 
 
-// ===== SYNAPTIC DASHBOARD LOGIC (Scroll Interaction) =====
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.manifesto-item');
-  const visualFrame = document.getElementById('archVisualFrame');
-  const statusText = document.getElementById('arch-status-overlay');
-  
-  if (!items.length || !visualFrame) return;
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '-40% 0px -40% 0px', // Trigger when item is in the vertical center
-    threshold: 0
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // 1. Highlight Text
-        items.forEach(i => i.classList.remove('active'));
-        entry.target.classList.add('active');
-
-        // 2. Extract Data
-        const status = entry.target.dataset.status || "SYSTEM ACTIVE";
-        const color = entry.target.dataset.color || "#ff6b00";
-
-        // 3. Update Visuals (Diagram Glow)
-        visualFrame.style.borderColor = color;
-        visualFrame.style.boxShadow = `0 0 30px ${color}20`; // 20 = low opacity hex
-        entry.target.style.borderLeftColor = color; // Match text border too
-
-        // 4. Update Status Text (Typewriter effect)
-        if (statusText) {
-          statusText.style.color = color;
-          statusText.style.borderLeftColor = color;
-          statusText.innerText = status;
-        }
-      }
-    });
   }, observerOptions);
 
   items.forEach(item => observer.observe(item));
