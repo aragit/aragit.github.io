@@ -9861,3 +9861,14 @@ div#services .cards .card.card-wide .card-actions {
   /* Remove the orange glow shadow */
   box-shadow: none !important;
 }
+
+
+.principle-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
