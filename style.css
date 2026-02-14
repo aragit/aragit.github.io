@@ -10051,3 +10051,56 @@ div#services .cards .card.card-wide .card-actions {
   gap: 2rem !important;
   width: 100% !important;
 }
+
+/* --- FINAL PRINCIPLES LAYOUT FIX --- */
+.principles-horizontal-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important; /* Forces 5 horizontal columns */
+    gap: 1.5rem !important;
+    margin: 2rem 0 4rem 0 !important;
+    padding: 2rem !important;
+    background: rgba(15, 15, 15, 0.8) !important;
+    border: 1px solid rgba(255, 107, 0, 0.15) !important;
+    border-radius: 12px !important;
+}
+
+.principle-item {
+    display: flex !important;
+    flex-direction: column !important; /* Icon on top, Text below */
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.principle-icon {
+    font-size: 1.5rem !important;
+    color: #ff6b00 !important;
+    margin-bottom: 0.8rem !important;
+}
+
+.principle-item h4 {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #fff !important;
+    text-transform: uppercase !important;
+}
+
+.principle-item p {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+    color: #a0a0a0 !important;
+}
+
+/* Kill any remaining terminal cursor logic */
+.architecture-tagline, 
+.architecture-tagline::after {
+    display: none !important;
+    content: "" !important;
+    animation: none !important;
+}
+
+/* Ensure the 3 cards below remain unaffected */
+.triptych-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+}
