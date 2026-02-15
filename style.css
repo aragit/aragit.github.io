@@ -10437,3 +10437,14 @@ div#services .cards .card.card-wide .card-actions {
 .principles-grid .principle-card:nth-child(6) .principle-icon {
   margin-bottom: 0.1rem !important; 
 }
+
+/* =========================================
+   MANUAL MARGIN OFFSET (FINE-TUNING)
+   ========================================= */
+
+/* Increase the gap for 02, 03, and 05 a bit more to achieve perfect alignment */
+.principles-grid .principle-card:nth-child(2) .principle-icon,
+.principles-grid .principle-card:nth-child(3) .principle-icon,
+.principles-grid .principle-card:nth-child(5) .principle-icon {
+  margin-bottom: 1.95rem !important; /* Increased from 1.6rem */
+}
