@@ -10251,3 +10251,15 @@ div#services .cards .card.card-wide .card-actions {
   font-size: 0.95rem !important; /* Scaled down from 1.1rem */
   margin-bottom: 0.4rem !important;
 }
+
+/* =========================================
+   FIX: EQUALIZE PRINCIPLE ICON SIZES
+   ========================================= */
+
+/* Restore the icons for 01, 04, and 06 to match 02, 03, and 05 */
+.principles-grid .principle-card:nth-child(1) .principle-icon,
+.principles-grid .principle-card:nth-child(4) .principle-icon,
+.principles-grid .principle-card:nth-child(6) .principle-icon {
+  font-size: 2.2rem !important;   /* Matches default card icon size */
+  margin-bottom: 1rem !important; /* Matches default card spacing */
+}
