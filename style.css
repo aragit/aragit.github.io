@@ -10689,3 +10689,75 @@ div#services .cards .card.card-wide .card-actions {
 #portfolio .participation-menu a:hover {
     background: #1a1a1a !important;
 }
+
+/* PORTFOLIO REFACTOR: CLEAN HIERARCHY */
+#portfolio .trinity-main-title {
+    text-align: center !important;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    margin-bottom: 0.5rem !important;
+}
+
+#portfolio .trinity-terminal-bar {
+    text-align: center !important;
+    font-family: 'Courier New', monospace !important;
+    color: var(--accent) !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 3rem !important;
+    font-weight: bold !important;
+}
+
+#portfolio .agentic-solution-title {
+    text-align: center !important;
+    font-size: 1.6rem !important;
+    color: #fff !important;
+    margin-bottom: 0.5rem !important;
+}
+
+#portfolio .agentic-subtitle-clean {
+    text-align: center !important;
+    font-size: 1.2rem !important;
+    color: #a1a1aa !important;
+    margin-bottom: 3rem !important;
+}
+
+/* BOTTOM PARTICIPATION HUB */
+#portfolio .participation-component {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 4rem !important; /* Space after the grid */
+    padding-bottom: 2rem !important;
+}
+
+#portfolio .participation-btn {
+    background: transparent !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 12px 30px !important;
+    font-family: 'Courier New', monospace !important;
+    cursor: pointer !important;
+    font-weight: bold !important;
+}
+
+#portfolio .participation-btn:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+}
+
+#portfolio .participation-menu {
+    display: none;
+    position: absolute;
+    bottom: 100%; /* Opens UPWARD because it is at the bottom of the section */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    min-width: 300px;
+    z-index: 9999 !important;
+    margin-bottom: 10px;
+}
+
+#portfolio .participation-dropdown:hover .participation-menu {
+    display: block !important;
+}
