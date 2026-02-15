@@ -10505,3 +10505,24 @@ div#services .cards .card.card-wide .card-actions {
     opacity: 1 !important;
     text-transform: none !important;
 }
+
+/* Trinity Text Title (Standard Style) */
+.trinity-title-text {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+/* Terminal Trinity Line (Monospace Style) */
+.terminal-trinity {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem !important;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    opacity: 0.9;
+}
