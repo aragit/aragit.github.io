@@ -10745,10 +10745,10 @@ div#services .cards .card.card-wide .card-actions {
 .evolution-progression-card {
   display: flex;
   flex-direction: column;
-  background: var(--panel);
+  background: linear-gradient(to bottom, rgba(220, 20, 60, 0.06), rgba(138, 43, 226, 0.06), rgba(0, 190, 200, 0.06)), var(--panel);
   border-radius: var(--radius);
   margin: 1rem auto 4rem;
-  max-width: 1100px;
+  max-width: 950px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.05);
@@ -10757,12 +10757,13 @@ div#services .cards .card.card-wide .card-actions {
 @media(min-width: 768px) {
   .evolution-progression-card {
     flex-direction: row;
+    background: linear-gradient(to right, rgba(220, 20, 60, 0.06), rgba(138, 43, 226, 0.06), rgba(0, 190, 200, 0.06)), var(--panel);
   }
 }
 
 .progression-col {
   flex: 1;
-  padding: 2.5rem 2rem;
+  padding: 1.5rem 1.2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -10786,7 +10787,7 @@ div#services .cards .card.card-wide .card-actions {
 
 /* Typography Base */
 .progression-level {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted-2);
@@ -10795,15 +10796,15 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .progression-title {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   color: var(--text);
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
   font-weight: 700;
   line-height: 1.3;
 }
 
 .progression-text {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--muted);
   line-height: 1.6;
   margin: 0;
@@ -10811,17 +10812,14 @@ div#services .cards .card.card-wide .card-actions {
 
 /* Progressive Visual Weight */
 .col-trap {
-  opacity: 0.85; /* visually flatter */
-}
+  }
 
 .col-shift {
-  background: rgba(255, 255, 255, 0.02); /* slight lift */
-}
+  }
 
 /* The Premium Goal */
 .col-asset {
-  background: rgba(255, 255, 255, 0.04); /* Clean, slightly elevated background without brown tint */
-  position: relative;
+    position: relative;
 }
 
 @media(min-width: 768px) {
