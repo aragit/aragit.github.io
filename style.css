@@ -10263,3 +10263,31 @@ div#services .cards .card.card-wide .card-actions {
   font-size: 2.2rem !important;   /* Matches default card icon size */
   margin-bottom: 1rem !important; /* Matches default card spacing */
 }
+
+/* =========================================
+   FIX: STANDARDIZE ALL 6 PRINCIPLE CARDS TO TOP-LEFT
+   ========================================= */
+
+/* Force all standard cards to stack vertically and align left */
+.principles-grid .principle-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+}
+
+/* Force the icon to sit alone at the top-left */
+.principles-grid .principle-card .principle-icon {
+  display: block !important;
+  text-align: left !important;
+  margin-bottom: 1rem !important;
+  margin-right: 0 !important;
+}
+
+/* Ensure all titles and paragraphs strictly shift to the left */
+.principles-grid .principle-card h4,
+.principles-grid .principle-card p {
+  text-align: left !important;
+  margin-left: 0 !important;
+  width: 100% !important;
+}
