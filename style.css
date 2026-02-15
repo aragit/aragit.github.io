@@ -10587,3 +10587,105 @@ div#services .cards .card.card-wide .card-actions {
     transform: rotate(180deg);
     display: inline-block;
 }
+
+/* Specificity override for Portfolio Agentic Solution Section */
+#portfolio .trinity-header-group {
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+}
+
+#portfolio .trinity-text-title {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 0.5rem !important;
+}
+
+#portfolio .trinity-terminal-line {
+    font-family: 'Courier New', Courier, monospace !important;
+    color: var(--accent) !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 3rem !important;
+}
+
+#portfolio .agentic-subtitle-no-dot {
+    text-align: center !important;
+    font-size: 1.25rem !important;
+    color: #a1a1aa !important;
+    margin-top: -1.2rem !important;
+    margin-bottom: 2.5rem !important;
+    font-weight: 600 !important;
+}
+
+/* Participation Hub UI Components */
+#portfolio .participation-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 4rem !important;
+}
+
+#portfolio .participation-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#portfolio .participation-btn {
+    background: #000 !important;
+    color: var(--accent) !important;
+    padding: 12px 28px !important;
+    font-family: 'Courier New', monospace !important;
+    border: 1px solid var(--accent) !important;
+    cursor: pointer !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    transition: 0.3s ease !important;
+}
+
+#portfolio .participation-btn:hover {
+    background: var(--accent) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.4) !important;
+}
+
+#portfolio .participation-menu {
+    display: none;
+    position: absolute;
+    background: #111 !important;
+    min-width: 320px;
+    border: 1px solid #333 !important;
+    z-index: 9999 !important;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.95) !important;
+    margin-top: 10px;
+}
+
+#portfolio .participation-dropdown:hover .participation-menu {
+    display: block !important;
+}
+
+#portfolio .participation-menu a {
+    display: block !important;
+    padding: 18px 24px !important;
+    border-bottom: 1px solid #222 !important;
+    text-decoration: none !important;
+    transition: background 0.2s;
+}
+
+#portfolio .participation-menu a strong {
+    display: block !important;
+    color: var(--accent) !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 4px;
+}
+
+#portfolio .participation-menu a span {
+    font-size: 0.8rem !important;
+    color: #888 !important;
+}
+
+#portfolio .participation-menu a:hover {
+    background: #1a1a1a !important;
+}
