@@ -1,4 +1,3 @@
-/* script.js reset */
 /**
  * script.js — consolidated, accessible, and robust site behaviors
  *
@@ -791,39 +790,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
   items.forEach(item => observer.observe(item));
 });
-
-/* Participate Dropdown Click Handler */
-document.addEventListener('DOMContentLoaded', () => {
-
-  if (partBtn && partDropdown) {
-    partBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      partDropdown.classList.toggle('active');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!partDropdown.contains(e.target)) {
-        partDropdown.classList.remove('active');
-      }
-    });
-  }
-});
-
-// Click-to-open logic for Participation Hub
-(function() {
-  document.addEventListener('click', function(event) {
-    
-    if (!btn || !dropdown) return;
-
-    // If clicking the button, toggle the menu
-    if (btn.contains(event.target)) {
-      event.preventDefault();
-      dropdown.classList.toggle('active');
-    } 
-    // If clicking anywhere else, close the menu
-    else if (!dropdown.contains(event.target)) {
-      dropdown.classList.remove('active');
-    }
-  });
-})();
