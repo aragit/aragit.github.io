@@ -10224,32 +10224,3 @@ div#services .cards .card.card-wide .card-actions {
     margin-bottom: 0 !important;
   }
 }
-
-/* =========================================
-   CUSTOM ADJUSTMENTS FOR PRINCIPLES CARDS
-   ========================================= */
-
-/* 1. Decrease the width of the first 6 cards */
-.principles-grid .principle-card {
-  max-width: 320px !important; 
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* 2. Decrease title and icon size for exactly 01, 04, and 06 */
-
-/* Target the Icons */
-.principles-grid .principle-card:nth-child(1) .principle-icon,
-.principles-grid .principle-card:nth-child(4) .principle-icon,
-.principles-grid .principle-card:nth-child(6) .principle-icon {
-  font-size: 1.4rem !important; /* Default is 2.2rem */
-  margin-bottom: 0.6rem !important;
-}
-
-/* Target the Titles (h4) */
-.principles-grid .principle-card:nth-child(1) h4,
-.principles-grid .principle-card:nth-child(4) h4,
-.principles-grid .principle-card:nth-child(6) h4 {
-  font-size: 0.9rem !important; /* Default is 1.1rem */
-}
