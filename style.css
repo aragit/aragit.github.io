@@ -10820,7 +10820,7 @@ div#services .cards .card.card-wide .card-actions {
 
 /* The Premium Goal */
 .col-asset {
-  background: linear-gradient(145deg, rgba(255, 107, 0, 0.05), rgba(255, 107, 0, 0.12));
+  background: rgba(255, 255, 255, 0.04); /* Clean, slightly elevated background without brown tint */
   position: relative;
 }
 
@@ -10830,13 +10830,7 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
-.col-asset .accent-level {
-  color: var(--accent);
-  background: rgba(255, 107, 0, 0.1);
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 107, 0, 0.2);
-}
+
 
 .col-asset .progression-title {
   color: #ffffff;
