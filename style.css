@@ -10914,3 +10914,42 @@ div#services .cards .card.card-wide .card-actions {
     font-size: 1.05rem !important;  /* Scale down nicely on phones */
   }
 }
+
+/* ====================================================
+   FIX: SWAP SERVICES TITLE & SUBTITLE FONT SIZES
+   ==================================================== */
+
+/* Main Title: "Consulting Services" (Make it LARGER) */
+#services-title.section-title {
+  font-size: 1.55rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+/* Ensure the first line doesn't get shrunk by previous hacky rules */
+#services-title.section-title::first-line {
+  font-size: 1.55rem !important;
+  font-weight: 700 !important;
+}
+
+/* Subtitle: "Build and Operate..." (Make it SMALLER) */
+#services-title .services-subtitle,
+#services-title.section-title .services-subtitle {
+  font-size: 1.15rem !important;        /* Swapped to be smaller */
+  font-weight: 500 !important;          /* Lighter weight */
+  color: #e0e0e0 !important;            /* Slightly softened white */
+  margin-top: 0.5rem !important;
+  display: block !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  #services-title.section-title,
+  #services-title.section-title::first-line {
+    font-size: 1.35rem !important;
+  }
+  #services-title .services-subtitle,
+  #services-title.section-title .services-subtitle {
+    font-size: 1rem !important;
+  }
+}
