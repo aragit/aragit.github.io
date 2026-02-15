@@ -10892,3 +10892,25 @@ div#services .cards .card.card-wide .card-actions {
     max-height: 400px !important;
   }
 }
+
+/* ====================================================
+   FIX: SMALLER INSIGHT SUBTITLE
+   ==================================================== */
+.headline-line2,
+.insight-headline .headline-line2,
+#about .headline-line2,
+.section#about .headline-line2 {
+  font-size: 1.25rem !important;    /* Reduced from 1.6rem */
+  font-weight: 500 !important;      /* Slightly lighter weight to look like a subtitle */
+  color: #e0e0e0 !important;        /* Softened from pure white to contrast with main title */
+  margin-top: 5px !important;       /* Add a tiny bit of breathing room */
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .headline-line2,
+  .insight-headline .headline-line2,
+  #about .headline-line2 {
+    font-size: 1.05rem !important;  /* Scale down nicely on phones */
+  }
+}
