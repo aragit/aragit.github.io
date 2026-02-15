@@ -793,8 +793,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Participate Dropdown Click Handler */
 document.addEventListener('DOMContentLoaded', () => {
-  const partBtn = document.getElementById('participate-btn');
-  const partDropdown = document.querySelector('.participation-dropdown');
 
   if (partBtn && partDropdown) {
     partBtn.addEventListener('click', (e) => {
@@ -814,8 +812,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Click-to-open logic for Participation Hub
 (function() {
   document.addEventListener('click', function(event) {
-    const btn = document.getElementById('participate-btn');
-    const dropdown = document.querySelector('.participation-dropdown');
     
     if (!btn || !dropdown) return;
 

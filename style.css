@@ -10834,3 +10834,30 @@ div#services .cards .card.card-wide .card-actions {
 #portfolio .participation-dropdown.active:hover .participation-menu {
     display: block !important;
 }
+
+/* Clean Participation Button (Direct Link) */
+#portfolio .participation-component {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 4rem !important;
+    padding-bottom: 2rem !important;
+}
+
+#portfolio .participation-btn {
+    background: transparent !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 14px 34px !important;
+    font-family: 'Courier New', monospace !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+}
+
+#portfolio .participation-btn:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.4) !important;
+}
