@@ -10448,3 +10448,23 @@ div#services .cards .card.card-wide .card-actions {
 .principles-grid .principle-card:nth-child(5) .principle-icon {
   margin-bottom: 1.95rem !important; /* Increased from 1.6rem */
 }
+
+/* =========================================
+   INDIVIDUAL ROW ALIGNMENT (PERFECT PARITY)
+   ========================================= */
+
+/* ROW 1: Locked in and perfect per your feedback */
+.principles-grid .principle-card:nth-child(1) .principle-icon { margin-bottom: 0.1rem !important; } 
+.principles-grid .principle-card:nth-child(2) .principle-icon { margin-bottom: 1.95rem !important; }
+
+/* ROW 2: Fine-Tuned */
+/* Shield is taller than Microchip, so we use 1.4rem instead of 1.95rem */
+.principles-grid .principle-card:nth-child(3) .principle-icon { margin-bottom: 1.4rem !important; } 
+/* File-Signature is shorter than Route, so we use 0.6rem instead of 0.1rem */
+.principles-grid .principle-card:nth-child(4) .principle-icon { margin-bottom: 0.6rem !important; } 
+
+/* ROW 3: Fine-Tuned */
+/* Arrows (Circle) is taller than Microchip, so we use 1.3rem */
+.principles-grid .principle-card:nth-child(5) .principle-icon { margin-bottom: 1.3rem !important; } 
+/* Scale is shorter than Route, so we use 0.7rem */
+.principles-grid .principle-card:nth-child(6) .principle-icon { margin-bottom: 0.7rem !important; } 
