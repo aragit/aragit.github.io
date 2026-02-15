@@ -10468,3 +10468,15 @@ div#services .cards .card.card-wide .card-actions {
 .principles-grid .principle-card:nth-child(5) .principle-icon { margin-bottom: 1.3rem !important; } 
 /* Scale is shorter than Route, so we use 0.7rem */
 .principles-grid .principle-card:nth-child(6) .principle-icon { margin-bottom: 0.7rem !important; } 
+
+/* Section Subtitle Styling */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #a1a1aa; /* Subtle gray */
+    margin-top: -1rem; /* Pull it closer to the H2 */
+    margin-bottom: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    font-style: italic;
+}
