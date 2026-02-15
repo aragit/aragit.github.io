@@ -790,3 +790,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   items.forEach(item => observer.observe(item));
 });
+
+/* Participate Dropdown Click Handler */
+document.addEventListener('DOMContentLoaded', () => {
+  const partBtn = document.getElementById('participate-btn');
+  const partDropdown = document.querySelector('.participation-dropdown');
+
+  if (partBtn && partDropdown) {
+    partBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      partDropdown.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!partDropdown.contains(e.target)) {
+        partDropdown.classList.remove('active');
+      }
+    });
+  }
+});

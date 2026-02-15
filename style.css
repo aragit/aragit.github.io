@@ -10771,3 +10771,32 @@ div#services .cards .card.card-wide .card-actions {
 #portfolio .participation-component {
     margin-top: 3rem !important;
 }
+
+/* Final Participation Hub Adjustments */
+#portfolio .participation-menu {
+    display: none;
+    position: absolute;
+    top: 100% !important; /* Forces dropdown to open DOWN */
+    bottom: auto !important;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    min-width: 300px;
+    z-index: 10000 !important;
+    margin-top: 10px !important; /* Gap between button and menu */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.9) !important;
+}
+
+/* Active class controlled by JS click */
+#portfolio .participation-dropdown.active .participation-menu {
+    display: block !important;
+}
+
+/* Remove hover trigger */
+#portfolio .participation-dropdown:hover .participation-menu {
+    display: none !important;
+}
+#portfolio .participation-dropdown.active:hover .participation-menu {
+    display: block !important;
+}
