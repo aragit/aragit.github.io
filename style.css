@@ -10761,3 +10761,13 @@ div#services .cards .card.card-wide .card-actions {
 #portfolio .participation-dropdown:hover .participation-menu {
     display: block !important;
 }
+
+/* Remove spacing adjustments for the deleted subtitle */
+#portfolio .agentic-solution-title {
+    margin-bottom: 2rem !important;
+}
+
+/* Ensure Participate button remains clear at the bottom */
+#portfolio .participation-component {
+    margin-top: 3rem !important;
+}
