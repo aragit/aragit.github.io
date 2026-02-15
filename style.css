@@ -10953,3 +10953,14 @@ div#services .cards .card.card-wide .card-actions {
     font-size: 1rem !important;
   }
 }
+
+/* ===== KNOWLEDGE BASE: WIDE CARD OVERRIDE ===== */
+#articles .masonry-wide {
+  grid-column: span 2 !important;
+}
+
+@media (max-width: 900px) {
+  #articles .masonry-wide {
+    grid-column: span 1 !important;
+  }
+}
