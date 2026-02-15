@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771159203" />
+  <link rel="stylesheet" href="style.css?v=1771150431" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -192,12 +192,11 @@
       
       <!-- Article Cards - Deep Dive -->
       <div class="insight-articles">
-        
+        <h3 class="insight-articles-title">The Trinity of Survival</h3>
 
 <div class="principles-strip" id="core-principles">
   <div class="principles-header">
     <h3 class="section-title">Agentic Principle</h3>
-    <p class="agentic-subtitle-final">Build Architectures that Learn, not Rules that Break.</p>
     </div>
 
     <div class="principles-grid">
@@ -205,7 +204,7 @@
       <div class="principle-icon"><i class="fas fa-route"></i></div>
       <div class="card-content">
         <h4>01. Planning Rubicon</h4>
-        <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting. This ensures full traceability and allows human-in-the-loop oversight before irreversible actions are taken. By isolating the cognitive step, we prevent unpredictable hallucination-driven execution.</p>
+        <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting.</p>
       </div>
     </div>
 
@@ -229,7 +228,7 @@
       <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
       <div class="card-content">
         <h4>04. Typed Interfaces & State</h4>
-        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state. Silent failures are the enemy of autonomous systems. Enforcing schema rigidity ensures downstream agents always receive predictable, typed payloads.</p>
+        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state.</p>
       </div>
     </div>
 
@@ -245,7 +244,7 @@
       <div class="principle-icon"><i class="fas fa-scale-balanced"></i></div>
       <div class="card-content">
         <h4>06. Latency Trade-Off</h4>
-        <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency. In high-stakes environments, a fast wrong answer is catastrophic. We design architectures that willingly trade milliseconds of execution time for absolute safety.</p>
+        <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency.</p>
       </div>
     </div>
 
@@ -253,7 +252,7 @@
       <div class="capstone-text">
         <div class="principle-icon"><i class="fas fa-dna"></i></div>
         <h4>07. Continuous Learning & Memory</h4>
-        <p>A true agent does not re-solve problems it has already mastered. Learning occurs through structural adaptation, not continuous model retraining. Successful executions are distilled into long-term memory as semantic knowledge, abstract plan templates, and behavioral preferences that inform future decisions. Over time, the agent adapts what it remembers and forgets, how it decomposes tasks, which tools it trusts, and which behaviors are permitted or constrained. Vector databases enable contextual recall, while DAG-based plan graphs preserve executable structure, dependencies, invariants, and recovery paths. These mechanisms operate alongside episodic traces and policy constraints, allowing the system to improve reliability and efficiency over time without sacrificing determinism, governance, or control.</p>
+        <p>A true agent doesn't solve the same problem from scratch twice. When it successfully completes a complex workflow, it commits that architecture to long-term memory. It uses <strong>Vector DBs</strong> for semantic context recall, and maps the execution into <strong>DAGs (Directed Acyclic Graphs)</strong> to ensure future runs are strict, executable, and deterministic.</p>
       </div>
       <div class="capstone-visual">
         <img src="learning.jpg" alt="Agentic Architecture Memory Flow" class="capstone-image" onerror="if(!this.dataset.retried){this.dataset.retried=true;this.src='images/learning.jpg';}">
