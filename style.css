@@ -10329,3 +10329,26 @@ div#services .cards .card.card-wide .card-actions {
 .principles-grid .principle-card:nth-child(6) .principle-icon {
   margin-bottom: 0.15rem !important; /* Decreased from 1rem to absorb the tall icons and pull the titles up */
 }
+
+/* =========================================
+   ULTIMATE ALIGNMENT FIX FOR PRINCIPLE TITLES
+   ========================================= */
+
+/* Give all icon containers a fixed 55px height. 
+   This absorbs the height differences of the icons and forces every 
+   title to start at the exact same horizontal coordinate. */
+.principles-grid .principle-card .principle-icon {
+  height: 55px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important; /* Forces icons to sit flush at the bottom */
+  align-items: flex-start !important;   /* Keeps icons aligned to the left */
+  margin-bottom: 1rem !important;       /* Uniform space between icon and title */
+}
+
+/* Reset any previous hacky margins we applied to specific cards */
+.principles-grid .principle-card:nth-child(1) .principle-icon,
+.principles-grid .principle-card:nth-child(4) .principle-icon,
+.principles-grid .principle-card:nth-child(6) .principle-icon {
+  margin-bottom: 1rem !important; 
+}

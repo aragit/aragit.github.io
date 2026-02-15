@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771150431" />
+  <link rel="stylesheet" href="style.css?v=1771150748" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -204,7 +204,7 @@
       <div class="principle-icon"><i class="fas fa-route"></i></div>
       <div class="card-content">
         <h4>01. Planning Rubicon</h4>
-        <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting.</p>
+        <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting. This ensures full traceability and allows human-in-the-loop oversight before irreversible actions are taken. By isolating the cognitive step, we prevent unpredictable hallucination-driven execution.</p>
       </div>
     </div>
 
@@ -228,7 +228,7 @@
       <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
       <div class="card-content">
         <h4>04. Typed Interfaces & State</h4>
-        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state.</p>
+        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state. Silent failures are the enemy of autonomous systems. Enforcing schema rigidity ensures downstream agents always receive predictable, typed payloads.</p>
       </div>
     </div>
 
@@ -244,7 +244,7 @@
       <div class="principle-icon"><i class="fas fa-scale-balanced"></i></div>
       <div class="card-content">
         <h4>06. Latency Trade-Off</h4>
-        <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency.</p>
+        <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency. In high-stakes environments, a fast wrong answer is catastrophic. We design architectures that willingly trade milliseconds of execution time for absolute safety.</p>
       </div>
     </div>
 
