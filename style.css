@@ -10491,3 +10491,17 @@ div#services .cards .card.card-wide .card-actions {
     font-weight: 400;
     letter-spacing: 0.02em;
 }
+
+/* ULTIMATE OVERRIDE: Targets only this subtitle and beats global !important rules */
+#core-principles .principles-header .agentic-subtitle-final {
+    display: block !important;
+    text-align: center !important;
+    color: #ffffff !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    margin-top: -1.5rem !important; /* Pulls it up tight to the title */
+    margin-bottom: 3rem !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    text-transform: none !important;
+}
