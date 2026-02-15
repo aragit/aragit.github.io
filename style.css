@@ -10352,3 +10352,34 @@ div#services .cards .card.card-wide .card-actions {
 .principles-grid .principle-card:nth-child(6) .principle-icon {
   margin-bottom: 1rem !important; 
 }
+
+/* =========================================
+   DEFINITIVE FIX: UNIFORM ICON SPACING & TITLE ALIGNMENT
+   ========================================= */
+
+/* 1. Standardize the icon wrapper for all 6 cards */
+.principles-grid .principle-card .principle-icon {
+  height: 45px !important;              /* Fixed height ensures titles below start at the same pixel */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important; /* Anchors all icons to the TOP */
+  align-items: flex-start !important;     /* Anchors all icons to the LEFT */
+  margin-bottom: 1rem !important;         /* Exact, uniform gap between wrapper and title */
+}
+
+/* 2. Neutralize ALL previous specific card hacks */
+.principles-grid .principle-card:nth-child(1) .principle-icon,
+.principles-grid .principle-card:nth-child(2) .principle-icon,
+.principles-grid .principle-card:nth-child(3) .principle-icon,
+.principles-grid .principle-card:nth-child(4) .principle-icon,
+.principles-grid .principle-card:nth-child(5) .principle-icon,
+.principles-grid .principle-card:nth-child(6) .principle-icon {
+  margin-bottom: 1rem !important; /* Forces total parity across all cards */
+  padding: 0 !important;
+}
+
+/* 3. Ensure the icons themselves don't push margins */
+.principles-grid .principle-card .principle-icon i {
+  margin: 0 !important;
+  padding: 0 !important;
+}
