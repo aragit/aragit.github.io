@@ -10748,7 +10748,7 @@ div#services .cards .card.card-wide .card-actions {
   background: linear-gradient(to bottom, rgba(220, 20, 60, 0.06), rgba(138, 43, 226, 0.06), rgba(0, 190, 200, 0.06)), var(--panel);
   border-radius: var(--radius);
   margin: 1rem auto 4rem;
-  max-width: 950px;
+  max-width: 840px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.05);
@@ -10763,7 +10763,7 @@ div#services .cards .card.card-wide .card-actions {
 
 .progression-col {
   flex: 1;
-  padding: 1.5rem 1.2rem;
+  padding: 1.2rem 0.8rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -10787,7 +10787,7 @@ div#services .cards .card.card-wide .card-actions {
 
 /* Typography Base */
 .progression-level {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted-2);
@@ -10796,7 +10796,7 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .progression-title {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--text);
   margin: 0 0 0.5rem 0;
   font-weight: 700;
@@ -10804,7 +10804,7 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .progression-text {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--muted);
   line-height: 1.6;
   margin: 0;
@@ -10822,11 +10822,7 @@ div#services .cards .card.card-wide .card-actions {
     position: relative;
 }
 
-@media(min-width: 768px) {
-  .col-asset {
-    box-shadow: -15px 0 30px -10px rgba(0,0,0,0.5); /* interior shadow to pop */
-  }
-}
+
 
 
 
