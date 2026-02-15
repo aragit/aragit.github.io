@@ -10480,3 +10480,14 @@ div#services .cards .card.card-wide .card-actions {
     letter-spacing: 0.05em;
     font-style: italic;
 }
+
+/* Specific subtitle polish */
+.principles-subtitle {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #a1a1aa; 
+    margin-top: -1.5rem;
+    margin-bottom: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
