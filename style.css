@@ -10383,3 +10383,30 @@ div#services .cards .card.card-wide .card-actions {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/* =========================================
+   THE OPTICAL SIZING FIX (TRUE ALIGNMENT)
+   ========================================= */
+
+/* 1. Strip away the hacky fixed-height boxes */
+.principles-grid .principle-card .principle-icon {
+  height: auto !important;
+  display: block !important;
+  margin-bottom: 1.2rem !important; /* The ONE uniform gap for every card */
+  padding: 0 !important;
+}
+
+/* 2. Set the baseline font-size for standard icons (02, 03, 05) */
+.principles-grid .principle-card .principle-icon i {
+  font-size: 2.2rem !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+/* 3. OPTICAL SIZING: Shrink the intrinsically tall icons 
+      so their physical pixel height matches the standard icons */
+.principles-grid .principle-card:nth-child(1) .principle-icon i,
+.principles-grid .principle-card:nth-child(4) .principle-icon i,
+.principles-grid .principle-card:nth-child(6) .principle-icon i {
+  font-size: 1.75rem !important; /* Scaled down to match height of the others */
+}
