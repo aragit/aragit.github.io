@@ -10505,3 +10505,123 @@ div#services .cards .card.card-wide .card-actions {
     opacity: 1 !important;
     text-transform: none !important;
 }
+
+/* Value Proposition Bridge Styling */
+.value-prop-bridge {
+    padding: 80px 0;
+    background: #080808;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.vprop-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.vprop-title {
+    font-size: 2.2rem !important;
+    color: #fff !important;
+    margin-bottom: 15px !important;
+}
+
+.vprop-subtitle {
+    font-size: 1.2rem !important;
+    color: var(--accent) !important;
+    font-weight: 600 !important;
+    margin-bottom: 25px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vprop-why {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    color: #a1a1aa !important;
+}
+
+/* Evolution Staircase Grid */
+.evolution-staircase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.evo-step {
+    background: #111;
+    padding: 40px;
+    border: 1px solid #222;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.evo-step h4 {
+    font-size: 1.4rem !important;
+    margin: 20px 0 15px !important;
+    color: #fff;
+}
+
+.evo-step ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.evo-step ul li {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.evo-step ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #444;
+}
+
+.evo-badge {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #555;
+    border: 1px solid #333;
+    padding: 4px 10px;
+    display: inline-block;
+}
+
+.evo-label {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+/* High Value Step Highlight */
+.step-high {
+    border-color: var(--accent) !important;
+    box-shadow: 0 10px 40px rgba(255, 107, 0, 0.1);
+    transform: translateY(-10px);
+}
+
+.accent-badge {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.accent-label {
+    color: var(--accent) !important;
+}
+
+.step-high h4 {
+    color: var(--accent) !important;
+}
+
+.step-high ul li {
+    color: #ccc !important;
+}
