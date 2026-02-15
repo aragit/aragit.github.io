@@ -10291,3 +10291,30 @@ div#services .cards .card.card-wide .card-actions {
   margin-left: 0 !important;
   width: 100% !important;
 }
+
+/* =========================================
+   FIX: EQUALIZE ALL 6 CARD TITLES & ALIGNMENT
+   ========================================= */
+
+/* 1. Override previous shrinking and force all 6 titles to be identical */
+.principles-grid .principle-card h4,
+.principles-grid .principle-card:nth-child(1) h4,
+.principles-grid .principle-card:nth-child(4) h4,
+.principles-grid .principle-card:nth-child(6) h4 {
+  font-size: 1.1rem !important; /* Restores identical size across all cards */
+  margin-top: 0 !important;
+  margin-bottom: 0.8rem !important; /* Exact same spacing below the title */
+  line-height: 1.4 !important;
+  align-self: flex-start !important;
+}
+
+/* 2. Ensure icons push the titles down by the exact same amount */
+.principles-grid .principle-card .principle-icon,
+.principles-grid .principle-card:nth-child(1) .principle-icon,
+.principles-grid .principle-card:nth-child(4) .principle-icon,
+.principles-grid .principle-card:nth-child(6) .principle-icon {
+  font-size: 2.2rem !important;
+  margin-bottom: 1rem !important; /* Exact same spacing above the title */
+  align-self: flex-start !important;
+  display: block !important;
+}
