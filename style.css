@@ -10410,3 +10410,30 @@ div#services .cards .card.card-wide .card-actions {
 .principles-grid .principle-card:nth-child(6) .principle-icon i {
   font-size: 1.75rem !important; /* Scaled down to match height of the others */
 }
+
+/* =========================================
+   MANUAL MARGIN OFFSET (PER DIRECTIVE)
+   ========================================= */
+
+/* 1. Reset all previous height/size hacks. Keep all icons at the standard 2.2rem size */
+.principles-grid .principle-card .principle-icon {
+  height: auto !important;
+  display: block !important;
+}
+.principles-grid .principle-card .principle-icon i {
+  font-size: 2.2rem !important;
+}
+
+/* 2. INCREASE the distance for 02, 03, and 05 (the physically shorter icons) */
+.principles-grid .principle-card:nth-child(2) .principle-icon,
+.principles-grid .principle-card:nth-child(3) .principle-icon,
+.principles-grid .principle-card:nth-child(5) .principle-icon {
+  margin-bottom: 1.6rem !important; 
+}
+
+/* 3. DECREASE the distance for 01, 04, and 06 (the physically taller icons) */
+.principles-grid .principle-card:nth-child(1) .principle-icon,
+.principles-grid .principle-card:nth-child(4) .principle-icon,
+.principles-grid .principle-card:nth-child(6) .principle-icon {
+  margin-bottom: 0.1rem !important; 
+}
