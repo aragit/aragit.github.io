@@ -10972,3 +10972,32 @@ div#services .cards .card.card-wide .card-actions {
     color: #fff !important;
     box-shadow: 0 0 15px rgba(255, 107, 0, 0.3) !important;
 }
+
+/* Participation Button Fix: Ensure it is isolated from the grid */
+#portfolio .participation-component {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 5rem !important; /* Large margin to stay away from cards */
+    padding-bottom: 2rem !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+#portfolio .participation-btn {
+    background: transparent !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 12px 32px !important;
+    font-family: 'Courier New', monospace !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+    transition: 0.3s ease !important;
+}
+
+#portfolio .participation-btn:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.3) !important;
+}
