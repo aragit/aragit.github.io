@@ -810,3 +810,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Click-to-open logic for Participation Hub
+(function() {
+  document.addEventListener('click', function(event) {
+    const btn = document.getElementById('participate-btn');
+    const dropdown = document.querySelector('.participation-dropdown');
+    
+    if (!btn || !dropdown) return;
+
+    // If clicking the button, toggle the menu
+    if (btn.contains(event.target)) {
+      event.preventDefault();
+      dropdown.classList.toggle('active');
+    } 
+    // If clicking anywhere else, close the menu
+    else if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+})();

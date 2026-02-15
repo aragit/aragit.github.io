@@ -10800,3 +10800,37 @@ div#services .cards .card.card-wide .card-actions {
 #portfolio .participation-dropdown.active:hover .participation-menu {
     display: block !important;
 }
+
+/* Final Participation Hub - Downward & Click Logic */
+#portfolio .participation-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#portfolio .participation-menu {
+    display: none !important; /* Hidden by default */
+    position: absolute;
+    top: 100% !important;   /* Force DOWN */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: auto !important; /* Kill any upward logic */
+    margin-top: 12px !important;
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    min-width: 300px;
+    z-index: 10000 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+}
+
+/* Show ONLY when active class is present */
+#portfolio .participation-dropdown.active .participation-menu {
+    display: block !important;
+}
+
+/* Explicitly disable hover for the menu */
+#portfolio .participation-dropdown:hover .participation-menu {
+    display: none !important;
+}
+#portfolio .participation-dropdown.active:hover .participation-menu {
+    display: block !important;
+}
