@@ -10861,3 +10861,86 @@ div#services .cards .card.card-wide .card-actions {
     color: #fff !important;
     box-shadow: 0 0 20px rgba(255, 107, 0, 0.4) !important;
 }
+
+/* REVERSED: Clean Participation Button */
+#portfolio .participation-component {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 4rem !important;
+    padding-bottom: 3rem !important;
+}
+
+#portfolio .participation-btn {
+    background: transparent !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 12px 32px !important;
+    font-family: 'Courier New', monospace !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    transition: 0.3s ease !important;
+}
+
+#portfolio .participation-btn:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.3) !important;
+}
+
+/* Scrub old dropdown classes */
+.participation-menu, .participation-dropdown, .participation-dropdown.active { display: none !important; }
+
+/* REVERSED: Clean Participation Button */
+#portfolio .participation-component {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 4rem !important;
+    padding-bottom: 3rem !important;
+}
+
+#portfolio .participation-btn {
+    background: transparent !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 12px 32px !important;
+    font-family: 'Courier New', monospace !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    transition: 0.3s ease !important;
+}
+
+#portfolio .participation-btn:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.3) !important;
+}
+
+/* Scrub old dropdown classes */
+.participation-menu, .participation-dropdown, .participation-dropdown.active { display: none !important; }
+
+/* REVERSED: Minimalist Participation Link */
+#portfolio .participation-component {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 3.5rem !important;
+    padding-bottom: 2rem !important;
+}
+
+#portfolio .participation-btn {
+    background: transparent !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 12px 30px !important;
+    font-family: 'Courier New', monospace !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    transition: 0.3s ease !important;
+}
+
+#portfolio .participation-btn:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+}

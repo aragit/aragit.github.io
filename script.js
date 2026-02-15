@@ -1,3 +1,4 @@
+/* script.js reset */
 /**
  * script.js — consolidated, accessible, and robust site behaviors
  *
