@@ -10318,3 +10318,14 @@ div#services .cards .card.card-wide .card-actions {
   align-self: flex-start !important;
   display: block !important;
 }
+
+/* =========================================
+   FIX: ALIGN TITLES BY DECREASING ICON MARGIN
+   ========================================= */
+
+/* Target exactly 01, 04, and 06 to decrease the distance between icon and title */
+.principles-grid .principle-card:nth-child(1) .principle-icon,
+.principles-grid .principle-card:nth-child(4) .principle-icon,
+.principles-grid .principle-card:nth-child(6) .principle-icon {
+  margin-bottom: 0.15rem !important; /* Decreased from 1rem to absorb the tall icons and pull the titles up */
+}
