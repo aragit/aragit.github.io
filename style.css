@@ -10955,3 +10955,10 @@ div#services .cards .card.card-wide .card-actions {
   color: #ffffff !important; /* White text */
   text-shadow: 0 0 10px rgba(255,255,255,0.3) !important;
 }
+
+/* --- FIX: HERO TAGLINE ORANGE --- */
+p.tagline.typewriter, .tagline.typewriter {
+  color: #ff6b00 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 15px rgba(255, 107, 0, 0.3) !important;
+}
