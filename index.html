@@ -463,48 +463,31 @@
   <section id="portfolio" class="section">
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
-      <p class="section-subtitle" style="font-style: normal;">Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p><style>
-        /* Constrained width and centering */
+      <p class="section-subtitle" style="font-style: normal;">Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p>
+      
+      <style>
         .domain-bento-container { max-width: 850px; margin: 32px auto 48px auto; width: 100%; position: relative; z-index: 50; }
         
-        /* UX Instruction */
         .domain-instruction { text-align: center; font-size: 0.9rem; color: var(--muted); margin-bottom: 18px; font-weight: 400; }
         .domain-instruction i { color: var(--accent); margin-right: 8px; opacity: 0.9; }
 
-        /* Centered buttons with Flexbox for the + sign */
         .domain-tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         .domain-btn { 
-          display: flex; align-items: center; justify-content: center; gap: 8px; /* Spaces text and + */
+          display: flex; align-items: center; justify-content: center; gap: 8px; 
           flex: 1 1 28%; min-width: 160px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); 
           border-radius: 6px; padding: 10px 14px; color: var(--text); font-size: 0.85rem; font-weight: 500; 
           cursor: pointer; transition: all 0.3s ease; text-align: center; 
         }
         
-        /* The + Sign */
-        .domain-btn::after {
-          content: '+';
-          font-size: 1.3rem;
-          font-weight: 300;
-          line-height: 1;
-          transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        /* Hover and Active states */
+        .domain-btn::after { content: '+'; font-size: 1.3rem; font-weight: 300; line-height: 1; transition: transform 0.3s ease, color 0.3s ease; }
         .domain-btn:hover { border-color: var(--accent); background: rgba(255, 107, 0, 0.08); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 107, 0, 0.15); }
         .domain-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 107, 0, 0.12); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 107, 0, 0.15); }
+        .domain-btn.active::after { transform: rotate(45deg); color: var(--accent); }
         
-        /* Rotate + into an X when active */
-        .domain-btn.active::after {
-          transform: rotate(45deg);
-          color: var(--accent);
-        }
-        
-        /* Glassmorphic Drawer (Transparent + Blur) */
         .bento-drawer { 
           max-height: 0; overflow: hidden; opacity: 0; margin-top: 0; border-radius: 8px;
-          background: rgba(22, 22, 22, 0.45); /* Transparent background */
-          backdrop-filter: blur(12px); /* Apple-style frosted glass blur */
-          -webkit-backdrop-filter: blur(12px);
+          background: rgba(22, 22, 22, 0.45); 
+          backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
           transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease; 
         }
         .bento-drawer.open { max-height: 800px; opacity: 1; margin-top: 16px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
@@ -584,21 +567,17 @@
         const content = document.getElementById('drawerContent');
 
         if (btns.length > 0 && drawer && content) {
-          
-          // Function to open the drawer
           const triggerOpen = function(e) {
             e.preventDefault();
             const domain = this.getAttribute('data-domain');
             const isActive = this.classList.contains('active');
             
-            // If already open and clicked, close it (toggle behavior)
             if (isActive && e.type === 'click') {
                 this.classList.remove('active');
                 drawer.classList.remove('open');
                 return;
             }
 
-            // Otherwise, open it
             btns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             
@@ -610,13 +589,11 @@
             drawer.classList.add('open');
           };
 
-          // Attach BOTH click and hover events
           btns.forEach(btn => {
             btn.addEventListener('click', triggerOpen);
             btn.addEventListener('mouseenter', triggerOpen);
           });
           
-          // Auto-open first tab on load to demonstrate the '+' to 'x' animation
           setTimeout(() => {
             btns[0].classList.add('active');
             let initialHtml = '';
@@ -1128,7 +1105,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771278053?v=1770727673"></script>
+  <script src="script.js?v=1771278474"></script>
     
 </body>
 </html>
