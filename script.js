@@ -383,7 +383,6 @@
   /* -------------------------
      Small typewriter for #typewrite (accessible)
      ------------------------- */
-  const roles = ["Agentic AI Architect", "Systems in the Real World...", "Scaling Operational Intelligence", "Architecting Autonomous Systems"];
   function initTypewriter() {
       const el = document.getElementById('typewrite');
       if (!el) return;
@@ -784,12 +783,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== UPDATED: 3D TILT + BRIGHT GREY SPOTLIGHT FOR PORTFOLIO CARDS =====
-
-
-
-  }, observerOptions);
-
-  items.forEach(item => observer.observe(item));
-});
-
-
