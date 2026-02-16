@@ -1074,3 +1074,73 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Force Start */
 document.addEventListener('DOMContentLoaded', initTypewriter);
 window.addEventListener('load', initTypewriter);
+
+/* --- STANDALONE ROBUST TYPEWRITER --- */
+(function() {
+  function startTypewriter() {
+    const el = document.getElementById('typewrite');
+    if (!el) {
+      console.warn('Typewriter element missing from DOM');
+      return;
+    }
+    
+    // Clear the element safely
+    el.innerHTML = '';
+    
+    // Create the inner span
+    const inner = document.createElement('span');
+    inner.className = 'tw-inner';
+    el.appendChild(inner);
+
+    const words = [
+      'Planning-Executor • Deterministic Core • Healthcare AI',
+      'Multi-Agent Systems • Hierarchical Orchestration • Research Discovery',
+      'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise Automation',
+      'Neuro-Symbolic • Policy-as-Code Governance • Financial Compliance',
+      'LLM Engineering • Model Optimization • RAG Augmentation • Inference Optimization'
+    ];
+    
+    let wIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    let timer = null;
+    
+    const typeSpeed = 45;
+    const deleteSpeed = 25;
+    const holdDelay = 2000;
+
+    function step() {
+      const current = words[wIndex % words.length];
+      
+      if (!deleting) {
+        charIndex++;
+        inner.textContent = current.slice(0, charIndex);
+        if (charIndex >= current.length) {
+          deleting = true;
+          timer = setTimeout(step, holdDelay);
+          return;
+        }
+      } else {
+        charIndex--;
+        inner.textContent = current.slice(0, charIndex);
+        if (charIndex <= 0) {
+          deleting = false;
+          wIndex++;
+        }
+      }
+      timer = setTimeout(step, deleting ? deleteSpeed : typeSpeed);
+    }
+    
+    // Initial delay before starting
+    setTimeout(step, 800);
+    console.log('Typewriter started successfully.');
+  }
+
+  // Use both DOMContentLoaded and window load to guarantee execution
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(startTypewriter, 100);
+  } else {
+    document.addEventListener('DOMContentLoaded', startTypewriter);
+    window.addEventListener('load', startTypewriter);
+  }
+})();

@@ -60,7 +60,7 @@ nav.nav a:hover{color:var(--accent)}
 h1{font-size:2rem;margin:.25rem 0}
 .highlight{color:var(--text)}
 .tagline{color:var(--muted);margin:0 0 1rem}
-#typewrite{font-family:"Courier New", Courier, monospace;color:#e6eef6;min-height:2.2rem;font-size:1.12rem}
+
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:1rem 0;pointer-events:none}
 .hero-divider .line{width:170px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
 .chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display: flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
@@ -317,42 +317,14 @@ body {
   border-radius: 50%; /* keeps circular crop */
 }
 
-#typewrite {
-  position: relative;
-  min-height: 2.8rem;
-  box-sizing: border-box;
-  width: max-content; /* fit content width */
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  overflow: visible;
-  white-space: nowrap; /* prevent breaking */
-}
 
-#typewrite .tw-inner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: inline-block;
-  width: auto;
-  max-width: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  line-height: 1.25;
-  word-break: normal;
-  hyphens: none;
-}
+
+#typewrite 
 
 /* MOBILE — scale font instead of breaking lines */
 @media (max-width: 420px) {
-  #typewrite {
-    width: auto;
-  }
-  #typewrite .tw-inner {
-    font-size: 14px; /* smaller font for mobile */
-  }
+  
+  #typewrite 
 }
 .logo-img {
   background: transparent !important;
@@ -1868,11 +1840,7 @@ button.service-btn:hover {
 /* HERO TYPOGRAPHY FIXES */
 .typewriter, .typewriter-orange { font-family: "Courier New", Courier, monospace; }
 
-p.hero-tagline.typewriter { 
-  font-size: 1.1rem; 
-  color: #b0b0b0; 
-  margin: 0.5rem 0; 
-}
+p.hero-tagline
 
 p.hero-range.typewriter-orange { 
   font-size: 0.9rem; 
@@ -1880,17 +1848,9 @@ p.hero-range.typewriter-orange {
   margin: 0.3rem 0; 
 }
 
-p.tagline.typewriter { 
-  font-size: 1rem; 
-  color: #b0b0b0; 
-  margin: 0.5rem 0 1rem; 
-}
+p.tagline
 
-#typewrite { 
-  font-family: "Courier New", Courier, monospace; 
-  font-size: 0.9rem; 
-  color: #909090; 
-}
+
 
 .hero-divider { display: none !important; }
 
@@ -2451,19 +2411,10 @@ header .logo img:hover {
 /* ===== HERO TEXT - WHITER/BRIGHTER ===== */
 
 /* Agentic AI Architect - main tagline */
-.hero-tagline.typewriter {
-  color: #ffffff !important;
-  font-weight: 500;
-  opacity: 0.95;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
+.hero-tagline
 
 /* AI Engineering Services & Consulting - subtitle */
-.tagline.typewriter {
-  color: #e0e0e0 !important;
-  font-weight: 400;
-  opacity: 0.9;
-}
+.tagline
 
 /* Deterministic Core · Stochastic Range · Multi-Agent Scale - orange line */
 .hero-range.typewriter-orange {
@@ -2473,14 +2424,9 @@ header .logo img:hover {
 }
 
 /* Typewriter cycling text (#typewrite) - make more visible */
-#typewrite {
-  color: #c0c0c0 !important;
-  font-size: 0.95rem;
-}
 
-#typewrite .tw-inner {
-  color: #d0d0d0 !important;
-}
+
+#typewrite 
 
 /* Ensure all hero text has better contrast */
 .hero-inner p {
@@ -3749,26 +3695,10 @@ ul.insight-bullets li {
 
 /* Reset any broken positioning */
 .hero-tagline,
-.hero-tagline.typewriter {
-  position: relative !important;
-  display: block !important;
-  margin-top: 12px !important;
-  margin-bottom: 8px !important;
-  padding: 0 !important;
-  font-size: 1.1rem !important;
-  font-weight: 500 !important;
-  color: #e0e0e0 !important;
-  text-align: center !important;
-  line-height: 1.4 !important;
-}
+.hero-tagline
 
 /* Ensure typewriter text doesn't overlap */
-#typewrite {
-  display: block !important;
-  margin-top: 5px !important;
-  min-height: 1.4em !important;
-  position: relative !important;
-}
+
 
 /* Space between name and tagline */
 .hero-inner h1 {
@@ -10966,87 +10896,21 @@ div#services .cards .card.card-wide .card-actions {
 
 /* TYPEWRITER VISIBILITY FIX */
 
-#typewrite {
-  position: relative;
-  min-height: 2.5rem;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
 
-#typewrite .tw-inner {
-  position: relative !important; /* Change from absolute to relative for stability */
-  left: auto !important;
-  top: auto !important;
-  transform: none !important;
-  color: #ffffff !important; /* Force high visibility white */
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 500;
-  font-size: 1.1rem;
-  text-shadow: 0 0 10px rgba(255,255,255,0.2);
-}
+
+#typewrite 
 
 /* FINAL TYPEWRITER VISIBILITY OVERRIDE */
-#typewrite {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  min-height: 1.5em !important;
-  z-index: 10 !important; /* Lift above background noise/grid */
-  position: relative !important;
-  color: #ffffff !important;
-}
-.tw-inner {
-  display: inline-block !important;
-  position: relative !important;
-  color: #ffffff !important;
-  visibility: visible !important;
-}
 
-#typewrite {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    min-height: 2rem !important;
-    margin: 1rem 0 !important;
-    position: relative !important;
-    z-index: 9999 !important; /* Force above background layers */
-    color: #ff6b00 !important; /* Temporarily using orange to confirm it exists */
-    font-size: 1.2rem !important;
-    text-align: center !important;
-}
-.tw-inner {
-    display: inline !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-}
+
+
+
+
 
 /* --- TYPEWRITER STABILITY FIX --- */
-#typewrite {
-  position: relative !important;
-  display: block !important;
-  min-height: 1.8em !important;
-  width: 100% !important;
-  margin: 0.5rem auto !important;
-  text-align: center !important;
-  z-index: 99 !important; /* Above grid/noise */
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #ffffff !important;
-  font-family: "Courier New", Courier, monospace !important;
-  font-size: 1.05rem !important;
-}
 
-.tw-inner {
-  position: relative !important; /* Changed from absolute to relative to prevent parent collapse */
-  display: inline-block !important;
-  color: #ffffff !important;
-  text-shadow: 0 0 12px rgba(255,107,0,0.2);
-}
+
+
 
 /* Ensure parent containers don't clip it */
 .role-container, .value-prop {
@@ -11054,46 +10918,40 @@ div#services .cards .card.card-wide .card-actions {
   display: block !important;
 }
 
-#typewrite {
-}
+
 
 
 /* --- STABLE TYPEWRITER LAYOUT --- */
-#typewrite {
-  display: block !important;
-  min-height: 2.2rem !important; /* Forces the space between tagline and lines */
-  margin: 0.8rem auto !important;
-  text-align: center !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  z-index: 10 !important;
-}
 
-#typewrite .tw-inner {
-  position: relative !important; /* Prevents parent collapse */
-  display: inline-block !important;
-  color: #ffffff !important;
-  font-family: "Courier New", Courier, monospace !important;
-  font-size: 1.05rem !important;
-  font-weight: 500 !important;
-}
+
+#typewrite 
 
 /* --- Clean Typewriter Layout --- */
+
+
+#typewrite 
+
+
+/* --- DEFINITIVE TYPEWRITER FIX --- */
 #typewrite {
   display: block !important;
-  min-height: 2.4rem !important; /* Restores the space in the hero */
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 2.5rem !important; /* Proper spacing */
   margin: 1rem auto !important;
   position: relative !important;
-  z-index: 20 !important; /* Above background grid */
+  z-index: 9999 !important; /* Overcome grid layers */
   text-align: center !important;
-  visibility: visible !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  color: #ff6b00 !important; /* Orange to test visibility */
+  font-size: 1.1rem !important;
 }
 
 #typewrite .tw-inner {
-  position: relative !important; 
   display: inline-block !important;
-  color: #ffffff !important;
-  font-family: "Courier New", Courier, monospace !important;
-  font-size: 1.1rem !important;
+  position: relative !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important; /* White text */
+  text-shadow: 0 0 10px rgba(255,255,255,0.3) !important;
 }
