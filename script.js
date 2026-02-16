@@ -383,6 +383,7 @@
   /* -------------------------
      Small typewriter for #typewrite (accessible)
      ------------------------- */
+  const roles = ["Agentic AI Architect", "Systems in the Real World...", "Scaling Operational Intelligence", "Architecting Autonomous Systems"];
   function initTypewriter() {
       const el = document.getElementById('typewrite');
       if (!el) return;

@@ -5162,7 +5162,6 @@ ul.insight-bullets li {
 /* Case Studies subtitle */
 #portfolio .section-title::after,
 #portfolio-title::after {
-  content: "Systems in the Real World. Real Problems, Real Constraints. How Ideas Survive Production";
   display: block;
   font-size: 0.85rem;
   font-weight: 400;
