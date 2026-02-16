@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
+<head><style>/* FORCE HIDE IMAGES */ .cs-image{display:none!important;} /* FIX CARD SIZE */ .cs-card{height:280px!important;min-height:280px!important;display:flex!important;flex-direction:column!important;} .cs-link{margin-top:auto!important;}</style>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Arash Nicoomanesh | AI & ML Engineer | Generative & Agentic AI</title>
@@ -23,10 +23,8 @@
   <!-- icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
-
-    
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771275170" />
+  <link rel="stylesheet" href="style.css?v=1771267306" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -55,7 +53,6 @@
   <!-- HEADER -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      
 
       <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
         <i class="fas fa-bars" aria-hidden="true"></i>
@@ -64,7 +61,7 @@
       <nav id="primary-nav" class="nav" role="navigation" aria-label="Primary">
         <ul id="navbar">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#about">Architecture</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Solutions</a></li>
           <li><a href="blog/index.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
@@ -115,13 +112,11 @@
           </svg>
         </div>
 
-
-
       <div class="container hero-inner">
         <img src="Mereal1.png" alt="Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130">
         <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
         <p class="hero-tagline typewriter">Agentic AI Architect</p>
-        <p class="hero-range typewriter-orange">Deterministic Core · Stochastic Range · Multi-Agent Scale</p>
+        
         <p class="tagline typewriter">AI Engineering Services &amp; Consulting</p>
 
         <div class="value-prop" aria-hidden="false">
@@ -153,6 +148,40 @@
       </div>
     </section>
 
+<!-- VALUE EVOLUTION STAIRCASE -->
+<div class="value-prop-bridge">
+    <div class="container">
+        <div class="vprop-header">
+            <h2 class="vprop-title">Beyond the Hype of Expensive Chatbots</h2>
+            <p class="vprop-subtitle">Bridging Strategic Business Intent with Adaptive Agentic Systems</p>
+            <p class="vprop-why"><strong>The "Why":</strong> Standard automation is a brittle cost. Agentic Systems are an investment in <strong>Architectural Resilience</strong>. We do not just automate tasks; we build systems that reason through business complexity, reducing technical debt while scaling operational intelligence.</p>
+        </div>
+        <div class="evolution-image-wrapper" style="text-align: center; margin: 3rem auto; max-width: 900px; padding: 0 1rem;">
+            <img src="evolution.jpg" alt="Value Evolution from Chatbots to Agentic Systems" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(255, 107, 0, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+        </div>
+        <div class="evolution-progression-card">
+            <div class="progression-col col-trap">
+                <div class="progression-level">Levels 1 & 2</div>
+                <h3 class="progression-title">The Trap of Brittle Automation</h3>
+                <p class="progression-text">Standard chatbots and hardcoded workflows are fragile cost centers. They create technical debt and require constant human supervision to handle anything beyond a rigid script, offering only minor operational gains.</p>
+            </div>
+
+            <div class="progression-col col-shift">
+                <div class="progression-level">Level 3</div>
+                <h3 class="progression-title">The Shift to Predictable ROI</h3>
+                <p class="progression-text">True value requires moving from automated processes to autonomous reasoning. Autonomous agents dynamically plan, use APIs, execute multi-step tasks end-to-end, and self-correct their own errors without human intervention.</p>
+            </div>
+
+            <div class="progression-col col-asset">
+                <div class="progression-level">Level 4</div>
+                <h3 class="progression-title">The Strategic Asset</h3>
+                <p class="progression-text">The ultimate goal is a Multi-Agent System. By orchestrating specialized, collaborating AI agents, enterprises gain a self-optimizing, scalable digital workforce that solves complex problems and drives top-line growth.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
     <!-- ABOUT -->
     <!-- ABOUT / INSIGHT -->
     <!-- ABOUT / INSIGHT -->
@@ -161,7 +190,7 @@
         <!-- Centered headline outside card -->
         <h2 class="insight-headline">
           <span class="headline-line1">Don't Build Just "Expensive Chatbots"</span>
-          <span class="headline-line2">Real "Agentic Systems" Reason and Learn within "Adaptive Architecture"</span>
+          <span class="headline-line2">Real Agentic Systems Reason and Learn within Adaptive Architecture</span>
         </h2>
         
         <!-- Combined card with text and image side by side -->
@@ -197,253 +226,429 @@
       
       <!-- Article Cards - Deep Dive -->
       <div class="insight-articles">
-        <h3 class="insight-articles-title">Architecture Philosophy</h3>
-        
-        <div class="article-cards-grid">
+
+<div class="principles-strip" id="core-principles">
+  <div class="principles-header">
+    <h3 class="section-title">Agentic Principles</h3>
+    <p class="agentic-subtitle-final">Build Architectures that Learn, not Rules that Break.</p>
+    </div>
+
+    <div class="principles-grid">
+    <div class="principle-card principle-wide">
+      <div class="principle-icon"><i class="fas fa-route"></i></div>
+      <div class="card-content">
+        <h4>01. Planning Rubicon</h4>
+        <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting. This ensures full traceability and allows human-in-the-loop oversight before irreversible actions are taken. By isolating the cognitive step, we prevent unpredictable hallucination-driven execution.</p>
+      </div>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon"><i class="fas fa-microchip"></i></div>
+      <div class="card-content">
+        <h4>02. Brain vs. Body</h4>
+        <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer strictly controls execution.</p>
+      </div>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="card-content">
+        <h4>03. Governance First</h4>
+        <p>Inline policy gating (e.g., OPA) with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
+      </div>
+    </div>
+
+    <div class="principle-card principle-wide">
+      <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
+      <div class="card-content">
+        <h4>04. Typed Interfaces & State</h4>
+        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state. Silent failures are the enemy of autonomous systems. Enforcing schema rigidity ensures downstream agents always receive predictable, typed payloads.</p>
+      </div>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon"><i class="fas fa-arrows-rotate"></i></div>
+      <div class="card-content">
+        <h4>05. Reflection Loops</h4>
+        <p>Self-monitoring feedback loops where the architecture observes and logs outcomes to refine future reasoning.</p>
+      </div>
+    </div>
+
+    <div class="principle-card principle-wide">
+      <div class="principle-icon"><i class="fas fa-scale-balanced"></i></div>
+      <div class="card-content">
+        <h4>06. Latency Trade-Off</h4>
+        <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency. In high-stakes environments, a fast wrong answer is catastrophic. We design architectures that willingly trade milliseconds of execution time for absolute safety.</p>
+      </div>
+    </div>
+
+    <div class="principle-item principle-capstone">
+      <div class="capstone-text">
+        <div class="principle-icon"><i class="fas fa-dna"></i></div>
+        <h4>07. Continuous Learning & Memory</h4>
+        <p>A true agent does not re-solve problems it has already mastered. Learning occurs through structural adaptation, not continuous model retraining. Successful executions are distilled into long-term memory as semantic knowledge, abstract plan templates, and behavioral preferences that inform future decisions. Over time, the agent adapts what it remembers and forgets, how it decomposes tasks, which tools it trusts, and which behaviors are permitted or constrained. Vector databases enable contextual recall, while DAG-based plan graphs preserve executable structure, dependencies, invariants, and recovery paths. These mechanisms operate alongside episodic traces and policy constraints, allowing the system to improve reliability and efficiency over time without sacrificing determinism, governance, or control.</p>
+      </div>
+      <div class="capstone-visual">
+        <img src="learning.jpg" alt="Agentic Architecture Memory Flow" class="capstone-image" onerror="if(!this.dataset.retried){this.dataset.retried=true;this.src='images/learning.jpg';}">
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
+          <span class="prompt-sign">&gt;_</span> Deterministic Core &middot; Stochastic Range &middot; Multi-Agent Scale <span class="cursor-blink">&#9608;</span>
+        </div>
+
+        <div class="triptych-grid">
           
-          <!-- Card 1: Planning Rubicon -->
-          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" 
-             target="_blank" rel="noopener noreferrer" class="article-card">
-            <div class="article-image">
-              <img src="x3.jpg" alt="The Planning Rubicon">
-            </div>
-            <div class="article-card-content">
-              <h4 class="article-title">The Planning Rubicon</h4>
-              <p class="article-summary">Why most "AI agents" are just expensive chatbots that react but never truly plan or execute.</p>
-              <div class="article-meta">
-                <span class="article-tag">Architecture</span>
-                <span class="article-read">7 min →</span>
-              </div>
-            </div>
+          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" target="_blank" class="triptych-card core-card">
+            <div class="triptych-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Deterministic Core</h3>
+            <p>Enterprise autonomy requires absolute reliability. We treat the LLM as an untrusted guest within a rigid state machine, ensuring critical actions are governed by deterministic logic, not probabilistic guesses.</p>
+            <span class="triptych-link">Read: Why "Chatbots" Fail &rarr;</span>
           </a>
-          
-          <!-- Card 2: 2026 Roadmap -->
-          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" 
-             target="_blank" rel="noopener noreferrer" class="article-card">
-            <div class="article-image">
-              <img src="alpha.jpg" alt="2026 Roadmap">
-            </div>
-            <div class="article-card-content">
-              <h4 class="article-title">From generative to agentic AI</h4>
-              <p class="article-summary">The 2026 roadmap: why the future of AI isn't better brains, it's better bodies.</p>
-              <div class="article-meta">
-                <span class="article-tag">Strategy</span>
-                <span class="article-read">12 min →</span>
-              </div>
-            </div>
+
+          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" target="_blank" class="triptych-card range-card">
+            <div class="triptych-icon"><i class="fas fa-brain"></i></div>
+            <h3>Stochastic Range</h3>
+            <p>Intelligence is useless without constraints. We architect reasoning engines that explore solutions creatively but operate strictly within a pre-validated "Stochastic Range" to prevent hallucinations in high-stakes environments.</p>
+            <span class="triptych-link">Read: The Engine of Reasoning &rarr;</span>
           </a>
-          
-          <!-- Card 3: Reasoning Revolution -->
-          <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" 
-             target="_blank" rel="noopener noreferrer" class="article-card">
-            <div class="article-image">
-              <img src="reason.png" alt="Reasoning Revolution">
-            </div>
-            <div class="article-card-content">
-              <h4 class="article-title">How LLM reasoning powers agency</h4>
-              <p class="article-summary">How advanced LLMs enable true agentic behavior through reasoning and planning.</p>
-              <div class="article-meta">
-                <span class="article-tag">Technology</span>
-                <span class="article-read">9 min →</span>
-              </div>
-            </div>
+
+          <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" target="_blank" class="triptych-card scale-card">
+            <div class="triptych-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Multi-Agent Scale</h3>
+            <p>A single agent is a toy; a swarm is a platform. We transition from isolated bots to shared-memory actor models, allowing thousands of "Sentinel" units to collaborate on complex tasks without state fragmentation.</p>
+            <span class="triptych-link">Read: The 2026 Roadmap &rarr;</span>
           </a>
-          
+
+        </div>
+
+<div class="articles-cta" style="margin-top: 2.5rem;">
+          <a href="architecture.html" class="btn-hero btn-primary">
+            Learn More
+          </a>
         </div>
       </div>
       
     </section>
     <!-- PORTFOLIO -->
-    <section id="portfolio" class="section" aria-labelledby="portfolio-title">
-      <div class="container">
-        <h2 id="portfolio-title" class="section-title">Case Studies</h2>
-        <div class="cards" id="portfolio-cards">
-          <!-- 2-column wrapper: big cards left, small cards right -->
-            <!-- 2-column wrapper: big cards left, small cards right -->
-            <div class="portfolio-grid">
-              <!-- LEFT: 2 big cards -->
-              <!-- LEFT: 2 big cards -->
-                <div class="big-cards">
-                  <!-- Card 1 -->
-                  <article class="card" tabindex="0">
-                    <div class="card-icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
-                    <div class="card-body">
-                      <h3>Medical Triage Agent</h3>
-                      <p>Hybrid conversational agent using Gemini Pro, Med-PaLM 2</p>
-                      <p>Engineered to mimic a clinician's stepwise reasoning process, combining multiple AI technologies for comprehensive patient assessment and support</p>
-                    
-                      <div class="card-actions">
-                        <a class="cta-secondary" href="case-studies/medical-triage/medical-triage.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-                       
-                      </div>
-                      <!-- image fills empty space -->
-                      <img src="triage.jpeg" alt="Medical Triage Agent preview" class="card-fill-img">
-                    </div>
-                  </article>
-                
-                  <!-- Card 2 -->
-                  <article class="card" tabindex="0">
-                    <div class="card-icon"><i class="fas fa-pills" aria-hidden="true"></i></div>
-                    <div class="card-body">
-                      <h3>Conversational Drug Repurposing</h3>
-                      <p>Applying Google LLMs for alternative therapy recommendations from RWD EHR</p>
-                      <p>The generator uses advanced AI techniques to analyze biomedical data and generate novel hypotheses for drug repurposing</p>
-                      <div class="card-actions">
-                        <a class="cta-secondary" href="case-studies/drug-repurposing/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-                      </div>
-                      <img src="drug3.jpg" alt="Drug Repurposing preview" class="card-fill-img">
-                    </div>
-                  </article>
-                </div>
-            
-              <!-- RIGHT: 4 small cards in ONE column -->
-              <div class="small-cards">
-                <article class="card" tabindex="0">
-                  <div class="card-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
-                  <div class="card-body">
-                    <h3>ICU Metrics Forecasting</h3>
-                    <p>Multi-variate time-series models predicting readmission, mortality and LOS using clinical variables</p>
-                  </div>
-                  <div class="card-actions">
-                    <a class="cta-secondary" href="case-studies/icu-forecasting/icu-forecasting.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-                  </div>
-                </article>
-            
-                <article class="card" tabindex="0">
-                  <div class="card-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
-                  <div class="card-body">
-                    <h3>Multi-Turn Product Recommendation QA Bot</h3>
-                    <p>Fine-tuned open source LLMs with hybrid retrieval with efficient inference and scalable deployment</p>
-                  </div>
-                  <div class="card-actions">
-                    <a class="cta-secondary" href="case-studies/prd-recomm-qa/prd-recomm-qa.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-                  </div>
-                </article>
-            
-                <article class="card" tabindex="0">
-                  <div class="card-icon"><i class="fas fa-university" aria-hidden="true"></i></div>
-                  <div class="card-body">
-                    <h3>Banking Resource Management System</h3>
-                    <p>End-to-end customer LTV and churn prediction as well as transactional fraud detection</p>
-                  </div>
-                  <div class="card-actions">
-                    <a class="cta-secondary" href="case-studies/banking-system.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-                  </div>
-                </article>
-            
-                <article class="card" tabindex="0">
-                  <div class="card-icon"><i class="fas fa-lungs" aria-hidden="true"></i></div>
-                  <div class="card-body">
-                    <h3>Covid-19 Diagnosis with Audio Biomarkers</h3>
-                    <p>COVID-19 diagnosis through acoustic analysis of breathing, cough, and speech signals</p>
-                  </div>
-                  <div class="card-actions">
-                    <a class="cta-secondary" href="case-studies/Covid/index.html" target="_blank" rel="noopener noreferrer">View Case Study</a>
-                  </div>
-                </article>
-              </div>
-            </div>
+    <!-- CASE STUDIES - NEW AGENTIC DESIGN -->
+
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2 class="section-title">Agentic Solutions</h2>
+      <p class="section-subtitle" style="font-style: normal;">Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p>
+
+      <div class="domain-grid">
+        <div class="domain-tag" style="border-color: #87CEEB; color: #87CEEB;">
+          Healthcare & Life Sciences
+        </div>
+        <div class="domain-tag" style="border-color: #FFD700; color: #FFD700;">
+          Manufacturing & Industrial Operations
+        </div>
+        <div class="domain-tag" style="border-color: #8B0000; color: #8B0000;">
+          E-Commerce & Marketing
+        </div>
+        <div class="domain-tag" style="border-color: #006400; color: #006400;">
+          Supply Chain
+        </div>
+        <div class="domain-tag" style="border-color: #008080; color: #008080;">
+          Financial Services
         </div>
       </div>
-    </section>
+      
+      
+      <div class="bento-grid">
+        
+        <div class="bento-item card-featured">
+          <div class="featured-flex">
+            <div class="featured-info">
+              <span class="badge">EHR-Integrated</span>
+              <h3>Medical Triage Agent</h3>
+              <p style="color:var(--accent); font-weight:500;">Reasons like a clinician; prioritizes care safely.</p>
+              <div class="agent-loop">
+                <div class="loop-step"><strong>Observe:</strong> Intake notes, vitals, meds, comorbidities.</div>
+                <div class="loop-step"><strong>Reason:</strong> Risk stratification + differential hypotheses.</div>
+                <div class="loop-step"><strong>Act:</strong> Create tasks/alerts and populate triage notes.</div>
+              </div>
+              <div class="tech-tags"><span class="tag">EHR-native</span><span class="tag">RAG</span><span class="tag">Policy-gated</span></div>
+              <a href="case-studies/medical-triage/medical-triage.html" class="link-arrow">View Case Study →</a>
+              <span class="safety-note">Clinical decision support — requires provider validation.</span>
+            </div>
+            <div class="featured-terminal">
+              <div class="terminal-header" style="display:flex; gap:5px; margin-bottom:10px;">
+                <div class="dot red" style="width:8px;height:8px;background:#ff5f56;border-radius:50%"></div>
+                <div class="dot yellow" style="width:8px;height:8px;background:#ffbd2e;border-radius:50%"></div>
+                <div class="dot green" style="width:8px;height:8px;background:#27c93f;border-radius:50%"></div>
+              </div>
+              <p class="log-line">> [INIT] Agentic_Loop_v2.4</p>
+              <p class="log-line">> [DATA] EHR Patient_ID: 99x-72 linked</p>
+              <p class="log-line">> [THINK] Analyzing Vitals: BP 160/100, Temp 101F</p>
+              <p class="log-line">> [REASON] Cross-ref: Type 2 Diabetes history</p>
+              <p class="log-line">> [RISK] Sepsis Probability: 72% (Critical)</p>
+              <p class="log-line">> [PLAN] Generating Priority_Alpha alert...</p>
+              <p class="log-line blink">> Waiting for clinician auth...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-item biomed-tall">
+          <h3>Biomedical Hypotheses</h3>
+          <p class="loop-step">Hypothesis-driven retrieval over PubMed/DrugBank for repurposing leads.</p>
+          <div class="tech-tags"><span class="tag">PubMed-KB</span><span class="tag">GNN</span></div>
+          <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
+        </div>
+
+        <div class="bento-item">
+          <h3>Marketing ROI Optimizer</h3>
+          <p class="loop-step">Continuously reallocates budget using Multi-armed bandits and real-time conversion signals.</p>
+          <div class="tech-tags"><span class="tag">Bandits</span><span class="tag">Streaming</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
+        </div>
+
+        <div class="bento-item">
+          <h3>Supply Chain Orchestrator</h3>
+          <p class="loop-step">Autonomously reroutes logistics based on inventory, weather, and telemetry.</p>
+          <div class="tech-tags"><span class="tag">Simulation</span><span class="tag">Event-driven</span></div>
+          <a href="#" class="link-arrow">View Case Study →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
     <!-- ARTICLES (with "Explore My Blog for More" button moved here) -->
     <!-- ARTICLES – Masonry with real random heights + bottom-left hero -->
     <!-- ARTICLES – Masonry, no buttons, whole card clickable -->
+    <section id="services" class="section" aria-labelledby="services-title">
+      <div class="container">
+        <h2 id="services-title" class="section-title">Consulting Services<br><span class="services-subtitle">Build and Operate Intelligent Systems that Last</span></h2>
+    
+        <div class="cards services-grid">
+          <a class="card service-card" href="services/quick-audit.html" aria-label="The Blueprint">
+            <div class="card-body">
+              <h3>The Blueprint</h3>
+              <p class="service-subtitle">AI Strategy & Advisory</p>
+              <p class="service-detail">De-risk your AI investment with a comprehensive technical architecture, cost model, and execution strategy</p>
+            </div>
+            <div class="card-actions">
+              <span class="cta-secondary">Learn more</span>
+            </div>
+          </a>
+
+          <a class="card service-card" href="services/paid-poc.html" aria-label="The Forge">
+            <div class="card-body">
+              <h3>The Forge</h3>
+              <p class="service-subtitle">Solution Development</p>
+              <p class="service-detail">Validate your AI idea in 4 weeks. We Build a production-grade prototype, not a throwaway demo</p>
+            </div>
+            <div class="card-actions">
+              <span class="cta-secondary">Learn more</span>
+            </div>
+          </a>
+
+          <a class="card service-card" href="services/deploy-scale.html" aria-label="The Nexus">
+            <div class="card-body">
+              <h3>The Nexus</h3>
+              <p class="service-subtitle">Deployment & Scale</p>
+              <p class="service-detail">Governance first, Intelligence second. Production architectures with Policy-as-Code, blast-radius containment, and durable execution.</p>
+            </div>
+            <div class="card-actions">
+              <span class="cta-secondary">Learn more</span>
+            </div>
+          </a>
+
+          <a class="card service-card" href="services/llm-engineering.html" aria-label="Generative AI & LLM Engineering">
+            <div class="card-body">
+              <h3>Generative AI & LLM Engineering</h3>
+              <p class="service-subtitle">Determinism, Neuro-Symbolic Logic and Optimization</p>
+              <p class="service-detail">Beyond APIs. Custom architecture, model optimization, and reliable engineering for high-stakes AI systems.<br><br>Moving beyond API wrappers, we re-engineer model architectures for production scale. We optimize neural weights for latency, implement custom precision tuning, and design dedicated inference layers that drastically reduce compute costs without sacrificing reasoning quality.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Unsloth</span>
+              <span class="tech-badge">vLLM</span>
+              <span class="tech-badge">TensorRT</span>
+              <span class="tech-badge">FlashAttn</span>
+              <span class="tech-badge">PyTorch</span>
+              <span class="tech-badge">Triton</span>
+              <span class="tech-badge">Quantization</span>
+              <span class="tech-badge">LoRA/QLoRA</span>
+              <span class="tech-badge">CUDA</span>
+            </div>
+            </div>
+            <div class="card-actions">
+              <span class="cta-secondary">Learn more</span>
+            </div>
+          </a>
+
+          <a class="card service-card card-dashboard" href="services/agentic-ai.html" aria-label="Specialized Agentic AI Solutions">
+            <div class="dashboard-content">
+              <h3>Specialized Agentic AI Solutions</h3>
+              <p class="service-subtitle">Agentic AI Systems</p>
+              <p class="service-detail">Neuro-symbolic agents that do work. Separating the 'Brain' and reasoning from the 'Body' and execution. We implement hierarchical planning, self-correction loops, and "Blast Radius" protocols. Your agents won't just chat; they will safely execute complex workflows, verify their own outputs, and persist state across system failures.</p>
+              <div class="tech-stack">
+                <span class="tech-badge">LangGraph</span>
+                <span class="tech-badge">Temporal</span>
+                <span class="tech-badge">DSPy</span>
+                <span class="tech-badge">OPA</span>
+                <span class="tech-badge">Pydantic</span>
+                <span class="tech-badge">BurpSuite</span>
+                <span class="tech-badge">LangChain</span>
+                <span class="tech-badge">CrewAI</span>
+              </div>
+              <div class="card-actions">
+                <span class="cta-secondary">Learn more</span>
+              </div>
+            </div>
+            
+            <div class="dashboard-visual">
+            
+              <div class="terminal-box">
+                <div class="terminal-header">
+                  <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                  <div class="terminal-title">crispr-designer — deep-crispr-v2</div>
+                </div>
+                <div class="terminal-body"><span class="cmd">$ design_agent --target="Gene_HBB" --goal="correct_mutation"</span>
+
+<span class="cmt"># --- STEP 1: OBSERVE & SIMULATE ---</span>
+<span class="kwd">[OBSERVE]</span> Analyzed patient genome (3.2B base pairs).
+<span class="kwd">[SIMULATE]</span> Running Cas9 binding prediction...
+  └─ <span class="str">Candidate A:</span> Efficiency 99.1% (Top Pick)
+  └─ <span class="str">Candidate B:</span> Efficiency 84.5%
+
+<span class="cmt"># --- STEP 2: REASONING ---</span>
+<span class="kwd">[THINK]</span> "Candidate A is superior. Maximizes therapeutic edit rate. Preparing synthesis payload."
+
+<span class="cmt"># --- STEP 3: GOVERNANCE GATE (Safety) ---</span>
+<span class="kwd">[ACTION_ATTEMPT]</span> <span class="cmd">finalize_design(seq="GTC...AGG", candidate="A")</span>
+<span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: off_target_toxicity)
+  └─ <span class="str">Critical Risk:</span> "Candidate A has a 0.4% off-target match with 'TP53' (Tumor Suppressor). Editing this locus carries high cancer risk."
+
+<span class="cmt"># --- STEP 4: RECOVERY ---</span>
+<span class="kwd">[PLAN_UPDATE]</span> Discarding Candidate A.
+<span class="pass">[EXEC]</span> Finalizing Candidate B (Lower efficiency, zero off-target risk).
+<span class="cmd">[STATUS]</span> <span class="blink">SAFE DESIGN LOCKED</span>...</div>
+              </div></div>
+          </a>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES & PACKAGES -->
+    <!-- SERVICES & PACKAGES -->
+    <!-- ==========  SERVICES & PACKAGES  ========== -->
+    <!-- ==========  SERVICES & PACKAGES  ========== -->
+    
     <section id="articles" class="section alt" aria-labelledby="articles-title">
       <div class="container">
         <h2 id="articles-title" class="section-title">Knowledge Base</h2>
     
         <div class="masonry-grid">
     
-          <!----------  HERO CARD (clickable) ---------->
           <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-hero">
-            <img src="one.jpg" alt="" class="masonry-hero-bg">
-            <div class="masonry-hero-overlay"></div>
-    
-            <div class="masonry-hero-bottom">
-             
-              <h3 class="masonry-hero-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h3>
-              <p class="masonry-hero-sub">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p>
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-hero">
+            <div class="article-image">
+              <img src="one.jpg" alt="Fine-Tuning DeepSeek R1">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h4>
+              <p class="article-summary">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p>
+              <div class="article-meta">
+                <span class="article-tag">Deep Learning</span>
+                <span class="article-read">12 min →</span>
+              </div>
             </div>
           </a>
     
-          <!----------  SMALL CARDS (clickable + image below text) ---------->
           <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
-            <div class="masonry-small-top">
-              
-              <h3>Gemma 3n Edge AI for Support Bots</h3>
-              <p>Low-memory, high-speed training on customer-support data</p>
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-image">
+              <img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="Gemma 3n">
             </div>
-            <img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="" class="masonry-small-img">
+            <div class="article-card-content">
+              <h4 class="article-title">Gemma 3n Edge AI for Support Bots</h4>
+              <p class="article-summary">Low-memory, high-speed training on customer-support data</p>
+              <div class="article-meta">
+                <span class="article-tag">Edge AI</span>
+                <span class="article-read">8 min →</span>
+              </div>
+            </div>
           </a>
     
           <a href="https://cdn.brouseai.com/preview/qX_N5BbwPyrym93xiQLRS.png"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
-            <div class="masonry-small-top">
-              
-              <h3>LLM Output Config & Guardrails</h3>
-              <p>Master reasoning prompts and guardrails for reliable outputs</p>
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-image">
+              <img src="config.jpg" alt="LLM Config">
             </div>
-            <img src="config.jpg" alt="" class="masonry-small-img">
+            <div class="article-card-content">
+              <h4 class="article-title">A Dive Into LLM Output Configuration, Prompt Engineering Techniques and Guardrails</h4>
+              <p class="article-summary">Master temperature, top-p, and frequency penalties. Learn advanced prompt engineering techniques and implement robust guardrails to ensure reliable, deterministic, and safe LLM outputs in production environments.</p>
+              <div class="article-meta">
+                <span class="article-tag">LLM Engineering</span>
+                <span class="article-read">10 min →</span>
+              </div>
+            </div>
           </a>
     
           <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
-            <div class="masonry-small-top">
-              
-              <h3>Few-Shot & Zero-Shot Learning Deep-Dive</h3>
-              <p>Push LLMs beyond narrow fine-tuning.</p>
-              <p>In the age of large language models (LLMs), the ability to perform complex tasks with minimal data is revolutionizing how we approach artificial intelligence. Few-shot and zero-shot learning are two pivotal techniques that push the boundaries of machine learning, enabling models to generalize across domains and perform tasks they were not explicitly trained on. This article delves into these learning paradigms, explaining their origins, mechanisms, and real-world applications</p>
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-image">
+              <img src="zero.jpg" alt="Few-Shot Learning">
             </div>
-            <img src="zero.jpg" alt="" class="masonry-small-img">
-          </a>
-    
-          <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
-            <div class="masonry-small-top">
-              
-              <h3>Model Drift: A Survival Guide</h3>
-              <p>Monitor & remediate production ML models</p>
+            <div class="article-card-content">
+              <h4 class="article-title">Few-Shot and Zero-Shot Learning : Unlocking Cross-Domain Generalization</h4>
+              <p class="article-summary">Push LLMs beyond narrow fine-tuning. Discover how cross-domain generalization works, and learn to leverage in-context learning, prompt templates, and semantic anchors to achieve high accuracy on unseen tasks without retraining.</p>
+              <div class="article-meta">
+                <span class="article-tag">ML Research</span>
+                <span class="article-read">15 min →</span>
+              </div>
             </div>
-            <img src="drift.png" alt="" class="masonry-small-img">
           </a>
     
           <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
-            <div class="masonry-small-top">
-              
-              <h3>Fine-Tune Gemma-3 12B with Unsloth</h3>
-              <p>End-to-end Unsloth & TRL workflow for customer service</p>
-              <p>In this article, I have dived into the technical intricacies of Unsloth and Gemma 3, showcasing their powerful features and how they can be leveraged together to build a highly optimized, fine-tuned model for any type of customer support assistant, whether it be a sophisticated chatbot, an intelligent agent, or an interactive FAQ system. I provided a step-by-step guide through the fine-tuning process, from data preparation to model deployment, highlighting best practices and practical considerations for achieving optimal performance in real-world customer service scenarios</p>
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-image">
+              <img src="gemma3.jpg" alt="Gemma-3 Fine-tuning">
             </div>
-            <img src="gemma3.jpg" alt="" class="masonry-small-img">
+            <div class="article-card-content">
+              <h4 class="article-title">Fine-Tune Gemma-3 12B with Unsloth</h4>
+              <p class="article-summary">End-to-end Unsloth & TRL workflow for customer service</p>
+              <div class="article-meta">
+                <span class="article-tag">Fine-Tuning</span>
+                <span class="article-read">14 min →</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://medium.com/@anicomanesh/beyond-the-hype-of-expensive-chatbots-bridging-strategic-business-intent-with-adaptive-agentic-d1144e9df041"
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-card-content">
+              <h4 class="article-title">Beyond the Hype of Expensive Chatbots</h4>
+              <p class="article-summary">Move past brittle, prompt-reactive bots toward Architectural Resilience. This deep dive explores crossing the 'Planning Rubicon' by separating the Deterministic Core from the Stochastic Range. We analyze the three gates of agency—Commitment, Grounding, and Execution—to distinguish true autonomous agents from sophisticated token-simulators. By implementing internal verification machinery and epistemic tethers, we transform stochastic reasoning into irreversible causal action that drives predictable enterprise ROI.</p>
+              <div class="article-meta">
+                <span class="article-tag">Agentic AI</span>
+                <span class="article-read">15 min →</span>
+              </div>
+            </div>
           </a>
     
-          <a href="https://anicomanesh.substack.com/p/is-rag-dead-rethinking-documentation"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
-            <div class="masonry-small-top">
-              
-              <h3>Is RAG Dead in 2025?</h3>
-              <p>Rethinking documentation Q&A with large-context LLMs.</p>
+          <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small masonry-wide">
+            <div class="article-image">
+              <img src="drift.png" alt="Model Drift">
             </div>
-            <img src="https://qdrant.tech/articles_data/rag-is-dead/preview/social_preview.jpg" alt="" class="masonry-small-img">
+            <div class="article-card-content">
+              <h4 class="article-title">Model Drift: A Survival Guide</h4>
+              <p class="article-summary">Deep dive into the 6 primary mechanisms of model degradation in production (Feature, Label, Concept, Prediction, Reality, and Feedback drift). Learn how to detect distribution shifts, set up robust statistical process control (SPC) monitoring, and remediate ML models before they cause disastrous business impacts.</p>
+              <div class="article-meta">
+                <span class="article-tag">MLOps</span>
+                <span class="article-read">15 min →</span>
+              </div>
+            </div>
           </a>
-    
-          <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
-             target="_blank" rel="noopener noreferrer" class="card-link masonry-small">
-            <div class="masonry-small-top">
-              
-              <h3>Talk: Agentic RAG in Healthcare</h3>
-              <p>15-min deck on self-evolving retrieval agents.</p>
-            </div>
-            <img src="triage2.png" alt="" class="masonry-small-img">
-          </article>
-    
-        </div><!-- /masonry-grid -->
-    
+
+        </div>
+
         <div class="articles-cta">
           <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-book-open" aria-hidden="true"></i>
@@ -454,88 +659,6 @@
       </div>
     </section>
 
-    <!-- SERVICES & PACKAGES -->
-    <!-- SERVICES & PACKAGES -->
-    <!-- ==========  SERVICES & PACKAGES  ========== -->
-    <!-- ==========  SERVICES & PACKAGES  ========== -->
-    <section id="services" class="section" aria-labelledby="services-title">
-      <div class="container">
-        <h2 id="services-title" class="section-title">Consulting Services<br>Build and Operate Intelligent Systems that Last</h2>
-    
-        <!-- added services-grid + data-grid here so ALL cards share the overlay -->
-        
-    <div class="cards services-grid">
-      <!-- Row 1 -->
-      <a class="card service-card" href="services/quick-audit.html" aria-label="The Blueprint">
-        <div class="card-icon"><i class="fas fa-chess-knight"></i></div>
-        <div class="card-body">
-          <h3>The Blueprint</h3>
-          <p>AI Strategy & Advisory</p>
-        </div>
-        <div class="card-actions">
-          <span class="cta-secondary">Learn more</span>
-        </div>
-      </a>
-
-      <a class="card service-card" href="services/paid-poc.html" aria-label="The Forge">
-        <div class="card-icon"><i class="fas fa-hammer"></i></div>
-        <div class="card-body">
-          <h3>The Forge</h3>
-          <p>Solution Development</p>
-        </div>
-        <div class="card-actions">
-          <span class="cta-secondary">Learn more</span>
-        </div>
-      </a>
-
-      <a class="card service-card" href="services/deploy-scale.html" aria-label="The Nexus">
-        <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
-        <div class="card-body">
-          <h3>The Nexus</h3>
-          <p>Deployment & Scale</p>
-        </div>
-        <div class="card-actions">
-          <span class="cta-secondary">Learn more</span>
-        </div>
-      </a>
-
-      <!-- Row 2 -->
-      <a class="card service-card" href="services/mentoring.html" aria-label="Training & Knowledge Transfer">
-        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-        <div class="card-body">
-          <h3>Training & Knowledge Transfer</h3>
-          <p>Mentoring & Education</p>
-        </div>
-        <div class="card-actions">
-          <span class="cta-secondary">Learn more</span>
-        </div>
-      </a>
-
-      <a class="card service-card" href="services/rapid-poc.html" aria-label="Rapid POC Accelerator">
-        <div class="card-icon"><i class="fas fa-rocket"></i></div>
-        <div class="card-body">
-          <h3>Rapid POC Accelerator</h3>
-          <p>Fast Validation</p>
-        </div>
-        <div class="card-actions">
-          <span class="cta-secondary">Learn more</span>
-        </div>
-      </a>
-
-      <a class="card service-card" href="services/agentic-ai.html" aria-label="Specialized Agentic AI Solutions">
-        <div class="card-icon"><i class="fas fa-robot"></i></div>
-        <div class="card-body">
-          <h3>Specialized Agentic AI Solutions</h3>
-          <p>Agentic AI Systems</p>
-        </div>
-        <div class="card-actions">
-          <span class="cta-secondary">Learn more</span>
-        </div>
-      </a>
-    </div>
-
-      </div>
-    </section>
     <!-- /SERVICES & PACKAGES -->
 
     <!-- ==========  TECH STACK  ========== -->
@@ -546,8 +669,7 @@
           <!-- 149 logo items – alphabetical -->
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/anthropic.svg" alt="Anthropic Claude API" title="Anthropic Claude API">
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/azuredevops.svg" alt="Azure AI Foundry" title="Azure AI Foundry">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/azurefunctions.svg" alt="Azure ML" title="Azure ML">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bentoml.svg" alt="BentoML" title="BentoML">
@@ -573,9 +695,7 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gradio.svg" alt="Gradio" title="Gradio">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/haystack.svg" alt="Haystack (Deepset)" title="Haystack (Deepset)">
-          
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/huggingface.svg" alt="Hugging Face Transformers" title="Hugging Face Transformers">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/ibm.svg" alt="IBM Granite 3.0" title="IBM Granite 3.0">
           
@@ -592,12 +712,10 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/modal.svg" alt="Modal" title="Modal">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mongodb.svg" alt="MongoDB Atlas Vector Search" title="MongoDB Atlas Vector Search">
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nebula.svg" alt="Nebula Graph" title="Nebula Graph">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/neo4j.svg" alt="Neo4j" title="Neo4j">
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nginx.svg" alt="Nginx" title="Nginx">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nvidia.svg" alt="Nvidia Merlin" title="Nvidia Merlin">
@@ -608,11 +726,9 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" alt="OpenAI Swarm" title="OpenAI Swarm">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/opentelemetry.svg" alt="OpenTelemetry" title="OpenTelemetry">
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/postgresql.svg" alt="PGVector" title="PGVector">
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/posthog.svg" alt="PostHog" title="PostHog">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/prefect.svg" alt="Prefect" title="Prefect">
@@ -632,12 +748,9 @@
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/rust.svg" alt="Rust" title="Rust">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazons3.svg" alt="S3 (MinIO, AWS)" title="S3 (MinIO, AWS)">
-          
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoft.svg" alt="Semantic Kerne" title="Semantic Kernel">
-          
-                    
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/snowflake.svg" alt="Snowflake Arctic" title="Snowflake Arctic">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/sqlalchemy.svg" alt="SQLAlchemy" title="SQLAlchemy">
@@ -651,8 +764,7 @@
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/terraform.svg" alt="Terraform" title="Terraform">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/huggingface.svg" alt="TGI (Text Generation Inference)" title="TGI (Text Generation Inference)">
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pytorch.svg" alt="Torch Serve" title="Torch Serve">
-          
-          
+
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/typescript.svg" alt="TypeScript" title="TypeScript">
           
           <img role="listitem" loading="lazy" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg" alt="Vercel AI SDK" title="Vercel AI SDK">
@@ -662,12 +774,6 @@
       </div>
     </section>
     <!-- /TECH STACK -->
-
-
-
-
-
-      
 
     <!-- CONTACT: removed phone icon; social icons use original muted color -->
     <section id="contact" class="section contact-small" aria-labelledby="contact-title">
@@ -708,11 +814,15 @@
 
         <label class="sr-only">Organization (optional)<input name="organization" placeholder="Company / org"></label>
 
-        <label class="sr-only">Budget range
-          <select name="budget">
-            <option value="<2k">&lt;$2k</option>
-            <option value="2k-6k">$2k–$6k</option>
-            <option value=">6k">&gt;$6k</option>
+        <label class="sr-only">Preferred service
+          <select name="preferred_service" id="preferred_service_select">
+            <option value="">Select a service...</option>
+            <option value="The Blueprint">The Blueprint - AI Strategy & Advisory</option>
+            <option value="The Forge">The Forge - Solution Development</option>
+            <option value="The Nexus">The Nexus - Deployment & Scale</option>
+            <option value="Generative AI & LLM Engineering">Generative AI & LLM Engineering</option>
+            <option value="Specialized Agentic AI Solutions">Specialized Agentic AI Solutions</option>
+            <option value="Other">Other</option>
           </select>
         </label>
 
@@ -721,6 +831,7 @@
         </label>
 
         <input type="hidden" name="service" id="modal_service_input" value="">
+        <input type="hidden" name="budget" value="Not specified">
         <input type="hidden" name="_subject" value="Website lead: Service inquiry">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
@@ -747,88 +858,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771275170"></script>
+  <script src="script.js?v=1771267306?v=1770727673"></script>
     
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const domainData = {
-    healthcare: [
-      { title: "Autonomous Clinical Triage", desc: "Monitors vitals/EHR streams and autonomously escalates priority patients." },
-      { title: "Ambient Clinical Documentation", desc: "Agents listen to visits, draft structured notes, and code for billing." },
-      { title: "Automated Prior Authorization", desc: "Gathers medical necessity evidence and negotiates with payer portals." },
-      { title: "Hypothesis-Driven Drug Repurposing", desc: "Multi-agent swarms cross-reference PubMed and run molecular simulations." },
-      { title: "Dynamic Supply Management", desc: "Autonomously reorders critical medical supplies based on predictive ward census." },
-      { title: "Precision Patient Management", desc: "Agents act as digital health coaches, adjusting care plans via telemetry." },
-      { title: "Clinical Trial Optimization", desc: "Autonomously drafts regulatory protocols and flags adverse events in real-time." }
-    ],
-    manufacturing: [
-      { title: "Dynamic Production Rescheduling", desc: "Autonomously rebalances factory lines during material delays or machine failures." },
-      { title: "Robotic Cell Orchestration", desc: "Machines negotiate workloads with each other to optimize factory throughput." },
-      { title: "Predictive Maintenance Dispatch", desc: "Agents detect anomalies, halt lines, and autonomously dispatch repair crews." },
-      { title: "Real-Time Quality Control", desc: "Isolates defective batches and triggers root-cause analysis workflows." },
-      { title: "Generative Digital Twins", desc: "Runs thousands of autonomous counterfactual simulations to optimize layouts." },
-      { title: "Energy Consumption Optimization", desc: "Agents dynamically adjust heavy machinery usage to avoid peak energy pricing." },
-      { title: "Autonomous Vendor Onboarding", desc: "Verifies compliance, safety records, and financial health of new suppliers." }
-    ],
-    ecommerce: [
-      { title: "Continuous ROI Optimization", desc: "Reinforcement learning agents dynamically reallocate ad budgets across platforms." },
-      { title: "Agent-to-Agent (A2A) Commerce", desc: "Brand agents negotiate pricing directly with consumer AI assistants." },
-      { title: "Autonomous Hyper-Personalization", desc: "Adjusts site UI, pricing, and product bundles in real-time per user." },
-      { title: "Generative Engine Optimization", desc: "Agents structure and feed brand data to global LLM crawlers." },
-      { title: "Predictive Inventory Alignment", desc: "Autonomously drafts purchase orders based on viral social media sentiment." },
-      { title: "Level 3 Support Agents", desc: "Capable of issuing refunds, rerouting packages, and updating accounts." },
-      { title: "Dynamic Pricing Agents", desc: "Adjusts SKU pricing based on competitor stock and demand elasticity." }
-    ],
-    supplychain: [
-      { title: "Autonomous Route Optimization", desc: "Reroutes active freight in real-time based on weather, port telemetry, or traffic." },
-      { title: "Intelligent Supplier Risk Mitigation", desc: "Drafts alternative procurement contracts if a primary vendor flags risk." },
-      { title: "Multi-Tier Inventory Rebalancing", desc: "Negotiates stock transfers between regional warehouses without human input." },
-      { title: "Automated Customs Clearance", desc: "Generates, validates, and submits cross-border compliance documentation." },
-      { title: "Freight Bidding & Procurement", desc: "Agents bid on spot-market freight rates within pre-approved financial bounds." },
-      { title: "Warehouse Robotics Orchestration", desc: "AI supervisors dynamically assign tasks to Automated Guided Vehicles." },
-      { title: "Climate Event Execution", desc: "Automatically executes contingency plans when weather events form." }
-    ],
-    finance: [
-      { title: "Autonomous KYC/AML Resolution", desc: "Scrapes global registries to map beneficial owners and freeze flagged accounts." },
-      { title: "Dynamic Credit Decisioning", desc: "Evaluates streaming cash flow to autonomously approve or adjust credit limits." },
-      { title: "Algorithmic Portfolio Rebalancing", desc: "Multi-agent systems execute trades based on real-time geopolitical sentiment." },
-      { title: "Real-Time Fraud Interception", desc: "Millisecond-decisioning agents that halt transactions and initiate verification." },
-      { title: "Automated Claims Adjudication", desc: "Cross-references incident reports with policy clauses to approve payouts." },
-      { title: "Regulatory Compliance Auditing", desc: "Continuously monitors internal communications to flag insider trading risks." },
-      { title: "Smart Contract Orchestration", desc: "Triggers multi-party financial settlements when external conditions are met." }
-    ]
-  };
-
-  const btns = document.querySelectorAll('.domain-btn');
-  const drawer = document.getElementById('bentoDrawer');
-  const content = document.getElementById('drawerContent');
-
-  if(btns.length > 0 && drawer && content) {
-    btns.forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const domain = this.getAttribute('data-domain');
-        const isActive = this.classList.contains('active');
-        
-        btns.forEach(b => b.classList.remove('active'));
-        
-        if(isActive) {
-          drawer.classList.remove('open');
-        } else {
-          this.classList.add('active');
-          let htmlStr = '';
-          domainData[domain].forEach(item => {
-            htmlStr += '<div class="use-case-item"><div><strong>' + item.title + '</strong>' + item.desc + '</div></div>';
-          });
-          content.innerHTML = htmlStr;
-          drawer.classList.add('open');
-        }
-      });
-    });
-  }
-});
-</script>
-
 </body>
 </html>
