@@ -19,5 +19,79 @@
     <p>Detailed breakdown coming soon...</p>
     <a href="index.html" class="back-link">← Back to Home</a>
   </div>
+
+<section class="section">
+  <div class="container">
+<div class="principles-strip" id="core-principles">
+  <div class="principles-header">
+    <h3 class="section-title">Agentic Principles</h3>
+    <p class="agentic-subtitle-final">Build Architectures that Learn, not Rules that Break.</p>
+    </div>
+
+    <div class="principles-grid">
+    <div class="principle-card principle-wide">
+      <div class="principle-icon"><i class="fas fa-route"></i></div>
+      <div class="card-content">
+        <h4>01. Planning Rubicon</h4>
+        <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting. This ensures full traceability and allows human-in-the-loop oversight before irreversible actions are taken. By isolating the cognitive step, we prevent unpredictable hallucination-driven execution.</p>
+      </div>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon"><i class="fas fa-microchip"></i></div>
+      <div class="card-content">
+        <h4>02. Brain vs. Body</h4>
+        <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer strictly controls execution.</p>
+      </div>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="card-content">
+        <h4>03. Governance First</h4>
+        <p>Inline policy gating (e.g., OPA) with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
+      </div>
+    </div>
+
+    <div class="principle-card principle-wide">
+      <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
+      <div class="card-content">
+        <h4>04. Typed Interfaces & State</h4>
+        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state. Silent failures are the enemy of autonomous systems. Enforcing schema rigidity ensures downstream agents always receive predictable, typed payloads.</p>
+      </div>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon"><i class="fas fa-arrows-rotate"></i></div>
+      <div class="card-content">
+        <h4>05. Reflection Loops</h4>
+        <p>Self-monitoring feedback loops where the architecture observes and logs outcomes to refine future reasoning.</p>
+      </div>
+    </div>
+
+    <div class="principle-card principle-wide">
+      <div class="principle-icon"><i class="fas fa-scale-balanced"></i></div>
+      <div class="card-content">
+        <h4>06. Latency Trade-Off</h4>
+        <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency. In high-stakes environments, a fast wrong answer is catastrophic. We design architectures that willingly trade milliseconds of execution time for absolute safety.</p>
+      </div>
+    </div>
+
+    <div class="principle-item principle-capstone">
+      <div class="capstone-text">
+        <div class="principle-icon"><i class="fas fa-dna"></i></div>
+        <h4>07. Continuous Learning & Memory</h4>
+        <p>A true agent does not re-solve problems it has already mastered. Learning occurs through structural adaptation, not continuous model retraining. Successful executions are distilled into long-term memory as semantic knowledge, abstract plan templates, and behavioral preferences that inform future decisions. Over time, the agent adapts what it remembers and forgets, how it decomposes tasks, which tools it trusts, and which behaviors are permitted or constrained. Vector databases enable contextual recall, while DAG-based plan graphs preserve executable structure, dependencies, invariants, and recovery paths. These mechanisms operate alongside episodic traces and policy constraints, allowing the system to improve reliability and efficiency over time without sacrificing determinism, governance, or control.</p>
+      </div>
+      <div class="capstone-visual">
+        <img src="learning.jpg" alt="Agentic Architecture Memory Flow" class="capstone-image" onerror="if(!this.dataset.retried){this.dataset.retried=true;this.src='images/learning.jpg';}">
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+</section>
+
 </body>
 </html>
