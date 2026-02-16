@@ -999,7 +999,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 
 
-
+/* --- STANDALONE TEST TYPEWRITER --- */
 (function diagnosticTypewriter() {
   const words = [
     'TEST: Systems in the Real World.',
@@ -1032,41 +1032,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (document.readyState === 'complete') start();
   else window.addEventListener('load', start);
-})();
-
-
-/* --- STANDALONE TYPEWRITER --- */
-(function() {
-  function init() {
-    const el = document.getElementById('typewrite');
-    if (!el) return;
-    
-    el.innerHTML = '';
-    const inner = document.createElement('span');
-    inner.className = 'tw-inner';
-    el.appendChild(inner);
-
-    const words = [
-      'Planning-Executor • Deterministic Core • Healthcare AI',
-      'Multi-Agent Systems • Hierarchical Orchestration • Research Discovery',
-      'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise Automation',
-      'Neuro-Symbolic • Policy-as-Code Governance • Financial Compliance',
-      'LLM Engineering • Model Optimization • RAG Augmentation • Inference Optimization'
-    ];
-    
-    let wIdx = 0, cIdx = 0, isDel = false;
-    function step() {
-      const cur = words[wIdx % words.length];
-      inner.textContent = isDel ? cur.substring(0, cIdx--) : cur.substring(0, cIdx++);
-      
-      let speed = isDel ? 25 : 45;
-      if (!isDel && cIdx > cur.length) { isDel = true; speed = 2000; }
-      else if (isDel && cIdx === 0) { isDel = false; wIdx++; speed = 500; }
-      
-      setTimeout(step, speed);
-    }
-    setTimeout(step, 800);
-  }
-  if (document.readyState === 'complete') init();
-  else window.addEventListener('load', init);
 })();

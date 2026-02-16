@@ -11059,24 +11059,3 @@ div#services .cards .card.card-wide .card-actions {
 #typewrite {
 }
 
-
-/* --- STABLE TYPEWRITER LAYOUT --- */
-#typewrite {
-  display: block !important;
-  min-height: 2.2rem !important; /* Forces the space between tagline and lines */
-  margin: 0.8rem auto !important;
-  text-align: center !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  z-index: 10 !important;
-}
-
-#typewrite .tw-inner {
-  position: relative !important; /* Prevents parent collapse */
-  display: inline-block !important;
-  color: #ffffff !important;
-  font-family: "Courier New", Courier, monospace !important;
-  font-size: 1.05rem !important;
-  font-weight: 500 !important;
-}
