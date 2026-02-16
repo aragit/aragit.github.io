@@ -792,8 +792,8 @@ document.addEventListener('DOMContentLoaded', function() {
   items.forEach(item => observer.observe(item));
 });
 
-/* --- Bento Drawer Logic --- */
 
+/* --- Bento Drawer Logic --- */
 document.addEventListener('DOMContentLoaded', () => {
   const domainData = {
     healthcare: [

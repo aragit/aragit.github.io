@@ -10965,56 +10965,18 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 
-/* --- Domain Tags Grid --- */
-.domain-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 32px 0 48px 0;
-  width: 100%;
-}
-
-.domain-tag {
-  background: transparent;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 8px;
-  padding: 14px 24px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0.5px;
-  flex-grow: 1;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: default;
-}
-
-.domain-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
 
 /* --- Bento Drawer UI --- */
 .domain-bento-container { margin: 32px 0 48px 0; width: 100%; }
 .domain-tabs { display: flex; flex-wrap: wrap; gap: 12px; }
-.domain-btn {
-  flex: 1 1 30%; min-width: 200px; background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px;
-  padding: 14px 20px; color: var(--text); font-size: 0.95rem;
-  font-weight: 500; cursor: pointer; transition: all 0.2s ease; text-align: center;
-}
-.domain-btn:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.03); }
-.domain-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 107, 0, 0.05); }
+.domain-btn { flex: 1 1 30%; min-width: 200px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 14px 20px; color: var(--text); font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; text-align: center; }
+.domain-btn:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.03); transform: translateY(-2px); }
+.domain-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 107, 0, 0.05); transform: none; }
 
-.bento-drawer {
-  max-height: 0; overflow: hidden; opacity: 0; background: var(--panel);
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease;
-  border-radius: 8px; margin-top: 0;
-}
+.bento-drawer { max-height: 0; overflow: hidden; opacity: 0; background: var(--panel); transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease; border-radius: 8px; margin-top: 0; }
 .bento-drawer.open { max-height: 800px; opacity: 1; margin-top: 16px; border: 1px solid rgba(255, 255, 255, 0.08); }
 .drawer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; padding: 24px; }
 
 .use-case-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--muted); line-height: 1.4; }
-.use-case-item::before { content: "▹"; color: var(--accent); font-size: 1.1rem; line-height: 1; }
+.use-case-item::before { content: "\25B9"; color: var(--accent); font-size: 1.1rem; line-height: 1; }
 .use-case-item strong { color: var(--text); display: block; margin-bottom: 2px; }
