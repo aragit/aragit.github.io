@@ -5162,6 +5162,7 @@ ul.insight-bullets li {
 /* Case Studies subtitle */
 #portfolio .section-title::after,
 #portfolio-title::after {
+  content: "Systems in the Real World. Real Problems, Real Constraints. How Ideas Survive Production";
   display: block;
   font-size: 0.85rem;
   font-weight: 400;
@@ -10951,58 +10952,4 @@ div#services .cards .card.card-wide .card-actions {
   #services-title.section-title .services-subtitle {
     font-size: 1rem !important;
   }
-}
-
-/* ===== KNOWLEDGE BASE: WIDE CARD OVERRIDE ===== */
-#articles .masonry-wide {
-  grid-column: span 2 !important;
-}
-
-@media (max-width: 900px) {
-  #articles .masonry-wide {
-    grid-column: span 1 !important;
-  }
-}
-
-/* TYPEWRITER VISIBILITY FIX */
-
-#typewrite {
-  position: relative;
-  min-height: 2.5rem;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-#typewrite .tw-inner {
-  position: relative !important; /* Change from absolute to relative for stability */
-  left: auto !important;
-  top: auto !important;
-  transform: none !important;
-  color: #ffffff !important; /* Force high visibility white */
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 500;
-  font-size: 1.1rem;
-  text-shadow: 0 0 10px rgba(255,255,255,0.2);
-}
-
-/* FINAL TYPEWRITER VISIBILITY OVERRIDE */
-#typewrite {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  min-height: 1.5em !important;
-  z-index: 10 !important; /* Lift above background noise/grid */
-  position: relative !important;
-  color: #ffffff !important;
-}
-.tw-inner {
-  display: inline-block !important;
-  position: relative !important;
-  color: #ffffff !important;
-  visibility: visible !important;
 }

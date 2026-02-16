@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771255760" />
+  <link rel="stylesheet" href="style.css?v=1771191057" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -156,31 +156,12 @@
             <p class="vprop-subtitle">Bridging Strategic Business Intent with Adaptive Agentic Systems</p>
             <p class="vprop-why"><strong>The "Why":</strong> Standard automation is a brittle cost. Agentic Systems are an investment in <strong>Architectural Resilience</strong>. We do not just automate tasks; we build systems that reason through business complexity, reducing technical debt while scaling operational intelligence.</p>
         </div>
-        <div class="evolution-image-wrapper" style="text-align: center; margin: 3rem auto; max-width: 900px; padding: 0 1rem;">
-            <img src="evolution.jpg" alt="Value Evolution from Chatbots to Agentic Systems" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(255, 107, 0, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
-        </div>
-        <div class="evolution-progression-card">
-            <div class="progression-col col-trap">
-                <div class="progression-level">Levels 1 & 2</div>
-                <h3 class="progression-title">The Trap of Brittle Automation</h3>
-                <p class="progression-text">Standard chatbots and hardcoded workflows are fragile cost centers. They create technical debt and require constant human supervision to handle anything beyond a rigid script, offering only minor operational gains.</p>
-            </div>
 
-            <div class="progression-col col-shift">
-                <div class="progression-level">Level 3</div>
-                <h3 class="progression-title">The Shift to Predictable ROI</h3>
-                <p class="progression-text">True value requires moving from automated processes to autonomous reasoning. Autonomous agents dynamically plan, use APIs, execute multi-step tasks end-to-end, and self-correct their own errors without human intervention.</p>
-            </div>
-
-            <div class="progression-col col-asset">
-                <div class="progression-level">Level 4</div>
-                <h3 class="progression-title">The Strategic Asset</h3>
-                <p class="progression-text">The ultimate goal is a Multi-Agent System. By orchestrating specialized, collaborating AI agents, enterprises gain a self-optimizing, scalable digital workforce that solves complex problems and drives top-line growth.</p>
-            </div>
-        </div>
 
     </div>
 </div>
+
+
 
     <!-- ABOUT -->
     <!-- ABOUT / INSIGHT -->
@@ -226,6 +207,7 @@
       
       <!-- Article Cards - Deep Dive -->
       <div class="insight-articles">
+        
 
 <div class="principles-strip" id="core-principles">
   <div class="principles-header">
@@ -338,7 +320,7 @@
   <section id="portfolio" class="section">
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
-      <p class="section-subtitle">Systems in the Real World. Real Problems, Real Constraints. How Ideas Survive Production.</p>
+      <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
       
       <div class="bento-grid">
         
@@ -373,6 +355,8 @@
             </div>
           </div>
         </div>
+
+        
 
         <div class="bento-item biomed-tall">
           <h3>Biomedical Hypotheses</h3>
@@ -563,8 +547,8 @@
               <img src="config.jpg" alt="LLM Config">
             </div>
             <div class="article-card-content">
-              <h4 class="article-title">A Dive Into LLM Output Configuration, Prompt Engineering Techniques and Guardrails</h4>
-              <p class="article-summary">Master temperature, top-p, and frequency penalties. Learn advanced prompt engineering techniques and implement robust guardrails to ensure reliable, deterministic, and safe LLM outputs in production environments.</p>
+              <h4 class="article-title">LLM Output Config & Guardrails</h4>
+              <p class="article-summary">Master temperature, top-p, and guardrails for reliable LLM outputs</p>
               <div class="article-meta">
                 <span class="article-tag">LLM Engineering</span>
                 <span class="article-read">10 min →</span>
@@ -578,8 +562,8 @@
               <img src="zero.jpg" alt="Few-Shot Learning">
             </div>
             <div class="article-card-content">
-              <h4 class="article-title">Few-Shot and Zero-Shot Learning : Unlocking Cross-Domain Generalization</h4>
-              <p class="article-summary">Push LLMs beyond narrow fine-tuning. Discover how cross-domain generalization works, and learn to leverage in-context learning, prompt templates, and semantic anchors to achieve high accuracy on unseen tasks without retraining.</p>
+              <h4 class="article-title">Few-Shot & Zero-Shot Learning Deep-Dive</h4>
+              <p class="article-summary">Push LLMs beyond narrow fine-tuning with cross-domain generalization</p>
               <div class="article-meta">
                 <span class="article-tag">ML Research</span>
                 <span class="article-read">15 min →</span>
@@ -601,35 +585,41 @@
               </div>
             </div>
           </a>
-          <a href="https://medium.com/@anicomanesh/beyond-the-hype-of-expensive-chatbots-bridging-strategic-business-intent-with-adaptive-agentic-d1144e9df041"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-card-content">
-              <h4 class="article-title">Beyond the Hype of Expensive Chatbots</h4>
-              <p class="article-summary">Move past brittle, prompt-reactive bots toward Architectural Resilience. This deep dive explores crossing the 'Planning Rubicon' by separating the Deterministic Core from the Stochastic Range. We analyze the three gates of agency—Commitment, Grounding, and Execution—to distinguish true autonomous agents from sophisticated token-simulators. By implementing internal verification machinery and epistemic tethers, we transform stochastic reasoning into irreversible causal action that drives predictable enterprise ROI.</p>
-              <div class="article-meta">
-                <span class="article-tag">Agentic AI</span>
-                <span class="article-read">15 min →</span>
-              </div>
-            </div>
-          </a>
     
           <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small masonry-wide">
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
             <div class="article-image">
               <img src="drift.png" alt="Model Drift">
             </div>
             <div class="article-card-content">
               <h4 class="article-title">Model Drift: A Survival Guide</h4>
-              <p class="article-summary">Deep dive into the 6 primary mechanisms of model degradation in production (Feature, Label, Concept, Prediction, Reality, and Feedback drift). Learn how to detect distribution shifts, set up robust statistical process control (SPC) monitoring, and remediate ML models before they cause disastrous business impacts.</p>
+              <p class="article-summary">Monitor & remediate production ML models before they fail</p>
               <div class="article-meta">
                 <span class="article-tag">MLOps</span>
+                <span class="article-read">11 min →</span>
+              </div>
+            </div>
+          </a>
+    
+          
+    
+          <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
+            <div class="article-image">
+              <img src="triage2.png" alt="Agentic RAG">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">Talk: Agentic RAG in Healthcare</h4>
+              <p class="article-summary">15-min deck on self-evolving retrieval agents</p>
+              <div class="article-meta">
+                <span class="article-tag">Healthcare AI</span>
                 <span class="article-read">15 min →</span>
               </div>
             </div>
           </a>
-
+    
         </div>
-
+    
         <div class="articles-cta">
           <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-book-open" aria-hidden="true"></i>
@@ -839,7 +829,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771255760?v=1770727673"></script>
+  <script src="script.js?v=1771191057?v=1770727673"></script>
     
 </body>
 </html>

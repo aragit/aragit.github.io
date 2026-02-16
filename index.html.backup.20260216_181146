@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771255760" />
+  <link rel="stylesheet" href="style.css?v=1771197561" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -338,7 +338,7 @@
   <section id="portfolio" class="section">
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
-      <p class="section-subtitle">Systems in the Real World. Real Problems, Real Constraints. How Ideas Survive Production.</p>
+      <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
       
       <div class="bento-grid">
         
@@ -601,17 +601,6 @@
               </div>
             </div>
           </a>
-          <a href="https://medium.com/@anicomanesh/beyond-the-hype-of-expensive-chatbots-bridging-strategic-business-intent-with-adaptive-agentic-d1144e9df041"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-card-content">
-              <h4 class="article-title">Beyond the Hype of Expensive Chatbots</h4>
-              <p class="article-summary">Move past brittle, prompt-reactive bots toward Architectural Resilience. This deep dive explores crossing the 'Planning Rubicon' by separating the Deterministic Core from the Stochastic Range. We analyze the three gates of agency—Commitment, Grounding, and Execution—to distinguish true autonomous agents from sophisticated token-simulators. By implementing internal verification machinery and epistemic tethers, we transform stochastic reasoning into irreversible causal action that drives predictable enterprise ROI.</p>
-              <div class="article-meta">
-                <span class="article-tag">Agentic AI</span>
-                <span class="article-read">15 min →</span>
-              </div>
-            </div>
-          </a>
     
           <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
              target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small masonry-wide">
@@ -629,7 +618,7 @@
           </a>
 
         </div>
-
+    
         <div class="articles-cta">
           <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-book-open" aria-hidden="true"></i>
@@ -839,7 +828,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771255760?v=1770727673"></script>
+  <script src="script.js?v=1771197561?v=1770727673"></script>
     
 </body>
 </html>
