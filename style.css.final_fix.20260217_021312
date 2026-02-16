@@ -11007,6 +11007,7 @@ div#services .cards .card.card-wide .card-actions {
   visibility: visible !important;
 }
 
+/* EMERGENCY TYPEWRITER VISIBILITY */
 #typewrite {
     display: block !important;
     visibility: visible !important;
@@ -11054,6 +11055,7 @@ div#services .cards .card.card-wide .card-actions {
   display: block !important;
 }
 
+/* TEST OVERRIDE */
 #typewrite {
 }
 
@@ -11077,23 +11079,4 @@ div#services .cards .card.card-wide .card-actions {
   font-family: "Courier New", Courier, monospace !important;
   font-size: 1.05rem !important;
   font-weight: 500 !important;
-}
-
-/* --- Clean Typewriter Layout --- */
-#typewrite {
-  display: block !important;
-  min-height: 2.4rem !important; /* Restores the space in the hero */
-  margin: 1rem auto !important;
-  position: relative !important;
-  z-index: 20 !important; /* Above background grid */
-  text-align: center !important;
-  visibility: visible !important;
-}
-
-#typewrite .tw-inner {
-  position: relative !important; 
-  display: inline-block !important;
-  color: #ffffff !important;
-  font-family: "Courier New", Courier, monospace !important;
-  font-size: 1.1rem !important;
 }
