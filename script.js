@@ -49,7 +49,7 @@
     initHamburger();
     initServiceModal();
     initChatModal();
-    initTypewriter();
+    
     attachFormUX();
     heroGridDebug();
     // other initializers can be added here...
@@ -387,36 +387,7 @@
   
   
   
-  function initTypewriter() {
-    const el = document.getElementById('typewrite');
-    if (!el) return;
-    
-    el.innerHTML = '';
-    const inner = document.createElement('span');
-    inner.className = 'tw-inner';
-    el.appendChild(inner);
-
-    const words = [
-      'Planning-Executor • Deterministic Core • Healthcare AI',
-      'Multi-Agent Systems • Hierarchical Orchestration • Research Discovery',
-      'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise Automation',
-      'Neuro-Symbolic • Policy-as-Code Governance • Financial Compliance',
-      'LLM Engineering • Model Optimization • RAG Augmentation • Inference Optimization'
-    ];
-    
-    let wIndex = 0, charIndex = 0, deleting = false;
-    const typeSpeed = 40, deleteSpeed = 20, holdDelay = 2000;
-
-    function step() {
-      const current = words[wIndex];
-      if (!deleting) {
-        charIndex++;
-        inner.textContent = current.slice(0, charIndex);
-        if (charIndex >= current.length) {
-          deleting = true;
-          setTimeout(step, holdDelay);
-          return;
-        }
+  
       } else {
         charIndex--;
         inner.textContent = current.slice(0, charIndex);
@@ -434,7 +405,7 @@
   let typeAttempts = 0;
   const typeInterval = setInterval(() => {
     if (document.getElementById('typewrite')) {
-      initTypewriter();
+      
       clearInterval(typeInterval);
     }
     if (++typeAttempts > 10) clearInterval(typeInterval);
@@ -972,4 +943,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (document.readyState === 'complete') { start(); } 
     else { window.addEventListener('load', start); }
+})();
+
+
+/* STANDALONE TYPEWRITER (Independent of other scripts) */
+(function() {
+  function startTypewriter() {
+    const el = document.getElementById('typewrite');
+    if (!el) return;
+    
+    el.innerHTML = '';
+    const inner = document.createElement('span');
+    inner.className = 'tw-inner';
+    el.appendChild(inner);
+
+    const words = [
+      'Planning-Executor • Deterministic Core • Healthcare AI',
+      'Multi-Agent Systems • Hierarchical Orchestration • Research Discovery',
+      'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise Automation',
+      'Neuro-Symbolic • Policy-as-Code Governance • Financial Compliance',
+      'LLM Engineering • Model Optimization • RAG Augmentation • Inference Optimization'
+    ];
+    
+    let wIndex = 0, charIndex = 0, deleting = false;
+    const typeSpeed = 38, deleteSpeed = 22, holdDelay = 1400;
+
+    function step() {
+      const current = words[wIndex];
+      if (!deleting) {
+        charIndex++;
+        inner.textContent = current.slice(0, charIndex);
+        if (charIndex >= current.length) {
+          deleting = true;
+          setTimeout(step, holdDelay);
+          return;
+        }
+      } else {
+        charIndex--;
+        inner.textContent = current.slice(0, charIndex);
+        if (charIndex <= 0) {
+          deleting = false;
+          wIndex = (wIndex + 1) % words.length;
+        }
+      }
+      setTimeout(step, deleting ? deleteSpeed : typeSpeed);
+    }
+    step();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startTypewriter);
+  } else {
+    startTypewriter();
+  }
 })();
