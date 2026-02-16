@@ -791,3 +791,87 @@ document.addEventListener('DOMContentLoaded', function() {
 
   items.forEach(item => observer.observe(item));
 });
+
+/* --- Bento Drawer Logic --- */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const domainData = {
+    healthcare: [
+      { title: "Autonomous Clinical Triage", desc: "Monitors vitals/EHR streams and autonomously escalates priority patients." },
+      { title: "Ambient Clinical Documentation", desc: "Agents listen to visits, draft structured notes, and code for billing." },
+      { title: "Automated Prior Authorization", desc: "Gathers medical necessity evidence and negotiates with payer portals." },
+      { title: "Hypothesis-Driven Drug Repurposing", desc: "Multi-agent swarms cross-reference PubMed and run molecular simulations." },
+      { title: "Dynamic Supply Management", desc: "Autonomously reorders critical medical supplies based on predictive ward census." },
+      { title: "Precision Patient Management", desc: "Agents act as digital health coaches, adjusting care plans via telemetry." },
+      { title: "Clinical Trial Optimization", desc: "Autonomously drafts regulatory protocols and flags adverse events in real-time." }
+    ],
+    manufacturing: [
+      { title: "Dynamic Production Rescheduling", desc: "Autonomously rebalances factory lines during material delays or machine failures." },
+      { title: "Robotic Cell Orchestration", desc: "Machines negotiate workloads with each other to optimize factory throughput." },
+      { title: "Predictive Maintenance Dispatch", desc: "Agents detect anomalies, halt lines, and autonomously dispatch repair crews." },
+      { title: "Real-Time Quality Control", desc: "Isolates defective batches and triggers root-cause analysis workflows." },
+      { title: "Generative Digital Twins", desc: "Runs thousands of autonomous counterfactual simulations to optimize layouts." },
+      { title: "Energy Consumption Optimization", desc: "Agents dynamically adjust heavy machinery usage to avoid peak energy pricing." },
+      { title: "Autonomous Vendor Onboarding", desc: "Verifies compliance, safety records, and financial health of new suppliers." }
+    ],
+    ecommerce: [
+      { title: "Continuous ROI Optimization", desc: "Reinforcement learning agents dynamically reallocate ad budgets across platforms." },
+      { title: "Agent-to-Agent (A2A) Commerce", desc: "Brand agents negotiate pricing directly with consumer AI assistants." },
+      { title: "Autonomous Hyper-Personalization", desc: "Adjusts site UI, pricing, and product bundles in real-time per user." },
+      { title: "Generative Engine Optimization", desc: "Agents structure and feed brand data to global LLM crawlers." },
+      { title: "Predictive Inventory Alignment", desc: "Autonomously drafts purchase orders based on viral social media sentiment." },
+      { title: "Level 3 Support Agents", desc: "Capable of issuing refunds, rerouting packages, and updating accounts." },
+      { title: "Dynamic Pricing Agents", desc: "Adjusts SKU pricing based on competitor stock and demand elasticity." }
+    ],
+    supplychain: [
+      { title: "Autonomous Route Optimization", desc: "Reroutes active freight in real-time based on weather, port telemetry, or traffic." },
+      { title: "Intelligent Supplier Risk Mitigation", desc: "Drafts alternative procurement contracts if a primary vendor flags risk." },
+      { title: "Multi-Tier Inventory Rebalancing", desc: "Negotiates stock transfers between regional warehouses without human input." },
+      { title: "Automated Customs Clearance", desc: "Generates, validates, and submits cross-border compliance documentation." },
+      { title: "Freight Bidding & Procurement", desc: "Agents bid on spot-market freight rates within pre-approved financial bounds." },
+      { title: "Warehouse Robotics Orchestration", desc: "AI supervisors dynamically assign tasks to Automated Guided Vehicles." },
+      { title: "Climate Event Execution", desc: "Automatically executes contingency plans when weather events form." }
+    ],
+    finance: [
+      { title: "Autonomous KYC/AML Resolution", desc: "Scrapes global registries to map beneficial owners and freeze flagged accounts." },
+      { title: "Dynamic Credit Decisioning", desc: "Evaluates streaming cash flow to autonomously approve or adjust credit limits." },
+      { title: "Algorithmic Portfolio Rebalancing", desc: "Multi-agent systems execute trades based on real-time geopolitical sentiment." },
+      { title: "Real-Time Fraud Interception", desc: "Millisecond-decisioning agents that halt transactions and initiate verification." },
+      { title: "Automated Claims Adjudication", desc: "Cross-references incident reports with policy clauses to approve payouts." },
+      { title: "Regulatory Compliance Auditing", desc: "Continuously monitors internal communications to flag insider trading risks." },
+      { title: "Smart Contract Orchestration", desc: "Triggers multi-party financial settlements when external conditions are met." }
+    ]
+  };
+
+  const domainBtns = document.querySelectorAll('.domain-btn');
+  const drawer = document.getElementById('bentoDrawer');
+  const drawerContent = document.getElementById('drawerContent');
+
+  if (domainBtns.length > 0 && drawer && drawerContent) {
+    domainBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const domain = btn.getAttribute('data-domain');
+        const isActive = btn.classList.contains('active');
+
+        domainBtns.forEach(b => b.classList.remove('active'));
+
+        if (isActive) {
+          drawer.classList.remove('open');
+        } else {
+          btn.classList.add('active');
+          const itemsHtml = domainData[domain].map(item => `
+            <div class="use-case-item">
+              <div>
+                <strong>${item.title}</strong>
+                ${item.desc}
+              </div>
+            </div>
+          `).join('');
+          
+          drawerContent.innerHTML = itemsHtml;
+          drawer.classList.add('open');
+        }
+      });
+    });
+  }
+});
