@@ -11006,22 +11006,3 @@ div#services .cards .card.card-wide .card-actions {
   color: #ffffff !important;
   visibility: visible !important;
 }
-
-/* EMERGENCY TYPEWRITER VISIBILITY */
-#typewrite {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    min-height: 2rem !important;
-    margin: 1rem 0 !important;
-    position: relative !important;
-    z-index: 9999 !important; /* Force above background layers */
-    color: #ff6b00 !important; /* Temporarily using orange to confirm it exists */
-    font-size: 1.2rem !important;
-    text-align: center !important;
-}
-.tw-inner {
-    display: inline !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-}
