@@ -11054,8 +11054,3 @@ div#services .cards .card.card-wide .card-actions {
   overflow: visible !important;
   display: block !important;
 }
-
-/* TEST OVERRIDE */
-#typewrite {
-}
-
