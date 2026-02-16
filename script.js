@@ -385,17 +385,58 @@
      ------------------------- */
   const roles = ["Agentic AI Architect", "Systems in the Real World...", "Scaling Operational Intelligence", "Architecting Autonomous Systems"];
   
+  
   function initTypewriter() {
     const el = document.getElementById('typewrite');
-    if (!el) return;
-
-    // create / ensure inner container (absolute) for stable updates
-    let inner = el.querySelector('.tw-inner');
-    if (!inner) {
-      inner = document.createElement('span');
-      inner.className = 'tw-inner';
-      el.appendChild(inner);
+    if (!el) {
+      console.warn('Typewriter element not found');
+      return;
     }
+    
+    // Clear the element first to prevent double-spans on hot-reload
+    el.innerHTML = '';
+    const inner = document.createElement('span');
+    inner.className = 'tw-inner';
+    el.appendChild(inner);
+
+    const words = [
+      'Planning-Executor • Deterministic Core • Healthcare AI',
+      'Multi-Agent Systems • Hierarchical Orchestration • Research Discovery',
+      'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise Automation',
+      'Neuro-Symbolic • Policy-as-Code Governance • Financial Compliance',
+      'LLM Engineering • Model Optimization • RAG Augmentation • Inference Optimization'
+    ];
+    
+    let wIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const typeSpeed = 45;
+    const deleteSpeed = 25;
+    const holdDelay = 2000;
+
+    function step() {
+      const current = words[wIndex];
+      if (!deleting) {
+        charIndex++;
+        inner.textContent = current.slice(0, charIndex);
+        if (charIndex >= current.length) {
+          deleting = true;
+          setTimeout(step, holdDelay);
+          return;
+        }
+      } else {
+        charIndex--;
+        inner.textContent = current.slice(0, charIndex);
+        if (charIndex <= 0) {
+          deleting = false;
+          wIndex = (wIndex + 1) % words.length;
+        }
+      }
+      setTimeout(step, deleting ? deleteSpeed : typeSpeed);
+    }
+    setTimeout(step, 800);
+  }
+
 
     if (isReducedMotion()) {
       inner.textContent = 'LLMs · Agentic AI · Scalable ML Systems';
