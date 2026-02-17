@@ -11083,3 +11083,32 @@ div#services .cards .card.card-wide .card-actions {
   color: #cbd5e1;
   min-height: 28px;
 }
+
+
+/* ===== FIX: Center Typewriter Alignment ===== */
+.role-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+#typewrite {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  display: block !important;
+  text-align: center !important;
+  position: relative !important;
+  min-height: 2.8rem !important;
+}
+
+#typewrite .tw-inner {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: inline-block !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
