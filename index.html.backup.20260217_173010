@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <!-- style -->
-  <link rel="stylesheet" href="style.css?v=1771014942?v=1770727673" />
+  <link rel="stylesheet" href="style.css?v=1771277289" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -148,6 +148,40 @@
       </div>
     </section>
 
+<!-- VALUE EVOLUTION STAIRCASE -->
+<div class="value-prop-bridge">
+    <div class="container">
+        <div class="vprop-header">
+            <h2 class="vprop-title">Beyond the Hype of Expensive Chatbots</h2>
+            <p class="vprop-subtitle">Bridging Strategic Business Intent with Adaptive Agentic Systems</p>
+            <p class="vprop-why"><strong>The "Why":</strong> Standard automation is a brittle cost. Agentic Systems are an investment in <strong>Architectural Resilience</strong>. We do not just automate tasks; we build systems that reason through business complexity, reducing technical debt while scaling operational intelligence.</p>
+        </div>
+        <div class="evolution-image-wrapper" style="text-align: center; margin: 3rem auto; max-width: 900px; padding: 0 1rem;">
+            <img src="evolution.jpg" alt="Value Evolution from Chatbots to Agentic Systems" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(255, 107, 0, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+        </div>
+        <div class="evolution-progression-card">
+            <div class="progression-col col-trap">
+                <div class="progression-level">Levels 1 & 2</div>
+                <h3 class="progression-title">The Trap of Brittle Automation</h3>
+                <p class="progression-text">Standard chatbots and hardcoded workflows are fragile cost centers. They create technical debt and require constant human supervision to handle anything beyond a rigid script, offering only minor operational gains.</p>
+            </div>
+
+            <div class="progression-col col-shift">
+                <div class="progression-level">Level 3</div>
+                <h3 class="progression-title">The Shift to Predictable ROI</h3>
+                <p class="progression-text">True value requires moving from automated processes to autonomous reasoning. Autonomous agents dynamically plan, use APIs, execute multi-step tasks end-to-end, and self-correct their own errors without human intervention.</p>
+            </div>
+
+            <div class="progression-col col-asset">
+                <div class="progression-level">Level 4</div>
+                <h3 class="progression-title">The Strategic Asset</h3>
+                <p class="progression-text">The ultimate goal is a Multi-Agent System. By orchestrating specialized, collaborating AI agents, enterprises gain a self-optimizing, scalable digital workforce that solves complex problems and drives top-line growth.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
     <!-- ABOUT -->
     <!-- ABOUT / INSIGHT -->
     <!-- ABOUT / INSIGHT -->
@@ -192,12 +226,9 @@
       
       <!-- Article Cards - Deep Dive -->
       <div class="insight-articles">
-        <h3 class="insight-articles-title">The Trinity of Survival</h3>
-        <p class="section-subtitle" style="margin-bottom: 2rem;">How to Build Agents That Don't Crash</p>
-        
-                        
-        <div class="architecture-tagline" style="margin-bottom: 2.5rem;">
-          Deterministic Core · Stochastic Range · Multi-Agent Scale
+
+<div class="architecture-tagline" style="margin-bottom: 2.5rem;">
+          <span class="prompt-sign">&gt;_</span> Deterministic Core &middot; Stochastic Range &middot; Multi-Agent Scale <span class="cursor-blink">&#9608;</span>
         </div>
 
         <div class="triptych-grid">
@@ -239,8 +270,123 @@
   <section id="portfolio" class="section">
     <div class="container">
       <h2 class="section-title">Agentic Solutions</h2>
-      <p class="section-subtitle">Closed-loop autonomous systems with traceable reasoning and human-in-the-loop safety.</p>
+      <p class="section-subtitle" style="font-style: normal;">Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p>
       
+      <style>
+        /* Constrained width to 850px and perfectly centered */
+        .domain-bento-container { max-width: 850px; margin: 32px auto 48px auto; width: 100%; position: relative; z-index: 50; }
+        
+        /* Centered buttons with slightly tighter gaps */
+        .domain-tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .domain-btn { flex: 1 1 28%; min-width: 160px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; padding: 10px 14px; color: var(--text); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; text-align: center; }
+        .domain-btn:hover { border-color: var(--accent); background: rgba(255, 107, 0, 0.08); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 107, 0, 0.15); }
+        .domain-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 107, 0, 0.12); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 107, 0, 0.15); }
+        
+        /* Drawer sizing */
+        .bento-drawer { max-height: 0; overflow: hidden; opacity: 0; background: var(--panel); transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease; border-radius: 8px; margin-top: 0; }
+        .bento-drawer.open { max-height: 800px; opacity: 1; margin-top: 16px; border: 1px solid rgba(255, 255, 255, 0.08); }
+        
+        /* Slightly tighter grid inside the drawer */
+        .drawer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; padding: 20px; }
+        
+        /* Refined text proportions */
+        .use-case-item { display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+        .use-case-item::before { content: "▹"; color: var(--accent); font-size: 1rem; line-height: 1; }
+        .use-case-item strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 0.9rem; }
+      </style>
+
+      <div class="domain-bento-container">
+        <div class="domain-tabs" id="domainTabs">
+          <button class="domain-btn" data-domain="healthcare">Healthcare & Life Sciences</button>
+          <button class="domain-btn" data-domain="manufacturing">Manufacturing & Industrial</button>
+          <button class="domain-btn" data-domain="ecommerce">E-Commerce & Marketing</button>
+          <button class="domain-btn" data-domain="supplychain">Supply Chain</button>
+          <button class="domain-btn" data-domain="finance">Financial Services</button>
+        </div>
+        <div class="bento-drawer" id="bentoDrawer">
+          <div class="drawer-content" id="drawerContent"></div>
+        </div>
+      </div>
+
+      <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const domainData = {
+          healthcare: [
+            { title: "Autonomous Clinical Triage", desc: "Monitors vitals/EHR streams and autonomously escalates priority patients." },
+            { title: "Ambient Clinical Documentation", desc: "Agents listen to visits, draft structured notes, and code for billing." },
+            { title: "Automated Prior Authorization", desc: "Gathers medical necessity evidence and negotiates with payer portals." },
+            { title: "Hypothesis-Driven Drug Repurposing", desc: "Multi-agent swarms cross-reference PubMed and run molecular simulations." },
+            { title: "Dynamic Supply Management", desc: "Autonomously reorders critical medical supplies based on predictive ward census." },
+            { title: "Precision Patient Management", desc: "Agents act as digital health coaches, adjusting care plans via telemetry." },
+            { title: "Clinical Trial Optimization", desc: "Autonomously drafts regulatory protocols and flags adverse events in real-time." }
+          ],
+          manufacturing: [
+            { title: "Dynamic Production Rescheduling", desc: "Autonomously rebalances factory lines during material delays or machine failures." },
+            { title: "Robotic Cell Orchestration", desc: "Machines negotiate workloads with each other to optimize factory throughput." },
+            { title: "Predictive Maintenance Dispatch", desc: "Agents detect anomalies, halt lines, and autonomously dispatch repair crews." },
+            { title: "Real-Time Quality Control", desc: "Isolates defective batches and triggers root-cause analysis workflows." },
+            { title: "Generative Digital Twins", desc: "Runs thousands of autonomous counterfactual simulations to optimize layouts." },
+            { title: "Energy Consumption Optimization", desc: "Agents dynamically adjust heavy machinery usage to avoid peak energy pricing." },
+            { title: "Autonomous Vendor Onboarding", desc: "Verifies compliance, safety records, and financial health of new suppliers." }
+          ],
+          ecommerce: [
+            { title: "Continuous ROI Optimization", desc: "Reinforcement learning agents dynamically reallocate ad budgets across platforms." },
+            { title: "Agent-to-Agent (A2A) Commerce", desc: "Brand agents negotiate pricing directly with consumer AI assistants." },
+            { title: "Autonomous Hyper-Personalization", desc: "Adjusts site UI, pricing, and product bundles in real-time per user." },
+            { title: "Generative Engine Optimization", desc: "Agents structure and feed brand data to global LLM crawlers." },
+            { title: "Predictive Inventory Alignment", desc: "Autonomously drafts purchase orders based on viral social media sentiment." },
+            { title: "Level 3 Support Agents", desc: "Capable of issuing refunds, rerouting packages, and updating accounts." },
+            { title: "Dynamic Pricing Agents", desc: "Adjusts SKU pricing based on competitor stock and demand elasticity." }
+          ],
+          supplychain: [
+            { title: "Autonomous Route Optimization", desc: "Reroutes active freight in real-time based on weather, port telemetry, or traffic." },
+            { title: "Intelligent Supplier Risk Mitigation", desc: "Drafts alternative procurement contracts if a primary vendor flags risk." },
+            { title: "Multi-Tier Inventory Rebalancing", desc: "Negotiates stock transfers between regional warehouses without human input." },
+            { title: "Automated Customs Clearance", desc: "Generates, validates, and submits cross-border compliance documentation." },
+            { title: "Freight Bidding & Procurement", desc: "Agents bid on spot-market freight rates within pre-approved financial bounds." },
+            { title: "Warehouse Robotics Orchestration", desc: "AI supervisors dynamically assign tasks to Automated Guided Vehicles." },
+            { title: "Climate Event Execution", desc: "Automatically executes contingency plans when weather events form." }
+          ],
+          finance: [
+            { title: "Autonomous KYC/AML Resolution", desc: "Scrapes global registries to map beneficial owners and freeze flagged accounts." },
+            { title: "Dynamic Credit Decisioning", desc: "Evaluates streaming cash flow to autonomously approve or adjust credit limits." },
+            { title: "Algorithmic Portfolio Rebalancing", desc: "Multi-agent systems execute trades based on real-time geopolitical sentiment." },
+            { title: "Real-Time Fraud Interception", desc: "Millisecond-decisioning agents that halt transactions and initiate verification." },
+            { title: "Automated Claims Adjudication", desc: "Cross-references incident reports with policy clauses to approve payouts." },
+            { title: "Regulatory Compliance Auditing", desc: "Continuously monitors internal communications to flag insider trading risks." },
+            { title: "Smart Contract Orchestration", desc: "Triggers multi-party financial settlements when external conditions are met." }
+          ]
+        };
+
+        const btns = document.querySelectorAll('.domain-btn');
+        const drawer = document.getElementById('bentoDrawer');
+        const content = document.getElementById('drawerContent');
+
+        if (btns.length > 0 && drawer && content) {
+          btns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              const domain = this.getAttribute('data-domain');
+              const isActive = this.classList.contains('active');
+              
+              btns.forEach(b => b.classList.remove('active'));
+              
+              if (isActive) {
+                drawer.classList.remove('open');
+              } else {
+                this.classList.add('active');
+                let htmlStr = '';
+                domainData[domain].forEach(item => {
+                  htmlStr += '<div class="use-case-item"><div><strong>' + item.title + '</strong>' + item.desc + '</div></div>';
+                });
+                content.innerHTML = htmlStr;
+                drawer.classList.add('open');
+              }
+            });
+          });
+        }
+      });
+      </script>
       <div class="bento-grid">
         
         <div class="bento-item card-featured">
@@ -274,8 +420,6 @@
             </div>
           </div>
         </div>
-
-        
 
         <div class="bento-item biomed-tall">
           <h3>Biomedical Hypotheses</h3>
@@ -466,8 +610,8 @@
               <img src="config.jpg" alt="LLM Config">
             </div>
             <div class="article-card-content">
-              <h4 class="article-title">LLM Output Config & Guardrails</h4>
-              <p class="article-summary">Master temperature, top-p, and guardrails for reliable LLM outputs</p>
+              <h4 class="article-title">A Dive Into LLM Output Configuration, Prompt Engineering Techniques and Guardrails</h4>
+              <p class="article-summary">Master temperature, top-p, and frequency penalties. Learn advanced prompt engineering techniques and implement robust guardrails to ensure reliable, deterministic, and safe LLM outputs in production environments.</p>
               <div class="article-meta">
                 <span class="article-tag">LLM Engineering</span>
                 <span class="article-read">10 min →</span>
@@ -481,8 +625,8 @@
               <img src="zero.jpg" alt="Few-Shot Learning">
             </div>
             <div class="article-card-content">
-              <h4 class="article-title">Few-Shot & Zero-Shot Learning Deep-Dive</h4>
-              <p class="article-summary">Push LLMs beyond narrow fine-tuning with cross-domain generalization</p>
+              <h4 class="article-title">Few-Shot and Zero-Shot Learning : Unlocking Cross-Domain Generalization</h4>
+              <p class="article-summary">Push LLMs beyond narrow fine-tuning. Discover how cross-domain generalization works, and learn to leverage in-context learning, prompt templates, and semantic anchors to achieve high accuracy on unseen tasks without retraining.</p>
               <div class="article-meta">
                 <span class="article-tag">ML Research</span>
                 <span class="article-read">15 min →</span>
@@ -504,41 +648,35 @@
               </div>
             </div>
           </a>
-    
-          <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
+          <a href="https://medium.com/@anicomanesh/beyond-the-hype-of-expensive-chatbots-bridging-strategic-business-intent-with-adaptive-agentic-d1144e9df041"
              target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="drift.png" alt="Model Drift">
-            </div>
             <div class="article-card-content">
-              <h4 class="article-title">Model Drift: A Survival Guide</h4>
-              <p class="article-summary">Monitor & remediate production ML models before they fail</p>
+              <h4 class="article-title">Beyond the Hype of Expensive Chatbots</h4>
+              <p class="article-summary">Move past brittle, prompt-reactive bots toward Architectural Resilience. This deep dive explores crossing the 'Planning Rubicon' by separating the Deterministic Core from the Stochastic Range. We analyze the three gates of agency—Commitment, Grounding, and Execution—to distinguish true autonomous agents from sophisticated token-simulators. By implementing internal verification machinery and epistemic tethers, we transform stochastic reasoning into irreversible causal action that drives predictable enterprise ROI.</p>
               <div class="article-meta">
-                <span class="article-tag">MLOps</span>
-                <span class="article-read">11 min →</span>
-              </div>
-            </div>
-          </a>
-    
-          
-    
-          <a href="https://docs.google.com/presentation/d/YOUR_DECK_ID"
-             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image">
-              <img src="triage2.png" alt="Agentic RAG">
-            </div>
-            <div class="article-card-content">
-              <h4 class="article-title">Talk: Agentic RAG in Healthcare</h4>
-              <p class="article-summary">15-min deck on self-evolving retrieval agents</p>
-              <div class="article-meta">
-                <span class="article-tag">Healthcare AI</span>
+                <span class="article-tag">Agentic AI</span>
                 <span class="article-read">15 min →</span>
               </div>
             </div>
           </a>
     
+          <a href="https://medium.com/@anicomanesh/model-drift-identifying-and-monitoring-for-model-drift-in-machine-learning-engineering-and-0f74b2aa2fb0"
+             target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small masonry-wide">
+            <div class="article-image">
+              <img src="drift.png" alt="Model Drift">
+            </div>
+            <div class="article-card-content">
+              <h4 class="article-title">Model Drift: A Survival Guide</h4>
+              <p class="article-summary">Deep dive into the 6 primary mechanisms of model degradation in production (Feature, Label, Concept, Prediction, Reality, and Feedback drift). Learn how to detect distribution shifts, set up robust statistical process control (SPC) monitoring, and remediate ML models before they cause disastrous business impacts.</p>
+              <div class="article-meta">
+                <span class="article-tag">MLOps</span>
+                <span class="article-read">15 min →</span>
+              </div>
+            </div>
+          </a>
+
         </div>
-    
+
         <div class="articles-cta">
           <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-book-open" aria-hidden="true"></i>
@@ -748,7 +886,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=1771004853?v=1770727673"></script>
+  <script src="script.js?v=1771277289?v=1770727673"></script>
     
 </body>
 </html>

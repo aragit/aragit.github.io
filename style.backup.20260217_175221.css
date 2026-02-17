@@ -11073,13 +11073,3 @@ div#services .cards .card.card-wide .card-actions {
   #home .hero-avatar { width: 108px; height: 108px; }
   #typewrite { min-height: 2.2rem; max-width: 520px; }
 }
-
-/* ===== Credential Typewriter Styling ===== */
-.credential-wrapper {
-  margin-top: 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: #cbd5e1;
-  min-height: 28px;
-}
