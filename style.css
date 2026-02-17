@@ -11299,3 +11299,32 @@ div#services .cards .card.card-wide .card-actions {
     font-weight: 500;
   }
 }
+
+
+/* ===== FIX: RESCUE THE MISSING HAMBURGER ===== */
+@media (max-width: 768px) {
+  /* Give the header physical height since the nav is absolute */
+  .site-header .header-inner {
+    display: flex !important;
+    justify-content: flex-end !important; /* Push burger to the right */
+    align-items: center !important;
+    min-height: 60px !important; 
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Force the hamburger into existence */
+  .hamburger {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 10005 !important; /* Must be higher than the dropdown (9999) */
+    font-size: 1.8rem !important;
+    color: var(--accent, #ff6b00) !important; /* Make it orange! */
+    background: transparent !important;
+    border: none !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+  }
+}
