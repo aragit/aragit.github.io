@@ -403,18 +403,20 @@
     
       // words to cycle
       const words = [
-  "🎓 Sharif University of Technology",
-  "🏆 Kaggle Grandmaster",
-  "🤝 KaggleX Advisor",
-  "✓ Google Certified"
-];
+      'Stochastic Range • Deterministic Core • Healthcare AI',
+      'Multi-Agent Systems • Hierarchical Orchestration • Research',
+      'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise',
+      'Neuro-Symbolic • Policy-as-Code • Financial Compliance',
+      'LLM Engineering • RAG Augmentation • Inference Optimization', 
+      'Kaggle Grandmaster • Sharif University of Technology • Google Certified'
+    ];
       let wIndex = 0;
       let charIndex = 0;
       let deleting = false;
     
       const typeSpeed = 38;
       const deleteSpeed = 22;
-      const holdDelay = 1400;
+      const holdDelay = 2800;
     
       let timer = null;
       function step() {

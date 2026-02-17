@@ -11112,3 +11112,34 @@ div#services .cards .card.card-wide .card-actions {
   text-align: center !important;
   white-space: nowrap !important;
 }
+
+
+/* ===== PREMIUM TERMINAL TYPEWRITER ===== */
+#typewrite .tw-inner {
+  position: relative !important;
+  display: inline-block !important;
+  padding-left: 1.8rem; /* Room for the >_ prompt */
+}
+
+/* The >_ Prompt */
+#typewrite .tw-inner::before {
+  content: ">_";
+  position: absolute;
+  left: 0;
+  color: var(--accent, #ff6b00);
+  font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* The Blinking Block Cursor */
+#typewrite .tw-inner::after {
+  content: "█";
+  margin-left: 6px;
+  color: var(--accent, #ff6b00);
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
