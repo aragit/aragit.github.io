@@ -89,7 +89,25 @@
     
     footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
     @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 700; margin-bottom: 24px; color: #fff; letter-spacing: -1px; line-height: 1.15; text-shadow: 0 4px 25px rgba(0,0,0,0.8); } }
-  </style>
+  
+    /* === FORCED HERO ENLARGEMENT === */
+    .hero h1 { 
+        font-size: clamp(3rem, 7vw, 5rem) !important; 
+        font-weight: 800 !important; 
+        line-height: 1.15 !important; 
+        margin-bottom: 24px !important;
+        text-shadow: 0 5px 30px rgba(0,0,0,0.9) !important; 
+    }
+    .hero p { 
+        font-size: clamp(1.3rem, 3.5vw, 1.6rem) !important; 
+        max-width: 900px !important; 
+        margin: 0 auto 40px auto !important;
+        color: #ffffff !important; 
+        font-weight: 500 !important; 
+        text-shadow: 0 3px 20px rgba(0,0,0,0.9) !important; 
+    }
+
+</style>
 </head>
 <body>
 
