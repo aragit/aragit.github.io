@@ -11198,3 +11198,37 @@ div#services .cards .card.card-wide .card-actions {
     padding-right: 1.1rem !important;
   }
 }
+
+
+/* ===== FINAL FIX: True Dynamic Flex Centering ===== */
+#typewrite {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+#typewrite .tw-inner {
+  /* Strip away the flawed padding hacks */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  
+  /* Flexbox automatically hugs and centers all 3 elements (prompt, text, cursor) */
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: pre !important; /* ensures spaces in text are respected */
+}
+
+/* Put the prompt back into normal flow */
+#typewrite .tw-inner::before {
+  position: relative !important;
+  left: auto !important;
+  margin-right: 8px !important; /* Natural gap instead of padding */
+}
+
+/* Scale the gap down slightly on mobile */
+@media (max-width: 480px) {
+  #typewrite .tw-inner::before {
+    margin-right: 4px !important;
+  }
+}
