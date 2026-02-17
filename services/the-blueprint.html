@@ -26,32 +26,19 @@
     .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
     
-    /* Hero - Premium Image Background */
+    /* Hero - Original Image Background */
     .hero {
-      position: relative;
       padding: clamp(80px, 12vw, 120px) 0;
       text-align: center;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255,255,255,.02);
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -20px; left: -20px; right: -20px; bottom: -20px; /* Oversize to hide blurred edges */
+      /* Very light 20% transparent black just to keep white text readable */
       background-image: 
-        linear-gradient(to bottom, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,1) 100%),
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
         url('blue.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(8px); /* Blurs the background abstractly */
-      z-index: 0;
+      border-bottom: 1px solid rgba(255,255,255,.02);
     }
-    .hero .container {
-      position: relative;
-      z-index: 1; /* Keeps your text sharp and above the blur */
-    }
-    .hero h1 { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 16px; color: #fff; letter-spacing: -0.5px; }
-    .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 30px; color: #a8aeb3; font-weight: 400; }
+    
     
     /* Hero Scannable Badges */
     .hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; }
