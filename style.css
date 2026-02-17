@@ -10993,3 +10993,83 @@ div#services .cards .card.card-wide .card-actions {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* ===== CANONICAL HERO + SAFETY OVERRIDES (appended) ===== */
+/* Stacking context: keep hero visuals strictly behind content */
+#home.hero { position: relative; z-index: 0; }
+#home::before { z-index: -3; pointer-events: none; }
+#home .hero-grid, #home .hero-grid-svg { z-index: -1; pointer-events: none; }
+
+/* Definitive hero-divider rule (scoped) */
+#home.hero .hero-divider {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Canonical hero avatar fallback + unify */
+#home .hero-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent, #ff6b00);
+  display: block;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 30px rgba(255,107,0,0.18);
+  background-color: rgba(0,0,0,0.04);
+}
+
+/* Prevent broken/missing avatar from collapsing layout */
+#home .hero-avatar[hidden], #home .hero-avatar[src=''] {
+  visibility: hidden;
+  width: 130px;
+  height: 130px;
+}
+
+/* Canonical typewriter block */
+#typewrite {
+  position: relative;
+  min-height: 2.6rem;
+  width: 100%;
+  max-width: 680px;
+  margin: 0.5rem auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: visible;
+}
+#typewrite .tw-inner {
+  position: relative; /* prefer relative to avoid layout collapse */
+  display: inline-block;
+  transform: none;
+}
+
+/* Scoped hero-inner padding so hero adjustments don't bleed into next sections */
+#home.hero .hero-inner {
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+/* Canonical chat/open button styling */
+#openChatBtn {
+  background: linear-gradient(135deg, var(--accent-strong, #ff7a2d), var(--accent, #ff6b00));
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(255,107,0,0.08);
+  cursor: pointer;
+}
+
+/* Scoped safety: avoid global !important bleed for service cards (example) */
+#services .cards .card {
+  min-height: auto !important;
+  box-sizing: border-box;
+}
+
+/* small helpers */
+@media (max-width: 900px) {
+  #home .hero-avatar { width: 108px; height: 108px; }
+  #typewrite { min-height: 2.2rem; max-width: 520px; }
+}
