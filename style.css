@@ -11232,3 +11232,70 @@ div#services .cards .card.card-wide .card-actions {
     margin-right: 4px !important;
   }
 }
+
+
+/* ===== MOBILE HAMBURGER MENU ===== */
+/* Desktop Base Rules */
+.site-header {
+  position: relative !important; /* Anchors the mobile dropdown */
+  z-index: 9999; /* Keeps header above other elements */
+}
+
+.hamburger {
+  display: none; /* Hidden on desktop */
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Mobile Rules */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger button */
+  }
+
+  /* The Dropdown Container */
+  #primary-nav {
+    position: absolute;
+    top: 100%; /* Drops exactly below the header */
+    left: 0;
+    width: 100%;
+    background: rgba(15, 17, 20, 0.96); /* Dark premium background */
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+    
+    /* Hidden by default with smooth height transition */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+  }
+
+  /* When the menu is toggled open via JS */
+  #primary-nav.is-open {
+    max-height: 400px; /* Expands to fit links */
+  }
+
+  /* Stack the links vertically */
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    margin: 0;
+    align-items: center;
+  }
+
+  #navbar li {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  #navbar li a {
+    display: block;
+    padding: 0.75rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+}
