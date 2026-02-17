@@ -11431,3 +11431,38 @@ div#services .cards .card.card-wide .card-actions {
     color: var(--accent, #ff6b00) !important;
   }
 }
+
+
+/* ===== MANIFESTO GRID BOX ===== */
+.manifesto-grid {
+  display: grid;
+  place-items: center;
+  background: #16181c; /* Dark grey background */
+  border: 1px solid transparent; /* Transparent border */
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem auto 2.5rem auto;
+  max-width: 850px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.manifesto-text {
+  color: #ffffff !important; /* Pure white text */
+  font-weight: 400 !important; /* No bold */
+  font-style: normal !important; /* No italic */
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .manifesto-grid {
+    padding: 1.2rem;
+    margin: 1.5rem 1rem 2rem 1rem;
+  }
+  .manifesto-text {
+    font-size: 0.95rem;
+    text-align: left; /* Better readability on mobile */
+  }
+}
