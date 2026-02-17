@@ -11143,3 +11143,37 @@ div#services .cards .card.card-wide .card-actions {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+
+/* ===== MOBILE FIX: Shrink Typewriter (Desktop Unchanged) ===== */
+@media (max-width: 768px) {
+  #typewrite {
+    min-height: 1.8rem !important; /* Reduce vertical height on mobile */
+  }
+  #typewrite .tw-inner {
+    font-size: 0.75rem !important;
+    padding-left: 1.4rem !important; /* Bring prompt closer to text */
+    letter-spacing: -0.01em !important; 
+  }
+}
+
+/* For standard and small phones (iPhone SE, standard Androids) */
+@media (max-width: 480px) {
+  #typewrite {
+    min-height: 1.5rem !important;
+  }
+  #typewrite .tw-inner {
+    font-size: 0.55rem !important; /* Shrink enough to fit 75 chars on one line */
+    padding-left: 1.1rem !important;
+    letter-spacing: -0.02em !important;
+  }
+  #typewrite .tw-inner::before {
+    /* Shrink the >_ prompt to match */
+    font-size: 0.55rem !important;
+  }
+  #typewrite .tw-inner::after {
+    /* Shrink the block cursor to match */
+    font-size: 0.55rem !important;
+    margin-left: 3px !important;
+  }
+}
