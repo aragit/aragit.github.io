@@ -403,12 +403,11 @@
     
       // words to cycle
       const words = [
-    'Planning-Executor • Deterministic Core • Healthcare AI',
-    'Multi-Agent Systems • Hierarchical Orchestration • Research Discovery',
-    'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise Automation',
-    'Neuro-Symbolic • Policy-as-Code Governance • Financial Compliance',
-    'LLM Engineering • Model Optimization • RAG Augmentation • Inference Optimization'
-  ];
+  "🎓 Sharif University of Technology",
+  "🏆 Kaggle Grandmaster",
+  "🤝 KaggleX Advisor",
+  "✓ Google Certified"
+];
       let wIndex = 0;
       let charIndex = 0;
       let deleting = false;
@@ -792,42 +791,3 @@ document.addEventListener('DOMContentLoaded', function() {
   items.forEach(item => observer.observe(item));
 });
 
-// ===== Credential Typewriter (Isolated) =====
-document.addEventListener("DOMContentLoaded", function () {
-  const credentials = [
-    "🎓 Sharif University of Technology",
-    "🏆 Kaggle Grandmaster",
-    "🤝 KaggleX Advisor",
-    "✓ Google Certified"
-  ];
-
-  const el = document.getElementById("credential-typewriter");
-  if (!el) return;
-
-  let index = 0;
-  let charIndex = 0;
-  let deleting = false;
-
-  function type() {
-    const current = credentials[index];
-
-    if (!deleting) {
-      el.textContent = current.slice(0, charIndex++);
-      if (charIndex > current.length) {
-        deleting = true;
-        setTimeout(type, 1500);
-        return;
-      }
-    } else {
-      el.textContent = current.slice(0, charIndex--);
-      if (charIndex < 0) {
-        deleting = false;
-        index = (index + 1) % credentials.length;
-      }
-    }
-
-    setTimeout(type, deleting ? 40 : 70);
-  }
-
-  type();
-});
