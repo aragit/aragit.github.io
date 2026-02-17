@@ -11177,3 +11177,24 @@ div#services .cards .card.card-wide .card-actions {
     margin-left: 3px !important;
   }
 }
+
+
+/* ===== FIX: Balance Typewriter Centering ===== */
+/* Desktop */
+#typewrite .tw-inner {
+  padding-right: 1.8rem !important; 
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  #typewrite .tw-inner {
+    padding-right: 1.4rem !important;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  #typewrite .tw-inner {
+    padding-right: 1.1rem !important;
+  }
+}
