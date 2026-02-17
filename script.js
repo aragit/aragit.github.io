@@ -782,12 +782,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// ===== UPDATED: 3D TILT + BRIGHT GREY SPOTLIGHT FOR PORTFOLIO CARDS =====
 
-
-
-  }, observerOptions);
-
-  items.forEach(item => observer.observe(item));
-});
-
+})();
