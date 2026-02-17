@@ -11345,3 +11345,89 @@ div#services .cards .card.card-wide .card-actions {
     margin-bottom: 0 !important; 
   }
 }
+
+
+/* ===== UNIFIED PERFECT MOBILE MENU ===== */
+.hamburger {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    position: relative !important;
+    z-index: 9999 !important;
+  }
+  .site-header .header-inner {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    min-height: 70px !important;
+    padding: 0 1.5rem !important;
+  }
+  .hamburger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--accent, #ff6b00) !important;
+    font-size: 2rem !important;
+    cursor: pointer !important;
+    z-index: 10001 !important;
+  }
+  
+  #primary-nav {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: #0f1114 !important;
+    border-bottom: 2px solid var(--accent, #ff6b00) !important;
+    
+    /* Hiding Mechanics */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-10px) !important;
+    transition: all 0.3s ease-in-out !important;
+    
+    /* Sizing (includes the Contact link overflow fix) */
+    height: auto !important;
+    max-height: none !important;
+    padding-bottom: 1rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  #primary-nav.is-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+  
+  #navbar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 2rem 0 0 0 !important;
+    margin: 0 !important;
+  }
+  #navbar li {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0.75rem 0 !important;
+  }
+  #navbar li:last-child {
+    margin-bottom: 0 !important; /* Fixes bottom border overlap */
+  }
+  #navbar li a {
+    font-size: 1.25rem !important;
+    color: #ffffff !important;
+    display: block !important;
+    padding: 0.5rem !important;
+    text-decoration: none !important;
+  }
+  #navbar li a:hover {
+    color: var(--accent, #ff6b00) !important;
+  }
+}

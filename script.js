@@ -693,138 +693,38 @@
       bubble.setAttribute('aria-hidden', on ? 'false' : 'true');
     } catch (e) { /* ignore */ }
   };
-
-
-  /* ===== MOBILE HAMBURGER LOGIC ===== */
-  const hamburgerBtn = document.getElementById('hamburger');
-  const primaryNav = document.getElementById('primary-nav');
-  
-  if(hamburgerBtn && primaryNav) {
-      // Toggle menu on click
-      hamburgerBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          primaryNav.classList.toggle('is-open');
-          
-          const isExpanded = primaryNav.classList.contains('is-open');
-          hamburgerBtn.setAttribute('aria-expanded', isExpanded);
-          
-          // Swap icon (Bars <-> X)
-          const icon = hamburgerBtn.querySelector('i');
-          if(icon) {
-              icon.className = isExpanded ? 'fas fa-times' : 'fas fa-bars';
-          }
-      });
-      
-      // Close menu if clicking anywhere outside of it
-      document.addEventListener('click', (e) => {
-          if(!primaryNav.contains(e.target) && e.target !== hamburgerBtn) {
-              primaryNav.classList.remove('is-open');
-              hamburgerBtn.setAttribute('aria-expanded', 'false');
-              const icon = hamburgerBtn.querySelector('i');
-              if(icon) icon.className = 'fas fa-bars';
-          }
-      });
-      
-      // Close menu automatically when a link is clicked
-      const navLinks = primaryNav.querySelectorAll('a');
-      navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-              primaryNav.classList.remove('is-open');
-              hamburgerBtn.setAttribute('aria-expanded', 'false');
-              const icon = hamburgerBtn.querySelector('i');
-              if(icon) icon.className = 'fas fa-bars';
-          });
-      });
-  }
-
 })();
 
 
-
-
-// ===== 3D TILT + SPOTLIGHT EFFECT FOR INSIGHT CARD =====
-document.addEventListener('DOMContentLoaded', function() {
-  const card = document.querySelector('.insight-card-combined');
-  
-  if (!card) return;
-  
-  // Only enable on non-touch devices
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  
-  card.addEventListener('mousemove', function(e) {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+/* ===== SECURE MOBILE HAMBURGER LOGIC ===== */
+(function() {
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('primary-nav');
     
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    // Calculate rotation (max 8 degrees)
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
-    
-    // Apply 3D tilt
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    
-    // Update spotlight position
-    const percentX = (x / rect.width) * 100;
-    const percentY = (y / rect.height) * 100;
-    card.style.setProperty('--mouse-x', percentX + '%');
-    card.style.setProperty('--mouse-y', percentY + '%');
-  });
-  
-  // Reset on mouse leave
-  card.addEventListener('mouseleave', function() {
-    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-  });
-  
-  // Smooth enter
-  card.addEventListener('mouseenter', function() {
-    card.style.transition = 'transform 0.1s ease-out, box-shadow 0.3s ease';
-  });
-});
-
-// ===== 3D TILT + SPOTLIGHT EFFECT FOR PORTFOLIO CASE STUDY CARDS =====
-document.addEventListener('DOMContentLoaded', function() {
-  // Select all portfolio cards
-  const portfolioCards = document.querySelectorAll('#portfolio .cards .card, #portfolio .portfolio-grid .card, #portfolio .big-cards .card, #portfolio .small-cards .card');
-  
-  // Only enable on non-touch devices
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  
-  portfolioCards.forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      // Calculate rotation (max 6 degrees for subtler effect)
-      const rotateX = ((y - centerY) / centerY) * -6;
-      const rotateY = ((x - centerX) / centerX) * 6;
-      
-      // Apply 3D tilt
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      
-      // Update spotlight position
-      const percentX = (x / rect.width) * 100;
-      const percentY = (y / rect.height) * 100;
-      card.style.setProperty('--mouse-x', percentX + '%');
-      card.style.setProperty('--mouse-y', percentY + '%');
-    });
-    
-    // Reset on mouse leave
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-    });
-    
-    // Smooth enter
-    card.addEventListener('mouseenter', function() {
-      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease';
-    });
-  });
-});
-
-
+    if(btn && nav) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            nav.classList.toggle('is-open');
+            const icon = btn.querySelector('i');
+            if(icon) {
+                icon.className = nav.classList.contains('is-open') ? 'fas fa-times' : 'fas fa-bars';
+            }
+        });
+        
+        document.addEventListener('click', function(e) {
+            if(!nav.contains(e.target) && !btn.contains(e.target)) {
+                nav.classList.remove('is-open');
+                const icon = btn.querySelector('i');
+                if(icon) icon.className = 'fas fa-bars';
+            }
+        });
+        
+        nav.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                nav.classList.remove('is-open');
+                const icon = btn.querySelector('i');
+                if(icon) icon.className = 'fas fa-bars';
+            });
+        });
+    }
+})();
