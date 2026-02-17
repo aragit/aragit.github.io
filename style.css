@@ -11328,3 +11328,20 @@ div#services .cards .card.card-wide .card-actions {
     cursor: pointer !important;
   }
 }
+
+
+/* ===== FIX: MOBILE MENU OVERFLOW (CONTACT LINK) ===== */
+@media (max-width: 768px) {
+  /* 1. Allow the container to grow naturally to fit all content */
+  #primary-nav {
+    height: auto !important;
+    max-height: none !important;
+    box-sizing: border-box !important;
+    padding-bottom: 1rem !important; /* Breathing room above the border */
+  }
+  
+  /* 2. Strip the margin from the very last item so it doesn't poke out */
+  #navbar li:last-child {
+    margin-bottom: 0 !important; 
+  }
+}
