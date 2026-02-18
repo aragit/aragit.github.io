@@ -3,302 +3,276 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Agentic AI – Autonomous & Auditable Agents | Arash Nicoomanesh</title>
+  <title>Enterprise Swarm Architectures | Arash Nicoomanesh</title>
 
-  <!--  SEO + Social  -->
-  <meta name="description" content="Production-grade agentic systems: multi-step reasoning, tool-use, guardrails, audit logs, 24 × 7 ops. Fixed-price POC in 2–4 weeks."/>
-  <meta property="og:title" content="Agentic AI – Autonomous & Auditable Agents"/>
-  <meta property="og:description" content="Fixed-price agent builds: reasoning engines, tool-calling, human-in-the-loop, full observability."/>
+  <meta name="description" content="Deploying governed, multi-agent digital workforces across high-stakes industries. Neuro-Symbolic agents for Healthcare, Manufacturing, and FinOps."/>
+  <meta property="og:title" content="Enterprise Swarm Architectures"/>
+  <meta property="og:description" content="High-liability, multi-agent AI swarms for enterprise scale."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aragit.github.io/services/agentic-ai.html"/>
-  <meta property="og:image" content="https://aragit.github.io/og-agentic.png"/>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    :root{
-      --primary:#ffb020;--primary-dark:#ff9d00;--secondary:#e11d48;
-      --dark:#121212;--darker:#0a0a0a;--light:#f3f4f6;--gray:#9ca3af;
-      --accent:#ff6b00;--accent-light:#ff9d00;
-      --header-gradient: linear-gradient(135deg, #141E30 0%, #243B55 50%, #53346D 100%);
+    :root {
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{background:var(--darker);color:#eaf2fb;font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-    img{max-width:100%;display:block}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid rgba(255,255,255,.05)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-    .logo{font-weight:700;font-size:1.3rem;display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
-    .logo i{color:var(--accent)}
-    .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
-    .back-btn:hover{border-color:var(--accent);color:var(--accent)}
-    /* ---------- HERO ---------- */
-    .hero{
-      padding:clamp(60px,10vw,100px) 0;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-      background-image:
-        linear-gradient(to bottom,
-          rgba(10,10,10,1) 0%,
-          rgba(10,10,10,0.25) 40%,
-          rgba(10,10,10,0) 60%,
-          rgba(10,10,10,1) 100%),
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* ---------- header ---------- */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
+    /* ---------- hero ---------- */
+    .hero {
+      padding: clamp(80px, 12vw, 120px) 0;
+      text-align: center;
+      background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
         url('https://i.pinimg.com/736x/0d/4e/00/0d4e0011f717fedc9ba6623ce91ef5a5.jpg');
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(255,255,255,.02);
     }
-    .hero h1{font-size:clamp(2rem,5vw,2.5rem);font-weight:700;margin-bottom:16px;color:#fff}
-    .hero p{font-size:1.3rem;max-width:680px;margin:0 auto;color:#fff6f3;font-weight:600;}
-    section{padding:clamp(50px,8vw,80px) 0}
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
-    .card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
-    .card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
-    .card h3{font-size:1.4rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#fff}
-    .card h3 i{color:var(--accent)}
-    .card p{color:#bfcbd7;margin-bottom:12px}
-    .checklist{list-style:none;color:#bfcbd7}
-    .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
-    .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
-    .tier-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px}
-    .tier-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .tier-head h3{margin:0;display:flex;align-items:center;gap:10px}
-    .tier-head h3 i{color:var(--accent)}
-    .price{background:var(--accent);color:#000;padding:6px 14px;border-radius:99px;font-weight:600}
-    .form-box{max-width:680px;margin:0 auto;background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
-    .form-box h3{margin-bottom:8px}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
-    input,select,textarea{width:100%;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-family:inherit;transition:border .3s,box-shadow .3s}
-    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,0,.2)}
-    label{font-size:.9rem;color:#cbd6df;margin-bottom:6px;display:block}
-    ::placeholder{color:#6b7280}
-    .btn-submit{background:var(--accent);color:#fff;padding:14px 28px;border:none;border-radius:50px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:.3s}
-    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.4)}
-    .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
-    .cta-band h2{font-size:1.8rem;margin-bottom:12px}
-    .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
-    .btn-light:hover{transform:scale(1.03)}
-    footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
-    @media(max-width:700px){.form-row{grid-template-columns:1fr}}
+    .hero h1 { 
+        font-size: clamp(2.5rem, 5vw, 4rem) !important; 
+        font-weight: 800 !important; 
+        line-height: 1.15 !important; 
+        margin-bottom: 24px !important;
+        text-shadow: 0 5px 30px rgba(0,0,0,0.9) !important; 
+        color: #fff;
+    }
+    .hero p { 
+        font-size: clamp(1.1rem, 2vw, 1.3rem) !important; 
+        max-width: 900px !important; 
+        margin: 0 auto 40px auto !important;
+        color: #ffffff !important; 
+        font-weight: 500 !important; 
+        text-shadow: 0 3px 20px rgba(0,0,0,0.9) !important; 
+    }
+    
+    /* ---------- buttons ---------- */
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+    .btn-submit { width: 100%; margin-top: 10px; }
+    
+    /* ---------- sections ---------- */
+    section { padding: clamp(60px, 8vw, 90px) 0; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media(max-width: 950px){ .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+    @media(max-width: 650px){ .grid-4 { grid-template-columns: 1fr; } }
 
-    /* =====  MATURITY SLIDER  ===== */
-    .maturity-slider{position:relative;max-width:520px;margin:0 auto 40px}
-    .maturity-slider input[type=range]{width:100%;height:8px;background:rgba(255,255,255,.08);border-radius:4px;outline:none;-webkit-appearance:none}
-    .maturity-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 0 10px rgba(255,107,0,.5)}
-    .maturity-slider .labels{display:flex;justify-content:space-between;margin-top:8px;font-size:.8rem;color:#9ca3af}
-    .maturity-card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;margin-bottom:40px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .maturity-card h3{color:var(--accent);margin-bottom:12px;font-size:1.3rem}
-    .maturity-card .tag{display:inline-block;background:rgba(255,155,0,.15);color:#ff9d00;padding:4px 10px;border-radius:99px;font-size:.75rem;margin-right:8px}
-    table.benchmark{width:100%;border-collapse:collapse;font-size:.9rem}table.benchmark th,table.benchmark td{padding:10px 12px;border:1px solid rgba(255,255,255,.08);text-align:center}table.benchmark th{background:rgba(255,255,255,.04)}table.benchmark td{color:#cbd6df}table.benchmark tr:nth-child(even){background:rgba(255,255,255,.02)}
+    /* AGENTIC CSS UPDATES */
+    .agentic-term { color: #ffffff; font-weight: 600; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
+    .card { background: rgba(50,50,50,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+    .grid-4 .card { padding: 24px; }
+    .grid-4 .card h3 { font-size: 1.15rem; margin-bottom: 14px; }
+    
+    .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
+    .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
+    .card:hover::after { width: 100%; }
+    
+    .card h3 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; color: #fff; }
+    .card h3 i { color: var(--accent); font-size: 1.5rem; background: transparent; padding: 0; border-radius: 0; margin-right: 4px; }
+    
+    .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; }
+    .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
+    .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
 
-    /* =====  PROGRESSIVE-REVEAL WHAT-YOU-GET  ===== */
-    #wgLevel{color:var(--accent)}
-    #wgGrid .checklist li{position:relative;padding-left:28px;margin-bottom:10px;transition:color .3s}
-    #wgGrid .checklist li::before{font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;top:2px;font-size:14px}
-    #wgGrid .checklist li.locked{color:#6b7280}
-    #wgGrid .checklist li.locked::before{content:"\f023";color:#ff9d0080}     /* lock */
-    #wgGrid .checklist li.unlocked::before{content:"\f00c";color:var(--accent)} /* check */
+    /* ---------- VERTICAL SHOWCASE STYLES ---------- */
+    .vertical-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 80px; }
+    .vertical-showcase.reverse { direction: rtl; }
+    .vertical-showcase.reverse .showcase-content { direction: ltr; }
+    @media(max-width: 900px) { 
+        .vertical-showcase { grid-template-columns: 1fr; margin-bottom: 60px; }
+        .vertical-showcase.reverse { direction: ltr; }
+    }
+    .showcase-content h3 { font-size: 1.8rem; color: #fff; margin-bottom: 16px; display:flex; align-items:center; gap:12px; }
+    .showcase-content h3 i { color: var(--accent); }
+    .showcase-content h4 { color: var(--gray); font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
+    .showcase-content p { color: #cbd6df; margin-bottom: 16px; line-height: 1.7; }
+    
+    .guardrail-box { background: rgba(255,107,0,0.05); border-left: 3px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin-top: 24px; }
+    .guardrail-box strong { color: #fff; display: block; margin-bottom: 6px; font-size: 1rem; }
+    
+    /* ---------- deliverables / form ---------- */
+    .deliver-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 40px; text-align: left; }
+    .deliver-box h3 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    input, select, textarea { width: 100%; padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,.1); color: #fff; font-family: inherit; font-size: 1rem; transition: all .3s; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,107,0,.15); }
+    label { font-size: .9rem; color: #cbd6df; margin-bottom: 8px; display: block; font-weight: 500; }
+    ::placeholder { color: #6b7280; }
+    
+    /* ---------- cta band ---------- */
+    .cta-band { background: #121212; text-align: center; padding: 70px 0; border-top: 2px solid var(--accent); }
+    .cta-band h2 { font-size: 2.2rem; margin-bottom: 16px; color: #fff; }
+    .cta-band p { color: var(--gray); font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    
+    /* ---------- footer ---------- */
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
+    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- HEADER                                                       -->
-<!-- ============================================================ -->
 <header>
   <div class="container">
     <div class="header-inner">
-      <a href="../index.html" class="logo"><i class="fa-solid fa-robot"></i>Arash Nicoomanesh</a>
+      <a href="../index.html" class="logo"><i class="fa-solid fa-network-wired"></i>Arash Nicoomanesh</a>
       <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
     </div>
   </div>
 </header>
 
-<!-- ============================================================ -->
-<!-- HERO                                                         -->
-<!-- ============================================================ -->
 <section class="hero">
   <div class="container">
-    <h1>Agentic AI</h1>
-    <p>Production-grade agents that reason over your data, call internal tools, respect guardrails and leave a tamper-proof audit trail.</p>
+    <h1>Enterprise Swarm Architectures</h1>
+    <p>Deploying governed, multi-agent digital workforces across high-stakes industries. We architect specialized swarms that execute complex, state-altering workflows in <strong>Healthcare, Manufacturing, and Enterprise Revenue Operations</strong>.</p>
+    <a href="#request" class="btn-primary">Request a Swarm Audit <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!--  AGENTIC MATURITY CURVE  –  interactive + benchmarks        -->
-<!-- ============================================================ -->
-<section id="maturity">
+<section>
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:12px">Where Are You on the Agentic Curve?</h2>
-    <p style="max-width:740px;margin:0 auto 24px;text-align:center;">
-      Most organisations stall at <strong>Level 1</strong> because they jump straight to tooling
-      without the governance, eval-data and human-in-the-loop scaffolding that Level 2 demands.
-      Our fixed-price builds close those gaps in 4 weeks – then prove it with benchmarks you can
-      take to your CIO.
-    </p>
-    <p style="max-width:680px;margin:0 auto 40px;text-align:center;color:#9ca3af;">
-      Move the slider to see the controls, metrics and deliverables that unlock each level – based on 2024 enterprise deployments.
-    </p>
-
-    <!--  INTERACTIVE SLIDER  -->
-    <div class="maturity-slider">
-      <input type="range" min="0" max="3" value="1" id="levelRange">
-      <div class="labels">
-        <span>L0<br>Chat-bot</span>
-        <span>L1<br>Retrieval</span>
-        <span>L2<br>Pilot</span>
-        <span>L3<br>Agent</span>
+    
+    <div class="vertical-showcase">
+      <div class="showcase-content">
+        <h3><i class="fa-solid fa-heart-pulse"></i>Clinical & Healthcare Swarms</h3>
+        <h4>Mission-critical, HIPAA-compliant diagnostic routing.</h4>
+        <p><strong>The Challenge:</strong> Healthcare systems are bottlenecked by siloed patient data, complex resource allocation, and heavy administrative diagnostic routing.</p>
+        <p><strong>The Architecture:</strong> Triage agents ingest unstructured patient history and vitals, securely routing them to specialized diagnostic agents. Multiple agents review the same imaging data using different reasoning pathways (Chain-of-Thought) to reach a high-confidence consensus before alerting a human specialist.</p>
+        
+        <div class="guardrail-box">
+          <strong><i class="fa-solid fa-shield-halved"></i> The Deterministic Guardrail (OPA)</strong>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Absolute HIPAA & Safety Containment:</em> Agents operate in a strict "Read/Propose" state for diagnostics. Policy-as-Code absolutely, physically blocks the swarm from writing prescriptions or altering life-support systems without cryptographic human-in-the-loop authorization.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
+        <i class="fa-solid fa-hospital-user" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
+        <h4 style="color:#fff; margin-bottom:10px;">Consensus Reasoning Output</h4>
+        <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
+          > Agent_A (Imaging): Detected anomaly C4.<br>
+          > Agent_B (Vitals): Confirmed elevated markers.<br>
+          > Consensus_Reached: 94% Confidence.<br>
+          > [BLOCKED] Prescription API call denied by OPA.<br>
+          > Status: Escalated to Dr. Smith.
+        </div>
       </div>
     </div>
 
-    <!--  DYNAMIC CARD  -->
-    <div class="maturity-card" id="maturityCard">
-      <!-- content injected by JS  -->
+    <div class="vertical-showcase reverse">
+      <div class="showcase-content">
+        <h3><i class="fa-solid fa-industry"></i>Advanced Manufacturing & Logistics</h3>
+        <h4>Industrial IoT, high-efficiency, predictive, rugged.</h4>
+        <p><strong>The Challenge:</strong> A single delayed component or unexpected machine failure can cost millions per hour in assembly line downtime.</p>
+        <p><strong>The Architecture:</strong> Predictive Maintenance Agents ingest continuous IIoT sensor data. When an anomaly is detected, the swarm autonomously schedules maintenance during a planned changeover. If a geopolitical event disrupts a Tier 1 supplier, the swarm negotiates with Tier 2 suppliers, recalculates logistics, and updates the ERP (SAP/Oracle) to prevent line starvation.</p>
+        
+        <div class="guardrail-box">
+          <strong><i class="fa-solid fa-bolt"></i> The Deterministic Guardrail (OPA)</strong>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Operational Circuit Breakers:</em> The swarm is hard-coded with budget limits for autonomous reordering. If a supply chain reroute exceeds a 15% cost variance, the ReAct-loop halts and escalates to the VP of Procurement to prevent runaway spending.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
+        <i class="fa-solid fa-truck-fast" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
+        <h4 style="color:#fff; margin-bottom:10px;">Supply Chain Re-Route Graph</h4>
+        <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
+          > IIoT_Alert: Machine_7 vibration spike.<br>
+          > Action: Maintenance scheduled (Shift 3).<br>
+          > Supply_Alert: Port delay (Rotterdam).<br>
+          > Action: Querying Tier-2 suppliers...<br>
+          > [WARN] Cost variance 18% > Threshold (15%).<br>
+          > Circuit_Breaker_Triggered: Halting ReAct loop.
+        </div>
+      </div>
     </div>
 
-    <!--  BENCHMARK TABLE  (always visible)  -->
-    <table class="benchmark">
-      <thead>
-        <tr>
-          <th>Metric (industry median 2024)</th>
-          <th>L0</th>
-          <th>L1</th>
-          <th>L2</th>
-          <th>L3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Task success rate</td><td>68 %</td><td>78 %</td><td>86 %</td><td>94 %</td></tr>
-        <tr><td>p95 latency</td><td>—</td><td>4.2 s</td><td>2.1 s</td><td>1.2 s</td></tr>
-        <tr><td>Escalations / 1 k tasks</td><td>—</td><td>120</td><td>14</td><td>≤ 1</td></tr>
-        <tr><td>Token cost $ / 1 k tasks</td><td>0.20</td><td>0.55</td><td>1.10</td><td>1.40</td></tr>
-        <tr><td>Audit coverage</td><td>0 %</td><td>30 %</td><td>90 %</td><td>100 %</td></tr>
-      </tbody>
-    </table>
-
-    <!--  CTA  -->
-    <div style="text-align:center;margin-top:40px;">
-      <a href="#request" class="btn-light"><i class="fa-solid fa-chart-line"></i>Book maturity scan → get gap report</a>
+    <div class="vertical-showcase">
+      <div class="showcase-content">
+        <h3><i class="fa-solid fa-chart-pie"></i>Enterprise Revenue Operations</h3>
+        <h4>Hyper-scalable, data-driven, adaptive FinOps.</h4>
+        <p><strong>The Challenge:</strong> Global teams cannot manually analyze competitor pricing, adjust ad spend, or reconcile end-of-month ledger mismatches across millions of transactions in real-time.</p>
+        <p><strong>The Architecture:</strong> Competitive Intelligence Agents continuously scrape market sentiment, feeding structured data to strategy agents. Journey Orchestration Agents dynamically assemble personalized campaigns. Simultaneously, FinOps Agents query ERPs and cross-reference Stripe APIs to draft adjustment journal entries autonomously.</p>
+        
+        <div class="guardrail-box">
+          <strong><i class="fa-solid fa-lock"></i> The Deterministic Guardrail (OPA)</strong>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Brand Safety & Spend Limits:</em> Hard-coded API limits prevent the swarm from accidentally exhausting a monthly ad budget in a single hour due to a hallucinated bidding war. Ledger adjustments over $10k require deterministic dual-key human sign-off.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
+        <i class="fa-solid fa-money-bill-transfer" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
+        <h4 style="color:#fff; margin-bottom:10px;">FinOps Reconciliation Loop</h4>
+        <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
+          > Querying: ERP_Ledger vs Stripe_API.<br>
+          > Match_Failed: Variance of $12,450 found.<br>
+          > Reasoning: Locating missing invoice ID #884.<br>
+          > Action: Drafting Journal Entry Adjustment.<br>
+          > [BLOCKED] Adjustment > $10k limit.<br>
+          > Awaiting human dual-key authorization.
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!--  PROGRESSIVE-REVEAL  “What You Get”  (tied to slider)        -->
-<!-- ============================================================ -->
-<section id="wg">
+<section style="background:#121212; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:12px">What You Get at <span id="wgLevel">Level 1</span></h2>
-    <p style="max-width:680px;margin:0 auto 40px;text-align:center;color:#9ca3af;">
-      Move the maturity slider to unlock capabilities. Grey items become available at higher levels.
-    </p>
-
-    <!-- 6 CARDS  -->
-    <div class="grid-2" id="wgGrid">
-      <!-- 1. REASONING  -->
-      <div class="card" data-card="reasoning">
-        <h3><i class="fa-solid fa-brain"></i>Reasoning Engine</h3>
+    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">The Anatomy of a Swarm Agent</h2>
+    <div class="grid-4">
+      <div class="card">
+        <h3><i class="fa-solid fa-eye"></i>Perception</h3>
         <ul class="checklist">
-          <li class="l1">Single-turn Q&A with citations</li>
-          <li class="l2">ReAct / OpenAI-functions loop</li>
-          <li class="l2">Multi-step goal decomposition (max depth 10)</li>
-          <li class="l3">DAG planner with rollback edges</li>
-          <li class="l3">Context window 32 k–128 k + summariser</li>
-          <li class="l3">Deterministic JSON output via constrained decoding</li>
+          <li>Live API integration (REST, GraphQL)</li>
+          <li>Continuous SQL/NoSQL querying</li>
+          <li>Instrumental grounding to avoid temporal decay</li>
         </ul>
       </div>
-
-      <!-- 2. TOOL USE  -->
-      <div class="card" data-card="tools">
-        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Tool Use & Integrations</h3>
+      <div class="card">
+        <h3><i class="fa-solid fa-brain"></i>Reasoning</h3>
         <ul class="checklist">
-          <li class="l1">REST / gRPC / SQL connectors</li>
-          <li class="l2">OAuth2, JWT, mTLS</li>
-          <li class="l2">Retry, timeout, circuit-breaker patterns</li>
-          <li class="l3">SAP / Salesforce / Workday adapters</li>
-          <li class="l3">Rollback & idempotency keys (saga support)</li>
-          <li class="l3">Vault-based secret rotation</li>
+          <li>ReAct loop multi-step planning</li>
+          <li>Chain-of-Thought (CoT) prompting</li>
+          <li>Autonomous error detection & recovery</li>
         </ul>
       </div>
-
-      <!-- 3. GUARDRAILS  -->
-      <div class="card" data-card="guardrails">
-        <h3><i class="fa-solid fa-shield-halved"></i>Safety & Guardrails</h3>
+      <div class="card">
+        <h3><i class="fa-solid fa-database"></i>Memory</h3>
         <ul class="checklist">
-          <li class="l1">Prompt-injection shield (heuristic layer)</li>
-          <li class="l2">LLM-judge second pass</li>
-          <li class="l2">Human-in-the-loop escalation (Slack ≤ 15 min SLA)</li>
-          <li class="l3">Policy engine (Rego / OPA) fine-grained permissions</li>
-          <li class="l3">Red-team prompt-attack report</li>
+          <li>Semantic Vector Storage (RAG)</li>
+          <li>Reflexion buffers for experiential learning</li>
+          <li>Stateful POMDP belief tracking</li>
         </ul>
       </div>
-
-      <!-- 4. AUDIT  -->
-      <div class="card" data-card="audit">
-        <h3><i class="fa-solid fa-fingerprint"></i>Auditability & Compliance</h3>
+      <div class="card">
+        <h3><i class="fa-solid fa-hand-fist"></i>Action</h3>
         <ul class="checklist">
-          <li class="l1">Plain-text logs (30 d retention)</li>
-          <li class="l2">Append-only decision logs (WORM 90 d)</li>
-          <li class="l2">Signed snapshots for every run</li>
-          <li class="l3">WORM storage 90 d–7 y retention</li>
-          <li class="l3">GDPR right-to-be-forgotten hooks (soft + hard delete)</li>
-          <li class="l3">SOC-2 / HIPAA mapping docs included</li>
-        </ul>
-      </div>
-
-      <!-- 5. OBSERVABILITY  -->
-      <div class="card" data-card="observe">
-        <h3><i class="fa-solid fa-chart-line"></i>Observability 360°</h3>
-        <ul class="checklist">
-          <li class="l1">Task-success rate & basic latency</li>
-          <li class="l2">Token-cost per workflow</li>
-          <li class="l2">Grafana + Prometheus + Loki dashboards (7 d→1 y)</li>
-          <li class="l3">Model-drift detector (embedding distance & KL-div)</li>
-          <li class="l3">Budget-burn alerts (Slack + email + PagerDuty)</li>
-        </ul>
-      </div>
-
-      <!-- 6. DEPLOYMENT  -->
-      <div class="card" data-card="deploy">
-        <h3><i class="fa-solid fa-lock"></i>Deployment & Security</h3>
-        <ul class="checklist">
-          <li class="l1">Docker runbook + health checks</li>
-          <li class="l2">Kubernetes manifests (Kustomize / Helm)</li>
-          <li class="l2">Network policies, Pod-security restricted</li>
-          <li class="l3">GPU autoscaling (KEDA + cluster-autoscaler)</li>
-          <li class="l3">VPC, private subnets, NAT-gateway, WAF optional</li>
+          <li>Deterministic tool execution</li>
+          <li>Policy-as-Code (OPA) intercepts</li>
+          <li>Idempotent state changes (Sagas)</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- DELIVERY PROCESS                                             -->
-<!-- ============================================================ -->
-
-
-<!-- ============================================================ -->
-<!-- CTA BAND                                                     -->
-<!-- ============================================================ -->
 <div class="cta-band">
   <div class="container">
-    <h2>Ready to ship your agent?</h2>
-    <p style="margin-bottom:24px">Book a quick scoping call and receive a fixed-price proposal within 24 h.</p>
-    <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Book a scoping call</a>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- REQUEST FORM                                                 -->
-<!-- ============================================================ -->
-<section id="request">
-  <div class="container">
-    <div class="form-box">
-      <h3>Request an agent POC quote</h3>
-      <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page SOW + calendar link within 24 h.</p>
+    <h2>Ready to architect your enterprise swarm?</h2>
+    <p>Whether you need an architectural audit of a failing GenAI experiment, or a ground-up build, reserve your engagement slot.</p>
+    
+    <div id="request" class="deliver-box" style="max-width: 700px; margin: 0 auto; margin-top:40px;">
+      <h3>Request an Architecture Consultation</h3>
+      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">Tell me about your industry, your current AI initiatives, and the specific bottlenecks you need to automate.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="form-row">
@@ -318,117 +292,44 @@
         </div>
 
         <div style="margin-bottom:20px">
-          <label>Preferred tier</label>
-          <select name="tier">
-            <option value="starter">POC Starter – $8 k (2 weeks)</option>
-            <option value="plus">POC Plus – $15 k (4 weeks)</option>
-            <option value="prod">Production Ready – $35 k (8 weeks)</option>
+          <label>Engagement Type</label>
+          <select name="capability">
+            <option value="audit">Architecture Audit (Fixing a failing system)</option>
+            <option value="blueprint">The Blueprint (Designing a new system)</option>
+            <option value="forge">The Forge (Building a new prototype)</option>
+            <option value="nexus">The Nexus (Scaling to production)</option>
           </select>
         </div>
 
         <div style="margin-bottom:24px">
-          <label>Describe the workflow to automate *</label>
-          <textarea name="message" required placeholder="e.g. multi-step KYC check across CRM + external registry, approve/reject + audit trail..." style="min-height:120px"></textarea>
+          <label>Describe your current challenge *</label>
+          <textarea name="message" required placeholder="e.g. Our supply chain agents keep hallucinating inventory data, we need ReAct-loop guardrails..." style="min-height:120px"></textarea>
         </div>
 
-        <!-- hidden fields -->
-        <input type="hidden" name="service" value="Agentic AI – Autonomous & Auditable Agents">
-        <input type="hidden" name="_subject" value="Website lead: Agentic AI">
+        <input type="hidden" name="service" value="Enterprise Swarm Architectures">
+        <input type="hidden" name="_subject" value="Website lead: Swarm Architectures">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
-        <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i>Send request</button>
+        <button type="submit" class="btn-primary btn-submit"><i class="fa-solid fa-check"></i> Send request</button>
       </form>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ============================================================ -->
-<!-- FOOTER                                                       -->
-<!-- ============================================================ -->
 <footer>
-  © <span id="yr"></span> Arash Nicoomanesh · AI & ML Engineering Services
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
 </footer>
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  // basic UTM grab
   const u = new URLSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
     const v=u.get(p),el=document.createElement('input'); 
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
   });
-
-  /* =====  MATURITY  ===== */
-  const maturityData = [
-    { // L0
-      title: "Level 0 – Fixed Rules & Repetitive Tasks",
-      desc: "Chat-bots & co-pilots with no reasoning or learning. Follow static decision trees.",
-      tags: ["FAQ bot", "Decision tree", "Zero learning"],
-      deliverables: ["Intent catalogue", "Rule engine", "Basic analytics"]
-    },
-    { // L1
-      title: "Level 1 – Information Retrieval Agent",
-      desc: "Reads from scattered data, answers with citations, recommends next actions.",
-      tags: ["RAG", "Citation", "Low reasoning"],
-      deliverables: ["Vector DB", "1 k–5 k eval Q&A", "Human-review queue"]
-    },
-    { // L2
-      title: "Level 2 – Pilot Autonomous Agent",
-      desc: "3-step planner, 5–10 tools, ≤ 3 escalations / 100 tasks, full audit trail.",
-      tags: ["ReAct", "Tool-use", "Guardrails"],
-      deliverables: ["ReAct loop", "OPA policies", "Eval harness", "HITL Slack"]
-    },
-    { // L3
-      title: "Level 3 – Production Agent",
-      desc: "10-step DAG, 20+ tools, ≤ 1 escalation / 1 k tasks, signed snapshots, 24 × 7.",
-      tags: ["Multi-step", "Saga pattern", "WORM logs"],
-      deliverables: ["DAG planner", "Red-team report", "SOC-2 mapping", "Budget alerts"]
-    }
-  ];
-  const slider = document.getElementById('levelRange');
-  const card   = document.getElementById('maturityCard');
-  function renderCard(level){
-    const m = maturityData[level];
-    card.innerHTML = `
-      <h3>${m.title}</h3>
-      <p>${m.desc}</p>
-      <div style="margin:16px 0 12px;">
-        ${m.tags.map(t=>`<span class="tag">${t}</span>`).join('')}
-      </div>
-      <ul class="checklist">
-        ${m.deliverables.map(d=>`<li>${d}</li>`).join('')}
-      </ul>
-    `;
-  }
-  if(slider){
-    slider.addEventListener('input', e=>renderCard(parseInt(e.target.value)));
-    renderCard(1);
-  }
-
-  /* =====  PROGRESSIVE-REVEAL WHAT-YOU-GET  ===== */
-  const levelNames = ["Level 0","Level 1","Level 2","Level 3"];
-  const wgLevelSpan = document.getElementById('wgLevel');
-  const wgGrid = document.getElementById('wgGrid');
-  function syncCards(level){
-    wgLevelSpan.textContent = levelNames[level];
-    wgGrid.querySelectorAll('.checklist li').forEach(li=>{
-      const minLevel = parseInt(li.className.replace('l',''));
-      if(minLevel <= level){
-        li.classList.remove('locked');
-        li.classList.add('unlocked');
-      }else{
-        li.classList.add('locked');
-        li.classList.remove('unlocked');
-      }
-    });
-  }
-  if(slider){
-    slider.addEventListener('input', e=>syncCards(parseInt(e.target.value)));
-    syncCards(1);
-  }else{
-    syncCards(1);
-  }
 </script>
 </body>
 </html>
