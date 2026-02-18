@@ -90,8 +90,11 @@
 
     /* ---------- VERTICAL SHOWCASE STYLES ---------- */
     .vertical-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 80px; }
+    
+    /* FIX: Swap columns without breaking LTR text flow */
     .vertical-showcase.reverse { direction: rtl; }
-    .vertical-showcase.reverse .showcase-content { direction: ltr; }
+    .vertical-showcase.reverse > * { direction: ltr; }
+    
     @media(max-width: 900px) { 
         .vertical-showcase { grid-template-columns: 1fr; margin-bottom: 60px; }
         .vertical-showcase.reverse { direction: ltr; }
@@ -325,7 +328,7 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  const u = newSearchParams(location.search);
+  const u = new URLSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
     const v=u.get(p),el=document.createElement('input'); 
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
