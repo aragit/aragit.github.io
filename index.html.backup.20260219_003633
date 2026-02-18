@@ -459,7 +459,7 @@
           <a class="card service-card" href="services/the-blueprint.html" aria-label="The Blueprint">
             <div class="card-body">
               <h3>The Blueprint</h3>
-              <p class="service-subtitle">AI Strategy & Advisory</p>
+              <p class="service-subtitle">The Blueprint</p>
               <p class="service-detail">De-risk your AI investment with a comprehensive technical architecture, cost model, and execution strategy</p>
             </div>
             <div class="card-actions">
@@ -470,7 +470,7 @@
           <a class="card service-card" href="services/paid-poc.html" aria-label="The Forge">
             <div class="card-body">
               <h3>The Forge</h3>
-              <p class="service-subtitle">Solution Development</p>
+              <p class="service-subtitle">The Forge</p>
               <p class="service-detail">Validate your AI idea in 4 weeks. We Build a production-grade prototype, not a throwaway demo</p>
             </div>
             <div class="card-actions">
@@ -481,7 +481,7 @@
           <a class="card service-card" href="services/deploy-scale.html" aria-label="The Nexus">
             <div class="card-body">
               <h3>The Nexus</h3>
-              <p class="service-subtitle">Deployment & Scale</p>
+              <p class="service-subtitle">The Nexus</p>
               <p class="service-detail">Governance first, Intelligence second. Production architectures with Policy-as-Code, blast-radius containment, and durable execution.</p>
             </div>
             <div class="card-actions">
@@ -511,9 +511,9 @@
             </div>
           </a>
 
-          <a class="card service-card card-dashboard" href="services/agentic-ai.html" aria-label="Specialized Agentic AI Solutions">
+          <a class="card service-card card-dashboard" href="services/agentic-ai.html" aria-label="Enterprise Swarm Architectures">
             <div class="dashboard-content">
-              <h3>Specialized Agentic AI Solutions</h3>
+              <h3>Enterprise Swarm Architectures</h3>
               <p class="service-subtitle">Agentic AI Systems</p>
               <p class="service-detail">Neuro-symbolic agents that do work. Separating the 'Brain' and reasoning from the 'Body' and execution. We implement hierarchical planning, self-correction loops, and "Blast Radius" protocols. Your agents won't just chat; they will safely execute complex workflows, verify their own outputs, and persist state across system failures.</p>
               <div class="tech-stack">
@@ -847,11 +847,11 @@
         <label class="sr-only">Preferred service
           <select name="preferred_service" id="preferred_service_select">
             <option value="">Select a service...</option>
-            <option value="The Blueprint">The Blueprint - AI Strategy & Advisory</option>
-            <option value="The Forge">The Forge - Solution Development</option>
-            <option value="The Nexus">The Nexus - Deployment & Scale</option>
+            <option value="The Blueprint">The Blueprint - The Blueprint</option>
+            <option value="The Forge">The Forge - The Forge</option>
+            <option value="The Nexus">The Nexus - The Nexus</option>
             <option value="Generative AI & LLM Engineering">Generative AI & LLM Engineering</option>
-            <option value="Specialized Agentic AI Solutions">Specialized Agentic AI Solutions</option>
+            <option value="Enterprise Swarm Architectures">Enterprise Swarm Architectures</option>
             <option value="Other">Other</option>
           </select>
         </label>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>The Forge – Custom LLM Build | Arash Nicoomanesh</title>
+
+  <!--  SEO + Social  -->
+  <meta name="description" content="From validated blueprint to working cognitive copilot in 4-12 weeks. Fixed-price builds: RAG, fine-tuning, agentic AI, guardrails & cost-optimised infra."/>
+  <meta property="og:title" content="The Forge – Custom LLM Build"/>
+  <meta property="og:description" content="Fixed-price development of demo-ready LLM copilots."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aragit.github.io/services/paid-poc.html"/>
+  <meta property="og:image" content="https://aragit.github.io/og-forge.png"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --primary:#8B5CF6;--primary-dark:#7C3AED;--secondary:#06D6A0;
+      --dark:#121212;--darker:#0a0a0a;--light:#f3f4f6;--gray:#9ca3af;
+      --accent:#F97316;--accent-light:#FB923C;
+      --header-gradient:linear-gradient(135deg,#1E1B4B 0%,#4A044E 100%);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--darker);color:#eaf2fb;font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    /* ---------- header ---------- */
+    header{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid rgba(255,255,255,.05)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .logo{font-weight:700;font-size:1.3rem;display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+    .logo i{color:var(--accent)}
+    .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
+    .back-btn:hover{border-color:var(--accent);color:var(--accent)}
+    /* ---------- hero ---------- */
+    .hero{
+      padding:clamp(60px,10vw,100px) 0;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    
+      /* 1. background image + 2. fade mask */
+      background-image:
+        /* fade mask: black → transparent → black (top→bottom) */
+        linear-gradient(to bottom,
+          rgba(10,10,10,1) 0%,
+          rgba(10,10,10,0.25) 40%,
+          rgba(10,10,10,0) 60%,
+          rgba(10,10,10,1) 100%),
+        /* your actual image */
+        url('https://img.freepik.com/premium-photo/digital-chessboard_332713-24722.jpg');          /* << change to your file */
+    
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+    .hero h1{font-size:clamp(2rem,5vw,2.5rem);font-weight:700;margin-bottom:16px;color:#fff}
+    .hero p{font-size:1.3rem;max-width:680px;margin:0 auto;color:#fff6f3}
+    .hero p{font-weight:600;}
+    .badge{display:inline-block;background:#000;color:#fff;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-top:1rem}
+    /* ---------- sections ---------- */
+    section{padding:clamp(50px,8vw,80px) 0}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
+    .card h3{font-size:1.4rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#fff}
+    .card h3 i{color:var(--accent)}
+    .card p{color:#bfcbd7;margin-bottom:12px}
+    .checklist{list-style:none;color:#bfcbd7}
+    .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
+    .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
+    /* ---------- deliverables ---------- */
+    .deliver-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
+    .deliver-box h3{margin-bottom:8px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+    input,select,textarea{width:100%;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-family:inherit;transition:border .3s,box-shadow .3s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(249,115,22,.2)}
+    label{font-size:.9rem;color:#cbd6df;margin-bottom:6px;display:block}
+    ::placeholder{color:#6b7280}
+    .btn-submit{background:var(--accent);color:#fff;padding:14px 28px;border:none;border-radius:50px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:.3s}
+    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(249,115,22,.4)}
+    /* ---------- cta band ---------- */
+    .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
+    .cta-band h2{font-size:1.8rem;margin-bottom:12px}
+    .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
+    .btn-light:hover{transform:scale(1.03)}
+    /* ---------- footer ---------- */
+    footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
+    /* ---------- responsive ---------- */
+    @media(max-width:700px){.form-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo"><i class="fa-solid fa-hammer"></i>Arash Nicoomanesh</a>
+      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- HERO                                                         -->
+<!-- ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <h1>The Forge</h1>
+    <p>From validated blueprint to working cognitive copilot. One fixed price, one delivery date, zero scope creep.</p>
+    
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHAT YOU GET                                                 -->
+<!-- ============================================================ -->
+<section>
+  <div class="container">
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-sitemap"></i>Advanced RAG Systems</h3>
+        <p>Retrieve the right information at the right time, even across millions of heterogenous documents.</p>
+        <ul class="checklist">
+          <li>Hybrid dense + sparse retrieval</li>
+          <li>Re-ranking & verifiable citations</li>
+          <li>Sub-100 ms first-token latency (≤ 500 k chunks, 4 × A10G, batch = 1, no re-rank in hot path)</li>
+          <li>Multi-lingual & domain-specific embeddings</li>
+          <li>Graph-RAG for relational knowledge</li>
+          <li>Continuous index refresh (≤ 15 min SLA)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-sliders"></i>Targeted Fine-Tuning</h3>
+        <p>Turn a generic foundation model into a domain expert that speaks your brand voice and respects your jargon.</p>
+        <ul class="checklist">
+          <li>LoRA / QLoRA, RLHF, DPO</li>
+          <li>Brand-voice & domain expertise (≥ 85 % style classifier score)</li>
+          <li>Cost-optimised inference: GPTQ 4-bit, AWQ, staging traffic ≤ 50 QPS</li>
+          <li>Continual-learning pipelines with rehearsal buffer</li>
+          <li>Eval harness: MT-Bench + custom test set (≥ 90 % pass)</li>
+          <li>Data requirement: 3 k – 10 k high-quality samples</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-robot"></i>Agentic Automation</h3>
+        <p>Autonomous agents that orchestrate tools, APIs and legacy systems to complete multi-step workflows.</p>
+        <ul class="checklist">
+          <li>Multi-step reasoning & tool use (ReAct / OpenAI functions)</li>
+          <li>Human-in-the-loop guardrails (Slack / Teams ≤ 24 h SLA)</li>
+          <li>API, RPA, database integrations (OAuth2, SQL, SAP, UiPath)</li>
+          <li>Stateful conversation memory (last 20 turns, 32 k ctx)</li>
+          <li>Retry & rollback strategies (demo-ready rollback, SQLite WAL, no distributed saga)</li>
+          <li>Max 10 tools / workflow, step timeout ≤ 5 s</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-shield-halved"></i>Safety & Guardrails</h3>
+        <p>Ship with confidence—built-in filters, audits and real-time monitoring keep your model on its best behaviour.</p>
+        <ul class="checklist">
+          <li>Content filtering & PII redaction (Presidio, Azure Content Safety)</li>
+          <li>Output schema validation (Pydantic / Outlines)</li>
+          <li>Toxicity & bias monitoring (weekly review dashboard)</li>
+          <li>Prompt-injection detection (heuristic + LLM judge, 90 % precision)</li>
+          <li>Audit logs: append-only, 90 d retention, AES-256 encrypted</li>
+          <li>SLA: block ≥ 95 % harmful requests</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-chart-line"></i>Observability & Cost-Control</h3>
+        <p>Transparent metrics and spend alerts ensure your LLM workload scales without surprises.</p>
+        <ul class="checklist">
+          <li>Token-level cost tracking (± 5 % accuracy vs cloud bill)</li>
+          <li>Latency & throughput dashboards (Grafana, Prometheus, 7-day retention)</li>
+          <li>Auto-scaling inference endpoints (KEDA, 60-120 s cold start)</li>
+          <li>Spot-instance fallback layers (stateless pods, checkpoint on EFS/S3)</li>
+          <li>Budget alerts: +20 % forecast → Slack + email</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-lock"></i>Compliance & Enterprise Support</h3>
+        <p>Meet GDPR and basic security requirements with encrypted pipelines and on-prem options.</p>
+        <ul class="checklist">
+          <li>VPC & air-gapped deployments (offline registry, HF cache mirror)</li>
+          <li>Key-management & encryption at rest (AWS KMS, AES-256)</li>
+          <li>Role-based access controls (OIDC, Kubernetes RBAC)</li>
+          <li>Static security scan (Trivy) &lt; 3 high-severity CVEs, signed images</li>
+          <li>Data residency: EU, US, APAC regions optional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PROCESS                                                      -->
+<!-- ============================================================ -->
+<section style="background:#121212">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:40px">Delivery Process</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Dev-Ops & Data</h3>
+        <ul class="checklist">
+          <li>Cloud sandbox with CI/CD (Terraform, GitHub Actions, container build & lint)</li>
+          <li>Data pipeline & labelling (≤ 500 k docs, ≤ 1 k tokens/chunk, ≥ 95 % inter-annotator agreement)</li>
+          <li>Evaluation harness (hit-rate@5, answer F1, style score, MT-Bench)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-code-pull-request"></i>Weeks 2-3 · Core Build</h3>
+        <ul class="checklist">
+          <li>Model training / tuning (8 × A100 40 h, eval delta ≥ +10 %)</li>
+          <li>Retrieval stack & APIs (first-token ≤ 100 ms, hybrid RRF fusion)</li>
+          <li>Bi-weekly demo & sign-off (recorded Loom + Notion stakeholder sheet)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 4-X · Hardening</h3>
+        <ul class="checklist">
+          <li>Load, security & edge-case tests (500 CCU, p95 ≤ 1.2 s, error ≤ 0.5 %)</li>
+          <li>Cost & latency optimisation (≤ $0.002 per 1 k input tokens, spot fallback)</li>
+          <li>Monitoring & alerting (budget +20 %, SLA dashboard, block ≥ 95 % harmful)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-rocket"></i>Final · Hand-Over</h3>
+        <ul class="checklist">
+          <li>Dockerized artifacts (SBOM, &lt; 3 high-severity CVEs, signed images)</li>
+          <li>Run-books & docs (rollback, on-call, auto-scale thresholds)</li>
+          <li>Knowledge-transfer session (1 × 2 h live + Loom wiki, sign-off sheet)</li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- INVESTMENT                                                   -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- CTA BAND                                                     -->
+<!-- ============================================================ -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to ship?</h2>
+    <p style="margin-bottom:24px">To guarantee delivery velocity I accept a limited number of concurrent engagements—reserve your slot today.</p>
+    <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Book a scoping call</a>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- REQUEST FORM                                                 -->
+<!-- ============================================================ -->
+<section id="request">
+  <div class="container">
+    <div class="deliver-box">
+      <h3>Request a build quote</h3>
+      <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page statement-of-work + calendar link within 24 h.</p>
+
+      <form action="https://formspree.io/f/xwpnvzwl" method="POST">
+        <div class="form-row">
+          <div>
+            <label>Your name *</label>
+            <input name="name" type="text" required placeholder="Jane Doe">
+          </div>
+          <div>
+            <label>Work email *</label>
+            <input name="email" type="email" required placeholder="jane@company.com">
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <label>Company / organisation</label>
+          <input name="organisation" placeholder="Acme Inc.">
+        </div>
+
+        <div style="margin-bottom:20px">
+          <label>Primary capability needed</label>
+          <select name="capability">
+            <option value="rag">Advanced RAG</option>
+            <option value="fine-tune">Fine-Tuning</option>
+            <option value="agents">Agentic AI</option>
+            <option value="full">End-to-end system</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:24px">
+          <label>Describe the system you need *</label>
+          <textarea name="message" required placeholder="e.g. multi-turn chat over 40 k technical PDFs, answer latency &lt;1 s, 500 concurrent users..." style="min-height:120px"></textarea>
+        </div>
+
+        <!-- hidden fields -->
+        <input type="hidden" name="service" value="The Forge">
+        <input type="hidden" name="_subject" value="Website lead: The Forge">
+        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
+        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i>Send request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer>
+  © <span id="yr"></span> Arash Nicoomanesh · AI & ML Engineering Services
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // basic UTM grab
+  const u = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
+    const v=u.get(p),el=document.createElement('input'); 
+    if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
+  });
+</script>
+</body>
+</html>

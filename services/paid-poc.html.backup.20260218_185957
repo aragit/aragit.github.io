@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>The Forge – Custom Agentic Prototype | Arash Nicoomanesh</title>
+
+  <meta name="description" content="From validated blueprint to a production-grade agentic prototype. Fixed-price builds for stateful, neuro-symbolic workflows."/>
+  <meta property="og:title" content="The Forge – Custom Agentic Prototype"/>
+  <meta property="og:description" content="Fixed-price development of mission-critical agentic systems."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aragit.github.io/services/paid-poc.html"/>
+  <meta property="og:image" content="https://aragit.github.io/og-forge.png"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* ---------- header ---------- */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
+    /* ---------- hero ---------- */
+    .hero {
+      padding: clamp(80px, 12vw, 120px) 0;
+      text-align: center;
+      background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url('purpleback.jpg');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(255,255,255,.02);
+    }
+    
+    /* BLUEPRINT TYPOGRAPHY MATCH */
+    .hero h1 { 
+        font-size: clamp(2.5rem, 5vw, 4rem) !important; 
+        font-weight: 800 !important; 
+        line-height: 1.15 !important; 
+        margin-bottom: 24px !important;
+        text-shadow: 0 5px 30px rgba(0,0,0,0.9) !important; 
+        color: #fff;
+    }
+    .hero p { 
+        font-size: clamp(1.1rem, 2vw, 1.3rem) !important; 
+        max-width: 900px !important; 
+        margin: 0 auto 40px auto !important;
+        color: #ffffff !important; 
+        font-weight: 500 !important; 
+        text-shadow: 0 3px 20px rgba(0,0,0,0.9) !important; 
+    }
+    
+    .badge { display: inline-block; background: #000; color: #fff; font-weight: 600; padding: 6px 14px; border-radius: 99px; font-size: .75rem; margin-top: 1rem; }
+    
+    /* ---------- sections ---------- */
+    section { padding: clamp(60px, 8vw, 90px) 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    
+    /* AGENTIC CSS UPDATES: Lighter Grey Cards + Blueprint Glow */
+    .agentic-term { color: #ffffff; font-weight: 600; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
+    .card { background: rgba(50,50,50,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
+    .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
+    .card:hover::after { width: 100%; }
+    
+    /* ICONS: NO BACKGROUND */
+    .card h3 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; color: #fff; }
+    .card h3 i { color: var(--accent); font-size: 1.5rem; background: transparent; padding: 0; border-radius: 0; margin-right: 4px; }
+    
+    .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; }
+    .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
+    .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
+    
+    /* ---------- deliverables / form ---------- */
+    .deliver-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 40px; text-align: left; }
+    .deliver-box h3 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    input, select, textarea { width: 100%; padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,.1); color: #fff; font-family: inherit; font-size: 1rem; transition: all .3s; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,107,0,.15); }
+    label { font-size: .9rem; color: #cbd6df; margin-bottom: 8px; display: block; font-weight: 500; }
+    ::placeholder { color: #6b7280; }
+    .btn-submit { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; width: 100%; margin-top: 10px; }
+    .btn-submit:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+    
+    /* ---------- cta band ---------- */
+    .cta-band { background: #121212; text-align: center; padding: 70px 0; border-top: 2px solid var(--accent); }
+    .cta-band h2 { font-size: 2.2rem; margin-bottom: 16px; color: #fff; }
+    .cta-band p { color: var(--gray); font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    
+    /* ---------- footer ---------- */
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
+    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo"><i class="fa-solid fa-hammer"></i>Arash Nicoomanesh</a>
+      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>The Forge – Custom Agentic Prototype</h1>
+    <p>From validated blueprint to a <strong>production-grade agentic prototype</strong>. We engineer the deterministic architecture that brings autonomous digital workers to life—whether you are starting from scratch or replacing a failed generative AI experiment. One fixed price, zero scope creep.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-sitemap"></i>Instrumental Perception & Grounding</h3>
+        <ul class="checklist">
+          <li>Connect reasoning engines to live APIs, databases, and documents to overcome temporal state decay.</li>
+          <li>Use retrieval for <strong>instrumental grounding</strong>—validating external states before executing actions.</li>
+          <li>Architect verifiable citations linked directly to deterministic tools.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-sliders"></i>Reasoning Engine Distillation</h3>
+        <ul class="checklist">
+          <li>Distill <span class="agentic-term">System 2</span> cognitive traces into efficient, low-latency models.</li>
+          <li>Optimize fine-tuning purely for strict JSON/SLOT schema adherence and reliable tool execution.</li>
+          <li>Train models on domain-specific Chain-of-Thought (e.g., medical triage, legal reasoning).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-robot"></i>Stateful POMDP Control Loops</h3>
+        <ul class="checklist">
+          <li>Cross the <span class="agentic-term">Planning-Rubicon</span> with autonomous, irreversible action execution.</li>
+          <li>Architect stateful control loops that observe, reason, and act with explicit belief states.</li>
+          <li>Implement autonomous error recovery to prevent failing gracefully back to human operators.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-shield-halved"></i>Pre-Commit Verification Gates</h3>
+        <ul class="checklist">
+          <li>Build internal verification gates because intelligence requires hard deterministic boundaries.</li>
+          <li>Force the agent to simulate and validate the consequences of its plan <i>before</i> committing.</li>
+          <li>Ensure irreversible real-world actions are governed by strict business logic.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-chart-line"></i>Agentic Unit Economics</h3>
+        <ul class="checklist">
+          <li>Prove the ROI of autonomy before committing to enterprise-wide scaling.</li>
+          <li>Instrument token-level telemetry to measure the exact compute cost of a multi-step ReAct loop.</li>
+          <li>Ensure the prototype's unit economics remain viable when moving from $0.30 queries to stateful workflows.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-lock"></i>Blueprint-Aligned Containment</h3>
+        <ul class="checklist">
+          <li>Deploy the agentic prototype in an isolated, governed perimeter for safe stakeholder validation.</li>
+          <li>Ensure actions and side-effects are strictly contained to your staging environments.</li>
+          <li>Maintain complete auditability of reasoning traces, API payloads, and state changes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#121212; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">Delivery Process</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Perception & API Integration</h3>
+        <ul class="checklist">
+          <li>Establish deterministic tools, APIs, and access perimeters.</li>
+          <li>Build the "skeleton" before connecting the stochastic LLM brain.</li>
+          <li>Set up CI/CD pipelines and isolated sandbox environments.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-code-pull-request"></i>Weeks 2-3 · Neuro-Symbolic Wiring</h3>
+        <ul class="checklist">
+          <li>Connect the reasoning engine to the execution skeleton.</li>
+          <li>Set up memory states, ReAct loops, and Reflexion memory buffers.</li>
+          <li>Bi-weekly recorded demos proving instrumental grounding.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 4-X · Rubicon Stress-Testing</h3>
+        <ul class="checklist">
+          <li>Force the agent to fail and evaluate autonomous self-correction.</li>
+          <li>Stress-test pre-commit gates and rollback procedures.</li>
+          <li>Validate token-cost metrics and latency of multi-step plans.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-rocket"></i>Final · Prototype Hand-Over</h3>
+        <ul class="checklist">
+          <li>Deliver a fully functioning, containerized prototype.</li>
+          <li>Hand over telemetry dashboards and scale-to-zero infrastructure runbooks.</li>
+          <li>Ready the system for "The Nexus" enterprise scale-up and swarm deployment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to build the prototype?</h2>
+    <p>To guarantee delivery velocity I accept a limited number of concurrent engagements—reserve your slot today.</p>
+    
+    <div id="request" class="deliver-box" style="max-width: 700px; margin: 0 auto; margin-top:40px;">
+      <h3>Request a build quote</h3>
+      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">I build mission-critical agents, not chat wrappers. Tell me about the specific workflows, APIs, and state-changes you need to automate.</p>
+
+      <form action="https://formspree.io/f/xwpnvzwl" method="POST">
+        <div class="form-row">
+          <div>
+            <label>Your name *</label>
+            <input name="name" type="text" required placeholder="Jane Doe">
+          </div>
+          <div>
+            <label>Work email *</label>
+            <input name="email" type="email" required placeholder="jane@company.com">
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <label>Company / organisation</label>
+          <input name="organisation" placeholder="Acme Inc.">
+        </div>
+
+        <div style="margin-bottom:20px">
+          <label>Target Architecture</label>
+          <select name="capability">
+            <option value="microservice">High-Liability Microservice Agent</option>
+            <option value="actor">Low-Latency Actor System</option>
+            <option value="serverless">Serverless Swarm Processing</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:24px">
+          <label>Describe the system you need *</label>
+          <textarea name="message" required placeholder="e.g. multi-step extraction and API execution over legacy banking systems..." style="min-height:120px"></textarea>
+        </div>
+
+        <input type="hidden" name="service" value="The Forge">
+        <input type="hidden" name="_subject" value="Website lead: The Forge">
+        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
+        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i> Send request</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const u = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
+    const v=u.get(p),el=document.createElement('input'); 
+    if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
+  });
+</script>
+</body>
+</html>

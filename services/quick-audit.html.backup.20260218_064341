@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>The Blueprint – AI Strategy & Architecture | Arash Nicoomanesh</title>
+
+  <!--  SEO + Social  -->
+  <meta name="description" content="15+ years building scalable AI for hospitals, banks and Fortune-500s. In 2–3 weeks you get a battle-tested architecture, cost model and go / no-go decision."/>
+  <meta property="og:title" content="AI Strategy & Architecture  – The Blueprint"/>
+  <meta property="og:description" content="De-risk your AI build before you write a single line of code."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aragit.github.io/services/quick-audit.html"/>
+  <meta property="og:image" content="https://aragit.github.io/og-blueprint.png"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --primary:#0ea5e9;--primary-dark:#0369a1;--secondary:#06d6a0;
+      --dark:#121212;--darker:#0a0a0a;--light:#f3f4f6;--gray:#9ca3af;
+      --accent:#ff6b00;--accent-light:#ff9d00;
+      --header-gradient:linear-gradient(135deg,#0c4a6e 0%,#083344 100%);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--darker);color:#eaf2fb;font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    /* ---------- header ---------- */
+    header{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid rgba(255,255,255,.05)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .logo{font-weight:700;font-size:1.3rem;display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+    .logo i{color:var(--accent)}
+    .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
+    .back-btn:hover{border-color:var(--accent);color:var(--accent)}
+    /* ---------- hero ---------- */
+    .hero{
+      padding:clamp(60px,10vw,100px) 0;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    
+      /* 1. background image + 2. fade mask */
+      background-image:
+        /* fade mask: black → transparent → black (top→bottom) */
+        linear-gradient(to bottom,
+          rgba(10,10,10,1) 0%,
+          rgba(10,10,10,0.25) 40%,
+          rgba(10,10,10,0) 60%,
+          rgba(10,10,10,1) 100%),
+        /* your actual image */
+        url('https://static.vecteezy.com/system/resources/thumbnails/043/169/459/small_2x/ai-generated-glowing-chess-pieces-on-chess-board-free-photo.jpeg');          /* << change to your file */
+    
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+    .hero h1{font-size:clamp(2rem,5vw,2.5rem);font-weight:700;margin-bottom:16px;color:#fff}
+    .hero p{font-size:1.3rem;max-width:680px;margin:0 auto;color:#fff6f3}
+    .hero p{font-weight:600;}
+    .badge{display:inline-block;background:#000;color:#fff;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-top:1rem}
+    /* ---------- badge bar  (moved below hero, black bg, white text) ---------- */
+    .badge-bar{background:#000;color:#fff;text-align:center;padding:12px 0;font-size:.9rem;font-weight:500}
+    /* ---------- sections ---------- */
+    section{padding:clamp(50px,8vw,80px) 0}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .card{background:linear-gradient(145deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
+    .card h3{font-size:1.4rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#fff}
+    .card h3 i{color:var(--accent)}
+    .card p{color:#bfcbd7;margin-bottom:12px}
+    .checklist{list-style:none;color:#bfcbd7}
+    .checklist li{padding-left:28px;position:relative;margin-bottom:12px}
+    .checklist li::before{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;color:var(--accent);position:absolute;left:0;top:2px;font-size:14px}
+    .highlight{background:var(--accent);color:#000;padding:2px 8px;border-radius:4px;font-weight:600}
+    .intro-links{color:#9ca3af;font-size:.95rem;text-align:center;margin:-20px auto 40px;max-width:740px} /* intro links block */
+    .read-more{color:var(--accent);text-decoration:underline}
+    /* ---------- cta band ---------- */
+    .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
+    .cta-band h2{font-size:1.8rem;margin-bottom:12px}
+    .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
+    .btn-light:hover{transform:scale(1.03)}
+    /* ---------- form ---------- */
+    .form-box{max-width:680px;margin:0 auto;background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
+    .form-box h3{margin-bottom:8px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+    input,select,textarea{width:100%;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-family:inherit;transition:border .3s,box-shadow .3s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,0,.2)}
+    label{font-size:.9rem;color:#cbd6df;margin-bottom:6px;display:block}
+    ::placeholder{color:#6b7280}
+    .btn-submit{background:var(--accent);color:#fff;padding:14px 28px;border:none;border-radius:50px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:.3s}
+    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.4)}
+    /* ---------- footer ---------- */
+    footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
+    /* ---------- responsive ---------- */
+    @media(max-width:700px){.form-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo"><i class="fa-solid fa-brain"></i>Arash Nicoomanesh</a>
+      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- HERO                                                         -->
+<!-- ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <h1>The Blueprint</h1>
+    <p>An expert, end-to-end AI strategy package that turns your business objective into a bullet-proof technical roadmap—before you spend a dollar on code.</p>
+    
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BADGE BAR  (moved below hero, black bg, white text)          -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- INTRO + GOOGLE LINKS  (centered, above cards)               -->
+<!-- ============================================================ -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:12px">What you’ll walk away with</h2>
+    
+
+    <!-- 6 expanded cards -->
+    <div class="grid-3">
+      <!-- 1. Strategy & Prioritisation -->
+      <div class="card">
+        <h3><i class="fa-solid fa-compass-drafting"></i>Strategy & Prioritisation</h3>
+        <ul class="checklist">
+          <li>AI opportunity matrix ranked by ROI, risk & data readiness.</li>
+          <li>Regulatory & ethics gap analysis (only where relevant):
+            <ul style="margin-top:8px;margin-left:20px;list-style:disc;color:#9ca3af;font-size:.9rem">
+              <li>HIPAA for clinical data</li>
+              <li>PCI-DSS for payment data</li>
+              <li>GDPR for EU personal data</li>
+            </ul>
+          </li>
+          <li>TAM / SAM sizing & pay-back model for board or investor decks.</li>
+        </ul>
+      </div>
+
+      <!-- 2. Technical Architecture -->
+      <div class="card">
+        <h3><i class="fa-solid fa-sitemap"></i>Technical Architecture</h3>
+        <ul class="checklist">
+          <li>Component diagram (data, models, APIs, infra, security).</li>
+          <li>Vendor-neutral stack selection with trade-off matrix (latency vs. cost vs. privacy).</li>
+          <li>Cost model: cloud GPU, licence, people, maintenance, drift-retraining.</li>
+        </ul>
+      </div>
+
+      <!-- 3. Implementation Plan -->
+      <div class="card">
+        <h3><i class="fa-solid fa-timeline"></i>Implementation Plan</h3>
+        <ul class="checklist">
+          <li>Phase-gate roadmap: PoC → Pilot → Production with exit criteria.</li>
+          <li>Milestones, success KPIs, team shape & hiring plan.</li>
+          <li>Risk register + mitigation play-book (data drift, regulatory change, vendor lock-in).</li>
+        </ul>
+      </div>
+
+      <!-- 4. Executive Alignment -->
+      
+
+      <!-- 5. Data & Governance -->
+      <div class="card">
+        <h3><i class="fa-solid fa-database"></i>Data & Governance</h3>
+        <ul class="checklist">
+          <li>Data-quality scorecard & lineage map.</li>
+          <li>Bias / fairness baseline and monitoring hooks.</li>
+          <li>Model governance lifecycle (versioning, audit trail, rollback).</li>
+        </ul>
+      </div>
+
+      <!-- 6. Cost & ROI Engineering -->
+      <div class="card">
+        <h3><i class="fa-solid fa-dollar-sign"></i>Cost & ROI Engineering</h3>
+        <ul class="checklist">
+          <li>Token-level cost projection and quota guardrails.</li>
+          <li>GPU vs. CPU vs. serverless break-even analysis.</li>
+          <li>Sensitivity analysis (usage ±50 %) and pay-back horizon.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SOCIAL PROOF                                                 -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- INVESTMENT  (price corrected)                               -->
+<!-- ============================================================ -->
+
+
+<!-- ============================================================ -->
+<!-- CTA BAND  (professional scarcity)                           -->
+<!-- ============================================================ -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to de-risk your AI investment?</h2>
+    <p style="margin-bottom:24px">Engagements are scheduled on a first-approved, first-served basis. Secure your slot early to guarantee start-date availability.</p>
+    <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Let's talk about your AI Strategy</a>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- REQUEST FORM                                                 -->
+<!-- ============================================================ -->
+<section id="request">
+  <div class="container">
+    <div class="form-box">
+      <h3>Request proposal</h3>
+      <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page proposal + calendar link within 24 h.</p>
+
+      <form action="https://formspree.io/f/xwpnvzwl" method="POST">
+        <div class="form-row">
+          <div>
+            <label>Your name *</label>
+            <input name="name" type="text" required placeholder="Jane Doe">
+          </div>
+          <div>
+            <label>Work email *</label>
+            <input name="email" type="email" required placeholder="jane@company.com">
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <label>Company / organisation</label>
+          <input name="organisation" placeholder="Acme Inc.">
+        </div>
+
+        <div style="margin-bottom:20px">
+          <label>Estimated budget</label>
+          <select name="budget">
+            <option value="2k-3k">$2 k – $3 k</option>
+            <option value="3k-5k">$3 k – $5 k</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:24px">
+          <label>What would you like AI to do for your business? *</label>
+          <textarea name="message" required placeholder="e.g. reduce clinical coding time by 40 %, automate L1 customer support, detect fraud in real-time..." style="min-height:120px"></textarea>
+        </div>
+
+        <!-- hidden fields -->
+        <input type="hidden" name="service" value="The Blueprint">
+        <input type="hidden" name="_subject" value="Website lead: The Blueprint">
+        <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
+        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i>Send request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer>
+  © <span id="yr"></span> Arash Nicoomanesh · AI & ML Engineering Services
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // basic UTM grab
+  const u = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
+    const v=u.get(p),el=document.createElement('input'); 
+    if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
+  });
+</script>
+</body>
+</html>
