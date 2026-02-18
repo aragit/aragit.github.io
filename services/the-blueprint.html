@@ -56,14 +56,17 @@
     .section-title p { color: var(--gray); font-size: 1.1rem; }
     
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .card { background: rgba(22,22,22,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: transform .3s, border-color .3s; }
-    .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.3); }
+    .agentic-term { color: #ffffff; font-weight: 600; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
+    .card { background: rgba(22,22,22,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
+    .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
+    .card:hover::after { width: 100%; }
     .card h3 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; color: #fff; }
     .card h3 i { color: var(--accent); font-size: 1.5rem; background: rgba(255,107,0,0.1); padding: 10px; border-radius: 8px; }
     
     .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; }
     .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
-    .checklist li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
+    .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
     
     /* Trust Card (Testimonial) */
     .trust-section { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -123,7 +126,7 @@
 <section class="hero">
   <div class="container">
     <h1>De-Risk Your AI Investment Before You Write a Single Line of Code</h1>
-    <p>An expert, 2-to-3-week architectural sprint that turns ambiguous business objectives into a production-ready, vendor-neutral technical roadmap.</p>
+    <p>An expert, 2-to-3-week architectural sprint that turns ambiguous business objectives into a production-ready, agentic architecture that won't degrade into an expensive chatbot.</p>
     
     
     
@@ -140,56 +143,56 @@
 
     <div class="grid-3">
       <div class="card">
-        <h3><i class="fa-solid fa-compass-drafting"></i>Strategy & Prioritization</h3>
+        <h3><i class="fa-solid fa-compass-drafting"></i>The "Agentic Feasibility" Audit</h3>
         <ul class="checklist">
-          <li>Prioritize AI use-cases by ROI and technical feasibility to guarantee early wins.</li>
-          <li>Eliminate launch-day blockers with strict HIPAA, GDPR, and PCI-DSS compliance mapping.</li>
-          <li>Equip your board with accurate TAM/SAM sizing and hard payback models.</li>
+          <li>Map your workflows against the <span class="agentic-term">Planning-Rubicon</span> to separate simple generative tasks from true autonomous agent use-cases.</li>
+          <li>Identify processes that require stateful persistence and multi-step execution, avoiding the trap of building "expensive chatbots."</li>
+          <li>Equip your board with hard payback models based on task-completion rates, not just token-generation speed.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><i class="fa-solid fa-sitemap"></i>Technical Architecture</h3>
+        <h3><i class="fa-solid fa-sitemap"></i>Neuro-Symbolic Blueprinting</h3>
         <ul class="checklist">
-          <li>Get a complete component diagram covering data pipelines, models, APIs, and infra.</li>
-          <li>Avoid vendor lock-in with a neutral stack selection (latency vs. cost vs. privacy).</li>
-          <li>Forecast true TCO including cloud GPUs, licensing, and model drift maintenance.</li>
+          <li>Design a strict <span class="agentic-term">Neuro-Symbolic</span> architecture that isolates the stochastic "brain" (LLM) from the deterministic "skeleton" (orchestration & tools).</li>
+          <li>Select the precise topology for your risk profile: Microservices for containment, Actor/Monoliths for low-latency, or Serverless Swarms for cost.</li>
+          <li>Map the transition from stateless API wrappers to stateful, <span class="agentic-term">POMDP</span>-aligned control loops.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><i class="fa-solid fa-timeline"></i>Implementation Roadmap</h3>
+        <h3><i class="fa-solid fa-timeline"></i>The "Beyond the Wrapper" Roadmap</h3>
         <ul class="checklist">
-          <li>Follow a clear phase-gate roadmap: PoC → Pilot → Production with strict exit criteria.</li>
-          <li>Identify exact team shapes and hiring gaps required to execute the build.</li>
-          <li>Deploy with confidence using a comprehensive risk mitigation playbook.</li>
+          <li>Define a rigorous phase-gate roadmap: Prototype &rarr; Grounded Action &rarr; Production Autonomy.</li>
+          <li>Architect pre-commit verification loops that ensure agents validate state <i>before</i> executing irreversible real-world actions.</li>
+          <li>Identify the exact systems engineering and ML-Ops talent required to build resilient control systems, rather than prompt engineers.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><i class="fa-solid fa-handshake"></i>Executive Alignment</h3>
+        <h3><i class="fa-solid fa-handshake"></i>Avoiding the "Wizard of Oz" Trap</h3>
         <ul class="checklist">
-          <li>Bridge the gap between engineering reality and CEO expectations.</li>
-          <li>Receive a polished executive summary to secure stakeholder and investor buy-in.</li>
-          <li>Navigate the "Build vs. Buy vs. Partner" dilemma with unbiased data.</li>
+          <li>Align the C-suite on the reality of Agentic AI: transition expectations from "magic conversationalists" to reliable digital workers.</li>
+          <li>Expose hidden operational debts like the "Wizard of Oz" trap, where human-in-the-loop (HITL) dependencies secretly destroy ROI.</li>
+          <li>Navigate the "Build vs. Buy" dilemma using unbiased metrics on latency, liability, and vendor lock-in.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><i class="fa-solid fa-shield-halved"></i>Data & Governance</h3>
+        <h3><i class="fa-solid fa-shield-halved"></i>Policy-as-Code & Grounding</h3>
         <ul class="checklist">
-          <li>Audit your current data readiness with a quality scorecard and lineage map.</li>
-          <li>Establish baseline monitoring hooks to prevent AI bias and hallucination.</li>
-          <li>Design a secure model governance lifecycle with versioning and audit trails.</li>
+          <li>Implement <span class="agentic-term">Policy-as-Code (OPA)</span> guardrails at the network layer, ensuring the LLM cannot bypass hard business logic.</li>
+          <li>Establish "Instrumental Grounding" protocols so your agents can verify their environment (APIs, databases) rather than hallucinating plans.</li>
+          <li>Design a secure blast-radius containment strategy for high-liability environments (Healthcare, Finance).</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><i class="fa-solid fa-chart-line"></i>Cost & ROI Engineering</h3>
+        <h3><i class="fa-solid fa-chart-line"></i>Inference & Temporal Cost Modeling</h3>
         <ul class="checklist">
-          <li>Protect your margins with token-level cost projections and API quota guardrails.</li>
-          <li>Execute a GPU vs. CPU vs. serverless break-even analysis for deployment.</li>
-          <li>Stress-test your business case with usage sensitivity analysis (±50%).</li>
+          <li>Model the true cost of agency: moving from $0.30 per conversational query to $30+ per multi-step, verified execution task.</li>
+          <li>Execute a structural break-even analysis mapping System 1 (fast/cheap) vs. System 2 (inference-time scaling/expensive) reasoning costs.</li>
+          <li>Stress-test your unit economics against prolonged agent "waiting periods" and temporal state-decay.</li>
         </ul>
       </div>
     </div>
@@ -206,7 +209,7 @@
     
     <div id="request" class="form-box">
       <h3>Request Proposal</h3>
-      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">Fill in the basics. I will review your requirements and reply with a calendar link within 24 hours.</p>
+      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">I only take on projects where there is a genuine need for complex, stateful agency. Tell me about your constraint. Fill in the basics, and I will review your requirements and reply with a calendar link within 24 hours.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="form-row">
