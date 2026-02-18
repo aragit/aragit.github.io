@@ -26,13 +26,13 @@
     .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
     
-    /* Hero - Original Image Background */
+    /* Hero - UPDATED BACKGROUND IMAGE */
     .hero {
       padding: clamp(80px, 12vw, 120px) 0;
       text-align: center;
       background-image: 
         linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
-        url('blue.jpg');
+        url('blueback.jpg');
       background-size: cover;
       background-position: center;
       border-bottom: 1px solid rgba(255,255,255,.02);
@@ -67,7 +67,6 @@
     
     .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; }
     .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
-    /* UPDATED: Terminal prompt icon instead of checkmark */
     .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
     
     /* Trust Card (Testimonial) */
@@ -93,19 +92,19 @@
     .btn-submit { width: 100%; justify-content: center; margin-top: 10px; }
     
     footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
-    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 700; margin-bottom: 24px; color: #fff; letter-spacing: -1px; line-height: 1.15; text-shadow: 0 4px 25px rgba(0,0,0,0.8); } }
+    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin-bottom: 24px; color: #fff; letter-spacing: -1px; line-height: 1.15; text-shadow: 0 4px 25px rgba(0,0,0,0.8); } }
   
-    /* === FORCED HERO ENLARGEMENT === */
+    /* === FORCED HERO ENLARGEMENT (SHRUNK DOWN) === */
     .hero h1 { 
-        font-size: clamp(3rem, 7vw, 5rem) !important; 
+        font-size: clamp(2.5rem, 5vw, 4rem) !important; 
         font-weight: 800 !important; 
         line-height: 1.15 !important; 
         margin-bottom: 24px !important;
         text-shadow: 0 5px 30px rgba(0,0,0,0.9) !important; 
     }
     .hero p { 
-        font-size: clamp(1.3rem, 3.5vw, 1.6rem) !important; 
-        max-width: 900px !important; 
+        font-size: clamp(1.1rem, 2vw, 1.3rem) !important; 
+        max-width: 800px !important; 
         margin: 0 auto 40px auto !important;
         color: #ffffff !important; 
         font-weight: 500 !important; 
