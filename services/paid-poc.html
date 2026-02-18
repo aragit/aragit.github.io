@@ -65,13 +65,29 @@
     
     .badge { display: inline-block; background: #000; color: #fff; font-weight: 600; padding: 6px 14px; border-radius: 99px; font-size: .75rem; margin-top: 1rem; }
     
+    /* ---------- buttons ---------- */
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+    .btn-submit { width: 100%; margin-top: 10px; }
+    
     /* ---------- sections ---------- */
     section { padding: clamp(60px, 8vw, 90px) 0; }
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
     
+    /* NEW: 4-Column Grid for Delivery Process */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media(max-width: 950px){ .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+    @media(max-width: 650px){ .grid-4 { grid-template-columns: 1fr; } }
+
     /* AGENTIC CSS UPDATES: Lighter Grey Cards + Blueprint Glow */
     .agentic-term { color: #ffffff; font-weight: 600; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
     .card { background: rgba(50,50,50,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+    
+    /* Adjust padding & fonts slightly for the 4-column row to fit gracefully */
+    .grid-4 .card { padding: 24px; }
+    .grid-4 .card h3 { font-size: 1.15rem; margin-bottom: 14px; }
+    .grid-4 .checklist li { margin-bottom: 10px; font-size: 0.9rem; }
+
     .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
     .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
     .card:hover::after { width: 100%; }
@@ -92,8 +108,6 @@
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,107,0,.15); }
     label { font-size: .9rem; color: #cbd6df; margin-bottom: 8px; display: block; font-weight: 500; }
     ::placeholder { color: #6b7280; }
-    .btn-submit { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; width: 100%; margin-top: 10px; }
-    .btn-submit:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
     
     /* ---------- cta band ---------- */
     .cta-band { background: #121212; text-align: center; padding: 70px 0; border-top: 2px solid var(--accent); }
@@ -120,6 +134,7 @@
   <div class="container">
     <h1>The Forge – Custom Agentic Prototype</h1>
     <p>From validated blueprint to a <strong>production-grade agentic prototype</strong>. We engineer the deterministic architecture that brings autonomous digital workers to life—whether you are starting from scratch or replacing a failed generative AI experiment. One fixed price, zero scope creep.</p>
+    <a href="#request" class="btn-primary">Request a Build Quote <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
 
@@ -186,37 +201,37 @@
 <section style="background:#121212; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
   <div class="container">
     <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">Delivery Process</h2>
-    <div class="grid-2">
+    <div class="grid-4">
       <div class="card">
-        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Perception & API Integration</h3>
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Perception</h3>
         <ul class="checklist">
-          <li>Establish deterministic tools, APIs, and access perimeters.</li>
-          <li>Build the "skeleton" before connecting the stochastic LLM brain.</li>
-          <li>Set up CI/CD pipelines and isolated sandbox environments.</li>
+          <li>Establish deterministic tools, APIs, and perimeters.</li>
+          <li>Build the "skeleton" before connecting the LLM.</li>
+          <li>Set up CI/CD pipelines and sandbox environments.</li>
         </ul>
       </div>
       <div class="card">
-        <h3><i class="fa-solid fa-code-pull-request"></i>Weeks 2-3 · Neuro-Symbolic Wiring</h3>
+        <h3><i class="fa-solid fa-code-pull-request"></i>Weeks 2-3 · Wiring</h3>
         <ul class="checklist">
-          <li>Connect the reasoning engine to the execution skeleton.</li>
-          <li>Set up memory states, ReAct loops, and Reflexion memory buffers.</li>
-          <li>Bi-weekly recorded demos proving instrumental grounding.</li>
+          <li>Connect the reasoning engine to the skeleton.</li>
+          <li>Set up memory states and Reflexion buffers.</li>
+          <li>Bi-weekly demos proving instrumental grounding.</li>
         </ul>
       </div>
       <div class="card">
-        <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 4-X · Rubicon Stress-Testing</h3>
+        <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 4-X · Testing</h3>
         <ul class="checklist">
-          <li>Force the agent to fail and evaluate autonomous self-correction.</li>
-          <li>Stress-test pre-commit gates and rollback procedures.</li>
-          <li>Validate token-cost metrics and latency of multi-step plans.</li>
+          <li>Force the agent to fail and self-correct.</li>
+          <li>Stress-test pre-commit gates & rollbacks.</li>
+          <li>Validate token-costs of multi-step plans.</li>
         </ul>
       </div>
       <div class="card">
-        <h3><i class="fa-solid fa-rocket"></i>Final · Prototype Hand-Over</h3>
+        <h3><i class="fa-solid fa-rocket"></i>Final · Hand-Over</h3>
         <ul class="checklist">
-          <li>Deliver a fully functioning, containerized prototype.</li>
-          <li>Hand over telemetry dashboards and scale-to-zero infrastructure runbooks.</li>
-          <li>Ready the system for "The Nexus" enterprise scale-up and swarm deployment.</li>
+          <li>Deliver a fully containerized prototype.</li>
+          <li>Hand over telemetry and scale-to-zero runbooks.</li>
+          <li>Prep system for "The Nexus" swarm deployment.</li>
         </ul>
       </div>
     </div>
@@ -268,7 +283,7 @@
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
-        <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i> Send request</button>
+        <button type="submit" class="btn-primary btn-submit"><i class="fa-solid fa-check"></i> Send request</button>
       </form>
     </div>
   </div>
