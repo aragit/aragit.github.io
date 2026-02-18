@@ -325,7 +325,7 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  const u = new URLSearchParams(location.search);
+  const u = newSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
     const v=u.get(p),el=document.createElement('input'); 
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
