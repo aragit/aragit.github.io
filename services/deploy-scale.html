@@ -3,382 +3,235 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>The Nexus – Production LLMOps | Arash Nicoomanesh</title>
-  <meta name="description" content="From working model to bullet-proof production. LLMOps, autoscaling, cost-guardrails, security & 24 × 7 monitoring. Fixed-price tiers."/>
-  <meta property="og:title" content="The Nexus – Production LLMOps"/>
-  <meta property="og:description" content="Fixed-price production package: deploy, scale, monitor, optimise."/>
+  <title>The Nexus – Agentic Swarm & Governance | Arash Nicoomanesh</title>
+
+  <meta name="description" content="Scale your agentic prototype into a governed enterprise swarm. Immutable LLMOps, Policy-as-Code, and strict cost controls."/>
+  <meta property="og:title" content="The Nexus – Agentic Swarm & Governance"/>
+  <meta property="og:description" content="Production-grade Agentic Operations and Blast-Radius Containment."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aragit.github.io/services/deploy-scale.html"/>
-  <meta property="og:image" content="https://aragit.github.io/og-nexus.png"/>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    :root{
-      --primary:#0ea5e9;--primary-dark:#0369a1;--secondary:#10b981;
-      --dark:#121212;--darker:#0a0a0a;--light:#f3f4f6;--gray:#9ca3af;
-      --accent:#ff6b00;--accent-light:#ff9d00;
-      --header-gradient:linear-gradient(135deg,#450a0a 0%,#1a1a1a 100%);
+    :root {
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{background:var(--darker);color:#eaf2fb;font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-    img{max-width:100%;display:block}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
     /* ---------- header ---------- */
-    header{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid rgba(255,255,255,.05)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-    .logo{font-weight:700;font-size:1.3rem;display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
-    .logo i{color:var(--accent)}
-    .back-btn{background:transparent;color:#cbd6df;border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:50px;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s}
-    .back-btn:hover{border-color:var(--accent);color:var(--accent)}
-
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
     /* ---------- hero ---------- */
-    .hero{
-      padding:clamp(60px,10vw,100px) 0;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    
-      /* 1. background image + 2. fade mask */
-      background-image:
-        /* fade mask: black → transparent → black (top→bottom) */
-        linear-gradient(to bottom,
-          rgba(10,10,10,1) 0%,
-          rgba(10,10,10,0.25) 40%,
-          rgba(10,10,10,0) 60%,
-          rgba(10,10,10,1) 100%),
-        /* your actual image */
-        url('https://static.vecteezy.com/system/resources/previews/043/169/461/large_2x/ai-generated-chess-pieces-on-chess-board-free-photo.jpeg');          /* << change to your file */
-    
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
+    .hero {
+      padding: clamp(80px, 12vw, 120px) 0;
+      text-align: center;
+      background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url('nexusback.jpg');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(255,255,255,.02);
     }
     
-    .hero h1{font-size:clamp(2rem,5vw,2.5rem);font-weight:700;margin-bottom:16px;color:#fff;font-family:'Space Grotesk',sans-serif}
-    .hero p{font-size:1.3rem;max-width:680px;margin:0 auto;color:#fff6f3}
-    .hero p{font-weight:600;}
-    .badge{display:inline-block;background:var(--accent);color:#000;font-weight:600;padding:6px 14px;border-radius:99px;font-size:.75rem;margin-bottom:1rem}
-
+    /* BLUEPRINT TYPOGRAPHY MATCH */
+    .hero h1 { 
+        font-size: clamp(2.5rem, 5vw, 4rem) !important; 
+        font-weight: 800 !important; 
+        line-height: 1.15 !important; 
+        margin-bottom: 24px !important;
+        text-shadow: 0 5px 30px rgba(0,0,0,0.9) !important; 
+        color: #fff;
+    }
+    .hero p { 
+        font-size: clamp(1.1rem, 2vw, 1.3rem) !important; 
+        max-width: 900px !important; 
+        margin: 0 auto 40px auto !important;
+        color: #ffffff !important; 
+        font-weight: 500 !important; 
+        text-shadow: 0 3px 20px rgba(0,0,0,0.9) !important; 
+    }
     
-
-      
+    .badge { display: inline-block; background: #000; color: #fff; font-weight: 600; padding: 6px 14px; border-radius: 99px; font-size: .75rem; margin-top: 1rem; }
+    
+    /* ---------- buttons ---------- */
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+    .btn-submit { width: 100%; margin-top: 10px; }
+    
     /* ---------- sections ---------- */
-    section{padding:clamp(50px,8vw,80px) 0}
-    /* ---------- NEW – glass-morphic 4-card row ---------- */
-    .row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-    .glass-card{
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:20px;
-      padding:28px;
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      box-shadow:0 8px 32px rgba(0,0,0,.37);
-      transition:transform .3s,box-shadow .3s,border-color .3s;
-      position:relative;
-      overflow:hidden;
-    }
-    .glass-card:hover{
-      transform:translateY(-5px);
-      border-color:var(--accent);
-      box-shadow:0 0 20px rgba(255,107,0,.45);
-    }
-    .glass-card h3{font-size:1.25rem;margin-bottom:14px;display:flex;align-items:center;gap:10px;color:#fff;font-family:'Space Grotesk',sans-serif}
-    .glass-card h3 i{color:var(--accent)}
-    .glass-card .checklist{margin-top:12px}
+    section { padding: clamp(60px, 8vw, 90px) 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    
+    /* 4-Column Grid for Delivery Process */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media(max-width: 950px){ .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+    @media(max-width: 650px){ .grid-4 { grid-template-columns: 1fr; } }
 
-    /* ---------- SOTA roadmap section – live aurora ---------- */
-    #delivery-roadmap{position:relative;overflow:hidden}
-    #delivery-roadmap::before{
-      content:'';
-      position:absolute;
-      inset:-100%;
-      background:radial-gradient(ellipse at 20% 20%,var(--accent) 0%,transparent 40%),
-                 radial-gradient(ellipse at 80% 70%,var(--primary) 0%,transparent 40%);
-      animation:aurora 20s linear infinite;
-      z-index:0;
-      pointer-events:none;
-    }
-    @keyframes aurora{
-      0%{transform:rotate(0deg) scale(1.5)}
-      100%{transform:rotate(360deg) scale(1.5)}
-    }
-    #delivery-roadmap .container{position:relative;z-index:1}
+    /* AGENTIC CSS UPDATES: Lighter Grey Cards + Blueprint Glow */
+    .agentic-term { color: #ffffff; font-weight: 600; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
+    .card { background: rgba(50,50,50,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+    
+    /* Adjust padding & fonts slightly for the 4-column row to fit gracefully */
+    .grid-4 .card { padding: 24px; }
+    .grid-4 .card h3 { font-size: 1.15rem; margin-bottom: 14px; }
+    .grid-4 .checklist li { margin-bottom: 10px; font-size: 0.9rem; }
 
-    /* ---------- timeline ---------- */
-    .timeline-stripe{position:relative;margin:0 auto 50px;max-width:900px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;z-index:1}
-    .timeline-line{position:relative;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px}
-    .marker{position:absolute;top:-8px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:3px solid var(--darker);cursor:pointer;transition:.3s;z-index:2}
-    .marker.done{background:var(--accent)}
-    .marker.now{background:var(--accent);box-shadow:0 0 12px var(--accent)}
-    .marker:hover{transform:translateX(-50%) scale(1.15)}
-
-    .filter-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:40px;z-index:1;position:relative}
-    .filter-bar .filter-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#cbd6df;padding:8px 18px;border-radius:99px;font-size:.9rem;cursor:pointer;transition:.3s}
-    .filter-bar .filter-btn.active,.filter-bar .filter-btn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
-
-    .phase-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));z-index:1;position:relative}
-    .phase-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.37);transition:transform .3s,box-shadow .3s,border-color .3s}
-    .phase-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 0 20px rgba(255,107,0,.45)}
-    .phase-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-    .phase-header h3{margin:0;font-size:1.25rem;color:#fff;font-family:'Space Grotesk',sans-serif}
-    .phase-header h3 i{color:var(--accent)}
-    .phase-card .checklist{margin:0}
-
-    /* radial OKR progress */
-    .okr-radial{position:relative;width:48px;height:48px;margin-left:auto}
-    .okr-radial svg{transform:rotate(-90deg)}
-    .okr-radial circle{fill:none;stroke-width:4}
-    .okr-radial .bg{stroke:rgba(255,255,255,.1)}
-    .okr-radial .prog{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .6s ease}
-    .okr-val{position:absolute;inset:0;display:grid;place-items:center;font-size:.75rem;font-weight:600}
-
-    /* ---------- tiers ---------- */
-    .tier-box{background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px}
-    .tier-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .tier-head h3{margin:0;display:flex;align-items:center;gap:10px}
-    .tier-head h3 i{color:var(--accent);font-size:1.1rem}
-    .price{background:var(--accent);color:#000;padding:6px 14px;border-radius:99px;font-weight:600}
-    .duration{color:#9ca3af;font-size:.8rem;margin-top:8px}
-
-    /* ---------- form ---------- */
-    .form-box{max-width:680px;margin:0 auto;background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px}
-    .form-box h3{margin-bottom:8px}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
-    input,select,textarea{width:100%;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-family:inherit;transition:border .3s,box-shadow .3s}
-    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,0,.2)}
-    label{font-size:.9rem;color:#cbd6df;margin-bottom:6px;display:block}
-    ::placeholder{color:#6b7280}
-    .btn-submit{background:var(--accent);color:#fff;padding:14px 28px;border:none;border-radius:50px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:.3s}
-    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.4)}
-
+    .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
+    .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
+    .card:hover::after { width: 100%; }
+    
+    /* ICONS: NO BACKGROUND */
+    .card h3 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; color: #fff; }
+    .card h3 i { color: var(--accent); font-size: 1.5rem; background: transparent; padding: 0; border-radius: 0; margin-right: 4px; }
+    
+    .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; }
+    .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
+    .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
+    
+    /* ---------- deliverables / form ---------- */
+    .deliver-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 40px; text-align: left; }
+    .deliver-box h3 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    input, select, textarea { width: 100%; padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,.1); color: #fff; font-family: inherit; font-size: 1rem; transition: all .3s; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,107,0,.15); }
+    label { font-size: .9rem; color: #cbd6df; margin-bottom: 8px; display: block; font-weight: 500; }
+    ::placeholder { color: #6b7280; }
+    
     /* ---------- cta band ---------- */
-    .cta-band{background:linear-gradient(90deg,var(--accent),var(--accent-light));color:#000;text-align:center;padding:40px 0}
-    .cta-band h2{font-size:1.8rem;margin-bottom:12px;font-family:'Space Grotesk',sans-serif}
-    .btn-light{background:#fff;color:#000;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.3s}
-    .btn-light:hover{transform:scale(1.03)}
-
+    .cta-band { background: #121212; text-align: center; padding: 70px 0; border-top: 2px solid var(--accent); }
+    .cta-band h2 { font-size: 2.2rem; margin-bottom: 16px; color: #fff; }
+    .cta-band p { color: var(--gray); font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    
     /* ---------- footer ---------- */
-    footer{text-align:center;padding:30px 0;color:#6b7280;font-size:.9rem;border-top:1px solid rgba(255,255,255,.05)}
-
-    /* ---------- hide non-Foundation on first paint ---------- */
-    .phase-card:not([data-phase="foundation"]){display:none}
-
-    @media(max-width:900px){.row-4{grid-template-columns:1fr 1fr}}
-    @media(max-width:500px){.row-4{grid-template-columns:1fr}}
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
+    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- HEADER                                                       -->
-<!-- ============================================================ -->
 <header>
   <div class="container">
     <div class="header-inner">
-      <a href="../index.html" class="logo"><i class="fa-solid fa-link"></i>Arash Nicoomanesh</a>
+      <a href="../index.html" class="logo"><i class="fa-solid fa-server"></i>Arash Nicoomanesh</a>
       <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
     </div>
   </div>
 </header>
 
-<!-- ============================================================ -->
-<!-- HERO                                                         -->
-<!-- ============================================================ -->
 <section class="hero">
   <div class="container">
-    
-    <h1>The Nexus</h1>
-    <p>From working model to bullet-proof production. LLMOps, autoscaling, cost-guardrails, security & 24 × 7 monitoring—one turnkey package.</p>
+    <h1>The Nexus – Agentic Swarm & Governance</h1>
+    <p>Scale your prototype into a <strong>governed enterprise swarm</strong>. We wrap your autonomous workflows in an immutable LLMOps perimeter, guaranteeing blast-radius containment, Policy-as-Code security, and strict cost controls.</p>
+    <a href="#request" class="btn-primary">Request a Deployment Quote <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
 
-    
-
-<!-- ============================================================ -->
-<!-- WHAT YOU GET  – 4 glass cards in a row                     -->
-<!-- ============================================================ -->
 <section>
   <div class="container">
-    <div class="row-4">
-      <div class="glass-card">
-        <h3><i class="fa-solid fa-server"></i>Cloud-Native Deploy</h3>
+    <div class="section-title" style="text-align:center; margin-bottom:50px;">
+      <h2 style="font-size: 2rem; color: #fff; margin-bottom: 10px;">Enterprise Agentic Infrastructure</h2>
+      <p style="color: var(--gray); font-size: 1.1rem;">Bridging the gap between isolated prototypes and safe, autonomous production.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-network-wired"></i>Agentic Swarm Orchestration</h3>
         <ul class="checklist">
-          <li>Multi-region active-active (starter = single-region)</li>
-          <li>Blue-green & canary releases</li>
-          <li>GPU / CPU autoscaling</li>
-          <li>Infrastructure-as-Code (TF/Pulumi)</li>
-          <li>CDN + WAF edge protection</li>
-          <li>IP allow-list & private-link ingress</li>
-          <li>DDoS shield (L7 scrubbing, 10 s mitigation)</li>
+          <li>Deploy the specific architectural "Tribe" suited for your risk profile.</li>
+          <li>Isolate high-liability agents in rigid microservices to contain the blast radius.</li>
+          <li>Deploy serverless swarms for research agents to eliminate idle compute during API waiting periods.</li>
         </ul>
       </div>
 
-      <div class="glass-card">
-        <h3><i class="fa-solid fa-shield-halved"></i>Security & Compliance</h3>
+      <div class="card">
+        <h3><i class="fa-solid fa-shield-halved"></i>Policy-as-Code (OPA) Security</h3>
         <ul class="checklist">
-          <li>End-to-end encryption (TLS 1.3)</li>
-          <li>VPC, IAM, RBAC lock-down</li>
-          <li>SOC-2 / HIPAA attestation pack + CREST pen-test</li>
-          <li>SIEM log shipping (Splunk / Datadog)</li>
-          <li>Secret rotation via Vault / GSM (30 d TTL)</li>
+          <li>LLMs cannot be trusted to self-police. We strip their ability to bypass business logic.</li>
+          <li>Enforce absolute governance at the network layer using <span class="agentic-term">Open Policy Agent (OPA)</span>.</li>
+          <li>Intercept and evaluate every single tool call against hard-coded physical and financial constraints.</li>
         </ul>
       </div>
 
-      <div class="glass-card">
-        <h3><i class="fa-solid fa-chart-line"></i>Observability 360°</h3>
+      <div class="card">
+        <h3><i class="fa-solid fa-chart-line"></i>Agentic State & Drift Telemetry</h3>
         <ul class="checklist">
-          <li>Latency, throughput, error-rate SLIs</li>
-          <li>Token-cost & spend-limit alerts</li>
-          <li>Model-drift & quality dashboards</li>
-          <li>24 × 7 on-call rotation (Scale + Enterprise)</li>
-          <li>SLO burn-rate alerts (PagerDuty, 5 min page)</li>
-          <li>Error-budget auto-freeze: 90 % consumed → traffic blocked</li>
+          <li>Move beyond standard MLOps latency metrics which fail for autonomous systems.</li>
+          <li>Track "hallucination drift" and "planning staleness" across multi-step execution graphs.</li>
+          <li>Log every reasoning trace, tool input/output, and belief-state update for full auditability.</li>
         </ul>
       </div>
 
-      <div class="glass-card">
-        <h3><i class="fa-solid fa-dollar-sign"></i>Cost Guardrails</h3>
+      <div class="card">
+        <h3><i class="fa-solid fa-bolt"></i>ReAct-Loop Circuit Breakers</h3>
         <ul class="checklist">
-          <li>Usage quotas & budget hard-caps</li>
-          <li>Smart caching (Redis / CDN)</li>
-          <li>Spot-instance + quantization savings</li>
-          <li>Fin-Ops anomaly detection</li>
-          <li>Team-level charge-back / show-back dashboards</li>
-          <li>Committed-use discount automation</li>
-          <li>Real-time cost anomaly ML detector (± 15 % spike)</li>
+          <li>True agency is compute-heavy. Protect your cloud bill from autonomous runaway.</li>
+          <li>Implement hard financial circuit breakers that detect agents trapped in infinite retry loops.</li>
+          <li>Enforce strict token-limits and step-timeouts before an agent can trigger massive spend.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SOTA DELIVERY ROADMAP  –  live aurora behind glass cards    -->
-<!-- ============================================================ -->
-<section id="delivery-roadmap">
+<section style="background:#121212; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:12px;font-family:'Space Grotesk',sans-serif">Delivery Roadmap</h2>
-    <p style="max-width:680px;margin:0 auto 40px;text-align:center;color:#9ca3af">
-      Outcome-driven, risk-gated, feedback-rich: a living 10-week production journey.
-    </p>
-
-    <!-- filter bar (NO "All Phases" button) -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-phase="foundation">Foundation</button>
-      <button class="filter-btn" data-phase="hardening">Hardening</button>
-      <button class="filter-btn" data-phase="observability">Observability</button>
-      <button class="filter-btn" data-phase="go-live">Go-Live</button>
-    </div>
-
-    <!-- horizontal timeline -->
-    <div class="timeline-stripe">
-      <div class="timeline-line">
-        <span class="marker done" style="left:5%"  data-week="1" title="Week 1 – Foundation"></span>
-        <span class="marker done" style="left:25%" data-week="2" title="Week 2 – Hardening"></span>
-        <span class="marker done" style="left:45%" data-week="3" title="Week 3 – Hardening"></span>
-        <span class="marker now" style="left:55%" data-week="4" title="Week 4 – Observability"></span>
-        <span class="marker"      style="left:75%" data-week="5" title="Week 5 – Observability"></span>
-        <span class="marker"      style="left:95%" data-week="6-10" title="Weeks 6-10 – Go-Live"></span>
-      </div>
-    </div>
-
-    <!-- phase cards -->
-    <div class="phase-grid">
-      <!-- Foundation (visible by default) -->
-      <div class="phase-card" data-phase="foundation">
-        <div class="phase-header">
-          <h3><i class="fa-solid fa-layer-group"></i> Foundation</h3>
-          <div class="okr-radial" data-progress="100">
-            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="0"/></svg>
-            <span class="okr-val">100 %</span>
-          </div>
-        </div>
+    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">Deployment Roadmap</h2>
+    <div class="grid-4">
+      <div class="card">
+        <h3><i class="fa-solid fa-lock"></i>Phase 1 · Perimeter</h3>
         <ul class="checklist">
-          <li>Prod-grade IaC baseline (Terraform / Pulumi) with modular, reusable components</li>
-          <li>Multi-account / VPC landing-zone with security guard-rails and automated compliance checks</li>
-          <li>Cost & compliance baselines (budget tags, audit trail, Fin-Ops anomaly detector)</li>
-          <li>Lean canvas validated: problem, solution, metrics, personas signed-off by stakeholders</li>
+          <li>Establish the VPC perimeter and isolated landing zones.</li>
+          <li>Map specific IAM roles and least-privilege identities to agents.</li>
+          <li>Baseline compliance (SOC-2) and secure key vaults.</li>
         </ul>
       </div>
-
-      <!-- Hardening -->
-      <div class="phase-card" data-phase="hardening">
-        <div class="phase-header">
-          <h3><i class="fa-solid fa-shield-halved"></i> Hardening</h3>
-          <div class="okr-radial" data-progress="75">
-            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="31.5"/></svg>
-            <span class="okr-val">75 %</span>
-          </div>
-        </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-code"></i>Phase 2 · Policy</h3>
         <ul class="checklist">
-          <li>Blue-green & canary pipelines with automated rollback and SLA-based promotion gates</li>
-          <li>Monitoring stack (Prometheus, Grafana, Loki, Alertmanager) + SLO burn-rate alerts</li>
-          <li>Chaos & load tests (500 CCU, p95 ≤ 1.2 s, error ≤ 0.5 %) – Game-Days every Friday</li>
-          <li>Security chaos: automated penetration tests, secret-leak simulation, credential rotation</li>
+          <li>Harden the pre-commit verification gates.</li>
+          <li>Inject OPA sidecars to intercept physical/financial constraints.</li>
+          <li>Conduct security chaos testing and secret-leak simulations.</li>
         </ul>
       </div>
-
-      <!-- Observability -->
-      <div class="phase-card" data-phase="observability">
-        <div class="phase-header">
-          <h3><i class="fa-solid fa-chart-line"></i> Observability</h3>
-          <div class="okr-radial" data-progress="60">
-            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="50.4"/></svg>
-            <span class="okr-val">60 %</span>
-          </div>
-        </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-scale-balanced"></i>Phase 3 · Governance</h3>
         <ul class="checklist">
-          <li>Token-budget & model-drift dashboards with anomaly ML detector (± 15 % spike)</li>
-          <li>Blame-less incident reviews, run-books auto-generated from Post-Mortems</li>
-          <li>Error-budget auto-freeze: 90 % consumed → traffic blocked, exec alert fired</li>
-          <li>Continuous-feedback demos every Tuesday; backlog re-prioritised within 24 h</li>
+          <li>Wire up OpenTelemetry to trace multi-agent reasoning paths.</li>
+          <li>Set strict token limits and ReAct-loop timeouts.</li>
+          <li>Configure Fin-Ops anomaly detectors and auto-freeze tripwires.</li>
         </ul>
       </div>
-
-      <!-- Go-Live -->
-      <div class="phase-card" data-phase="go-live">
-        <div class="phase-header">
-          <h3><i class="fa-solid fa-rocket"></i> Go-Live</h3>
-          <div class="okr-radial" data-progress="30">
-            <svg width="48" height="48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="prog" cx="24" cy="24" r="20" stroke-dasharray="126" stroke-dashoffset="88.2"/></svg>
-            <span class="okr-val">30 %</span>
-          </div>
-        </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-rocket"></i>Phase 4 · Swarm Go-Live</h3>
         <ul class="checklist">
-          <li>Starter tier: Week 4 – security sign-off + knowledge-transfer session recorded</li>
-          <li>Scale tier: Week 6 – committed-use discounts auto-applied, Fin-Ops hand-off</li>
-          <li>Enterprise tier: Week 8-10 – custom SLA, white-glove support, exit architecture review</li>
-          <li>Retro & next-horizon workshop: roadmap evolves, tech-debt budget locked</li>
+          <li>Go-live with active-active multi-region deployment.</li>
+          <li>Hand over Agentic LLMOps telemetry and incident run-books.</li>
+          <li>Establish 24/7 on-call rotation and auto-scaling thresholds.</li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- CTA BAND                                                     -->
-<!-- ============================================================ -->
 <div class="cta-band">
   <div class="container">
-    <h2 style="font-family:'Space Grotesk',sans-serif">Ready to go live?</h2>
-    <p style="margin-bottom:24px">I deliver <strong>one Nexus package per month</strong>—reserve your slot.</p>
-    <a href="#request" class="btn-light"><i class="fa-solid fa-rocket"></i>Book a scoping call</a>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- REQUEST FORM                                                 -->
-<!-- ============================================================ -->
-<section id="request">
-  <div class="container">
-    <div class="form-box">
-      <h3>Request a tiered quote</h3>
-      <p style="color:#9ca3af;margin-bottom:24px">Fill in the basics and I’ll email you a one-page SOW + calendar link within 24 h.</p>
+    <h2>Ready to deploy to production?</h2>
+    <p>I deliver one Nexus package per month to ensure complete architectural focus—reserve your slot.</p>
+    
+    <div id="request" class="deliver-box" style="max-width: 700px; margin: 0 auto; margin-top:40px;">
+      <h3>Request a Deployment Quote</h3>
+      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">I deploy mission-critical agentic systems to production. Tell me about your architecture, scaling constraints, and compliance requirements.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="form-row">
@@ -398,72 +251,43 @@
         </div>
 
         <div style="margin-bottom:20px">
-          <label>Preferred tier</label>
-          <select name="tier">
-            <option value="starter">Starter – $6 k (4 weeks)</option>
-            <option value="scale">Scale – $14 k (6 weeks)</option>
-            <option value="enterprise">Enterprise – custom (8-10 weeks)</option>
+          <label>Preferred Tier</label>
+          <select name="capability">
+            <option value="starter">Starter – Foundation & Perimeter</option>
+            <option value="scale">Scale – Swarm Orchestration & Telemetry</option>
+            <option value="enterprise">Enterprise – Custom SLA & White-Glove Support</option>
           </select>
         </div>
 
         <div style="margin-bottom:24px">
-          <label>Current situation *</label>
-          <textarea name="message" required placeholder="e.g. model works locally, need multi-region HA, 1 k QPS, PCI-DSS compliant..." style="min-height:120px"></textarea>
+          <label>Current situation & compliance needs *</label>
+          <textarea name="message" required placeholder="e.g. Need HIPAA compliance, OPA guardrails, and ReAct loop cost-containment..." style="min-height:120px"></textarea>
         </div>
 
-        <!-- hidden fields -->
         <input type="hidden" name="service" value="The Nexus">
         <input type="hidden" name="_subject" value="Website lead: The Nexus">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
-        <button type="submit" class="btn-submit"><i class="fa-solid fa-check"></i>Send request</button>
+        <button type="submit" class="btn-primary btn-submit"><i class="fa-solid fa-check"></i> Send request</button>
       </form>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ============================================================ -->
-<!-- FOOTER                                                       -->
-<!-- ============================================================ -->
 <footer>
-  © <span id="yr"></span> Arash Nicoomanesh · AI & ML Engineering Services
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
 </footer>
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  /* basic UTM grab */
   const u = new URLSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
-    const v=u.get(p),el=document.createElement('input');
+    const v=u.get(p),el=document.createElement('input'); 
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
   });
-
-  /* ---------- roadmap filter (no "all" logic) ---------- */
-  document.querySelectorAll('.filter-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const f = btn.dataset.phase;
-      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.phase-card').forEach(card=>{
-        card.style.display = card.dataset.phase === f ? 'block' : 'none';
-      });
-    });
-  });
-
-  /* animate radial bars on scroll */
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const svg = e.target.querySelector('.prog');
-        const val = parseInt(e.target.dataset.progress,10);
-        const circ = 2*Math.PI*20;          // r=20
-        svg.style.strokeDashoffset = circ * (1 - val/100);
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:.5});
-  document.querySelectorAll('.okr-radial').forEach(r=>io.observe(r));
 </script>
 </body>
 </html>
