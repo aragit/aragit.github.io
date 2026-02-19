@@ -156,19 +156,25 @@
         <p><strong>The Architecture:</strong> Triage agents ingest unstructured patient history and vitals, securely routing them to specialized diagnostic agents. Multiple agents review the same imaging data using different reasoning pathways (Chain-of-Thought) to reach a high-confidence consensus before alerting a human specialist.</p>
         
         <div class="guardrail-box">
-          <strong><i class="fa-solid fa-shield-halved"></i> The Deterministic Guardrail (OPA)</strong>
-          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Absolute HIPAA & Safety Containment:</em> Agents operate in a strict "Read/Propose" state for diagnostics. Policy-as-Code absolutely, physically blocks the swarm from writing prescriptions or altering life-support systems without cryptographic human-in-the-loop authorization.</p>
+          <strong><i class="fa-solid fa-network-wired"></i> Multi-Agent DAG Orchestration</strong>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Consensus-Driven Routing:</em> Instead of a single LLM hallucinating a diagnosis, the system spawns a Directed Acyclic Graph (DAG) of specialized sub-agents. They independently query EHRs, analyze imaging, and cross-reference medical literature. A strict Policy-as-Code gateway intercepts any action that violates HIPAA.</p>
         </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-hospital-user" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
         <h4 style="color:#fff; margin-bottom:10px;">Consensus Reasoning Output</h4>
         <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
-          > Agent_A (Imaging): Detected anomaly C4.<br>
-          > Agent_B (Vitals): Confirmed elevated markers.<br>
-          > Consensus_Reached: 94% Confidence.<br>
-          > [BLOCKED] Prescription API call denied by OPA.<br>
-          > Status: Escalated to Dr. Smith.
+          > [Orchestrator] Initializing Clinical Evaluation DAG...<br>
+          > [Spawn] Vision_Agent (Gemini 1.5) -> Analyzing X-Ray Scans...<br>
+          > [Spawn] History_Agent (Claude 3.5) -> Querying EHR database...<br>
+          > [Spawn] Research_Agent (DeepSeek R1) -> Cross-referencing PubMed...<br>
+          > [Sync] Awaiting parallel sub-agent completion (Max timeout: 45s)...<br>
+          > [Merge] Sub-agent data synthesized.<br>
+          > [Consensus] 94% probability of anomaly C4.<br>
+          > [Gateway] Evaluating Policy Request: /med/prescribe/auth<br>
+          > [BLOCKED] Policy-as-Code: 'Autonomous prescription denied (Rule 4).'<br>
+          > [Fallback] Escalate to Dr. Smith via secure gRPC stream.<br>
+          > [Status] Awaiting cryptographic human-in-the-loop sign-off.
         </div>
       </div>
     </div>
@@ -181,20 +187,26 @@
         <p><strong>The Architecture:</strong> Predictive Maintenance Agents ingest continuous IIoT sensor data. When an anomaly is detected, the swarm autonomously schedules maintenance during a planned changeover. If a geopolitical event disrupts a Tier 1 supplier, the swarm negotiates with Tier 2 suppliers, recalculates logistics, and updates the ERP (SAP/Oracle) to prevent line starvation.</p>
         
         <div class="guardrail-box">
-          <strong><i class="fa-solid fa-bolt"></i> The Deterministic Guardrail (OPA)</strong>
-          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Operational Circuit Breakers:</em> The swarm is hard-coded with budget limits for autonomous reordering. If a supply chain reroute exceeds a 15% cost variance, the ReAct-loop halts and escalates to the VP of Procurement to prevent runaway spending.</p>
+          <strong><i class="fa-solid fa-server"></i> Durable Execution & Stateful POMDP</strong>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Crash-Resistant Autonomy:</em> Supply chain reroutes can take days. We utilize durable execution frameworks (like Temporal) to track the agent's POMDP state. If a server crashes or an external API rate-limits, the agent simply sleeps, wakes up, and resumes exactly where it left off.</p>
         </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-truck-fast" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
         <h4 style="color:#fff; margin-bottom:10px;">Supply Chain Re-Route Graph</h4>
         <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
-          > IIoT_Alert: Machine_7 vibration spike.<br>
-          > Action: Maintenance scheduled (Shift 3).<br>
-          > Supply_Alert: Port delay (Rotterdam).<br>
-          > Action: Querying Tier-2 suppliers...<br>
-          > [WARN] Cost variance 18% > Threshold (15%).<br>
-          > Circuit_Breaker_Triggered: Halting ReAct loop.
+          > [Durable_Worker] Execution ID: #Mfg-77A initiated.<br>
+          > [IIoT_Stream] Kafka event: Machine_7 vibration critical.<br>
+          > [Action] Immediate deterministic halt of production line 3.<br>
+          > [Planner] Drafting 48-hour reroute logistics...<br>
+          > [Action] Dispatching queries to 12 alternative Tier-2 suppliers.<br>
+          > [State] Suspending agent. Yielding compute. Awaiting API responses...<br>
+          > [System_Alert] FATAL: Node crash detected! Process terminated.<br>
+          > --- 2 HOURS LATER ---<br>
+          > [Durable_Worker] Node recovered. Restoring exact POMDP state...<br>
+          > [Planner] Resuming from step 4. 9 supplier quotes successfully received.<br>
+          > [Action] Executing optimal reroute. Issuing ERP inventory update.<br>
+          > [Status] Reroute complete. Cost variance within 5% tolerance.
         </div>
       </div>
     </div>
@@ -207,20 +219,24 @@
         <p><strong>The Architecture:</strong> Competitive Intelligence Agents continuously scrape market sentiment, feeding structured data to strategy agents. Journey Orchestration Agents dynamically assemble personalized campaigns. Simultaneously, FinOps Agents query ERPs and cross-reference Stripe APIs to draft adjustment journal entries autonomously.</p>
         
         <div class="guardrail-box">
-          <strong><i class="fa-solid fa-lock"></i> The Deterministic Guardrail (OPA)</strong>
-          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Brand Safety & Spend Limits:</em> Hard-coded API limits prevent the swarm from accidentally exhausting a monthly ad budget in a single hour due to a hallucinated bidding war. Ledger adjustments over $10k require deterministic dual-key human sign-off.</p>
+          <strong><i class="fa-solid fa-toolbox"></i> Deterministic Tooling & MCP Grounding</strong>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Zero-Hallucination Math:</em> LLMs are probabilistic text predictors, not calculators. Our FinOps swarms isolate reasoning from execution using the Model Context Protocol (MCP). Agents retrieve historical context via PGVector, but delegate ledger mathematics to strict deterministic sandbox tools.</p>
         </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-money-bill-transfer" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
         <h4 style="color:#fff; margin-bottom:10px;">FinOps Reconciliation Loop</h4>
         <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
-          > Querying: ERP_Ledger vs Stripe_API.<br>
-          > Match_Failed: Variance of $12,450 found.<br>
-          > Reasoning: Locating missing invoice ID #884.<br>
-          > Action: Drafting Journal Entry Adjustment.<br>
-          > [BLOCKED] Adjustment > $10k limit.<br>
-          > Awaiting human dual-key authorization.
+          > [Trigger] End-of-month ledger reconciliation loop initiated.<br>
+          > [Memory] Querying PGVector: "Find Stripe dispute matches for #884"<br>
+          > [Context] K=5 historical transactions loaded to working memory.<br>
+          > [Reasoning] LLM identifies $12k discrepancy between ERP and Stripe API.<br>
+          > [Tool_Invoke] Routing payload to MCP: &lt;DuckDB_Ledger_Math&gt;<br>
+          > [MCP_Execute] Running strict SQL aggregation on raw ledger data...<br>
+          > [Tool_Output] Variance calculated deterministically: $12,450.00.<br>
+          > [Planner] Drafting Journal Entry Adjustment...<br>
+          > [Gate] Transaction > $10k threshold detected. Auto-commit disabled.<br>
+          > [Auth] Awaiting dual-key cryptographic signing by CFO.
         </div>
       </div>
     </div>
@@ -243,7 +259,7 @@
       <div class="card">
         <h3><i class="fa-solid fa-brain"></i>Reasoning</h3>
         <ul class="checklist">
-          <li>ReAct loop multi-step planning</li>
+          <li>DAG-based multi-step planning</li>
           <li>Chain-of-Thought (CoT) prompting</li>
           <li>Autonomous error detection & recovery</li>
         </ul>
@@ -306,7 +322,7 @@
 
         <div style="margin-bottom:24px">
           <label>Describe your current challenge *</label>
-          <textarea name="message" required placeholder="e.g. Our supply chain agents keep hallucinating inventory data, we need ReAct-loop guardrails..." style="min-height:120px"></textarea>
+          <textarea name="message" required placeholder="e.g. Our supply chain agents keep hallucinating inventory data, we need deterministic DAG guardrails..." style="min-height:120px"></textarea>
         </div>
 
         <input type="hidden" name="service" value="Enterprise Swarm Architectures">
