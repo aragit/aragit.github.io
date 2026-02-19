@@ -117,7 +117,19 @@
     /* ---------- footer ---------- */
     footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
     @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
+  
+    /* --- INJECTED BY ALIGNMENT SCRIPT --- */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .artifact-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,107,0,.3); border-radius: 12px; padding: 40px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .artifact-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
+  
+    /* --- INJECTED BY ALIGNMENT SCRIPT --- */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .artifact-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,107,0,.3); border-radius: 12px; padding: 40px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .artifact-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
   </style>
+
+
 </head>
 <body>
 
@@ -138,60 +150,40 @@
   </div>
 </section>
 
+
+
 <section>
   <div class="container">
-    <div class="grid-2">
+    <div class="section-title" style="text-align:center; margin-bottom:50px;">
+      <h2 style="font-size: 2rem; color: #fff; margin-bottom: 10px;">The Core Architecture Pillars</h2>
+      <p style="color: var(--gray); font-size: 1.1rem;">Engineering the Brain, Body, and Shield of your autonomous system.</p>
+    </div>
+
+    <div class="grid-3">
       <div class="card">
-        <h3><i class="fa-solid fa-sitemap"></i>Instrumental Perception & Grounding</h3>
+        <h3><i class="fa-solid fa-brain"></i>The Stochastic Brain</h3>
         <ul class="checklist">
-          <li>Connect reasoning engines to live APIs, databases, and documents to overcome temporal state decay.</li>
-          <li>Use retrieval for <strong>instrumental grounding</strong>—validating external states before executing actions.</li>
-          <li>Architect verifiable citations linked directly to deterministic tools.</li>
+          <li>Distill reasoning engines optimized purely for strict JSON/SLOT schema adherence.</li>
+          <li>Engineer the <span class="agentic-term">Planner</span> to build deterministic execution graphs (DAGs) without hallucinating actions.</li>
+          <li>Implement explicit memory states and pre-commit Reflexion buffers.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><i class="fa-solid fa-sliders"></i>Reasoning Engine Distillation</h3>
+        <h3><i class="fa-solid fa-microchip"></i>The Deterministic Body</h3>
         <ul class="checklist">
-          <li>Distill <span class="agentic-term">System 2</span> cognitive traces into efficient, low-latency models.</li>
-          <li>Optimize fine-tuning purely for strict JSON/SLOT schema adherence and reliable tool execution.</li>
-          <li>Train models on domain-specific Chain-of-Thought (e.g., medical triage, legal reasoning).</li>
+          <li>Wire live APIs into a rigid execution skeleton (the <span class="agentic-term">AXON</span> orchestrator).</li>
+          <li>Cross the Planning-Rubicon with stateful, irreversible action execution.</li>
+          <li>Achieve true instrumental grounding by validating external states before acting.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><i class="fa-solid fa-robot"></i>Stateful POMDP Control Loops</h3>
+        <h3><i class="fa-solid fa-shield-halved"></i>The Governance Shield</h3>
         <ul class="checklist">
-          <li>Cross the <span class="agentic-term">Planning-Rubicon</span> with autonomous, irreversible action execution.</li>
-          <li>Architect stateful control loops that observe, reason, and act with explicit belief states.</li>
-          <li>Implement autonomous error recovery to prevent failing gracefully back to human operators.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-shield-halved"></i>Pre-Commit Verification Gates</h3>
-        <ul class="checklist">
-          <li>Build internal verification gates because intelligence requires hard deterministic boundaries.</li>
+          <li>Build internal <span class="agentic-term">NAYAR</span> verification gates to enforce business logic.</li>
           <li>Force the agent to simulate and validate the consequences of its plan <i>before</i> committing.</li>
-          <li>Ensure irreversible real-world actions are governed by strict business logic.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-chart-line"></i>Agentic Unit Economics</h3>
-        <ul class="checklist">
-          <li>Prove the ROI of autonomy before committing to enterprise-wide scaling.</li>
-          <li>Instrument token-level telemetry to measure the exact compute cost of a deterministic execution graph (DAG).</li>
-          <li>Ensure the prototype's unit economics remain viable when moving from $0.30 queries to stateful workflows.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-lock"></i>Blueprint-Aligned Containment</h3>
-        <ul class="checklist">
-          <li>Deploy the agentic prototype in an isolated, governed perimeter for safe stakeholder validation.</li>
-          <li>Ensure actions and side-effects are strictly contained to your staging environments.</li>
-          <li>Maintain complete auditability of reasoning traces, API payloads, and state changes.</li>
+          <li>Contain the blast radius of autonomous actions within isolated perimeters.</li>
         </ul>
       </div>
     </div>
@@ -200,43 +192,25 @@
 
 <section style="background:#121212; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">Delivery Process</h2>
-    <div class="grid-4">
-      <div class="card">
-        <h3><i class="fa-solid fa-screwdriver-wrench"></i>Week 1 · Perception</h3>
-        <ul class="checklist">
-          <li>Establish deterministic tools, APIs, and perimeters.</li>
-          <li>Build the "skeleton" before connecting the LLM.</li>
-          <li>Set up CI/CD pipelines and sandbox environments.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><i class="fa-solid fa-code-pull-request"></i>Weeks 2-3 · Wiring</h3>
-        <ul class="checklist">
-          <li>Connect the reasoning engine to the skeleton.</li>
-          <li>Set up memory states and Reflexion buffers.</li>
-          <li>Bi-weekly demos proving instrumental grounding.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><i class="fa-solid fa-vial-circle-check"></i>Weeks 4-X · Testing</h3>
-        <ul class="checklist">
-          <li>Force the agent to fail and self-correct.</li>
-          <li>Stress-test pre-commit gates & rollbacks.</li>
-          <li>Validate token-costs of multi-step plans.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><i class="fa-solid fa-rocket"></i>Final · Hand-Over</h3>
-        <ul class="checklist">
-          <li>Deliver a fully containerized prototype.</li>
-          <li>Hand over telemetry and scale-to-zero runbooks.</li>
-          <li>Prep system for "The Nexus" central orchestration deployment.</li>
-        </ul>
-      </div>
+    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">What You Walk Away With</h2>
+    
+    <div class="artifact-box" style="max-width: 900px; margin: 0 auto;">
+      <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 16px;"><i class="fa-solid fa-box-open" style="color: var(--accent); margin-right: 10px;"></i>A Production-Ready Artifact</h3>
+      <p style="color: #cbd6df; font-size: 1.05rem; margin-bottom: 24px; line-height: 1.7;">
+        We don't deliver slideware or fragile Jupyter notebooks. You receive a fully containerized, blueprint-aligned prototype running in an isolated staging sandbox.
+      </p>
+      <ul class="checklist" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+        <li>Dockerized state machine and tool APIs</li>
+        <li>Token-level telemetry & unit economics report</li>
+        <li>Adversarial red-teaming & evaluation results</li>
+        <li>Ready for "The Nexus" central orchestration</li>
+      </ul>
     </div>
+
   </div>
 </section>
+
+
 
 <div class="cta-band">
   <div class="container">
