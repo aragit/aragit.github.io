@@ -75,28 +75,22 @@
 
     <!-- HERO -->
     <section id="home" class="hero" aria-labelledby="hero-title">
-        <!-- HERO GRID (drop-in) -->
-        <!-- HERO GRID (orange dim + subtle blue lines) -->
-        <!-- HERO GRID (orange dim + visible subtle blue + mask) -->
         <div class="hero-grid" aria-hidden="true">
           <svg class="hero-grid-svg" viewBox="0 0 1200 600" preserveAspectRatio="none"
                xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
             <defs>
-              <!-- orange stroke gradient (dimmed) -->
               <linearGradient id="gridGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%"  stop-color="#ff6b00" stop-opacity="0.78"/>
                 <stop offset="30%" stop-color="#ff6b00" stop-opacity="0.28"/>
                 <stop offset="45%" stop-color="#ff6b00" stop-opacity="0"/>
               </linearGradient>
         
-              <!-- more visible blue for subtle sky effect -->
               <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%"  stop-color="#5fd3ff" stop-opacity="0.22"/>
                 <stop offset="50%" stop-color="#5fd3ff" stop-opacity="0.08"/>
                 <stop offset="100%" stop-color="#5fd3ff" stop-opacity="0"/>
               </linearGradient>
         
-              <!-- mask will be tuned in JS to use hero height -->
               <linearGradient id="maskGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop id="mask-stop-a" offset="0%" stop-color="#ffffff" stop-opacity="1"/>
                 <stop id="mask-stop-b" offset="55%" stop-color="#ffffff" stop-opacity="0.6"/>
@@ -123,31 +117,18 @@
           <div class="role-container" aria-hidden="true">
             <p id="typewrite" aria-live="polite"></p>
           </div>
+        </div>
 
-          <!-- hero divider: lines + glass knight chip -->
-            <!--<div class="chess-chip" aria-hidden="true"> -->
-            <!--  <i class="fas fa-chess-knight chess-icon" aria-hidden="true"></i><!--
-           <!-- </div><!-->
-            <div class="line" role="presentation"></div>
-          </div>
+        <div aria-hidden="true" style="margin: 2.5rem auto; width: 100%; height: 1px; background: linear-gradient(90deg, rgba(150,150,150,0) 0%, rgba(150,150,150,0.5) 50%, rgba(150,150,150,0) 100%); box-shadow: 0 0 15px rgba(150,150,150,0.1);"></div>
 
-          <!-- Orange lines -->
-          <div class="hero-divider" aria-hidden="true">
-            <div class="line" role="presentation"></div>
-            <div class="line" role="presentation"></div>
-          </div>
-
-          <!-- HERO CTA — only CHAT button per request -->
-          <div class="hero-cta" role="group" aria-label="Primary calls to action">
-            <button class="btn-hero btn-primary" id="openChatBtn" title="Chat with my experience" aria-haspopup="dialog">
-              <i class="fas fa-comments" aria-hidden="true"></i>
-              Chat with my Experience
-            </button>
-          </div>
+        <div class="hero-cta" role="group" aria-label="Primary calls to action">
+          <button class="btn-hero btn-primary" id="openChatBtn" title="Chat with my experience" aria-haspopup="dialog">
+            <i class="fas fa-comments" aria-hidden="true"></i>
+            Chat with my Experience
+          </button>
         </div>
       </div>
     </section>
-
 <!-- VALUE EVOLUTION STAIRCASE -->
 <div class="value-prop-bridge">
     <div class="container">
@@ -346,6 +327,9 @@
         </a>
         
       </div>
+        
+
+      <div aria-hidden="true" style="margin-top: 4rem; width: 100%; height: 1px; background: linear-gradient(90deg, rgba(150,150,150,0) 0%, rgba(150,150,150,0.5) 50%, rgba(150,150,150,0) 100%); box-shadow: 0 0 15px rgba(150,150,150,0.1);"></div>
     </div>
   </section>
 
