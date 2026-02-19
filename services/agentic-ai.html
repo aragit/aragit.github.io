@@ -124,7 +124,23 @@
     /* ---------- footer ---------- */
     footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
     @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
+  
+    /* --- TERMINAL BLINK EFFECT --- */
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .blink-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background-color: #00ff00;
+      vertical-align: middle;
+      margin-left: 5px;
+      animation: blinkCursor 1s step-end infinite;
+    }
   </style>
+
 </head>
 <body>
 
@@ -174,7 +190,7 @@
           > [Gateway] Evaluating Policy Request: /med/prescribe/auth<br>
           > [BLOCKED] Policy-as-Code: 'Autonomous prescription denied (Rule 4).'<br>
           > [Fallback] Escalate to Dr. Smith via secure gRPC stream.<br>
-          > [Status] Awaiting cryptographic human-in-the-loop sign-off.
+          > [Status] Awaiting cryptographic human-in-the-loop sign-off.<span class="blink-cursor"></span>
         </div>
       </div>
     </div>
@@ -206,7 +222,7 @@
           > [Durable_Worker] Node recovered. Restoring exact POMDP state...<br>
           > [Planner] Resuming from step 4. 9 supplier quotes successfully received.<br>
           > [Action] Executing optimal reroute. Issuing ERP inventory update.<br>
-          > [Status] Reroute complete. Cost variance within 5% tolerance.
+          > [Status] Reroute complete. Cost variance within 5% tolerance.<span class="blink-cursor"></span>
         </div>
       </div>
     </div>
@@ -236,7 +252,7 @@
           > [Tool_Output] Variance calculated deterministically: $12,450.00.<br>
           > [Planner] Drafting Journal Entry Adjustment...<br>
           > [Gate] Transaction > $10k threshold detected. Auto-commit disabled.<br>
-          > [Auth] Awaiting dual-key cryptographic signing by CFO.
+          > [Auth] Awaiting dual-key cryptographic signing by CFO.<span class="blink-cursor"></span>
         </div>
       </div>
     </div>
