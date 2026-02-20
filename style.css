@@ -1954,25 +1954,7 @@ header .logo img {
   background: linear-gradient(90deg, transparent, #ff6b00, transparent);
 }
 
-/* 3D Rotating Logo Effect */
 
-  25% {
-    transform: perspective(1000px) rotateY(90deg) rotateX(10deg);
-    filter: drop-shadow(5px 5px 20px rgba(255, 107, 0, 0.5));
-  }
-  50% {
-    transform: perspective(1000px) rotateY(180deg) rotateX(10deg);
-    filter: drop-shadow(0 5px 25px rgba(255, 107, 0, 0.6));
-  }
-  75% {
-    transform: perspective(1000px) rotateY(270deg) rotateX(10deg);
-    filter: drop-shadow(-5px 5px 20px rgba(255, 107, 0, 0.5));
-  }
-  100% {
-    transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
-    filter: drop-shadow(0 5px 15px rgba(255, 107, 0, 0.3));
-  }
-}
 
 /* Logo with disk thickness effect */
 
@@ -1989,43 +1971,11 @@ header .logo img {
   100% { transform: perspective(1000px) rotateY(360deg) rotateX(10deg); }
 }
 
-  animation-play-state: paused;
-  transform: scale(1.2);
-  border-color: #ff8533 !important;
-}
 
-/* Logo with mouse tilt effect */
 
-  box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
-  border-color: #ff8533 !important;
-}
 
-/* Logo with mouse tilt effect */
 
-/* Logo - simple orange border */
 
-/* Hero logo with orange border */
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 4px solid #ff6b00;
-  background: #1a1a1a;
-  padding: 3px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Hero logo with orange border */
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50% !important;
-  border: 4px solid #ff6b00 !important;
-  background: #1a1a1a !important;
-  padding: 3px !important;
-  object-fit: cover !important;
-  display: block !important;
-  box-sizing: border-box !important;
-}
 
 /* Header logo - circular with orange border, no glow */
 header .logo img {
@@ -11467,475 +11417,62 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
-
 /* =========================================
-   HYBRID TERMINAL-GLASS FOOTER
+   AGENTIC SOLUTIONS (BENTO) CYBER-CYAN THEME
    ========================================= */
-.site-footer {
-    position: relative;
-    background: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(15px);
-    border-top: 1px solid rgba(255, 107, 0, 0.2);
-    padding: 80px 0 30px;
-    overflow: hidden;
-    color: #e0e0e0;
-}
 
-.footer-grid-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr;
-    gap: 40px;
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 1;
-}
-
-.footer-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.footer-logo i { color: var(--accent); margin-right: 10px; }
-.footer-motto { color: #9ca3af; max-width: 300px; margin-bottom: 25px; }
-.footer-socials { display: flex; gap: 15px; }
-.footer-socials a { color: #9ca3af; font-size: 1.2rem; transition: 0.3s ease; }
-.footer-socials a:hover { color: var(--accent); transform: translateY(-3px); }
-
-.footer-nav h4, .footer-contact h4 {
-    color: #fff; margin-bottom: 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
-}
-.footer-links { list-style: none; padding: 0; }
-.footer-links li { margin-bottom: 12px; }
-.footer-links a { color: #9ca3af; text-decoration: none; transition: 0.3s; }
-.footer-links a:hover { color: var(--accent); padding-left: 5px; }
-
-.footer-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(255, 107, 0, 0.1); color: var(--accent); border: 1px solid var(--accent);
-    padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: 0.3s;
-}
-.footer-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 0 20px rgba(255, 107, 0, 0.3); }
-
-/* Terminal Bar Styling */
-.footer-terminal-bar {
-    border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 30px;
-    display: flex; justify-content: space-between; align-items: center;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280;
-}
-.terminal-status { display: flex; align-items: center; gap: 8px; }
-.status-indicator {
-    width: 8px; height: 8px; background: #10b981; border-radius: 50%;
-    box-shadow: 0 0 8px #10b981; animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.4; }
-    100% { opacity: 1; }
-}
-
-.terminal-logs {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent);
-    opacity: 0.6; min-width: 250px; text-align: right; white-space: nowrap; overflow: hidden;
-    animation: textFlicker 3s infinite;
-}
-
-@keyframes textFlicker {
-  0% { opacity: 0.6; } 50% { opacity: 0.5; } 100% { opacity: 0.6; }
-}
-
-@media (max-width: 768px) {
-    .footer-content { grid-template-columns: 1fr; text-align: center; }
-    .footer-motto { margin: 0 auto 25px auto; }
-    .footer-socials { justify-content: center; }
-    .footer-terminal-bar { flex-direction: column; gap: 15px; }
-    .terminal-logs { text-align: center; }
-}
-
-
-/* =========================================
-   CYBER TERMINAL CTA
-   ========================================= */
-.cyber-cta {
-    display: inline-block;
-    background: #0a0a0a;
-    color: #10b981; /* Terminal green */
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    padding: 12px 20px;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05);
-    margin-top: 10px;
-}
-
-.cyber-cta:hover {
-    background: rgba(16, 185, 129, 0.1);
-    border-color: #10b981;
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2), inset 0 0 15px rgba(16, 185, 129, 0.1);
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-.cyber-cta .prompt-arrow {
-    color: var(--accent);
-    margin-right: 8px;
-    font-weight: bold;
-}
-
-.cyber-cta .blink-cursor {
-    color: #10b981;
-    animation: terminalBlink 1s step-end infinite;
-    margin-left: 5px;
-}
-
-@keyframes terminalBlink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-
-/* =========================================
-   FOOTER HEADER ALIGNMENT FIX
-   ========================================= */
-.footer-logo,
-.footer-nav h4,
-.footer-contact h4 {
-    font-size: 1.15rem !important;      /* Unifies the size */
-    font-weight: 700 !important;        /* Makes them all bold */
-    color: #ffffff !important;
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;     /* Uniform bottom spacing */
-    text-transform: none !important;    /* Removes the uppercase from h4 */
-    letter-spacing: normal !important;  /* Removes the wide letter spacing */
-    display: flex !important;           /* Flexbox to control vertical alignment */
-    align-items: center !important;     /* Centers them perfectly on the horizontal axis */
-    height: 35px !important;            /* Locks the row height so they line up perfectly */
-}
-
-/* Ensure the logo icon stays properly spaced within the new flex layout */
-.footer-logo i {
-    margin-right: 10px;
-    display: block;
-}
-
-
-/* =========================================
-   AGENTIC SOLUTIONS (PORTFOLIO) PREMIUM THEME
-   ========================================= */
-.portfolio-card {
-    /* Deep blue-tinted dark gradient to contrast the pure dark of consulting */
-    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important; /* Matches the curve of the consulting cards */
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.4s ease !important;
-}
-
-/* The Cyber-Cyan glowing top line (hidden until hover) */
-.portfolio-card::before {
-    content: '';
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #06b6d4, transparent);
-    transform: scaleX(0);
-    transition: transform 0.4s ease;
-}
-
-/* Reveal the glowing line on hover */
-.portfolio-card:hover::before {
-    transform: scaleX(1);
-}
-
-/* Hover state: elevate, glow, and shadow */
-.portfolio-card:hover {
-    transform: translateY(-5px) !important;
-    border-color: rgba(6, 182, 212, 0.4) !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
-    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
-}
-
-/* Make the title subtlely shift to Cyan on hover */
-.portfolio-card:hover h3 {
-    color: #06b6d4 !important;
-    transition: color 0.3s ease;
-}
-
-/* Make the links/icons match the new theme on hover */
-.portfolio-card:hover .btn-link {
-    color: #06b6d4 !important;
-}
-
-
-/* =========================================
-   AGENTIC SOLUTIONS: FORCED PREMIUM THEME
-   ========================================= */
-/* 1. Force the main card wrapper to accept the gradient */
-.portfolio-card, .solution-card, .agentic-card {
-    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.4s ease !important;
-    display: block !important;
-    text-decoration: none !important;
-    z-index: 1 !important;
-}
-
-/* 2. CRITICAL FIX: Strip solid backgrounds from ANY inner divs so the gradient shows through */
-.portfolio-card div, .solution-card div, .agentic-card div,
-.portfolio-card .card-content, .solution-card .card-content {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* 3. The sweeping Cyber-Cyan top border */
-.portfolio-card::before, .solution-card::before, .agentic-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
-    transform: scaleX(0);
-    transition: transform 0.4s ease !important;
-    z-index: 10 !important;
-}
-
-/* 4. Hover Effects: Scale line, elevate card, add cyan glow */
-.portfolio-card:hover::before, .solution-card:hover::before, .agentic-card:hover::before {
-    transform: scaleX(1) !important;
-}
-
-.portfolio-card:hover, .solution-card:hover, .agentic-card:hover {
-    transform: translateY(-5px) !important;
-    border-color: rgba(6, 182, 212, 0.4) !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
-    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
-}
-
-/* 5. Text Highlights on Hover */
-.portfolio-card:hover h3, .solution-card:hover h3, .agentic-card:hover h3 {
-    color: #06b6d4 !important;
-    transition: color 0.3s ease !important;
-}
-
-.portfolio-card:hover .btn-link, .portfolio-card:hover .tags span {
-    color: #06b6d4 !important;
-    border-color: rgba(6, 182, 212, 0.3) !important;
-}
-
-
-/* =========================================
-   AGENTIC SOLUTIONS (#services) CYBER-CYAN THEME
-   ========================================= */
-/* 1. Force the main card wrapper inside the Agentic section to accept the gradient */
-#services .service-card {
-    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.4s ease !important;
-    z-index: 1 !important;
-}
-
-/* 2. Strip solid backgrounds from ANY inner divs so the gradient shows through */
-#services .service-card > div,
-#services .service-card .service-content {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* 3. The sweeping Cyber-Cyan top border */
-#services .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
-    transform: scaleX(0);
-    transition: transform 0.4s ease !important;
-    z-index: 10 !important;
-}
-
-/* 4. Hover Effects: Scale line, elevate card, add cyan glow */
-#services .service-card:hover::before {
-    transform: scaleX(1) !important;
-}
-
-#services .service-card:hover {
-    transform: translateY(-5px) !important;
-    border-color: rgba(6, 182, 212, 0.4) !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
-    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
-}
-
-/* 5. Text Highlights on Hover */
-#services .service-card:hover h3 {
-    color: #06b6d4 !important;
-    transition: color 0.3s ease !important;
-}
-
-#services .service-card:hover a.learn-more,
-#services .service-card:hover .learn-more i {
-    color: #06b6d4 !important;
-}
-
-
-/* =========================================
-   DEFINITIVE FIX: AGENTIC SOLUTIONS CYBER-CYAN
-   Targeting the correct class: #portfolio .bento-item 
-   ========================================= */
-/* 1. Base State: Deep blue-tinted gradient */
-#portfolio .bento-item {
-    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.4s ease !important;
-    z-index: 1 !important;
-}
-
-/* 2. The sweeping Cyber-Cyan top border */
-#portfolio .bento-item::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
-    transform: scaleX(0);
-    transition: transform 0.4s ease !important;
-    z-index: 10 !important;
-    pointer-events: none !important;
-}
-
-/* 3. Hover Effects: Scale line, elevate card, add cyan glow */
-#portfolio .bento-item:hover::before {
-    transform: scaleX(1) !important;
-}
-
-#portfolio .bento-item:hover {
-    transform: translateY(-5px) !important;
-    border-color: rgba(6, 182, 212, 0.4) !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
-    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
-}
-
-/* 4. Text & Link Highlights on Hover */
-#portfolio .bento-item:hover h3 {
-    color: #06b6d4 !important;
-    transition: color 0.3s ease !important;
-}
-
-#portfolio .bento-item:hover .link-arrow {
-    color: #06b6d4 !important;
-    transition: color 0.3s ease !important;
-}
-
-
-/* =========================================
-   BACKGROUND VISIBILITY FIX FOR BENTO CARDS
-   ========================================= */
-/* 1. Make the gradient visibly Cyan/Teal so it pops against the black background */
-#portfolio .bento-item {
-    background: linear-gradient(145deg, rgba(6, 182, 212, 0.12) 0%, rgba(10, 15, 22, 0.9) 100%) !important;
-}
-
-/* 2. Hover state background (slightly brighter cyan) */
-#portfolio .bento-item:hover {
-    background: linear-gradient(145deg, rgba(6, 182, 212, 0.2) 0%, rgba(15, 22, 30, 0.95) 100%) !important;
-}
-
-/* 3. CRITICAL: Strip solid backgrounds off ANY internal divs so the gradient actually shows through */
-#portfolio .bento-item > div,
-#portfolio .bento-item .featured-flex,
-#portfolio .bento-item .featured-info {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* Ensure the terminal box inside the featured card keeps its dark code background */
-#portfolio .bento-item .featured-terminal {
-    background: #0a0a0a !important; 
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-
-/* =========================================
-   ULTIMATE FIX: BENTO CARDS CYBER-CYAN THEME
-   ========================================= */
-/* 1. Base Dark Glass Theme (NO bright cyan backgrounds!) */
-section#portfolio .bento-grid .bento-item {
-    background: linear-gradient(145deg, rgba(14, 18, 24, 0.8) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.4s ease !important;
+/* 1. Apply the Deep Dark Cyan Gradient to ALL Bento Cards */
+#portfolio .bento-grid .bento-item,
+#portfolio .bento-grid .card-featured {
+    background: linear-gradient(145deg, rgba(14, 18, 26, 0.95) 0%, rgba(5, 5, 8, 1) 100%) !important;
+    border: 1px solid rgba(6, 182, 212, 0.15) !important;
 }
 
 /* 2. Strip inner solid backgrounds so the dark glass shows through */
-section#portfolio .bento-grid .bento-item > div,
-section#portfolio .bento-grid .bento-item .featured-flex,
-section#portfolio .bento-grid .bento-item .featured-info {
+#portfolio .bento-grid .bento-item > div,
+#portfolio .bento-grid .bento-item .featured-flex,
+#portfolio .bento-grid .bento-item .featured-info {
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
 }
 
-/* 3. The Animated Cyan Top Line (Using ::after and high z-index so it never hides) */
-section#portfolio .bento-grid .bento-item::after {
+/* 3. The Animated Cyan Top Line */
+#portfolio .bento-grid .bento-item::after {
     content: '';
     position: absolute;
     top: 0; 
     left: 0; 
     width: 100%; 
-    height: 3px !important; /* Thickened to 3px so it is clearly visible */
+    height: 3px !important; 
     background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.4s ease !important;
-    z-index: 50 !important; /* Forces it above all other content */
+    z-index: 50 !important; 
     pointer-events: none;
 }
 
-/* 4. Hover State: Show line, elevate, subtle cyan glow (Keeps background dark!) */
-section#portfolio .bento-grid .bento-item:hover::after {
+/* 4. Hover State: Show line, elevate, subtle cyan outer glow */
+#portfolio .bento-grid .bento-item:hover::after {
     transform: scaleX(1) !important;
 }
 
-section#portfolio .bento-grid .bento-item:hover {
+#portfolio .bento-grid .bento-item:hover {
     transform: translateY(-5px) !important;
-    border-color: rgba(6, 182, 212, 0.4) !important;
-    /* Subtle cyan outer glow and inner rim light */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6, 182, 212, 0.1) !important;
-    /* Keeps the background strictly dark on hover */
-    background: linear-gradient(145deg, rgba(16, 20, 28, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
+    border-color: rgba(6, 182, 212, 0.5) !important;
+    /* Keeps the inside dark, adds a cyan glow to the outside */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(6, 182, 212, 0.15) !important;
 }
 
-/* 5. Keep the terminal box pure black */
-section#portfolio .bento-grid .bento-item .featured-terminal {
-    background: #0a0a0a !important; 
+/* 5. Text highlights on hover */
+#portfolio .bento-grid .bento-item:hover h3 {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease !important;
+}
+
+/* 6. Keep the terminal box pure black */
+#portfolio .bento-grid .bento-item .featured-terminal {
+    background: #000000 !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px !important;
-    position: relative;
-    z-index: 2;
 }
