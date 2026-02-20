@@ -11605,3 +11605,28 @@ div#services .cards .card.card-wide .card-actions {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+
+/* =========================================
+   FOOTER HEADER ALIGNMENT FIX
+   ========================================= */
+.footer-logo,
+.footer-nav h4,
+.footer-contact h4 {
+    font-size: 1.15rem !important;      /* Unifies the size */
+    font-weight: 700 !important;        /* Makes them all bold */
+    color: #ffffff !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;     /* Uniform bottom spacing */
+    text-transform: none !important;    /* Removes the uppercase from h4 */
+    letter-spacing: normal !important;  /* Removes the wide letter spacing */
+    display: flex !important;           /* Flexbox to control vertical alignment */
+    align-items: center !important;     /* Centers them perfectly on the horizontal axis */
+    height: 35px !important;            /* Locks the row height so they line up perfectly */
+}
+
+/* Ensure the logo icon stays properly spaced within the new flex layout */
+.footer-logo i {
+    margin-right: 10px;
+    display: block;
+}
