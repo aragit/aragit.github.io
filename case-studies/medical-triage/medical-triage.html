@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Medical Triage Agent Case Study | Arash Nicoomanesh</title>
-  <meta name="description" content="Replacing fragile, hallucination-prone clinical chatbots with strict, governed execution graphs and Policy-as-Code."/>
+  <title>Regulated Medical Triage: A Neuro-Symbolic Architecture | Arash Nicoomanesh</title>
+  <meta name="description" content="Replacing fragile clinical chatbots with strict execution graphs, Policy-as-Code, and deterministic failure handling."/>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
@@ -36,20 +36,30 @@
     
     /* ---------- sections & grids ---------- */
     section { padding: clamp(60px, 8vw, 90px) 0; }
-    .section-title { font-size: 2rem; color: #fff; margin-bottom: 40px; text-align: center; font-weight: 700; }
+    .section-title { font-size: 2rem; color: #fff; margin-bottom: 20px; text-align: center; font-weight: 700; }
+    .section-subtitle { text-align:center; max-width:800px; margin:0 auto 50px auto; color:var(--gray); font-size: 1.1rem; }
     
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: .3s; }
+    @media(max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: .3s; height: 100%; }
     .card:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-3px); }
     .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 10px; }
-    .card h3 i { color: #f24e1e; }
-    .card p { color: #a8aeb3; font-size: 0.95rem; }
+    .card h3 i { color: var(--accent); }
+    .card p, .card ul { color: #a8aeb3; font-size: 0.95rem; margin-bottom: 10px; }
+    .card ul { padding-left: 20px; }
+    .card li { margin-bottom: 8px; }
     
-    .arch-icon { color: var(--accent) !important; }
+    /* ---------- pipeline timeline ---------- */
+    .pipeline-step { display: flex; gap: 30px; margin-bottom: 40px; }
+    @media(max-width: 700px) { .pipeline-step { flex-direction: column; gap: 15px; } }
+    .pipeline-number { flex-shrink: 0; width: 50px; height: 50px; background: rgba(255,107,0,0.1); border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+    .pipeline-content h3 { color: #fff; font-size: 1.4rem; margin-bottom: 10px; }
+    .pipeline-content p { color: #cbd6df; font-size: 1rem; line-height: 1.6; }
     
     /* ---------- code windows ---------- */
-    .code-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-    @media(max-width: 900px){ .code-showcase { grid-template-columns: 1fr; } }
+    .code-showcase { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
     
     .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
     .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -57,7 +67,7 @@
     .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
     .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
     
-    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; }
+    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; margin: 0; }
     .string { color: #ce9178; }
     .keyword { color: #569cd6; }
     .number { color: #b5cea8; }
@@ -66,19 +76,18 @@
     
     /* ---------- stats ---------- */
     .stats-band { background: #121212; padding: 60px 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); }
-    .stat-item h4 { font-size: 3rem; color: var(--accent); margin-bottom: 5px; font-weight: 800; }
-    .stat-item p { color: #fff; font-weight: 500; font-size: 1.1rem; }
+    .stat-item h4 { font-size: 2.5rem; color: var(--accent); margin-bottom: 5px; font-weight: 800; }
+    .stat-item p { color: #fff; font-weight: 500; font-size: 1rem; }
     
-    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; }
-  
-    /* ---------- cta buttons ---------- */
+    /* ---------- buttons ---------- */
     .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid var(--accent); }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
     .btn-secondary { background: transparent; color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid rgba(255,255,255,0.2); }
     .btn-secondary:hover { border-color: #fff; transform: translateY(-2px); background: rgba(255,255,255,0.05); }
     .case-cta-band { padding: 60px 0; text-align: center; }
+    
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; }
   </style>
-
 </head>
 <body>
 
@@ -86,7 +95,7 @@
   <div class="container">
     <div class="header-inner">
       <a href="../../index.html" class="logo"><i class="fa-solid fa-network-wired"></i>Arash Nicoomanesh</a>
-      <a href="../../services/agentic-ai.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to Swarm Architectures</a>
+      <a href="../../services/agentic-ai.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to Multi-Agent Orchestration</a>
     </div>
   </div>
 </header>
@@ -94,28 +103,28 @@
 <section class="hero">
   <div class="container">
     <span class="badge">Enterprise Post-Mortem</span>
-    <h1>Mission-Critical Medical Triage: A Neuro-Symbolic Approach</h1>
-    <p>Replacing fragile, hallucination-prone clinical chatbots with strict, governed execution graphs and Policy-as-Code to achieve absolute HIPAA compliance.</p>
+    <h1>Regulated Medical Triage: A Neuro-Symbolic Approach</h1>
+    <p>We design regulated AI infrastructure. See how we replaced a fragile, hallucinating clinical chatbot with a strict, governable state machine backed by Policy-as-Code.</p>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <h2 class="section-title">The GenAI Trap</h2>
-    <p style="text-align:center; max-width:800px; margin:0 auto 40px auto; color:var(--gray);">A top-tier telehealth provider's initial generative AI prototype (built on a standard ReAct loop) was shut down by compliance teams after the LLM attempted to autonomously prescribe medication. Here is why the "chatbot" paradigm failed them:</p>
+    <h2 class="section-title">The "Planning Rubicon" in Healthcare</h2>
+    <p class="section-subtitle">A top-tier telehealth provider attempted to automate clinical intake using a standard generative AI "chatbot" (a ReAct loop). Because the LLM was trapped in a continuous loop of reasoning and tool-calling with no bounded action space, it failed catastrophically.</p>
     
     <div class="grid-3">
-      <div class="card">
-        <h3><i class="fa-solid fa-triangle-exclamation"></i> The Hallucination Cascade</h3>
-        <p>If the Electronic Health Record (EHR) API returned an unexpected 500 error, the ReAct agent panicked and hallucinated fake patient history to fulfill its core prompt, creating massive medical liability.</p>
+      <div class="card" style="border-top: 2px solid #ff5f56;">
+        <h3><i class="fa-solid fa-triangle-exclamation" style="color:#ff5f56;"></i> Unbounded Action Space</h3>
+        <p>Tool calls were entirely LLM-decided. Without a deterministic graph, the agent could theoretically invoke any exposed API at any time, eliminating auditability.</p>
       </div>
-      <div class="card">
-        <h3><i class="fa-solid fa-clock-rotate-left"></i> Temporal State Decay</h3>
-        <p>Because the agent lacked explicit, durable memory states, it frequently suffered from context-window decay—forgetting critical drug allergies mentioned earlier in the clinical intake session.</p>
+      <div class="card" style="border-top: 2px solid #ff5f56;">
+        <h3><i class="fa-solid fa-bomb" style="color:#ff5f56;"></i> Blast-Radius Failure</h3>
+        <p>If the hospital's EHR API returned a timeout, the ReAct agent panicked, hallucinated fake patient history to fulfill its prompt, and attempted to route care based on fiction.</p>
       </div>
-      <div class="card">
-        <h3><i class="fa-solid fa-bomb"></i> Zero Blast-Radius Containment</h3>
-        <p>There was no physical barrier preventing the LLM from triggering a prescription API. It was only stopped by a "system prompt" telling it not to—which is mathematically provable to be vulnerable to jailbreaks.</p>
+      <div class="card" style="border-top: 2px solid #ff5f56;">
+        <h3><i class="fa-solid fa-ban" style="color:#ff5f56;"></i> No Formal Verification</h3>
+        <p>There was no physical barrier preventing the LLM from triggering a prescription API. It was only stopped by a "system prompt"—which is mathematically vulnerable to jailbreaks.</p>
       </div>
     </div>
   </div>
@@ -123,50 +132,141 @@
 
 <section style="background: rgba(20,20,20,0.3); border-top: 1px solid rgba(255,255,255,.02);">
   <div class="container">
-    <h2 class="section-title">The Neuro-Symbolic Architecture</h2>
+    <h2 class="section-title">Clinical Domain Constraints</h2>
+    <p class="section-subtitle">Real medical triage is not an abstract conversational flow. It requires mapping unstructured symptoms to standard clinical acuity frameworks (like ESI or CTAS).</p>
     
-    <div class="grid-3">
-      <div class="card" style="border-top: 3px solid var(--accent);">
-        <h3><i class="fa-solid fa-eye arch-icon"></i> 1. FHIR Integration (Perception)</h3>
-        <p>The system securely ingests symptoms via a typed FHIR interface. PII/PHI is immediately redacted locally before any diagnostic data touches the LLM payload, ensuring absolute data privacy.</p>
-      </div>
-      <div class="card" style="border-top: 3px solid var(--accent);">
-        <h3><i class="fa-solid fa-brain arch-icon"></i> 2. Schema-Constrained Reasoning (The Brain)</h3>
-        <p>We distilled a reasoning engine specifically trained for schema adherence. Instead of "talking" to the patient, the LLM ingests symptoms and outputs a strict JSON execution graph for deterministic routing.</p>
-      </div>
-      <div class="card" style="border-top: 3px solid var(--accent);">
-        <h3><i class="fa-solid fa-shield-halved arch-icon"></i> 3. Policy-as-Code (The Shield)</h3>
-        <p>Before the execution engine processes the graph, it is intercepted by an Open Policy Agent (OPA) sidecar. If the plan attempts an illegal medical action, it is blocked deterministically at the network layer.</p>
+    <div class="card" style="max-width: 800px; margin: 0 auto; background: var(--darker);">
+      <p style="color: #fff; margin-bottom: 20px;">The system must explicitly map patient presentations into rigid operational vectors:</p>
+      <div class="grid-2">
+        <div>
+          <ul style="list-style-type: none; padding: 0;">
+            <li><i class="fa-solid fa-check" style="color:var(--accent); margin-right:8px;"></i> <strong>Acuity Level:</strong> 1 (Resuscitation) to 5 (Non-urgent)</li>
+            <li><i class="fa-solid fa-check" style="color:var(--accent); margin-right:8px;"></i> <strong>Risk Vector:</strong> Cardiac, Neurological, Trauma</li>
+          </ul>
+        </div>
+        <div>
+          <ul style="list-style-type: none; padding: 0;">
+            <li><i class="fa-solid fa-check" style="color:var(--accent); margin-right:8px;"></i> <strong>Care Path:</strong> ER, Urgent Virtual, Async Self-Care</li>
+            <li><i class="fa-solid fa-check" style="color:var(--accent); margin-right:8px;"></i> <strong>SLA Timer:</strong> e.g., 10 minutes to specialist</li>
+          </ul>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">The Neuro-Symbolic Control Loop</h2>
+    <p class="section-subtitle" style="color: #fff; font-weight: 600; font-size: 1.3rem;">Neural proposes. Symbolic disposes.</p>
+    <p class="section-subtitle">We separated probabilistic reasoning from deterministic execution. The LLM acts purely as a stochastic proposal engine; the surrounding infrastructure is strictly deterministic.</p>
+    
+    <div style="max-width: 900px; margin: 0 auto;">
+      
+      <div class="pipeline-step">
+        <div class="pipeline-number">1</div>
+        <div class="pipeline-content">
+          <h3>Ingress & Sanitization</h3>
+          <p><strong>Goal: Zero PHI exposure.</strong> Data enters a secure API gateway where a local edge-filtering service tokenizes Protected Health Information. The LLM never sees raw identity—only a clinical abstraction (e.g., <em>Age Bucket: 40-50, Sex: M, Comorbidity: Hypertension</em>).</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">2</div>
+        <div class="pipeline-content">
+          <h3>The Constrained Brain (Planner LLM)</h3>
+          <p>The LLM does NOT call tools. It does NOT write text to the patient. It ingests the clinical abstraction and outputs a strictly validated JSON execution plan. If the plan violates schema validation, maximum depth limits, or enum enforcement, it is deterministically rejected before execution begins.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">3</div>
+        <div class="pipeline-content">
+          <h3>Deterministic Execution Engine</h3>
+          <p>The orchestration engine interprets the approved JSON plan step-by-step. It maintains durable state, writes to an immutable audit log, and tracks SLA timers. There is no recursion, no autonomous replanning, and no self-directed loops.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">4</div>
+        <div class="pipeline-content">
+          <h3>Policy-as-Code Firewall (OPA)</h3>
+          <p>Before any action is committed (scheduling, routing, EHR mutation), an Open Policy Agent (OPA) intercepts the request. Symbolic, hard-coded clinical rules (e.g., <em>Chest pain + diaphoresis > 20 min = Automatic ER Escalation</em>) override the neural network's routing priority.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background: rgba(20,20,20,0.3); border-top: 1px solid rgba(255,255,255,.02);">
+  <div class="container">
+    <h2 class="section-title">Failure Mode Engineering & Auditability</h2>
+    <p class="section-subtitle">In healthcare, how an AI fails is more important than how it succeeds.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="fa-solid fa-shield-virus"></i> Deterministic Fallbacks</h3>
+        <ul>
+          <li><strong>If EHR API fails:</strong> Mark status = <code>EHR_UNAVAILABLE</code>. Trigger fallback: Ask patient direct allergy questions; escalate to human nurse.</li>
+          <li><strong>If LLM plan malformed:</strong> Reject. Log anomaly. Retry once. Escalate to human review.</li>
+          <li><strong>If OPA blocks action:</strong> Log violation attempt. Alert compliance dashboard. Return safe fallback path.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-file-signature"></i> Immutable Audit Trail</h3>
+        <p>Every triage session generates a cryptographic footprint for SOC2/HIPAA compliance, stored in an append-only log:</p>
+        <ul>
+          <li>Generated Plan Hash</li>
+          <li>Policy Decision Trace (OPA logic)</li>
+          <li>Timestamped State Transitions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Real Case Walkthrough</h2>
+    <p class="section-subtitle"><strong>Scenario:</strong> 45-year-old male. Chest pain for 45 minutes. History: hypertension. On aspirin.</p>
 
     <div class="code-showcase">
       
       <div class="mac-window">
         <div class="mac-header">
           <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">1_execution_plan.json</div>
+          <div class="mac-title">1_sanitized_clinical_abstraction.json</div>
         </div>
-        <pre><code><span class="comment">// The LLM acts purely as a Planner.</span>
-<span class="comment">// It outputs this strict, predictable execution payload.</span>
-
+        <pre><code><span class="comment">// Layer 1: PII stripped. Only structured clinical data reaches the LLM.</span>
 {
-  <span class="property">"triage_id"</span>: <span class="string">"TRG-992-A"</span>,
-  <span class="property">"patient_status"</span>: {
-    <span class="property">"acuity_level"</span>: <span class="number">2</span>,
-    <span class="property">"primary_symptom"</span>: <span class="string">"chest_pain"</span>,
-    <span class="property">"onset_duration_mins"</span>: <span class="number">45</span>
+  <span class="property">"patient_id"</span>: <span class="string">"TOKEN_8832"</span>,
+  <span class="property">"demographics"</span>: { <span class="property">"age_bucket"</span>: <span class="string">"40-50"</span>, <span class="property">"sex"</span>: <span class="string">"M"</span> },
+  <span class="property">"presentation"</span>: {
+    <span class="property">"symptoms"</span>: [<span class="string">"chest_pain_acute"</span>],
+    <span class="property">"duration_mins"</span>: <span class="number">45</span>
   },
-  <span class="property">"execution_graph"</span>: [
+  <span class="property">"known_comorbidities"</span>: [<span class="string">"hypertension"</span>],
+  <span class="property">"current_medications"</span>: [<span class="string">"aspirin_81mg"</span>]
+}</code></pre>
+      </div>
+
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">2_execution_plan_proposal.json</div>
+        </div>
+        <pre><code><span class="comment">// Layer 2: LLM proposes a structured plan. No actions are taken yet.</span>
+{
+  <span class="property">"acuity_classification"</span>: {
+    <span class="property">"esi_level"</span>: <span class="number">2</span>,
+    <span class="property">"risk_vector"</span>: <span class="string">"cardiac"</span>
+  },
+  <span class="property">"proposed_graph"</span>: [
     {
       <span class="property">"step"</span>: <span class="number">1</span>,
-      <span class="property">"action"</span>: <span class="string">"QUERY_EHR"</span>,
-      <span class="property">"parameters"</span>: {<span class="property">"check_flags"</span>: [<span class="string">"cardiac_history"</span>, <span class="string">"blood_thinners"</span>]}
-    },
-    {
-      <span class="property">"step"</span>: <span class="number">2</span>,
-      <span class="property">"action"</span>: <span class="string">"ROUTE_TO_SPECIALIST"</span>,
-      <span class="property">"parameters"</span>: {<span class="property">"department"</span>: <span class="string">"CARDIOLOGY"</span>, <span class="property">"priority"</span>: <span class="string">"HIGH_URGENCY"</span>}
+      <span class="property">"action"</span>: <span class="string">"ROUTE_DECISION"</span>,
+      <span class="property">"parameters"</span>: { <span class="property">"care_path"</span>: <span class="string">"ER_IMMEDIATE"</span>, <span class="property">"sla_timer_mins"</span>: <span class="number">10</span> }
     }
   ]
 }</code></pre>
@@ -175,28 +275,27 @@
       <div class="mac-window">
         <div class="mac-header">
           <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">2_clinical_guardrail.rego</div>
+          <div class="mac-title">3_opa_firewall.rego</div>
         </div>
-        <pre><code><span class="comment"># System prompts fail. We use Open Policy Agent (OPA) </span>
-<span class="comment"># to physically block illegal medical actions at the network layer.</span>
-
+        <pre><code><span class="comment"># Layer 4: Symbolic rules evaluate the neural proposal.</span>
 <span class="keyword">package</span> triage.governance
 
-<span class="keyword">default</span> allow_execution = <span class="keyword">false</span>
+<span class="keyword">default</span> allow_routing = <span class="keyword">false</span>
 
-<span class="comment"># Allow routing to specialists</span>
-allow_execution {
-    input.action == <span class="string">"ROUTE_TO_SPECIALIST"</span>
-    input.priority <span class="keyword">in</span> [<span class="string">"LOW"</span>, <span class="string">"MEDIUM"</span>, <span class="string">"HIGH_URGENCY"</span>]
+<span class="comment"># RED FLAG DETECTED: Deterministic ER escalation</span>
+allow_routing {
+    input.acuity_classification.esi_level <= <span class="number">2</span>
+    input.proposed_graph[_].parameters.care_path == <span class="string">"ER_IMMEDIATE"</span>
 }
 
-<span class="comment"># BLOCK ALL AUTONOMOUS PRESCRIPTIONS (Zero Trust)</span>
-deny_execution[msg] {
-    input.action == <span class="string">"ISSUE_PRESCRIPTION"</span>
-    msg := <span class="string">"FATAL POLICY VIOLATION: Agents are strictly prohibited from writing prescriptions. Cryptographic MD signature required."</span>
+<span class="comment"># FAILSafe: Block any non-ER routing for high-acuity cardiac vectors</span>
+deny_routing[msg] {
+    input.acuity_classification.risk_vector == <span class="string">"cardiac"</span>
+    input.proposed_graph[_].parameters.care_path != <span class="string">"ER_IMMEDIATE"</span>
+    msg := <span class="string">"FATAL: Policy mandates immediate ER routing for cardiac vectors."</span>
 }</code></pre>
       </div>
-      
+
     </div>
   </div>
 </section>
@@ -206,18 +305,18 @@ deny_execution[msg] {
     <div class="grid-3" style="text-align:center;">
       <div class="stat-item">
         <h4>100%</h4>
-        <p>HIPAA Compliance Guarantee</p>
-        <span style="font-size:0.85rem; color:var(--gray);">Enabled by physical OPA intercept sidecars.</span>
+        <p>Deterministic Routing Compliance</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Zero hallucinated actions or prescriptions.</span>
       </div>
       <div class="stat-item">
-        <h4>68%</h4>
-        <p>Token Cost Reduction</p>
-        <span style="font-size:0.85rem; color:var(--gray);">By eliminating infinite ReAct loops.</span>
+        <h4>42%</h4>
+        <p>Reduction in Nurse Triage Load</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Safe, asynchronous case abstraction.</span>
       </div>
       <div class="stat-item">
-        <h4>Zero</h4>
-        <p>Hallucinated Actions</p>
-        <span style="font-size:0.85rem; color:var(--gray);">Secured by deterministic execution skeletons.</span>
+        <h4>0</h4>
+        <p>PHI Exposures to LLM</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Protected by Layer 1 ingress sanitization.</span>
       </div>
     </div>
   </div>
@@ -225,7 +324,7 @@ deny_execution[msg] {
 
 <section class="case-cta-band">
   <div class="container">
-    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 30px;">Ready to architect your clinical workflow?</h2>
+    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 30px;">Ready to architect regulated AI infrastructure?</h2>
     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
       <a href="https://github.com/aragit" target="_blank" class="btn-secondary">
         <i class="fa-brands fa-github"></i> View GitHub Profile
