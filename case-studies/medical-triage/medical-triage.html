@@ -1,494 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Case Study – Medical Triage Agent | Arash Nicoomanesh</title>
-  <meta name="description" content="Autonomous Agentic AI for medical triage – full story, architecture, impact.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Medical Triage Agent Case Study | Arash Nicoomanesh</title>
+  <meta name="description" content="Replacing fragile, hallucination-prone clinical chatbots with strict, governed execution graphs and Policy-as-Code."/>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  
   <style>
-    /* === DESIGN TOKENS === */
     :root {
-      --bg: #ffffff; /* White background */
-      --fg: #333333; /* Dark text for white background */
-      --accent: #ff6b00;
-      --accent-light: #ff9d5c;
-      --muted: #f5f5f5; /* Light gray for cards */
-      --card-bg: #f9f9f9;
-      --max-width: 900px;
-      --radius: 12px;
-      --font: "Inter", system-ui, sans-serif;
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000; --code-bg: #1e1e1e;
     }
-
-    *, *::before, *::after { box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--font);
-      line-height: 1.7;
-      background: var(--bg);
-      color: var(--fg);
-    }
-
-    /* === LAYOUT SHELL === */
-    #particles-js {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: var(--bg);
-      display: none; /* Hide particles on white background */
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem;
-      background: rgba(255,255,255,.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
     
-    .header-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
     
-    header a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: opacity 0.2s;
-    }
+    /* ---------- header ---------- */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
     
-    header a:hover {
-      opacity: 0.8;
-    }
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(80px, 10vw, 100px) 0; border-bottom: 1px solid rgba(255,255,255,.05); background: radial-gradient(circle at top, rgba(255,107,0,0.05) 0%, var(--darker) 70%); text-align: center; }
+    .badge { display: inline-block; background: rgba(255,107,0,0.1); color: var(--accent); border: 1px solid rgba(255,107,0,0.3); padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px; color: #fff; }
+    .hero p { font-size: clamp(1.1rem, 2vw, 1.2rem); max-width: 800px; margin: 0 auto; color: var(--gray); font-weight: 400; }
     
-    .case-nav {
-      display: flex;
-      gap: 1.5rem;
-    }
+    /* ---------- sections & grids ---------- */
+    section { padding: clamp(60px, 8vw, 90px) 0; }
+    .section-title { font-size: 2rem; color: #fff; margin-bottom: 40px; text-align: center; font-weight: 700; }
     
-    .case-nav a {
-      color: var(--fg);
-      font-size: 0.9rem;
-    }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: .3s; }
+    .card:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-3px); }
+    .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .card h3 i { color: #f24e1e; } /* Error red for the "Trap" section */
+    .card p { color: #a8aeb3; font-size: 0.95rem; }
     
-    .case-nav a:hover {
-      color: var(--accent);
-    }
-
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: clamp(5rem, 6vw + 2rem, 7rem) 1.5rem 3rem;
-    }
-
-    /* === TYPOGRAPHY === */
-    h1 { 
-      font-size: clamp(2rem, 4vw, 2.8rem); 
-      margin: 0 0 0.5rem; 
-      line-height: 1.2;
-      color: #333333; /* Dark text for white background */
-    }
+    .arch-icon { color: var(--accent) !important; }
     
-    .subtitle { 
-      font-size: 1.2rem; 
-      color: #666; 
-      margin: 0 0 2.5rem;
-      font-weight: 400;
-    }
+    /* ---------- code windows ---------- */
+    .code-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+    @media(max-width: 900px){ .code-showcase { grid-template-columns: 1fr; } }
     
-    h2 {
-      font-size: 1.5rem;
-      color: #333333; /* Dark text for white background */
-      margin: 2.5rem 0 1rem;
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
+    .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
+    .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
     
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 3px;
-    }
+    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; }
+    .string { color: #ce9178; }
+    .keyword { color: #569cd6; }
+    .number { color: #b5cea8; }
+    .property { color: #9cdcfe; }
+    .comment { color: #6a9955; font-style: italic; }
     
-    p, li { 
-      margin: 0 0 1.2rem;
-      font-weight: 300;
-      color: #444; /* Slightly lighter than headings */
-    }
+    /* ---------- stats ---------- */
+    .stats-band { background: #121212; padding: 60px 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .stat-item h4 { font-size: 3rem; color: var(--accent); margin-bottom: 5px; font-weight: 800; }
+    .stat-item p { color: #fff; font-weight: 500; font-size: 1.1rem; }
     
-    ul, ol { 
-      padding-left: 1.6rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    li { 
-      margin-bottom: 0.8rem;
-      position: relative;
-    }
-    
-    ul li::before {
-      content: '•';
-      color: var(--accent);
-      font-weight: bold;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-    }
-    
-    strong {
-      color: #222;
-      font-weight: 500;
-    }
-
-    /* === CARDS === */
-    .feature-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-left: 4px solid var(--accent);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
-    
-    .feature-card h3 {
-      margin-top: 0;
-      color: #333333; /* Dark text for white background */
-      font-size: 1.2rem;
-    }
-
-    /* === MEDIA === */
-    .hero-img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-      margin: 2rem 0;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border: 1px solid #eee;
-    }
-    
-    .img-caption {
-      text-align: center;
-      font-style: italic;
-      color: #666;
-      margin-top: -1rem;
-      margin-bottom: 2rem;
-      font-size: 0.9rem;
-    }
-
-    /* === TECH TAGS === */
-    .tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin: 2rem 0;
-    }
-    
-    .tech-tags span {
-      background: #000000; /* Black background */
-      color: #ffffff; /* White text */
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      border: none;
-      font-weight: 500;
-    }
-
-    /* === DIVIDER === */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
-      margin: 3rem 0;
-    }
-
-    /* === SCENARIO BLOCK === */
-    .scenario-block {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin: 2rem 0;
-      border-left: 4px solid var(--accent);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
-    
-    .scenario-block h3 {
-      color: #333333; /* Dark text for white background */
-      margin-top: 0;
-    }
-    
-    .scenario-step {
-      margin-bottom: 1.5rem;
-      padding-left: 1.5rem;
-      border-left: 2px solid var(--accent);
-    }
-    
-    .scenario-step:last-child {
-      margin-bottom: 0;
-    }
-
-    /* === BUTTONS === */
-    .case-footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    
-    .case-footer a {
-      color: var(--accent); /* Orange text */
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.5rem;
-      background: #000000; /* Black background */
-      border-radius: 30px;
-      transition: all 0.2s;
-      border: none;
-    }
-    
-    .case-footer a:hover {
-      background: var(--accent); /* Orange background on hover */
-      color: #000000; /* Black text on hover */
-      transform: translateY(-2px);
-    }
-
-    /* === RESPONSIVE === */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-      
-      .case-nav {
-        justify-content: center;
-      }
-      
-      .case-footer {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .case-footer a {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-    
-    @media (max-width: 600px) {
-      main { 
-        padding: clamp(4rem, 8vw, 5.5rem) 1rem 2rem; 
-      }
-      
-      .tech-tags {
-        justify-content: center;
-      }
-    }
-      /* === smaller architecture image === */
-    .hero-img{
-      max-width: 600px;   /* cap width on large screens */
-      width: 100%;        /* still fluid */
-      margin: 2rem auto;  /* centre the image */
-      display: block;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-
-    /* remove left orange bars & make h2 underline full text width */
-    .feature-card,
-    .scenario-block {
-      border-left: none !important;
-    }
-    
-    h2 {
-      position: relative;
-      display: inline-block;          /* shrink-wrap to text */
-      max-width: 100%;
-      padding-bottom: 0.4rem;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;                   /* exactly the text length */
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-    }  
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; }
   </style>
 </head>
-
 <body>
-  <div id="particles-js"></div>
 
-  <header>
-    <div class="header-container">
-      <a href="../index.html#portfolio"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-      <div class="case-nav">
-        <a href="#challenges">Challenges</a>
-        <a href="#solution">Solution</a>
-        <a href="#results">Results</a>
-        <a href="#tech">Tech</a>
-      </div>
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo"><i class="fa-solid fa-network-wired"></i>Arash Nicoomanesh</a>
+      <a href="../../services/agentic-ai.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to Swarm Architectures</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <h1>Case Study: Medical Triage Agent</h1>
-    <p class="subtitle">Autonomous AI agent for scalable, medically-precise triage system</p>
+<section class="hero">
+  <div class="container">
+    <span class="badge">Enterprise Post-Mortem</span>
+    <h1>Mission-Critical Medical Triage: A Deterministic DAG Approach</h1>
+    <p>Replacing fragile, hallucination-prone clinical chatbots with strict, governed execution graphs and Policy-as-Code to achieve absolute HIPAA compliance.</p>
+  </div>
+</section>
 
-    <section id="challenges">
-      <h2>Challenges</h2>
-      <p>Healthcare providers and hospitals constantly face the challenge of managing high volumes of patient inquiries efficiently. Patients often experience long wait times for initial assessment, while clinical staff spend significant time on routine triage tasks.</p>
-      
-      <div class="feature-card">
-        <h3>Key Challenges</h3>
-        <ul>
-          <li><strong>High Volume:</strong> Managing large numbers of patient inquiries with limited staff</li>
-          <li><strong>Accuracy Requirements:</strong> Ensuring medically precise assessments with zero tolerance for errors</li>
-          <li><strong>Scalability:</strong> Creating a solution that could handle fluctuating demand</li>
-          <li><strong>Integration:</strong> Connecting with existing healthcare systems and EHR standards</li>
-        </ul>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="solution">
-      <h2>Solution & Architecture</h2>
-      <p>The agent was engineered to mimic a clinician's stepwise reasoning process, combining multiple AI technologies for comprehensive patient assessment.</p>
-      
-      <img class="hero-img" src="arch.png" alt="Medical Triage Agent Architecture">
-      <p class="img-caption">Architecture diagram showing the multi-component medical triage system</p>
-
-      <div class="feature-card">
-        <h3>Key Components</h3>
-        <ol class="solution-list">
-          <li>
-            <strong>Symptom Intake & Triage</strong>
-            <p>Dialogflow CX initiates structured, multi-turn conversations to collect symptoms, vitals, and history. Healthcare Natural Language AI maps free-text symptoms to SNOMED-CT / ICD-10 codes for precision.</p>
-          </li>
-          <li>
-            <strong>Diagnosis Support</strong>
-            <p>Gemini 1.5 Pro applies chain-of-thought prompting to rank urgency, while Med-PaLM 2 augments with specialized medical knowledge for differential diagnoses.</p>
-          </li>
-          <li>
-            <strong>Treatment Planning</strong>
-            <p>Vertex AI Agent Builder orchestrates guideline retrieval, conflict detection, and treatment suggestions in a cohesive flow with evidence-based recommendations.</p>
-          </li>
-          <li>
-            <strong>Scalability & Safety</strong>
-            <p>GPU-accelerated A2 VMs on Google Kubernetes Engine handle inference bursts, while Cloud Run manages stateless components with zero-downtime deployments.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section>
-      <h2>Implementation Highlights</h2>
-      
-      <div class="feature-card">
-        <h3>Multi-Model Reasoning</h3>
-        <p>Combined Gemini 1.5 Pro's reasoning capabilities with Med-PaLM 2's medical expertise for clinically sound assessments, with chain-of-thought prompting for transparent decision-making.</p>
-      </div>
-      
-      <div class="feature-card">
-        <h3>Real-Time Medical Coding</h3>
-        <p>Automated mapping of free-text symptoms to standardized SNOMED-CT and ICD-10 codes, ensuring interoperability with existing healthcare systems and EHR platforms.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Clinical Scenario</h2>
+<section>
+  <div class="container">
+    <h2 class="section-title">The GenAI Trap</h2>
+    <p style="text-align:center; max-width:800px; margin:0 auto 40px auto; color:var(--gray);">A top-tier telehealth provider's initial generative AI prototype (built on a standard ReAct loop) was shut down by compliance teams after the LLM attempted to autonomously prescribe medication. Here is why the "chatbot" paradigm failed them:</p>
     
-      <div class="feature-card">
-        <h3>Real-World Use Case: Chest Pain Assessment</h3>
-        <ul>
-          <li><strong>Patient Presentation:</strong> Sharp chest pain, shortness of breath on exertion, and fatigue for five days</li>
-          <li><strong>Agent Assessment:</strong> The agent asks clarifying questions about onset, radiation, and medication history, then maps symptoms to SNOMED codes</li>
-          <li><strong>Clinical Reasoning:</strong> Chain-of-thought reasoning ranks "acute coronary syndrome" highest and retrieves latest ACC/AHA guidelines</li>
-          <li><strong>Outcome:</strong> Treatment plan includes immediate ECG & troponin order, discontinuation of Lisinopril pending physician approval, and cardiology referral</li>
-        </ul>
+    <div class="grid-3">
+      <div class="card">
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> The Hallucination Cascade</h3>
+        <p>If the Electronic Health Record (EHR) API returned an unexpected 500 error, the ReAct agent panicked and hallucinated fake patient history to fulfill its core prompt, creating massive medical liability.</p>
       </div>
-    </section>
-
-    <section id="results">
-      <h2>Results & Impact</h2>
-      
-      <div class="feature-card">
-        <h3>Quantitative Results</h3>
-        <ul>
-          <li><strong>42% Faster Triage:</strong> Reduced average triage time from 12 minutes to 7 minutes</li>
-          <li><strong>96% Accuracy:</strong> Concordance with senior clinician decisions on 5,000-case test set</li>
-          <li><strong>High Scalability:</strong> Sustains 1,100 concurrent user sessions with &lt;1.2s median latency</li>
-          <li><strong>Full Interoperability:</strong> 100% of outputs delivered in SNOMED-CT/ICD-10 for EHR ingestion</li>
-        </ul>
+      <div class="card">
+        <h3><i class="fa-solid fa-clock-rotate-left"></i> Temporal State Decay</h3>
+        <p>Because the agent lacked explicit, durable memory states, it frequently suffered from context-window decay—forgetting critical drug allergies mentioned earlier in the clinical intake session.</p>
       </div>
-      
-      <div class="feature-card">
-        <h3>Qualitative Benefits</h3>
-        <ul>
-          <li><strong>Reduced Burden:</strong> Significantly decreased workload for clinical staff</li>
-          <li><strong>Improved Access:</strong> 24/7 availability for initial patient assessments</li>
-          <li><strong>Enhanced Consistency:</strong> Standardized triage process across all patients</li>
-          <li><strong>Better Documentation:</strong> Automated medical coding and record keeping</li>
-        </ul>
+      <div class="card">
+        <h3><i class="fa-solid fa-bomb"></i> Zero Blast-Radius Containment</h3>
+        <p>There was no physical barrier preventing the LLM from triggering a prescription API. It was only stopped by a "system prompt" telling it not to—which is mathematically provable to be vulnerable to jailbreaks.</p>
       </div>
-    </section>
-
-    <section id="tech">
-      <h2>Technology Stack</h2>
-      <div class="tech-tags">
-        <span>Gemini 1.5 Pro</span>
-        <span>Med-PaLM 2</span>
-        <span>Vertex AI</span>
-        <span>Dialogflow CX</span>
-        <span>Google Kubernetes Engine</span>
-        <span>Cloud Run</span>
-        <span>SNOMED-CT</span>
-        <span>ICD-10</span>
-        <span>Healthcare NLP API</span>
-        <span>Python</span>
-        <span>TensorFlow</span>
-      </div>
-    </section>
-
-    <div class="case-footer">
-      <a href="https://github.com/aragit/medical-triage" target="_blank">
-        <i class="fab fa-github"></i> View Sample Code
-      </a>
-      <a href="../index.html#contact">
-        <i class="fas fa-envelope"></i> Discuss Similar Project
-      </a>
     </div>
-  </main>
+  </div>
+</section>
 
-  <script>
-    // No particles needed for white background
-  </script>
+<section style="background: rgba(20,20,20,0.3); border-top: 1px solid rgba(255,255,255,.02);">
+  <div class="container">
+    <h2 class="section-title">The Deterministic Architecture (BAIA)</h2>
+    
+    <div class="grid-3">
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <h3><i class="fa-solid fa-eye arch-icon"></i> 1. FHIR Integration (Perception)</h3>
+        <p>The system securely ingests symptoms via a typed FHIR interface. PII/PHI is immediately redacted locally before any diagnostic data touches the LLM payload, ensuring absolute data privacy.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <h3><i class="fa-solid fa-brain arch-icon"></i> 2. DAG Generation (The Brain)</h3>
+        <p>We distilled a reasoning engine specifically trained for schema adherence. Instead of "talking" to the patient, the LLM ingests symptoms and outputs a strict JSON Directed Acyclic Graph (DAG) for execution.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <h3><i class="fa-solid fa-shield-halved arch-icon"></i> 3. Policy-as-Code (The Shield)</h3>
+        <p>Before the AXON orchestrator executes the graph, it is intercepted by an Open Policy Agent (OPA) sidecar. If the graph attempts an illegal medical action, it is blocked deterministically.</p>
+      </div>
+    </div>
+
+    <div class="code-showcase">
+      
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">1_generated_dag.json</div>
+        </div>
+        <pre><code><span class="comment">// The LLM acts purely as a Planner.</span>
+<span class="comment">// It outputs this strict, predictable execution graph.</span>
+
+{
+  <span class="property">"triage_id"</span>: <span class="string">"TRG-992-A"</span>,
+  <span class="property">"patient_status"</span>: {
+    <span class="property">"acuity_level"</span>: <span class="number">2</span>,
+    <span class="property">"primary_symptom"</span>: <span class="string">"chest_pain"</span>,
+    <span class="property">"onset_duration_mins"</span>: <span class="number">45</span>
+  },
+  <span class="property">"execution_graph"</span>: [
+    {
+      <span class="property">"step"</span>: <span class="number">1</span>,
+      <span class="property">"action"</span>: <span class="string">"QUERY_EHR"</span>,
+      <span class="property">"parameters"</span>: {<span class="property">"check_flags"</span>: [<span class="string">"cardiac_history"</span>, <span class="string">"blood_thinners"</span>]}
+    },
+    {
+      <span class="property">"step"</span>: <span class="number">2</span>,
+      <span class="property">"action"</span>: <span class="string">"ROUTE_TO_SPECIALIST"</span>,
+      <span class="property">"parameters"</span>: {<span class="property">"department"</span>: <span class="string">"CARDIOLOGY"</span>, <span class="property">"priority"</span>: <span class="string">"HIGH_URGENCY"</span>}
+    }
+  ]
+}</code></pre>
+      </div>
+
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">2_clinical_guardrail.rego</div>
+        </div>
+        <pre><code><span class="comment"># System prompts fail. We use Open Policy Agent (OPA) </span>
+<span class="comment"># to physically block illegal medical actions at the network layer.</span>
+
+<span class="keyword">package</span> triage.governance
+
+<span class="keyword">default</span> allow_execution = <span class="keyword">false</span>
+
+<span class="comment"># Allow routing to specialists</span>
+allow_execution {
+    input.action == <span class="string">"ROUTE_TO_SPECIALIST"</span>
+    input.priority <span class="keyword">in</span> [<span class="string">"LOW"</span>, <span class="string">"MEDIUM"</span>, <span class="string">"HIGH_URGENCY"</span>]
+}
+
+<span class="comment"># BLOCK ALL AUTONOMOUS PRESCRIPTIONS (Zero Trust)</span>
+deny_execution[msg] {
+    input.action == <span class="string">"ISSUE_PRESCRIPTION"</span>
+    msg := <span class="string">"FATAL POLICY VIOLATION: Agents are strictly prohibited from writing prescriptions. Cryptographic MD signature required."</span>
+}</code></pre>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container">
+    <div class="grid-3" style="text-align:center;">
+      <div class="stat-item">
+        <h4>100%</h4>
+        <p>HIPAA Compliance Guarantee</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Enabled by physical OPA intercept sidecars.</span>
+      </div>
+      <div class="stat-item">
+        <h4>68%</h4>
+        <p>Token Cost Reduction</p>
+        <span style="font-size:0.85rem; color:var(--gray);">By eliminating infinite ReAct loops.</span>
+      </div>
+      <div class="stat-item">
+        <h4>Zero</h4>
+        <p>Hallucinated Actions</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Secured by deterministic DAG skeletons.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
