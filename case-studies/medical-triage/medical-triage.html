@@ -42,7 +42,7 @@
     .card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: .3s; }
     .card:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-3px); }
     .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 10px; }
-    .card h3 i { color: #f24e1e; } /* Error red for the "Trap" section */
+    .card h3 i { color: #f24e1e; }
     .card p { color: #a8aeb3; font-size: 0.95rem; }
     
     .arch-icon { color: var(--accent) !important; }
@@ -86,7 +86,7 @@
 <section class="hero">
   <div class="container">
     <span class="badge">Enterprise Post-Mortem</span>
-    <h1>Mission-Critical Medical Triage: A Deterministic DAG Approach</h1>
+    <h1>Mission-Critical Medical Triage: A Neuro-Symbolic Approach</h1>
     <p>Replacing fragile, hallucination-prone clinical chatbots with strict, governed execution graphs and Policy-as-Code to achieve absolute HIPAA compliance.</p>
   </div>
 </section>
@@ -115,7 +115,7 @@
 
 <section style="background: rgba(20,20,20,0.3); border-top: 1px solid rgba(255,255,255,.02);">
   <div class="container">
-    <h2 class="section-title">The Deterministic Architecture (BAIA)</h2>
+    <h2 class="section-title">The Neuro-Symbolic Architecture</h2>
     
     <div class="grid-3">
       <div class="card" style="border-top: 3px solid var(--accent);">
@@ -123,12 +123,12 @@
         <p>The system securely ingests symptoms via a typed FHIR interface. PII/PHI is immediately redacted locally before any diagnostic data touches the LLM payload, ensuring absolute data privacy.</p>
       </div>
       <div class="card" style="border-top: 3px solid var(--accent);">
-        <h3><i class="fa-solid fa-brain arch-icon"></i> 2. DAG Generation (The Brain)</h3>
-        <p>We distilled a reasoning engine specifically trained for schema adherence. Instead of "talking" to the patient, the LLM ingests symptoms and outputs a strict JSON Directed Acyclic Graph (DAG) for execution.</p>
+        <h3><i class="fa-solid fa-brain arch-icon"></i> 2. Schema-Constrained Reasoning (The Brain)</h3>
+        <p>We distilled a reasoning engine specifically trained for schema adherence. Instead of "talking" to the patient, the LLM ingests symptoms and outputs a strict JSON execution graph for deterministic routing.</p>
       </div>
       <div class="card" style="border-top: 3px solid var(--accent);">
         <h3><i class="fa-solid fa-shield-halved arch-icon"></i> 3. Policy-as-Code (The Shield)</h3>
-        <p>Before the AXON orchestrator executes the graph, it is intercepted by an Open Policy Agent (OPA) sidecar. If the graph attempts an illegal medical action, it is blocked deterministically.</p>
+        <p>Before the execution engine processes the graph, it is intercepted by an Open Policy Agent (OPA) sidecar. If the plan attempts an illegal medical action, it is blocked deterministically at the network layer.</p>
       </div>
     </div>
 
@@ -137,10 +137,10 @@
       <div class="mac-window">
         <div class="mac-header">
           <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">1_generated_dag.json</div>
+          <div class="mac-title">1_execution_plan.json</div>
         </div>
         <pre><code><span class="comment">// The LLM acts purely as a Planner.</span>
-<span class="comment">// It outputs this strict, predictable execution graph.</span>
+<span class="comment">// It outputs this strict, predictable execution payload.</span>
 
 {
   <span class="property">"triage_id"</span>: <span class="string">"TRG-992-A"</span>,
@@ -209,7 +209,7 @@ deny_execution[msg] {
       <div class="stat-item">
         <h4>Zero</h4>
         <p>Hallucinated Actions</p>
-        <span style="font-size:0.85rem; color:var(--gray);">Secured by deterministic DAG skeletons.</span>
+        <span style="font-size:0.85rem; color:var(--gray);">Secured by deterministic execution skeletons.</span>
       </div>
     </div>
   </div>
