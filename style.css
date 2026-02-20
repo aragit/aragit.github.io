@@ -11630,3 +11630,54 @@ div#services .cards .card.card-wide .card-actions {
     margin-right: 10px;
     display: block;
 }
+
+
+/* =========================================
+   AGENTIC SOLUTIONS (PORTFOLIO) PREMIUM THEME
+   ========================================= */
+.portfolio-card {
+    /* Deep blue-tinted dark gradient to contrast the pure dark of consulting */
+    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important; /* Matches the curve of the consulting cards */
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+}
+
+/* The Cyber-Cyan glowing top line (hidden until hover) */
+.portfolio-card::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+/* Reveal the glowing line on hover */
+.portfolio-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Hover state: elevate, glow, and shadow */
+.portfolio-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(6, 182, 212, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
+    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
+}
+
+/* Make the title subtlely shift to Cyan on hover */
+.portfolio-card:hover h3 {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease;
+}
+
+/* Make the links/icons match the new theme on hover */
+.portfolio-card:hover .btn-link {
+    color: #06b6d4 !important;
+}
