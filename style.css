@@ -11681,3 +11681,62 @@ div#services .cards .card.card-wide .card-actions {
 .portfolio-card:hover .btn-link {
     color: #06b6d4 !important;
 }
+
+
+/* =========================================
+   AGENTIC SOLUTIONS: FORCED PREMIUM THEME
+   ========================================= */
+/* 1. Force the main card wrapper to accept the gradient */
+.portfolio-card, .solution-card, .agentic-card {
+    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+    display: block !important;
+    text-decoration: none !important;
+    z-index: 1 !important;
+}
+
+/* 2. CRITICAL FIX: Strip solid backgrounds from ANY inner divs so the gradient shows through */
+.portfolio-card div, .solution-card div, .agentic-card div,
+.portfolio-card .card-content, .solution-card .card-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 3. The sweeping Cyber-Cyan top border */
+.portfolio-card::before, .solution-card::before, .agentic-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
+    transform: scaleX(0);
+    transition: transform 0.4s ease !important;
+    z-index: 10 !important;
+}
+
+/* 4. Hover Effects: Scale line, elevate card, add cyan glow */
+.portfolio-card:hover::before, .solution-card:hover::before, .agentic-card:hover::before {
+    transform: scaleX(1) !important;
+}
+
+.portfolio-card:hover, .solution-card:hover, .agentic-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(6, 182, 212, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
+    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
+}
+
+/* 5. Text Highlights on Hover */
+.portfolio-card:hover h3, .solution-card:hover h3, .agentic-card:hover h3 {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease !important;
+}
+
+.portfolio-card:hover .btn-link, .portfolio-card:hover .tags span {
+    color: #06b6d4 !important;
+    border-color: rgba(6, 182, 212, 0.3) !important;
+}
