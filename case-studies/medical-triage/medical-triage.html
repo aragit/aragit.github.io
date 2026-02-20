@@ -70,7 +70,15 @@
     .stat-item p { color: #fff; font-weight: 500; font-size: 1.1rem; }
     
     footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; }
+  
+    /* ---------- cta buttons ---------- */
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+    .btn-secondary { background: transparent; color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-secondary:hover { border-color: #fff; transform: translateY(-2px); background: rgba(255,255,255,0.05); }
+    .case-cta-band { padding: 60px 0; text-align: center; }
   </style>
+
 </head>
 <body>
 
@@ -211,6 +219,20 @@ deny_execution[msg] {
         <p>Hallucinated Actions</p>
         <span style="font-size:0.85rem; color:var(--gray);">Secured by deterministic execution skeletons.</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="case-cta-band">
+  <div class="container">
+    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 30px;">Ready to architect your clinical workflow?</h2>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="https://github.com/aragit" target="_blank" class="btn-secondary">
+        <i class="fa-brands fa-github"></i> View GitHub Profile
+      </a>
+      <a href="mailto:your.email@example.com?subject=Inquiry: Enterprise AI Architecture" class="btn-primary">
+        <i class="fa-solid fa-envelope"></i> Discuss Your Architecture
+      </a>
     </div>
   </div>
 </section>
