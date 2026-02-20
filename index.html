@@ -565,11 +565,54 @@
 
   </main>
 
-  <footer role="contentinfo">
-    <div class="container">
-      <p>© <span id="year"></span> Arash Nicoomanesh</p>
+  <footer class="site-footer">
+  <div class="footer-grid-overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <i class="fa-solid fa-network-wired"></i> Arash <span class="highlight">Nicoomanesh</span>
+        </div>
+        <p class="footer-motto">Architecting Governed Agentic Systems.</p>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://medium.com/@anicomanesh" target="_blank" aria-label="Medium"><i class="fa-brands fa-medium"></i></a>
+          <a href="https://github.com/aragit" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#evolution">Evolution</a></li>
+            <li><a href="#about">Architecture</a></li>
+            <li><a href="#services">Services</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Brief the Architect</h4>
+        <p>Ready to move beyond chatbots?</p>
+        <a href="mailto:arash@example.com" class="footer-btn">
+          <i class="fa-solid fa-envelope"></i> Initialize Contact
+        </a>
+      </div>
     </div>
-  </footer>
+
+    <div class="footer-terminal-bar">
+      <div class="terminal-status">
+        <span class="status-indicator"></span>
+        <span class="status-text" id="terminal-status-text">SYSTEM_ACTIVE // ARCH_VER: 2026.02</span>
+      </div>
+      <div class="footer-copy">
+        © <span id="footer-year"></span> Arash Nicoomanesh &middot; Neuro-Symbolic AI Architecture
+      </div>
+      <div class="terminal-logs" id="terminal-live-logs" aria-hidden="true">
+        AWAITING_INPUT...
+      </div>
+    </div>
+  </div>
+</footer>
 
   <!-- SERVICE MODAL -->
   <div id="serviceModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="serviceModalTitle">

@@ -728,3 +728,42 @@
         });
     }
 })();
+
+
+// =========================================
+// LIVE TERMINAL LOGS (FOOTER)
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const terminalLogs = [
+        "LOG: PROPOSING_EXECUTION_GRAPH...",
+        "LOG: OPA_POLICY_CHECK_PASSED",
+        "LOG: NEURAL_PROPOSAL_VALIDATED",
+        "LOG: FHIR_DATA_REDACTED",
+        "LOG: SYMBOLIC_CONSTRAINTS_ACTIVE",
+        "LOG: AGENT_CONSENSUS_REACHED",
+        "LOG: TRACE_HASH_GENERATED"
+    ];
+
+    let logIndex = 0;
+    const logElement = document.getElementById('terminal-live-logs');
+    const yearElement = document.getElementById('footer-year');
+
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+    function rotateLogs() {
+        if (!logElement) return;
+        logElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            logElement.textContent = terminalLogs[logIndex];
+            logElement.style.opacity = '0.6';
+            logIndex = (logIndex + 1) % terminalLogs.length;
+        }, 500);
+    }
+
+    if (logElement) {
+        setInterval(rotateLogs, 4000);
+    }
+});
