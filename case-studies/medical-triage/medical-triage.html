@@ -204,82 +204,8 @@ allow_routing {
     <h1>Regulated Medical Triage: A Neuro-Symbolic Approach</h1>
     <p>We design regulated AI infrastructure. See how we replaced a fragile, hallucinating clinical chatbot with a strict, governable state machine backed by Policy-as-Code.</p>
   </div>
-</section><section>
-  <div class="container">
-    <h2 class="section-title">The Execution Trace: A Real Walkthrough</h2>
-    <p class="section-subtitle"><strong>Scenario:</strong> 45-year-old male. Chest pain for 45 minutes. History: hypertension. On aspirin.</p>
-
-    <div style="max-width: 900px; margin: 0 auto;">
-      
-      <h3 class="step-header"><i class="fa-solid fa-shield-halved"></i> Phase 1: Ingress & Edge Redaction</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The raw HL7/FHIR payload hits the API gateway. A local Named Entity Recognition (NER) model strips all identifiable data before the core orchestrator is even invoked.</p>
-      <div class="live-terminal">
-        > [Gateway] INBOUND_POST /fhir/v4/Patient/Intake<br>
-        > [Sanitize] NER Engine active. Stripping PII (Name, DOB, SSN, Geo)...<br>
-        > [Sanitize] 4 entities tokenized and locked in local vault.<br>
-        > [State] Abstract clinical profile generated. Triggering Orchestrator...
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-network-wired"></i> Phase 2: Parallel Node Evaluation</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The central orchestrator spawns strictly read-only sub-agents to evaluate the abstraction against medical vectors.</p>
-      <div class="live-terminal">
-        > [Orchestrator] Spawning parallel evaluation nodes...<br>
-        > [Node_A: History] Querying PGVector for 'hypertension' + 'aspirin_81mg' interactions.<br>
-        > [Node_B: Triage] Mapping 'chest_pain_acute' duration against ESI criteria.<br>
-        > [Sync] Awaiting node consensus (Max timeout: 15.0s)...<br>
-        > [Consensus] Reached at 2.4s. Generating execution graph proposal.
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-file-code"></i> Phase 3: The Proposed Graph</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The reasoning engine does not execute APIs. It merely distills its consensus into this strict, deterministic JSON payload.</p>
-      <div class="mac-window">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">execution_plan_proposal.json</div>
-        </div>
-        <pre><code>{
-  <span class="property">"acuity_classification"</span>: {
-    <span class="property">"esi_level"</span>: <span class="number">2</span>,
-    <span class="property">"risk_vector"</span>: <span class="string">"cardiac"</span>
-  },
-  <span class="property">"proposed_graph"</span>: [
-    {
-      <span class="property">"step"</span>: <span class="number">1</span>,
-      <span class="property">"action"</span>: <span class="string">"ROUTE_DECISION"</span>,
-      <span class="property">"parameters"</span>: { <span class="property">"care_path"</span>: <span class="string">"ER_IMMEDIATE"</span>, <span class="property">"sla_timer_mins"</span>: <span class="number">10</span> }
-    }
-  ]
-}</code></pre>
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-lock"></i> Phase 4: Policy-as-Code Intercept & Execution</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">Before the Orchestrator commits the JSON plan, the OPA sidecar physically evaluates the parameters. Once approved, the routing action fires.</p>
-      <div class="mac-window" style="margin-bottom: 20px;">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">opa_firewall.rego</div>
-        </div>
-        <pre><code><span class="comment"># RED FLAG DETECTED: Deterministic ER escalation</span>
-allow_routing {
-    input.acuity_classification.esi_level <= <span class="number">2</span>
-    input.proposed_graph[_].parameters.care_path == <span class="string">"ER_IMMEDIATE"</span>
-}</code></pre>
-      </div>
-      <div class="live-terminal">
-        > [Execution_Engine] Attempting to commit graph execution...<br>
-        > [Intercept] OPA Sidecar evaluating payload against clinical_policy_v4.<br>
-        > [Policy] ESI Level 2 + Cardiac Vector confirmed.<br>
-        > [Validate] Action 'ROUTE_DECISION' matches 'ER_IMMEDIATE'. APPROVED.<br>
-        > [Action] Dispatching HL7 ORM (Order Message) to Cardiology ER Queue... SUCCESS.<br>
-        > [Audit] Cryptographic trace generated: Hash 0x9f8b72...<br>
-        > [Status] SLA timer initiated. Session sealed. Listening...<span class="blink-cursor"></span>
-      </div>
-
-    </div>
-  </div>
 </section>
-
-
+<section>
   <div class="container">
     <h2 class="section-title">The "Planning Rubicon" in Healthcare</h2>
     <p class="section-subtitle">A top-tier telehealth provider attempted to automate clinical intake using a standard generative AI "chatbot" (a ReAct loop). Because the LLM was trapped in a continuous loop of reasoning and tool-calling with no bounded action space, it failed catastrophically.</p>
@@ -324,82 +250,8 @@ allow_routing {
       </div>
     </div>
   </div>
-</section><section>
-  <div class="container">
-    <h2 class="section-title">The Execution Trace: A Real Walkthrough</h2>
-    <p class="section-subtitle"><strong>Scenario:</strong> 45-year-old male. Chest pain for 45 minutes. History: hypertension. On aspirin.</p>
-
-    <div style="max-width: 900px; margin: 0 auto;">
-      
-      <h3 class="step-header"><i class="fa-solid fa-shield-halved"></i> Phase 1: Ingress & Edge Redaction</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The raw HL7/FHIR payload hits the API gateway. A local Named Entity Recognition (NER) model strips all identifiable data before the core orchestrator is even invoked.</p>
-      <div class="live-terminal">
-        > [Gateway] INBOUND_POST /fhir/v4/Patient/Intake<br>
-        > [Sanitize] NER Engine active. Stripping PII (Name, DOB, SSN, Geo)...<br>
-        > [Sanitize] 4 entities tokenized and locked in local vault.<br>
-        > [State] Abstract clinical profile generated. Triggering Orchestrator...
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-network-wired"></i> Phase 2: Parallel Node Evaluation</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The central orchestrator spawns strictly read-only sub-agents to evaluate the abstraction against medical vectors.</p>
-      <div class="live-terminal">
-        > [Orchestrator] Spawning parallel evaluation nodes...<br>
-        > [Node_A: History] Querying PGVector for 'hypertension' + 'aspirin_81mg' interactions.<br>
-        > [Node_B: Triage] Mapping 'chest_pain_acute' duration against ESI criteria.<br>
-        > [Sync] Awaiting node consensus (Max timeout: 15.0s)...<br>
-        > [Consensus] Reached at 2.4s. Generating execution graph proposal.
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-file-code"></i> Phase 3: The Proposed Graph</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The reasoning engine does not execute APIs. It merely distills its consensus into this strict, deterministic JSON payload.</p>
-      <div class="mac-window">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">execution_plan_proposal.json</div>
-        </div>
-        <pre><code>{
-  <span class="property">"acuity_classification"</span>: {
-    <span class="property">"esi_level"</span>: <span class="number">2</span>,
-    <span class="property">"risk_vector"</span>: <span class="string">"cardiac"</span>
-  },
-  <span class="property">"proposed_graph"</span>: [
-    {
-      <span class="property">"step"</span>: <span class="number">1</span>,
-      <span class="property">"action"</span>: <span class="string">"ROUTE_DECISION"</span>,
-      <span class="property">"parameters"</span>: { <span class="property">"care_path"</span>: <span class="string">"ER_IMMEDIATE"</span>, <span class="property">"sla_timer_mins"</span>: <span class="number">10</span> }
-    }
-  ]
-}</code></pre>
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-lock"></i> Phase 4: Policy-as-Code Intercept & Execution</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">Before the Orchestrator commits the JSON plan, the OPA sidecar physically evaluates the parameters. Once approved, the routing action fires.</p>
-      <div class="mac-window" style="margin-bottom: 20px;">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">opa_firewall.rego</div>
-        </div>
-        <pre><code><span class="comment"># RED FLAG DETECTED: Deterministic ER escalation</span>
-allow_routing {
-    input.acuity_classification.esi_level <= <span class="number">2</span>
-    input.proposed_graph[_].parameters.care_path == <span class="string">"ER_IMMEDIATE"</span>
-}</code></pre>
-      </div>
-      <div class="live-terminal">
-        > [Execution_Engine] Attempting to commit graph execution...<br>
-        > [Intercept] OPA Sidecar evaluating payload against clinical_policy_v4.<br>
-        > [Policy] ESI Level 2 + Cardiac Vector confirmed.<br>
-        > [Validate] Action 'ROUTE_DECISION' matches 'ER_IMMEDIATE'. APPROVED.<br>
-        > [Action] Dispatching HL7 ORM (Order Message) to Cardiology ER Queue... SUCCESS.<br>
-        > [Audit] Cryptographic trace generated: Hash 0x9f8b72...<br>
-        > [Status] SLA timer initiated. Session sealed. Listening...<span class="blink-cursor"></span>
-      </div>
-
-    </div>
-  </div>
 </section>
-
-
+<section>
   <div class="container">
     <h2 class="section-title">The Neuro-Symbolic Control Loop</h2>
     <p class="section-subtitle" style="color: #fff; font-weight: 600; font-size: 1.3rem;">Neural proposes. Symbolic disposes.</p>
@@ -468,82 +320,8 @@ allow_routing {
       </div>
     </div>
   </div>
-</section><section>
-  <div class="container">
-    <h2 class="section-title">The Execution Trace: A Real Walkthrough</h2>
-    <p class="section-subtitle"><strong>Scenario:</strong> 45-year-old male. Chest pain for 45 minutes. History: hypertension. On aspirin.</p>
-
-    <div style="max-width: 900px; margin: 0 auto;">
-      
-      <h3 class="step-header"><i class="fa-solid fa-shield-halved"></i> Phase 1: Ingress & Edge Redaction</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The raw HL7/FHIR payload hits the API gateway. A local Named Entity Recognition (NER) model strips all identifiable data before the core orchestrator is even invoked.</p>
-      <div class="live-terminal">
-        > [Gateway] INBOUND_POST /fhir/v4/Patient/Intake<br>
-        > [Sanitize] NER Engine active. Stripping PII (Name, DOB, SSN, Geo)...<br>
-        > [Sanitize] 4 entities tokenized and locked in local vault.<br>
-        > [State] Abstract clinical profile generated. Triggering Orchestrator...
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-network-wired"></i> Phase 2: Parallel Node Evaluation</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The central orchestrator spawns strictly read-only sub-agents to evaluate the abstraction against medical vectors.</p>
-      <div class="live-terminal">
-        > [Orchestrator] Spawning parallel evaluation nodes...<br>
-        > [Node_A: History] Querying PGVector for 'hypertension' + 'aspirin_81mg' interactions.<br>
-        > [Node_B: Triage] Mapping 'chest_pain_acute' duration against ESI criteria.<br>
-        > [Sync] Awaiting node consensus (Max timeout: 15.0s)...<br>
-        > [Consensus] Reached at 2.4s. Generating execution graph proposal.
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-file-code"></i> Phase 3: The Proposed Graph</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">The reasoning engine does not execute APIs. It merely distills its consensus into this strict, deterministic JSON payload.</p>
-      <div class="mac-window">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">execution_plan_proposal.json</div>
-        </div>
-        <pre><code>{
-  <span class="property">"acuity_classification"</span>: {
-    <span class="property">"esi_level"</span>: <span class="number">2</span>,
-    <span class="property">"risk_vector"</span>: <span class="string">"cardiac"</span>
-  },
-  <span class="property">"proposed_graph"</span>: [
-    {
-      <span class="property">"step"</span>: <span class="number">1</span>,
-      <span class="property">"action"</span>: <span class="string">"ROUTE_DECISION"</span>,
-      <span class="property">"parameters"</span>: { <span class="property">"care_path"</span>: <span class="string">"ER_IMMEDIATE"</span>, <span class="property">"sla_timer_mins"</span>: <span class="number">10</span> }
-    }
-  ]
-}</code></pre>
-      </div>
-
-      <h3 class="step-header"><i class="fa-solid fa-lock"></i> Phase 4: Policy-as-Code Intercept & Execution</h3>
-      <p style="color: var(--gray); margin-bottom: 15px;">Before the Orchestrator commits the JSON plan, the OPA sidecar physically evaluates the parameters. Once approved, the routing action fires.</p>
-      <div class="mac-window" style="margin-bottom: 20px;">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">opa_firewall.rego</div>
-        </div>
-        <pre><code><span class="comment"># RED FLAG DETECTED: Deterministic ER escalation</span>
-allow_routing {
-    input.acuity_classification.esi_level <= <span class="number">2</span>
-    input.proposed_graph[_].parameters.care_path == <span class="string">"ER_IMMEDIATE"</span>
-}</code></pre>
-      </div>
-      <div class="live-terminal">
-        > [Execution_Engine] Attempting to commit graph execution...<br>
-        > [Intercept] OPA Sidecar evaluating payload against clinical_policy_v4.<br>
-        > [Policy] ESI Level 2 + Cardiac Vector confirmed.<br>
-        > [Validate] Action 'ROUTE_DECISION' matches 'ER_IMMEDIATE'. APPROVED.<br>
-        > [Action] Dispatching HL7 ORM (Order Message) to Cardiology ER Queue... SUCCESS.<br>
-        > [Audit] Cryptographic trace generated: Hash 0x9f8b72...<br>
-        > [Status] SLA timer initiated. Session sealed. Listening...<span class="blink-cursor"></span>
-      </div>
-
-    </div>
-  </div>
 </section>
-
-
+<section>
   <div class="container">
     <h2 class="section-title">Real Case Walkthrough</h2>
     <p class="section-subtitle"><strong>Scenario:</strong> 45-year-old male. Chest pain for 45 minutes. History: hypertension. On aspirin.</p>
