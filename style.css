@@ -11574,7 +11574,14 @@ div#services .cards .card.card-wide .card-actions {
     height: 35px !important;            
 }
 
-.footer-logo i { margin-right: 10px; display: block; color: var(--accent); }
+.footer-logo-img { 
+    width: 32px;             /* Keeps the image perfectly sized with the text */
+    height: 32px; 
+    object-fit: contain;     /* Prevents the image from stretching */
+    margin-right: 10px; 
+    display: block; 
+    border-radius: 2px;      /* Optional: gives the logo slightly rounded corners */
+}
 .footer-motto { color: #9ca3af; max-width: 300px; margin-bottom: 25px; }
 .footer-socials { display: flex; gap: 15px; }
 .footer-socials a { color: #9ca3af; font-size: 1.2rem; transition: 0.3s ease; }
