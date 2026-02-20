@@ -11526,3 +11526,107 @@ div#services .cards .card.card-wide .card-actions {
     background: #000000 !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
+
+/* =========================================
+   HYBRID TERMINAL-GLASS FOOTER
+   ========================================= */
+.site-footer {
+    position: relative;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 107, 0, 0.2);
+    padding: 80px 0 30px;
+    overflow: hidden;
+    color: #e0e0e0;
+}
+
+.footer-grid-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer Headers Alignment Fix */
+.footer-logo,
+.footer-nav h4,
+.footer-contact h4 {
+    font-size: 1.15rem !important;      
+    font-weight: 700 !important;        
+    color: #ffffff !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;     
+    text-transform: none !important;    
+    letter-spacing: normal !important;  
+    display: flex !important;           
+    align-items: center !important;     
+    height: 35px !important;            
+}
+
+.footer-logo i { margin-right: 10px; display: block; color: var(--accent); }
+.footer-motto { color: #9ca3af; max-width: 300px; margin-bottom: 25px; }
+.footer-socials { display: flex; gap: 15px; }
+.footer-socials a { color: #9ca3af; font-size: 1.2rem; transition: 0.3s ease; }
+.footer-socials a:hover { color: var(--accent); transform: translateY(-3px); }
+
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: #9ca3af; text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: var(--accent); padding-left: 5px; }
+
+/* Cyber CTA Styling */
+.cyber-cta {
+    display: inline-block; background: #0a0a0a; color: #10b981; 
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+    padding: 12px 20px; border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 4px; text-decoration: none; transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05); margin-top: 10px; cursor: pointer;
+}
+.cyber-cta:hover {
+    background: rgba(16, 185, 129, 0.1); border-color: #10b981;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2), inset 0 0 15px rgba(16, 185, 129, 0.1);
+    color: #fff; transform: translateY(-2px);
+}
+.cyber-cta .prompt-arrow { color: var(--accent); margin-right: 8px; font-weight: bold; }
+.cyber-cta .blink-cursor { color: #10b981; animation: terminalBlink 1s step-end infinite; margin-left: 5px; }
+@keyframes terminalBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Terminal Bar Styling */
+.footer-terminal-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 30px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280;
+}
+.terminal-status { display: flex; align-items: center; gap: 8px; }
+.status-indicator {
+    width: 8px; height: 8px; background: #10b981; border-radius: 50%;
+    box-shadow: 0 0 8px #10b981; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+.terminal-logs {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent);
+    opacity: 0.6; min-width: 250px; text-align: right; white-space: nowrap; overflow: hidden;
+    animation: textFlicker 3s infinite;
+}
+@keyframes textFlicker { 0% { opacity: 0.6; } 50% { opacity: 0.5; } 100% { opacity: 0.6; } }
+
+@media (max-width: 768px) {
+    .footer-content { grid-template-columns: 1fr; text-align: center; }
+    .footer-logo, .footer-nav h4, .footer-contact h4 { justify-content: center !important; }
+    .footer-motto { margin: 0 auto 25px auto; }
+    .footer-socials { justify-content: center; }
+    .footer-terminal-bar { flex-direction: column; gap: 15px; }
+    .terminal-logs { text-align: center; }
+}

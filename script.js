@@ -803,3 +803,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// =========================================
+// LIVE TERMINAL LOGS & SMART EMAIL COPY (FOOTER)
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Live Terminal Logs
+    const terminalLogs = [
+        "LOG: PROPOSING_EXECUTION_GRAPH...",
+        "LOG: OPA_POLICY_CHECK_PASSED",
+        "LOG: NEURAL_PROPOSAL_VALIDATED",
+        "LOG: FHIR_DATA_REDACTED",
+        "LOG: SYMBOLIC_CONSTRAINTS_ACTIVE",
+        "LOG: AGENT_CONSENSUS_REACHED",
+        "LOG: TRACE_HASH_GENERATED"
+    ];
+
+    let logIndex = 0;
+    const logElement = document.getElementById('terminal-live-logs');
+    const yearElement = document.getElementById('footer-year');
+
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+    function rotateLogs() {
+        if (!logElement) return;
+        logElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            logElement.textContent = terminalLogs[logIndex];
+            logElement.style.opacity = '0.6';
+            logIndex = (logIndex + 1) % terminalLogs.length;
+        }, 500);
+    }
+
+    if (logElement) {
+        setInterval(rotateLogs, 4000);
+    }
+
+    // 2. Cyber CTA Smart Copy
+    const uplinkBtn = document.getElementById('uplink-btn');
+    if (uplinkBtn) {
+        uplinkBtn.addEventListener('click', function(e) {
+            e.preventDefault(); 
+            const emailToCopy = this.getAttribute('data-email');
+            
+            navigator.clipboard.writeText(emailToCopy).then(() => {
+                const originalHTML = this.innerHTML;
+                this.innerHTML = '<span class="prompt-arrow" style="color:#fff;">&gt;</span> UPLINK_ESTABLISHED (Email Copied!) <span class="blink-cursor" style="color:#fff;">&#9608;</span>';
+                this.style.background = '#10b981'; 
+                this.style.color = '#000'; 
+                
+                setTimeout(() => {
+                    this.innerHTML = originalHTML;
+                    this.style.background = '';
+                    this.style.color = '';
+                }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                window.location.href = `mailto:${emailToCopy}`; 
+            });
+        });
+    }
+});
