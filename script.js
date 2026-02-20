@@ -767,3 +767,39 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(rotateLogs, 4000);
     }
 });
+
+
+// =========================================
+// CYBER CTA: SMART EMAIL COPY
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const uplinkBtn = document.getElementById('uplink-btn');
+
+    if (uplinkBtn) {
+        uplinkBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Stops the page from jumping
+
+            const emailToCopy = this.getAttribute('data-email');
+            
+            navigator.clipboard.writeText(emailToCopy).then(() => {
+                const originalHTML = this.innerHTML;
+                
+                // Show success state
+                this.innerHTML = '<span class="prompt-arrow" style="color:#fff;">&gt;</span> UPLINK_ESTABLISHED (Email Copied!) <span class="blink-cursor" style="color:#fff;">&#9608;</span>';
+                this.style.background = '#10b981'; // Solid green background
+                this.style.color = '#000'; // Black text
+                
+                // Revert back after 3 seconds
+                setTimeout(() => {
+                    this.innerHTML = originalHTML;
+                    this.style.background = '';
+                    this.style.color = '';
+                }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // Fallback if clipboard is blocked
+                window.location.href = `mailto:${emailToCopy}`; 
+            });
+        });
+    }
+});
