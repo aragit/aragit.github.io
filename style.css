@@ -11877,3 +11877,65 @@ div#services .cards .card.card-wide .card-actions {
     background: #0a0a0a !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
+
+
+/* =========================================
+   ULTIMATE FIX: BENTO CARDS CYBER-CYAN THEME
+   ========================================= */
+/* 1. Base Dark Glass Theme (NO bright cyan backgrounds!) */
+section#portfolio .bento-grid .bento-item {
+    background: linear-gradient(145deg, rgba(14, 18, 24, 0.8) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+}
+
+/* 2. Strip inner solid backgrounds so the dark glass shows through */
+section#portfolio .bento-grid .bento-item > div,
+section#portfolio .bento-grid .bento-item .featured-flex,
+section#portfolio .bento-grid .bento-item .featured-info {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 3. The Animated Cyan Top Line (Using ::after and high z-index so it never hides) */
+section#portfolio .bento-grid .bento-item::after {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 3px !important; /* Thickened to 3px so it is clearly visible */
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease !important;
+    z-index: 50 !important; /* Forces it above all other content */
+    pointer-events: none;
+}
+
+/* 4. Hover State: Show line, elevate, subtle cyan glow (Keeps background dark!) */
+section#portfolio .bento-grid .bento-item:hover::after {
+    transform: scaleX(1) !important;
+}
+
+section#portfolio .bento-grid .bento-item:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(6, 182, 212, 0.4) !important;
+    /* Subtle cyan outer glow and inner rim light */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6, 182, 212, 0.1) !important;
+    /* Keeps the background strictly dark on hover */
+    background: linear-gradient(145deg, rgba(16, 20, 28, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
+}
+
+/* 5. Keep the terminal box pure black */
+section#portfolio .bento-grid .bento-item .featured-terminal {
+    background: #0a0a0a !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    position: relative;
+    z-index: 2;
+}
