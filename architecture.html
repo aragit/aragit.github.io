@@ -1,97 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sentinel Architecture | Arash Nicoomanesh</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Architecture: The Neuro-Symbolic Stack | Arash Nicoomanesh</title>
+  <meta name="description" content="The technical manifesto for deploying governed, deterministic agentic systems in the enterprise."/>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  
   <style>
-    body { background: #000; color: #fff; font-family: 'Inter', sans-serif; padding: 2rem; text-align: center; }
-    .container { max-width: 800px; margin: 100px auto; }
-    h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #ff6b00; }
-    p { color: #a0a0a0; font-size: 1.2rem; }
-    .back-link { display: inline-block; margin-top: 2rem; color: #fff; text-decoration: underline; }
+    :root {
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000; --code-bg: #1e1e1e;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+    
+    /* ---------- header ---------- */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(80px, 10vw, 120px) 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,.05); background: radial-gradient(circle at top, rgba(255,107,0,0.05) 0%, var(--darker) 70%); }
+    .badge { display: inline-block; background: rgba(255,107,0,0.1); color: var(--accent); border: 1px solid rgba(255,107,0,0.3); padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px; color: #fff; }
+    .hero p { font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 800px; margin: 0 auto; color: #f2f2f2; font-weight: 400; }
+    
+    /* ---------- manifesto statement ---------- */
+    .manifesto-box { background: #000; border: 1px solid var(--accent); border-radius: 12px; padding: 40px; text-align: center; margin-top: -40px; position: relative; z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,107,0,0.05); }
+    .manifesto-box h2 { color: #fff; font-size: 1.8rem; margin-bottom: 15px; }
+    .manifesto-box p { color: var(--gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+    
+    /* ---------- pipeline stack ---------- */
+    section { padding: 80px 0; }
+    .layer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; position: relative; }
+    @media(max-width: 850px) { .layer { grid-template-columns: 1fr; } }
+    
+    /* The connecting line between layers */
+    .pipeline-connector { width: 4px; background: linear-gradient(to bottom, var(--accent), #2d2d2d); margin: 0 auto 60px auto; height: 80px; border-radius: 2px; }
+    
+    .layer-content { padding-right: 20px; }
+    .layer-num { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 700; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+    .layer-content h3 { font-size: 2rem; color: #fff; margin-bottom: 15px; }
+    .layer-content p { color: #cbd6df; font-size: 1.05rem; margin-bottom: 15px; line-height: 1.7; }
+    .layer-content ul { list-style: none; color: #a8aeb3; margin-top: 20px; }
+    .layer-content li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+    .layer-content li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 3px; font-size: 14px; }
+    
+    /* ---------- code windows ---------- */
+    .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
+    .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+    
+    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; margin: 0;}
+    .keyword { color: #569cd6; } .string { color: #ce9178; } .comment { color: #6a9955; font-style: italic; } .property { color: #9cdcfe; } .number { color: #b5cea8; }
+
+    .live-terminal { background: #000; padding: 24px; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #00ff00; border: 1px solid rgba(0, 255, 0, 0.2); box-shadow: inset 0 0 15px rgba(0,255,0,0.05); line-height: 1.6; }
+    @keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .blink-cursor { display: inline-block; width: 8px; height: 15px; background-color: #00ff00; vertical-align: middle; margin-left: 5px; animation: blinkCursor 1s step-end infinite; }
+
+    /* ---------- cta band ---------- */
+    .cta-band { background: #121212; text-align: center; padding: 80px 0; border-top: 2px solid var(--accent); }
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+    
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
   </style>
 </head>
 <body>
+
+<header>
   <div class="container">
-    <h1>The Sentinel Architecture</h1>
-    <p>Detailed breakdown coming soon...</p>
-    <a href="index.html" class="back-link">← Back to Home</a>
+    <div class="header-inner">
+      <a href="index.html" class="logo"><i class="fa-solid fa-layer-group"></i>Arash Nicoomanesh</a>
+      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
+    </div>
   </div>
+</header>
 
-<section class="section">
+<section class="hero">
   <div class="container">
-<div class="principles-strip" id="core-principles">
-  <div class="principles-header">
-    <h3 class="section-title">Agentic Principles</h3>
-    <p class="agentic-subtitle-final">Build Architectures that Learn, not Rules that Break.</p>
-    </div>
+    <span class="badge">Enterprise Systems Engineering</span>
+    <h1>The Architecture of Deterministic Autonomy</h1>
+    <p>We do not prompt LLMs to take action. We compile their probabilistic reasoning into mathematically auditable, highly secure state machines. This is how we cross the <em>Planning Rubicon</em>.</p>
+  </div>
+</section>
 
-    <div class="principles-grid">
-    <div class="principle-card principle-wide">
-      <div class="principle-icon"><i class="fas fa-route"></i></div>
-      <div class="card-content">
-        <h4>01. Planning Rubicon</h4>
-        <p>Reasoning is strictly separate from execution. Agents must produce a committable, inspectable plan before acting. This ensures full traceability and allows human-in-the-loop oversight before irreversible actions are taken. By isolating the cognitive step, we prevent unpredictable hallucination-driven execution.</p>
-      </div>
-    </div>
-
-    <div class="principle-card">
-      <div class="principle-icon"><i class="fas fa-microchip"></i></div>
-      <div class="card-content">
-        <h4>02. Brain vs. Body</h4>
-        <p>Neuro-symbolic split: the LLM proposes strategies while a deterministic layer strictly controls execution.</p>
-      </div>
-    </div>
-
-    <div class="principle-card">
-      <div class="principle-icon"><i class="fas fa-shield-halved"></i></div>
-      <div class="card-content">
-        <h4>03. Governance First</h4>
-        <p>Inline policy gating (e.g., OPA) with absolute veto power. Architectures must anticipate failure via rollbacks.</p>
-      </div>
-    </div>
-
-    <div class="principle-card principle-wide">
-      <div class="principle-icon"><i class="fas fa-file-signature"></i></div>
-      <div class="card-content">
-        <h4>04. Typed Interfaces & State</h4>
-        <p>Strict I/O contracts via Pydantic. If output fails validation, the system crashes intentionally to maintain state. Silent failures are the enemy of autonomous systems. Enforcing schema rigidity ensures downstream agents always receive predictable, typed payloads.</p>
-      </div>
-    </div>
-
-    <div class="principle-card">
-      <div class="principle-icon"><i class="fas fa-arrows-rotate"></i></div>
-      <div class="card-content">
-        <h4>05. Reflection Loops</h4>
-        <p>Self-monitoring feedback loops where the architecture observes and logs outcomes to refine future reasoning.</p>
-      </div>
-    </div>
-
-    <div class="principle-card principle-wide">
-      <div class="principle-icon"><i class="fas fa-scale-balanced"></i></div>
-      <div class="card-content">
-        <h4>06. Latency Trade-Off</h4>
-        <p>Optimizing for blast-radius containment over speed. Enforcing strict schemas introduces necessary, safe latency. In high-stakes environments, a fast wrong answer is catastrophic. We design architectures that willingly trade milliseconds of execution time for absolute safety.</p>
-      </div>
-    </div>
-
-    <div class="principle-item principle-capstone">
-      <div class="capstone-text">
-        <div class="principle-icon"><i class="fas fa-dna"></i></div>
-        <h4>07. Continuous Learning & Memory</h4>
-        <p>A true agent does not re-solve problems it has already mastered. Learning occurs through structural adaptation, not continuous model retraining. Successful executions are distilled into long-term memory as semantic knowledge, abstract plan templates, and behavioral preferences that inform future decisions. Over time, the agent adapts what it remembers and forgets, how it decomposes tasks, which tools it trusts, and which behaviors are permitted or constrained. Vector databases enable contextual recall, while DAG-based plan graphs preserve executable structure, dependencies, invariants, and recovery paths. These mechanisms operate alongside episodic traces and policy constraints, allowing the system to improve reliability and efficiency over time without sacrificing determinism, governance, or control.</p>
-      </div>
-      <div class="capstone-visual">
-        <img src="learning.jpg" alt="Agentic Architecture Memory Flow" class="capstone-image" onerror="if(!this.dataset.retried){this.dataset.retried=true;this.src='images/learning.jpg';}">
-      </div>
-    </div>
+<div class="container">
+  <div class="manifesto-box">
+    <h2>The Neuro-Symbolic Paradigm</h2>
+    <p>LLMs are brilliant reasoning engines, but terrible execution engines. If you wire an LLM directly to a production API, you are deploying a random number generator into a high-stakes environment. Our architecture physically separates the "Brain" from the "Body," ensuring intelligence is bounded by physics.</p>
   </div>
 </div>
 
-          </div>
+<section>
+  <div class="container">
+    
+    <div class="layer">
+      <div class="layer-content">
+        <span class="layer-num">LAYER 01 // STOCHASTIC RANGE</span>
+        <h3>Cognitive Distillation</h3>
+        <p>Instead of relying on fragile "ReAct" loops where an agent guesses its next API call, we force the LLM to act strictly as a <strong>Planner</strong>. It ingests the state of the world and distills its reasoning into a rigid JSON execution graph.</p>
+        <ul>
+          <li><strong>Schema Enforcement:</strong> Decoding is constrained at the logits level. Hallucinated keys are mathematically impossible.</li>
+          <li><strong>Parallel Reasoning:</strong> Multiple sub-agents debate the state to reach consensus before planning.</li>
+        </ul>
+      </div>
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">1_distilled_plan.json</div>
+        </div>
+        <pre><code><span class="comment">// The Brain outputs a plan, but CANNOT execute it.</span>
+{
+  <span class="property">"target_state"</span>: <span class="string">"RESOLVE_SUPPLY_CHAIN_FAULT"</span>,
+  <span class="property">"confidence_score"</span>: <span class="number">0.96</span>,
+  <span class="property">"execution_dag"</span>: [
+    { <span class="property">"step"</span>: <span class="number">1</span>, <span class="property">"action"</span>: <span class="string">"QUERY_TIER2_VENDORS"</span> },
+    { <span class="property">"step"</span>: <span class="number">2</span>, <span class="property">"action"</span>: <span class="string">"CALCULATE_LOGISTICS_COST"</span> },
+    { <span class="property">"step"</span>: <span class="number">3</span>, <span class="property">"action"</span>: <span class="string">"UPDATE_ERP_LEDGER"</span> }
+  ]
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="pipeline-connector"></div>
+
+    <div class="layer" style="direction: rtl;">
+      <div class="layer-content" style="direction: ltr;">
+        <span class="layer-num">LAYER 02 // GOVERNANCE SHIELD</span>
+        <h3>Policy-as-Code Intercept</h3>
+        <p>Before the DAG is allowed to touch the network, it is intercepted by a physical firewall. We use Open Policy Agent (OPA) to evaluate the AI's plan against hard-coded business rules.</p>
+        <ul>
+          <li><strong>Zero-Trust Architecture:</strong> The LLM is treated as an untrusted client.</li>
+          <li><strong>Blast-Radius Containment:</strong> If the AI hallucinates a critical action, it is blocked deterministically.</li>
+        </ul>
+      </div>
+      <div class="mac-window" style="direction: ltr;">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">2_opa_guardrail.rego</div>
+        </div>
+        <pre><code><span class="comment"># The Shield mathematically blocks illegal actions.</span>
+<span class="keyword">package</span> enterprise.governance
+
+<span class="keyword">default</span> allow_commit = <span class="keyword">false</span>
+
+<span class="comment"># Block ERP updates if variance exceeds 5%</span>
+deny_commit[msg] {
+    input.action == <span class="string">"UPDATE_ERP_LEDGER"</span>
+    input.logistics_variance > <span class="number">0.05</span>
+    msg := <span class="string">"FATAL: AI plan exceeds financial risk tolerance."</span>
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="pipeline-connector"></div>
+
+    <div class="layer">
+      <div class="layer-content">
+        <span class="layer-num">LAYER 03 // DETERMINISTIC CORE</span>
+        <h3>Durable Execution & Scale</h3>
+        <p>Once the plan clears the policy shield, it is handed off to the Orchestrator. The execution engine runs the steps deterministically. If an API times out or a server crashes, the system doesn't panic—it yields compute, waits, and resumes exactly where it left off.</p>
+        <ul>
+          <li><strong>Stateful POMDP:</strong> The system remembers every step taken.</li>
+          <li><strong>Idempotent Sagas:</strong> If Step 3 fails, Steps 1 and 2 are safely rolled back.</li>
+        </ul>
+      </div>
+      <div class="live-terminal">
+        > [Orchestrator] DAG received and verified by OPA.<br>
+        > [Worker] Initiating Durable Execution ID: #X99-A.<br>
+        > [Step_1] Executing QUERY_TIER2_VENDORS... SUCCESS.<br>
+        > [Step_2] Executing CALCULATE_LOGISTICS_COST... SUCCESS.<br>
+        > [API_Fault] Connection to ERP_LEDGER timed out.<br>
+        > [State] Suspending DAG. Freezing POMDP state...<br>
+        > --- 15 MINUTES LATER ---<br>
+        > [Worker] Connection restored. Resuming from Step 3.<br>
+        > [Step_3] Executing UPDATE_ERP_LEDGER... SUCCESS.<br>
+        > [Audit] Cryptographic trace logged. Workflow complete.<span class="blink-cursor"></span>
+      </div>
+    </div>
+
+  </div>
 </section>
 
+<section class="cta-band">
+  <div class="container">
+    <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 20px;">Ready to cross the Planning Rubicon?</h2>
+    <p style="color: var(--gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px auto;">Stop deploying prompt wrappers. Let's architect a fault-tolerant, neuro-symbolic digital workforce for your enterprise.</p>
+    <a href="services/agentic-ai.html" class="btn-primary">Explore Multi-Agent Orchestration <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
