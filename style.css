@@ -11561,3 +11561,47 @@ div#services .cards .card.card-wide .card-actions {
     .footer-terminal-bar { flex-direction: column; gap: 15px; }
     .terminal-logs { text-align: center; }
 }
+
+
+/* =========================================
+   CYBER TERMINAL CTA
+   ========================================= */
+.cyber-cta {
+    display: inline-block;
+    background: #0a0a0a;
+    color: #10b981; /* Terminal green */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    padding: 12px 20px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05);
+    margin-top: 10px;
+}
+
+.cyber-cta:hover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: #10b981;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2), inset 0 0 15px rgba(16, 185, 129, 0.1);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.cyber-cta .prompt-arrow {
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.cyber-cta .blink-cursor {
+    color: #10b981;
+    animation: terminalBlink 1s step-end infinite;
+    margin-left: 5px;
+}
+
+@keyframes terminalBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
