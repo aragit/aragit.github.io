@@ -1,4 +1,4 @@
-<!doctype html>
+f<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -259,9 +259,46 @@
           </div>
 
           <!-- Combined card with text and image side by side -->
-          
-            
+          <div class="blueprint-terminal" id="openBlueprintBtn" tabindex="0" role="button" aria-label="View Full Architecture Blueprint">
+            <div class="mac-header">
+              <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+              <div class="mac-title">NSA.png</div>
+            </div>
+            <div class="blueprint-image-wrapper">
+              <img src="robi.jpg" alt="Agentic Architecture Blueprint" loading="lazy">
+              <div class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
           </div>
+          
+
+
+  <dialog id="blueprintLightbox" class="blueprint-lightbox" aria-labelledby="blueprintTitle">
+    <span id="blueprintTitle" class="sr-only" style="display:none;">Enlarged Blueprint</span>
+    <button class="lightbox-close" id="closeBlueprintBtn" aria-label="Close lightbox">&times;</button>
+    <img src="robi.jpg" alt="Agentic Architecture Blueprint Enlarged">
+  </dialog>
+
+  <script>
+    const blueprintBtn = document.getElementById('openBlueprintBtn');
+    const blueprintLightbox = document.getElementById('blueprintLightbox');
+    const closeBlueprintBtn = document.getElementById('closeBlueprintBtn');
+
+    if (blueprintBtn && blueprintLightbox) {
+      // Open Lightbox
+      blueprintBtn.addEventListener('click', () => blueprintLightbox.showModal());
+      blueprintBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter') blueprintLightbox.showModal(); });
+      
+      // Close Lightbox
+      closeBlueprintBtn.addEventListener('click', () => blueprintLightbox.close());
+      
+      // Close when clicking the dark background outside the image
+      blueprintLightbox.addEventListener('click', (e) => {
+        if (e.target === blueprintLightbox) blueprintLightbox.close();
+      });
+    }
+  </script>
+            
+          
 
           <div class="articles-cta" style="margin-top: 2.5rem;">
             <a href="architecture.html" class="btn-hero btn-primary">Learn More</a>
@@ -269,6 +306,8 @@
         </div>
       </div>
     </section>
+
+    
 
     <!-- PORTFOLIO -->
     <section id="portfolio" class="section">

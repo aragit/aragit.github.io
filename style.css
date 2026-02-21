@@ -11696,3 +11696,174 @@ div#services .cards .card.card-wide .card-actions {
 
 @keyframes blinkGreen { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 .blink-cursor-green { display: inline-block; width: 8px; height: 14px; background-color: #27c93f; vertical-align: middle; margin-left: 5px; animation: blinkGreen 1s step-end infinite; }
+
+
+/* ========================================================= */
+/* --- 1. THE DICHOTOMY ENGINE (GLASS VS BLACK BOX) --- */
+/* ========================================================= */
+
+.dichotomy-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
+@media(max-width: 850px) { .dichotomy-container { grid-template-columns: 1fr; } }
+
+.dichotomy-card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden;}
+
+/* Cinematic Hover Effects */
+.black-box:hover { border-color: rgba(255, 95, 86, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(255, 95, 86, 0.05); transform: translateY(-5px); }
+.glass-box:hover { border-color: rgba(255, 107, 0, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(255, 107, 0, 0.05); transform: translateY(-5px); }
+.black-box:hover .dicho-terminal { border-color: rgba(255, 95, 86, 0.5); }
+.glass-box:hover .dicho-terminal { border-color: rgba(255, 107, 0, 0.5); }
+
+.dicho-header { display: flex; align-items: center; gap: 16px; }
+.dicho-header i { font-size: 2rem; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+.dicho-header h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2px; }
+.dicho-header span { font-size: 0.85rem; color: var(--gray); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
+
+.dicho-desc { color: #a8aeb3; font-size: 0.95rem; line-height: 1.6; }
+
+/* Nested Terminal Windows */
+.dicho-terminal { background: #1e1e1e; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: border-color 0.3s; }
+.dicho-terminal pre { padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #d4d4d4; overflow-x: auto; margin: 0; }
+
+/* Mac Window Header Styles (Shared by Dichotomy and Blueprint) */
+.mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+.mac-dot.red { background: #ff5f56; } 
+.mac-dot.yellow { background: #ffbd2e; } 
+.mac-dot.green { background: #27c93f; }
+.mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* Micro-Glitch Animation for the Black Box */
+@keyframes textGlitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-1px, 1px) }
+  40% { transform: translate(-1px, -1px) }
+  60% { transform: translate(1px, 1px) }
+  80% { transform: translate(1px, -1px) }
+  100% { transform: translate(0) }
+}
+.black-box:hover .dicho-terminal pre { animation: textGlitch 0.2s ease-in-out; }
+
+/* Feature List (Overrides default bullet points) */
+.dicho-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 15px; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.05);}
+.dicho-list li { color: #cbd6df; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; margin-bottom: 0; }
+.dicho-list i { font-size: 1rem; width: 16px; text-align: center; }
+.dicho-list li::before { display: none !important; }
+
+/* Blinking Cursors */
+@keyframes blinkRed { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blink-cursor-red { display: inline-block; width: 8px; height: 14px; background-color: #ff5f56; vertical-align: middle; margin-left: 5px; animation: blinkRed 1s step-end infinite; }
+
+@keyframes blinkGreen { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blink-cursor-green { display: inline-block; width: 8px; height: 14px; background-color: #27c93f; vertical-align: middle; margin-left: 5px; animation: blinkGreen 1s step-end infinite; }
+
+
+/* ========================================================= */
+/* --- 2. BLUEPRINT TERMINAL & LIGHTBOX --- */
+/* ========================================================= */
+
+.blueprint-terminal {
+    max-width: 800px;
+    margin: 4rem auto 1rem auto;
+    background: #1e1e1e;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+.blueprint-terminal:hover, .blueprint-terminal:focus-visible {
+    transform: translateY(-4px);
+    /* Changed to Cyan/Blue border to match Agentic cards */
+    border-color: rgba(95, 211, 255, 0.5); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(95, 211, 255, 0.15);
+}
+
+.blueprint-image-wrapper {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.blueprint-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s, transform 0.5s ease-out;
+}
+
+/* Hover Dimming & Scaling Effect (Fixed: Removed :focus so it doesn't get stuck) */
+.blueprint-terminal:hover .blueprint-image-wrapper img {
+    opacity: 0.4;
+    transform: scale(1.03);
+}
+
+/* The Magnifying Glass Overlay (Fixed) */
+.zoom-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    color: #fff;
+    font-size: 3.5rem;
+    opacity: 0;
+    visibility: hidden; 
+    pointer-events: none; 
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+}
+
+.blueprint-terminal:hover .zoom-overlay {
+    opacity: 1;
+    visibility: visible; 
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Native Dialog Lightbox Styling */
+.blueprint-lightbox {
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: visible;
+    outline: none;
+}
+
+.blueprint-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.blueprint-lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255, 107, 0, 0.3);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    background: transparent;
+    color: #a8aeb3;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.lightbox-close:hover {
+    color: #ff6b00;
+    transform: scale(1.1);
+}
