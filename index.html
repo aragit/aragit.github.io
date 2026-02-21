@@ -423,7 +423,7 @@ f<!doctype html>
             <div class="card-body">
               <h3>Generative AI & LLM Engineering</h3>
               <p class="service-subtitle">Determinism, Neuro-Symbolic Logic and Optimization</p>
-              <p class="service-detail">Moving beyond fragile API wrappers, we engineer robust, high-stakes LLM infrastructure built for survival in enterprise production environments. We bridge the critical gap between probabilistic text generation and strict neuro-symbolic logic, ensuring your AI systems execute with absolute predictability.<br><br>Our approach encompasses full-stack model optimization: from hardware-accelerated inference layers and custom precision quantization, to designing deterministic execution boundaries that eliminate hallucinated actions.</p>
+              <p class="service-detail">Moving beyond fragile API wrappers, we engineer robust, high-stakes LLM infrastructure built for survival in enterprise production environments. We bridge the critical gap between probabilistic text generation and strict neuro-symbolic logic, ensuring your AI systems execute with absolute predictability.<br></p>
               
               <div class="tech-stack" style="margin-bottom: 35px; margin-top: 25px;">
                 <span class="tech-badge">vLLM</span>
@@ -449,27 +449,27 @@ f<!doctype html>
             <div class="dashboard-content">
               <h3>Enterprise Swarm</h3>
               <p class="service-subtitle">Governed Multi-Agent Orchestration at Scale</p>
-              <p class="service-detail">Deploy governed, multi-agent digital workforces engineered specifically for high-stakes industries. We build specialized, autonomous swarms capable of executing complex, long-running workflows while operating under the strictest enterprise constraints.<br><br>By integrating Policy-as-Code (OPA/Rego) circuit breakers and rigorous blast-radius containment protocols, we ensure every agent action is vetted and compliant before execution.</p>
+              <p class="service-detail">Deploy governed, multi-agent digital workforces engineered specifically for high-stakes industries. We build specialized, autonomous swarms capable of executing complex, long-running workflows while operating under the strictest enterprise constraints.<br></p>
               
               <div class="tech-stack" style="margin-bottom: 35px; margin-top: 25px;">
-                <span class="tech-badge">Anthropic Claude</span>
-                <span class="tech-badge">DuckDB</span>
+                
+               
                 <span class="tech-badge">FastAPI</span>
                 <span class="tech-badge">gRPC</span>
-                <span class="tech-badge">LangSmith</span>
+                
                 <span class="tech-badge">Kubernetes</span>
                 <span class="tech-badge">MCP</span>
                 <span class="tech-badge">Redis</span>
-                <span class="tech-badge">Nvidia Triton Inference Server</span>
+                
                 <span class="tech-badge">OpenTelemetry</span>
-                <span class="tech-badge">Ray</span>
+               
                 <span class="tech-badge">PGVector</span>
                 <span class="tech-badge">Rego</span>
                 <span class="tech-badge">Prometheus</span>
                 <span class="tech-badge">Pydantic</span>
                 <span class="tech-badge">Instructor</span>
                 <span class="tech-badge">MinIO</span>
-                <span class="tech-badge">SSE</span>
+                
                 <span class="tech-badge">Temporal</span>
                 <span class="tech-badge">LangGraph</span>
               </div>
@@ -483,23 +483,26 @@ f<!doctype html>
                   <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
                   <div class="terminal-title">crispr-designer — deep-crispr-v2</div>
                 </div>
-                <div class="terminal-body" style="line-height: 1.35;">
-                  <span class="cmd">$ design_agent --target="Gene_HBB" --goal="correct_mutation"</span>
-                  <br><span class="cmt"># --- STEP 1: OBSERVE &amp; SIMULATE ---</span>
-                  <br><span class="kwd">[OBSERVE]</span> Analyzed patient genome (3.2B base pairs).
-                  <br><span class="kwd">[SIMULATE]</span> Running Cas9 binding prediction...
-                  <br>&nbsp;&nbsp;└─ <span class="str">Candidate A:</span> Efficiency 99.1% (Top Pick)
-                  <br>&nbsp;&nbsp;└─ <span class="str">Candidate B:</span> Efficiency 84.5%
-                  <br><span class="cmt"># --- STEP 2: REASONING ---</span>
-                  <br><span class="kwd">[THINK]</span> "Candidate A is superior. Maximizes therapeutic edit rate. Preparing synthesis payload."
-                  <br><span class="cmt"># --- STEP 3: GOVERNANCE GATE (Safety) ---</span>
-                  <br><span class="kwd">[ACTION_ATTEMPT]</span> <span class="cmd">finalize_design(seq="GTC...AGG", candidate="A")</span>
-                  <br><span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: off_target_toxicity)
-                  <br>&nbsp;&nbsp;└─ <span class="str">Critical Risk:</span> "Candidate A has a 0.4% off-target match with 'TP53' (Tumor Suppressor). Editing this locus carries high cancer risk."
-                  <br><span class="cmt"># --- STEP 4: RECOVERY ---</span>
-                  <br><span class="kwd">[PLAN_UPDATE]</span> Discarding Candidate A.
-                  <br><span class="pass">[EXEC]</span> Finalizing Candidate B (Lower efficiency, zero off-target risk).
-                  <br><span class="cmd">[STATUS]</span> <span class="blink">SAFE DESIGN LOCKED</span>...
+                <div class="terminal-body" style="line-height: 1.2; text-align: left; white-space: normal;">
+                  <span class="cmd">$ agent_core run --agent="crispr_designer" --target="Gene_HBB"</span><br>
+                  <span class="cmt"># --- STEP 1: OBSERVATION &amp; SIMULATION ---</span><br>
+                  <span class="kwd">[OBSERVE]</span> Ingesting patient genome (3.2B base pairs).<br>
+                  <span class="kwd">[SIMULATE]</span> Running Cas9 binding prediction...<br>
+                  &nbsp;&nbsp;└─ <span class="str">Candidate A:</span> Efficiency 99.1% (Primary)<br>
+                  &nbsp;&nbsp;└─ <span class="str">Candidate B:</span> Efficiency 84.5% (Fallback)<br>
+                  <span class="cmt"># --- STEP 2: REASONING &amp; INTENT ---</span><br>
+                  <span class="kwd">[THINK]</span> "Candidate A maximizes therapeutic edit rate. Formulating payload."<br>
+                  <span class="kwd">[ACTION_INTENT]</span> <span class="cmd">commit_design(candidate="A")</span><br>
+                  <span class="cmt"># --- STEP 3: POLICY GOVERNANCE SHIELD ---</span><br>
+                  <span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: strict_off_target_toxicity)<br>
+                  &nbsp;&nbsp;└─ <span class="str">Critical Risk:</span> "0.4% off-target match with 'TP53' (Tumor Suppressor)."<br>
+                  <span class="cmt"># --- STEP 4: RECOVERY &amp; RE-GROUNDING ---</span><br>
+                  <span class="kwd">[PLAN_UPDATE]</span> Dropping Candidate A. Proposing Candidate B.<br>
+                  <span class="kwd">[POLICY_EVAL]</span> Re-verifying Candidate B against security constraints...<br>
+                  <span class="pass">[PASS]</span> Zero critical off-target matches detected.<br>
+                  <span class="cmt"># --- STEP 5: DETERMINISTIC EXECUTION ---</span><br>
+                  <span class="pass">[SYSTEM_COMMIT]</span> Irreversible write: finalize_design(candidate="B").<br>
+                  <span class="cmd">[STATUS]</span> <span class="blink">SAFE DESIGN LOCKED</span>...
                 </div>
               </div>
             </div>
