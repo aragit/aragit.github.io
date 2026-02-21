@@ -11637,3 +11637,48 @@ div#services .cards .card.card-wide .card-actions {
     .footer-terminal-bar { flex-direction: column; gap: 15px; }
     .terminal-logs { text-align: center; }
 }
+
+/* --- THE DICHOTOMY ENGINE --- */
+.dichotomy-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
+@media(max-width: 850px) { .dichotomy-container { grid-template-columns: 1fr; } }
+
+.dichotomy-card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden;}
+
+/* Cinematic Hover Effects */
+.black-box:hover { border-color: rgba(255, 95, 86, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(255, 95, 86, 0.05); transform: translateY(-5px); }
+.glass-box:hover { border-color: rgba(255, 107, 0, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(255, 107, 0, 0.05); transform: translateY(-5px); }
+.black-box:hover .dicho-terminal { border-color: rgba(255, 95, 86, 0.5); }
+.glass-box:hover .dicho-terminal { border-color: rgba(255, 107, 0, 0.5); }
+
+.dicho-header { display: flex; align-items: center; gap: 16px; }
+.dicho-header i { font-size: 2rem; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+.dicho-header h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2px; }
+.dicho-header span { font-size: 0.85rem; color: var(--gray); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
+
+.dicho-desc { color: #a8aeb3; font-size: 0.95rem; line-height: 1.6; }
+
+/* Nested Terminal Windows */
+.dicho-terminal { background: #1e1e1e; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: border-color 0.3s; }
+.dicho-terminal pre { padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #d4d4d4; overflow-x: auto; margin: 0; }
+
+/* Micro-Glitch Animation for the Black Box */
+@keyframes textGlitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-1px, 1px) }
+  40% { transform: translate(-1px, -1px) }
+  60% { transform: translate(1px, 1px) }
+  80% { transform: translate(1px, -1px) }
+  100% { transform: translate(0) }
+}
+.black-box:hover .dicho-terminal pre { animation: textGlitch 0.2s ease-in-out; }
+
+/* Feature List */
+.dicho-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05);}
+.dicho-list li { color: #cbd6df; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; }
+.dicho-list i { font-size: 1rem; width: 16px; text-align: center; }
+
+/* Blinking Cursors */
+@keyframes blinkRed { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blink-cursor-red { display: inline-block; width: 8px; height: 14px; background-color: #ff5f56; vertical-align: middle; margin-left: 5px; animation: blinkRed 1s step-end infinite; }
+@keyframes blinkGreen { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blink-cursor-green { display: inline-block; width: 8px; height: 14px; background-color: #27c93f; vertical-align: middle; margin-left: 5px; animation: blinkGreen 1s step-end infinite; }
