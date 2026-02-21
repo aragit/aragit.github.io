@@ -1,4 +1,80 @@
-<!doctype html>
+<section id="insights" style="padding: clamp(60px, 8vw, 90px) 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); background: var(--darker);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 40px;">
+          <h2 style="font-size: clamp(2rem, 4vw, 2.5rem); color: #fff; margin-bottom: 15px; font-weight: 700;">Beyond the Hype of Expensive Chatbots</h2>
+          <p style="color: var(--accent); font-weight: 600; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase;">Bridging Strategic Business Intent with Adaptive Agentic Systems</p>
+        </div>
+
+        <div style="background: rgba(20,20,20,0.8); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid var(--accent); border-radius: 12px; padding: 40px; text-align: center; max-width: 950px; margin: 0 auto 50px auto; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
+          <p style="color: #cbd6df; font-size: 1.1rem; line-height: 1.7; margin: 0;">Chatbots and prompting are parlor tricks; systems engineering is a discipline. While standard automation is fragile and raw LLMs are unpredictable, we build for <strong>Architectural Resilience</strong>. By separating stochastic reasoning from deterministic execution, we deliver multi-agent systems that plan complex workflows, reason through ambiguity, and learn from outcomes. The result is autonomous execution backed by absolute reliability, strict governance, and predictable ROI.</p>
+        </div>
+
+        <div class="dichotomy-container">
+          
+          <div class="dichotomy-card black-box">
+            <div class="dicho-header">
+              <i class="fa-solid fa-cube" style="color: #ff5f56;"></i>
+              <div>
+                <h3>The Black Box</h3>
+                <span>Probabilistic Wrappers</span>
+              </div>
+            </div>
+            <p class="dicho-desc">Standard chatbots and hardcoded workflows are fragile cost centers. They create technical debt and require constant human supervision to handle edge cases.</p>
+            
+            <div class="dicho-terminal">
+              <div class="mac-header">
+                <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+                <div class="mac-title">agent_loop.log</div>
+              </div>
+              <pre><code>> User: "Process invoice #4492"
+> Agent: Guessing API payload...
+> <span style="color:#ff5f56;">FATAL: Max recursion depth reached.</span>
+> <span style="color:#ff5f56;">Hallucinated parameter: 'amount_null'</span>
+> <span class="blink-cursor-red"></span></code></pre>
+            </div>
+            
+            <ul class="dicho-list">
+              <li><i class="fa-solid fa-xmark" style="color: #ff5f56;"></i> Unbounded Action Space</li>
+              <li><i class="fa-solid fa-xmark" style="color: #ff5f56;"></i> Probabilistic Guessing</li>
+              <li><i class="fa-solid fa-xmark" style="color: #ff5f56;"></i> Zero Blast-Radius Containment</li>
+            </ul>
+          </div>
+
+          <div class="dichotomy-card glass-box">
+            <div class="dicho-header">
+              <i class="fa-solid fa-network-wired" style="color: var(--accent);"></i>
+              <div>
+                <h3>The Glass Box</h3>
+                <span>Deterministic State Machines</span>
+              </div>
+            </div>
+            <p class="dicho-desc">True value requires moving from automated processes to autonomous reasoning, backed by strict physical boundaries and mathematically auditable execution.</p>
+            
+            <div class="dicho-terminal">
+              <div class="mac-header">
+                <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+                <div class="mac-title">orchestrator.log</div>
+              </div>
+              <pre><code>> Orchestrator: DAG Received.
+> Shield: OPA Policy Check <span style="color:#27c93f;">[PASS]</span>
+> Worker: Executing Step 1 (Idempotent)
+> <span style="color:#27c93f;">HTTP 200: Execution Committed.</span>
+> <span style="color:#27c93f;">Audit Hash: 0x8f92a4...</span>
+> <span class="blink-cursor-green"></span></code></pre>
+            </div>
+            
+            <ul class="dicho-list">
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Constrained Execution Graphs</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Policy-as-Code Guards (OPA)</li>
+              <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Immutable Audit Trails</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    
+    <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -82,81 +158,181 @@
   <main id="main" role="main">
 
     <!-- HERO -->
-    <section id="insights" style="padding: clamp(60px, 8vw, 90px) 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); background: var(--darker);">
-  <div class="container">
-    <div style="text-align: center; margin-bottom: 40px;">
-      <h2 style="font-size: clamp(2rem, 4vw, 2.5rem); color: #fff; margin-bottom: 15px; font-weight: 700;">Beyond the Hype of Expensive Chatbots</h2>
-      <p style="color: var(--accent); font-weight: 600; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase;">Bridging Strategic Business Intent with Adaptive Agentic Systems</p>
-    </div>
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <!-- HERO GRID (drop-in) -->
+      <div class="hero-grid" aria-hidden="true">
+        <svg class="hero-grid-svg" viewBox="0 0 1200 600" preserveAspectRatio="none"
+             xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="gridGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"  stop-color="#ff6b00" stop-opacity="0.78"/>
+              <stop offset="30%" stop-color="#ff6b00" stop-opacity="0.28"/>
+              <stop offset="45%" stop-color="#ff6b00" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"  stop-color="#5fd3ff" stop-opacity="0.22"/>
+              <stop offset="50%" stop-color="#5fd3ff" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#5fd3ff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="maskGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop id="mask-stop-a" offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+              <stop id="mask-stop-b" offset="55%" stop-color="#ffffff" stop-opacity="0.6"/>
+              <stop id="mask-stop-c" offset="85%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+            <mask id="fadeMask">
+              <rect x="0" y="0" width="100%" height="100%" fill="url(#maskGradient)"></rect>
+            </mask>
+          </defs>
 
-    <div style="background: rgba(20,20,20,0.8); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid var(--accent); border-radius: 12px; padding: 40px; text-align: center; max-width: 950px; margin: 0 auto 50px auto; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
-      <p style="color: #cbd6df; font-size: 1.1rem; line-height: 1.7; margin: 0;">Chatbots and prompting are parlor tricks; systems engineering is a discipline. While standard automation is fragile and raw LLMs are unpredictable, we build for <strong>Architectural Resilience</strong>. By separating stochastic reasoning from deterministic execution, we deliver multi-agent systems that plan complex workflows, reason through ambiguity, and learn from outcomes. The result is autonomous execution backed by absolute reliability, strict governance, and predictable ROI.</p>
-    </div>
-
-    <div class="dichotomy-container">
-      
-      <div class="dichotomy-card black-box">
-        <div class="dicho-header">
-          <i class="fa-solid fa-cube" style="color: #ff5f56;"></i>
-          <div>
-            <h3>The Black Box</h3>
-            <span>Probabilistic Wrappers</span>
-          </div>
-        </div>
-        <p class="dicho-desc">Standard chatbots and hardcoded workflows are fragile cost centers. They create technical debt and require constant human supervision to handle edge cases.</p>
-        
-        <div class="dicho-terminal">
-          <div class="mac-header">
-            <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-            <div class="mac-title">agent_loop.log</div>
-          </div>
-          <pre><code>> User: "Process invoice #4492"
-> Agent: Guessing API payload...
-> <span style="color:#ff5f56;">FATAL: Max recursion depth reached.</span>
-> <span style="color:#ff5f56;">Hallucinated parameter: 'amount_null'</span>
-> <span class="blink-cursor-red"></span></code></pre>
-        </div>
-        
-        <ul class="dicho-list">
-          <li><i class="fa-solid fa-xmark" style="color: #ff5f56;"></i> Unbounded Action Space</li>
-          <li><i class="fa-solid fa-xmark" style="color: #ff5f56;"></i> Probabilistic Guessing</li>
-          <li><i class="fa-solid fa-xmark" style="color: #ff5f56;"></i> Zero Blast-Radius Containment</li>
-        </ul>
+          <g class="grid-orange" stroke="url(#gridGradient)" fill="none" mask="url(#fadeMask)"></g>
+          <g class="grid-blue"   stroke="url(#blueGradient)"  fill="none" mask="url(#fadeMask)"></g>
+        </svg>
       </div>
 
-      <div class="dichotomy-card glass-box">
-        <div class="dicho-header">
-          <i class="fa-solid fa-network-wired" style="color: var(--accent);"></i>
-          <div>
-            <h3>The Glass Box</h3>
-            <span>Deterministic State Machines</span>
-          </div>
-        </div>
-        <p class="dicho-desc">True value requires moving from automated processes to autonomous reasoning, backed by strict physical boundaries and mathematically auditable execution.</p>
-        
-        <div class="dicho-terminal">
-          <div class="mac-header">
-            <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-            <div class="mac-title">orchestrator.log</div>
-          </div>
-          <pre><code>> Orchestrator: DAG Received.
-> Shield: OPA Policy Check <span style="color:#27c93f;">[PASS]</span>
-> Worker: Executing Step 1 (Idempotent)
-> <span style="color:#27c93f;">HTTP 200: Execution Committed.</span>
-> <span style="color:#27c93f;">Audit Hash: 0x8f92a4...</span>
-> <span class="blink-cursor-green"></span></code></pre>
-        </div>
-        
-        <ul class="dicho-list">
-          <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Constrained Execution Graphs</li>
-          <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Policy-as-Code Guards (OPA)</li>
-          <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Immutable Audit Trails</li>
-        </ul>
-      </div>
+      <div class="container hero-inner">
+        <img src="Mereal1.png" alt="Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130" onmouseover="this.src='LOGO.jpg'" onmouseout="this.src='Mereal1.png'" style="cursor: pointer;">
+        <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
+        <p class="hero-tagline typewriter">Agentic AI Architect</p>
+        <p class="tagline typewriter">AI Engineering Services &amp; Consulting</p>
 
+        <div class="value-prop" aria-hidden="false">
+          <div class="role-container" aria-hidden="true">
+            <p id="typewrite" aria-live="polite"></p>
+          </div>
+
+          <!-- hero divider: lines + optional icon (kept commented cleanly) -->
+          <!-- <div class="chess-chip" aria-hidden="true">
+               <i class="fas fa-chess-knight chess-icon" aria-hidden="true"></i>
+          </div> -->
+
+          <div class="line" role="presentation"></div>
+        </div>
+
+        <!-- HERO CTA -->
+        <div class="hero-cta" role="group" aria-label="Primary calls to action">
+          <button class="btn-hero btn-primary" id="openChatBtn" title="Chat with my experience" aria-haspopup="dialog">
+            <i class="fas fa-comments" aria-hidden="true"></i>
+            Chat with my Experience
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE EVOLUTION STAIRCASE -->
+    <div class="value-prop-bridge">
+      <div class="container">
+        <div class="vprop-header">
+          <h2 class="vprop-title">Beyond the Hype of Expensive Chatbots</h2>
+          <p class="vprop-subtitle" style="color: var(--text);">Bridging Strategic Business Intent with Adaptive Agentic Systems</p>
+          <div class="manifesto-grid">
+            <p class="manifesto-text">Chatbots and prompting are parlor tricks; systems engineering is a discipline. While standard automation is fragile and raw LLMs are unpredictable, we build for Architectural Resilience. By separating stochastic reasoning from deterministic execution, we deliver multi-agent systems that plan complex workflows, reason through ambiguity, and learn from outcomes. The result is autonomous execution backed by absolute reliability, strict governance, and predictable ROI.</p>
+          </div>
+        </div>
+
+        <div class="evolution-image-wrapper" style="text-align: center; margin: 3rem auto; max-width: 900px; padding: 0 1rem;">
+          <img src="evolution.jpg" alt="Value Evolution from Chatbots to Agentic Systems" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(255, 107, 0, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+        </div>
+
+        <div class="evolution-progression-card">
+          <div class="progression-col col-trap">
+            <div class="progression-level">Levels 1 &amp; 2</div>
+            <h3 class="progression-title">The Trap of Brittle Automation</h3>
+            <p class="progression-text">Standard chatbots and hardcoded workflows are fragile cost centers. They create technical debt and require constant human supervision to handle anything beyond a rigid script, offering only minor operational gains.</p>
+          </div>
+
+          <div class="progression-col col-shift">
+            <div class="progression-level">Level 3</div>
+            <h3 class="progression-title">The Shift to Predictable ROI</h3>
+            <p class="progression-text">True value requires moving from automated processes to autonomous reasoning. Autonomous agents dynamically plan, use APIs, execute multi-step tasks end-to-end, and self-correct their own errors without human intervention.</p>
+          </div>
+
+          <div class="progression-col col-asset">
+            <div class="progression-level">Level 4</div>
+            <h3 class="progression-title">The Strategic Asset</h3>
+            <p class="progression-text">The ultimate goal is a Multi-Agent System. By orchestrating specialized, collaborating AI agents, enterprises gain a self-optimizing, scalable digital workforce that solves complex problems and drives top-line growth.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+
+    <!-- ABOUT / INSIGHT -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="insight-headline">
+          <span class="headline-line1">Architecture Philosophy</span>
+          <span class="headline-line2">Real Agentic Systems Reason and Learn within intelligent Architecture</span>
+        </h2>
+
+        <div class="insight-articles">
+          <div class="architecture-tagline" style="margin-bottom: 1.5rem;">
+            <span class="prompt-sign">&gt;_</span> Deterministic Core &middot; Stochastic Range &middot; Multi-Agent Scale <span class="cursor-blink">&#9608;</span>
+          </div>
+
+          <p style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem auto; color: #f2f2f2; font-size: 1.15rem; line-height: 1.7; font-weight: 400;">
+            Generative AI builds prototypes; governed state machines build platforms. We engineer neuro-symbolic architectures that cross the <em>Planning Rubicon</em>&mdash;isolating probabilistic reasoning from deterministic execution to deploy fault-tolerant, mathematically auditable digital workforces.
+          </p>
+
+          <div class="triptych-grid">
+            <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" target="_blank" class="triptych-card core-card" rel="noopener noreferrer">
+              <div class="triptych-icon"><i class="fas fa-shield-alt"></i></div>
+              <h3>Deterministic Core</h3>
+              <p>Enterprise autonomy requires absolute reliability. We treat the LLM as an untrusted guest within a rigid state machine, ensuring critical actions are governed by deterministic logic, not probabilistic guesses.</p>
+              <span class="triptych-link">Read: Why "Chatbots" Fail &rarr;</span>
+            </a>
+
+            <a href="https://medium.com/@anicomanesh/how-llm-reasoning-powers-the-agentic-ai-revolution-cbefd10ebf3f" target="_blank" class="triptych-card range-card" rel="noopener noreferrer">
+              <div class="triptych-icon"><i class="fas fa-chess-knight"></i></div>
+              <h3>Stochastic Range</h3>
+              <p>Intelligence is useless without constraints. We architect reasoning engines that explore solutions creatively, distilling their cognitive output into strict deterministic execution graphs (DAGs) to prevent hallucinations in high-stakes environments.</p>
+              <span class="triptych-link">Read: The Engine of Reasoning &rarr;</span>
+            </a>
+
+            <a href="https://medium.com/@anicomanesh/from-generative-to-agentic-ai-a-roadmap-in-2026-8e553b43aeda" target="_blank" class="triptych-card scale-card" rel="noopener noreferrer">
+              <div class="triptych-icon"><i class="fas fa-bolt"></i></div>
+              <h3>Multi-Agent Scale</h3>
+              <p>A single agent is a prototype; centralized orchestration is a platform. We scale isolated bots into parallel, DAG-driven sub-agents managed by a central orchestrator, ensuring fault-tolerant, durable execution.</p>
+              <span class="triptych-link">Read: The 2026 Roadmap &rarr;</span>
+            </a>
+          </div>
+
+          <!-- Combined card with text and image side by side -->
+          <div class="insight-card-combined">
+            <div class="insight-text">
+              <div class="insight-pillars">
+                <div class="insight-pillar">
+                  <div class="pillar-content">
+                    <h4 class="pillar-title">Execution <span class="pillar-subtitle">over Conversation</span></h4>
+                    <p class="pillar-desc">Build AI systems that read reports, flag risks, generate artifacts, and update systems autonomously while learning from outcomes. Intelligence that cannot act or improve from action is not a system; it's a demo.</p>
+                  </div>
+                </div>
+
+                <div class="insight-pillar">
+                  <div class="pillar-content">
+                    <h4 class="pillar-title">Planning <span class="pillar-subtitle">over Reaction</span></h4>
+                    <p class="pillar-desc">Most so-called "AI agents" respond to prompts but fail to plan, execute multi-step workflows, persist state, or refine behavior over time. Stateless LLM wrappers are costly — and fragile.</p>
+                  </div>
+                </div>
+
+                <div class="insight-pillar">
+                  <div class="pillar-content">
+                    <h4 class="pillar-title">Control <span class="pillar-subtitle">over Cleverness</span></h4>
+                    <p class="pillar-desc">Apply robust agentic architectures that separate stochastic reasoning from deterministic execution, enabling learning within explicit constraints. Governance, validation, and recovery come first.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="insight-visual insight-visual-large">
+              <img src="77.png" alt="Agentic AI Architectures Mindmap">
+            </div>
+          </div>
+
+          <div class="articles-cta" style="margin-top: 2.5rem;">
+            <a href="architecture.html" class="btn-hero btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- PORTFOLIO -->
     <section id="portfolio" class="section">
