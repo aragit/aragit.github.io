@@ -6371,7 +6371,7 @@ ul.insight-bullets li {
   margin-bottom: 1rem;
 }
 
-.link-arrow { color: var(--accent); font-weight: 600; margin-top: 1rem; display: block; }
+.link-arrow { color: #FF8C00; font-weight: 600; margin-top: 1rem; display: block; }
 
 @keyframes bento-blink { 50% { opacity: 0; } }
 
@@ -6479,7 +6479,7 @@ ul.insight-bullets li {
 
 .agent-loop { margin: 1rem 0; border-left: 2px solid var(--accent); padding-left: 12px; }
 .loop-step { font-size: 0.85rem; margin-bottom: 5px; color: var(--muted); }
-.loop-step strong { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; }
+.loop-step strong { color: #FF8C00; font-size: 0.75rem; text-transform: uppercase; }
 
 .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
 .tag { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; color: #fff; border: 1px solid rgba(255,255,255,0.1); }
