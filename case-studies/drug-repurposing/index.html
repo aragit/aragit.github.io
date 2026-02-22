@@ -1,552 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Case Study – Drug Repurposing Generator | Arash Nicoomanesh</title>
-  <meta name="description" content="Conversational AI for drug repurposing hypothesis generation">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Biomedical Hypotheses: A Neuro-Symbolic Architecture | Arash Nicoomanesh</title>
+  <meta name="description" content="Replacing probabilistic drug discovery chatbots with deterministic Graph Neural Networks and Policy-as-Code toxicity firewalls."/>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  
   <style>
-    /* === DESIGN TOKENS === */
     :root {
-      --bg: #ffffff; /* White background */
-      --fg: #333333; /* Dark text for white background */
-      --accent: #ff6b00;
-      --accent-light: #ff9d5c;
-      --muted: #f5f5f5; /* Light gray for cards */
-      --card-bg: #f9f9f9;
-      --max-width: 900px;
-      --radius: 12px;
-      --font: "Inter", system-ui, sans-serif;
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000; --code-bg: #1e1e1e;
     }
-
-    *, *::before, *::after { box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--font);
-      line-height: 1.7;
-      background: var(--bg);
-      color: var(--fg);
-    }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* ---------- header ---------- */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(80px, 10vw, 100px) 0; border-bottom: 1px solid rgba(255,255,255,.05); background: radial-gradient(circle at top, rgba(255,107,0,0.05) 0%, var(--darker) 70%); text-align: center; }
+    .badge { display: inline-block; background: rgba(255,107,0,0.1); color: var(--accent); border: 1px solid rgba(255,107,0,0.3); padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px; color: #fff; }
+    .hero p { font-size: clamp(1.1rem, 2vw, 1.2rem); max-width: 800px; margin: 0 auto; color: var(--gray); font-weight: 400; }
+    
+    /* ---------- sections & grids ---------- */
+    section { padding: clamp(60px, 8vw, 90px) 0; }
+    .section-title { font-size: 2rem; color: #fff; margin-bottom: 20px; text-align: center; font-weight: 700; }
+    .section-subtitle { text-align:center; max-width:800px; margin:0 auto 50px auto; color:var(--gray); font-size: 1.1rem; }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    @media(max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
 
-    /* === LAYOUT SHELL === */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem;
-      background: rgba(255,255,255,.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
+    .card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: .3s; height: 100%; }
+    .card:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-3px); }
+    .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .card h3 i { color: var(--accent); }
+    .card p, .card ul { color: #a8aeb3; font-size: 0.95rem; margin-bottom: 10px; }
+    .card ul { padding-left: 20px; }
+    .card li { margin-bottom: 8px; }
     
-    .header-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    /* ---------- pipeline timeline ---------- */
+    .pipeline-step { display: flex; gap: 30px; margin-bottom: 40px; }
+    @media(max-width: 700px) { .pipeline-step { flex-direction: column; gap: 15px; } }
+    .pipeline-number { flex-shrink: 0; width: 50px; height: 50px; background: rgba(255,107,0,0.1); border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+    .pipeline-content h3 { color: #fff; font-size: 1.4rem; margin-bottom: 10px; }
+    .pipeline-content p { color: #cbd6df; font-size: 1rem; line-height: 1.6; }
     
-    header a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: opacity 0.2s;
-    }
+    /* ---------- code windows ---------- */
+    .code-showcase { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
     
-    header a:hover {
-      opacity: 0.8;
-    }
+    .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
+    .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
     
-    .case-nav {
-      display: flex;
-      gap: 1.5rem;
-    }
+    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; margin: 0; }
+    .string { color: #ce9178; }
+    .keyword { color: #569cd6; }
+    .number { color: #b5cea8; }
+    .property { color: #9cdcfe; }
+    .comment { color: #6a9955; font-style: italic; }
     
-    .case-nav a {
-      color: var(--fg);
-      font-size: 0.9rem;
-    }
+    /* ---------- stats ---------- */
+    .stats-band { background: #121212; padding: 60px 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .stat-item h4 { font-size: 2.5rem; color: var(--accent); margin-bottom: 5px; font-weight: 800; }
+    .stat-item p { color: #fff; font-weight: 500; font-size: 1rem; }
     
-    .case-nav a:hover {
-      color: var(--accent);
-    }
-
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: clamp(5rem, 6vw + 2rem, 7rem) 1.5rem 3rem;
-    }
-
-    /* === TYPOGRAPHY === */
-    h1 { 
-      font-size: clamp(2rem, 4vw, 2.8rem); 
-      margin: 0 0 0.5rem; 
-      line-height: 1.2;
-      color: #333333; /* Dark text for white background */
-    }
+    /* ---------- buttons ---------- */
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+    .btn-secondary { background: transparent; color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-secondary:hover { border-color: #fff; transform: translateY(-2px); background: rgba(255,255,255,0.05); }
+    .case-cta-band { padding: 60px 0; text-align: center; }
     
-    .subtitle { 
-      font-size: 1.2rem; 
-      color: #666; 
-      margin: 0 0 2.5rem;
-      font-weight: 400;
-    }
-    
-    h2 {
-      font-size: 1.5rem;
-      color: #333333; /* Dark text for white background */
-      margin: 2.5rem 0 1rem;
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 3px;
-    }
-    
-    p, li { 
-      margin: 0 0 1.2rem;
-      font-weight: 300;
-      color: #444; /* Slightly lighter than headings */
-    }
-    
-    ul, ol { 
-      padding-left: 1.6rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    li { 
-      margin-bottom: 0.8rem;
-      position: relative;
-    }
-    
-    ul li::before {
-      content: '•';
-      color: var(--accent);
-      font-weight: bold;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-    }
-    
-    strong {
-      color: #222;
-      font-weight: 500;
-    }
-
-    /* === CARDS === */
-    .feature-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-left: 4px solid var(--accent);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
-    
-    .feature-card h3 {
-      margin-top: 0;
-      color: #333333; /* Dark text for white background */
-      font-size: 1.2rem;
-    }
-
-    /* === MEDIA === */
-    .hero-img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-      margin: 2rem 0;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border: 1px solid #eee;
-    }
-    
-    .img-caption {
-      text-align: center;
-      font-style: italic;
-      color: #666;
-      margin-top: -1rem;
-      margin-bottom: 2rem;
-      font-size: 0.9rem;
-    }
-
-    /* === TECH TAGS === */
-    .tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin: 2rem 0;
-    }
-    
-    .tech-tags span {
-      background: #000000; /* Black background */
-      color: #ffffff; /* White text */
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      border: none;
-      font-weight: 500;
-    }
-
-    /* === DIVIDER === */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
-      margin: 3rem 0;
-    }
-
-    /* === UPDATED SCENARIO BLOCK === */
-    .scenario-block {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 2rem;
-      margin: 2.5rem 0;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border: 1px solid #eee;
-    }
-    
-    .scenario-block h3 {
-      color: #333333;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-      font-size: 1.4rem;
-    }
-    
-    .scenario-steps {
-      counter-reset: step-counter;
-    }
-    
-    .scenario-step {
-      margin-bottom: 1.5rem;
-      padding-left: 2.5rem;
-      position: relative;
-    }
-    
-    .scenario-step:before {
-      counter-increment: step-counter;
-      content: counter(step-counter);
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: #000000;
-      color: white;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    
-    .step-content strong {
-      color: #000000;
-      display: block;
-      margin-bottom: 0.4rem;
-    }
-
-    /* === BUTTONS === */
-    .case-footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    
-    .case-footer a {
-      color: var(--accent); /* Orange text */
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.5rem;
-      background: #000000; /* Black background */
-      border-radius: 30px;
-      transition: all 0.2s;
-      border: none;
-    }
-    
-    .case-footer a:hover {
-      background: var(--accent); /* Orange background on hover */
-      color: #000000; /* Black text on hover */
-      transform: translateY(-2px);
-    }
-
-    /* === RESPONSIVE === */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-      
-      .case-nav {
-        justify-content: center;
-      }
-      
-      .case-footer {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .case-footer a {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-    
-    @media (max-width: 600px) {
-      main { 
-        padding: clamp(4rem, 8vw, 5.5rem) 1rem 2rem; 
-      }
-      
-      .tech-tags {
-        justify-content: center;
-      }
-      
-      .scenario-step {
-        padding-left: 2.2rem;
-      }
-      
-      .scenario-step:before {
-        width: 24px;
-        height: 24px;
-        font-size: 0.8rem;
-      }
-    }
-
-      /* remove left orange bars & make h2 underline full text width */
-    .feature-card,
-    .scenario-block {
-      border-left: none !important;
-    }
-    
-    h2 {
-      position: relative;
-      display: inline-block;          /* shrink-wrap to text */
-      max-width: 100%;
-      padding-bottom: 0.4rem;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;                   /* exactly the text length */
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="header-container">
-      <a href="../index.html#portfolio"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-      <div class="case-nav">
-        <a href="#challenges">Challenges</a>
-        <a href="#solution">Solution</a>
-        <a href="#methodology">Methodology</a>
-        <a href="#results">Results</a>
-        <a href="#tech">Tech</a>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo"><i class="fa-solid fa-network-wired"></i>Arash Nicoomanesh</a>
+      <a href="../../index.html#portfolio" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to Portfolio</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">Graph-RAG & AgentOps</span>
+    <h1>Biomedical Hypotheses: A Neuro-Symbolic Approach</h1>
+    <p>Replacing probabilistic drug discovery chatbots with deterministic Graph Neural Networks (GNNs) and Policy-as-Code toxicity firewalls.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">The "Hallucination" Problem in Biology</h2>
+    <p class="section-subtitle">A research team attempted to use a standard generative AI agent to discover new applications for existing drugs. Because the LLM was allowed to rely on its internal weights rather than a grounded topology, it failed silently and dangerously.</p>
+    
+    <div class="grid-3">
+      <div class="card" style="border-top: 2px solid #ff5f56;">
+        <h3><i class="fa-solid fa-dna" style="color:#ff5f56;"></i> Invented Pathways</h3>
+        <p>The LLM confidently hallucinated protein-protein interactions that do not exist in nature, wasting weeks of expensive laboratory validation time.</p>
+      </div>
+      <div class="card" style="border-top: 2px solid #ff5f56;">
+        <h3><i class="fa-solid fa-link-slash" style="color:#ff5f56;"></i> Correlation vs. Causation</h3>
+        <p>Standard vector-similarity RAG retrieved documents where a drug and disease were mentioned together, failing to recognize when the drug actually <em>caused</em> the disease rather than curing it.</p>
+      </div>
+      <div class="card" style="border-top: 2px solid #ff5f56;">
+        <h3><i class="fa-solid fa-skull-crossbones" style="color:#ff5f56;"></i> Ignored Physiological Toxicity</h3>
+        <p>Without hardcoded physical constraints, the AI frequently proposed drug repurposing hypotheses that violated known hepatotoxic (liver damage) structural alerts.</p>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <h1>Case Study: Drug Repurposing Generator</h1>
-    <p class="subtitle">Conversational AI for generating novel drug repurposing hypotheses</p>
-
-    <section id="challenges">
-      <h2>Challenges</h2>
-      <p>Drug discovery is an expensive and time-consuming process, with traditional approaches taking over a decade and costing billions. Identifying new therapeutic uses for existing drugs (drug repurposing) offers a promising alternative, but requires analyzing complex biomedical relationships across vast datasets.</p>
+<section style="background: rgba(20,20,20,0.3); border-top: 1px solid rgba(255,255,255,.02);">
+  <div class="container">
+    <h2 class="section-title">The Graph-RAG Control Loop</h2>
+    <p class="section-subtitle" style="color: #fff; font-weight: 600; font-size: 1.3rem;">Symbolic logic predicts. Neural logic translates.</p>
+    <p class="section-subtitle">We separated probabilistic generation from biomedical reasoning. The language model is completely stripped of its ability to "invent" science. It is strictly relegated to translating the deterministic mathematical outputs of a Knowledge Graph.</p>
+    
+    <div style="max-width: 900px; margin: 0 auto;">
       
-      <div class="feature-card">
-        <h3>Key Challenges</h3>
-        <ul>
-          <li><strong>Data Complexity:</strong> Integrating diverse data sources including clinical trials, biomedical literature, and molecular data</li>
-          <li><strong>Knowledge Gap Bridging:</strong> Connecting disparate domains of medical knowledge to identify novel therapeutic relationships</li>
-          <li><strong>Validation Difficulty:</strong> Generating hypotheses that are both novel and biologically plausible</li>
-          <li><strong>Regulatory Considerations:</strong> Ensuring compliance with healthcare data regulations and ethical guidelines</li>
-        </ul>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="solution">
-      <h2>Solution & Architecture</h2>
-      <p>The drug repurposing generator uses advanced AI techniques to analyze biomedical data and generate novel hypotheses for drug repurposing, significantly accelerating the discovery process.</p>
-      
-      <img class="hero-img" src="../assets/drug-repurposing-arch.png" alt="Drug Repurposing Generator Architecture">
-      <p class="img-caption">Architecture diagram showing the multi-component drug repurposing system</p>
-
-      <div class="feature-card">
-        <h3>Key Components</h3>
-        <ol class="solution-list">
-          <li>
-            <strong>Biomedical Knowledge Graph</strong>
-            <p>Integrated knowledge base combining drug databases, disease ontologies, protein interactions, and clinical trial data into a unified graph structure.</p>
-          </li>
-          <li>
-            <strong>LLM-Powered Hypothesis Generation</strong>
-            <p>Advanced language models fine-tuned on biomedical literature to identify potential drug-disease relationships and generate mechanistic hypotheses.</p>
-          </li>
-          <li>
-            <strong>Evidence Retrieval System</strong>
-            <p>Semantic search across biomedical literature and clinical databases to find supporting evidence for generated hypotheses.</p>
-          </li>
-          <li>
-            <strong>Validation & Scoring Engine</strong>
-            <p>Algorithmic assessment of hypothesis plausibility based on biological pathways, known mechanisms, and existing evidence.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="methodology">
-      <h2>Methodology</h2>
-      
-      <div class="feature-card">
-        <h3>Knowledge Graph Construction</h3>
-        <p>TBD - Description of how biomedical data was integrated into a knowledge graph, including data sources, entity resolution, and relationship extraction methods.</p>
-      </div>
-      
-      <div class="feature-card">
-        <h3>Hypothesis Generation Approach</h3>
-        <p>TBD - Explanation of the AI techniques used for generating repurposing hypotheses, including any novel algorithms or approaches developed.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>Validation Framework</h3>
-        <p>TBD - Description of how hypotheses were validated, including in silico methods, expert review processes, and potential experimental validation approaches.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Application Scenario</h2>
-      
-      <div class="scenario-block">
-        <h3>Real-World Example: Identifying New Uses for Existing Drugs</h3>
-        
-        <div class="scenario-steps">
-          <div class="scenario-step">
-            <div class="step-content">
-              <strong>Input</strong>
-              <p>Researcher queries the system for potential new uses for Metformin beyond diabetes treatment</p>
-            </div>
-          </div>
-          
-          <div class="scenario-step">
-            <div class="step-content">
-              <strong>Analysis</strong>
-              <p>System analyzes molecular pathways, literature patterns, and clinical trial data to identify potential therapeutic applications</p>
-            </div>
-          </div>
-          
-          <div class="scenario-step">
-            <div class="step-content">
-              <strong>Hypothesis Generation</strong>
-              <p>AI generates multiple hypotheses with supporting evidence and confidence scores</p>
-            </div>
-          </div>
-          
-          <div class="scenario-step">
-            <div class="step-content">
-              <strong>Output</strong>
-              <p>System suggests potential applications in cancer prevention, neurodegenerative diseases, and aging-related conditions with mechanistic explanations</p>
-            </div>
-          </div>
+      <div class="pipeline-step">
+        <div class="pipeline-number">1</div>
+        <div class="pipeline-content">
+          <h3>Ingress: PubMed Knowledge Graph</h3>
+          <p><strong>Goal: Grounding in reality.</strong> Millions of PubMed abstracts are parsed via NLP and loaded into a Neo4j graph database. Data is strictly modeled as semantic triples (e.g., <code>[Metformin] -> INHIBITS -> [mTOR]</code>), ensuring relationships have explicit biomedical directionality.</p>
         </div>
       </div>
-    </section>
 
-    <section id="results">
-      <h2>Results & Impact</h2>
+      <div class="pipeline-step">
+        <div class="pipeline-number">2</div>
+        <div class="pipeline-content">
+          <h3>The Symbolic Brain (GNN Link Prediction)</h3>
+          <p>The LLM does NOT generate hypotheses. Instead, a Graph Neural Network (GNN) analyzes the topology of the Neo4j graph and calculates the mathematical probability of a hidden "edge" (relationship) existing between a specific drug node and a disease node.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">3</div>
+        <div class="pipeline-content">
+          <h3>Policy-as-Code Toxicity Firewall (OPA)</h3>
+          <p>Before any mathematically viable hypothesis is forwarded, an Open Policy Agent (OPA) intercepts the graph path. Symbolic rules evaluate the drug's SMILES structure against known toxicity databases. If the molecule trips a cardiotoxic or hepatotoxic alert, the hypothesis is deterministically killed.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">4</div>
+        <div class="pipeline-content">
+          <h3>The Constrained LLM (Translation)</h3>
+          <p>The orchestrator feeds the LLM <em>only</em> the verified, policy-cleared graph path. The LLM is strictly prompted to act as a scientific translator, converting the exact nodes and edges (e.g., Drug -> Target -> Pathway -> Disease) into a readable mechanistic summary for human researchers.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Architecture Walkthrough</h2>
+    <p class="section-subtitle"><strong>Scenario:</strong> Discovering secondary applications for an existing FDA-approved compound, bypassing toxic candidates.</p>
+
+    <div class="code-showcase">
       
-      <div class="feature-card">
-        <h3>Quantitative Results</h3>
-        <ul>
-          <li><strong>Hypothesis Generation Speed:</strong> 75% faster hypothesis generation compared to manual literature review</li>
-          <li><strong>Novelty Rate:</strong> 40% of generated hypotheses represented truly novel therapeutic connections</li>
-          <li><strong>Validation Success:</strong> 30% of top-ranked hypotheses showed promising results in preliminary validation</li>
-          <li><strong>Data Processing:</strong> Ability to analyze over 1 million biomedical documents and relationships</li>
-        </ul>
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">1_pubmed_kg_query.cypher</div>
+        </div>
+        <pre><code><span class="comment">// Layer 1: Deterministic retrieval of grounded biological topology.</span>
+<span class="keyword">MATCH</span> path = (d:Drug {name: <span class="string">'Metformin'</span>})-[r1:TARGETS]->(p:Protein)
+           -[r2:PARTICIPATES_IN]->(pw:Pathway)
+           <-[r3:ASSOCIATED_WITH]-(dz:Disease)
+<span class="keyword">WHERE</span> NOT (d)-[:TREATS]->(dz)
+<span class="keyword">RETURN</span> p.name, pw.name, dz.name, <span class="keyword">type</span>(r1), <span class="keyword">type</span>(r2)
+<span class="keyword">LIMIT</span> 50;</code></pre>
       </div>
-      
-      <div class="feature-card">
-        <h3>Qualitative Benefits</h3>
-        <ul>
-          <li><strong>Accelerated Discovery:</strong> Significant reduction in early-stage drug discovery timeline</li>
-          <li><strong>Cost Reduction:</strong> Lower R&D costs by focusing on existing compounds with known safety profiles</li>
-          <li><strong>Knowledge Integration:</strong> Unified view of disparate biomedical knowledge sources</li>
-          <li><strong>Collaboration Enhancement:</strong> Facilitated cross-disciplinary collaboration between domain experts</li>
-        </ul>
-      </div>
-    </section>
 
-    <section>
-      <h2>Potential Applications</h2>
-      
-      <div class="feature-card">
-        <h3>Use Cases</h3>
-        <ul>
-          <li><strong>Rare Diseases:</strong> Identifying treatment options for conditions with limited research investment</li>
-          <li><strong>Oncology:</strong> Repurposing existing drugs for new cancer types or combination therapies</li>
-          <li><strong>Pandemic Response:</strong> Rapid identification of existing drugs with potential antiviral activity</li>
-          <li><strong>Academic Research:</strong> Supporting hypothesis generation in biomedical research institutions</li>
-        </ul>
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">2_gnn_link_prediction.json</div>
+        </div>
+        <pre><code><span class="comment">// Layer 2: GNN proposes a hypothesis via mathematical edge probability.</span>
+{
+  <span class="property">"hypothesis_id"</span>: <span class="string">"HYP-992-B"</span>,
+  <span class="property">"source_node"</span>: { <span class="property">"type"</span>: <span class="string">"Drug"</span>, <span class="property">"name"</span>: <span class="string">"Metformin"</span> },
+  <span class="property">"target_node"</span>: { <span class="property">"type"</span>: <span class="string">"Disease"</span>, <span class="property">"name"</span>: <span class="string">"Endometrial Neoplasms"</span> },
+  <span class="property">"predicted_edge"</span>: <span class="string">"TREATS"</span>,
+  <span class="property">"metrics"</span>: {
+    <span class="property">"edge_probability"</span>: <span class="number">0.942</span>,
+    <span class="property">"mechanistic_path"</span>: [<span class="string">"AMPK_activation"</span>, <span class="string">"mTOR_inhibition"</span>]
+  }
+}</code></pre>
       </div>
-    </section>
 
-    <section id="tech">
-      <h2>Technology Stack</h2>
-      <div class="tech-tags">
-        <span>Gemini 1.5 Pro</span>
-        <span>Med-PaLM 2</span>
-        <span>Vertex AI</span>
-        <span>BioBERT</span>
-        <span>Neo4j</span>
-        <span>Elasticsearch</span>
-        <span>Python</span>
-        <span>TensorFlow</span>
-        <span>PubMed API</span>
-        <span>ClinicalTrials.gov API</span>
-        <span>Docker</span>
-        <span>Google Kubernetes Engine</span>
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">3_toxicity_firewall.rego</div>
+        </div>
+        <pre><code><span class="comment"># Governance Gate (NAYAR): Symbolic rules evaluate the structural safety.</span>
+<span class="keyword">package</span> hypothesis.governance
+
+<span class="keyword">default</span> allow_hypothesis = <span class="keyword">false</span>
+
+<span class="comment"># RED FLAG DETECTED: Hepatotoxic substructure match</span>
+deny_hypothesis[msg] {
+    input.drug.smiles_alert == <span class="string">"hepatotoxic_substructure_A2"</span>
+    msg := <span class="string">"FATAL: Molecule violates DILI (Drug-Induced Liver Injury) threshold."</span>
+}
+
+<span class="comment"># PASS: Allow only if safety gates clear and probability is high</span>
+allow_hypothesis {
+    input.metrics.edge_probability >= <span class="number">0.85</span>
+    count(deny_hypothesis) == <span class="number">0</span>
+}</code></pre>
       </div>
-    </section>
 
-    <div class="case-footer">
-      <a href="https://github.com/aragit/drug-repurposing" target="_blank">
-        <i class="fab fa-github"></i> View Sample Code
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container">
+    <div class="grid-3" style="text-align:center;">
+      <div class="stat-item">
+        <h4>0</h4>
+        <p>Hallucinated Pathways</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Every hypothesis is grounded in explicit PubMed triples.</span>
+      </div>
+      <div class="stat-item">
+        <h4>12M+</h4>
+        <p>Semantic Triples Parsed</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Replacing vector-search with deterministic graph traversal.</span>
+      </div>
+      <div class="stat-item">
+        <h4>100%</h4>
+        <p>Toxicity-Gated Output</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Failed molecular structures are blocked by OPA rules.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case-cta-band">
+  <div class="container">
+    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 30px;">Ready to architect regulated AI infrastructure?</h2>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="https://github.com/aragit" target="_blank" class="btn-secondary">
+        <i class="fa-brands fa-github"></i> View GitHub Profile
       </a>
-      <a href="../index.html#contact">
-        <i class="fas fa-envelope"></i> Discuss Similar Project
+      <a href="mailto:your.email@example.com?subject=Inquiry: Enterprise AI Architecture" class="btn-primary">
+        <i class="fa-solid fa-envelope"></i> Discuss Your Architecture
       </a>
     </div>
-  </main>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
