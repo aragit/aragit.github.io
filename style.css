@@ -11868,4 +11868,43 @@ div#services .cards .card.card-wide .card-actions {
     transform: scale(1.1);
 }
 
+/* --- ANIMATIONS & UTILITIES --- */
+.blink {
+  animation: soft-pulse 1.5s infinite;
+  font-weight: bold;
+  color: var(--accent);
+}
 
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* --- MEDIA QUERIES (Keep these at the bottom) --- */
+@media (max-width: 768px) { ... }
+
+/* Terminal Blink/Pulse Effect */
+.blink {
+  animation: soft-pulse 1.5s infinite;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Ensure the bento grid handles the layout correctly */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Optional: Button hover state for the GitHub link */
+.btn:hover {
+  background: rgba(255,255,255,0.2) !important;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
