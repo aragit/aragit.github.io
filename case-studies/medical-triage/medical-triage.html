@@ -182,18 +182,20 @@
       <div class="pipeline-step">
         <div class="pipeline-number">3</div>
         <div class="pipeline-content">
-          <h3>Deterministic Execution Engine</h3>
-          <p>The orchestration engine interprets the approved JSON plan step-by-step. It maintains durable state, writes to an immutable audit log, and tracks SLA timers. There is no recursion, no autonomous replanning, and no self-directed loops.</p>
+          <h3>Policy-as-Code Firewall (OPA)</h3>
+          <p>Before any action is committed (scheduling, routing, EHR mutation), an Open Policy Agent (OPA) intercepts the request. Symbolic, hard-coded clinical rules (e.g., <em>Chest pain + diaphoresis > 20 min = Automatic ER Escalation</em>) override the neural network's routing priority.</p>
         </div>
       </div>
 
       <div class="pipeline-step">
         <div class="pipeline-number">4</div>
         <div class="pipeline-content">
-          <h3>Policy-as-Code Firewall (OPA)</h3>
-          <p>Before any action is committed (scheduling, routing, EHR mutation), an Open Policy Agent (OPA) intercepts the request. Symbolic, hard-coded clinical rules (e.g., <em>Chest pain + diaphoresis > 20 min = Automatic ER Escalation</em>) override the neural network's routing priority.</p>
+          <h3>Deterministic Execution Engine</h3>
+          <p>The orchestration engine interprets the approved JSON plan step-by-step. It maintains durable state, writes to an immutable audit log, and tracks SLA timers. There is no recursion, no autonomous replanning, and no self-directed loops.</p>
         </div>
       </div>
+
+      
 
     </div>
   </div>
@@ -327,10 +329,10 @@ deny_routing[msg] {
     <h2 style="font-size: 2rem; color: #fff; margin-bottom: 30px;">Ready to architect regulated AI infrastructure?</h2>
     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
       <a href="https://github.com/aragit" target="_blank" class="btn-secondary">
-        <i class="fa-brands fa-github"></i> View GitHub Profile
+        <i class="fa-brands fa-github"></i> Collaborate in GitHub 
       </a>
       <a href="mailto:your.email@example.com?subject=Inquiry: Enterprise AI Architecture" class="btn-primary">
-        <i class="fa-solid fa-envelope"></i> Discuss Your Architecture
+        <i class="fa-solid fa-envelope"></i> Discuss the Architecture
       </a>
     </div>
   </div>
