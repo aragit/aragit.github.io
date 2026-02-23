@@ -541,30 +541,24 @@
 
           <a class="card service-card card-dashboard" href="services/agentic-ai.html" aria-label="Specialized Agentic AI Solutions">
             <div class="dashboard-content">
-              <h3>Enterprise Swarm</h3>
-              <p class="service-subtitle">Governed Multi-Agent Orchestration at Scale</p>
-              <p class="service-detail">Deploy governed, multi-agent digital workforces engineered specifically for high-stakes industries. We build specialized, autonomous swarms capable of executing complex, long-running workflows while operating under the strictest enterprise constraints.<br></p>
+              <h3>Enterprise Agentic Orchestration</h3>
+              <p class="service-subtitle">Hub-and-Spoke Pipelines for High-Stakes Industries</p>
+              <p class="service-detail">Deploy governed, multi-agent digital workforces engineered for mission-critical environments. We architect centrally orchestrated pipelines that execute complex, state-altering workflows under strict deterministic constraints and immutable audit ledgers.<br></p>
               
               <div class="tech-stack" style="margin-bottom: 35px; margin-top: 25px;">
-                
-               
                 <span class="tech-badge">FastAPI</span>
                 <span class="tech-badge">gRPC</span>
-                
                 <span class="tech-badge">Kubernetes</span>
                 <span class="tech-badge">MCP</span>
                 <span class="tech-badge">Redis</span>
-                
                 <span class="tech-badge">OpenTelemetry</span>
-               
                 <span class="tech-badge">PGVector</span>
                 <span class="tech-badge">Rego</span>
                 <span class="tech-badge">Prometheus</span>
                 <span class="tech-badge">Pydantic</span>
                 <span class="tech-badge">Instructor</span>
                 <span class="tech-badge">MinIO</span>
-                
-                <span class="tech-badge">Temporal</span>
+                <span class="tech-badge">OPA</span>
                 <span class="tech-badge">LangGraph</span>
               </div>
 
@@ -575,27 +569,27 @@
               <div class="terminal-box">
                 <div class="terminal-header">
                   <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                  <div class="terminal-title">crispr-designer — deep-crispr-v2</div>
+                  <div class="terminal-title">crispr-orchestrator — deterministic-v2</div>
                 </div>
                 <div class="terminal-body" style="line-height: 1.2; text-align: left; white-space: normal;">
-                  <span class="cmd">$ agent_core run --agent="crispr_designer" --target="Gene_HBB"</span><br>
-                  <span class="cmt"># --- STEP 1: OBSERVATION &amp; SIMULATION ---</span><br>
-                  <span class="kwd">[OBSERVE]</span> Ingesting patient genome (3.2B base pairs).<br>
-                  <span class="kwd">[SIMULATE]</span> Running Cas9 binding prediction...<br>
+                  <span class="cmd">$ orchestrator run --workflow="crispr_designer" --target="Gene_HBB"</span><br>
+                  <span class="cmt"># --- STEP 1: PERCEPTION &amp; SIMULATION ---</span><br>
+                  <span class="kwd">[PERCEIVE]</span> Ingesting patient genome (3.2B base pairs).<br>
+                  <span class="kwd">[TOOL_INVOKE]</span> Cas9_Microservice -> Binding prediction...<br>
                   &nbsp;&nbsp;└─ <span class="str">Candidate A:</span> Efficiency 99.1% (Primary)<br>
                   &nbsp;&nbsp;└─ <span class="str">Candidate B:</span> Efficiency 84.5% (Fallback)<br>
-                  <span class="cmt"># --- STEP 2: REASONING &amp; INTENT ---</span><br>
-                  <span class="kwd">[THINK]</span> "Candidate A maximizes therapeutic edit rate. Formulating payload."<br>
-                  <span class="kwd">[ACTION_INTENT]</span> <span class="cmd">commit_design(candidate="A")</span><br>
-                  <span class="cmt"># --- STEP 3: POLICY GOVERNANCE SHIELD ---</span><br>
-                  <span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: strict_off_target_toxicity)<br>
+                  <span class="cmt"># --- STEP 2: DETERMINISTIC PLANNING ---</span><br>
+                  <span class="kwd">[PLANNER]</span> Intent matched. Compiling execution DAG...<br>
+                  <span class="kwd">[GOVERN]</span> Intercepting node: <span class="cmd">commit_design(candidate="A")</span><br>
+                  <span class="cmt"># --- STEP 3: POLICY-AS-CODE (OPA) PRE-FLIGHT ---</span><br>
+                  <span class="warn">[DENY]</span> 🛡️ <strong>POLICY_VIOLATION</strong> (rule: strict_off_target_toxicity)<br>
                   &nbsp;&nbsp;└─ <span class="str">Critical Risk:</span> "0.4% off-target match with 'TP53' (Tumor Suppressor)."<br>
-                  <span class="cmt"># --- STEP 4: RECOVERY &amp; RE-GROUNDING ---</span><br>
-                  <span class="kwd">[PLAN_UPDATE]</span> Dropping Candidate A. Proposing Candidate B.<br>
-                  <span class="kwd">[POLICY_EVAL]</span> Re-verifying Candidate B against security constraints...<br>
-                  <span class="pass">[PASS]</span> Zero critical off-target matches detected.<br>
-                  <span class="cmt"># --- STEP 5: DETERMINISTIC EXECUTION ---</span><br>
-                  <span class="pass">[SYSTEM_COMMIT]</span> Irreversible write: finalize_design(candidate="B").<br>
+                  <span class="cmt"># --- STEP 4: DAG RE-COMPILATION ---</span><br>
+                  <span class="kwd">[RE-PLAN]</span> Reverting to Candidate B. Re-running policy check...<br>
+                  <span class="pass">[PASS]</span> Zero critical off-target matches detected. Node approved.<br>
+                  <span class="cmt"># --- STEP 5: STATELESS EXECUTION &amp; AUDIT ---</span><br>
+                  <span class="kwd">[EXECUTE]</span> Irreversible write: finalize_design(candidate="B").<br>
+                  <span class="pass">[AUDIT_LEDGER]</span> Immutable trace cryptographically signed.<br>
                   <span class="cmd">[STATUS]</span> <span class="blink">SAFE DESIGN LOCKED</span>...
                 </div>
               </div>
