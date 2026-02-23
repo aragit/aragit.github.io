@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Enterprise Multi-Agent Orchestration | Arash Nicoomanesh</title>
+  <title>Enterprise Agentic Orchestration | Arash Nicoomanesh</title>
 
-  <meta name="description" content="Deploying governed, multi-agent digital workforces across high-stakes industries. Neuro-Symbolic agents for Healthcare, Manufacturing, and FinOps."/>
-  <meta property="og:title" content="Enterprise Multi-Agent Orchestration"/>
-  <meta property="og:description" content="High-liability, multi-agent AI swarms for enterprise scale."/>
+  <meta name="description" content="Deploying governed, multi-agent digital workforces across high-stakes industries using hub-and-spoke orchestration and deterministic DAGs."/>
+  <meta property="og:title" content="Enterprise Agentic Orchestration"/>
+  <meta property="og:description" content="High-liability, governed agentic pipelines for enterprise scale."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aragit.github.io/services/agentic-ai.html"/>
 
@@ -91,7 +91,7 @@
     /* ---------- VERTICAL SHOWCASE STYLES ---------- */
     .vertical-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 80px; }
     
-    /* FIX: Swap columns without breaking LTR text flow */
+    /* Swap columns without breaking LTR text flow */
     .vertical-showcase.reverse { direction: rtl; }
     .vertical-showcase.reverse > * { direction: ltr; }
     
@@ -155,9 +155,9 @@
 
 <section class="hero">
   <div class="container">
-    <h1>Enterprise Multi-Agent Orchestration</h1>
-    <p>Deploying governed, multi-agent digital workforces across high-stakes industries. We architect specialized swarms that execute complex, state-altering workflows in <strong>Healthcare, Manufacturing, and Enterprise Revenue Operations</strong>.</p>
-    <a href="#request" class="btn-primary">Request a Swarm Audit <i class="fa-solid fa-arrow-right"></i></a>
+    <h1>Enterprise Agentic Orchestration</h1>
+    <p>Deploying governed, multi-agent digital workforces across high-stakes industries. We architect centrally orchestrated pipelines that execute complex, state-altering workflows in <strong>Healthcare, Manufacturing, and Enterprise Revenue Operations</strong>.</p>
+    <a href="#request" class="btn-primary">Request an Architecture Audit <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
 
@@ -166,31 +166,29 @@
     
     <div class="vertical-showcase">
       <div class="showcase-content">
-        <h3><i class="fa-solid fa-heart-pulse"></i>Clinical & Healthcare Swarms</h3>
+        <h3><i class="fa-solid fa-heart-pulse"></i>Clinical & Healthcare Pipelines</h3>
         <h4>Mission-critical, HIPAA-compliant diagnostic routing.</h4>
         <p><strong>The Challenge:</strong> Healthcare systems are bottlenecked by siloed patient data, complex resource allocation, and heavy administrative diagnostic routing.</p>
-        <p><strong>The Architecture:</strong> Triage agents ingest unstructured patient history and vitals, securely routing them to specialized diagnostic agents. Multiple agents review the same imaging data using different reasoning pathways (Chain-of-Thought) to reach a high-confidence consensus before alerting a human specialist.</p>
+        <p><strong>The Architecture:</strong> A central orchestrator ingests unstructured patient history, compiles a rigid execution graph, and routes data to specialized, stateless diagnostic microservices. Results are deterministically verified against an Intent Registry before alerting a human specialist.</p>
         
         <div class="guardrail-box">
           <strong><i class="fa-solid fa-network-wired"></i> Multi-Agent DAG Orchestration</strong>
-          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Consensus-Driven Routing:</em> Instead of a single LLM hallucinating a diagnosis, the system spawns a Directed Acyclic Graph (DAG) of specialized sub-agents. They independently query EHRs, analyze imaging, and cross-reference medical literature. A strict Policy-as-Code gateway intercepts any action that violates HIPAA.</p>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Governed Verification:</em> Instead of a single LLM hallucinating a diagnosis, the Planner compiles a Directed Acyclic Graph (DAG) of stateless diagnostic tools. A strict Policy-as-Code gateway intercepts any proposed action that violates HIPAA before it can be executed.</p>
         </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-hospital-user" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
-        <h4 style="color:#fff; margin-bottom:10px;">Consensus Reasoning Output</h4>
+        <h4 style="color:#fff; margin-bottom:10px;">Clinical Execution Log</h4>
         <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
-          > [Orchestrator] Initializing Clinical Evaluation DAG...<br>
-          > [Spawn] Vision_Agent (Gemini 1.5) -> Analyzing X-Ray Scans...<br>
-          > [Spawn] History_Agent (Claude 3.5) -> Querying EHR database...<br>
-          > [Spawn] Research_Agent (DeepSeek R1) -> Cross-referencing PubMed...<br>
-          > [Sync] Awaiting parallel sub-agent completion (Max timeout: 45s)...<br>
-          > [Merge] Sub-agent data synthesized.<br>
-          > [Consensus] 94% probability of anomaly C4.<br>
-          > [Gateway] Evaluating Policy Request: /med/prescribe/auth<br>
+          > [ORCHESTRATOR] Initializing Clinical Evaluation DAG...<br>
+          > [TOOL_INVOKE] Vision_Microservice -> Extracting RECIST features...<br>
+          > [TOOL_INVOKE] EHR_Microservice -> Querying patient history...<br>
+          > [SYNC] Awaiting parallel stateless tool completion...<br>
+          > [PLANNER] Synthesizing diagnostic vectors.<br>
+          > [GOVERNANCE] Evaluating Policy Request: /med/prescribe/auth<br>
           > [BLOCKED] Policy-as-Code: 'Autonomous prescription denied (Rule 4).'<br>
-          > [Fallback] Escalate to Dr. Smith via secure gRPC stream.<br>
-          > [Status] Awaiting cryptographic human-in-the-loop sign-off.<span class="blink-cursor"></span>
+          > [AUDIT_LEDGER] Immutable trace committed. Escalate to HITL.<br>
+          > [STATUS] Awaiting cryptographic human-in-the-loop sign-off.<span class="blink-cursor"></span>
         </div>
       </div>
     </div>
@@ -198,31 +196,28 @@
     <div class="vertical-showcase reverse">
       <div class="showcase-content">
         <h3><i class="fa-solid fa-industry"></i>Advanced Manufacturing & Logistics</h3>
-        <h4>Industrial IoT, high-efficiency, predictive, rugged.</h4>
+        <h4>Deterministic fallback routing for IIoT supply chains.</h4>
         <p><strong>The Challenge:</strong> A single delayed component or unexpected machine failure can cost millions per hour in assembly line downtime.</p>
-        <p><strong>The Architecture:</strong> Predictive Maintenance Agents ingest continuous IIoT sensor data. When an anomaly is detected, the swarm autonomously schedules maintenance during a planned changeover. If a geopolitical event disrupts a Tier 1 supplier, the swarm negotiates with Tier 2 suppliers, recalculates logistics, and updates the ERP (SAP/Oracle) to prevent line starvation.</p>
+        <p><strong>The Architecture:</strong> The Perception Layer ingests continuous IIoT sensor data. When an anomaly is detected, the Planner builds a deterministic fallback DAG to reroute logistics, querying Tier-2 suppliers via stateless API tools, completely avoiding LLM hallucination of inventory data.</p>
         
         <div class="guardrail-box">
-          <strong><i class="fa-solid fa-server"></i> Durable Execution & Stateful POMDP</strong>
-          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Crash-Resistant Autonomy:</em> Supply chain reroutes can take days. We utilize durable execution frameworks (like Temporal) to track the agent's POMDP state. If a server crashes or an external API rate-limits, the agent simply sleeps, wakes up, and resumes exactly where it left off.</p>
+          <strong><i class="fa-solid fa-server"></i> Stateless Execution & Volatile Memory</strong>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Crash-Resistant Autonomy:</em> Instead of vulnerable long-running agents, we use ephemeral session states (Redis). The orchestrator executes the DAG, commits the result to the immutable ledger, and wipes the memory—ensuring zero data drift across manufacturing cycles.</p>
         </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-truck-fast" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
         <h4 style="color:#fff; margin-bottom:10px;">Supply Chain Re-Route Graph</h4>
         <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
-          > [Durable_Worker] Execution ID: #Mfg-77A initiated.<br>
-          > [IIoT_Stream] Kafka event: Machine_7 vibration critical.<br>
-          > [Action] Immediate deterministic halt of production line 3.<br>
-          > [Planner] Drafting 48-hour reroute logistics...<br>
-          > [Action] Dispatching queries to 12 alternative Tier-2 suppliers.<br>
-          > [State] Suspending agent. Yielding compute. Awaiting API responses...<br>
-          > [System_Alert] FATAL: Node crash detected! Process terminated.<br>
-          > --- 2 HOURS LATER ---<br>
-          > [Durable_Worker] Node recovered. Restoring exact POMDP state...<br>
-          > [Planner] Resuming from step 4. 9 supplier quotes successfully received.<br>
-          > [Action] Executing optimal reroute. Issuing ERP inventory update.<br>
-          > [Status] Reroute complete. Cost variance within 5% tolerance.<span class="blink-cursor"></span>
+          > [GATEWAY] Ingress: IIoT Kafka event (Machine_7 vibration critical).<br>
+          > [PERCEPTION] Normalizing telemetry data.<br>
+          > [PLANNER] Compiling logistics reroute DAG...<br>
+          > [GOVERN] Pre-flight check: Validating supplier contracts... [PASS]<br>
+          > [TOOL_INVOKE] Executing parallel ERP inventory queries.<br>
+          > [EXECUTE] Deterministic halt of production line 3.<br>
+          > [AUDIT_LEDGER] State transition cryptographically signed.<br>
+          > [SESSION] Wiping volatile Redis cache.<br>
+          > [STATUS] Reroute complete. Line safe.<span class="blink-cursor"></span>
         </div>
       </div>
     </div>
@@ -232,27 +227,26 @@
         <h3><i class="fa-solid fa-chart-pie"></i>Enterprise Revenue Operations</h3>
         <h4>Hyper-scalable, data-driven, adaptive FinOps.</h4>
         <p><strong>The Challenge:</strong> Global teams cannot manually analyze competitor pricing, adjust ad spend, or reconcile end-of-month ledger mismatches across millions of transactions in real-time.</p>
-        <p><strong>The Architecture:</strong> Competitive Intelligence Agents continuously scrape market sentiment, feeding structured data to strategy agents. Journey Orchestration Agents dynamically assemble personalized campaigns. Simultaneously, FinOps Agents query ERPs and cross-reference Stripe APIs to draft adjustment journal entries autonomously.</p>
+        <p><strong>The Architecture:</strong> Hub-and-spoke pipelines continuously scrape market sentiment, feeding structured data to strategy nodes. Simultaneously, the orchestrator queries ERPs and cross-references Stripe APIs to draft adjustment journal entries autonomously.</p>
         
         <div class="guardrail-box">
           <strong><i class="fa-solid fa-toolbox"></i> Deterministic Tooling & MCP Grounding</strong>
-          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Zero-Hallucination Math:</em> LLMs are probabilistic text predictors, not calculators. Our FinOps swarms isolate reasoning from execution using the Model Context Protocol (MCP). Agents retrieve historical context via PGVector, but delegate ledger mathematics to strict deterministic sandbox tools.</p>
+          <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Zero-Hallucination Math:</em> LLMs are probabilistic text predictors, not calculators. Our FinOps pipelines isolate reasoning from execution using the Model Context Protocol (MCP). The orchestrator retrieves historical context via Vector DBs, but delegates ledger mathematics to strict deterministic sandbox tools.</p>
         </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-money-bill-transfer" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
         <h4 style="color:#fff; margin-bottom:10px;">FinOps Reconciliation Loop</h4>
         <div style="text-align:left; background:#000; padding:15px; border-radius:8px; font-family:monospace; font-size:0.85rem; color:#00ff00;">
-          > [Trigger] End-of-month ledger reconciliation loop initiated.<br>
-          > [Memory] Querying PGVector: "Find Stripe dispute matches for #884"<br>
-          > [Context] K=5 historical transactions loaded to working memory.<br>
-          > [Reasoning] LLM identifies $12k discrepancy between ERP and Stripe API.<br>
-          > [Tool_Invoke] Routing payload to MCP: &lt;DuckDB_Ledger_Math&gt;<br>
-          > [MCP_Execute] Running strict SQL aggregation on raw ledger data...<br>
-          > [Tool_Output] Variance calculated deterministically: $12,450.00.<br>
-          > [Planner] Drafting Journal Entry Adjustment...<br>
-          > [Gate] Transaction > $10k threshold detected. Auto-commit disabled.<br>
-          > [Auth] Awaiting dual-key cryptographic signing by CFO.<span class="blink-cursor"></span>
+          > [TRIGGER] End-of-month ledger reconciliation initiated.<br>
+          > [PERCEIVE] Retrieving Stripe/ERP transaction vectors.<br>
+          > [PLANNER] Discrepancy detected. Building calculation node.<br>
+          > [GOVERN] Intercepting payload -> Routing to MCP sandbox.<br>
+          > [MCP_EXECUTE] &lt;DuckDB_Ledger_Math&gt; Strict SQL aggregation...<br>
+          > [TOOL_OUTPUT] Variance calculated deterministically: $12,450.00.<br>
+          > [PLANNER] Drafting Journal Entry Adjustment...<br>
+          > [GOVERN] OPA Rule: Transaction > $10k threshold. Auto-commit disabled.<br>
+          > [AUDIT_LOG] Trace logged. Awaiting dual-key CFO signature.<span class="blink-cursor"></span>
         </div>
       </div>
     </div>
@@ -262,38 +256,43 @@
 
 <section style="background:#121212; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">The Anatomy of a Swarm Agent</h2>
-    <div class="grid-4">
+    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">The Anatomy of an Orchestrated Pipeline</h2>
+    
+    <div style="display:flex; justify-content:center;">
+      
+    </div>
+
+    <div class="grid-4" style="margin-top: 40px;">
       <div class="card">
         <h3><i class="fa-solid fa-eye"></i>Perception</h3>
         <ul class="checklist">
-          <li>Live API integration (REST, GraphQL)</li>
-          <li>Continuous SQL/NoSQL querying</li>
-          <li>Instrumental grounding to avoid temporal decay</li>
+          <li>Payload sanitization & PII stripping</li>
+          <li>Structured schema normalization</li>
+          <li>Live API ingestion (REST, GraphQL)</li>
         </ul>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-brain"></i>Reasoning</h3>
         <ul class="checklist">
-          <li>DAG-based execution graph generation</li>
-          <li>Schema-constrained reasoning distillation</li>
-          <li>Deterministic fallback & stateful re-planning</li>
+          <li>DAG-based execution graph compilation</li>
+          <li>Hardcoded Intent Registry mapping</li>
+          <li>Separation of planning from execution</li>
         </ul>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-database"></i>Memory</h3>
         <ul class="checklist">
-          <li>Semantic Vector Storage (RAG)</li>
-          <li>Reflexion buffers for experiential learning</li>
-          <li>Stateful POMDP belief tracking</li>
+          <li>Volatile Session Scratchpad (Redis)</li>
+          <li>Immutable Audit Ledger</li>
+          <li>Read-only Long-Term Context DB</li>
         </ul>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-hand-fist"></i>Action</h3>
         <ul class="checklist">
-          <li>Deterministic tool execution</li>
-          <li>Policy-as-Code (OPA) intercepts</li>
-          <li>Idempotent state changes (Sagas)</li>
+          <li>Passive stateless tool invocation</li>
+          <li>Pre-flight Policy-as-Code (OPA)</li>
+          <li>Central hub-and-spoke orchestration</li>
         </ul>
       </div>
     </div>
@@ -302,7 +301,7 @@
 
 <div class="cta-band">
   <div class="container">
-    <h2>Ready to architect your enterprise swarm?</h2>
+    <h2>Ready to architect your enterprise pipeline?</h2>
     <p>Whether you need an architectural audit of a failing GenAI experiment, or a ground-up build, reserve your engagement slot.</p>
     
     <div id="request" class="deliver-box" style="max-width: 700px; margin: 0 auto; margin-top:40px;">
@@ -341,8 +340,8 @@
           <textarea name="message" required placeholder="e.g. Our supply chain agents keep hallucinating inventory data, we need deterministic DAG guardrails..." style="min-height:120px"></textarea>
         </div>
 
-        <input type="hidden" name="service" value="Enterprise Multi-Agent Orchestration">
-        <input type="hidden" name="_subject" value="Website lead: Multi-Agent Orchestration">
+        <input type="hidden" name="service" value="Enterprise Agentic Orchestration">
+        <input type="hidden" name="_subject" value="Website lead: Agentic Orchestration">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
