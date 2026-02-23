@@ -365,11 +365,11 @@
                   <span class="badge">Oncology-Focus</span>
                   <h3>Clinical Oncology Agent</h3>
                   <p style="color:var(--text); font-weight:500;">Navigates NCCN guidelines with toxicity-aware reasoning.</p>
-                  <p class="loop-step">Autonomously optimizes multi-drug regimens via Human-in-the-Loop (HITL) orchestration, enforcing strict physiological toxicity constraints and site-specific protocols.</p>
+                  <p class="loop-step">Deterministic orchestration of multi-drug regimens via Human-in-the-Loop (HITL) safeguards, enforcing strict physiological constraints and site-specific protocols.</p>
                   <div class="tech-tags" style="margin-bottom: 15px;">
                       <span class="tag">FHIR/HL7</span>
                       <span class="tag">Policy-as-Code</span>
-                      <span class="tag">Knowledge Graph</span>
+                      <span class="tag">DAG-Orchestrated</span>
                   </div>
                   <a href="#" class="link-arrow">View Case Study →</a>
                 </div>
@@ -377,16 +377,16 @@
                 <div class="terminal-box" style="margin-top: 15px; border: 1px solid rgba(95, 211, 255, 0.2);">
                   <div class="terminal-header">
                     <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div class="terminal-title">onco-orchestrator — multi-agent-v4</div>
+                    <div class="terminal-title">onco-orchestrator — deterministic-v4</div>
                   </div>
                   <div class="terminal-body" style="line-height: 1.3; text-align: left; white-space: normal; font-size: 0.82rem;">
-                    <span class="cmd">$ swarm_exec --task="optimize_regimen" --pt="88392"</span><br>
-                    <span class="kwd" style="color: #569cd6;">[MANAGER]</span> Spawning sub-agent workers...<br>
-                    <span class="kwd">[WORKER-1]</span> <strong>Radiology_Bot:</strong> Analyzing CT scans.<br>
-                    <span class="kwd">[WORKER-2]</span> <strong>Pharmacogenomics_Bot:</strong> Querying variants.<br>
-                    <span class="warn" style="color: #ffbd2e;">[ALERT]</span> DPYD deficiency (*2A) detected.<br>
-                    <span class="pass" style="color: #27c93f;">[COMMIT]</span> State pushed to Temporal store.<br>
-                    <span class="cmd">[STATUS]</span> <span class="log-line blink">CONSENSUS_REACHED</span>
+                    <span class="cmd">$ plan_orchestrate --intent="optimize_regimen" --pt="88392"</span><br>
+                    <span class="kwd" style="color: #569cd6;">[STRATEGIST]</span> Compiling execution graph (DAG)...<br>
+                    <span class="kwd">[TOOL_CALL]</span> <strong>Vision_Scanner:</strong> Extracting RECIST features.<br>
+                    <span class="kwd">[TOOL_CALL]</span> <strong>Genomic_Service:</strong> Querying DPYD variants.<br>
+                    <span class="warn" style="color: #ffbd2e;">[WARN]</span> DPYD deficiency (*2A) confirmed via tool output.<br>
+                    <span class="pass" style="color: #27c93f;">[AUDIT]</span> Immutable trace committed to ledger.<br>
+                    <span class="cmd">[STATUS]</span> <span class="log-line blink">PLAN_READY_FOR_EXECUTION</span>
                   </div>
                 </div>
               </div>
@@ -398,23 +398,23 @@
                     <div class="terminal-title">onco-pathway — precision-med-v3</div>
                   </div>
                   <div class="terminal-body" style="line-height: 1.3; text-align: left; white-space: normal;font-size: 0.82rem;">
-                    <span class="cmd">$ agent_core run --agent="onco_triage" --pt_id="PT-88392" --dx="Breast_Ca_Stage_III"</span><br>
-                    <span class="cmt"># --- STEP 1: OBSERVATION &amp; SIMULATION ---</span><br>
-                    <span class="kwd">[OBSERVE]</span> Ingesting EMR: ER/PR+, HER2-, Echocardiogram.<br>
-                    <span class="kwd">[SIMULATE]</span> Running NCCN guideline predictions...<br>
-                    &nbsp;&nbsp;└─ <span class="str">Regimen A:</span> AC-T (Doxorubicin) - 92% Efficacy<br>
-                    &nbsp;&nbsp;└─ <span class="str">Regimen B:</span> TC (Docetaxel) - 88% Efficacy<br>
-                    <span class="cmt"># --- STEP 2: REASONING &amp; INTENT ---</span><br>
-                    <span class="kwd">[THINK]</span> "Regimen A maximizes survival. Formulating orders."<br>
-                    <span class="kwd">[ACTION_INTENT]</span> <span class="cmd">draft_prescription(regimen="AC-T")</span><br>
-                    <span class="cmt"># --- STEP 3: POLICY GOVERNANCE SHIELD ---</span><br>
-                    <span class="warn">[POLICY_INTERCEPT]</span> 🛡️ <strong>DENY</strong> (rule: cardiotoxicity)<br>
-                    &nbsp;&nbsp;└─ <span class="str">Critical Risk:</span> "Patient LVEF is 48% (Threshold >50%)."<br>
-                    <span class="cmt"># --- STEP 4: RECOVERY &amp; RE-GROUNDING ---</span><br>
-                    <span class="kwd">[PLAN_UPDATE]</span> Dropping Regimen A. Proposing Regimen B.<br>
-                    <span class="pass">[PASS]</span> Clears all physiological safety parameters.<br>
-                    <span class="cmt"># --- STEP 5: DETERMINISTIC EXECUTION ---</span><br>
-                    <span class="pass">[SYSTEM_COMMIT]</span> Irreversible write: append_emr_draft.<br>
+                    <span class="cmd">$ agent_core run --workflow="onco_triage" --pt_id="PT-88392"</span><br>
+                    <span class="cmt"># --- STEP 1: PERCEPTION &amp; NORMALIZATION ---</span><br>
+                    <span class="kwd">[PERCEIVE]</span> Ingesting EMR: ER/PR+, HER2-, Echocardiogram.<br>
+                    <span class="kwd">[NORMALIZE]</span> Mapping data to NCCN clinical vectors...<br>
+                    &nbsp;&nbsp;└─ <span class="str">Option A:</span> AC-T (Doxorubicin) - 92% Efficacy<br>
+                    &nbsp;&nbsp;└─ <span class="str">Option B:</span> TC (Docetaxel) - 88% Efficacy<br>
+                    <span class="cmt"># --- STEP 2: GOVERNANCE PRE-FLIGHT ---</span><br>
+                    <span class="kwd">[STRATEGIST]</span> "Option A maximizes survival. Building node..."<br>
+                    <span class="kwd">[GOVERN]</span> Intercepting node: <span class="cmd">prescribe(regimen="AC-T")</span><br>
+                    <span class="cmt"># --- STEP 3: POLICY-AS-CODE SHIELD ---</span><br>
+                    <span class="warn">[DENY]</span> 🛡️ <strong>POLICY_VIOLATION</strong> (rule: cardiotoxicity)<br>
+                    &nbsp;&nbsp;└─ <span class="str">Reason:</span> "Patient LVEF is 48% (Threshold >50%)."<br>
+                    <span class="cmt"># --- STEP 4: DETERMINISTIC RECOVERY ---</span><br>
+                    <span class="kwd">[RE-PLAN]</span> Reverting to Option B. Re-running policy check...<br>
+                    <span class="pass">[PASS]</span> Safety parameters cleared. Node approved.<br>
+                    <span class="cmt"># --- STEP 5: COMMIT &amp; HANDOFF ---</span><br>
+                    <span class="pass">[COMMIT]</span> Immutable record written to ZARIF ledger.<br>
                     <span class="cmd">[STATUS]</span> <span class="blink">AWAITING ONCOLOGIST SIGN-OFF</span>...
                   </div>
                 </div>
@@ -438,9 +438,9 @@
     
           <div class="bento-item">
             <h3>Marketing ROI Optimizer</h3>
-            <p class="loop-step">Continuously reallocates budget using Multi-armed bandits.</p>
+            <p class="loop-step">Continuously reallocates budget using Multi-Agent Swarms and Multi-Armed Bandits.</p>
             <div class="tech-tags"><span class="tag">Bandits</span><span class="tag">Streaming</span></div>
-            <a href="#" class="link-arrow">View Case Study →</a>
+            <a href="case-studies/marketing-roi/index.html" class="link-arrow">View Case Study →</a>
           </div>
         </div>
       </div>
