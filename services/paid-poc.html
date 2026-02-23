@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>The Forge – Custom Agentic Prototype | Arash Nicoomanesh</title>
 
-  <meta name="description" content="From validated blueprint to a production-grade agentic prototype. Fixed-price builds for stateful, neuro-symbolic workflows."/>
+  <meta name="description" content="From validated blueprint to a production-grade agentic prototype. Fixed-price builds for deterministic, stateless, neuro-symbolic workflows."/>
   <meta property="og:title" content="The Forge – Custom Agentic Prototype"/>
   <meta property="og:description" content="Fixed-price development of mission-critical agentic systems."/>
   <meta property="og:type" content="website"/>
@@ -38,14 +38,13 @@
       padding: clamp(80px, 12vw, 120px) 0;
       text-align: center;
       background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
         url('purpleback.jpg');
       background-size: cover;
       background-position: center;
       border-bottom: 1px solid rgba(255,255,255,.02);
     }
     
-    /* BLUEPRINT TYPOGRAPHY MATCH */
     .hero h1 { 
         font-size: clamp(2.5rem, 5vw, 4rem) !important; 
         font-weight: 800 !important; 
@@ -63,8 +62,6 @@
         text-shadow: 0 3px 20px rgba(0,0,0,0.9) !important; 
     }
     
-    .badge { display: inline-block; background: #000; color: #fff; font-weight: 600; padding: 6px 14px; border-radius: 99px; font-size: .75rem; margin-top: 1rem; }
-    
     /* ---------- buttons ---------- */
     .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
@@ -72,31 +69,18 @@
     
     /* ---------- sections ---------- */
     section { padding: clamp(60px, 8vw, 90px) 0; }
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
     
-    /* NEW: 4-Column Grid for Delivery Process */
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    @media(max-width: 950px){ .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
-    @media(max-width: 650px){ .grid-4 { grid-template-columns: 1fr; } }
-
-    /* AGENTIC CSS UPDATES: Lighter Grey Cards + Blueprint Glow */
-    .agentic-term { color: #ffffff; font-weight: 600; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
-    .card { background: rgba(50,50,50,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
-    
-    /* Adjust padding & fonts slightly for the 4-column row to fit gracefully */
-    .grid-4 .card { padding: 24px; }
-    .grid-4 .card h3 { font-size: 1.15rem; margin-bottom: 14px; }
-    .grid-4 .checklist li { margin-bottom: 10px; font-size: 0.9rem; }
-
+    .card { background: rgba(30,30,30,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s; position: relative; overflow: hidden; }
     .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
     .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
     .card:hover::after { width: 100%; }
     
-    /* ICONS: NO BACKGROUND */
-    .card h3 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; color: #fff; }
-    .card h3 i { color: var(--accent); font-size: 1.5rem; background: transparent; padding: 0; border-radius: 0; margin-right: 4px; }
-    
-    .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; }
+    .card h3 { font-size: 1.3rem; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; color: #fff; }
+    .card h3 i { color: var(--accent); font-size: 1.5rem; }
+    .card p { color: #cbd6df; font-size: 0.95rem; line-height: 1.6; }
+
+    .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; margin-top: 20px; }
     .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
     .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
     
@@ -118,18 +102,9 @@
     footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
     @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
   
-    /* --- INJECTED BY ALIGNMENT SCRIPT --- */
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .artifact-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,107,0,.3); border-radius: 12px; padding: 40px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .artifact-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
-  
-    /* --- INJECTED BY ALIGNMENT SCRIPT --- */
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
     .artifact-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,107,0,.3); border-radius: 12px; padding: 40px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .artifact-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
   </style>
-
-
 </head>
 <body>
 
@@ -145,12 +120,10 @@
 <section class="hero">
   <div class="container">
     <h1>The Forge – Custom Agentic Prototype</h1>
-    <p>From validated blueprint to a <strong>production-grade agentic prototype</strong>. We engineer the deterministic architecture that brings autonomous digital workers to life—whether you are starting from scratch or replacing a failed generative AI experiment. One fixed price, zero scope creep.</p>
+    <p>From validated blueprint to a <strong>production-grade agentic prototype</strong>. We engineer the deterministic architecture that brings autonomous digital workers to life. One fixed price, zero scope creep.</p>
     <a href="#request" class="btn-primary">Request a Build Quote <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
-
-
 
 <section>
   <div class="container">
@@ -161,6 +134,21 @@
 
     <div style="text-align:center; padding: 0 20px;">
       <img src="Forge.jpg" alt="The Core Architecture Pillars: Brain, Body, and Shield" style="border-radius: 12px; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 15px 40px rgba(0,0,0,0.6); max-width: 1000px; width: 100%; height: auto; margin: 0 auto; display: block;">
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3><i class="fa-solid fa-brain"></i> The Brain (Planner)</h3>
+        <p>We strip the LLM of its ability to execute, forcing it to act purely as a reasoning engine. It digests complex inputs and distills them into a strict, deterministic JSON execution graph.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-shield-halved"></i> The Shield (Governance)</h3>
+        <p>Before any action is taken, the DAG is intercepted by our Policy-as-Code firewall (OPA). We hardcode your business constraints, ensuring mathematical adherence to compliance.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fa-solid fa-robot"></i> The Body (Execution)</h3>
+        <p>Passive, stateless tools execute the approved DAG. All reasoning is managed in volatile memory (Redis) to prevent data drift, while execution traces are committed to an immutable ledger.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -175,17 +163,15 @@
         We don't deliver slideware or fragile Jupyter notebooks. You receive a fully containerized, blueprint-aligned prototype running in an isolated staging sandbox.
       </p>
       <ul class="checklist" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
-        <li>Dockerized state machine and tool APIs</li>
+        <li>Dockerized DAG state machine & stateless tool APIs</li>
+        <li>Volatile Redis caching & Immutable Audit logging</li>
         <li>Token-level telemetry & unit economics report</li>
-        <li>Adversarial red-teaming & evaluation results</li>
         <li>Ready for "The Nexus" central orchestration</li>
       </ul>
     </div>
 
   </div>
 </section>
-
-
 
 <div class="cta-band">
   <div class="container">
@@ -214,17 +200,17 @@
         </div>
 
         <div style="margin-bottom:20px">
-          <label>Target Architecture</label>
+          <label>Target Architecture (Based on your Operational Risk)</label>
           <select name="capability">
-            <option value="microservice">High-Liability Microservice Agent</option>
-            <option value="actor">Low-Latency Actor System</option>
-            <option value="serverless">Serverless Pool Orchestration</option>
+            <option value="fortress">The Fortress (High-Liability / Deterministic Pipeline)</option>
+            <option value="forge">The Forge (Competitive Swarm / Emergent Discovery)</option>
+            <option value="studio">The Studio (Human-in-the-Loop / Reflexion)</option>
           </select>
         </div>
 
         <div style="margin-bottom:24px">
           <label>Describe the system you need *</label>
-          <textarea name="message" required placeholder="e.g. multi-step extraction and API execution over legacy banking systems..." style="min-height:120px"></textarea>
+          <textarea name="message" required placeholder="e.g. A clinical triage pipeline requiring rigid OPA guardrails and stateless execution..." style="min-height:120px"></textarea>
         </div>
 
         <input type="hidden" name="service" value="The Forge">
