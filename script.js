@@ -403,12 +403,12 @@
     
       // words to cycle
       const words = [
-      'Stochastic Range • Deterministic Core • Healthcare AI',
-      'Multi-Agent Systems • Hierarchical Orchestration • Research',
-      'Reactive-Deliberative Hybrid • Temporal Workflows • Enterprise',
-      'Neuro-Symbolic • Policy-as-Code • Financial Compliance',
+      'Stochastic Range • Deterministic Core • Multi-Agent Scale',
+      'Neuro-Symbolic • Policy-as-Code • Healthcare AI',
+      'Hub-and-Spoke Orchestration • Stateless Execution • Enterprise',
+      'Competitive Swarms • HITL Reflexion • Emergent AI',
       'LLM Engineering • RAG Augmentation • Inference Optimization', 
-      'Kaggle Grandmaster • Sharif University of Technology • Google Certified'
+      'Sharif University of Technology • Google Certified • Kaggle Grandmaster'
     ];
       let wIndex = 0;
       let charIndex = 0;
