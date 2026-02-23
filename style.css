@@ -11908,3 +11908,30 @@ div#services .cards .card.card-wide .card-actions {
   transform: translateY(-2px);
   transition: all 0.3s ease;
 }
+
+/* --- TYPEWRITER CENTERING FIX FOR MOBILE --- */
+
+/* 1. Make the parent container a flexbox that forces absolute centering */
+.role-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  min-height: 3rem; /* Optional: prevents the hero section from jumping up/down when text wraps on small screens */
+}
+
+/* 2. Center the paragraph element itself */
+#typewrite {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 3. Ensure the dynamically injected span grows from the center */
+.tw-inner {
+  display: inline-block;
+  text-align: center;
+}
