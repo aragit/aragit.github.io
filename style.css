@@ -11449,10 +11449,10 @@ div#services .cards .card.card-wide .card-actions {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px;
-  background: #fff;
-  color: #111;
+  background: #2a2a2a;
+  color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -11461,16 +11461,15 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .domain-tab:hover {
-  background: #e8e8e8;
-  color: #000;
-  border-color: rgba(255,255,255,0.3);
+  background: #3a3a3a;
+  color: #fff;
+  border-color: rgba(255,255,255,0.2);
 }
 
 .domain-tab.active {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  box-shadow: 0 0 20px rgba(255,107,0,0.25);
+  background: #fff;
+  color: #111;
+  border-color: #fff;
 }
 
 /* --- Domain Panels --- */
