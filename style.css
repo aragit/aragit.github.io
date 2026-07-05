@@ -11396,7 +11396,22 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .hero-right {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 12px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.hero-visual:hover {
+  opacity: 1;
 }
 
 .hero-bg-backdrop {
@@ -11657,6 +11672,14 @@ div#services .cards .card.card-wide .card-actions {
 
 /* --- Mobile Responsive --- */
 @media (max-width: 900px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-right {
+    display: none;
+  }
   .solution-layout {
     grid-template-columns: 1fr;
     gap: 20px;
