@@ -913,6 +913,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 
-/* ============================================
-   HERO — Typewriter removed (replaced by orbit)
-   ============================================ */
+
