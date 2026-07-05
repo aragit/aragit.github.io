@@ -11354,15 +11354,54 @@ div#services .cards .card.card-wide .card-actions {
 #topology-container {
   position: relative;
   width: 100%;
-  height: 400px;
-  background: transparent;
-  z-index: 1;
+  height: 600px;
+  overflow: hidden;
+  background-color: transparent;
 }
 
 #topology-container canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+}
+
+/* Glassmorphic UI Panel */
+.topology-ui {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  color: #cbd6df;
+  font-family: 'Inter', sans-serif;
+  z-index: 10;
+}
+
+.topology-ui h4 {
+  margin: 0 0 15px 0;
+  font-size: 0.9rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.topology-ui label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  color: #a0aec0;
+}
+
+.topology-ui input[type="range"] {
+  width: 100%;
+  accent-color: #ff6b00;
+  cursor: pointer;
 }
 
 .hero-bg-backdrop {
