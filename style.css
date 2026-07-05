@@ -218,7 +218,7 @@ body {
 /* Place this at the end of style.css and hard-refresh the page */
 
 /* ensure hero creates a stacking context and the grid sits *behind* hero content */
-#home.hero { position: relative; overflow: hidden; z-index: 0; }
+#home.hero { position: relative; z-index: 0; }
 
 /* container for the svg grid */
 #home.hero .hero-grid {
@@ -11399,6 +11399,7 @@ div#services .cards .card.card-wide .card-actions {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .hero-visual {
