@@ -269,10 +269,147 @@
           <!-- ===== CROSS DOMAIN ===== -->
           <div class="domain-panel active" id="domain-crossdomain" role="tabpanel">
             <div class="solution-layout">
+              <nav class="usecase-tabs" aria-label="Cross-domain use cases">
+                <button class="usecase-tab active" data-usecase="cd-edge">
+                  <span class="usecase-tab-num">01</span>
+                  <span class="usecase-tab-label">Edge SLM Optimizer</span>
+                </button>
+                <button class="usecase-tab" data-usecase="cd-crew">
+                  <span class="usecase-tab-num">02</span>
+                  <span class="usecase-tab-label">Enterprise Intelligence Crew</span>
+                </button>
+                <button class="usecase-tab" data-usecase="cd-deepseek">
+                  <span class="usecase-tab-num">03</span>
+                  <span class="usecase-tab-label">DeepSeek Reasoning Fine-Tuning</span>
+                </button>
+              </nav>
+
               <div class="usecase-panels">
-                <div class="usecase-panel active" style="display:flex;align-items:center;justify-content:center;min-height:300px;">
-                  <p style="color:var(--muted);font-size:1rem;">Use cases coming soon.</p>
+
+                <!-- Edge SLM Optimizer -->
+                <div class="usecase-panel active" id="cd-edge">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Edge AI / Model Compression</span>
+                      <h3>Edge SLM Optimizer</h3>
+                      <p class="usecase-subtitle">Edge-First Small Language Model Compression &amp; Deployment Pipeline.</p>
+                      <p class="usecase-desc">Multi-stage quantization pipeline (FP32 → INT8 → INT4) with dual export targets for ONNX Runtime Mobile and ExecuTorch. Includes speculative decoding with a 100M-parameter draft model for 2x speedup, and full telemetry suite measuring watts-per-token on Raspberry Pi 5 under 5W sustained.</p>
+                      <div class="tech-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">ONNX Runtime</span>
+                        <span class="tag">ExecuTorch</span>
+                        <span class="tag">bitsandbytes</span>
+                        <span class="tag">llama.cpp</span>
+                      </div>
+                      <a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">edge-slm — quantize-deploy</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ edge_slm optimize --model=gemma-1b --target=rpi5</span><br>
+                          <span class="cmt"># --- STAGE 1: QUANTIZATION ---</span><br>
+                          <span class="kwd">[QUANT]</span> FP32 → INT8 (static) → INT4 (dynamic)<br>
+                          &nbsp;&nbsp;└─ <span class="str">Perplexity:</span> 12.4 → 13.8 (&lt;15% degradation)<br>
+                          <span class="cmt"># --- STAGE 2: EXPORT ---</span><br>
+                          <span class="kwd">[ONNX]</span> Cross-platform CPU build complete<br>
+                          <span class="kwd">[EXECUTORCH]</span> ARM NEON delegate compiled<br>
+                          <span class="cmt"># --- STAGE 3: BENCHMARK ---</span><br>
+                          <span class="kwd">[RPI5]</span> Latency: 42ms/token | Power: 3.8W<br>
+                          <span class="pass">[SPEC]</span> Draft model (100M) → 2x decode speedup<br>
+                          <span class="pass">[PASS]</span> All accuracy gates cleared.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">EDGE_READY_FOR_DEPLOY</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Enterprise Intelligence Crew -->
+                <div class="usecase-panel" id="cd-crew">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Local-First / 3-Agent Pipeline</span>
+                      <h3>Enterprise Intelligence Crew</h3>
+                      <p class="usecase-subtitle">Autonomous enterprise trend intelligence pipeline.</p>
+                      <p class="usecase-desc">Sequential 3-agent CrewAI pipeline (Trend Investigator → Risk Analyst → Copywriter) with LangGraph risk gate state machine, local-only Ollama inference, ChromaDB semantic memory, and Pydantic V2 contracts at every stage. Zero API keys, zero cloud dependency.</p>
+                      <div class="tech-tags">
+                        <span class="tag">CrewAI</span>
+                        <span class="tag">Ollama</span>
+                        <span class="tag">ChromaDB</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Pydantic V2</span>
+                      </div>
+                      <a href="https://github.com/aragit/enterprise-intelligence-crew" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">enterprise-crew — trend-intel</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ crew run --topic="edge-ai-adoption" --local</span><br>
+                          <span class="cmt"># --- AGENT 1: TREND INVESTIGATOR ---</span><br>
+                          <span class="kwd">[OLLAMA]</span> gemma2:2b analyzing trend signals...<br>
+                          <span class="kwd">[CHROMADB]</span> Retrieved 12 related research chunks<br>
+                          <span class="cmt"># --- AGENT 2: RISK ANALYST ---</span><br>
+                          <span class="kwd">[LANGGRAPH]</span> Risk gate: evaluate → approve<br>
+                          &nbsp;&nbsp;└─ <span class="str">Confidence:</span> 0.87 | Risk: LOW<br>
+                          <span class="cmt"># --- AGENT 3: COPYWRITER ---</span><br>
+                          <span class="kwd">[PYDANTIC]</span> ContentPayload validated ✓<br>
+                          <span class="pass">[PASS]</span> 3/3 agents completed. Output persisted.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">INTELLIGENCE_REPORT_READY</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- DeepSeek Reasoning Fine-Tuning -->
+                <div class="usecase-panel" id="cd-deepseek">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Reasoning Optimization</span>
+                      <h3>DeepSeek Reasoning Fine-Tuning</h3>
+                      <p class="usecase-subtitle">Medical chain-of-thought LoRA alignment pipeline.</p>
+                      <p class="usecase-desc">Efficient 4-bit parameter fine-tuning that maps diagnostic reasoning patterns into model weights. Uses Unsloth for memory-efficient training, improving structured clinical response generation while preserving general reasoning capabilities.</p>
+                      <div class="tech-tags">
+                        <span class="tag">Unsloth</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Hugging Face</span>
+                        <span class="tag">TRL</span>
+                        <span class="tag">LoRA</span>
+                      </div>
+                      <a href="https://github.com/aragit/deepseek-reasoning-finetuning" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">deepseek-lora — reasoning-train</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ train_lora --base=deepseek-r1 --bits=4 --data=clinical_cot</span><br>
+                          <span class="cmt"># --- CONFIG ---</span><br>
+                          <span class="kwd">[UNSLOTH]</span> 4-bit QLoRA: r=16, alpha=32<br>
+                          <span class="cmt"># --- TRAINING ---</span><br>
+                          <span class="kwd">[EPOCH 1/3]</span> Loss: 2.34 → 1.12 | Grad norm: 0.8<br>
+                          <span class="kwd">[EPOCH 2/3]</span> Loss: 1.12 → 0.67 | Grad norm: 0.4<br>
+                          <span class="kwd">[EPOCH 3/3]</span> Loss: 0.67 → 0.41 | Grad norm: 0.2<br>
+                          <span class="cmt"># --- EVALUATION ---</span><br>
+                          <span class="pass">[PASS]</span> Clinical accuracy: +18% vs base model<br>
+                          <span class="pass">[PASS]</span> Reasoning coherence: 0.91<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">LORA_ADAPTER_SAVED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -641,10 +778,102 @@
           <!-- ===== SUPPLY CHAIN ===== -->
           <div class="domain-panel" id="domain-supplychain" role="tabpanel">
             <div class="solution-layout">
+              <nav class="usecase-tabs" aria-label="Supply chain use cases">
+                <button class="usecase-tab active" data-usecase="sc-demand">
+                  <span class="usecase-tab-num">01</span>
+                  <span class="usecase-tab-label">Zero-Shot Demand Foundation</span>
+                </button>
+                <button class="usecase-tab" data-usecase="sc-procurement">
+                  <span class="usecase-tab-num">02</span>
+                  <span class="usecase-tab-label">Autonomous Procurement Swarm</span>
+                </button>
+              </nav>
+
               <div class="usecase-panels">
-                <div class="usecase-panel active" style="display:flex;align-items:center;justify-content:center;min-height:300px;">
-                  <p style="color:var(--muted);font-size:1rem;">Use cases coming soon.</p>
+
+                <!-- Zero-Shot Demand Foundation -->
+                <div class="usecase-panel active" id="sc-demand">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Zero-Shot Forecasting / MCP</span>
+                      <h3>Zero-Shot Demand Foundation</h3>
+                      <p class="usecase-subtitle">MCP Agentic Forecaster Skill with foundation models.</p>
+                      <p class="usecase-desc">Zero-shot time-series demand forecasting using Google TimesFM and Amazon Chronos-2. Dual-track evaluation (point forecast + quantile bands) aligned with M5 Competition framework. Pydantic-validated 3D tensor input with exogenous signal support for price elasticity and promotional flags.</p>
+                      <div class="tech-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TimesFM</span>
+                        <span class="tag">Chronos-2</span>
+                        <span class="tag">Pydantic v2</span>
+                        <span class="tag">M5 Benchmark</span>
+                      </div>
+                      <a href="https://github.com/aragit/zero-shot-demand-foundation" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">demand-foundation — zero-shot</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ forecast run --series=walmart_daily --horizon=128</span><br>
+                          <span class="cmt"># --- MODEL SELECTION ---</span><br>
+                          <span class="kwd">[TIMESFM]</span> google/timesfm-2.5-200m loaded<br>
+                          <span class="kwd">[CHRONOS]</span> amazon/chronos-2 loaded<br>
+                          <span class="cmt"># --- INFERENCE ---</span><br>
+                          <span class="kwd">[SHAPE]</span> (3049, 1, 16000) → (3049, 128)<br>
+                          <span class="kwd">[QUANTILE]</span> p10/p50/p90 bands computed<br>
+                          <span class="cmt"># --- M5 BENCHMARK ---</span><br>
+                          <span class="pass">[WAPE]</span> 15.2% | <span class="pass">[RMSSE]</span> 0.78<br>
+                          <span class="pass">[VALID]</span> Pydantic ForecastOutputPayload ✓<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">FORECAST_COMPLETE</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Autonomous Procurement Swarm -->
+                <div class="usecase-panel" id="sc-procurement">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Turn-Based Negotiation / Market Sim</span>
+                      <h3>Autonomous Procurement Swarm</h3>
+                      <p class="usecase-subtitle">LLM-Powered Multi-Agent Contract Negotiation.</p>
+                      <p class="usecase-desc">4-agent negotiation system (Buyer, Seller, Market Intelligence, Arbiter) with stochastic market simulation using Geometric Brownian Motion and 4-state Markov chain geopolitical risk model. Reward engineering balances cost, margin, capacity utilization, and risk premiums.</p>
+                      <div class="tech-tags">
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">SciPy</span>
+                        <span class="tag">Transformers</span>
+                        <span class="tag">Pydantic v2</span>
+                        <span class="tag">Market Sim</span>
+                      </div>
+                      <a href="https://github.com/aragit/autonomous-procurement-swarm" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">procurement-swarm — negotiate</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ swarm negotiate --item="steel_coils" --rounds=20</span><br>
+                          <span class="cmt"># --- MARKET STATE ---</span><br>
+                          <span class="kwd">[SIM]</span> GBM price: $842/ton | Regime: MEDIUM<br>
+                          <span class="kwd">[RISK]</span> Markov geopolitical: LOW (p=0.72)<br>
+                          <span class="cmt"># --- TURN 5: BUYER ---</span><br>
+                          <span class="kwd">[BUYER]</span> Offer: $810/ton (cost-target: $815)<br>
+                          <span class="cmt"># --- TURN 6: SELLER ---</span><br>
+                          <span class="kwd">[SELLER]</span> Counter: $835/ton (margin: 12%)<br>
+                          <span class="cmt"># --- ARBITER ---</span><br>
+                          <span class="pass">[PASS]</span> Fair range validated. Gap: $25<br>
+                          <span class="pass">[LEDGER]</span> Hash-chain integrity ✓<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">NEGOTIATION_IN_PROGRESS</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -652,10 +881,100 @@
           <!-- ===== RESEARCH ===== -->
           <div class="domain-panel" id="domain-research" role="tabpanel">
             <div class="solution-layout">
+              <nav class="usecase-tabs" aria-label="Research use cases">
+                <button class="usecase-tab active" data-usecase="rs-qbmg">
+                  <span class="usecase-tab-num">01</span>
+                  <span class="usecase-tab-label">Quantum-Bound Molecular Generator</span>
+                </button>
+                <button class="usecase-tab" data-usecase="rs-protein">
+                  <span class="usecase-tab-num">02</span>
+                  <span class="usecase-tab-label">Protein Binder Flow</span>
+                </button>
+              </nav>
+
               <div class="usecase-panels">
-                <div class="usecase-panel active" style="display:flex;align-items:center;justify-content:center;min-height:300px;">
-                  <p style="color:var(--muted);font-size:1rem;">Use cases coming soon.</p>
+
+                <!-- QBMG -->
+                <div class="usecase-panel active" id="rs-qbmg">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Generative Chemistry / Type 6</span>
+                      <h3>Quantum-Bound Molecular Generator</h3>
+                      <p class="usecase-subtitle">Zero-Waste Neuro-Symbolic Molecular Engine.</p>
+                      <p class="usecase-desc">Type 6 Neuro[Symbolic] architecture with symbolic physics (valency, symmetry) embedded directly into the PyTorch computation graph as differentiable convex projection. Every forward pass outputs a chemically valid bond adjacency matrix — zero compute waste. IFT backprop through KKT equilibrium enables end-to-end gradient flow.</p>
+                      <div class="tech-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">SE(3)-GNN</span>
+                        <span class="tag">Convex Optimization</span>
+                        <span class="tag">IFT</span>
+                        <span class="tag">Type 6</span>
+                      </div>
+                      <a href="https://github.com/aragit/quantum-bound-generator" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">qbmg — molecular-gen</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ qbmg generate --atoms=24 --target=C10H12N2O</span><br>
+                          <span class="cmt"># --- NEURAL PASS ---</span><br>
+                          <span class="kwd">[GNN]</span> SE(3)-equivariant forward: 24 atoms<br>
+                          &nbsp;&nbsp;└─ <span class="str">Raw adjacency:</span> 24x24 matrix (continuous)<br>
+                          <span class="cmt"># --- SYMBOLIC PROJECTION ---</span><br>
+                          <span class="kwd">[KKT]</span> Convex projection: valency constraints<br>
+                          &nbsp;&nbsp;└─ <span class="str">C≤4 O≤2 N≤3</span> enforced via KKT<br>
+                          <span class="kwd">[IFT]</span> Jacobian through KKT equilibrium ✓<br>
+                          <span class="pass">[VALID]</span> 100% chemically valid (zero waste)<br>
+                          <span class="pass">[PASS]</span> Frobenius distortion: 0.003<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">MOLECULE_GENERATED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Protein Binder Flow -->
+                <div class="usecase-panel" id="rs-protein">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Computational Biology</span>
+                      <h3>Protein Binder Flow</h3>
+                      <p class="usecase-subtitle">Flow-matching protein binder generator.</p>
+                      <p class="usecase-desc">Flow matching for structural molecular generation, moving beyond diffusion-based protein design approaches. Targets novel protein-ligand binding discovery using PyTorch and Biopython, with FoldSeek for structural alignment validation.</p>
+                      <div class="tech-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Biopython</span>
+                        <span class="tag">Flow Matching</span>
+                        <span class="tag">FoldSeek</span>
+                      </div>
+                      <a href="https://github.com/aragit/Flow-Matching-Protein-Binder-Generator" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">protein-flow — binder-gen</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ flow_match generate --target=EGFR --n=100</span><br>
+                          <span class="cmt"># --- STEP 1: STRUCTURE PREP ---</span><br>
+                          <span class="kwd">[FOLDSEEK]</span> Binding site aligned: 147 residues<br>
+                          <span class="cmt"># --- STEP 2: FLOW MATCHING ---</span><br>
+                          <span class="kwd">[FLOW]</span> ODE integration: t=0 → t=1 (100 steps)<br>
+                          &nbsp;&nbsp;└─ <span class="str">Backbone RMSD:</span> 1.2Å (converged)<br>
+                          <span class="kwd">[FLOW]</span> Side-chain packing: 89% rotamer correct<br>
+                          <span class="cmt"># --- STEP 3: VALIDATION ---</span><br>
+                          <span class="pass">[PASS]</span> Docking score: -8.7 kcal/mol<br>
+                          <span class="pass">[PASS]</span> AlphaFold pLDDT: 0.82<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">100_BINDERS_GENERATED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
