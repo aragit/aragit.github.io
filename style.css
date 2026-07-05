@@ -11398,12 +11398,11 @@ div#services .cards .card.card-wide .card-actions {
 .hero-right {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .hero-terminal {
-  width: 100%;
-  max-width: 500px;
+  width: 460px;
 }
 
 .hero-terminal .terminal-box {
@@ -11412,12 +11411,13 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .hero-terminal .terminal-body {
-  line-height: 1.4;
-  font-size: 0.72rem;
+  line-height: 1.5;
+  font-size: 0.7rem;
   text-align: left;
-  white-space: normal;
+  white-space: pre-wrap;
   word-break: break-word;
-  min-height: 200px;
+  height: 260px;
+  overflow: hidden;
 }
 
 .hero-typewriter .tw-cursor {
