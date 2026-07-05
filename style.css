@@ -11430,3 +11430,281 @@ div#services .cards .card.card-wide .card-actions {
   mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 30%, transparent 80%);
 }
+
+/* ============================================
+   AGENTIC SOLUTIONS — Two-Level Tab System
+   ============================================ */
+
+/* --- Level 1: Domain Tabs (horizontal) --- */
+.domain-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.domain-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.domain-tab:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.domain-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255,107,0,0.25);
+}
+
+.domain-tab-icon {
+  font-size: 1.1rem;
+}
+
+/* --- Domain Panels --- */
+.domain-panels {
+  position: relative;
+}
+
+.domain-panel {
+  display: none;
+  animation: fadeSlideIn 0.35s ease;
+}
+
+.domain-panel.active {
+  display: block;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Solution Layout (Level 2) --- */
+.solution-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 30px;
+  min-height: 400px;
+}
+
+/* --- Level 2: Use Case Tabs (vertical) --- */
+.usecase-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  padding-right: 20px;
+}
+
+.usecase-tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: inherit;
+  position: relative;
+}
+
+.usecase-tab::before {
+  content: '';
+  position: absolute;
+  right: -21px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: height 0.25s ease;
+}
+
+.usecase-tab:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+}
+
+.usecase-tab.active {
+  background: rgba(255,107,0,0.08);
+  color: #fff;
+}
+
+.usecase-tab.active::before {
+  height: 60%;
+}
+
+.usecase-tab-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.6;
+  min-width: 20px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.usecase-tab.active .usecase-tab-num {
+  opacity: 1;
+}
+
+.usecase-tab-label {
+  white-space: nowrap;
+}
+
+/* --- Use Case Panels --- */
+.usecase-panels {
+  position: relative;
+  overflow: hidden;
+}
+
+.usecase-panel {
+  display: none;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.usecase-panel.active {
+  display: block;
+}
+
+.usecase-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* --- Use Case Info --- */
+.usecase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.usecase-info h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+}
+
+.usecase-subtitle {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.usecase-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.usecase-info .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.usecase-info .link-arrow {
+  margin-top: 8px;
+}
+
+/* --- Use Case Visual (terminal) --- */
+.usecase-visual {
+  min-width: 0;
+}
+
+.usecase-visual .terminal-box {
+  width: 100%;
+}
+
+.usecase-visual .terminal-body {
+  line-height: 1.4;
+  font-size: 0.78rem;
+  text-align: left;
+  white-space: normal;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 900px) {
+  .solution-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .usecase-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-right: 0;
+    padding-bottom: 12px;
+    gap: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .usecase-tab::before {
+    display: none;
+  }
+
+  .usecase-tab {
+    white-space: nowrap;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+  }
+
+  .usecase-content {
+    grid-template-columns: 1fr;
+  }
+
+  .domain-tabs {
+    gap: 6px;
+  }
+
+  .domain-tab {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .domain-tab {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .domain-tab-icon {
+    font-size: 0.95rem;
+  }
+
+  .usecase-tab-num {
+    display: none;
+  }
+}

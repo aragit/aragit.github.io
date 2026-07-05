@@ -33,7 +33,7 @@
   </style>
 
   <!-- style (external) -->
-  <link rel="stylesheet" href="style.css?v=1771448900" />
+  <link rel="stylesheet" href="style.css?v=1751740800" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -294,243 +294,399 @@
    
     
 
-    <!-- PORTFOLIO -->
-   <section id="portfolio" class="section">
+    <!-- AGENTIC SOLUTIONS — Two-Level Tab System -->
+    <section id="portfolio" class="section">
       <div class="container">
         <h2 class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.1rem); color: #fff; margin-bottom: 15px; font-weight: 700;">Agentic Solutions</h2>
-        <p class="section-subtitle" style="font-style: normal; color: var(--gray); font-size: 1.05rem; max-width: 600px; margin: 0 auto 20px auto;">Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p>
-        
-        <div style="text-align: center; margin-bottom: 50px;">
+        <p class="section-subtitle" style="font-style: normal; color: var(--gray); font-size: 1.05rem; max-width: 600px; margin: 0 auto 30px auto;">Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p>
+
+        <!-- Level 1: Domain Tabs (horizontal) -->
+        <div class="domain-tabs" role="tablist" aria-label="Solution domains">
+          <button class="domain-tab active" role="tab" aria-selected="true" aria-controls="domain-healthcare" data-domain="healthcare">
+            <span class="domain-tab-icon">🏥</span> Healthcare
+          </button>
+          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-marketing" data-domain="marketing">
+            <span class="domain-tab-icon">📊</span> Marketing & Ad Tech
+          </button>
+          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-fintech" data-domain="fintech">
+            <span class="domain-tab-icon">🏦</span> FinTech / RegTech
+          </button>
+        </div>
+
+        <!-- Domain Panels -->
+        <div class="domain-panels">
+
+          <!-- ===== HEALTHCARE ===== -->
+          <div class="domain-panel active" id="domain-healthcare" role="tabpanel">
+            <div class="solution-layout">
+              <!-- Level 2: Use Case Tabs (vertical) -->
+              <nav class="usecase-tabs" aria-label="Healthcare use cases">
+                <button class="usecase-tab active" data-usecase="hc-onco">
+                  <span class="usecase-tab-num">01</span>
+                  <span class="usecase-tab-label">Clinical Oncology</span>
+                </button>
+                <button class="usecase-tab" data-usecase="hc-graphrag">
+                  <span class="usecase-tab-num">02</span>
+                  <span class="usecase-tab-label">Clinical GraphRAG</span>
+                </button>
+                <button class="usecase-tab" data-usecase="hc-molecular">
+                  <span class="usecase-tab-num">03</span>
+                  <span class="usecase-tab-label">Molecular Discovery</span>
+                </button>
+                <button class="usecase-tab" data-usecase="hc-biomedical">
+                  <span class="usecase-tab-num">04</span>
+                  <span class="usecase-tab-label">Biomedical Hypotheses</span>
+                </button>
+              </nav>
+
+              <!-- Use Case Content Panels -->
+              <div class="usecase-panels">
+
+                <!-- Clinical Oncology -->
+                <div class="usecase-panel active" id="hc-onco">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Oncology-Focus</span>
+                      <h3>Clinical Oncology Agent</h3>
+                      <p class="usecase-subtitle">Navigates NCCN guidelines with toxicity-aware reasoning.</p>
+                      <p class="usecase-desc">Deterministic orchestration of multi-drug regimens via Human-in-the-Loop (HITL) safeguards, enforcing strict physiological constraints and site-specific protocols.</p>
+                      <div class="tech-tags">
+                        <span class="tag">FHIR/HL7</span>
+                        <span class="tag">Policy-as-Code</span>
+                        <span class="tag">DAG-Orchestrated</span>
+                      </div>
+                      <a href="#" class="link-arrow">View Case Study →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">onco-pathway — precision-med-v3</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ agent_core run --workflow="onco_triage" --pt_id="PT-88392"</span><br>
+                          <span class="cmt"># --- STEP 1: PERCEPTION &amp; NORMALIZATION ---</span><br>
+                          <span class="kwd">[PERCEIVE]</span> Ingesting EMR: ER/PR+, HER2-, Echocardiogram.<br>
+                          <span class="kwd">[NORMALIZE]</span> Mapping data to NCCN clinical vectors...<br>
+                          &nbsp;&nbsp;└─ <span class="str">Option A:</span> AC-T (Doxorubicin) - 92% Efficacy<br>
+                          &nbsp;&nbsp;└─ <span class="str">Option B:</span> TC (Docetaxel) - 88% Efficacy<br>
+                          <span class="cmt"># --- STEP 2: GOVERNANCE PRE-FLIGHT ---</span><br>
+                          <span class="kwd">[STRATEGIST]</span> "Option A maximizes survival. Building node..."<br>
+                          <span class="kwd">[GOVERN]</span> Intercepting node: <span class="cmd">prescribe(regimen="AC-T")</span><br>
+                          <span class="cmt"># --- STEP 3: POLICY-AS-CODE SHIELD ---</span><br>
+                          <span class="warn">[DENY]</span> <strong>POLICY_VIOLATION</strong> (rule: cardiotoxicity)<br>
+                          &nbsp;&nbsp;└─ <span class="str">Reason:</span> "Patient LVEF is 48% (Threshold >50%)."<br>
+                          <span class="cmt"># --- STEP 4: DETERMINISTIC RECOVERY ---</span><br>
+                          <span class="kwd">[RE-PLAN]</span> Reverting to Option B. Re-running policy check...<br>
+                          <span class="pass">[PASS]</span> Safety parameters cleared. Node approved.<br>
+                          <span class="cmt"># --- STEP 5: COMMIT &amp; HANDOFF ---</span><br>
+                          <span class="pass">[COMMIT]</span> Immutable record written to the ledger.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">AWAITING ONCOLOGIST SIGN-OFF</span>...
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Clinical GraphRAG -->
+                <div class="usecase-panel" id="hc-graphrag">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Clinical AI / Hybrid RAG</span>
+                      <h3>Speculative Clinical GraphRAG</h3>
+                      <p class="usecase-subtitle">9-node LangGraph with hybrid retrieval &amp; self-correction.</p>
+                      <p class="usecase-desc">Qdrant vector store + Neo4j graph traversal with fusion scoring (α=0.7). Quad-track LLM backend with SemanticRouter auto-selection. Self-correcting feedback feeds violations + prior reasoning back via regenerate_with_feedback() with confidence decay.</p>
+                      <div class="tech-tags">
+                        <span class="tag">LangGraph</span>
+                        <span class="tag">Neo4j</span>
+                        <span class="tag">Qdrant</span>
+                        <span class="tag">DeepSeek-R1</span>
+                        <span class="tag">SNOMED-CT</span>
+                      </div>
+                      <a href="https://github.com/aragit/speculative-clinical-graphrag" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">clinical-graphrag — speculate</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ /v1/speculate --note="persistent cough, weight loss"</span><br>
+                          <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
+                          <span class="kwd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
+                          <span class="kwd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
+                          &nbsp;&nbsp;└─ <span class="str">Fusion:</span> α=0.7 vector + 0.3 graph<br>
+                          <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
+                          <span class="kwd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
+                          <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
+                          <span class="warn">[FAIL]</span> Neo4j edge lung_ca→metastasis missing<br>
+                          <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
+                          <span class="kwd">[REGEN]</span> Feeding violations + reasoning trace...<br>
+                          &nbsp;&nbsp;└─ <span class="str">Confidence:</span> 0.82 → 0.72 (decay -0.1)<br>
+                          <span class="pass">[PASS]</span> Corrected path validated by all verifiers.<br>
+                          <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">AWAITING_CLINICIAN_REVIEW</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Molecular Discovery -->
+                <div class="usecase-panel" id="hc-molecular">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Drug Discovery</span>
+                      <h3>Molecular Discovery Agent</h3>
+                      <p class="usecase-subtitle">High-throughput docking agent that halts synthesis of hepatotoxic structures.</p>
+                      <p class="usecase-desc">Automated virtual screening pipeline that combines molecular docking simulations with toxicity prediction. The agent iteratively proposes candidate molecules, evaluates binding affinity, and rejects structures flagged for hepatotoxicity — all within a closed-loop autonomous workflow.</p>
+                      <div class="tech-tags">
+                        <span class="tag">Simulation</span>
+                        <span class="tag">RDKit</span>
+                        <span class="tag">AutoDock</span>
+                      </div>
+                      <a href="#" class="link-arrow">View Case Study →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">mol-screen — docking-pipeline</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ mol_screen run --target="EGFR" --rounds=200</span><br>
+                          <span class="cmt"># --- BATCH 1: VIRTUAL SCREENING ---</span><br>
+                          <span class="kwd">[DOCK]</span> Screening 200 candidates against EGFR...<br>
+                          <span class="kwd">[FILTER]</span> Top 12 by binding affinity (ΔG &lt; -8.5 kcal/mol)<br>
+                          <span class="cmt"># --- BATCH 2: TOXICITY PREDICTION ---</span><br>
+                          <span class="kwd">[ADMET]</span> Running hepatotoxicity classifier...<br>
+                          <span class="warn">[REJECT]</span> 4 candidates flagged: DILI risk > 0.7<br>
+                          <span class="pass">[PASS]</span> 8 candidates cleared all safety gates.<br>
+                          <span class="kwd">[RANK]</span> Best: compound_047 (ΔG=-9.2, DILI=0.12)<br>
+                          <span class="pass">[AUDIT]</span> Full pipeline trace persisted.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">SCREENING_COMPLETE</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Biomedical Hypotheses -->
+                <div class="usecase-panel" id="hc-biomedical">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Repurposing</span>
+                      <h3>Biomedical Hypotheses Agent</h3>
+                      <p class="usecase-subtitle">Hypothesis-driven retrieval over PubMed for repurposing leads.</p>
+                      <p class="usecase-desc">Graph Neural Network over a knowledge graph of drug-gene-disease associations. The agent generates repurposing hypotheses, validates them against PubMed evidence, and scores confidence based on citation density and pathway overlap.</p>
+                      <div class="tech-tags">
+                        <span class="tag">PubMed-KB</span>
+                        <span class="tag">GNN</span>
+                        <span class="tag">Neo4j</span>
+                      </div>
+                      <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">bio-hypo — repurpose-engine</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ hypo_agent propose --disease="IPF" --top_k=5</span><br>
+                          <span class="cmt"># --- STEP 1: KNOWLEDGE GRAPH TRAVERSAL ---</span><br>
+                          <span class="kwd">[GNN]</span> Querying drug-gene-disease subgraph...<br>
+                          &nbsp;&nbsp;└─ <span class="str">Nodes:</span> 1,247 | Edges: 3,891<br>
+                          <span class="cmt"># --- STEP 2: HYPOTHESIS GENERATION ---</span><br>
+                          <span class="kwd">[LLM]</span> Top candidates: nintedanib(0.91) pirfenidone(0.87)...<br>
+                          <span class="cmt"># --- STEP 3: EVIDENCE VALIDATION ---</span><br>
+                          <span class="kwd">[PUBMED]</span> Searching for supporting citations...<br>
+                          &nbsp;&nbsp;└─ <span class="str">Found:</span> 23 papers for nintedanib-IPF link<br>
+                          <span class="pass">[SCORE]</span> Confidence: 0.89 (high evidence density)<br>
+                          <span class="pass">[AUDIT]</span> Hypothesis + evidence chain persisted.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">HYPOTHESES_RANKED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== MARKETING & AD TECH ===== -->
+          <div class="domain-panel" id="domain-marketing" role="tabpanel">
+            <div class="solution-layout">
+              <nav class="usecase-tabs" aria-label="Marketing use cases">
+                <button class="usecase-tab active" data-usecase="mk-nash">
+                  <span class="usecase-tab-num">01</span>
+                  <span class="usecase-tab-label">Nash Marketing Agents</span>
+                </button>
+                <button class="usecase-tab" data-usecase="mk-roi">
+                  <span class="usecase-tab-num">02</span>
+                  <span class="usecase-tab-label">Marketing ROI Optimizer</span>
+                </button>
+              </nav>
+
+              <div class="usecase-panels">
+
+                <!-- Nash Marketing Agents -->
+                <div class="usecase-panel active" id="mk-nash">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Game Theory / Ad Tech</span>
+                      <h3>Nash Marketing Agents</h3>
+                      <p class="usecase-subtitle">Neuro-symbolic ad auction simulator with Nash Equilibrium.</p>
+                      <p class="usecase-desc">LLM proposes stochastic bidding strategies; symbolic Nash solver validates via iterative best-response with softmax annealing. VCG second-price engine enforces paid≤bid invariant. Monte Carlo 5000-sample win-probability estimation with multi-layer budget guardrails.</p>
+                      <div class="tech-tags">
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">SciPy</span>
+                        <span class="tag">Pydantic v2</span>
+                        <span class="tag">Game Theory</span>
+                        <span class="tag">Docker</span>
+                      </div>
+                      <a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">nash-sim — auction-engine</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ nash_sim run --rounds=50 --agents=4</span><br>
+                          <span class="cmt"># --- ROUND 1: STRATEGY PROPOSAL ---</span><br>
+                          <span class="kwd">[LLM]</span> Bids: Agent-A=$2.40 B=$1.85 C=$3.10 D=$2.70<br>
+                          <span class="kwd">[SOLVER]</span> Best-response iteration (softmax τ=0.3)...<br>
+                          <span class="cmt"># --- VCG AUCTION ENGINE ---</span><br>
+                          <span class="kwd">[AUCTION]</span> Winner: Agent-C (bid $3.10)<br>
+                          &nbsp;&nbsp;└─ <span class="str">VCG payment:</span> $2.70 (next-highest bid)<br>
+                          <span class="pass">[ASSERT]</span> paid≤bid invariant: 2.70 ≤ 3.10 ✓<br>
+                          <span class="cmt"># --- BUDGET GUARDRAILS ---</span><br>
+                          <span class="warn">[WARN]</span> Agent-A budget at 22% → soft warning<br>
+                          <span class="cmt"># --- CONVERGENCE @ ROUND 41 ---</span><br>
+                          <span class="pass">[NASH]</span> Equilibrium reached. Δu &lt; 0.01<br>
+                          <span class="pass">[TEST]</span> 49/49 property-based tests passed.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">SIMULATION_COMPLETE</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Marketing ROI Optimizer -->
+                <div class="usecase-panel" id="mk-roi">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">Multi-Agent / Bandits</span>
+                      <h3>Marketing ROI Optimizer</h3>
+                      <p class="usecase-subtitle">Continuously reallocates budget using Multi-Agent Swarms and Multi-Armed Bandits.</p>
+                      <p class="usecase-desc">A swarm of specialized agents — data collector, analyzer, optimizer, and reporter — collaborate to continuously monitor campaign performance and reallocate budget across channels in real-time using Thompson Sampling bandits.</p>
+                      <div class="tech-tags">
+                        <span class="tag">Bandits</span>
+                        <span class="tag">Streaming</span>
+                        <span class="tag">Multi-Agent</span>
+                      </div>
+                      <a href="case-studies/marketing-roi/index.html" class="link-arrow">View Case Study →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">roi-optimizer — budget-agent</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ roi_agent optimize --budget=$50k --channels=6</span><br>
+                          <span class="cmt"># --- COLLECT: Real-time performance data ---</span><br>
+                          <span class="kwd">[SWARM]</span> DataCollector: ingesting 6 channel feeds...<br>
+                          <span class="cmt"># --- ANALYZE: Attribution modeling ---</span><br>
+                          <span class="kwd">[SWARM]</span> Analyzer: last-touch + Shapley values<br>
+                          &nbsp;&nbsp;└─ <span class="str">Insight:</span> Google Ads CPA rose 34% this week<br>
+                          <span class="cmt"># --- OPTIMIZE: Thompson Sampling ---</span><br>
+                          <span class="kwd">[BANDIT]</span> Reallocating: Google→LinkedIn (+$4.2k)<br>
+                          <span class="pass">[ASSERT]</span> Total budget invariant: $50,000 ✓<br>
+                          <span class="cmt"># --- REPORT: Executive summary ---</span><br>
+                          <span class="pass">[SWARM]</span> Reporter: projected CPA improvement -18%<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">REALLOCATION_APPLIED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== FINTECH / REGTECH ===== -->
+          <div class="domain-panel" id="domain-fintech" role="tabpanel">
+            <div class="solution-layout">
+              <nav class="usecase-tabs" aria-label="FinTech use cases">
+                <button class="usecase-tab active" data-usecase="ft-kyc">
+                  <span class="usecase-tab-num">01</span>
+                  <span class="usecase-tab-label">KYC & AML Screening</span>
+                </button>
+              </nav>
+
+              <div class="usecase-panels">
+
+                <!-- KYC & AML -->
+                <div class="usecase-panel active" id="ft-kyc">
+                  <div class="usecase-content">
+                    <div class="usecase-info">
+                      <span class="badge">FinTech / RegTech</span>
+                      <h3>Automated KYC & AML Screening Agent</h3>
+                      <p class="usecase-subtitle">SLM-first ReAct agent with deterministic risk scoring.</p>
+                      <p class="usecase-desc">Single-threaded LangChain ReAct loop on CPU using 4-bit Qwen2.5-7B-Instruct. Pluggable BaseLLMBackend swaps to vLLM GPU inference via one-line config. Every tool call validated by Pydantic v2 with immutable PostgreSQL audit trails.</p>
+                      <div class="tech-tags">
+                        <span class="tag">Qwen2.5-7B</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Neo4j UBO</span>
+                        <span class="tag">OpenSanctions</span>
+                        <span class="tag">PostgreSQL</span>
+                      </div>
+                      <a href="https://github.com/aragit/kyc-auto" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                    </div>
+                    <div class="usecase-visual">
+                      <div class="terminal-box">
+                        <div class="terminal-header">
+                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                          <div class="terminal-title">kyc-agent — react-loop</div>
+                        </div>
+                        <div class="terminal-body">
+                          <span class="cmd">$ kyc_agent screen --entity="Acme_Corp_Ltd"</span><br>
+                          <span class="cmt"># --- REACT TURN 1: TOOL_CALL ---</span><br>
+                          <span class="kwd">[REASON]</span> Entity requires PEP &amp; sanctions check.<br>
+                          <span class="kwd">[TOOL]</span> <span class="cmd">sanctions_check(name="Acme Corp")</span><br>
+                          &nbsp;&nbsp;└─ <span class="str">Result:</span> OFAC: CLEAR | EU: CLEAR | cache_miss<br>
+                          <span class="cmt"># --- REACT TURN 2: TOOL_CALL ---</span><br>
+                          <span class="kwd">[REASON]</span> Fetching corporate registry for UBO extraction.<br>
+                          <span class="kwd">[TOOL]</span> <span class="cmd">ubo_extract(doc="incorporation.pdf")</span><br>
+                          &nbsp;&nbsp;└─ <span class="str">Extracted:</span> 3 beneficial owners → Neo4j graph<br>
+                          <span class="cmt"># --- REACT TURN 3: DETERMINISTIC ---</span><br>
+                          <span class="kwd">[TOOL]</span> <span class="cmd">risk_score_combine()</span> <span class="cmt"># pure algorithm, no LLM</span><br>
+                          <span class="pass">[PASS]</span> Composite Risk: 12/100 (Low). Cleared.<br>
+                          <span class="pass">[AUDIT]</span> Pydantic-validated KYCPacket → PostgreSQL.<br>
+                          <span class="cmd">[STATUS]</span> <span class="blink">ONBOARDING_APPROVED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
           <a href="https://github.com/aragit" target="_blank" class="btn" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 8px; color: #fff; text-decoration: none; font-weight: 600;">
             <svg height="20" width="20" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-            Collaborate at GitHub
+            View All Projects on GitHub
           </a>
-        </div>
-    
-        <div class="bento-grid">
-          <div class="bento-item card-featured" style="grid-column: span 2;">
-            <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
-              <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
-                <div>
-                  <span class="badge">Oncology-Focus</span>
-                  <h3>Clinical Oncology Agent</h3>
-                  <p style="color:var(--text); font-weight:500;">Navigates NCCN guidelines with toxicity-aware reasoning.</p>
-                  <p class="loop-step">Deterministic orchestration of multi-drug regimens via Human-in-the-Loop (HITL) safeguards, enforcing strict physiological constraints and site-specific protocols.</p>
-                  <div class="tech-tags" style="margin-bottom: 15px;">
-                      <span class="tag">FHIR/HL7</span>
-                      <span class="tag">Policy-as-Code</span>
-                      <span class="tag">DAG-Orchestrated</span>
-                  </div>
-                  <a href="#" class="link-arrow">View Case Study →</a>
-                </div>
-    
-                <div class="terminal-box" style="margin-top: 15px; border: 1px solid rgba(95, 211, 255, 0.2);">
-                  <div class="terminal-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div class="terminal-title">onco-orchestrator — deterministic-v4</div>
-                  </div>
-                  <div class="terminal-body" style="line-height: 1.3; text-align: left; white-space: normal; font-size: 0.82rem;">
-                    <span class="cmd">$ plan_orchestrate --intent="optimize_regimen" --pt="88392"</span><br>
-                    <span class="kwd" style="color: #569cd6;">[STRATEGIST]</span> Compiling execution graph (DAG)...<br>
-                    <span class="kwd">[TOOL_CALL]</span> <strong>Vision_Scanner:</strong> Extracting RECIST features.<br>
-                    <span class="kwd">[TOOL_CALL]</span> <strong>Genomic_Service:</strong> Querying DPYD variants.<br>
-                    <span class="warn" style="color: #ffbd2e;">[WARN]</span> DPYD deficiency (*2A) confirmed via tool output.<br>
-                    <span class="pass" style="color: #27c93f;">[AUDIT]</span> Immutable trace committed to ledger.<br>
-                    <span class="cmd">[STATUS]</span> <span class="log-line blink">PLAN_READY_FOR_EXECUTION</span>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="featured-terminal" style="flex: 1;">
-                <div class="terminal-box">
-                  <div class="terminal-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div class="terminal-title">onco-pathway — precision-med-v3</div>
-                  </div>
-                  <div class="terminal-body" style="line-height: 1.3; text-align: left; white-space: normal;font-size: 0.82rem;">
-                    <span class="cmd">$ agent_core run --workflow="onco_triage" --pt_id="PT-88392"</span><br>
-                    <span class="cmt"># --- STEP 1: PERCEPTION &amp; NORMALIZATION ---</span><br>
-                    <span class="kwd">[PERCEIVE]</span> Ingesting EMR: ER/PR+, HER2-, Echocardiogram.<br>
-                    <span class="kwd">[NORMALIZE]</span> Mapping data to NCCN clinical vectors...<br>
-                    &nbsp;&nbsp;└─ <span class="str">Option A:</span> AC-T (Doxorubicin) - 92% Efficacy<br>
-                    &nbsp;&nbsp;└─ <span class="str">Option B:</span> TC (Docetaxel) - 88% Efficacy<br>
-                    <span class="cmt"># --- STEP 2: GOVERNANCE PRE-FLIGHT ---</span><br>
-                    <span class="kwd">[STRATEGIST]</span> "Option A maximizes survival. Building node..."<br>
-                    <span class="kwd">[GOVERN]</span> Intercepting node: <span class="cmd">prescribe(regimen="AC-T")</span><br>
-                    <span class="cmt"># --- STEP 3: POLICY-AS-CODE SHIELD ---</span><br>
-                    <span class="warn">[DENY]</span> 🛡️ <strong>POLICY_VIOLATION</strong> (rule: cardiotoxicity)<br>
-                    &nbsp;&nbsp;└─ <span class="str">Reason:</span> "Patient LVEF is 48% (Threshold >50%)."<br>
-                    <span class="cmt"># --- STEP 4: DETERMINISTIC RECOVERY ---</span><br>
-                    <span class="kwd">[RE-PLAN]</span> Reverting to Option B. Re-running policy check...<br>
-                    <span class="pass">[PASS]</span> Safety parameters cleared. Node approved.<br>
-                    <span class="cmt"># --- STEP 5: COMMIT &amp; HANDOFF ---</span><br>
-                    <span class="pass">[COMMIT]</span> Immutable record written to the ledger.<br>
-                    <span class="cmd">[STATUS]</span> <span class="blink">AWAITING ONCOLOGIST SIGN-OFF</span>...
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    
-          <div class="bento-item">
-            <h3>Molecular Discovery</h3>
-            <p class="loop-step">High-throughput docking agent that halts synthesis of hepatotoxic structures.</p>
-            <div class="tech-tags"><span class="tag">Simulation</span></div>
-            <a href="#" class="link-arrow">View Case Study →</a>
-          </div>
-    
-          <div class="bento-item biomed-tall">
-            <h3>Biomedical Hypotheses</h3>
-            <p class="loop-step">Hypothesis-driven retrieval over PubMed for repurposing leads.</p>
-            <div class="tech-tags"><span class="tag">PubMed-KB</span><span class="tag">GNN</span></div>
-            <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
-          </div>
-    
-          <div class="bento-item">
-            <h3>Marketing ROI Optimizer</h3>
-            <p class="loop-step">Continuously reallocates budget using Multi-Agent Swarms and Multi-Armed Bandits.</p>
-            <div class="tech-tags"><span class="tag">Bandits</span><span class="tag">Streaming</span></div>
-            <a href="case-studies/marketing-roi/index.html" class="link-arrow">View Case Study →</a>
-          </div>
-
-          <div class="bento-item card-featured" style="grid-column: span 2;">
-            <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
-              <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
-                <div>
-                  <span class="badge">FinTech / RegTech</span>
-                  <h3>Automated KYC & AML Screening Agent</h3>
-                  <p style="color:var(--text); font-weight:500;">SLM-first ReAct agent with deterministic risk scoring.</p>
-                  <p class="loop-step">Single-threaded LangChain ReAct loop on CPU using 4-bit Qwen2.5-7B-Instruct. Pluggable BaseLLMBackend swaps to vLLM GPU inference via one-line config. Every tool call validated by Pydantic v2 with immutable PostgreSQL audit trails.</p>
-                  <div class="tech-tags" style="margin-bottom: 15px;">
-                    <span class="tag">Qwen2.5-7B</span>
-                    <span class="tag">LangChain</span>
-                    <span class="tag">Neo4j UBO</span>
-                    <span class="tag">OpenSanctions</span>
-                    <span class="tag">PostgreSQL</span>
-                  </div>
-                  <a href="https://github.com/aragit/kyc-auto" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                </div>
-              </div>
-
-              <div class="featured-terminal" style="flex: 1;">
-                <div class="terminal-box">
-                  <div class="terminal-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div class="terminal-title">kyc-agent — react-loop</div>
-                  </div>
-                  <div class="terminal-body" style="line-height: 1.4; font-size: 0.78rem; text-align: left; white-space: normal;">
-                    <span class="cmd">$ kyc_agent screen --entity="Acme_Corp_Ltd"</span><br>
-                    <span class="cmt"># --- REACT TURN 1: TOOL_CALL ---</span><br>
-                    <span class="kwd">[REASON]</span> Entity requires PEP &amp; sanctions check.<br>
-                    <span class="kwd">[TOOL]</span> <span class="cmd">sanctions_check(name="Acme Corp")</span><br>
-                    &nbsp;&nbsp;└─ <span class="str">Result:</span> OFAC: CLEAR | EU: CLEAR | cache_miss<br>
-                    <span class="cmt"># --- REACT TURN 2: TOOL_CALL ---</span><br>
-                    <span class="kwd">[REASON]</span> Fetching corporate registry for UBO extraction.<br>
-                    <span class="kwd">[TOOL]</span> <span class="cmd">ubo_extract(doc="incorporation.pdf")</span><br>
-                    &nbsp;&nbsp;└─ <span class="str">Extracted:</span> 3 beneficial owners → Neo4j graph<br>
-                    <span class="cmt"># --- REACT TURN 3: DETERMINISTIC ---</span><br>
-                    <span class="kwd">[TOOL]</span> <span class="cmd">risk_score_combine()</span> <span class="cmt"># pure algorithm, no LLM</span><br>
-                    <span class="pass">[PASS]</span> Composite Risk: 12/100 (Low). Cleared.<br>
-                    <span class="pass">[AUDIT]</span> Pydantic-validated KYCPacket → PostgreSQL.<br>
-                    <span class="cmd">[STATUS]</span> <span class="blink">ONBOARDING_APPROVED</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bento-item card-featured" style="grid-column: span 2;">
-            <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
-              <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
-                <div>
-                  <span class="badge">Game Theory / Ad Tech</span>
-                  <h3>Nash Marketing Agents</h3>
-                  <p style="color:var(--text); font-weight:500;">Neuro-symbolic ad auction simulator with Nash Equilibrium.</p>
-                  <p class="loop-step">LLM proposes stochastic bidding strategies; symbolic Nash solver validates via iterative best-response with softmax annealing. VCG second-price engine enforces paid≤bid invariant. Monte Carlo 5000-sample win-probability estimation with multi-layer budget guardrails.</p>
-                  <div class="tech-tags" style="margin-bottom: 15px;">
-                    <span class="tag">FastAPI</span>
-                    <span class="tag">SciPy</span>
-                    <span class="tag">Pydantic v2</span>
-                    <span class="tag">Game Theory</span>
-                    <span class="tag">Docker</span>
-                  </div>
-                  <a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                </div>
-              </div>
-
-              <div class="featured-terminal" style="flex: 1;">
-                <div class="terminal-box">
-                  <div class="terminal-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div class="terminal-title">nash-sim — auction-engine</div>
-                  </div>
-                  <div class="terminal-body" style="line-height: 1.4; font-size: 0.78rem; text-align: left; white-space: normal;">
-                    <span class="cmd">$ nash_sim run --rounds=50 --agents=4</span><br>
-                    <span class="cmt"># --- ROUND 1: STRATEGY PROPOSAL ---</span><br>
-                    <span class="kwd">[LLM]</span> Bids: Agent-A=$2.40 B=$1.85 C=$3.10 D=$2.70<br>
-                    <span class="kwd">[SOLVER]</span> Best-response iteration (softmax τ=0.3)...<br>
-                    <span class="cmt"># --- VCG AUCTION ENGINE ---</span><br>
-                    <span class="kwd">[AUCTION]</span> Winner: Agent-C (bid $3.10)<br>
-                    &nbsp;&nbsp;└─ <span class="str">VCG payment:</span> $2.70 (next-highest bid)<br>
-                    <span class="pass">[ASSERT]</span> paid≤bid invariant: 2.70 ≤ 3.10 ✓<br>
-                    <span class="cmt"># --- BUDGET GUARDRAILS ---</span><br>
-                    <span class="warn">[WARN]</span> Agent-A budget at 22% → soft warning<br>
-                    <span class="cmt"># --- CONVERGENCE @ ROUND 41 ---</span><br>
-                    <span class="pass">[NASH]</span> Equilibrium reached. Δu &lt; 0.01<br>
-                    <span class="pass">[TEST]</span> 49/49 property-based tests passed.<br>
-                    <span class="cmd">[STATUS]</span> <span class="blink">SIMULATION_COMPLETE</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bento-item card-featured" style="grid-column: span 2;">
-            <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
-              <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
-                <div>
-                  <span class="badge">Clinical AI / Hybrid RAG</span>
-                  <h3>Speculative Clinical GraphRAG</h3>
-                  <p style="color:var(--text); font-weight:500;">9-node LangGraph with hybrid retrieval &amp; self-correction.</p>
-                  <p class="loop-step">Qdrant vector store + Neo4j graph traversal with fusion scoring (α=0.7). Quad-track LLM backend with SemanticRouter auto-selection. Self-correcting feedback feeds violations + prior reasoning back via regenerate_with_feedback() with confidence decay. Deterministic escalation after max iterations — zero PHI persistence.</p>
-                  <div class="tech-tags" style="margin-bottom: 15px;">
-                    <span class="tag">LangGraph</span>
-                    <span class="tag">Neo4j</span>
-                    <span class="tag">Qdrant</span>
-                    <span class="tag">DeepSeek-R1</span>
-                    <span class="tag">SNOMED-CT</span>
-                  </div>
-                  <a href="https://github.com/aragit/speculative-clinical-graphrag" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                </div>
-              </div>
-
-              <div class="featured-terminal" style="flex: 1;">
-                <div class="terminal-box">
-                  <div class="terminal-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div class="terminal-title">clinical-graphrag — speculate</div>
-                  </div>
-                  <div class="terminal-body" style="line-height: 1.4; font-size: 0.78rem; text-align: left; white-space: normal;">
-                    <span class="cmd">$ /v1/speculate --note="persistent cough, weight loss"</span><br>
-                    <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
-                    <span class="kwd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
-                    <span class="kwd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
-                    &nbsp;&nbsp;└─ <span class="str">Fusion:</span> α=0.7 vector + 0.3 graph<br>
-                    <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
-                    <span class="kwd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
-                    <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
-                    <span class="warn">[FAIL]</span> Neo4j edge lung_ca→metastasis missing<br>
-                    <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
-                    <span class="kwd">[REGEN]</span> Feeding violations + reasoning trace...<br>
-                    &nbsp;&nbsp;└─ <span class="str">Confidence:</span> 0.82 → 0.72 (decay -0.1)<br>
-                    <span class="pass">[PASS]</span> Corrected path validated by all verifiers.<br>
-                    <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
-                    <span class="cmd">[STATUS]</span> <span class="blink">AWAITING_CLINICIAN_REVIEW</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

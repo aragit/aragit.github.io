@@ -862,8 +862,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 3000);
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
-                window.location.href = `mailto:${emailToCopy}`; 
+                window.location.href = `mailto:${emailToCopy}`;
             });
         });
     }
 });
+
+/* ============================================
+   AGENTIC SOLUTIONS — Two-Level Tab System
+   ============================================ */
+(function() {
+    const domainTabs = document.querySelectorAll('.domain-tab');
+    const domainPanels = document.querySelectorAll('.domain-panel');
+
+    function switchDomain(targetDomain) {
+        domainTabs.forEach(t => {
+            t.classList.toggle('active', t.dataset.domain === targetDomain);
+            t.setAttribute('aria-selected', t.dataset.domain === targetDomain);
+        });
+        domainPanels.forEach(p => {
+            const isActive = p.id === 'domain-' + targetDomain;
+            p.classList.toggle('active', isActive);
+        });
+
+        // Reset to first use case tab when switching domains
+        const panel = document.getElementById('domain-' + targetDomain);
+        if (panel) {
+            const firstTab = panel.querySelector('.usecase-tab');
+            if (firstTab) switchUsecase(panel, firstTab.dataset.usecase);
+        }
+    }
+
+    function switchUsecase(panel, usecaseId) {
+        const tabs = panel.querySelectorAll('.usecase-tab');
+        const panels = panel.querySelectorAll('.usecase-panel');
+
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.usecase === usecaseId));
+        panels.forEach(p => p.classList.toggle('active', p.id === usecaseId));
+    }
+
+    domainTabs.forEach(tab => {
+        tab.addEventListener('click', () => switchDomain(tab.dataset.domain));
+    });
+
+    document.querySelectorAll('.usecase-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const panel = tab.closest('.domain-panel');
+            if (panel) switchUsecase(panel, tab.dataset.usecase);
+        });
+    });
+})();
