@@ -11396,7 +11396,43 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .hero-right {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-terminal {
+  width: 100%;
+  max-width: 500px;
+}
+
+.hero-terminal .terminal-box {
+  border: 1px solid rgba(95, 211, 255, 0.15);
+  box-shadow: 0 0 40px rgba(95, 211, 255, 0.05);
+}
+
+.hero-terminal .terminal-body {
+  line-height: 1.4;
+  font-size: 0.72rem;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+  min-height: 200px;
+}
+
+.hero-typewriter .tw-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero-bg-backdrop {
@@ -11657,6 +11693,10 @@ div#services .cards .card.card-wide .card-actions {
 
 /* --- Mobile Responsive --- */
 @media (max-width: 900px) {
+  .hero-right {
+    display: none;
+  }
+
   .solution-layout {
     grid-template-columns: 1fr;
     gap: 20px;

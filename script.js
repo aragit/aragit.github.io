@@ -912,3 +912,99 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 })();
+
+/* ============================================
+   HERO — Live Typewriter Terminal
+   ============================================ */
+(function() {
+    const el = document.getElementById('heroTypewriter');
+    if (!el) return;
+
+    const lines = [
+        { text: '<span class="cmd">$ agent_core run --workflow="onco_triage" --pt="PT-88392"</span>', delay: 40 },
+        { text: '<span class="cmt"># --- INIT: Loading orchestration graph ---</span>', delay: 30 },
+        { text: '<span class="kwd">[BOOT]</span> DAG compiled: 7 nodes, 5 edges, depth=4', delay: 25 },
+        { text: '<span class="cmt"># --- PERCEPTION & NORMALIZATION ---</span>', delay: 30 },
+        { text: '<span class="kwd">[PERCEIVE]</span> Ingesting EMR stream via FHIR R4...', delay: 30 },
+        { text: '&nbsp;&nbsp;└─ <span class="str">ER/PR+, HER2-, LVEF 48%, Creatinine 1.3</span>', delay: 20 },
+        { text: '<span class="kwd">[NORMALIZE]</span> Mapping to NCCN clinical vectors...', delay: 25 },
+        { text: '&nbsp;&nbsp;└─ <span class="str">Option A:</span> AC-T (Doxorubicin) — 92% Efficacy', delay: 20 },
+        { text: '&nbsp;&nbsp;└─ <span class="str">Option B:</span> TC (Docetaxel) — 88% Efficacy', delay: 20 },
+        { text: '<span class="cmt"># --- STRATEGIST: Building execution plan ---</span>', delay: 30 },
+        { text: '<span class="kwd">[STRATEGIST]</span> "Option A maximizes 5yr survival. Building node..."', delay: 30 },
+        { text: '<span class="kwd">[GOVERN]</span> Intercepting: <span class="cmd">prescribe(regimen="AC-T")</span>', delay: 25 },
+        { text: '<span class="cmt"># --- POLICY-AS-CODE SHIELD ---</span>', delay: 30 },
+        { text: '<span class="warn">[DENY]</span> <strong>POLICY_VIOLATION</strong> (rule: cardiotoxicity)', delay: 20 },
+        { text: '&nbsp;&nbsp;└─ <span class="str">Patient LVEF is 48%. Threshold &gt;50%.</span>', delay: 20 },
+        { text: '<span class="cmt"># --- DETERMINISTIC RECOVERY ---</span>', delay: 30 },
+        { text: '<span class="kwd">[RE-PLAN]</span> Reverting to Option B...', delay: 30 },
+        { text: '<span class="kwd">[RE-GOVERN]</span> Re-running policy checks on TC regimen...', delay: 25 },
+        { text: '<span class="pass">[PASS]</span> Safety parameters cleared. All nodes approved.', delay: 20 },
+        { text: '<span class="cmt"># --- COMMIT & AUDIT ---</span>', delay: 30 },
+        { text: '<span class="pass">[COMMIT]</span> Immutable trace written to ledger.', delay: 20 },
+        { text: '<span class="pass">[AUDIT]</span> FHIR bundle persisted. Zero PHI leakage.', delay: 20 },
+        { text: '<span class="cmd">[STATUS]</span> <span class="blink">AWAITING ONCOLOGIST SIGN-OFF</span>', delay: 0 },
+    ];
+
+    let lineIdx = 0;
+    let charIdx = 0;
+    let htmlBuffer = '';
+    let inTag = false;
+
+    function type() {
+        if (lineIdx >= lines.length) {
+            // Restart after pause
+            setTimeout(() => {
+                el.innerHTML = '';
+                lineIdx = 0;
+                charIdx = 0;
+                htmlBuffer = '';
+                inTag = false;
+                type();
+            }, 4000);
+            return;
+        }
+
+        const line = lines[lineIdx];
+        const raw = line.text;
+
+        if (charIdx === 0) {
+            if (lineIdx > 0) el.innerHTML += '<br>';
+            el.innerHTML += '<span class="tw-cursor"></span>';
+        }
+
+        if (charIdx < raw.length) {
+            const ch = raw[charIdx];
+            if (ch === '<') inTag = true;
+            if (inTag) {
+                htmlBuffer += ch;
+                if (ch === '>') {
+                    inTag = false;
+                    el.innerHTML = el.innerHTML.replace(/<span class="tw-cursor"><\/span>$/, '') + htmlBuffer + '<span class="tw-cursor"></span>';
+                    htmlBuffer = '';
+                }
+                charIdx++;
+                type();
+            } else {
+                el.innerHTML = el.innerHTML.replace(/<span class="tw-cursor"><\/span>$/, '') + ch + '<span class="tw-cursor"></span>';
+                charIdx++;
+                setTimeout(type, line.delay);
+            }
+        } else {
+            el.innerHTML = el.innerHTML.replace(/<span class="tw-cursor"><\/span>$/, '');
+            lineIdx++;
+            charIdx = 0;
+            htmlBuffer = '';
+            setTimeout(type, 150);
+        }
+    }
+
+    // Start when hero is visible
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            type();
+            observer.disconnect();
+        }
+    }, { threshold: 0.3 });
+    observer.observe(el.closest('.hero') || el);
+})();
