@@ -11449,21 +11449,21 @@ div#services .cards .card.card-wide .card-actions {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 8px;
-  background: rgba(255,255,255,0.04);
-  color: var(--muted);
+  background: #fff;
+  color: #111;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
   font-family: inherit;
 }
 
 .domain-tab:hover {
-  background: rgba(255,255,255,0.08);
-  color: var(--text);
-  border-color: rgba(255,255,255,0.2);
+  background: #e8e8e8;
+  color: #000;
+  border-color: rgba(255,255,255,0.3);
 }
 
 .domain-tab.active {
