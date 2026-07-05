@@ -11496,8 +11496,10 @@ div#services .cards .card.card-wide .card-actions {
 .solution-layout {
   display: grid;
   grid-template-columns: 200px 1fr;
-  gap: 24px;
+  gap: 28px;
   min-height: 400px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* --- Level 2: Use Case Tabs (vertical) --- */
@@ -11513,12 +11515,12 @@ div#services .cards .card.card-wide .card-actions {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 12px 14px;
   border: none;
   border-radius: 8px;
   background: transparent;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -11593,10 +11595,9 @@ div#services .cards .card.card-wide .card-actions {
 
 .usecase-content {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
   align-items: start;
-  max-width: 720px;
 }
 
 /* --- Use Case Info --- */
@@ -11641,7 +11642,6 @@ div#services .cards .card.card-wide .card-actions {
 /* --- Use Case Visual (terminal) --- */
 .usecase-visual {
   min-width: 0;
-  max-width: 480px;
 }
 
 .usecase-visual .terminal-box {
@@ -11649,10 +11649,11 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .usecase-visual .terminal-body {
-  line-height: 1.4;
-  font-size: 0.78rem;
+  line-height: 1.35;
+  font-size: 0.72rem;
   text-align: left;
-  white-space: normal;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* --- Mobile Responsive --- */
@@ -11660,6 +11661,7 @@ div#services .cards .card.card-wide .card-actions {
   .solution-layout {
     grid-template-columns: 1fr;
     gap: 20px;
+    max-width: 100%;
   }
 
   .usecase-tabs {
