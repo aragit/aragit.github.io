@@ -11473,10 +11473,6 @@ div#services .cards .card.card-wide .card-actions {
   box-shadow: 0 0 20px rgba(255,107,0,0.25);
 }
 
-.domain-tab-icon {
-  font-size: 1.1rem;
-}
-
 /* --- Domain Panels --- */
 .domain-panels {
   position: relative;
@@ -11698,10 +11694,6 @@ div#services .cards .card.card-wide .card-actions {
   .domain-tab {
     padding: 8px 12px;
     font-size: 0.8rem;
-  }
-
-  .domain-tab-icon {
-    font-size: 0.95rem;
   }
 
   .usecase-tab-num {

@@ -255,22 +255,29 @@
 
         <!-- Level 1: Domain Tabs (horizontal) -->
         <div class="domain-tabs" role="tablist" aria-label="Solution domains">
-          <button class="domain-tab active" role="tab" aria-selected="true" aria-controls="domain-healthcare" data-domain="healthcare">
-            <span class="domain-tab-icon">🏥</span> Healthcare
-          </button>
-          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-marketing" data-domain="marketing">
-            <span class="domain-tab-icon">📊</span> Marketing & Ad Tech
-          </button>
-          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-fintech" data-domain="fintech">
-            <span class="domain-tab-icon">🏦</span> FinTech / RegTech
-          </button>
+          <button class="domain-tab active" role="tab" aria-selected="true" aria-controls="domain-crossdomain" data-domain="crossdomain">Cross Domain</button>
+          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-healthcare" data-domain="healthcare">Medicare &amp; Clinical</button>
+          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-marketing" data-domain="marketing">Marketing</button>
+          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-supplychain" data-domain="supplychain">Supply Chain</button>
+          <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-research" data-domain="research">Research</button>
         </div>
 
         <!-- Domain Panels -->
         <div class="domain-panels">
 
+          <!-- ===== CROSS DOMAIN ===== -->
+          <div class="domain-panel active" id="domain-crossdomain" role="tabpanel">
+            <div class="solution-layout">
+              <div class="usecase-panels">
+                <div class="usecase-panel active" style="display:flex;align-items:center;justify-content:center;min-height:300px;">
+                  <p style="color:var(--muted);font-size:1rem;">Use cases coming soon.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- ===== HEALTHCARE ===== -->
-          <div class="domain-panel active" id="domain-healthcare" role="tabpanel">
+          <div class="domain-panel" id="domain-healthcare" role="tabpanel">
             <div class="solution-layout">
               <!-- Level 2: Use Case Tabs (vertical) -->
               <nav class="usecase-tabs" aria-label="Healthcare use cases">
@@ -573,62 +580,24 @@
             </div>
           </div>
 
-          <!-- ===== FINTECH / REGTECH ===== -->
-          <div class="domain-panel" id="domain-fintech" role="tabpanel">
+          <!-- ===== SUPPLY CHAIN ===== -->
+          <div class="domain-panel" id="domain-supplychain" role="tabpanel">
             <div class="solution-layout">
-              <nav class="usecase-tabs" aria-label="FinTech use cases">
-                <button class="usecase-tab active" data-usecase="ft-kyc">
-                  <span class="usecase-tab-num">01</span>
-                  <span class="usecase-tab-label">KYC & AML Screening</span>
-                </button>
-              </nav>
-
               <div class="usecase-panels">
-
-                <!-- KYC & AML -->
-                <div class="usecase-panel active" id="ft-kyc">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">FinTech / RegTech</span>
-                      <h3>Automated KYC & AML Screening Agent</h3>
-                      <p class="usecase-subtitle">SLM-first ReAct agent with deterministic risk scoring.</p>
-                      <p class="usecase-desc">Single-threaded LangChain ReAct loop on CPU using 4-bit Qwen2.5-7B-Instruct. Pluggable BaseLLMBackend swaps to vLLM GPU inference via one-line config. Every tool call validated by Pydantic v2 with immutable PostgreSQL audit trails.</p>
-                      <div class="tech-tags">
-                        <span class="tag">Qwen2.5-7B</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">Neo4j UBO</span>
-                        <span class="tag">OpenSanctions</span>
-                        <span class="tag">PostgreSQL</span>
-                      </div>
-                      <a href="https://github.com/aragit/kyc-auto" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">kyc-agent — react-loop</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ kyc_agent screen --entity="Acme_Corp_Ltd"</span><br>
-                          <span class="cmt"># --- REACT TURN 1: TOOL_CALL ---</span><br>
-                          <span class="kwd">[REASON]</span> Entity requires PEP &amp; sanctions check.<br>
-                          <span class="kwd">[TOOL]</span> <span class="cmd">sanctions_check(name="Acme Corp")</span><br>
-                          &nbsp;&nbsp;└─ <span class="str">Result:</span> OFAC: CLEAR | EU: CLEAR | cache_miss<br>
-                          <span class="cmt"># --- REACT TURN 2: TOOL_CALL ---</span><br>
-                          <span class="kwd">[REASON]</span> Fetching corporate registry for UBO extraction.<br>
-                          <span class="kwd">[TOOL]</span> <span class="cmd">ubo_extract(doc="incorporation.pdf")</span><br>
-                          &nbsp;&nbsp;└─ <span class="str">Extracted:</span> 3 beneficial owners → Neo4j graph<br>
-                          <span class="cmt"># --- REACT TURN 3: DETERMINISTIC ---</span><br>
-                          <span class="kwd">[TOOL]</span> <span class="cmd">risk_score_combine()</span> <span class="cmt"># pure algorithm, no LLM</span><br>
-                          <span class="pass">[PASS]</span> Composite Risk: 12/100 (Low). Cleared.<br>
-                          <span class="pass">[AUDIT]</span> Pydantic-validated KYCPacket → PostgreSQL.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">ONBOARDING_APPROVED</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="usecase-panel active" style="display:flex;align-items:center;justify-content:center;min-height:300px;">
+                  <p style="color:var(--muted);font-size:1rem;">Use cases coming soon.</p>
                 </div>
+              </div>
+            </div>
+          </div>
 
+          <!-- ===== RESEARCH ===== -->
+          <div class="domain-panel" id="domain-research" role="tabpanel">
+            <div class="solution-layout">
+              <div class="usecase-panels">
+                <div class="usecase-panel active" style="display:flex;align-items:center;justify-content:center;min-height:300px;">
+                  <p style="color:var(--muted);font-size:1rem;">Use cases coming soon.</p>
+                </div>
               </div>
             </div>
           </div>
