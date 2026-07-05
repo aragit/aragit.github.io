@@ -218,7 +218,7 @@ body {
 /* Place this at the end of style.css and hard-refresh the page */
 
 /* ensure hero creates a stacking context and the grid sits *behind* hero content */
-#home.hero { position: relative; z-index: 0; }
+#home.hero { position: relative; overflow: hidden; z-index: 0; }
 
 /* container for the svg grid */
 #home.hero .hero-grid {
@@ -10536,7 +10536,7 @@ div#services .cards .card.card-wide .card-actions {
 
 /* ===== CANONICAL HERO + SAFETY OVERRIDES (appended) ===== */
 /* Stacking context: keep hero visuals strictly behind content */
-#home.hero { position: relative; z-index: 0; }
+#home.hero { position: relative; overflow: hidden; z-index: 0; }
 #home::before { z-index: -3; pointer-events: none; }
 #home .hero-grid, #home .hero-grid-svg { z-index: -1; pointer-events: none; }
 
@@ -11396,23 +11396,7 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 .hero-right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-.hero-visual {
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  border-radius: 12px;
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
-}
-
-.hero-visual:hover {
-  opacity: 1;
+  display: none;
 }
 
 .hero-bg-backdrop {
@@ -11673,14 +11657,6 @@ div#services .cards .card.card-wide .card-actions {
 
 /* --- Mobile Responsive --- */
 @media (max-width: 900px) {
-  .hero-split {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-right {
-    display: none;
-  }
   .solution-layout {
     grid-template-columns: 1fr;
     gap: 20px;
