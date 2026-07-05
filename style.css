@@ -54,18 +54,14 @@ nav
 nav.nav a:hover{color:var(--accent)}
 
 /* ---------- HERO ---------- */
-.hero{min-height:72vh;padding:85px 0 3.5rem;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
-.hero-inner{max-width:960px;margin:0 auto}
-.hero-avatar{width:130px;height:130px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);display:block;margin:0 auto 1rem}
-h1{font-size:2rem;margin:.25rem 0}
+.hero{min-height:72vh;padding:85px 0 3.5rem;position:relative}
+.hero-inner{width:100%;max-width:960px;margin:0;padding:0 4rem;position:relative;z-index:1;text-align:left}
+h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
 .highlight{color:var(--text)}
-.tagline{color:var(--muted);margin:0 0 1rem}
-#typewrite{font-family:"Courier New", Courier, monospace;color:#e6eef6;min-height:2.2rem;font-size:1.12rem}
-.hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:1rem 0;pointer-events:none}
-.hero-divider .line{width:170px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.tagline{color:var(--muted);margin:0 0 1rem;font-size:1.1rem}
 .chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display: flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
 .chess-icon{color:var(--accent);font-size:20px}
-.hero-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:1.5rem;justify-items:center}
+.hero-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:1.5rem;justify-items:start}
 .btn-hero{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border-radius:28px;font-weight:700;min-height:52px}
 .btn-primary{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 26px rgba(255,107,0,0.07)}
 .btn-hero:focus{outline:none;box-shadow:var(--focus)}
@@ -228,14 +224,17 @@ body {
 #home.hero .hero-grid {
   position: absolute;
   inset: 0;
-  z-index: -1;               /* behind hero text/content, above page background */
+  bottom: 10%;
+  z-index: 1;
   pointer-events: none;
   display: block;
-  opacity: 1;                /* keep visible by default */
 }
 
-/* svg should fill the area */
-#home.hero .hero-grid-svg { width: 100%; height: 100%; display: block; }
+#home.hero .hero-grid-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
 /* Grid lines: ensure visible but subtle */
 #home.hero .grid-lines { opacity: 0.95; mix-blend-mode: screen; stroke-linecap: round; }
@@ -315,34 +314,6 @@ body {
   border: none !important;
   box-shadow: none !important;
   border-radius: 50%; /* keeps circular crop */
-}
-
-#typewrite {
-  position: relative;
-  min-height: 2.8rem;
-  box-sizing: border-box;
-  width: max-content; /* fit content width */
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  overflow: visible;
-  white-space: nowrap; /* prevent breaking */
-}
-
-#typewrite .tw-inner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: inline-block;
-  width: auto;
-  max-width: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  line-height: 1.25;
-  word-break: normal;
-  hyphens: none;
 }
 
 /* MOBILE — scale font instead of breaking lines */
@@ -1231,45 +1202,6 @@ a.card-link:hover{
   letter-spacing: .5px;
 }
 
-.logo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax 90px, 1fr));
-  gap: 1.2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.logo-grid img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  padding: .6rem;
-  background: rgba(255, 255, 255, .04);
-  border-radius: 8px;
-  transition: transform .22s, background .22s;
-  filter: brightness(.92) saturate(.9);
-}
-
-.logo-grid img:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 107, 0, .08);
-  filter: brightness(1) saturate(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .logo-grid img {
-    transition: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .logo-grid {
-    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-    gap: .8rem;
-  }
-}
-
 /* ===== Tech-Stack : force small grid ===== */
 .logo-grid {
   display: grid !important;
@@ -1852,8 +1784,8 @@ button.service-btn:hover {
 /* Hero supporting text (non-intrusive) */
 .hero-tagline {
   margin-top: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 600;
   opacity: 0.95;
 }
 
@@ -1886,14 +1818,6 @@ p.tagline.typewriter {
   margin: 0.5rem 0 1rem; 
 }
 
-#typewrite { 
-  font-family: "Courier New", Courier, monospace; 
-  font-size: 0.9rem; 
-  color: #909090; 
-}
-
-.hero-divider { display: none !important; }
-
 /* Restore orange lines above button */
 .hero-divider {
   display: flex !important;
@@ -1921,13 +1845,6 @@ p.tagline.typewriter {
   background: #2a2a2a !important;
 }
 
-/* LOGO STYLING ONLY */
-header .logo img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
 @keyframes logo-float {
   0%, 100% { 
     transform: translateY(0) scale(1);
@@ -1939,47 +1856,6 @@ header .logo img {
   }
 }
 
-.hero-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.hero-divider .line {
-  flex: 1;
-  max-width: 140px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
-}
-
-/* 3D Rotating Logo Effect */
-
-  25% {
-    transform: perspective(1000px) rotateY(90deg) rotateX(10deg);
-    filter: drop-shadow(5px 5px 20px rgba(255, 107, 0, 0.5));
-  }
-  50% {
-    transform: perspective(1000px) rotateY(180deg) rotateX(10deg);
-    filter: drop-shadow(0 5px 25px rgba(255, 107, 0, 0.6));
-  }
-  75% {
-    transform: perspective(1000px) rotateY(270deg) rotateX(10deg);
-    filter: drop-shadow(-5px 5px 20px rgba(255, 107, 0, 0.5));
-  }
-  100% {
-    transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
-    filter: drop-shadow(0 5px 15px rgba(255, 107, 0, 0.3));
-  }
-}
-
-/* Logo with disk thickness effect */
-
-/* Logo disk - no glow */
-
-/* Logo disk - NO orange glow */
-
 /* 3D Rotating Logo - NO GLOW */
 @keyframes logo-3d-rotate {
   0% { transform: perspective(1000px) rotateY(0deg) rotateX(10deg); }
@@ -1987,44 +1863,6 @@ header .logo img {
   50% { transform: perspective(1000px) rotateY(180deg) rotateX(10deg); }
   75% { transform: perspective(1000px) rotateY(270deg) rotateX(10deg); }
   100% { transform: perspective(1000px) rotateY(360deg) rotateX(10deg); }
-}
-
-  animation-play-state: paused;
-  transform: scale(1.2);
-  border-color: #ff8533 !important;
-}
-
-/* Logo with mouse tilt effect */
-
-  box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
-  border-color: #ff8533 !important;
-}
-
-/* Logo with mouse tilt effect */
-
-/* Logo - simple orange border */
-
-/* Hero logo with orange border */
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 4px solid #ff6b00;
-  background: #1a1a1a;
-  padding: 3px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Hero logo with orange border */
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50% !important;
-  border: 4px solid #ff6b00 !important;
-  background: #1a1a1a !important;
-  padding: 3px !important;
-  object-fit: cover !important;
-  display: block !important;
-  box-sizing: border-box !important;
 }
 
 /* Header logo - circular with orange border, no glow */
@@ -2219,10 +2057,10 @@ header .logo img:hover {
 .hero-inner {
   padding-top: 50px !important;
   padding-bottom: 30px !important;
-}
-
-.hero-avatar {
-  margin-top: 30px !important;
+  text-align: left !important;
+  max-width: 960px !important;
+  margin: 0 !important;
+  width: 100% !important;
 }
 
 /* Insight card styling */
@@ -2472,16 +2310,6 @@ header .logo img:hover {
   opacity: 1;
 }
 
-/* Typewriter cycling text (#typewrite) - make more visible */
-#typewrite {
-  color: #c0c0c0 !important;
-  font-size: 0.95rem;
-}
-
-#typewrite .tw-inner {
-  color: #d0d0d0 !important;
-}
-
 /* Ensure all hero text has better contrast */
 .hero-inner p {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -2547,18 +2375,6 @@ p.hero-range.typewriter-orange,
   display: block;
   object-fit: cover;
   max-height: 350px;
-}
-
-/* Hero avatar - ensure MeReal2.png displays well */
-.hero-avatar {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff6b00;
-  display: block;
-  margin: 0 auto 1rem;
-  box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
 }
 
 /* Ensure images don't break layout */
@@ -3755,24 +3571,17 @@ ul.insight-bullets li {
   margin-top: 12px !important;
   margin-bottom: 8px !important;
   padding: 0 !important;
-  font-size: 1.1rem !important;
-  font-weight: 500 !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
   color: #e0e0e0 !important;
-  text-align: center !important;
+  text-align: left !important;
   line-height: 1.4 !important;
-}
-
-/* Ensure typewriter text doesn't overlap */
-#typewrite {
-  display: block !important;
-  margin-top: 5px !important;
-  min-height: 1.4em !important;
-  position: relative !important;
 }
 
 /* Space between name and tagline */
 .hero-inner h1 {
   margin-bottom: 8px !important;
+  font-size: 3rem !important;
 }
 
 /* The subtitle below */
@@ -9013,235 +8822,7 @@ div#services .cards .card.card-wide .card-actions {
   border-color: rgba(0, 255, 136, 0.2) !important;
 }
 
-/* ===== ARCHITECTURE PHILOSOPHY TAGLINE - STYLISH GRID CONTAINER ===== */
-.architecture-tagline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1.5rem auto 2.5rem;
-  padding: 1rem 2.5rem;
-  background: 
-    linear-gradient(135deg, rgba(204, 85, 0, 0.08) 0%, rgba(204, 85, 0, 0.02) 100%);
-  border: 1px solid rgba(204, 85, 0, 0.3);
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #cc5500 !important; /* Dark orange */
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 4px 15px rgba(204, 85, 0, 0.15);
-}
-
-/* Subtle grid pattern background */
-.architecture-tagline::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    repeating-linear-gradient(90deg, rgba(30, 60, 114, 0.25) 0px, rgba(30, 60, 114, 0.25) 1px, transparent 1px, transparent 20px),
-    repeating-linear-gradient(0deg, rgba(30, 60, 114, 0.25) 0px, rgba(30, 60, 114, 0.25) 1px, transparent 1px, transparent 20px);
-  opacity: 0.8;
-  pointer-events: none;
-}
-
-/* Corner accent lines */
-.architecture-tagline::after {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  right: 4px;
-  bottom: 4px;
-  border: 1px solid rgba(30, 60, 114, 0.4);
-  pointer-events: none;
-}
-
-/* Hover effect */
-.architecture-tagline:hover {
-  border-color: rgba(30, 60, 114, 0.7);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 6px 25px rgba(30, 60, 114, 0.35);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
-}
-
-/* Mobile responsive */
-@media (max-width: 600px) {
-  .architecture-tagline {
-    font-size: 0.75rem;
-    padding: 0.8rem 1.5rem;
-    letter-spacing: 0.08em;
-    margin: 1rem auto 1.5rem;
-    max-width: 100%;
-    width: calc(100% - 30px);
-  }
-}
-
-
-/* ===== FIX: TERMINAL TAGLINE OVERRIDES ===== */
-/* High specificity to overwrite previous grid styles */
-.architecture-tagline {
-  /* 1. Layout & Centering Fix */
-  display: block !important;
-  width: fit-content !important;  /* Shrink to text size */
-  margin: 2rem auto !important;   /* Force horizontal centering */
-  max-width: 95% !important;
-  
-  /* 2. Remove Old Blue Grid/Backgrounds */
-  background-image: none !important;
-  background-color: rgba(15, 15, 15, 0.9) !important; /* Solid dark terminal bg */
-  box-shadow: none !important;    /* Remove blue glow */
-  border: none !important;        /* Reset borders */
-  
-  /* 3. New Terminal Aesthetic */
-  border-left: 4px solid #ff6b00 !important; /* Thick orange status bar */
-  padding: 12px 24px !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  font-size: 1rem !important;
-  color: #ff6b00 !important;
-  letter-spacing: 0px !important; /* Standard terminal spacing */
-  text-transform: none !important;
-}
-
-/* 4. CRITICAL FIX: Reset Pseudo-elements */
-/* This stops the prompt from floating "up" and overlapping text */
-.architecture-tagline::before,
-.architecture-tagline::after {
-  position: static !important;    /* Forces them to flow INLINE with text */
-  display: inline !important;
-  background: none !important;    /* Removes any lingering grid patterns */
-  width: auto !important;
-  height: auto !important;
-  border: none !important;
-  box-shadow: none !important;
-  top: auto !important;
-  left: auto !important;
-  content: "" !important;         /* Reset content to be safe before redefining */
-}
-
-/* 5. Define Terminal Prompt */
-.architecture-tagline::before {
-  content: ">_ " !important;
-  color: #666 !important;         /* Dim grey prompt */
-  font-weight: 700 !important;
-  margin-right: 8px !important;
-}
-
-/* 6. Define Blinking Cursor */
-.architecture-tagline::after {
-  content: " █" !important;
-  color: #ff6b00 !important;
-  font-size: 0.8em !important;
-  animation: terminal-blink 1s step-end infinite !important;
-  margin-left: 8px !important;
-  vertical-align: baseline !important;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-  .architecture-tagline {
-    width: 90% !important;
-    white-space: normal !important;
-    font-size: 0.85rem !important;
-    text-align: left !important;
-  }
-}
-
-/* ===== FORCE IMAGE SIZE UPDATE ===== */
-.arch-diagram-img {
-  max-width: 600px !important; /* Force smaller size */
-  width: 100% !important;      /* Maintain responsiveness */
-  height: auto !important;
-  margin: 0 auto !important;   /* Ensure centering */
-}
-
-/* ===== FORCE CENTER IMAGE ===== */
-.arch-image-container {
-  display: flex !important;            /* Turn on Flexbox */
-  justify-content: center !important;  /* Center horizontally */
-  align-items: center !important;      /* Center vertically */
-  width: 100% !important;              /* Span full width of the section */
-  margin: 2rem 0 1rem 0 !important;    /* Add breathing room top/bottom */
-}
-
-.arch-diagram-img {
-  display: block !important;
-  margin: 0 auto !important;           /* Fallback centering */
-  max-width: 600px !important;         /* Restrict size */
-  width: 100% !important;              /* Responsive on mobile */
-  height: auto !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Add depth */
-  border-radius: 8px;                  /* Smooth corners */
-}
-
-/* =========================================
-   CRITICAL REFACTOR: CONSOLIDATED STYLES
-   (Replaces JS Layout Hacks & Stabilizes UI)
-   ========================================= */
-
-/* 1. Global Card Stability (Replaces JS Hack) */
-.card, 
-.cs-card, 
-#services .card, 
-#portfolio .card {
-  display: flex !important;
-  flex-direction: column !important;
-  min-height: 280px !important;
-  height: 100% !important;
-  background: rgba(25, 25, 25, 0.95) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 12px !important;
-  padding: 1.5rem !important;
-  box-sizing: border-box !important;
-  transform: none !important; /* Stop 3D Jitter */
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-/* 2. Terminal Tagline Polish (Refined) */
-.architecture-tagline {
-  display: inline-block !important;
-  width: fit-content !important;
-  max-width: 95% !important;
-  margin: 1.5rem auto 2.5rem !important;
-  background: rgba(10, 10, 10, 0.95) !important;
-  background-image: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-left: 3px solid #ff6b00 !important;
-  border-radius: 0 4px 4px 0 !important;
-  padding: 10px 20px !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  font-size: 0.95rem !important;
-  font-weight: 400 !important;
-  color: #ff6b00 !important;
-  text-transform: none !important;
-  letter-spacing: 0px !important;
-  text-align: left !important;
-}
-
-.architecture-tagline::before {
-  content: ">_ " !important;
-  color: #e0e0e0 !important;
-  font-weight: 700 !important;
-  opacity: 1 !important;
-  margin-right: 10px !important;
-  position: static !important;
-  display: inline !important;
-}
-
-.architecture-tagline::after {
-  content: " █" !important;
-  color: #ff6b00 !important;
-  font-size: 0.85em !important;
-  animation: terminal-blink 1s step-end infinite !important;
-  margin-left: 8px !important;
-  vertical-align: baseline !important;
-  position: static !important;
+/* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
   display: inline !important;
 }
 
@@ -9306,35 +8887,7 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
-/* ===== EMERGENCY FIX: CENTER THE TAGLINE ===== */
-.architecture-tagline {
-  /* 1. Layout: Use BLOCK + MARGIN AUTO to force centering */
-  display: block !important;       /* Must be block to accept margin: auto */
-  width: fit-content !important;   /* Shrink to fit the text */
-  margin-left: auto !important;    /* Push equally from left */
-  margin-right: auto !important;   /* Push equally from right */
-  margin-top: 2rem !important;
-  margin-bottom: 2rem !important;
-
-  /* 2. Visuals: Keep the clean terminal look */
-  background: rgba(10, 10, 10, 0.95) !important;
-  border-left: 3px solid #ff6b00 !important;
-  border-radius: 0 4px 4px 0 !important;
-  padding: 10px 20px !important;
-  
-  /* 3. Text: Orange & Tech Font */
-  color: #ff6b00 !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  font-size: 0.95rem !important;
-  font-weight: 500 !important;
-  text-align: left !important; /* Internal text stays left (next to prompt) */
-  
-  /* 4. Reset legacy properties that cause bugs */
-  float: none !important;
-  position: static !important;
-  box-shadow: none !important;
-  background-image: none !important;
-  border-top: none !important;
+/* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
   border-right: none !important;
   border-bottom: none !important;
 }
@@ -9445,19 +8998,6 @@ div#services .cards .card.card-wide .card-actions {
 /* Mobile */
 @media (max-width: 900px) {
   .triptych-grid { grid-template-columns: 1fr; gap: 20px; }
-}
-
-/* ===== QUICK TWEAK: LARGER ARCHITECTURE TAGLINE ===== */
-.architecture-tagline {
-  font-size: 1.25rem !important; /* Increased from 1rem to 1.25rem */
-  font-weight: 500 !important;   /* Ensure it stays readable */
-}
-
-/* Adjust for mobile screens so it fits */
-@media (max-width: 600px) {
-  .architecture-tagline {
-    font-size: 0.95rem !important; /* Slightly larger on mobile too */
-  }
 }
 
 /* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
@@ -9955,30 +9495,44 @@ div#services .cards .card.card-wide .card-actions {
    TERMINAL TAGLINE OVERRIDES
    ========================================= */
 .architecture-tagline {
-  border-left: none !important;       /* Removes the vertical orange line */
-  padding-left: 0 !important;         /* Removes the spacing left by the border */
-  color: #4af626 !important;          /* Terminal Green */
-  font-family: 'Fira Code', 'Courier New', monospace !important;
-  font-weight: 500 !important;
-  text-shadow: 0 0 8px rgba(74, 246, 38, 0.2); /* Slight phosphor glow */
+  border-left: none !important;
+  padding-left: 0 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 1.6rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+  text-align: center !important;
+  background: linear-gradient(
+    90deg,
+    #ff6b00,
+    #ff9a56,
+    #ffcc00,
+    #4af626,
+    #00d4ff,
+    #7b61ff,
+    #ff6b00
+  ) !important;
+  background-size: 300% 100% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  animation: wave-color 6s ease-in-out infinite !important;
+  text-shadow: none !important;
+}
+
+@keyframes wave-color {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .architecture-tagline .prompt-sign {
-  color: #4af626 !important;
-  margin-right: 8px;
-  font-weight: bold;
+  display: none !important;
 }
 
 .architecture-tagline .cursor-blink {
-  color: #4af626 !important;
-  margin-left: 4px;
-  animation: term-blink 1s step-end infinite;
-}
-
-/* The blinking animation */
-@keyframes term-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  display: none !important;
 }
 
 /* Forcefully remove any old CSS-injected prompts or cursors */
@@ -10036,21 +9590,7 @@ div#services .cards .card.card-wide .card-actions {
   text-shadow: 0 0 8px rgba(74, 246, 38, 0.3) !important; /* CRT glow effect */
 }
 
-.prompt-sign {
-  font-weight: bold !important;
-  margin-right: 8px !important;
-}
 
-.cursor-blink {
-  margin-left: 4px !important;
-  animation: term-blink 1s step-end infinite !important;
-}
-
-/* The actual blinking logic */
-@keyframes term-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
 
 /* =========================================
    7TH PRINCIPLE CAPSTONE LAYOUT
@@ -11008,47 +10548,13 @@ div#services .cards .card.card-wide .card-actions {
   gap: 0.5rem;
 }
 
-/* Canonical hero avatar fallback + unify */
-#home .hero-avatar {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--accent, #ff6b00);
-  display: block;
-  margin: 0 auto 1rem;
-  box-shadow: 0 0 30px rgba(255,107,0,0.18);
-  background-color: rgba(0,0,0,0.04);
-}
-
-/* Prevent broken/missing avatar from collapsing layout */
-#home .hero-avatar[hidden], #home .hero-avatar[src=''] {
-  visibility: hidden;
-  width: 130px;
-  height: 130px;
-}
-
-/* Canonical typewriter block */
-#typewrite {
-  position: relative;
-  min-height: 2.6rem;
-  width: 100%;
-  max-width: 680px;
-  margin: 0.5rem auto;
-  text-align: center;
-  white-space: nowrap;
-  overflow: visible;
-}
-#typewrite .tw-inner {
-  position: relative; /* prefer relative to avoid layout collapse */
-  display: inline-block;
-  transform: none;
-}
-
 /* Scoped hero-inner padding so hero adjustments don't bleed into next sections */
 #home.hero .hero-inner {
   padding-top: 50px;
   padding-bottom: 30px;
+  text-align: left !important;
+  margin: 0 !important;
+  width: 100% !important;
 }
 
 /* Canonical chat/open button styling */
@@ -11094,31 +10600,27 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #typewrite {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  color: #c0c0c0 !important;
+  font-size: 0.95rem;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 auto !important;
-  display: block !important;
-  text-align: center !important;
   position: relative !important;
   min-height: 2.8rem !important;
 }
 
 #typewrite .tw-inner {
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  display: inline-block !important;
-  text-align: center !important;
-  white-space: nowrap !important;
-}
-
-
-/* ===== PREMIUM TERMINAL TYPEWRITER ===== */
-#typewrite .tw-inner {
   position: relative !important;
-  display: inline-block !important;
-  padding-left: 1.8rem; /* Room for the >_ prompt */
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: pre !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  color: #d0d0d0 !important;
 }
 
 /* The >_ Prompt */
@@ -11178,46 +10680,6 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
-
-/* ===== FIX: Balance Typewriter Centering ===== */
-/* Desktop */
-#typewrite .tw-inner {
-  padding-right: 1.8rem !important; 
-}
-
-/* Tablets */
-@media (max-width: 768px) {
-  #typewrite .tw-inner {
-    padding-right: 1.4rem !important;
-  }
-}
-
-/* Mobile Phones */
-@media (max-width: 480px) {
-  #typewrite .tw-inner {
-    padding-right: 1.1rem !important;
-  }
-}
-
-
-/* ===== FINAL FIX: True Dynamic Flex Centering ===== */
-#typewrite {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 100% !important;
-}
-
-#typewrite .tw-inner {
-  /* Strip away the flawed padding hacks */
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  
-  /* Flexbox automatically hugs and centers all 3 elements (prompt, text, cursor) */
-  display: inline-flex !important;
-  align-items: center !important;
-  white-space: pre !important; /* ensures spaces in text are respected */
-}
 
 /* Put the prompt back into normal flow */
 #typewrite .tw-inner::before {
@@ -11665,14 +11127,6 @@ div#services .cards .card.card-wide .card-actions {
 .dicho-terminal { background: #1e1e1e; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: border-color 0.3s; }
 .dicho-terminal pre { padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #d4d4d4; overflow-x: auto; margin: 0; }
 
-/* Mac Window Header Styles */
-.mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.mac-dot { width: 12px; height: 12px; border-radius: 50%; }
-.mac-dot.red { background: #ff5f56; } 
-.mac-dot.yellow { background: #ffbd2e; } 
-.mac-dot.green { background: #27c93f; }
-.mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
-
 /* Micro-Glitch Animation for the Black Box */
 @keyframes textGlitch {
   0% { transform: translate(0) }
@@ -11757,117 +11211,6 @@ div#services .cards .card.card-wide .card-actions {
 .blink-cursor-green { display: inline-block; width: 8px; height: 14px; background-color: #27c93f; vertical-align: middle; margin-left: 5px; animation: blinkGreen 1s step-end infinite; }
 
 
-/* ========================================================= */
-/* --- 2. BLUEPRINT TERMINAL & LIGHTBOX --- */
-/* ========================================================= */
-
-.blueprint-terminal {
-    max-width: 800px;
-    margin: 4rem auto 1rem auto;
-    background: #1e1e1e;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.08);
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    cursor: pointer;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-    outline: none;
-}
-
-.blueprint-terminal:hover, .blueprint-terminal:focus-visible {
-    transform: translateY(-4px);
-    /* Changed to Cyan/Blue border to match Agentic cards */
-    border-color: rgba(95, 211, 255, 0.5); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(95, 211, 255, 0.15);
-}
-
-.blueprint-image-wrapper {
-    position: relative;
-    background: #000;
-    overflow: hidden;
-    border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.blueprint-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: opacity 0.3s, transform 0.5s ease-out;
-}
-
-/* Hover Dimming & Scaling Effect (Fixed: Removed :focus so it doesn't get stuck) */
-.blueprint-terminal:hover .blueprint-image-wrapper img {
-    opacity: 0.4;
-    transform: scale(1.03);
-}
-
-/* The Magnifying Glass Overlay (Fixed) */
-.zoom-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.5);
-    color: #fff;
-    font-size: 3.5rem;
-    opacity: 0;
-    visibility: hidden; 
-    pointer-events: none; 
-    z-index: 10;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-}
-
-.blueprint-terminal:hover .zoom-overlay {
-    opacity: 1;
-    visibility: visible; 
-    transform: translate(-50%, -50%) scale(1);
-}
-
-/* Native Dialog Lightbox Styling */
-.blueprint-lightbox {
-    margin: auto;
-    padding: 0;
-    border: none;
-    background: transparent;
-    max-width: 95vw;
-    max-height: 95vh;
-    overflow: visible;
-    outline: none;
-}
-
-.blueprint-lightbox::backdrop {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.blueprint-lightbox img {
-    display: block;
-    max-width: 100%;
-    max-height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    border: 1px solid rgba(255, 107, 0, 0.3);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: -45px;
-    right: 0;
-    background: transparent;
-    color: #a8aeb3;
-    border: none;
-    font-size: 2.5rem;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.lightbox-close:hover {
-    color: #ff6b00;
-    transform: scale(1.1);
-}
-
 /* --- ANIMATIONS & UTILITIES --- */
 .blink {
   animation: soft-pulse 1.5s infinite;
@@ -11921,17 +11264,169 @@ div#services .cards .card.card-wide .card-actions {
   min-height: 3rem; /* Optional: prevents the hero section from jumping up/down when text wraps on small screens */
 }
 
-/* 2. Center the paragraph element itself */
-#typewrite {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-}
-
 /* 3. Ensure the dynamically injected span grows from the center */
 .tw-inner {
   display: inline-block;
   text-align: center;
+}
+
+/* =========================================
+   HERO FINAL OVERRIDE — nothing below this
+   ========================================= */
+#home.hero {
+  display: block !important;
+  text-align: left !important;
+}
+
+#home.hero .container.hero-inner,
+#home.hero .hero-inner {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  width: 100% !important;
+  max-width: 1100px !important;
+  margin: 0 !important;
+  padding: 50px 2rem 30px 2rem !important;
+  text-align: left !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#home.hero .hero-text {
+  text-align: left !important;
+  z-index: 2 !important;
+  position: relative !important;
+}
+
+#home.hero .hero-image {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1 !important;
+}
+
+#home.hero .hero-avatar {
+  width: 350px !important;
+  height: 350px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 3px solid var(--accent, #ff6b00) !important;
+  opacity: 0.85 !important;
+  display: block !important;
+  margin: 0 !important;
+  position: static !important;
+  box-shadow: 0 0 60px rgba(255,107,0,0.25) !important;
+}
+
+#home.hero h1 {
+  text-align: left !important;
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+}
+
+#home.hero .hero-tagline,
+#home.hero .hero-tagline.typewriter {
+  text-align: left !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+#home.hero .tagline,
+#home.hero .tagline.typewriter {
+  text-align: left !important;
+  font-size: 1.1rem !important;
+}
+
+#home.hero .hero-cta {
+  justify-items: start !important;
+}
+
+/* =========================================
+   HERO — FRESH BUILD, NEW CLASS NAMES
+   ========================================= */
+.hero-split {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 2rem 30px 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-left {
+  text-align: left;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 8px 0;
+  text-align: left;
+}
+
+.hero-left .highlight {
+  color: var(--text);
+}
+
+.hero-left .hero-tagline {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  text-align: left;
+}
+
+.hero-left .hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+.hero-left .hero-cta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 1.5rem;
+  justify-items: start;
+}
+
+.hero-right {
+  display: none;
+}
+
+.hero-bg-backdrop {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: #0a0a0a;
+  z-index: 10;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 30%, transparent 80%);
+}
+
+.hero-bg-photo {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.35;
+  filter: grayscale(70%) brightness(0.85);
+  z-index: 11;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 30%, transparent 80%);
 }

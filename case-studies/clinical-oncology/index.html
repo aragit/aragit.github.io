@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Clinical Oncology Agent: Deterministic Pathway Engineering | Arash Nicoomanesh</title>
+  <meta name="description" content="A high-integrity agentic system for optimizing multi-drug oncology regimens using NCCN guidelines and Policy-as-Code safeguards."/>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root {
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000; --code-bg: #1e1e1e;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* ---------- header ---------- */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(80px, 10vw, 100px) 0; border-bottom: 1px solid rgba(255,255,255,.05); background: radial-gradient(circle at top, rgba(255,107,0,0.05) 0%, var(--darker) 70%); text-align: center; }
+    .badge { display: inline-block; background: rgba(255,107,0,0.1); color: var(--accent); border: 1px solid rgba(255,107,0,0.3); padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px; color: #fff; }
+    .hero p { font-size: clamp(1.1rem, 2vw, 1.2rem); max-width: 800px; margin: 0 auto; color: var(--gray); font-weight: 400; }
+    
+    /* ---------- sections & grids ---------- */
+    section { padding: clamp(60px, 8vw, 90px) 0; }
+    .section-title { font-size: 2rem; color: #fff; margin-bottom: 20px; text-align: center; font-weight: 700; }
+    .section-subtitle { text-align:center; max-width:800px; margin:0 auto 50px auto; color:var(--gray); font-size: 1.1rem; }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    @media(max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: .3s; height: 100%; }
+    .card:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-3px); }
+    .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .card h3 i { color: var(--accent); }
+    .card p, .card ul { color: #a8aeb3; font-size: 0.95rem; margin-bottom: 10px; }
+    
+    /* ---------- pipeline timeline ---------- */
+    .pipeline-step { display: flex; gap: 30px; margin-bottom: 40px; }
+    .pipeline-number { flex-shrink: 0; width: 50px; height: 50px; background: rgba(255,107,0,0.1); border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+    .pipeline-content h3 { color: #fff; font-size: 1.4rem; margin-bottom: 10px; }
+    .pipeline-content p { color: #cbd6df; font-size: 1rem; line-height: 1.6; }
+    
+    /* ---------- code windows ---------- */
+    .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); margin-top: 20px; }
+    .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
+    .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+    
+    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; margin: 0; }
+    .string { color: #ce9178; }
+    .keyword { color: #569cd6; }
+    .number { color: #b5cea8; }
+    .property { color: #9cdcfe; }
+    .comment { color: #6a9955; font-style: italic; }
+
+    .stats-band { background: #121212; padding: 60px 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .stat-item h4 { font-size: 2.5rem; color: var(--accent); margin-bottom: 5px; font-weight: 800; }
+    
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid var(--accent); }
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo"><i class="fa-solid fa-microscope"></i>Arash Nicoomanesh</a>
+      <a href="../../index.html#portfolio" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to Portfolio</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">Precision Medicine & AgentOps</span>
+    <h1>Clinical Oncology Agent: Deterministic Pathway Engineering</h1>
+    <p>Scaling multi-drug regimen optimization through a strictly governed, Directed Acyclic Graph (DAG) architecture that prioritizes clinical safety over LLM intuition.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">The Challenge: Toxicity-Aware Orchestration</h2>
+    <p class="section-subtitle">In oncology, the "Planning Rubicon" isn't just about logic—it's about physiology. Generative agents fail in clinical pathways when they cannot mathematically verify drug interactions or genomic contraindications.</p>
+    
+    <div class="grid-3">
+      <div class="card" style="border-top: 2px solid var(--accent);">
+        <h3><i class="fa-solid fa-dna"></i> Genomic Vulnerabilities</h3>
+        <p>Agents must recognize specific variants (e.g., DPYD deficiency) that make standard regimens fatal. Probabilistic guessing is never an option. [cite: 176-178]</p>
+      </div>
+      <div class="card" style="border-top: 2px solid var(--accent);">
+        <h3><i class="fa-solid fa-shield-heart"></i> Physiological Guardrails</h3>
+        <p>Regimen efficacy must be balanced against vital metrics like LVEF. Our system enforces hard thresholds at the orchestration layer. [cite: 275-277]</p>
+      </div>
+      <div class="card" style="border-top: 2px solid var(--accent);">
+        <h3><i class="fa-solid fa-list-check"></i> NCCN Compliance</h3>
+        <p>Autonomy is restricted to NCCN-approved templates. The agent can only propose paths within a validated clinical intent registry. [cite: 47, 112]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: rgba(20,20,20,0.3); border-top: 1px solid rgba(255,255,255,.02);">
+  <div class="container">
+    <h2 class="section-title">The Architecture of Certainty</h2>
+    <p class="section-subtitle">We utilize a centralized orchestrator to turn clinical guidelines into a reproducible execution graph. </p>
+    
+    <div style="max-width: 900px; margin: 0 auto;">
+      
+      <div class="pipeline-step">
+        <div class="pipeline-number">1</div>
+        <div class="pipeline-content">
+          <h3>The Strategist (DAG Compiler)</h3>
+          <p>The system ingests FHIR/HL7 data and consults an <strong>Intent Registry</strong> to build a rigid Directed Acyclic Graph (DAG). This graph defines the exact sequence of tool calls—from RECIST vision scanning to pharmacogenomic checks. [cite: 47-49, 113]</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">2</div>
+        <div class="pipeline-content">
+          <h3>Governance Pre-flight (Policy-as-Code)</h3>
+          <p>Before any regimen is proposed, the <strong>Governance Engine</strong> performs a pre-flight check on the graph. It evaluates the plan against site-specific protocols using <strong>Open Policy Agent (OPA)</strong> rules. [cite: 127-130, 269]</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">3</div>
+        <div class="pipeline-content">
+          <h3>The Handoff: ZARIF Audit Ledger</h3>
+          <p>Every decision, tool result, and policy intercept is committed to the <strong>ZARIF Immutable Ledger</strong>. This ensures a 100% auditable trail for clinical review and compliance. [cite: 81-83, 205]</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Deterministic Pathway Trace</h2>
+    <div class="grid-2">
+      
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">onco_strategist.json</div>
+        </div>
+        <pre><code><span class="comment">// Strategist: Mapping the intent to a clinical DAG.</span>
+{
+  <span class="property">"intent"</span>: <span class="string">"optimize_regimen"</span>,
+  <span class="property">"execution_graph"</span>: [
+    { <span class="property">"node"</span>: <span class="number">1</span>, <span class="property">"tool"</span>: <span class="string">"Vision_RECIST"</span> },
+    { <span class="property">"node"</span>: <span class="number">2</span>, <span class="property">"tool"</span>: <span class="string">"Genomic_Screener"</span> },
+    { <span class="property">"node"</span>: <span class="number">3</span>, <span class="property">"tool"</span>: <span class="string">"NCCN_Validator"</span> }
+  ],
+  <span class="property">"constraints"</span>: [<span class="string">"LVEF_threshold > 50%"</span>]
+}</code></pre>
+      </div>
+
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">governance_intercept.rego</div>
+        </div>
+        <pre><code><span class="comment"># Policy-as-Code: Hard-coded physiological safety.</span>
+<span class="keyword">package</span> clinical.oncology
+
+<span class="keyword">default</span> allow_regimen = <span class="keyword">false</span>
+
+<span class="comment"># SAFETY INTERCEPT: Cardiotoxicity check</span>
+deny_regimen[msg] {
+    input.patient.lvef_score < <span class="number">50</span>
+    input.proposed.drug == <span class="string">"Doxorubicin"</span>
+    msg := <span class="string">"CRITICAL: LVEF below safety threshold."</span>
+}</code></pre>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container">
+    <div class="grid-3" style="text-align:center;">
+      <div class="stat-item">
+        <h4>100%</h4>
+        <p>NCCN Guideline Adherence</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Every proposed node is matched against verified clinical recipes. [cite: 327]</span>
+      </div>
+      <div class="stat-item">
+        <h4>< 200ms</h4>
+        <p>Governance Latency</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Policy intercepts occurring at the speed of the orchestrator. [cite: 179]</span>
+      </div>
+      <div class="stat-item">
+        <h4>&infin;</h4>
+        <p>Audit Traceability</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Immutable ledger records for every clinical recommendation. [cite: 96]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case-cta-band">
+  <div class="container">
+    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 30px;">Ready to deploy regulated clinical agents?</h2>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="mailto:your.email@example.com?subject=Inquiry: Clinical Oncology Architecture" class="btn-primary">
+        <i class="fa-solid fa-envelope"></i> Discuss Your Clinical Strategy
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

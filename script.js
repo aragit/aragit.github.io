@@ -579,7 +579,7 @@
     
         function drawGrid() {
           const rect = hero.getBoundingClientRect();
-          const w = Math.max(320, Math.round(rect.width));
+          const w = Math.max(320, Math.round(rect.width * 0.65));
           const h = Math.max(200, Math.round(rect.height));
     
           svg.setAttribute('viewBox', `0 0 ${w} ${h}`);

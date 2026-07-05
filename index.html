@@ -83,9 +83,8 @@
 
     <!-- HERO -->
     <section id="home" class="hero" aria-labelledby="hero-title">
-      <!-- HERO GRID (drop-in) -->
       <div class="hero-grid" aria-hidden="true">
-        <svg class="hero-grid-svg" viewBox="0 0 1200 600" preserveAspectRatio="none"
+        <svg class="hero-grid-svg" viewBox="0 0 800 600" preserveAspectRatio="none"
              xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
           <defs>
             <linearGradient id="gridGradient" x1="0" y1="0" x2="0" y2="1">
@@ -107,37 +106,23 @@
               <rect x="0" y="0" width="100%" height="100%" fill="url(#maskGradient)"></rect>
             </mask>
           </defs>
-
           <g class="grid-orange" stroke="url(#gridGradient)" fill="none" mask="url(#fadeMask)"></g>
           <g class="grid-blue"   stroke="url(#blueGradient)"  fill="none" mask="url(#fadeMask)"></g>
         </svg>
       </div>
 
-      <div class="container hero-inner">
-        <img src="Mereal1.png" alt="Arash Nicoomanesh" class="hero-avatar" loading="lazy" width="130" height="130" onmouseover="this.src='logo7.jpg'" onmouseout="this.src='Mereal1.png'" style="cursor: pointer;">
-        <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
-        <p class="hero-tagline typewriter">Agentic AI Architect</p>
-        <p class="tagline typewriter">AI Engineering Services &amp; Consulting</p>
-
-        <div class="value-prop" aria-hidden="false">
-          <div class="role-container" aria-hidden="true">
-            <p id="typewrite" aria-live="polite"></p>
+      <div class="hero-split">
+        <div class="hero-left">
+          <h1 id="hero-title">Arash <span class="highlight">Nicoomanesh</span></h1>
+          <p class="hero-tagline">Agentic AI Architect</p>
+          <p class="hero-sub">AI Engineering Services &amp; Consulting</p>
+          <div class="hero-cta">
+            <button class="btn-hero btn-primary" id="openChatBtn" aria-haspopup="dialog">
+              <i class="fas fa-comments"></i> Chat with my Experience
+            </button>
           </div>
-
-          <!-- hero divider: lines + optional icon (kept commented cleanly) -->
-          <!-- <div class="chess-chip" aria-hidden="true">
-               <i class="fas fa-chess-knight chess-icon" aria-hidden="true"></i>
-          </div> -->
-
-          <div class="line" role="presentation"></div>
         </div>
-
-        <!-- HERO CTA -->
-        <div class="hero-cta" role="group" aria-label="Primary calls to action">
-          <button class="btn-hero btn-primary" id="openChatBtn" title="Chat with my experience" aria-haspopup="dialog">
-            <i class="fas fa-comments" aria-hidden="true"></i>
-            Chat with my Experience
-          </button>
+        <div class="hero-right">
         </div>
       </div>
     </section>
@@ -268,9 +253,9 @@
         
     
         <div class="insight-articles">
-          <div class="architecture-tagline" style="margin-bottom: 1.5rem;">
-            <span class="prompt-sign">&gt;_</span> Deterministic Core &middot; Stochastic Range &middot; Multi-Agent Scale <span class="cursor-blink">&#9608;</span>
-          </div>
+          <h2 class="architecture-tagline" style="margin-bottom: 1.5rem;">
+            Deterministic Core &middot; Stochastic Range &middot; Multi-Agent Scale
+          </h2>
     
           <p style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem auto; color: #f2f2f2; font-size: 1.15rem; line-height: 1.7; font-weight: 400;">
             Generative AI builds prototypes; governed state machines build platforms. We engineer neuro-symbolic architectures that cross the <em>Planning Rubicon</em>—isolating probabilistic reasoning from deterministic execution to deploy fault-tolerant, mathematically auditable digital workforces.
@@ -298,37 +283,7 @@
               <span class="triptych-link">Read: The 2026 Roadmap &rarr;</span>
             </a>
           </div>
-    
-          <div class="blueprint-terminal" id="openBlueprintBtn" tabindex="0" role="button" aria-label="View Full Architecture Blueprint">
-            <div class="mac-header">
-              <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-              <div class="mac-title">NSA.png</div>
-            </div>
-            <div class="blueprint-image-wrapper">
-              <img src="robi.jpg" alt="Agentic Architecture Blueprint" loading="lazy">
-              <div class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-            </div>
-          </div>
-          
-          <dialog id="blueprintLightbox" class="blueprint-lightbox" aria-labelledby="blueprintTitle">
-            <span id="blueprintTitle" class="sr-only" style="display:none;">Enlarged Blueprint</span>
-            <button class="lightbox-close" id="closeBlueprintBtn" aria-label="Close lightbox">&times;</button>
-            <img src="robi.jpg" alt="Agentic Architecture Blueprint Enlarged">
-          </dialog>
-    
-          <script>
-            const blueprintBtn = document.getElementById('openBlueprintBtn');
-            const blueprintLightbox = document.getElementById('blueprintLightbox');
-            const closeBlueprintBtn = document.getElementById('closeBlueprintBtn');
-    
-            if (blueprintBtn && blueprintLightbox) {
-              blueprintBtn.addEventListener('click', () => blueprintLightbox.showModal());
-              blueprintBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter') blueprintLightbox.showModal(); });
-              closeBlueprintBtn.addEventListener('click', () => blueprintLightbox.close());
-              blueprintLightbox.addEventListener('click', (e) => { if (e.target === blueprintLightbox) blueprintLightbox.close(); });
-            }
-          </script>
-    
+
           <div class="articles-cta" style="margin-top: 2.5rem;">
             <a href="architecture.html" class="btn-hero btn-primary">Learn More</a>
           </div>
@@ -353,41 +308,6 @@
         </div>
     
         <div class="bento-grid">
-          <div class="bento-item card-featured">
-            <div class="featured-flex">
-              <div class="featured-info">
-                <span class="badge">EHR-Integrated</span>
-                <h3>Medical Triage Agent</h3>
-                <p style="color:var(--text); font-weight:500;">Executes deterministic triage workflows with strict clinical guardrails.</p>
-                <div class="agent-loop">
-                  <div class="loop-step"><strong>Perceive:</strong> Normalize raw EHR vitals, notes, and comorbidities into structured vectors.</div>
-                  <div class="loop-step"><strong>Govern & Plan:</strong> Intercept via Policy-as-Code and compile a rigid Directed Acyclic Graph (DAG).</div>
-                  <div class="loop-step"><strong>Execute:</strong> Orchestrate stateless risk calculators and generate immutable audit logs.</div>
-                </div>
-                <div class="tech-tags"><span class="tag">EHR-native</span><span class="tag">DAG-Orchestrated</span><span class="tag">Policy-as-Code</span></div>
-                <a href="case-studies/medical-triage/medical-triage.html" class="link-arrow">View Case Study →</a>
-                <span class="safety-note">Clinical decision support — requires cryptographic provider validation.</span>
-              </div>
-    
-              <div class="featured-terminal">
-                <div class="terminal-header" style="display:flex; gap:5px; margin-bottom:10px;">
-                  <div class="dot red" style="width:8px;height:8px;background:#ff5f56;border-radius:50%"></div>
-                  <div class="dot yellow" style="width:8px;height:8px;background:#ffbd2e;border-radius:50%"></div>
-                  <div class="dot green" style="width:8px;height:8px;background:#27c93f;border-radius:50%"></div>
-                </div>
-                <p class="log-line">&gt; [GATEWAY] Ingesting raw EHR payload for PT: 99x-72...</p>
-                <p class="log-line">&gt; [PERCEPTION] Normalizing vitals (BP 160/100) to canonical units.</p>
-                <p class="log-line">&gt; [POLICY_ENGINE] Pre-flight check: Validating constraints... [PASS]</p>
-                <p class="log-line">&gt; [STRATEGIST] Intent recognized. Compiling deterministic DAG...</p>
-                <p class="log-line">&gt; [ORCHESTRATOR] Invoking stateless sepsis-risk calculator...</p>
-                <p class="log-line">&gt; [TOOL_RESULT] Risk Score: 72% (Critical). Assembling UI payload.</p>
-                <p class="log-line">&gt; [AUDIT_LEDGER] Immutable execution trace committed.</p>
-                <p class="log-line blink">&gt; [STATUS] Awaiting human-in-the-loop authorization...</p>
-              </div>
-            </div>
-          </div>
-        
-      
           <div class="bento-item card-featured" style="grid-column: span 2;">
             <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
               <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
@@ -444,7 +364,7 @@
                     <span class="kwd">[RE-PLAN]</span> Reverting to Option B. Re-running policy check...<br>
                     <span class="pass">[PASS]</span> Safety parameters cleared. Node approved.<br>
                     <span class="cmt"># --- STEP 5: COMMIT &amp; HANDOFF ---</span><br>
-                    <span class="pass">[COMMIT]</span> Immutable record written to ZARIF ledger.<br>
+                    <span class="pass">[COMMIT]</span> Immutable record written to the ledger.<br>
                     <span class="cmd">[STATUS]</span> <span class="blink">AWAITING ONCOLOGIST SIGN-OFF</span>...
                   </div>
                 </div>
@@ -471,6 +391,145 @@
             <p class="loop-step">Continuously reallocates budget using Multi-Agent Swarms and Multi-Armed Bandits.</p>
             <div class="tech-tags"><span class="tag">Bandits</span><span class="tag">Streaming</span></div>
             <a href="case-studies/marketing-roi/index.html" class="link-arrow">View Case Study →</a>
+          </div>
+
+          <div class="bento-item card-featured" style="grid-column: span 2;">
+            <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
+              <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                  <span class="badge">FinTech / RegTech</span>
+                  <h3>Automated KYC & AML Screening Agent</h3>
+                  <p style="color:var(--text); font-weight:500;">SLM-first ReAct agent with deterministic risk scoring.</p>
+                  <p class="loop-step">Single-threaded LangChain ReAct loop on CPU using 4-bit Qwen2.5-7B-Instruct. Pluggable BaseLLMBackend swaps to vLLM GPU inference via one-line config. Every tool call validated by Pydantic v2 with immutable PostgreSQL audit trails.</p>
+                  <div class="tech-tags" style="margin-bottom: 15px;">
+                    <span class="tag">Qwen2.5-7B</span>
+                    <span class="tag">LangChain</span>
+                    <span class="tag">Neo4j UBO</span>
+                    <span class="tag">OpenSanctions</span>
+                    <span class="tag">PostgreSQL</span>
+                  </div>
+                  <a href="https://github.com/aragit/kyc-auto" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                </div>
+              </div>
+
+              <div class="featured-terminal" style="flex: 1;">
+                <div class="terminal-box">
+                  <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <div class="terminal-title">kyc-agent — react-loop</div>
+                  </div>
+                  <div class="terminal-body" style="line-height: 1.4; font-size: 0.78rem; text-align: left; white-space: normal;">
+                    <span class="cmd">$ kyc_agent screen --entity="Acme_Corp_Ltd"</span><br>
+                    <span class="cmt"># --- REACT TURN 1: TOOL_CALL ---</span><br>
+                    <span class="kwd">[REASON]</span> Entity requires PEP &amp; sanctions check.<br>
+                    <span class="kwd">[TOOL]</span> <span class="cmd">sanctions_check(name="Acme Corp")</span><br>
+                    &nbsp;&nbsp;└─ <span class="str">Result:</span> OFAC: CLEAR | EU: CLEAR | cache_miss<br>
+                    <span class="cmt"># --- REACT TURN 2: TOOL_CALL ---</span><br>
+                    <span class="kwd">[REASON]</span> Fetching corporate registry for UBO extraction.<br>
+                    <span class="kwd">[TOOL]</span> <span class="cmd">ubo_extract(doc="incorporation.pdf")</span><br>
+                    &nbsp;&nbsp;└─ <span class="str">Extracted:</span> 3 beneficial owners → Neo4j graph<br>
+                    <span class="cmt"># --- REACT TURN 3: DETERMINISTIC ---</span><br>
+                    <span class="kwd">[TOOL]</span> <span class="cmd">risk_score_combine()</span> <span class="cmt"># pure algorithm, no LLM</span><br>
+                    <span class="pass">[PASS]</span> Composite Risk: 12/100 (Low). Cleared.<br>
+                    <span class="pass">[AUDIT]</span> Pydantic-validated KYCPacket → PostgreSQL.<br>
+                    <span class="cmd">[STATUS]</span> <span class="blink">ONBOARDING_APPROVED</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-item card-featured" style="grid-column: span 2;">
+            <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
+              <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                  <span class="badge">Game Theory / Ad Tech</span>
+                  <h3>Nash Marketing Agents</h3>
+                  <p style="color:var(--text); font-weight:500;">Neuro-symbolic ad auction simulator with Nash Equilibrium.</p>
+                  <p class="loop-step">LLM proposes stochastic bidding strategies; symbolic Nash solver validates via iterative best-response with softmax annealing. VCG second-price engine enforces paid≤bid invariant. Monte Carlo 5000-sample win-probability estimation with multi-layer budget guardrails.</p>
+                  <div class="tech-tags" style="margin-bottom: 15px;">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">SciPy</span>
+                    <span class="tag">Pydantic v2</span>
+                    <span class="tag">Game Theory</span>
+                    <span class="tag">Docker</span>
+                  </div>
+                  <a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                </div>
+              </div>
+
+              <div class="featured-terminal" style="flex: 1;">
+                <div class="terminal-box">
+                  <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <div class="terminal-title">nash-sim — auction-engine</div>
+                  </div>
+                  <div class="terminal-body" style="line-height: 1.4; font-size: 0.78rem; text-align: left; white-space: normal;">
+                    <span class="cmd">$ nash_sim run --rounds=50 --agents=4</span><br>
+                    <span class="cmt"># --- ROUND 1: STRATEGY PROPOSAL ---</span><br>
+                    <span class="kwd">[LLM]</span> Bids: Agent-A=$2.40 B=$1.85 C=$3.10 D=$2.70<br>
+                    <span class="kwd">[SOLVER]</span> Best-response iteration (softmax τ=0.3)...<br>
+                    <span class="cmt"># --- VCG AUCTION ENGINE ---</span><br>
+                    <span class="kwd">[AUCTION]</span> Winner: Agent-C (bid $3.10)<br>
+                    &nbsp;&nbsp;└─ <span class="str">VCG payment:</span> $2.70 (next-highest bid)<br>
+                    <span class="pass">[ASSERT]</span> paid≤bid invariant: 2.70 ≤ 3.10 ✓<br>
+                    <span class="cmt"># --- BUDGET GUARDRAILS ---</span><br>
+                    <span class="warn">[WARN]</span> Agent-A budget at 22% → soft warning<br>
+                    <span class="cmt"># --- CONVERGENCE @ ROUND 41 ---</span><br>
+                    <span class="pass">[NASH]</span> Equilibrium reached. Δu &lt; 0.01<br>
+                    <span class="pass">[TEST]</span> 49/49 property-based tests passed.<br>
+                    <span class="cmd">[STATUS]</span> <span class="blink">SIMULATION_COMPLETE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-item card-featured" style="grid-column: span 2;">
+            <div class="featured-flex" style="align-items: flex-start; gap: 30px;">
+              <div class="featured-info" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                  <span class="badge">Clinical AI / Hybrid RAG</span>
+                  <h3>Speculative Clinical GraphRAG</h3>
+                  <p style="color:var(--text); font-weight:500;">9-node LangGraph with hybrid retrieval &amp; self-correction.</p>
+                  <p class="loop-step">Qdrant vector store + Neo4j graph traversal with fusion scoring (α=0.7). Quad-track LLM backend with SemanticRouter auto-selection. Self-correcting feedback feeds violations + prior reasoning back via regenerate_with_feedback() with confidence decay. Deterministic escalation after max iterations — zero PHI persistence.</p>
+                  <div class="tech-tags" style="margin-bottom: 15px;">
+                    <span class="tag">LangGraph</span>
+                    <span class="tag">Neo4j</span>
+                    <span class="tag">Qdrant</span>
+                    <span class="tag">DeepSeek-R1</span>
+                    <span class="tag">SNOMED-CT</span>
+                  </div>
+                  <a href="https://github.com/aragit/speculative-clinical-graphrag" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
+                </div>
+              </div>
+
+              <div class="featured-terminal" style="flex: 1;">
+                <div class="terminal-box">
+                  <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <div class="terminal-title">clinical-graphrag — speculate</div>
+                  </div>
+                  <div class="terminal-body" style="line-height: 1.4; font-size: 0.78rem; text-align: left; white-space: normal;">
+                    <span class="cmd">$ /v1/speculate --note="persistent cough, weight loss"</span><br>
+                    <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
+                    <span class="kwd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
+                    <span class="kwd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
+                    &nbsp;&nbsp;└─ <span class="str">Fusion:</span> α=0.7 vector + 0.3 graph<br>
+                    <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
+                    <span class="kwd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
+                    <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
+                    <span class="warn">[FAIL]</span> Neo4j edge lung_ca→metastasis missing<br>
+                    <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
+                    <span class="kwd">[REGEN]</span> Feeding violations + reasoning trace...<br>
+                    &nbsp;&nbsp;└─ <span class="str">Confidence:</span> 0.82 → 0.72 (decay -0.1)<br>
+                    <span class="pass">[PASS]</span> Corrected path validated by all verifiers.<br>
+                    <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
+                    <span class="cmd">[STATUS]</span> <span class="blink">AWAITING_CLINICIAN_REVIEW</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -594,88 +653,6 @@
                 </div>
               </div>
             </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ARTICLES / KNOWLEDGE BASE -->
-    <section id="articles" class="section alt" aria-labelledby="articles-heading">
-      <div class="container">
-        
-        <div style="text-align: center; margin-bottom: 40px;">
-          <h2 id="articles-heading" style="font-size: clamp(1.6rem, 3vw, 2.1rem) !important; color: #fff !important; margin-bottom: 15px !important; font-weight: 700 !important; border: none !important; padding: 0 !important; line-height: 1.3 !important;">Knowledge Base</h2>
-          <p style="font-style: normal !important; color: #ffffff !important; font-size: 1.05rem !important; font-weight: 400 !important; max-width: 700px !important; margin: 0 auto !important; letter-spacing: normal !important; text-transform: none !important;">Foundation Theory Speeds Iteration. Understand Once, Move Faster Forever.</p>
-        </div>
-
-        <div class="masonry-grid">
-          <a href="https://medium.com/@anicomanesh/fine-tuning-deepseek-r1-reasoning-on-the-medical-chain-of-thought-dataset-922407121cc2" target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-hero">
-            <div class="article-image"><img src="one.jpg" alt="Fine-Tuning DeepSeek R1"></div>
-            <div class="article-card-content">
-              <h4 class="article-title">Fine-Tuning DeepSeek R1 on Medical Chain-of-Thought</h4>
-              <p class="article-summary">Latest technical walk-through on enhancing medical-reasoning LLMs with CoT fine-tuning</p>
-              <div class="article-meta"><span class="article-tag">Deep Learning</span><span class="article-read">12 min →</span></div>
-            </div>
-          </a>
-
-          <a href="https://www.kaggle.com/code/arashnic/gemma3n-customersupport-qa-uns-loth-trl-4bitquant" target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image"><img src="https://www.q3tech.com/wp-content/uploads/2024/12/Exploring-Google-Gemma-AI-How-to-Use-It-and-Alternatives.png" alt="Gemma 3n"></div>
-            <div class="article-card-content">
-              <h4 class="article-title">Gemma 3n Edge AI for Support Bots</h4>
-              <p class="article-summary">Low-memory, high-speed training on customer-support data</p>
-              <div class="article-meta"><span class="article-tag">Edge AI</span><span class="article-read">8 min →</span></div>
-            </div>
-          </a>
-
-          <a href="https://cdn.brouseai.com/preview/qX_N5BbwPyrym93xiQLRS.png" target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image"><img src="config.jpg" alt="LLM Config"></div>
-            <div class="article-card-content">
-              <h4 class="article-title">A Dive Into LLM Output Configuration, Prompt Engineering Techniques and Guardrails</h4>
-              <p class="article-summary">Master temperature, top-p, and frequency penalties. Learn advanced prompt engineering techniques and implement robust guardrails to ensure reliable, deterministic, and safe LLM outputs in production environments.</p>
-              <div class="article-meta"><span class="article-tag">LLM Engineering</span><span class="article-read">10 min →</span></div>
-            </div>
-          </a>
-
-          <a href="https://medium.com/@anicomanesh/mastering-few-shot-and-zero-shot-learning-in-llms-a-deep-dive-into-cross-domain-generalization-b33f779f5259" target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image"><img src="zero.jpg" alt="Few-Shot Learning"></div>
-            <div class="article-card-content">
-              <h4 class="article-title">Few-Shot and Zero-Shot Learning : Unlocking Cross-Domain Generalization</h4>
-              <p class="article-summary">Push LLMs beyond narrow fine-tuning. Discover how cross-domain generalization works, and learn to leverage in-context learning, prompt templates, and semantic anchors to achieve high accuracy on unseen tasks without retraining.</p>
-              <div class="article-meta"><span class="article-tag">ML Research</span><span class="article-read">15 min →</span></div>
-            </div>
-          </a>
-
-          <a href="https://medium.com/@anicomanesh/a-dive-into-unsloth-gemma-3-fine-tune-gemma-3-12b-with-unsloth-trl-for-custommer-service-53e93692d4d6" target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-image"><img src="gemma3.jpg" alt="Gemma-3 Fine-tuning"></div>
-            <div class="article-card-content">
-              <h4 class="article-title">Fine-Tune Gemma-3 12B with Unsloth</h4>
-              <p class="article-summary">End-to-end Unsloth & TRL workflow for customer service</p>
-              <div class="article-meta"><span class="article-tag">Fine-Tuning</span><span class="article-read">14 min →</span></div>
-            </div>
-          </a>
-
-          <a href="https://medium.com/@anicomanesh/beyond-the-hype-of-expensive-chatbots-bridging-strategic-business-intent-with-adaptive-agentic-d1144e9df041" target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small">
-            <div class="article-card-content">
-              <h4 class="article-title">Beyond the Hype of Expensive Chatbots</h4>
-              <p class="article-summary">Move past brittle, prompt-reactive bots toward Architectural Resilience. This deep dive explores crossing the 'Planning Rubicon' by separating the Deterministic Core from the Stochastic Range. We analyze the three gates of agency—Commitment, Grounding, and Execution—to distinguish true autonomous agents from sophisticated token-simulators. By implementing internal verification machinery and epistemic tethers, we transform stochastic reasoning into irreversible causal action that drives predictable enterprise ROI.</p>
-              <div class="article-meta"><span class="article-tag">Agentic AI</span><span class="article-read">15 min →</span></div>
-            </div>
-          </a>
-
-          <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e" target="_blank" rel="noopener noreferrer" class="card-link article-card masonry-small masonry-wide">
-            <div class="article-image"><img src="https://images.unsplash.com/photo-1692607431259-951c39946cbf?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Planning-Rubicon"></div>
-            <div class="article-card-content">
-              <h4 class="article-title">The Planning-Rubicon: Why the Vast Majority of AI Agents Are Just Expensive Chatbots</h4>
-              <p class="article-summary"><span style="color: #5fd3ff; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 8px;">Beyond the Wrapper: Why 2026 Will Separate Agent Infrastructure from Agent Theater</span>Most of today's systems aren't agents—they are expensive chat loops. True autonomy requires crossing an architectural threshold defined by commitment, grounding, and temporal awareness, where an LLM's text becomes verifiable, irreversible action.</p>
-              <div class="article-meta"><span class="article-tag">Architecture</span><span class="article-read">30 min →</span></div>
-            </div>
-          </a>
-        </div>
-
-        <div class="articles-cta">
-          <a href="blog/index.html" class="btn-hero btn-collab" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-book-open" aria-hidden="true"></i>
-            Explore My Blog for More
           </a>
         </div>
       </div>
