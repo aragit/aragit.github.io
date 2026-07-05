@@ -11498,7 +11498,7 @@ div#services .cards .card.card-wide .card-actions {
   grid-template-columns: 200px 1fr;
   gap: 28px;
   min-height: 400px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -11595,7 +11595,7 @@ div#services .cards .card.card-wide .card-actions {
 
 .usecase-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 24px;
   align-items: start;
 }
@@ -11652,7 +11652,7 @@ div#services .cards .card.card-wide .card-actions {
   line-height: 1.35;
   font-size: 0.72rem;
   text-align: left;
-  white-space: pre-wrap;
+  white-space: normal;
   word-break: break-word;
 }
 
