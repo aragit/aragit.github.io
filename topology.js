@@ -35,7 +35,7 @@
             geometry.dispose();
             scene.remove(mesh);
         }
-        geometry = new THREE.IcosahedronGeometry(1.5, detail);
+        geometry = new THREE.TorusKnotGeometry(1.2, 0.35, 128, detail * 8, 2, 3);
         material = new THREE.MeshBasicMaterial({
             color: config.color,
             wireframe: true,
