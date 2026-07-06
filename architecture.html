@@ -374,25 +374,6 @@
             <span class="cmd">[STATUS]</span> <span class="pass">DIFFERENTIAL_RESOLVED</span>
           </div>
         </div>
-        <div class="terminal-box">
-          <div class="terminal-header">
-            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-            <div class="terminal-title">flow-matching-protein — binder-generation</div>
-          </div>
-          <div class="terminal-body">
-            <span class="cmd">$ python generate_binders.py --target=ACE2 --count=100</span><br>
-            <span class="cmt"># --- FLOW MATCHING ---</span><br>
-            <span class="cmd">[FLOW]</span> ODE integration: t=0 → t=1 (20-step RK4)<br>
-            <span class="cmd">[NEURAL]</span> Predicting continuous vector fields for backbone generation<br>
-            <span class="cmt"># --- SYMBOLIC VALIDATION ---</span><br>
-            <span class="pass">[VALIDATE]</span> Biophysical constraints: clash score, Rg, fold classification<br>
-            <span class="fail">[CRITIQUE]</span> <span class="fail">Structural violation: Alpha-helix overlap at residue 42</span><br>
-            <span class="kwd">[META-COG]</span> Decaying confidence (-0.15), injecting error trace<br>
-            <span class="cmd">[REGENERATE]</span> Re-running flow with updated tensor boundaries<br>
-            <span class="pass">[PASS]</span> RMSD 1.2Å | Docking: -8.7 kcal/mol | 100 binders exported<br>
-            <span class="cmd">[STATUS]</span> <span class="pass">BINDERS_GENERATED</span>
-          </div>
-        </div>
       </div>
       <!-- Text side (right) -->
       <div class="type-text-side">
@@ -401,12 +382,6 @@
           <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
           <tr><td class="meta-label">Repo</td><td class="meta-value">internal/speculative-graph-rag</td></tr>
           <tr><td class="meta-label">Stack</td><td class="meta-value">9-node LangGraph, Qdrant, Neo4j, DeepSeek-R1, SNOMED-CT</td></tr>
-        </table>
-        <h3 style="font-size:16px; font-weight:500; color:var(--text);">Secondary anchor</h3>
-        <table class="meta-table">
-          <tr><td class="meta-label">System</td><td class="meta-value">Flow-Matching Protein Binder Generator</td></tr>
-          <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/flow-matching-protein-binder" target="_blank" rel="noopener">aragit/flow-matching-protein-binder</a></td></tr>
-          <tr><td class="meta-label">Stack</td><td class="meta-value">PyTorch, Biopython, Flow Matching, FoldSeek</td></tr>
         </table>
         <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
       </div>
