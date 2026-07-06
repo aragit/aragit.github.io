@@ -9,9 +9,9 @@
     if (!container) return;
 
     var config = {
-        complexity: 3,
-        speed: 0.005,
-        pulse: 0.5,
+        complexity: 5,
+        speed: 0.01,
+        pulse: 1.0,
         color: 0xff6b00
     };
 
