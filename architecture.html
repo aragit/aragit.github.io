@@ -284,18 +284,6 @@
     <div class="type-meta">Stack focus: Dominant Governance (06) and Execution (05)</div>
     <p class="type-desc">The symbolic core owns execution. Neural networks are strictly nested inside and subordinate to deterministic guards. In high-stakes environments, an LLM must never directly control execution paths. The neural engine acts as an upstream strategist, parsing complex inputs to propose intent. This intent is compiled into a Directed Acyclic Graph (DAG). Before any node executes, a stateless symbolic validation layer evaluates the plan against hard mathematical and physiological constraints.</p>
 
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <div class="terminal-title">execution flow</div>
-      </div>
-      <div class="terminal-body">
-        <span class="cmd">[User Intent]</span> → <span class="cmd">[Neural Planner]</span> → <span class="cmd">[Proposed DAG]</span> → <span class="fail">[Symbolic OPA Veto]</span> → <span class="cmd">[DAG Engine]</span> → <span class="pass">[Immutable Ledger]</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fail">(Violation → Hard Refusal)</span>
-      </div>
-    </div>
-
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Clinical Oncology Agent</td></tr>
       <tr><td class="meta-label">Repo</td><td class="meta-value">internal/clinical-oncology-core</td></tr>
@@ -326,29 +314,6 @@
       </div>
     </div>
 
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <div class="terminal-title">cardiotoxicity_guard.rego</div>
-      </div>
-      <div class="terminal-body">
-        <span class="cmt"># The Symbolic Citadel Guardrail</span><br>
-        <span class="kwd">package</span> enterprise.governance<br>
-        <br>
-        <span class="kwd">default</span> allow_treatment_node = <span class="num">false</span><br>
-        <br>
-        allow_treatment_node {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwd">not</span> cardiotoxicity_risk_detected<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;valid_auth_signature_present<br>
-        }<br>
-        <br>
-        cardiotoxicity_risk_detected {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;input.drug_class == <span class="str">"anthracycline"</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;input.lvef_percentage &lt; <span class="num">50</span><br>
-        }
-      </div>
-    </div>
-
     <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
   </div>
 </section>
@@ -361,18 +326,6 @@
     <div class="type-meta"><span class="type-meta-dot" style="background:var(--blue);"></span> High-stakes discovery &amp; reasoning</div>
     <div class="type-meta">Stack focus: Dominant Reasoning (04) and Meta-Cognition (07)</div>
     <p class="type-desc">The neural core drives open-ended exploration. Symbolic verifiers — ontologies, graph constraints, biophysical validators — are embedded directly inside the neural reasoning loop. When problems are too complex for static DAGs, the neural core must lead using dynamic planning cycles (ReAct, LangGraph state machines). To prevent drift, symbolic components are placed inside the model's observation loop, not outside it.</p>
-
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <div class="terminal-title">cyclic reasoning loop</div>
-      </div>
-      <div class="terminal-body">
-        <span class="t-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┌──────────────────────────────────────┐</span><br>
-        <span class="t-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│</span><br>
-        <span class="cmd">[Neural Reasoning Loop]</span> → <span class="cmd">[Proposed Action]</span> → <span class="pass">[Symbolic Graph Verifier]</span>
-      </div>
-    </div>
 
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
