@@ -11365,11 +11365,11 @@ div#services .cards .card.card-wide .card-actions {
   height: 100%;
 }
 
-/* Glassmorphic UI Panel — bottom right */
+/* Glassmorphic UI Panel — bottom right of hero */
 .topology-ui {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 20px;
+  right: 20px;
   background: rgba(20, 20, 20, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
