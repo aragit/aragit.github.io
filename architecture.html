@@ -154,6 +154,23 @@
       overflow-x: auto;
     }
 
+    /* ALTERNATING TYPE LAYOUT */
+    .type-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-top: 24px;
+    }
+    .type-split.reverse { direction: rtl; }
+    .type-split.reverse > * { direction: ltr; }
+    .type-text-side { display: flex; flex-direction: column; gap: 16px; }
+    .type-terminal-side { display: flex; flex-direction: column; gap: 16px; }
+    @media (max-width: 768px) {
+      .type-split { grid-template-columns: 1fr; }
+      .type-split.reverse { direction: ltr; }
+    }
+
     /* Syntax colors — match main site */
     .cmd { color: #f2f2f2; }
     .kwd { color: #c586c0; }
@@ -262,14 +279,14 @@
 <section class="arch-section" id="taxonomy">
   <div class="arch-wrap">
     <h2 class="arch-section-title">The Neuro-Symbolic Taxonomy</h2>
-    <p class="arch-section-intro">We classify implementations using the academic taxonomy established by Kautz, Garcez, and d'Avila Garcez. By varying the structural relationship between neural and symbolic components, we optimize along a strict spectrum of liability. Our website taxonomy maps directly to these academic foundations.</p>
+    <p class="arch-section-intro">We classify implementations using the academic taxonomy established by Kautz, Garcez, and d'Avila Garcez. By varying the structural relationship between neural and symbolic components, we optimize along a strict spectrum of liability.</p>
     <div class="arch-table-wrap">
       <table class="arch-table">
-        <thead><tr><th>Our System</th><th>Academic Type</th><th>Bracket Notation</th><th>Core Principle</th></tr></thead>
+        <thead><tr><th>Architecture Type</th><th>Bracket Notation</th><th>Liability Profile</th><th>What It Is</th><th>Your Repos</th></tr></thead>
         <tbody>
-          <tr><td>TYPE 3: The Citadel</td><td class="mono">Type 2</td><td class="mono">Symbolic[Neuro]</td><td>Symbolic core owns execution; neural is subordinate</td></tr>
-          <tr><td>TYPE 4: The Nexus</td><td class="mono">Type 6</td><td class="mono">Neuro[Symbolic]</td><td>Neural core drives exploration; symbolic verifiers embedded</td></tr>
-          <tr><td>TYPE 5: The Arbiter</td><td class="mono">Type 5</td><td class="mono">Symbolic ↔ Neural</td><td>Neither dominates; formal mathematical engine arbitrates</td></tr>
+          <tr><td>The Citadel</td><td class="mono">Type 2: Symbolic[Neuro]</td><td>Life-critical</td><td>Symbolic core owns execution. Neural components are nested inside and subordinate to hard guards.</td><td>Clinical Oncology Agent, KYC/AML Agent, Lab Triage</td></tr>
+          <tr><td>The Nexus</td><td class="mono">Type 6: Neuro[Symbolic]</td><td>High-stakes reasoning</td><td>Neural core drives exploration. Symbolic components are nested inside the neural loop as verifiers.</td><td>Speculative GraphRAG, Research Synthesizer, Protein Binder Flow</td></tr>
+          <tr><td>The Arbiter</td><td class="mono">Type 5/9: Symbolic ↔ Neural</td><td>Competitive/market</td><td>Parallel symbolic and neural tracks with formal arbitration. Neither dominates.</td><td>Nash Marketing Agents, Procurement Swarm</td></tr>
         </tbody>
       </table>
     </div>
@@ -282,40 +299,44 @@
     <div class="type-marker" style="color:#e06020;">TYPE 3</div>
     <h2 class="type-title">THE CITADEL <span class="type-badge orange">Academic Type 2 · Symbolic[Neuro]</span></h2>
     <div class="type-meta"><span class="type-meta-dot" style="background:#e06020;"></span> Life-critical / zero-tolerance</div>
-    <div class="type-meta">Stack focus: Dominant Governance (06) and Execution (05)</div>
-    <p class="type-desc">The symbolic core owns execution. Neural networks are strictly nested inside and subordinate to deterministic guards. In high-stakes environments, an LLM must never directly control execution paths. The neural engine acts as an upstream strategist, parsing complex inputs to propose intent. This intent is compiled into a Directed Acyclic Graph (DAG). Before any node executes, a stateless symbolic validation layer evaluates the plan against hard mathematical and physiological constraints.</p>
 
-    <table class="meta-table">
-      <tr><td class="meta-label">System</td><td class="meta-value">Clinical Oncology Agent</td></tr>
-      <tr><td class="meta-label">Repo</td><td class="meta-value">internal/clinical-oncology-core</td></tr>
-      <tr><td class="meta-label">Stack</td><td class="meta-value">FHIR R4, HL7 v2, OPA/Rego, DAG-orchestrated</td></tr>
-    </table>
-
-    <!-- Terminal trace -->
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <div class="terminal-title">clinical-oncology — cardiotoxicity-guard</div>
+    <div class="type-split">
+      <!-- Text side (left) -->
+      <div class="type-text-side">
+        <p class="type-desc">The symbolic core owns execution. Neural networks are strictly nested inside and subordinate to deterministic guards. In high-stakes environments, an LLM must never directly control execution paths. The neural engine acts as an upstream strategist, parsing complex inputs to propose intent. This intent is compiled into a Directed Acyclic Graph (DAG). Before any node executes, a stateless symbolic validation layer evaluates the plan against hard mathematical and physiological constraints.</p>
+        <table class="meta-table">
+          <tr><td class="meta-label">System</td><td class="meta-value">Clinical Oncology Agent</td></tr>
+          <tr><td class="meta-label">Repo</td><td class="meta-value">internal/clinical-oncology-core</td></tr>
+          <tr><td class="meta-label">Stack</td><td class="meta-value">FHIR R4, HL7 v2, OPA/Rego, DAG-orchestrated</td></tr>
+        </table>
+        <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
       </div>
-      <div class="terminal-body">
-        <span class="cmd">$ axiomics run --case=emr-0247 --mode=deterministic</span><br>
-        <span class="cmt"># --- PERCEPTION ---</span><br>
-        <span class="cmd">[PERCEIVE]</span> Ingest EMR: ER/PR+, HER2-, Echocardiogram<br>
-        <span class="cmd">[NORMALIZE]</span> Extract semantic parameters to validated clinical vectors<br>
-        <span class="cmt"># --- NEURAL PLANNING ---</span><br>
-        <span class="cmd">[NEURAL]</span> Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)<br>
-        <span class="cmt"># --- GOVERNANCE VETO ---</span><br>
-        <span class="fail">[GOVERN]</span> <span class="fail">CRITICAL VETO via cardiotoxicity_guard.rego</span><br>
-        &nbsp;&nbsp;└─ <span class="str">LVEF</span> = 48% (&lt; 50% threshold — anthracycline blocked)<br>
-        <span class="cmt"># --- RECOVERY ---</span><br>
-        <span class="cmd">[RE-PLAN]</span> Trigger recursive neural alternative selection<br>
-        <span class="cmd">[GOVERN]</span> Evaluating Alternative: TC (Docetaxel) — safety cleared<br>
-        <span class="pass">[COMMIT]</span> State committed to immutable ledger. Awaiting oncologist sign-off.<br>
-        <span class="cmd">[STATUS]</span> <span class="pass">TREATMENT_PLAN_VALIDATED</span>
+      <!-- Terminal side (right) -->
+      <div class="type-terminal-side">
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+            <div class="terminal-title">clinical-oncology — cardiotoxicity-guard</div>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd">$ axiomics run --case=emr-0247 --mode=deterministic</span><br>
+            <span class="cmt"># --- PERCEPTION ---</span><br>
+            <span class="cmd">[PERCEIVE]</span> Ingest EMR: ER/PR+, HER2-, Echocardiogram<br>
+            <span class="cmd">[NORMALIZE]</span> Extract semantic parameters to validated clinical vectors<br>
+            <span class="cmt"># --- NEURAL PLANNING ---</span><br>
+            <span class="cmd">[NEURAL]</span> Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)<br>
+            <span class="cmt"># --- GOVERNANCE VETO ---</span><br>
+            <span class="fail">[GOVERN]</span> <span class="fail">CRITICAL VETO via cardiotoxicity_guard.rego</span><br>
+            &nbsp;&nbsp;└─ <span class="str">LVEF</span> = 48% (&lt; 50% threshold — anthracycline blocked)<br>
+            <span class="cmt"># --- RECOVERY ---</span><br>
+            <span class="cmd">[RE-PLAN]</span> Trigger recursive neural alternative selection<br>
+            <span class="cmd">[GOVERN]</span> Evaluating Alternative: TC (Docetaxel) — safety cleared<br>
+            <span class="pass">[COMMIT]</span> State committed to immutable ledger. Awaiting oncologist sign-off.<br>
+            <span class="cmd">[STATUS]</span> <span class="pass">TREATMENT_PLAN_VALIDATED</span>
+          </div>
+        </div>
       </div>
     </div>
-
-    <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
   </div>
 </section>
 
@@ -325,69 +346,69 @@
     <div class="type-marker" style="color:var(--blue);">TYPE 4</div>
     <h2 class="type-title">THE NEXUS <span class="type-badge blue">Academic Type 6 · Neuro[Symbolic]</span></h2>
     <div class="type-meta"><span class="type-meta-dot" style="background:var(--blue);"></span> High-stakes discovery &amp; reasoning</div>
-    <div class="type-meta">Stack focus: Dominant Reasoning (04) and Meta-Cognition (07)</div>
-    <p class="type-desc">The neural core drives open-ended exploration. Symbolic verifiers — ontologies, graph constraints, biophysical validators — are embedded directly inside the neural reasoning loop. When problems are too complex for static DAGs, the neural core must lead using dynamic planning cycles (ReAct, LangGraph state machines). To prevent drift, symbolic components are placed inside the model's observation loop, not outside it.</p>
 
-    <table class="meta-table">
-      <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
-      <tr><td class="meta-label">Repo</td><td class="meta-value">internal/speculative-graph-rag</td></tr>
-      <tr><td class="meta-label">Stack</td><td class="meta-value">9-node LangGraph, Qdrant, Neo4j, DeepSeek-R1, SNOMED-CT</td></tr>
-    </table>
-
-    <!-- Terminal trace -->
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <div class="terminal-title">speculative-graphrag — differential-assessment</div>
+    <div class="type-split reverse">
+      <!-- Terminal side (left) -->
+      <div class="type-terminal-side">
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+            <div class="terminal-title">speculative-graphrag — differential-assessment</div>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd">$ graphrag assess --patient=demo-0091 --mode=speculative</span><br>
+            <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
+            <span class="cmd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
+            <span class="cmd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
+            &nbsp;&nbsp;└─ Fusion: α=0.7 vector + 0.3 graph<br>
+            <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
+            <span class="cmd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
+            <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
+            <span class="fail">[FAIL]</span> <span class="fail">Neo4j edge lung_ca→metastasis missing</span><br>
+            <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
+            <span class="cmd">[REGEN]</span> Feed violations + reasoning trace back to model<br>
+            <span class="kwd">[META-COG]</span> Confidence: 0.82 → 0.72 (decay -0.1)<br>
+            <span class="pass">[PASS]</span> Corrected path validated by all verifiers<br>
+            <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
+            <span class="cmd">[STATUS]</span> <span class="pass">DIFFERENTIAL_RESOLVED</span>
+          </div>
+        </div>
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+            <div class="terminal-title">flow-matching-protein — binder-generation</div>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd">$ python generate_binders.py --target=ACE2 --count=100</span><br>
+            <span class="cmt"># --- FLOW MATCHING ---</span><br>
+            <span class="cmd">[FLOW]</span> ODE integration: t=0 → t=1 (20-step RK4)<br>
+            <span class="cmd">[NEURAL]</span> Predicting continuous vector fields for backbone generation<br>
+            <span class="cmt"># --- SYMBOLIC VALIDATION ---</span><br>
+            <span class="pass">[VALIDATE]</span> Biophysical constraints: clash score, Rg, fold classification<br>
+            <span class="fail">[CRITIQUE]</span> <span class="fail">Structural violation: Alpha-helix overlap at residue 42</span><br>
+            <span class="kwd">[META-COG]</span> Decaying confidence (-0.15), injecting error trace<br>
+            <span class="cmd">[REGENERATE]</span> Re-running flow with updated tensor boundaries<br>
+            <span class="pass">[PASS]</span> RMSD 1.2Å | Docking: -8.7 kcal/mol | 100 binders exported<br>
+            <span class="cmd">[STATUS]</span> <span class="pass">BINDERS_GENERATED</span>
+          </div>
+        </div>
       </div>
-      <div class="terminal-body">
-        <span class="cmd">$ graphrag assess --patient=demo-0091 --mode=speculative</span><br>
-        <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
-        <span class="cmd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
-        <span class="cmd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
-        &nbsp;&nbsp;└─ Fusion: α=0.7 vector + 0.3 graph<br>
-        <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
-        <span class="cmd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
-        <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
-        <span class="fail">[FAIL]</span> <span class="fail">Neo4j edge lung_ca→metastasis missing</span><br>
-        <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
-        <span class="cmd">[REGEN]</span> Feed violations + reasoning trace back to model<br>
-        <span class="kwd">[META-COG]</span> Confidence: 0.82 → 0.72 (decay -0.1)<br>
-        <span class="pass">[PASS]</span> Corrected path validated by all verifiers<br>
-        <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
-        <span class="cmd">[STATUS]</span> <span class="pass">DIFFERENTIAL_RESOLVED</span>
+      <!-- Text side (right) -->
+      <div class="type-text-side">
+        <p class="type-desc">The neural core drives open-ended exploration. Symbolic verifiers — ontologies, graph constraints, biophysical validators — are embedded directly inside the neural reasoning loop. When problems are too complex for static DAGs, the neural core must lead using dynamic planning cycles (ReAct, LangGraph state machines). To prevent drift, symbolic components are placed inside the model's observation loop, not outside it.</p>
+        <table class="meta-table">
+          <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
+          <tr><td class="meta-label">Repo</td><td class="meta-value">internal/speculative-graph-rag</td></tr>
+          <tr><td class="meta-label">Stack</td><td class="meta-value">9-node LangGraph, Qdrant, Neo4j, DeepSeek-R1, SNOMED-CT</td></tr>
+        </table>
+        <h3 style="font-size:16px; font-weight:500; color:var(--text);">Secondary anchor</h3>
+        <table class="meta-table">
+          <tr><td class="meta-label">System</td><td class="meta-value">Flow-Matching Protein Binder Generator</td></tr>
+          <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/flow-matching-protein-binder" target="_blank" rel="noopener">aragit/flow-matching-protein-binder</a></td></tr>
+          <tr><td class="meta-label">Stack</td><td class="meta-value">PyTorch, Biopython, Flow Matching, FoldSeek</td></tr>
+        </table>
+        <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
       </div>
-    </div>
-
-    <h3 style="font-size:18px; font-weight:500; margin:32px 0 16px; color:var(--text);">Secondary anchor</h3>
-    <table class="meta-table">
-      <tr><td class="meta-label">System</td><td class="meta-value">Flow-Matching Protein Binder Generator</td></tr>
-      <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/flow-matching-protein-binder" target="_blank" rel="noopener">aragit/flow-matching-protein-binder</a> <span style="font-size:12px; color:var(--green);">Public</span></td></tr>
-      <tr><td class="meta-label">Stack</td><td class="meta-value">PyTorch, Biopython, Flow Matching, FoldSeek</td></tr>
-    </table>
-
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <div class="terminal-title">flow-matching-protein — binder-generation</div>
-      </div>
-      <div class="terminal-body">
-        <span class="cmd">$ python generate_binders.py --target=ACE2 --count=100</span><br>
-        <span class="cmt"># --- FLOW MATCHING ---</span><br>
-        <span class="cmd">[FLOW]</span> ODE integration: t=0 → t=1 (20-step RK4)<br>
-        <span class="cmd">[NEURAL]</span> Predicting continuous vector fields for backbone generation<br>
-        <span class="cmt"># --- SYMBOLIC VALIDATION ---</span><br>
-        <span class="pass">[VALIDATE]</span> Biophysical constraints: clash score, Rg, fold classification<br>
-        <span class="fail">[CRITIQUE]</span> <span class="fail">Structural violation: Alpha-helix overlap at residue 42</span><br>
-        <span class="kwd">[META-COG]</span> Decaying confidence (-0.15), injecting error trace<br>
-        <span class="cmd">[REGENERATE]</span> Re-running flow with updated tensor boundaries<br>
-        <span class="pass">[PASS]</span> RMSD 1.2Å | Docking: -8.7 kcal/mol | 100 binders exported<br>
-        <span class="cmd">[STATUS]</span> <span class="pass">BINDERS_GENERATED</span>
-      </div>
-    </div>
-
-    <div style="margin-top: 8px;">
-      <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
     </div>
   </div>
 </section>
@@ -396,49 +417,52 @@
 <section class="arch-section" id="type5">
   <div class="arch-wrap">
     <div class="type-marker" style="color:var(--green);">TYPE 5</div>
-    <h2 class="type-title">THE ARBITER <span class="type-badge green">Academic Type 5 · Symbolic ↔ Neural</span></h2>
+    <h2 class="type-title">THE ARBITER <span class="type-badge green">Academic Type 5/9 · Symbolic ↔ Neural</span></h2>
     <div class="type-meta"><span class="type-meta-dot" style="background:var(--green);"></span> Competitive markets &amp; dynamic environments</div>
-    <div class="type-meta">Stack focus: Dominant Tool Registry (03) and Governance (06)</div>
-    <p class="type-desc">Parallel symbolic and neural tracks interact continuously. Neither dominates; a formal mathematical engine arbitrates conflicts to maintain system invariants. When multiple autonomous agents compete, trusting heuristics or unconstrained model outputs introduces unpredictable economic risk. Neural agents maximize individual objectives, but a compiled game-theoretic engine enforces absolute structural boundaries.</p>
 
-    <table class="meta-table">
-      <tr><td class="meta-label">System</td><td class="meta-value">Nash Marketing Agents</td></tr>
-      <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener">aragit/agentic-nash-marketing</a> <span style="font-size:12px; color:var(--green);">Public</span></td></tr>
-      <tr><td class="meta-label">Tests</td><td class="meta-value">49 property-based tests passed</td></tr>
-      <tr><td class="meta-label">Env</td><td class="meta-value">Docker production-ready</td></tr>
-    </table>
-
-    <!-- Terminal trace -->
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <div class="terminal-title">nash-marketing — vcg-auction-engine</div>
+    <div class="type-split">
+      <!-- Text side (left) -->
+      <div class="type-text-side">
+        <p class="type-desc">Parallel symbolic and neural tracks interact continuously. Neither dominates; a formal mathematical engine arbitrates conflicts to maintain system invariants. When multiple autonomous agents compete, trusting heuristics or unconstrained model outputs introduces unpredictable economic risk. Neural agents maximize individual objectives, but a compiled game-theoretic engine enforces absolute structural boundaries.</p>
+        <table class="meta-table">
+          <tr><td class="meta-label">System</td><td class="meta-value">Nash Marketing Agents</td></tr>
+          <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener">aragit/agentic-nash-marketing</a></td></tr>
+          <tr><td class="meta-label">Tests</td><td class="meta-value">49 property-based tests passed</td></tr>
+          <tr><td class="meta-label">Env</td><td class="meta-value">Docker production-ready</td></tr>
+        </table>
+        <h3 style="font-size:16px; font-weight:500; color:var(--text);">Property-based validation guarantees</h3>
+        <ul class="arch-list">
+          <li><span style="color:var(--green);">→</span> <span><strong>Monotonicity:</strong> Higher CPA → controlled scale progression</span></li>
+          <li><span style="color:var(--green);">→</span> <span><strong>Individual rationality:</strong> No overpayment; hard budget guardrails</span></li>
+          <li><span style="color:var(--green);">→</span> <span><strong>Nash bounds:</strong> Convergence within ε-utility tolerance</span></li>
+        </ul>
+        <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
       </div>
-      <div class="terminal-body">
-        <span class="cmd">$ nash run --agents=4 --rounds=50 --market=display-ads</span><br>
-        <span class="cmt"># --- ROUND 1: PERSONA SPAWN ---</span><br>
-        <span class="cmd">[NEURAL]</span> Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70<br>
-        <span class="cmt"># --- ARBITRATION ---</span><br>
-        <span class="pass">[ARBITRATE]</span> Invoking compiled symbolic VCG Auction Engine<br>
-        <span class="pass">[EXECUTE]</span> Winner: Agent-C allocated dominant traffic slot<br>
-        <span class="kwd">[MATHEMATICS]</span> Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)<br>
-        <span class="pass">[VERIFY]</span> Asserting: paid_price ≤ bid_valuation ✓<br>
-        <span class="cmt"># --- CONVERGENCE ---</span><br>
-        <span class="kwd">[NASH SOLVER]</span> Executing SciPy multi-variate optimization over strategy spaces<br>
-        <span class="pass">[CONVERGENCE]</span> Stable equilibrium at Round 41 (Δu &lt; 0.01)<br>
-        <span class="pass">[TEST]</span> 49/49 property-based tests passed<br>
-        <span class="cmd">[STATUS]</span> <span class="pass">NASH_EQUILIBRIUM_REACHED</span>
+      <!-- Terminal side (right) -->
+      <div class="type-terminal-side">
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+            <div class="terminal-title">nash-marketing — vcg-auction-engine</div>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd">$ nash run --agents=4 --rounds=50 --market=display-ads</span><br>
+            <span class="cmt"># --- ROUND 1: PERSONA SPAWN ---</span><br>
+            <span class="cmd">[NEURAL]</span> Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70<br>
+            <span class="cmt"># --- ARBITRATION ---</span><br>
+            <span class="pass">[ARBITRATE]</span> Invoking compiled symbolic VCG Auction Engine<br>
+            <span class="pass">[EXECUTE]</span> Winner: Agent-C allocated dominant traffic slot<br>
+            <span class="kwd">[MATHEMATICS]</span> Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)<br>
+            <span class="pass">[VERIFY]</span> Asserting: paid_price ≤ bid_valuation ✓<br>
+            <span class="cmt"># --- CONVERGENCE ---</span><br>
+            <span class="kwd">[NASH SOLVER]</span> Executing SciPy multi-variate optimization over strategy spaces<br>
+            <span class="pass">[CONVERGENCE]</span> Stable equilibrium at Round 41 (Δu &lt; 0.01)<br>
+            <span class="pass">[TEST]</span> 49/49 property-based tests passed<br>
+            <span class="cmd">[STATUS]</span> <span class="pass">NASH_EQUILIBRIUM_REACHED</span>
+          </div>
+        </div>
       </div>
     </div>
-
-    <h3 style="font-size:16px; font-weight:500; margin:24px 0 12px; color:var(--text);">Property-based validation guarantees</h3>
-    <ul class="arch-list">
-      <li><span style="color:var(--green);">→</span> <span><strong>Monotonicity:</strong> Higher CPA → controlled scale progression</span></li>
-      <li><span style="color:var(--green);">→</span> <span><strong>Individual rationality:</strong> No overpayment; hard budget guardrails</span></li>
-      <li><span style="color:var(--green);">→</span> <span><strong>Nash bounds:</strong> Convergence within ε-utility tolerance</span></li>
-    </ul>
-
-    <a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener" class="gh-btn" style="margin-top: 8px;"><i class="fab fa-github"></i> View on GitHub →</a>
   </div>
 </section>
 
