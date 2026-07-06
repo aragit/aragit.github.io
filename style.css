@@ -8557,11 +8557,13 @@ div#services .cards .card.card-wide .card-actions {
   margin-left: 0 !important;
 }
 
-/* Ensure the button stays left-aligned in this specific card */
+/* Ensure the button is centered within text area */
 #services .cards .card.card-dashboard .card-actions {
-  justify-content: flex-start !important;
+  align-self: center !important;
+  justify-content: center !important;
   margin-left: 0 !important;
   padding-left: 0 !important;
+  width: 100% !important;
 }
 
 /* ===== FIX: VERTICAL CENTER FOR DASHBOARD CONTENT ===== */
