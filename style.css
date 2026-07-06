@@ -11439,11 +11439,11 @@ div#services .cards .card.card-wide .card-actions {
 
 #home.hero .card-content .card-title {
   margin: 0 !important;
-  font-size: 0.95rem !important;
-  color: #ffffff !important;
+  font-size: 0.75rem !important;
+  color: #8899a6 !important;
   font-weight: 400 !important;
   letter-spacing: -0.2px !important;
-  line-height: 1.35 !important;
+  line-height: 1.4 !important;
 }
 
 /* Card 4: vertical tag list */
