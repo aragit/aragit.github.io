@@ -11307,7 +11307,7 @@ div#services .cards .card.card-wide .card-actions {
   position: relative !important;
   width: 100% !important;
   max-width: 420px !important;
-  height: 320px !important;
+  height: 430px !important;
   margin: 0 auto !important;
 }
 
@@ -11320,38 +11320,45 @@ div#services .cards .card.card-wide .card-actions {
   -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 12px !important;
-  padding: 22px 24px !important;
+  padding: 18px 22px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 20px !important;
+  gap: 16px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 #home.hero .stack-card.card-1 {
   top: 0 !important;
-  left: -15px !important;
-  z-index: 3 !important;
-  border-left: 4px solid #ff6b00 !important;
+  left: 20px !important;
+  z-index: 4 !important;
   animation: floatCard1 6s ease-in-out infinite !important;
 }
 
 #home.hero .stack-card.card-2 {
-  top: 90px !important;
-  left: 15px !important;
-  z-index: 2 !important;
-  border-left: 4px solid #5fd3ff !important;
+  top: 85px !important;
+  left: 45px !important;
+  z-index: 3 !important;
   animation: floatCard2 6.5s ease-in-out infinite !important;
   animation-delay: 1s !important;
 }
 
 #home.hero .stack-card.card-3 {
-  top: 180px !important;
-  left: -5px !important;
-  z-index: 1 !important;
-  border-left: 4px solid #008080 !important;
+  top: 175px !important;
+  left: 30px !important;
+  z-index: 2 !important;
+  padding: 22px 22px !important;
   animation: floatCard3 7s ease-in-out infinite !important;
   animation-delay: 2s !important;
+}
+
+#home.hero .stack-card.card-4 {
+  top: 290px !important;
+  left: 10px !important;
+  z-index: 1 !important;
+  width: 55% !important;
+  animation: floatCard4 7.5s ease-in-out infinite !important;
+  animation-delay: 0.5s !important;
 }
 
 #home.hero .stack-card:hover {
@@ -11394,10 +11401,35 @@ div#services .cards .card.card-wide .card-actions {
 
 #home.hero .card-content h3 {
   margin: 0 !important;
-  font-size: 1.1rem !important;
+  font-size: 0.95rem !important;
   color: #ffffff !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.3px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.2px !important;
+  line-height: 1.35 !important;
+}
+
+/* Card 4: vertical tag list */
+#home.hero .card-content-vert {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+
+#home.hero .card-tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+}
+
+#home.hero .card-tag {
+  font-size: 0.65rem !important;
+  color: #b0bec5 !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 4px !important;
+  padding: 3px 8px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.3px !important;
 }
 
 #topology-container {
@@ -11692,9 +11724,10 @@ div#services .cards .card.card-wide .card-actions {
 @keyframes floatCard1 { 0%, 100% { transform: translateY(0) rotate(0.5deg); } 50% { transform: translateY(-10px) rotate(-0.5deg); } }
 @keyframes floatCard2 { 0%, 100% { transform: translateY(0) rotate(-0.5deg); } 50% { transform: translateY(-14px) rotate(0.5deg); } }
 @keyframes floatCard3 { 0%, 100% { transform: translateY(0) rotate(0.2deg); } 50% { transform: translateY(-8px) rotate(-0.8deg); } }
+@keyframes floatCard4 { 0%, 100% { transform: translateY(0) rotate(-0.3deg); } 50% { transform: translateY(-12px) rotate(0.4deg); } }
 
 @media (max-width: 768px) {
-  .hero-cards-stack { height: auto; gap: 16px; margin: 40px auto 0 auto; }
-  .stack-card { position: relative; top: auto !important; left: auto !important; animation: none !important; width: 100%; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); }
+  .hero-cards-stack { height: auto !important; gap: 12px !important; margin: 40px auto 0 auto !important; }
+  .stack-card { position: relative !important; top: auto !important; left: auto !important; animation: none !important; width: 100% !important; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important; }
   .stack-card:hover { transform: none !important; }
 }
