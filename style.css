@@ -11368,7 +11368,7 @@ div#services .cards .card.card-wide .card-actions {
 #home.hero .stack-card.card-5 {
   top: -30px !important;
   left: 300px !important;
-  z-index: 0 !important;
+  z-index: 10 !important;
   width: 280px !important;
   padding: 20px 18px !important;
   animation: floatCard5 8s ease-in-out infinite !important;
