@@ -165,76 +165,7 @@
       </div>
     </section>
 
-    <!-- VALUE EVOLUTION STAIRCASE -->
-    <section id="insights" class="section" style="padding: clamp(60px, 8vw, 90px) 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); background: var(--darker);">
-      <div class="container">
-        <div style="text-align: center; margin-bottom: 40px;">
-          <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); color: #fff; margin-bottom: 15px; font-weight: 700;">Beyond the Hype of Expensive Chatbots</h2>
-        </div>
 
-        <div class="dichotomy-container">
-          <div class="dichotomy-card black-box">
-            <div class="dicho-header">
-              <i class="fa-solid fa-cube" style="color: #e74c3c;"></i>
-              <div>
-                <h3>The Black Box</h3>
-                <span>Probabilistic Wrappers</span>
-              </div>
-            </div>
-            <p class="dicho-desc">Standard chatbots and hardcoded workflows are fragile cost centers. They create technical debt and require constant human supervision to handle edge cases.</p>
-
-            <div class="dicho-terminal">
-              <div class="mac-header">
-                <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-                <div class="mac-title">agent_loop.log</div>
-              </div>
-              <pre><code>> User: "Process invoice #4492"
-> Agent: Guessing API payload...
-> <span style="color:#e74c3c;">FATAL: Max recursion depth reached.</span>
-> <span style="color:#e74c3c;">Hallucinated parameter: 'amount_null'</span>
-> <span class="blink-cursor-red"></span></code></pre>
-            </div>
-
-            <ul class="dicho-list">
-              <li><i class="fa-solid fa-xmark" style="color: #e74c3c;"></i> Unbounded Action Space</li>
-              <li><i class="fa-solid fa-xmark" style="color: #e74c3c;"></i> Probabilistic Guessing</li>
-              <li><i class="fa-solid fa-xmark" style="color: #e74c3c;"></i> Zero Blast-Radius Containment</li>
-            </ul>
-          </div>
-
-          <div class="dichotomy-card glass-box">
-            <div class="dicho-header">
-              <i class="fa-solid fa-network-wired" style="color: #27c93f;"></i>
-              <div>
-                <h3>The Glass Box</h3>
-                <span>Deterministic State Machines</span>
-              </div>
-            </div>
-            <p class="dicho-desc">True value requires moving from automated processes to autonomous reasoning, backed by strict physical boundaries and mathematically auditable execution.</p>
-
-            <div class="dicho-terminal">
-              <div class="mac-header">
-                <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-                <div class="mac-title">orchestrator.log</div>
-              </div>
-              <pre><code>> Orchestrator: DAG Received.
-> Shield: OPA Policy Check <span style="color:#27c93f;">[PASS]</span>
-> Worker: Executing Step 1 (Idempotent)
-> <span style="color:#27c93f;">HTTP 200: Execution Committed.</span>
-> <span style="color:#27c93f;">Audit Hash: 0x8f92a4...</span>
-> <span class="blink-cursor-green"></span></code></pre>
-            </div>
-
-            <ul class="dicho-list">
-              <li><i class="fa-solid fa-check" style="color: #27c93f;"></i> Constrained Execution Graphs</li>
-              <li><i class="fa-solid fa-check" style="color: #27c93f;"></i> Policy-as-Code Guards (OPA)</li>
-              <li><i class="fa-solid fa-check" style="color: #27c93f;"></i> Immutable Audit Trails</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section> 
-      
     <!-- ABOUT / INSIGHT -->
     <section id="about" class="section" aria-labelledby="about-title">
       <div class="container">
