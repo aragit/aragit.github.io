@@ -1,260 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Architecture: The Agentic Spectrum | Arash Nicoomanesh</title>
-  <meta name="description" content="The technical manifesto for deploying agentic systems: from deterministic enterprise fortresses to emergent creative swarms."/>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture — Arash Nicoomanesh | Agentic AI Architect</title>
+  <meta name="description" content="Neuro-symbolic system architecture for high-liability AI. Type 2, Type 6, and Type 5 compound systems with policy-as-code governance.">
+  <link rel="canonical" href="https://aragit.github.io/architecture">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
   <style>
     :root {
-      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
-      --accent: #ff6b00; --accent-hover: #e66000; --code-bg: #1e1e1e;
+      --bg: #0d1117;
+      --text: #e6edf3;
+      --muted: #b0b8c4;
+      --blue: #58a6ff;
+      --green: #3fb950;
+      --red: #f85149;
+      --purple: #d2a8ff;
+      --terminal: #161b22;
+      --border: #30363d;
+      --sep: #21262d;
+      --hover-border: #484f58;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-    
-    /* ---------- header ---------- */
-    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
-    .logo i { color: var(--accent); }
-    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
-    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
-    
-    /* ---------- hero ---------- */
-    .hero { padding: clamp(80px, 10vw, 120px) 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,.05); background: radial-gradient(circle at top, rgba(255,107,0,0.05) 0%, var(--darker) 70%); }
-    .badge { display: inline-block; background: rgba(255,107,0,0.1); color: var(--accent); border: 1px solid rgba(255,107,0,0.3); padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
-    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px; color: #fff; }
-    .hero p { font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 800px; margin: 0 auto; color: #f2f2f2; font-weight: 400; }
-    
-    /* ---------- manifesto statement ---------- */
-    .manifesto-box { background: #000; border: 1px solid var(--accent); border-radius: 12px; padding: 40px; text-align: center; margin-top: -40px; position: relative; z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,107,0,0.05); margin-bottom: 40px; }
-    .manifesto-box h2 { color: #fff; font-size: 1.8rem; margin-bottom: 15px; }
-    .manifesto-box p { color: var(--gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
-    
-    /* ---------- pattern stack ---------- */
-    section { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.02); }
-    .layer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    .layer.reverse { direction: rtl; }
-    .layer.reverse > * { direction: ltr; }
-    
-    @media(max-width: 850px) { 
-      .layer { grid-template-columns: 1fr; } 
-      .layer.reverse { direction: ltr; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    
-    .layer-content { padding-right: 20px; }
-    .layer.reverse .layer-content { padding-right: 0; padding-left: 20px; }
-    .layer-num { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 700; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 10px; display: inline-flex; align-items: center; gap: 8px; }
-    .layer-content h3 { font-size: 2rem; color: #fff; margin-bottom: 15px; }
-    .layer-content p { color: #cbd6df; font-size: 1.05rem; margin-bottom: 15px; line-height: 1.7; }
-    .layer-content ul { list-style: none; color: #a8aeb3; margin-top: 20px; }
-    .layer-content li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-    .layer-content li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 3px; font-size: 14px; }
-    
-    /* ---------- code windows ---------- */
-    .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-    .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
-    .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
-    .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
-    
-    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; margin: 0;}
-    .keyword { color: #569cd6; } .string { color: #ce9178; } .comment { color: #6a9955; font-style: italic; } .property { color: #9cdcfe; } .number { color: #b5cea8; } .warn { color: #ffbd2e; } .pass { color: #27c93f; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    .live-terminal { background: #000; padding: 24px; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #00ff00; border: 1px solid rgba(0, 255, 0, 0.2); box-shadow: inset 0 0 15px rgba(0,255,0,0.05); line-height: 1.6; }
-    @keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    .blink-cursor { display: inline-block; width: 8px; height: 15px; background-color: #00ff00; vertical-align: middle; margin-left: 5px; animation: blinkCursor 1s step-end infinite; }
+    /* NAV */
+    .arch-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 200ms ease, border-color 200ms ease;
+      padding: 0 24px;
+    }
+    .arch-nav.scrolled { background: var(--bg); border-bottom-color: var(--sep); }
+    .arch-nav-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .arch-nav-brand { font-weight: 500; font-size: 15px; color: var(--text); }
+    .arch-nav-links { display: flex; gap: 24px; list-style: none; }
+    .arch-nav-links a { font-size: 14px; color: var(--muted); transition: color 150ms; }
+    .arch-nav-links a:hover, .arch-nav-links a.active { color: var(--text); text-decoration: none; }
+    .arch-hamburger { display: none; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
 
-    /* ---------- Image Container ---------- */
-    .image-placeholder { text-align: center; margin: 40px 0; }
+    /* LAYOUT */
+    .arch-wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .arch-section { padding: 56px 0; border-top: 1px solid var(--sep); }
+    .arch-section:first-of-type { border-top: none; }
+    .arch-section-title { font-size: 24px; font-weight: 500; color: var(--text); margin-bottom: 16px; }
+    .arch-section-intro { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 720px; margin-bottom: 32px; }
 
-    /* ---------- cta band ---------- */
-    .cta-band { background: #121212; text-align: center; padding: 80px 0; border-top: 2px solid var(--accent); }
-    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid var(--accent); }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
-    
-    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
+    /* HERO */
+    .arch-hero { padding: 80px 0 48px; border-top: none; }
+    .arch-hero h1 { font-size: 32px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .arch-hero-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 640px; margin-bottom: 24px; }
+    .arch-thesis {
+      font-size: 16px; font-weight: 500; color: var(--text);
+      border-left: 2px solid var(--blue); padding-left: 16px; margin-top: 24px;
+    }
+
+    /* 7-LAYER STACK */
+    .layer-stack { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+    .layer-bar {
+      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
+      padding: 12px 16px; display: flex; align-items: baseline; gap: 16px;
+      transition: border-color 150ms ease;
+    }
+    .layer-bar:hover { border-color: var(--hover-border); }
+    .layer-num { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 14px; color: var(--blue); min-width: 28px; }
+    .layer-name { font-size: 16px; font-weight: 500; color: var(--text); min-width: 160px; }
+    .layer-desc { font-size: 14px; color: var(--muted); }
+
+    /* TABLES */
+    .arch-table-wrap { overflow-x: auto; margin-bottom: 32px; }
+    .arch-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .arch-table th {
+      background: var(--terminal); color: var(--text); font-weight: 500; font-size: 14px;
+      text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border);
+    }
+    .arch-table td { padding: 12px 16px; border-bottom: 1px solid var(--sep); color: var(--muted); vertical-align: top; }
+    .arch-table td:first-child { color: var(--text); font-weight: 500; }
+    .arch-table td.mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; color: var(--blue); font-size: 13px; }
+    .arch-table tr:hover td { background: var(--terminal); }
+
+    /* TYPE MARKER */
+    .type-marker {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px;
+    }
+    .type-title { font-size: 28px; font-weight: 500; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .type-badge {
+      display: inline-block; font-size: 12px; padding: 4px 10px; border-radius: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-weight: 400; letter-spacing: 0; text-transform: none;
+    }
+    .type-badge.red { background: color-mix(in srgb, var(--red) 12%, transparent); color: var(--red); }
+    .type-badge.blue { background: color-mix(in srgb, var(--blue) 12%, transparent); color: var(--blue); }
+    .type-badge.green { background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); }
+    .type-meta { font-size: 14px; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .type-meta-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .type-desc { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 680px; margin-bottom: 24px; }
+
+    /* TERMINAL BLOCKS */
+    .term-block {
+      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
+      padding: 16px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px; line-height: 1.6; overflow-x: auto; white-space: pre; margin-bottom: 24px;
+      transition: border-color 150ms ease;
+    }
+    .term-block:hover { border-color: var(--hover-border); }
+    .t-blue { color: var(--blue); }
+    .t-green { color: var(--green); }
+    .t-red { color: var(--red); }
+    .t-purple { color: var(--purple); }
+    .t-muted { color: var(--muted); }
+
+    /* CODE BLOCKS */
+    .code-block {
+      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
+      padding: 16px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px; line-height: 1.6; overflow-x: auto; white-space: pre; margin-bottom: 24px;
+    }
+    .code-kw { color: #ff7b72; }
+    .code-str { color: #a5d6ff; }
+    .code-num { color: #79c0ff; }
+    .code-cmt { color: #8b949e; }
+
+    /* METADATA TABLE */
+    .meta-table { width: 100%; margin-bottom: 24px; }
+    .meta-table td { padding: 6px 0; vertical-align: top; font-size: 14px; }
+    .meta-label {
+      font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;
+      width: 120px; padding-right: 16px;
+    }
+    .meta-value { color: var(--text); }
+    .private-badge {
+      display: inline-flex; align-items: center; gap: 4px; font-size: 12px;
+      color: var(--muted); background: rgba(176,184,196,0.08); padding: 2px 8px;
+      border-radius: 4px; margin-left: 8px;
+    }
+
+    /* GITHUB BUTTON */
+    .gh-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--blue); color: var(--blue); background: transparent;
+      padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500;
+      transition: background 150ms ease; cursor: pointer; text-decoration: none;
+    }
+    .gh-btn:hover { background: rgba(88,166,255,0.1); text-decoration: none; }
+
+    /* CHECKMARKS */
+    .check-list { list-style: none; margin: 16px 0; }
+    .check-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 16px; color: var(--text); }
+    .check-icon { flex-shrink: 0; margin-top: 3px; }
+
+    /* BULLET LIST */
+    .arch-list { list-style: none; margin: 16px 0; }
+    .arch-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 15px; color: var(--muted); }
+    .arch-list li strong { color: var(--text); font-weight: 500; }
+
+    /* AXIOMIS SECTION */
+    .axiomis-section {
+      background: var(--terminal); border-top: 2px solid var(--blue);
+      padding: 56px 0; margin-top: 56px;
+    }
+    .axiomis-closing { font-size: 18px; color: var(--text); font-weight: 500; font-style: italic; margin-top: 24px; }
+
+    /* FLOW DIAGRAMS */
+    .flow-diagram { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .arch-hero h1 { font-size: 24px; }
+      .arch-section-title { font-size: 22px; }
+      .type-title { font-size: 22px; }
+      .term-block, .code-block { font-size: 12px; padding: 12px; }
+      .layer-bar { flex-wrap: wrap; gap: 4px; }
+      .layer-name { min-width: auto; }
+      .arch-nav-links { display: none; }
+      .arch-nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--sep); padding: 16px 24px; gap: 16px; }
+      .arch-hamburger { display: block; }
+      .meta-table td { display: block; }
+      .meta-label { width: auto; padding-bottom: 2px; }
+      .type-title { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo"><i class="fa-solid fa-layer-group"></i>Arash Nicoomanesh</a>
-      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
-    </div>
+<!-- NAV -->
+<nav class="arch-nav" id="archNav">
+  <div class="arch-nav-inner">
+    <a href="/" class="arch-nav-brand">Arash Nicoomanesh</a>
+    <button class="arch-hamburger" id="navToggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+    <ul class="arch-nav-links" id="navLinks">
+      <li><a href="/#home">About</a></li>
+      <li><a href="/architecture.html" class="active">Architecture</a></li>
+      <li><a href="/#portfolio">Projects</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="https://github.com/aragit" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
-<section class="hero">
-  <div class="container">
-    <span class="badge">Systems Engineering</span>
-    <h1>The Architecture of Agentic Systems</h1>
-    <p>From deterministic enterprise fortresses to emergent creative swarms. We design digital workforces bounded by physics, mathematics, and operational risk.</p>
+<!-- HERO -->
+<section class="arch-section arch-hero" id="hero">
+  <div class="arch-wrap">
+    <h1>Architecture of Agentic Systems</h1>
+    <p class="arch-hero-sub">We do not deploy models or optimize prompts. We engineer compound systems — architectures where neural reasoning and symbolic governance are composed into standardized layers that transfer across high-liability industries.</p>
+    <div class="arch-thesis">The maturity of enterprise AI is measured not in model scale, but in how reliably probabilistic reasoning is bound by deterministic execution.</div>
+
+    <!-- 7-LAYER STACK -->
+    <div class="layer-stack">
+      <div class="layer-bar"><span class="layer-num">07</span><span class="layer-name">Meta-Cognition</span><span class="layer-desc">Self-monitoring, confidence decay, drift detection</span></div>
+      <div class="layer-bar"><span class="layer-num">06</span><span class="layer-name">Governance</span><span class="layer-desc">Policy-as-Code, mathematical validation, hard guards</span></div>
+      <div class="layer-bar"><span class="layer-num">05</span><span class="layer-name">Execution</span><span class="layer-desc">Idempotent tool dispatch, stateful workflows, DAG commit</span></div>
+      <div class="layer-bar"><span class="layer-num">04</span><span class="layer-name">Reasoning</span><span class="layer-desc">Dynamic planning, cyclic state machines, constraint eval</span></div>
+      <div class="layer-bar"><span class="layer-num">03</span><span class="layer-name">Tool Registry</span><span class="layer-desc">MCP, ontologies, biophysical calculators, Nash solvers</span></div>
+      <div class="layer-bar"><span class="layer-num">02</span><span class="layer-name">Memory</span><span class="layer-desc">Temporal state, episodic logs, vector context</span></div>
+      <div class="layer-bar"><span class="layer-num">01</span><span class="layer-name">Perception</span><span class="layer-desc">Unstructured telemetry → validated semantic hydration</span></div>
+    </div>
   </div>
 </section>
 
-<div class="container">
-  
-  <div class="manifesto-box">
-    <h2>The Neuro-Symbolic Paradigm</h2>
-    <p>Intelligence must be bounded by operational risk. LLMs are brilliant, probabilistic reasoning engines (Neural), but they are fundamentally unpredictable. Real-world platforms require an architecture that bridges this creativity with strict, math-based rules and hard-coded constraints (Symbolic). We scale the ratio of "Neural Exploration" to "Symbolic Control" based entirely on the liability of your industry.</p>
+<!-- TAXONOMY -->
+<section class="arch-section" id="taxonomy">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">The Neuro-Symbolic Taxonomy</h2>
+    <p class="arch-section-intro">We classify implementations using the academic taxonomy established by Kautz, Garcez, and d'Avila Garcez. By varying the structural relationship between neural and symbolic components, we optimize along a strict spectrum of liability. Our website taxonomy maps directly to these academic foundations.</p>
+    <div class="arch-table-wrap">
+      <table class="arch-table">
+        <thead><tr><th>Our System</th><th>Academic Type</th><th>Bracket Notation</th><th>Core Principle</th></tr></thead>
+        <tbody>
+          <tr><td>TYPE 3: The Citadel</td><td class="mono">Type 2</td><td class="mono">Symbolic[Neuro]</td><td>Symbolic core owns execution; neural is subordinate</td></tr>
+          <tr><td>TYPE 4: The Nexus</td><td class="mono">Type 6</td><td class="mono">Neuro[Symbolic]</td><td>Neural core drives exploration; symbolic verifiers embedded</td></tr>
+          <tr><td>TYPE 5: The Arbiter</td><td class="mono">Type 5</td><td class="mono">Symbolic ↔ Neural</td><td>Neither dominates; formal mathematical engine arbitrates</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  
-  
+</section>
+
+<!-- TYPE 3: THE CITADEL -->
+<section class="arch-section" id="type3">
+  <div class="arch-wrap">
+    <div class="type-marker" style="color:var(--red);">TYPE 3</div>
+    <h2 class="type-title">THE CITADEL <span class="type-badge red">Academic Type 2 · Symbolic[Neuro]</span></h2>
+    <div class="type-meta"><span class="type-meta-dot" style="background:var(--red);"></span> Life-critical / zero-tolerance</div>
+    <div class="type-meta">Stack focus: Dominant Governance (06) and Execution (05)</div>
+    <p class="type-desc">The symbolic core owns execution. Neural networks are strictly nested inside and subordinate to deterministic guards. In high-stakes environments, an LLM must never directly control execution paths. The neural engine acts as an upstream strategist, parsing complex inputs to propose intent. This intent is compiled into a Directed Acyclic Graph (DAG). Before any node executes, a stateless symbolic validation layer evaluates the plan against hard mathematical and physiological constraints.</p>
+
+    <div class="term-block"><span class="t-blue">[User Intent]</span> → <span class="t-blue">[Neural Planner]</span> → <span class="t-blue">[Proposed DAG]</span> → <span class="t-red">[Symbolic OPA Veto]</span> → <span class="t-blue">[DAG Engine]</span> → <span class="t-green">[Immutable Ledger]</span>
+                                                    │
+                                            <span class="t-red">(Violation → Hard Refusal)</span></div>
+
+    <table class="meta-table">
+      <tr><td class="meta-label">System</td><td class="meta-value">Clinical Oncology Agent</td></tr>
+      <tr><td class="meta-label">Repo</td><td class="meta-value">internal/clinical-oncology-core <span class="private-badge"><i class="fas fa-lock"></i> Private</span></td></tr>
+      <tr><td class="meta-label">Stack</td><td class="meta-value">FHIR R4, HL7 v2, OPA/Rego, DAG-orchestrated</td></tr>
+    </table>
+
+    <div class="term-block"><span class="t-blue">[PERCEIVE]</span>   <span class="t-muted">Ingest EMR: ER/PR+, HER2-, Echocardiogram</span>
+<span class="t-blue">[NORMALIZE]</span>  <span class="t-muted">Extract semantic parameters to validated clinical vectors</span>
+<span class="t-blue">[NEURAL]</span>     <span class="t-muted">Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)</span>
+<span class="t-red">[GOVERN]</span>     <span class="t-red">CRITICAL VETO via cardiotoxicity_guard.rego</span>
+             <span class="t-muted">Left Ventricular Ejection Fraction (LVEF) = 48% (&lt; 50% threshold)</span>
+<span class="t-blue">[RE-PLAN]</span>    <span class="t-muted">Trigger recursive neural alternative selection</span>
+<span class="t-blue">[GOVERN]</span>     <span class="t-muted">Evaluating Alternative: TC (Docetaxel) — safety cleared</span>
+<span class="t-green">[COMMIT]</span>     <span class="t-green">State committed to immutable ledger. Awaiting oncologist sign-off.</span></div>
+
+    <div class="code-block"><span class="code-cmt"># cardiotoxicity_guard.rego — The Symbolic Citadel Guardrail</span>
+<span class="code-kw">package</span> enterprise.governance
+
+<span class="code-kw">default</span> allow_treatment_node = <span class="code-num">false</span>
+
+allow_treatment_node {
+    <span class="code-kw">not</span> cardiotoxicity_risk_detected
+    valid_auth_signature_present
+}
+
+cardiotoxicity_risk_detected {
+    input.drug_class == <span class="code-str">"anthracycline"</span>
+    input.lvef_percentage &lt; <span class="code-num">50</span>
+}</div>
+  </div>
+</section>
+
+<!-- TYPE 4: THE NEXUS -->
+<section class="arch-section" id="type4">
+  <div class="arch-wrap">
+    <div class="type-marker" style="color:var(--blue);">TYPE 4</div>
+    <h2 class="type-title">THE NEXUS <span class="type-badge blue">Academic Type 6 · Neuro[Symbolic]</span></h2>
+    <div class="type-meta"><span class="type-meta-dot" style="background:var(--blue);"></span> High-stakes discovery &amp; reasoning</div>
+    <div class="type-meta">Stack focus: Dominant Reasoning (04) and Meta-Cognition (07)</div>
+    <p class="type-desc">The neural core drives open-ended exploration. Symbolic verifiers — ontologies, graph constraints, biophysical validators — are embedded directly inside the neural reasoning loop. When problems are too complex for static DAGs, the neural core must lead using dynamic planning cycles (ReAct, LangGraph state machines). To prevent drift, symbolic components are placed inside the model's observation loop, not outside it.</p>
+
+    <div class="term-block flow-diagram"><span class="t-muted">               ┌──────────────────────────────────────┐</span>
+<span class="t-muted">               ▼                                      │</span>
+<span class="t-blue">[Neural Reasoning Loop]</span> → <span class="t-blue">[Proposed Action]</span> → <span class="t-green">[Symbolic Graph Verifier]</span></div>
+
+    <table class="meta-table">
+      <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
+      <tr><td class="meta-label">Repo</td><td class="meta-value">internal/speculative-graph-rag <span class="private-badge"><i class="fas fa-lock"></i> Private</span></td></tr>
+      <tr><td class="meta-label">Stack</td><td class="meta-value">9-node LangGraph, Qdrant, Neo4j, DeepSeek-R1, SNOMED-CT</td></tr>
+    </table>
+
+    <div class="term-block"><span class="t-blue">[STEP 1]</span> <span class="t-muted">HYBRID RETRIEVAL</span>
+  <span class="t-blue">[QDRANT]</span>   <span class="t-muted">Vector search: 12 ontology concepts</span>
+  <span class="t-blue">[NEO4J]</span>    <span class="t-muted">Graph traversal: 34 taxonomic edges</span>
+  <span class="t-muted">Fusion: α=0.7 vector + 0.3 graph</span>
+
+<span class="t-blue">[STEP 2]</span> <span class="t-muted">DIFFERENTIAL ASSESSMENT</span>
+  <span class="t-blue">[LLM]</span>      <span class="t-muted">Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)</span>
+
+<span class="t-blue">[STEP 3]</span> <span class="t-muted">SAFETY VERIFY</span>
+  <span class="t-red">[FAIL]</span>     <span class="t-red">Neo4j edge lung_ca→metastasis missing</span>
+
+<span class="t-blue">[STEP 4]</span> <span class="t-muted">SELF-CORRECTION (1/3)</span>
+  <span class="t-blue">[REGEN]</span>    <span class="t-muted">Feed violations + reasoning trace back to model</span>
+  <span class="t-purple">[META-COG]</span> <span class="t-muted">Confidence: 0.82 → 0.72 (decay -0.1)</span>
+
+<span class="t-green">[PASS]</span>       <span class="t-green">Corrected path validated by all verifiers</span>
+<span class="t-green">[AUDIT]</span>      <span class="t-green">Trace committed. Zero PHI persisted.</span></div>
+
+    <h3 style="font-size:18px; font-weight:500; margin:32px 0 16px; color:var(--text);">Secondary anchor</h3>
+    <table class="meta-table">
+      <tr><td class="meta-label">System</td><td class="meta-value">Flow-Matching Protein Binder Generator</td></tr>
+      <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/flow-matching-protein-binder" target="_blank" rel="noopener">aragit/flow-matching-protein-binder</a> <span style="font-size:12px; color:var(--green);">Public</span></td></tr>
+      <tr><td class="meta-label">Stack</td><td class="meta-value">PyTorch, Biopython, Flow Matching, FoldSeek</td></tr>
+    </table>
+
+    <div class="term-block"><span class="t-blue">[FLOW]</span>         <span class="t-muted">ODE integration: t=0 → t=1 (20-step RK4)</span>
+<span class="t-blue">[NEURAL]</span>       <span class="t-muted">Predicting continuous vector fields for backbone generation</span>
+<span class="t-green">[VALIDATE]</span>     <span class="t-muted">Symbolic biophysical constraints: clash score, Rg, fold classification</span>
+<span class="t-red">[CRITIQUE]</span>     <span class="t-red">Structural violation: Alpha-helix overlap at residue 42</span>
+<span class="t-purple">[META-COG]</span>     <span class="t-muted">Decaying confidence (-0.15), injecting error trace</span>
+<span class="t-blue">[REGENERATE]</span>   <span class="t-muted">Re-running flow with updated tensor boundaries</span>
+<span class="t-green">[PASS]</span>         <span class="t-green">RMSD 1.2Å | Docking: -8.7 kcal/mol | 100 binders exported</span></div>
+  </div>
+</section>
+
+<!-- TYPE 5: THE ARBITER -->
+<section class="arch-section" id="type5">
+  <div class="arch-wrap">
+    <div class="type-marker" style="color:var(--green);">TYPE 5</div>
+    <h2 class="type-title">THE ARBITER <span class="type-badge green">Academic Type 5 · Symbolic ↔ Neural</span></h2>
+    <div class="type-meta"><span class="type-meta-dot" style="background:var(--green);"></span> Competitive markets &amp; dynamic environments</div>
+    <div class="type-meta">Stack focus: Dominant Tool Registry (03) and Governance (06)</div>
+    <p class="type-desc">Parallel symbolic and neural tracks interact continuously. Neither dominates; a formal mathematical engine arbitrates conflicts to maintain system invariants. When multiple autonomous agents compete, trusting heuristics or unconstrained model outputs introduces unpredictable economic risk. Neural agents maximize individual objectives, but a compiled game-theoretic engine enforces absolute structural boundaries.</p>
+
+    <div class="term-block flow-diagram"><span class="t-blue">[Neural Agent Swarm]</span> → <span class="t-blue">[Divergent Strategies]</span> → <span class="t-green">[Deterministic Nash / VCG Engine]</span>
+        <span class="t-muted">▲</span>                                                  <span class="t-muted">│</span>
+        <span class="t-muted">└────────── [Mathematical Rewards / Limits] ───────┘</span></div>
+
+    <table class="meta-table">
+      <tr><td class="meta-label">System</td><td class="meta-value">Nash Marketing Agents</td></tr>
+      <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener">aragit/agentic-nash-marketing</a> <span style="font-size:12px; color:var(--green);">Public</span></td></tr>
+      <tr><td class="meta-label">Tests</td><td class="meta-value">49 property-based tests passed</td></tr>
+      <tr><td class="meta-label">Env</td><td class="meta-value">Docker production-ready</td></tr>
+    </table>
+
+    <div class="term-block"><span class="t-blue">[ROUND 1]</span>     <span class="t-muted">Spawning competitive neural persona tracks</span>
+<span class="t-blue">[NEURAL]</span>      <span class="t-muted">Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70</span>
+
+<span class="t-green">[ARBITRATE]</span>   <span class="t-muted">Invoking compiled symbolic VCG Auction Engine</span>
+<span class="t-green">[EXECUTE]</span>     <span class="t-muted">Winner: Agent-C allocated dominant traffic slot</span>
+<span class="t-purple">[MATHEMATICS]</span> <span class="t-muted">Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)</span>
+<span class="t-green">[VERIFY]</span>      <span class="t-green">Asserting: paid_price ≤ bid_valuation ✓</span>
+
+<span class="t-purple">[NASH SOLVER]</span> <span class="t-muted">Executing SciPy multi-variate optimization over strategy spaces</span>
+<span class="t-green">[CONVERGENCE]</span> <span class="t-green">Stable equilibrium at Round 41 (Δu &lt; 0.01)</span>
+
+<span class="t-green">[TEST]</span>        <span class="t-green">49/49 property-based tests passed</span></div>
+
+    <h3 style="font-size:16px; font-weight:500; margin:24px 0 12px; color:var(--text);">Property-based validation guarantees</h3>
+    <ul class="arch-list">
+      <li><span style="color:var(--green);">→</span> <span><strong>Monotonicity:</strong> Higher CPA → controlled scale progression</span></li>
+      <li><span style="color:var(--green);">→</span> <span><strong>Individual rationality:</strong> No overpayment; hard budget guardrails</span></li>
+      <li><span style="color:var(--green);">→</span> <span><strong>Nash bounds:</strong> Convergence within ε-utility tolerance</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CROSS-DOMAIN MATRIX -->
+<section class="arch-section" id="matrix">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">Cross-Domain Composable Matrix</h2>
+    <p class="arch-section-intro">Because capabilities are decoupled into normalized layers, the same architectural blueprints transfer across domains.</p>
+    <div class="arch-table-wrap">
+      <table class="arch-table">
+        <thead><tr><th>Layer</th><th>Clinical Oncology (Type 3)</th><th>Molecular Discovery (Type 4)</th><th>Algorithmic Marketing (Type 5)</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">07 // Meta-cognition</td><td>Diagnostic confidence tracking</td><td>Fold reliability scores</td><td>Win-rate convergence tracking</td></tr>
+          <tr><td class="mono">06 // Governance</td><td>OPA/Rego dosing boundaries</td><td>Biophysical clash &amp; RMSD limits</td><td>VCG truthfulness &amp; budget invariants</td></tr>
+          <tr><td class="mono">05 // Execution</td><td>DAG-orchestrated treatment auth</td><td>Structure file generation</td><td>Traffic allocation commits</td></tr>
+          <tr><td class="mono">04 // Reasoning</td><td>Deterministic graph routing</td><td>Flow-matching ODE integration</td><td>LLM strategy proposal cycles</td></tr>
+          <tr><td class="mono">03 // Tool Registry</td><td>SNOMED-CT / NCCN calculators</td><td>Biopython validation scripts</td><td>SciPy Nash / VCG engine</td></tr>
+          <tr><td class="mono">02 // Memory</td><td>Episodic health records</td><td>Structural coordinate DB</td><td>Campaign performance history</td></tr>
+          <tr><td class="mono">01 // Perception</td><td>FHIR ingestion / clinical NLP</td><td>PDB structure parsing</td><td>Market signal ingestion</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- EDGE-FIRST -->
+<section class="arch-section" id="edge">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">The Edge-First Infrastructure</h2>
+    <p class="type-desc">Real-world systems cannot rely entirely on centralized cloud APIs. We develop compilation pipelines that push neuro-symbolic execution to low-power edge infrastructure.</p>
+
+    <table class="meta-table">
+      <tr><td class="meta-label">System</td><td class="meta-value">Edge SLM Optimizer</td></tr>
+      <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener">aragit/edge-slm-optimizer</a> <span style="font-size:12px; color:var(--green);">Public</span></td></tr>
+      <tr><td class="meta-label">Target</td><td class="meta-value">ONNX Runtime Mobile / ExecuTorch</td></tr>
+    </table>
+
+    <div class="term-block"><span class="t-blue">[QUANT]</span>  <span class="t-muted">FP32 → INT8 (static) → INT4 (dynamic)</span>
+         <span class="t-muted">└─ Perplexity: 12.4 → 13.8 (&lt;15% degradation)</span>
+
+<span class="t-blue">[ONNX]</span>   <span class="t-muted">Cross-platform CPU build</span>
+<span class="t-blue">[EXECUTORCH]</span> <span class="t-muted">ARM NEON delegate compiled</span>
+
+<span class="t-green">[RPI5]</span>   <span class="t-green">Latency: 42ms/token | Power: 3.8W</span>
+<span class="t-blue">[SPEC]</span>   <span class="t-muted">Draft model → 2× decode speedup</span>
+<span class="t-green">[PASS]</span>   <span class="t-green">All accuracy gates cleared</span></div>
+
+    <a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
+  </div>
+</section>
+
+<!-- RESEARCH FRONTIER -->
+<section class="arch-section" id="research">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">The Research Frontier</h2>
+    <p class="type-desc">For unconstrained scientific discovery, our multi-agent research environments use foundational model coordination with the Model Context Protocol (MCP). The core engine dynamically spins up secure execution containers, pulling literature, running calculations, updating citation graphs, and self-correcting based on formal logic validations.</p>
+
+    <table class="meta-table">
+      <tr><td class="meta-label">System</td><td class="meta-value">Autonomous Research Synthesizer</td></tr>
+      <tr><td class="meta-label">Repo</td><td class="meta-value">internal/autonomous-research-synthesizer <span class="private-badge"><i class="fas fa-lock"></i> Private</span></td></tr>
+      <tr><td class="meta-label">Stack</td><td class="meta-value">Gemini Pro, MCP, E2B Sandbox, Neo4j</td></tr>
+    </table>
+
+    <div class="term-block"><span class="t-blue">[THINK]</span>    <span class="t-muted">"Cross-reference Metformin with mTOR pathways"</span>
+<span class="t-blue">[ACT]</span>      <span class="t-muted">search_pubmed(query="Metformin AND mTOR inhibition")</span>
+<span class="t-blue">[OBSERVE]</span>  <span class="t-muted">"412 papers. Abstract 1 implies direct causality."</span>
+<span class="t-blue">[BELIEF]</span>   <span class="t-muted">"Graph node weight: +0.45 causality"</span>
+<span class="t-green">[VERIFY]</span>   <span class="t-green">Citation check + conflict detection</span>
+<span class="t-purple">[HITL]</span>     <span class="t-purple">Novelty > 3σ → human review gate</span></div>
+  </div>
+</section>
+
+<!-- AXIOMIS -->
+<div class="axiomis-section" id="axiomis">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title" style="font-size:28px;">AXIOMIS</h2>
+    <p class="type-desc">AXIOMIS is our Type 2 (Symbolic[Neuro]) clinical intelligence system with a deterministic FHIR state machine at its core. We are migrating toward Type 6 (Neuro[Symbolic]) to enable more flexible reasoning in open-ended diagnostic scenarios — but Type 2 safety invariants are non-negotiable:</p>
+
+    <ul class="check-list">
+      <li>
+        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Every treatment plan compiles to a DAG before execution.
+      </li>
+      <li>
+        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Every node is pre-flight checked by OPA/Rego policies.
+      </li>
+      <li>
+        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Every execution trace is committed to an immutable ledger.
+      </li>
+      <li>
+        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Every override of a neural recommendation requires explicit symbolic justification.
+      </li>
+    </ul>
+
+    <p class="axiomis-closing">This is how we cross the Planning Rubicon without crossing the safety line.</p>
+  </div>
 </div>
 
-<section>
-  <div class="container">
-    <div class="layer">
-      <div class="layer-content">
-        <span class="layer-num"><i class="fas fa-microchip"></i> PATTERN 01 // THE FORTRESS</span>
-        <h3>The Deterministic Core</h3>
-        <p><strong>Use Case: Healthcare, FinOps, Manufacturing.</strong><br>
-        In high-stakes environments, the "Planning Rubicon" must be crossed. The LLM acts purely as a Strategist, distilling its intent into a Directed Acyclic Graph (DAG). Execution is handled by stateless tools governed by Policy-as-Code. There is zero room for autonomous drift.</p>
-        <ul>
-          <li><strong>Pre-Flight Shield:</strong> Open Policy Agent (OPA) intercepts and mathematically blocks illegal actions before execution.</li>
-          <li><strong>Zero Data Drift:</strong> Operational memory is highly volatile (Redis), while execution traces are committed to an immutable audit ledger.</li>
-        </ul>
-      </div>
-      <div class="mac-window">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">opa_firewall.rego</div>
-        </div>
-        <pre><code><span class="comment"># The Shield mathematically blocks illegal nodes.</span>
-<span class="keyword">package</span> enterprise.governance
-
-<span class="keyword">default</span> allow_commit = <span class="keyword">false</span>
-
-<span class="comment"># Block ERP updates if variance exceeds 5%</span>
-deny_commit[msg] {
-    input.action == <span class="string">"UPDATE_ERP_LEDGER"</span>
-    input.logistics_variance > <span class="number">0.05</span>
-    msg := <span class="string">"FATAL: AI plan exceeds financial risk tolerance."</span>
-}</code></pre>
-      </div>
-    </div>
-    <div class="image-placeholder">
-      
-    </div>
-  </div>
-</section>
-
-<section style="background: rgba(20,20,20,0.4);">
-  <div class="container">
-    <div class="layer reverse">
-      <div class="layer-content">
-        <span class="layer-num" style="color:#ffbd2e;"><i class="fas fa-users-rays"></i> PATTERN 02 // THE FORGE</span>
-        <h3>The Silicon Colosseum</h3>
-        <p><strong>Use Case: Ad-Tech, Marketing, Creative Strategy.</strong><br>
-        When ROI depends on continuous novelty, rigid DAGs fail. We deploy competitive multi-agent swarms utilizing stochastic persona mapping. Agents debate and generate diverse outputs, constrained not by firewalls, but by live performance data.</p>
-        <ul>
-          <li><strong>Diversity of Thought:</strong> Specialized agents (e.g., 'Logic' vs 'Urgency') compete to solve the same creative brief.</li>
-          <li><strong>Reward-Driven Control:</strong> Multi-Armed Bandits (MAB) acting as the "Judge," autonomously reallocating budget to the winning persona.</li>
-        </ul>
-      </div>
-      <div class="live-terminal">
-        > [ORCHESTRATOR] Spawning Competitive Personas...<br>
-        > [SPAWN] Agent_A (Analytical) &amp; Agent_B (Provocative)<br>
-        > [DEBATE] Iterating on Campaign Hooks...<br>
-        > [DEPLOY] Testing 4 variations against live traffic.<br>
-        > [MAB_STREAM] Real-time conversion ping: Var_B converted.<br>
-        > [THOMPSON_SAMPLE] Updating alpha/beta distribution.<br>
-        > [ACTION] Reward signal confirms Var_B dominant.<br>
-        > [SHIFT] Reallocating 75% traffic to Provocative Persona.<span class="blink-cursor"></span>
-      </div>
-    </div>
-    <div class="image-placeholder">
-      
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="layer">
-      <div class="layer-content">
-        <span class="layer-num" style="color:#27c93f;"><i class="fas fa-magnifying-glass-chart"></i> PATTERN 03 // THE EXPLORER</span>
-        <h3>The Neural Forager</h3>
-        <p><strong>Use Case: Scientific Research, Alpha Generation, Data Mining.</strong><br>
-        For open-ended discovery, we release the constraints. The Forager utilizes self-directed ReAct (Reason + Act) loops to explore massive unstructured datasets, updating its internal "Belief State" dynamically as it encounters new information.</p>
-        <ul>
-          <li><strong>Autonomous Tool Use:</strong> The agent browses the web, writes SQL, and calls APIs dynamically without a pre-compiled plan.</li>
-          <li><strong>Recursive Belief Updating:</strong> Information retrieval modifies the agent's internal world-model, guiding the next exploratory action.</li>
-        </ul>
-      </div>
-      <div class="mac-window">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">forager_loop.py</div>
-        </div>
-        <pre><code><span class="comment"># Standard ReAct loop updating a belief state.</span>
-<span class="keyword">[THINK]</span> <span class="string">"I need to cross-reference Metformin with mTOR pathways."</span>
-<span class="keyword">[ACT]</span> <span class="property">search_pubmed</span>(query=<span class="string">"Metformin AND mTOR inhibition"</span>)
-<span class="keyword">[OBSERVE]</span> <span class="string">"Found 412 papers. Abstract 1 implies direct causality."</span>
-<span class="keyword">[BELIEF_UPDATE]</span> <span class="string">"Modifying graph node weight: +0.45 causality."</span>
-<span class="keyword">[THINK]</span> <span class="string">"Now, I should check ClinicalTrials.gov for active phases..."</span></code></pre>
-      </div>
-    </div>
-    <div class="image-placeholder">
-      
-    </div>
-  </div>
-</section>
-
-<section style="background: rgba(20,20,20,0.4); border-bottom: none;">
-  <div class="container">
-    <div class="layer reverse">
-      <div class="layer-content">
-        <span class="layer-num" style="color:#5fafff;"><i class="fas fa-clapperboard"></i> PATTERN 04 // THE STUDIO</span>
-        <h3>The Director-Actor</h3>
-        <p><strong>Use Case: Software Engineering, Content Production, UI/UX.</strong><br>
-        A collaborative dance between human creativity and AI scale. This architecture implements Human-In-The-Loop (HITL) Reflexion loops, where the system acts as an autonomous "Actor" generating prototypes, and the human acts as the "Director" providing soft-constraint feedback.</p>
-        <ul>
-          <li><strong>Self-Correction via Reflexion:</strong> The AI evaluates its own previous failures against human feedback to write better code/content in the next loop.</li>
-          <li><strong>Vibe-Based Optimization:</strong> Guardrails are fluid, aesthetic, and entirely defined by continuous human guidance.</li>
-        </ul>
-      </div>
-      <div class="live-terminal" style="color: #5fafff; border-color: rgba(95, 175, 255, 0.2); box-shadow: inset 0 0 15px rgba(95,175,255,0.05);">
-        > [ACTOR] Generating React Component v1.0...<br>
-        > [RENDER] UI preview rendered to staging port 3000.<br>
-        > [DIRECTOR] User input: "Make it punchier, dark mode, add animations."<br>
-        > [REFLEXION_CRITIQUE] "v1 was too bright and static. I will integrate Framer Motion and switch to #121212 background."<br>
-        > [ACTOR] Generating React Component v2.0...<br>
-        > [RENDER] UI updated. Awaiting Director approval...<span class="blink-cursor" style="background-color: #5fafff;"></span>
-      </div>
-    </div>
-    <div class="image-placeholder" style="margin: 50px auto; max-width: 800px; padding: 0 20px;">
-    <img src="masterarch.png" alt="The Agentic Architecture Spectrum: From Deterministic Core to Emergent Swarms" 
-         style="width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.7); display: block; margin: 0 auto;">
-  </div>
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 20px;">Which architecture fits your operational risk?</h2>
-    <p style="color: var(--gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px auto;">Whether you need a high-liability deterministic fortress or an exploratory multi-agent swarm, let's build the right foundation.</p>
-    <a href="index.html#contact" class="btn-primary">Request an Architecture Consultation <i class="fa-solid fa-arrow-right"></i></a>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+<!-- FOOTER -->
+<footer style="border-top:1px solid var(--sep); padding:32px 0; text-align:center;">
+  <div class="arch-wrap">
+    <p style="font-size:13px; color:var(--muted);">© 2026 Arash Nicoomanesh · <a href="/">aragit.github.io</a></p>
   </div>
 </footer>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+// Sticky nav scroll effect
+const nav = document.getElementById('archNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Mobile hamburger
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => links.classList.toggle('open'));
+</script>
 </body>
 </html>
