@@ -149,7 +149,7 @@
     .terminal-body {
       padding: 14px 16px;
       color: #cccccc;
-      white-space: pre;
+      line-height: 1.7;
       overflow-x: auto;
     }
 
@@ -289,17 +289,6 @@
     <div class="type-meta">Stack focus: Dominant Governance (06) and Execution (05)</div>
     <p class="type-desc">The symbolic core owns execution. Neural networks are strictly nested inside and subordinate to deterministic guards. In high-stakes environments, an LLM must never directly control execution paths. The neural engine acts as an upstream strategist, parsing complex inputs to propose intent. This intent is compiled into a Directed Acyclic Graph (DAG). Before any node executes, a stateless symbolic validation layer evaluates the plan against hard mathematical and physiological constraints.</p>
 
-    <!-- Flow diagram -->
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">execution flow</span>
-      </div>
-      <div class="terminal-body"><span class="t-blue">[User Intent]</span> → <span class="t-blue">[Neural Planner]</span> → <span class="t-blue">[Proposed DAG]</span> → <span class="t-red">[Symbolic OPA Veto]</span> → <span class="t-blue">[DAG Engine]</span> → <span class="pass">[Immutable Ledger]</span>
-                                            │
-                                    <span class="fail">(Violation → Hard Refusal)</span></div>
-    </div>
-
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Clinical Oncology Agent</td></tr>
       <tr><td class="meta-label">Repo</td><td class="meta-value">internal/clinical-oncology-core <span class="private-badge"><i class="fas fa-lock"></i> Private</span></td></tr>
@@ -310,38 +299,24 @@
     <div class="terminal-box">
       <div class="terminal-header">
         <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">clinical oncology trace</span>
+        <div class="terminal-title">clinical-oncology — cardiotoxicity-guard</div>
       </div>
-      <div class="terminal-body"><span class="cmd">[PERCEIVE]</span>   Ingest EMR: ER/PR+, HER2-, Echocardiogram
-<span class="cmd">[NORMALIZE]</span>  Extract semantic parameters to validated clinical vectors
-<span class="cmd">[NEURAL]</span>     Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)
-<span class="fail">[GOVERN]</span>     <span class="fail">CRITICAL VETO via cardiotoxicity_guard.rego</span>
-             Left Ventricular Ejection Fraction (LVEF) = 48% (&lt; 50% threshold)
-<span class="cmd">[RE-PLAN]</span>    Trigger recursive neural alternative selection
-<span class="cmd">[GOVERN]</span>     Evaluating Alternative: TC (Docetaxel) — safety cleared
-<span class="pass">[COMMIT]</span>     State committed to immutable ledger. Awaiting oncologist sign-off.</div>
-    </div>
-
-    <!-- Code snippet -->
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">cardiotoxicity_guard.rego</span>
+      <div class="terminal-body">
+        <span class="cmd">$ axiomics run --case=emr-0247 --mode=deterministic</span><br>
+        <span class="cmt"># --- PERCEPTION ---</span><br>
+        <span class="cmd">[PERCEIVE]</span> Ingest EMR: ER/PR+, HER2-, Echocardiogram<br>
+        <span class="cmd">[NORMALIZE]</span> Extract semantic parameters to validated clinical vectors<br>
+        <span class="cmt"># --- NEURAL PLANNING ---</span><br>
+        <span class="cmd">[NEURAL]</span> Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)<br>
+        <span class="cmt"># --- GOVERNANCE VETO ---</span><br>
+        <span class="fail">[GOVERN]</span> <span class="fail">CRITICAL VETO via cardiotoxicity_guard.rego</span><br>
+        &nbsp;&nbsp;└─ <span class="str">LVEF</span> = 48% (&lt; 50% threshold — anthracycline blocked)<br>
+        <span class="cmt"># --- RECOVERY ---</span><br>
+        <span class="cmd">[RE-PLAN]</span> Trigger recursive neural alternative selection<br>
+        <span class="cmd">[GOVERN]</span> Evaluating Alternative: TC (Docetaxel) — safety cleared<br>
+        <span class="pass">[COMMIT]</span> State committed to immutable ledger. Awaiting oncologist sign-off.<br>
+        <span class="cmd">[STATUS]</span> <span class="pass">TREATMENT_PLAN_VALIDATED</span>
       </div>
-      <div class="terminal-body"><span class="cmt"># The Symbolic Citadel Guardrail</span>
-<span class="kwd">package</span> enterprise.governance
-
-<span class="kwd">default</span> allow_treatment_node = <span class="num">false</span>
-
-allow_treatment_node {
-    <span class="kwd">not</span> cardiotoxicity_risk_detected
-    valid_auth_signature_present
-}
-
-cardiotoxicity_risk_detected {
-    input.drug_class == <span class="str">"anthracycline"</span>
-    input.lvef_percentage &lt; <span class="num">50</span>
-}</div>
     </div>
   </div>
 </section>
@@ -355,17 +330,6 @@ cardiotoxicity_risk_detected {
     <div class="type-meta">Stack focus: Dominant Reasoning (04) and Meta-Cognition (07)</div>
     <p class="type-desc">The neural core drives open-ended exploration. Symbolic verifiers — ontologies, graph constraints, biophysical validators — are embedded directly inside the neural reasoning loop. When problems are too complex for static DAGs, the neural core must lead using dynamic planning cycles (ReAct, LangGraph state machines). To prevent drift, symbolic components are placed inside the model's observation loop, not outside it.</p>
 
-    <!-- Flow diagram -->
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">cyclic reasoning loop</span>
-      </div>
-      <div class="terminal-body"><span class="t-muted">               ┌──────────────────────────────────────┐</span>
-<span class="t-muted">               ▼                                      │</span>
-<span class="cmd">[Neural Reasoning Loop]</span> → <span class="cmd">[Proposed Action]</span> → <span class="pass">[Symbolic Graph Verifier]</span></div>
-    </div>
-
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
       <tr><td class="meta-label">Repo</td><td class="meta-value">internal/speculative-graph-rag <span class="private-badge"><i class="fas fa-lock"></i> Private</span></td></tr>
@@ -376,25 +340,25 @@ cardiotoxicity_risk_detected {
     <div class="terminal-box">
       <div class="terminal-header">
         <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">graphrag reasoning trace</span>
+        <div class="terminal-title">speculative-graphrag — differential-assessment</div>
       </div>
-      <div class="terminal-body"><span class="cmd">[STEP 1]</span> HYBRID RETRIEVAL
-  <span class="cmd">[QDRANT]</span>   Vector search: 12 ontology concepts
-  <span class="cmd">[NEO4J]</span>    Graph traversal: 34 taxonomic edges
-  Fusion: α=0.7 vector + 0.3 graph
-
-<span class="cmd">[STEP 2]</span> DIFFERENTIAL ASSESSMENT
-  <span class="cmd">[LLM]</span>      Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)
-
-<span class="cmd">[STEP 3]</span> SAFETY VERIFY
-  <span class="fail">[FAIL]</span>     Neo4j edge lung_ca→metastasis missing
-
-<span class="cmd">[STEP 4]</span> SELF-CORRECTION (1/3)
-  <span class="cmd">[REGEN]</span>    Feed violations + reasoning trace back to model
-  <span class="t-purple">[META-COG]</span> Confidence: 0.82 → 0.72 (decay -0.1)
-
-<span class="pass">[PASS]</span>       Corrected path validated by all verifiers
-<span class="pass">[AUDIT]</span>      Trace committed. Zero PHI persisted.</div>
+      <div class="terminal-body">
+        <span class="cmd">$ graphrag assess --patient=demo-0091 --mode=speculative</span><br>
+        <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
+        <span class="cmd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
+        <span class="cmd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
+        &nbsp;&nbsp;└─ Fusion: α=0.7 vector + 0.3 graph<br>
+        <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
+        <span class="cmd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
+        <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
+        <span class="fail">[FAIL]</span> <span class="fail">Neo4j edge lung_ca→metastasis missing</span><br>
+        <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
+        <span class="cmd">[REGEN]</span> Feed violations + reasoning trace back to model<br>
+        <span class="kwd">[META-COG]</span> Confidence: 0.82 → 0.72 (decay -0.1)<br>
+        <span class="pass">[PASS]</span> Corrected path validated by all verifiers<br>
+        <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
+        <span class="cmd">[STATUS]</span> <span class="pass">DIFFERENTIAL_RESOLVED</span>
+      </div>
     </div>
 
     <h3 style="font-size:18px; font-weight:500; margin:32px 0 16px; color:var(--text);">Secondary anchor</h3>
@@ -403,20 +367,6 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/flow-matching-protein-binder" target="_blank" rel="noopener">aragit/flow-matching-protein-binder</a> <span style="font-size:12px; color:var(--green);">Public</span></td></tr>
       <tr><td class="meta-label">Stack</td><td class="meta-value">PyTorch, Biopython, Flow Matching, FoldSeek</td></tr>
     </table>
-
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">protein binder flow trace</span>
-      </div>
-      <div class="terminal-body"><span class="cmd">[FLOW]</span>         ODE integration: t=0 → t=1 (20-step RK4)
-<span class="cmd">[NEURAL]</span>       Predicting continuous vector fields for backbone generation
-<span class="pass">[VALIDATE]</span>     Symbolic biophysical constraints: clash score, Rg, fold classification
-<span class="fail">[CRITIQUE]</span>     Structural violation: Alpha-helix overlap at residue 42
-<span class="t-purple">[META-COG]</span>     Decaying confidence (-0.15), injecting error trace
-<span class="cmd">[REGENERATE]</span>   Re-running flow with updated tensor boundaries
-<span class="pass">[PASS]</span>         RMSD 1.2Å | Docking: -8.7 kcal/mol | 100 binders exported</div>
-    </div>
   </div>
 </section>
 
@@ -429,17 +379,6 @@ cardiotoxicity_risk_detected {
     <div class="type-meta">Stack focus: Dominant Tool Registry (03) and Governance (06)</div>
     <p class="type-desc">Parallel symbolic and neural tracks interact continuously. Neither dominates; a formal mathematical engine arbitrates conflicts to maintain system invariants. When multiple autonomous agents compete, trusting heuristics or unconstrained model outputs introduces unpredictable economic risk. Neural agents maximize individual objectives, but a compiled game-theoretic engine enforces absolute structural boundaries.</p>
 
-    <!-- Flow diagram -->
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">arbitration flow</span>
-      </div>
-      <div class="terminal-body"><span class="cmd">[Neural Agent Swarm]</span> → <span class="cmd">[Divergent Strategies]</span> → <span class="pass">[Deterministic Nash / VCG Engine]</span>
-        <span class="t-muted">▲</span>                                                  <span class="t-muted">│</span>
-        <span class="t-muted">└────────── [Mathematical Rewards / Limits] ───────┘</span></div>
-    </div>
-
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Nash Marketing Agents</td></tr>
       <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener">aragit/agentic-nash-marketing</a> <span style="font-size:12px; color:var(--green);">Public</span></td></tr>
@@ -451,20 +390,23 @@ cardiotoxicity_risk_detected {
     <div class="terminal-box">
       <div class="terminal-header">
         <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">nash marketing trace</span>
+        <div class="terminal-title">nash-marketing — vcg-auction-engine</div>
       </div>
-      <div class="terminal-body"><span class="cmd">[ROUND 1]</span>     Spawning competitive neural persona tracks
-<span class="cmd">[NEURAL]</span>      Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70
-
-<span class="pass">[ARBITRATE]</span>   Invoking compiled symbolic VCG Auction Engine
-<span class="pass">[EXECUTE]</span>     Winner: Agent-C allocated dominant traffic slot
-<span class="t-purple">[MATHEMATICS]</span> Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)
-<span class="pass">[VERIFY]</span>      Asserting: paid_price ≤ bid_valuation ✓
-
-<span class="t-purple">[NASH SOLVER]</span> Executing SciPy multi-variate optimization over strategy spaces
-<span class="pass">[CONVERGENCE]</span> Stable equilibrium at Round 41 (Δu &lt; 0.01)
-
-<span class="pass">[TEST]</span>        49/49 property-based tests passed</div>
+      <div class="terminal-body">
+        <span class="cmd">$ nash run --agents=4 --rounds=50 --market=display-ads</span><br>
+        <span class="cmt"># --- ROUND 1: PERSONA SPAWN ---</span><br>
+        <span class="cmd">[NEURAL]</span> Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70<br>
+        <span class="cmt"># --- ARBITRATION ---</span><br>
+        <span class="pass">[ARBITRATE]</span> Invoking compiled symbolic VCG Auction Engine<br>
+        <span class="pass">[EXECUTE]</span> Winner: Agent-C allocated dominant traffic slot<br>
+        <span class="kwd">[MATHEMATICS]</span> Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)<br>
+        <span class="pass">[VERIFY]</span> Asserting: paid_price ≤ bid_valuation ✓<br>
+        <span class="cmt"># --- CONVERGENCE ---</span><br>
+        <span class="kwd">[NASH SOLVER]</span> Executing SciPy multi-variate optimization over strategy spaces<br>
+        <span class="pass">[CONVERGENCE]</span> Stable equilibrium at Round 41 (Δu &lt; 0.01)<br>
+        <span class="pass">[TEST]</span> 49/49 property-based tests passed<br>
+        <span class="cmd">[STATUS]</span> <span class="pass">NASH_EQUILIBRIUM_REACHED</span>
+      </div>
     </div>
 
     <h3 style="font-size:16px; font-weight:500; margin:24px 0 12px; color:var(--text);">Property-based validation guarantees</h3>
@@ -510,22 +452,6 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Target</td><td class="meta-value">ONNX Runtime Mobile / ExecuTorch</td></tr>
     </table>
 
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">edge compilation trace</span>
-      </div>
-      <div class="terminal-body"><span class="cmd">[QUANT]</span>  FP32 → INT8 (static) → INT4 (dynamic)
-         └─ Perplexity: 12.4 → 13.8 (&lt;15% degradation)
-
-<span class="cmd">[ONNX]</span>   Cross-platform CPU build
-<span class="cmd">[EXECUTORCH]</span> ARM NEON delegate compiled
-
-<span class="pass">[RPI5]</span>   Latency: 42ms/token | Power: 3.8W
-<span class="cmd">[SPEC]</span>   Draft model → 2× decode speedup
-<span class="pass">[PASS]</span>   All accuracy gates cleared</div>
-    </div>
-
     <a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
   </div>
 </section>
@@ -541,19 +467,6 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Repo</td><td class="meta-value">internal/autonomous-research-synthesizer <span class="private-badge"><i class="fas fa-lock"></i> Private</span></td></tr>
       <tr><td class="meta-label">Stack</td><td class="meta-value">Gemini Pro, MCP, E2B Sandbox, Neo4j</td></tr>
     </table>
-
-    <div class="terminal-box">
-      <div class="terminal-header">
-        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-        <span class="terminal-title">research synthesizer trace</span>
-      </div>
-      <div class="terminal-body"><span class="cmd">[THINK]</span>    "Cross-reference Metformin with mTOR pathways"
-<span class="cmd">[ACT]</span>      search_pubmed(query="Metformin AND mTOR inhibition")
-<span class="cmd">[OBSERVE]</span>  "412 papers. Abstract 1 implies direct causality."
-<span class="cmd">[BELIEF]</span>   "Graph node weight: +0.45 causality"
-<span class="pass">[VERIFY]</span>   Citation check + conflict detection
-<span class="t-purple">[HITL]</span>     Novelty > 3σ → human review gate</div>
-    </div>
   </div>
 </section>
 
