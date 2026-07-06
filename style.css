@@ -11273,11 +11273,12 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #home.hero .hero-left .hero-tagline {
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
+  font-size: 1.15rem !important;
+  font-weight: 500 !important;
   color: #ffffff !important;
   margin: 0 0 6px 0 !important;
   text-align: left !important;
+  line-height: 1.4 !important;
 }
 
 #home.hero .hero-left .hero-sub {
