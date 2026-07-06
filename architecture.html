@@ -16,7 +16,8 @@
       --green: #3fb950;
       --red: #f85149;
       --purple: #d2a8ff;
-      --terminal: #161b22;
+      --terminal: #090909;
+      --term-header: #1a1a1a;
       --border: #30363d;
       --sep: #21262d;
       --hover-border: #484f58;
@@ -77,7 +78,7 @@
       transition: border-color 150ms ease;
     }
     .layer-bar:hover { border-color: var(--hover-border); }
-    .layer-num { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 14px; color: var(--blue); min-width: 28px; }
+    .layer-num { font-family: 'Courier New', Consolas, monospace; font-size: 14px; color: var(--blue); min-width: 28px; }
     .layer-name { font-size: 16px; font-weight: 500; color: var(--text); min-width: 160px; }
     .layer-desc { font-size: 14px; color: var(--muted); }
 
@@ -90,12 +91,12 @@
     }
     .arch-table td { padding: 12px 16px; border-bottom: 1px solid var(--sep); color: var(--muted); vertical-align: top; }
     .arch-table td:first-child { color: var(--text); font-weight: 500; }
-    .arch-table td.mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; color: var(--blue); font-size: 13px; }
-    .arch-table tr:hover td { background: var(--terminal); }
+    .arch-table td.mono { font-family: 'Courier New', Consolas, monospace; color: var(--blue); font-size: 13px; }
+    .arch-table tr:hover td { background: rgba(9,9,9,0.5); }
 
     /* TYPE MARKER */
     .type-marker {
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-family: 'Courier New', Consolas, monospace;
       font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px;
     }
     .type-title { font-size: 28px; font-weight: 500; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
@@ -111,24 +112,66 @@
     .type-meta-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
     .type-desc { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 680px; margin-bottom: 24px; }
 
-    /* TERMINAL BLOCKS */
-    .term-block {
-      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
-      padding: 16px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      font-size: 13px; line-height: 1.6; overflow-x: auto; white-space: pre; margin-bottom: 24px;
+    /* TERMINAL BOX — matches main site pattern */
+    .terminal-box {
+      background: var(--terminal);
+      border: 1px solid #333;
+      border-radius: 6px;
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      overflow: hidden;
+      margin-bottom: 24px;
       transition: border-color 150ms ease;
     }
-    .term-block:hover { border-color: var(--hover-border); }
+    .terminal-box:hover { border-color: var(--hover-border); }
+    .terminal-header {
+      background: var(--term-header);
+      padding: 8px 12px;
+      display: flex;
+      gap: 6px;
+      border-bottom: 1px solid #252525;
+      align-items: center;
+    }
+    .terminal-title {
+      margin: 0 auto;
+      color: #666;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    .terminal-body {
+      padding: 14px 16px;
+      color: #cccccc;
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    /* Syntax colors — match main site */
+    .cmd { color: #f2f2f2; }
+    .kwd { color: #c586c0; }
+    .str { color: #ce9178; }
+    .num { color: #b5cea8; }
+    .cmt { color: #6a9955; }
+    .pass { color: #4ade80; font-weight: bold; }
+    .fail { color: #f87171; font-weight: bold; }
+    .warn { color: #facc15; font-weight: bold; }
     .t-blue { color: var(--blue); }
     .t-green { color: var(--green); }
     .t-red { color: var(--red); }
     .t-purple { color: var(--purple); }
     .t-muted { color: var(--muted); }
 
-    /* CODE BLOCKS */
+    /* CODE BLOCK */
     .code-block {
-      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
-      padding: 16px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      background: var(--terminal); border: 1px solid #333; border-radius: 6px;
+      padding: 16px; font-family: 'Courier New', Consolas, monospace;
       font-size: 13px; line-height: 1.6; overflow-x: auto; white-space: pre; margin-bottom: 24px;
     }
     .code-kw { color: #ff7b72; }
@@ -159,32 +202,18 @@
     }
     .gh-btn:hover { background: rgba(88,166,255,0.1); text-decoration: none; }
 
-    /* CHECKMARKS */
-    .check-list { list-style: none; margin: 16px 0; }
-    .check-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 16px; color: var(--text); }
-    .check-icon { flex-shrink: 0; margin-top: 3px; }
-
     /* BULLET LIST */
     .arch-list { list-style: none; margin: 16px 0; }
     .arch-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 15px; color: var(--muted); }
     .arch-list li strong { color: var(--text); font-weight: 500; }
-
-    /* AXIOMIS SECTION */
-    .axiomis-section {
-      background: var(--terminal); border-top: 2px solid var(--blue);
-      padding: 56px 0; margin-top: 56px;
-    }
-    .axiomis-closing { font-size: 18px; color: var(--text); font-weight: 500; font-style: italic; margin-top: 24px; }
-
-    /* FLOW DIAGRAMS */
-    .flow-diagram { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
 
     /* MOBILE */
     @media (max-width: 640px) {
       .arch-hero h1 { font-size: 24px; }
       .arch-section-title { font-size: 22px; }
       .type-title { font-size: 22px; }
-      .term-block, .code-block { font-size: 12px; padding: 12px; }
+      .terminal-box, .code-block { font-size: 12px; }
+      .terminal-body { padding: 12px; font-size: 11px; }
       .layer-bar { flex-wrap: wrap; gap: 4px; }
       .layer-name { min-width: auto; }
       .arch-nav-links { display: none; }
@@ -260,9 +289,16 @@
     <div class="type-meta">Stack focus: Dominant Governance (06) and Execution (05)</div>
     <p class="type-desc">The symbolic core owns execution. Neural networks are strictly nested inside and subordinate to deterministic guards. In high-stakes environments, an LLM must never directly control execution paths. The neural engine acts as an upstream strategist, parsing complex inputs to propose intent. This intent is compiled into a Directed Acyclic Graph (DAG). Before any node executes, a stateless symbolic validation layer evaluates the plan against hard mathematical and physiological constraints.</p>
 
-    <div class="term-block"><span class="t-blue">[User Intent]</span> → <span class="t-blue">[Neural Planner]</span> → <span class="t-blue">[Proposed DAG]</span> → <span class="t-red">[Symbolic OPA Veto]</span> → <span class="t-blue">[DAG Engine]</span> → <span class="t-green">[Immutable Ledger]</span>
-                                                    │
-                                            <span class="t-red">(Violation → Hard Refusal)</span></div>
+    <!-- Flow diagram -->
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">execution flow</span>
+      </div>
+      <div class="terminal-body"><span class="t-blue">[User Intent]</span> → <span class="t-blue">[Neural Planner]</span> → <span class="t-blue">[Proposed DAG]</span> → <span class="t-red">[Symbolic OPA Veto]</span> → <span class="t-blue">[DAG Engine]</span> → <span class="pass">[Immutable Ledger]</span>
+                                            │
+                                    <span class="fail">(Violation → Hard Refusal)</span></div>
+    </div>
 
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Clinical Oncology Agent</td></tr>
@@ -270,29 +306,43 @@
       <tr><td class="meta-label">Stack</td><td class="meta-value">FHIR R4, HL7 v2, OPA/Rego, DAG-orchestrated</td></tr>
     </table>
 
-    <div class="term-block"><span class="t-blue">[PERCEIVE]</span>   <span class="t-muted">Ingest EMR: ER/PR+, HER2-, Echocardiogram</span>
-<span class="t-blue">[NORMALIZE]</span>  <span class="t-muted">Extract semantic parameters to validated clinical vectors</span>
-<span class="t-blue">[NEURAL]</span>     <span class="t-muted">Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)</span>
-<span class="t-red">[GOVERN]</span>     <span class="t-red">CRITICAL VETO via cardiotoxicity_guard.rego</span>
-             <span class="t-muted">Left Ventricular Ejection Fraction (LVEF) = 48% (&lt; 50% threshold)</span>
-<span class="t-blue">[RE-PLAN]</span>    <span class="t-muted">Trigger recursive neural alternative selection</span>
-<span class="t-blue">[GOVERN]</span>     <span class="t-muted">Evaluating Alternative: TC (Docetaxel) — safety cleared</span>
-<span class="t-green">[COMMIT]</span>     <span class="t-green">State committed to immutable ledger. Awaiting oncologist sign-off.</span></div>
+    <!-- Terminal trace -->
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">clinical oncology trace</span>
+      </div>
+      <div class="terminal-body"><span class="cmd">[PERCEIVE]</span>   Ingest EMR: ER/PR+, HER2-, Echocardiogram
+<span class="cmd">[NORMALIZE]</span>  Extract semantic parameters to validated clinical vectors
+<span class="cmd">[NEURAL]</span>     Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)
+<span class="fail">[GOVERN]</span>     <span class="fail">CRITICAL VETO via cardiotoxicity_guard.rego</span>
+             Left Ventricular Ejection Fraction (LVEF) = 48% (&lt; 50% threshold)
+<span class="cmd">[RE-PLAN]</span>    Trigger recursive neural alternative selection
+<span class="cmd">[GOVERN]</span>     Evaluating Alternative: TC (Docetaxel) — safety cleared
+<span class="pass">[COMMIT]</span>     State committed to immutable ledger. Awaiting oncologist sign-off.</div>
+    </div>
 
-    <div class="code-block"><span class="code-cmt"># cardiotoxicity_guard.rego — The Symbolic Citadel Guardrail</span>
-<span class="code-kw">package</span> enterprise.governance
+    <!-- Code snippet -->
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">cardiotoxicity_guard.rego</span>
+      </div>
+      <div class="terminal-body"><span class="cmt"># The Symbolic Citadel Guardrail</span>
+<span class="kwd">package</span> enterprise.governance
 
-<span class="code-kw">default</span> allow_treatment_node = <span class="code-num">false</span>
+<span class="kwd">default</span> allow_treatment_node = <span class="num">false</span>
 
 allow_treatment_node {
-    <span class="code-kw">not</span> cardiotoxicity_risk_detected
+    <span class="kwd">not</span> cardiotoxicity_risk_detected
     valid_auth_signature_present
 }
 
 cardiotoxicity_risk_detected {
-    input.drug_class == <span class="code-str">"anthracycline"</span>
-    input.lvef_percentage &lt; <span class="code-num">50</span>
+    input.drug_class == <span class="str">"anthracycline"</span>
+    input.lvef_percentage &lt; <span class="num">50</span>
 }</div>
+    </div>
   </div>
 </section>
 
@@ -305,9 +355,16 @@ cardiotoxicity_risk_detected {
     <div class="type-meta">Stack focus: Dominant Reasoning (04) and Meta-Cognition (07)</div>
     <p class="type-desc">The neural core drives open-ended exploration. Symbolic verifiers — ontologies, graph constraints, biophysical validators — are embedded directly inside the neural reasoning loop. When problems are too complex for static DAGs, the neural core must lead using dynamic planning cycles (ReAct, LangGraph state machines). To prevent drift, symbolic components are placed inside the model's observation loop, not outside it.</p>
 
-    <div class="term-block flow-diagram"><span class="t-muted">               ┌──────────────────────────────────────┐</span>
+    <!-- Flow diagram -->
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">cyclic reasoning loop</span>
+      </div>
+      <div class="terminal-body"><span class="t-muted">               ┌──────────────────────────────────────┐</span>
 <span class="t-muted">               ▼                                      │</span>
-<span class="t-blue">[Neural Reasoning Loop]</span> → <span class="t-blue">[Proposed Action]</span> → <span class="t-green">[Symbolic Graph Verifier]</span></div>
+<span class="cmd">[Neural Reasoning Loop]</span> → <span class="cmd">[Proposed Action]</span> → <span class="pass">[Symbolic Graph Verifier]</span></div>
+    </div>
 
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
@@ -315,23 +372,30 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Stack</td><td class="meta-value">9-node LangGraph, Qdrant, Neo4j, DeepSeek-R1, SNOMED-CT</td></tr>
     </table>
 
-    <div class="term-block"><span class="t-blue">[STEP 1]</span> <span class="t-muted">HYBRID RETRIEVAL</span>
-  <span class="t-blue">[QDRANT]</span>   <span class="t-muted">Vector search: 12 ontology concepts</span>
-  <span class="t-blue">[NEO4J]</span>    <span class="t-muted">Graph traversal: 34 taxonomic edges</span>
-  <span class="t-muted">Fusion: α=0.7 vector + 0.3 graph</span>
+    <!-- Terminal trace -->
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">graphrag reasoning trace</span>
+      </div>
+      <div class="terminal-body"><span class="cmd">[STEP 1]</span> HYBRID RETRIEVAL
+  <span class="cmd">[QDRANT]</span>   Vector search: 12 ontology concepts
+  <span class="cmd">[NEO4J]</span>    Graph traversal: 34 taxonomic edges
+  Fusion: α=0.7 vector + 0.3 graph
 
-<span class="t-blue">[STEP 2]</span> <span class="t-muted">DIFFERENTIAL ASSESSMENT</span>
-  <span class="t-blue">[LLM]</span>      <span class="t-muted">Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)</span>
+<span class="cmd">[STEP 2]</span> DIFFERENTIAL ASSESSMENT
+  <span class="cmd">[LLM]</span>      Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)
 
-<span class="t-blue">[STEP 3]</span> <span class="t-muted">SAFETY VERIFY</span>
-  <span class="t-red">[FAIL]</span>     <span class="t-red">Neo4j edge lung_ca→metastasis missing</span>
+<span class="cmd">[STEP 3]</span> SAFETY VERIFY
+  <span class="fail">[FAIL]</span>     Neo4j edge lung_ca→metastasis missing
 
-<span class="t-blue">[STEP 4]</span> <span class="t-muted">SELF-CORRECTION (1/3)</span>
-  <span class="t-blue">[REGEN]</span>    <span class="t-muted">Feed violations + reasoning trace back to model</span>
-  <span class="t-purple">[META-COG]</span> <span class="t-muted">Confidence: 0.82 → 0.72 (decay -0.1)</span>
+<span class="cmd">[STEP 4]</span> SELF-CORRECTION (1/3)
+  <span class="cmd">[REGEN]</span>    Feed violations + reasoning trace back to model
+  <span class="t-purple">[META-COG]</span> Confidence: 0.82 → 0.72 (decay -0.1)
 
-<span class="t-green">[PASS]</span>       <span class="t-green">Corrected path validated by all verifiers</span>
-<span class="t-green">[AUDIT]</span>      <span class="t-green">Trace committed. Zero PHI persisted.</span></div>
+<span class="pass">[PASS]</span>       Corrected path validated by all verifiers
+<span class="pass">[AUDIT]</span>      Trace committed. Zero PHI persisted.</div>
+    </div>
 
     <h3 style="font-size:18px; font-weight:500; margin:32px 0 16px; color:var(--text);">Secondary anchor</h3>
     <table class="meta-table">
@@ -340,13 +404,19 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Stack</td><td class="meta-value">PyTorch, Biopython, Flow Matching, FoldSeek</td></tr>
     </table>
 
-    <div class="term-block"><span class="t-blue">[FLOW]</span>         <span class="t-muted">ODE integration: t=0 → t=1 (20-step RK4)</span>
-<span class="t-blue">[NEURAL]</span>       <span class="t-muted">Predicting continuous vector fields for backbone generation</span>
-<span class="t-green">[VALIDATE]</span>     <span class="t-muted">Symbolic biophysical constraints: clash score, Rg, fold classification</span>
-<span class="t-red">[CRITIQUE]</span>     <span class="t-red">Structural violation: Alpha-helix overlap at residue 42</span>
-<span class="t-purple">[META-COG]</span>     <span class="t-muted">Decaying confidence (-0.15), injecting error trace</span>
-<span class="t-blue">[REGENERATE]</span>   <span class="t-muted">Re-running flow with updated tensor boundaries</span>
-<span class="t-green">[PASS]</span>         <span class="t-green">RMSD 1.2Å | Docking: -8.7 kcal/mol | 100 binders exported</span></div>
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">protein binder flow trace</span>
+      </div>
+      <div class="terminal-body"><span class="cmd">[FLOW]</span>         ODE integration: t=0 → t=1 (20-step RK4)
+<span class="cmd">[NEURAL]</span>       Predicting continuous vector fields for backbone generation
+<span class="pass">[VALIDATE]</span>     Symbolic biophysical constraints: clash score, Rg, fold classification
+<span class="fail">[CRITIQUE]</span>     Structural violation: Alpha-helix overlap at residue 42
+<span class="t-purple">[META-COG]</span>     Decaying confidence (-0.15), injecting error trace
+<span class="cmd">[REGENERATE]</span>   Re-running flow with updated tensor boundaries
+<span class="pass">[PASS]</span>         RMSD 1.2Å | Docking: -8.7 kcal/mol | 100 binders exported</div>
+    </div>
   </div>
 </section>
 
@@ -359,9 +429,16 @@ cardiotoxicity_risk_detected {
     <div class="type-meta">Stack focus: Dominant Tool Registry (03) and Governance (06)</div>
     <p class="type-desc">Parallel symbolic and neural tracks interact continuously. Neither dominates; a formal mathematical engine arbitrates conflicts to maintain system invariants. When multiple autonomous agents compete, trusting heuristics or unconstrained model outputs introduces unpredictable economic risk. Neural agents maximize individual objectives, but a compiled game-theoretic engine enforces absolute structural boundaries.</p>
 
-    <div class="term-block flow-diagram"><span class="t-blue">[Neural Agent Swarm]</span> → <span class="t-blue">[Divergent Strategies]</span> → <span class="t-green">[Deterministic Nash / VCG Engine]</span>
+    <!-- Flow diagram -->
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">arbitration flow</span>
+      </div>
+      <div class="terminal-body"><span class="cmd">[Neural Agent Swarm]</span> → <span class="cmd">[Divergent Strategies]</span> → <span class="pass">[Deterministic Nash / VCG Engine]</span>
         <span class="t-muted">▲</span>                                                  <span class="t-muted">│</span>
         <span class="t-muted">└────────── [Mathematical Rewards / Limits] ───────┘</span></div>
+    </div>
 
     <table class="meta-table">
       <tr><td class="meta-label">System</td><td class="meta-value">Nash Marketing Agents</td></tr>
@@ -370,18 +447,25 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Env</td><td class="meta-value">Docker production-ready</td></tr>
     </table>
 
-    <div class="term-block"><span class="t-blue">[ROUND 1]</span>     <span class="t-muted">Spawning competitive neural persona tracks</span>
-<span class="t-blue">[NEURAL]</span>      <span class="t-muted">Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70</span>
+    <!-- Terminal trace -->
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">nash marketing trace</span>
+      </div>
+      <div class="terminal-body"><span class="cmd">[ROUND 1]</span>     Spawning competitive neural persona tracks
+<span class="cmd">[NEURAL]</span>      Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70
 
-<span class="t-green">[ARBITRATE]</span>   <span class="t-muted">Invoking compiled symbolic VCG Auction Engine</span>
-<span class="t-green">[EXECUTE]</span>     <span class="t-muted">Winner: Agent-C allocated dominant traffic slot</span>
-<span class="t-purple">[MATHEMATICS]</span> <span class="t-muted">Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)</span>
-<span class="t-green">[VERIFY]</span>      <span class="t-green">Asserting: paid_price ≤ bid_valuation ✓</span>
+<span class="pass">[ARBITRATE]</span>   Invoking compiled symbolic VCG Auction Engine
+<span class="pass">[EXECUTE]</span>     Winner: Agent-C allocated dominant traffic slot
+<span class="t-purple">[MATHEMATICS]</span> Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)
+<span class="pass">[VERIFY]</span>      Asserting: paid_price ≤ bid_valuation ✓
 
-<span class="t-purple">[NASH SOLVER]</span> <span class="t-muted">Executing SciPy multi-variate optimization over strategy spaces</span>
-<span class="t-green">[CONVERGENCE]</span> <span class="t-green">Stable equilibrium at Round 41 (Δu &lt; 0.01)</span>
+<span class="t-purple">[NASH SOLVER]</span> Executing SciPy multi-variate optimization over strategy spaces
+<span class="pass">[CONVERGENCE]</span> Stable equilibrium at Round 41 (Δu &lt; 0.01)
 
-<span class="t-green">[TEST]</span>        <span class="t-green">49/49 property-based tests passed</span></div>
+<span class="pass">[TEST]</span>        49/49 property-based tests passed</div>
+    </div>
 
     <h3 style="font-size:16px; font-weight:500; margin:24px 0 12px; color:var(--text);">Property-based validation guarantees</h3>
     <ul class="arch-list">
@@ -426,15 +510,21 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Target</td><td class="meta-value">ONNX Runtime Mobile / ExecuTorch</td></tr>
     </table>
 
-    <div class="term-block"><span class="t-blue">[QUANT]</span>  <span class="t-muted">FP32 → INT8 (static) → INT4 (dynamic)</span>
-         <span class="t-muted">└─ Perplexity: 12.4 → 13.8 (&lt;15% degradation)</span>
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">edge compilation trace</span>
+      </div>
+      <div class="terminal-body"><span class="cmd">[QUANT]</span>  FP32 → INT8 (static) → INT4 (dynamic)
+         └─ Perplexity: 12.4 → 13.8 (&lt;15% degradation)
 
-<span class="t-blue">[ONNX]</span>   <span class="t-muted">Cross-platform CPU build</span>
-<span class="t-blue">[EXECUTORCH]</span> <span class="t-muted">ARM NEON delegate compiled</span>
+<span class="cmd">[ONNX]</span>   Cross-platform CPU build
+<span class="cmd">[EXECUTORCH]</span> ARM NEON delegate compiled
 
-<span class="t-green">[RPI5]</span>   <span class="t-green">Latency: 42ms/token | Power: 3.8W</span>
-<span class="t-blue">[SPEC]</span>   <span class="t-muted">Draft model → 2× decode speedup</span>
-<span class="t-green">[PASS]</span>   <span class="t-green">All accuracy gates cleared</span></div>
+<span class="pass">[RPI5]</span>   Latency: 42ms/token | Power: 3.8W
+<span class="cmd">[SPEC]</span>   Draft model → 2× decode speedup
+<span class="pass">[PASS]</span>   All accuracy gates cleared</div>
+    </div>
 
     <a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
   </div>
@@ -452,43 +542,20 @@ cardiotoxicity_risk_detected {
       <tr><td class="meta-label">Stack</td><td class="meta-value">Gemini Pro, MCP, E2B Sandbox, Neo4j</td></tr>
     </table>
 
-    <div class="term-block"><span class="t-blue">[THINK]</span>    <span class="t-muted">"Cross-reference Metformin with mTOR pathways"</span>
-<span class="t-blue">[ACT]</span>      <span class="t-muted">search_pubmed(query="Metformin AND mTOR inhibition")</span>
-<span class="t-blue">[OBSERVE]</span>  <span class="t-muted">"412 papers. Abstract 1 implies direct causality."</span>
-<span class="t-blue">[BELIEF]</span>   <span class="t-muted">"Graph node weight: +0.45 causality"</span>
-<span class="t-green">[VERIFY]</span>   <span class="t-green">Citation check + conflict detection</span>
-<span class="t-purple">[HITL]</span>     <span class="t-purple">Novelty > 3σ → human review gate</span></div>
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">research synthesizer trace</span>
+      </div>
+      <div class="terminal-body"><span class="cmd">[THINK]</span>    "Cross-reference Metformin with mTOR pathways"
+<span class="cmd">[ACT]</span>      search_pubmed(query="Metformin AND mTOR inhibition")
+<span class="cmd">[OBSERVE]</span>  "412 papers. Abstract 1 implies direct causality."
+<span class="cmd">[BELIEF]</span>   "Graph node weight: +0.45 causality"
+<span class="pass">[VERIFY]</span>   Citation check + conflict detection
+<span class="t-purple">[HITL]</span>     Novelty > 3σ → human review gate</div>
+    </div>
   </div>
 </section>
-
-<!-- AXIOMIS -->
-<div class="axiomis-section" id="axiomis">
-  <div class="arch-wrap">
-    <h2 class="arch-section-title" style="font-size:28px;">AXIOMIS</h2>
-    <p class="type-desc">AXIOMIS is our Type 2 (Symbolic[Neuro]) clinical intelligence system with a deterministic FHIR state machine at its core. We are migrating toward Type 6 (Neuro[Symbolic]) to enable more flexible reasoning in open-ended diagnostic scenarios — but Type 2 safety invariants are non-negotiable:</p>
-
-    <ul class="check-list">
-      <li>
-        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Every treatment plan compiles to a DAG before execution.
-      </li>
-      <li>
-        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Every node is pre-flight checked by OPA/Rego policies.
-      </li>
-      <li>
-        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Every execution trace is committed to an immutable ledger.
-      </li>
-      <li>
-        <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Every override of a neural recommendation requires explicit symbolic justification.
-      </li>
-    </ul>
-
-    <p class="axiomis-closing">This is how we cross the Planning Rubicon without crossing the safety line.</p>
-  </div>
-</div>
 
 <!-- FOOTER -->
 <footer style="border-top:1px solid var(--sep); padding:32px 0; text-align:center;">
@@ -511,4 +578,3 @@ toggle.addEventListener('click', () => links.classList.toggle('open'));
 </script>
 </body>
 </html>
-<!-- redeploy 1783338466 -->
