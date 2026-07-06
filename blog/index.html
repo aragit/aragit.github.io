@@ -608,68 +608,8 @@
     <!-- Blog Grid -->
     <section class="container">
         <div class="blog-grid">
-            <!-- Blog Post 1 - Short Content -->
+            <!-- Hidden blog posts (now visible) -->
             <div class="blog-card" data-category="llm">
-                <div class="card-img">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-tags">
-                        <span class="tag">LLMs</span>
-                        <span class="tag">Tutorials</span>
-                    </div>
-                    <h3>A Deep Dive into  Unsloth & Gemma 3: Fine-Tune Gemma 3 12B with Unsloth & TRL for Custommer Service Adaptation</h3>
-                    <p>Dive into the technical intricacies of Unsloth and Gemma 3, showcasing their powerful features and how they can be leveraged together to build a highly optimized, fine-tuned model for any type of customer support assistant.</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-clock"></i> 12 min read</span>
-                        <span>May 15, 2024</span>
-                    </div>
-                    <a href="#" class="read-more">Read Article →</a>
-                </div>
-            </div>
-
-            <!-- Blog Post 2 - Medium Content -->
-            <div class="blog-card" data-category="healthcare">
-                <div class="card-img">
-                    <i class="fas fa-stethoscope"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-tags">
-                        <span class="tag">Healthcare AI</span>
-                        <span class="tag">LLMs</span>
-                    </div>
-                    <h3>AI in Medical Diagnosis</h3>
-                    <p>How machine learning is revolutionizing diagnostic medicine and improving patient outcomes through advanced algorithms and data analysis techniques as well as LLM engineering and reasoning models.</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-clock"></i> 8 min read</span>
-                        <span>May 10, 2024</span>
-                    </div>
-                    <a href="#" class="read-more">Read Article →</a>
-                </div>
-            </div>
-
-            <!-- Blog Post 3 - Long Content -->
-            <div class="blog-card" data-category="Marketing">
-                <div class="card-img">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-tags">
-                        <span class="tag">RAG</span>
-                        <span class="tag">Agentic AI</span>
-                    </div>
-                    <h3>Building a Self-Correcting Agentic RAG: From Static Pipelines to Dynamic Learning Loops</h3>
-                    <p>How to evolve RAG from a static, fragile pipeline into a robust, reflective system that collaborates with the user to find the truth.</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-clock"></i> 10 min read</span>
-                        <span>May 5, 2025</span>
-                    </div>
-                    <a href="#" class="read-more">Read Article →</a>
-                </div>
-            </div>
-            
-            <!-- Hidden blog posts -->
-            <div class="blog-card hidden-blog" data-category="llm" style="display: none;">
                 <div class="card-img">
                     <i class="fas fa-code"></i>
                 </div>
@@ -688,7 +628,7 @@
                 </div>
             </div>
             
-            <div class="blog-card hidden-blog" data-category="healthcare" style="display: none;">
+            <div class="blog-card" data-category="healthcare">
                 <div class="card-img">
                     <i class="fas fa-brain"></i>
                 </div>
@@ -707,7 +647,7 @@
                 </div>
             </div>
             
-            <div class="blog-card hidden-blog" data-category="finance" style="display: none;">
+            <div class="blog-card" data-category="finance">
                 <div class="card-img">
                     <i class="fas fa-shield-alt"></i>
                 </div>
@@ -725,12 +665,6 @@
                     <a href="#" class="read-more">Read Article →</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Load More Button for Blog Articles - Fixed -->
-        <div class="load-more">
-            <button class="load-more-btn" id="blogLoadMore">Load More Articles</button>
-            <button class="load-more-btn" id="blogShowLess" style="display: none;">Show Less Articles</button>
         </div>
     </section>
 
@@ -948,39 +882,6 @@
                         }
                     });
                 });
-            });
-            
-            // Load more functionality for blog posts
-            const blogLoadMoreBtn = document.getElementById('blogLoadMore');
-            const blogShowLessBtn = document.getElementById('blogShowLess');
-            const hiddenBlogCards = document.querySelectorAll('.hidden-blog');
-            
-            blogLoadMoreBtn.addEventListener('click', () => {
-                // Show 3 more hidden blog cards
-                let itemsToShow = 3;
-                for (let i = 0; i < hiddenBlogCards.length && itemsToShow > 0; i++) {
-                    if (hiddenBlogCards[i].style.display === 'none') {
-                        hiddenBlogCards[i].style.display = 'flex';
-                        itemsToShow--;
-                    }
-                }
-                
-                // Show Show Less button if items are expanded
-                if (Array.from(hiddenBlogCards).some(card => card.style.display === 'flex')) {
-                    blogLoadMoreBtn.style.display = 'none';
-                    blogShowLessBtn.style.display = 'inline-block';
-                }
-            });
-            
-            blogShowLessBtn.addEventListener('click', () => {
-                // Hide all hidden blog cards
-                hiddenBlogCards.forEach(card => {
-                    card.style.display = 'none';
-                });
-                
-                // Show Load More button and hide Show Less button
-                blogLoadMoreBtn.style.display = 'inline-block';
-                blogShowLessBtn.style.display = 'none';
             });
             
             // Subscription functionality - FIXED
