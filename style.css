@@ -11340,6 +11340,7 @@ div#services .cards .card.card-wide .card-actions {
   top: 55px !important;
   left: 70px !important;
   z-index: 3 !important;
+  width: 85% !important;
   padding: 20px 22px !important;
   animation: floatCard2 6.5s ease-in-out infinite !important;
   animation-delay: 1s !important;
