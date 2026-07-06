@@ -11364,6 +11364,39 @@ div#services .cards .card.card-wide .card-actions {
   animation-delay: 0.5s !important;
 }
 
+/* Card 5: vertical capabilities (background layer, behind top 3) */
+#home.hero .stack-card.card-5 {
+  top: -10px !important;
+  left: 250px !important;
+  z-index: 0 !important;
+  width: 200px !important;
+  padding: 16px 14px !important;
+  animation: floatCard5 8s ease-in-out infinite !important;
+  animation-delay: 1.5s !important;
+}
+
+#home.hero .card-cap-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+#home.hero .card-cap-item {
+  font-size: 0.68rem !important;
+  color: #8899a6 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+}
+
+#home.hero .card-cap-item i {
+  color: #58a6ff !important;
+  font-size: 0.6rem !important;
+  width: 12px !important;
+  text-align: center !important;
+}
+
 #home.hero .stack-card:hover {
   transform: translate(4px, -4px) scale(1.02) !important;
   border-color: rgba(255, 255, 255, 0.25) !important;
@@ -11728,6 +11761,7 @@ div#services .cards .card.card-wide .card-actions {
 @keyframes floatCard2 { 0%, 100% { transform: translateY(0) rotate(-0.5deg); } 50% { transform: translateY(-14px) rotate(0.5deg); } }
 @keyframes floatCard3 { 0%, 100% { transform: translateY(0) rotate(0.2deg); } 50% { transform: translateY(-8px) rotate(-0.8deg); } }
 @keyframes floatCard4 { 0%, 100% { transform: translateY(0) rotate(-0.3deg); } 50% { transform: translateY(-12px) rotate(0.4deg); } }
+@keyframes floatCard5 { 0%, 100% { transform: translateY(0) rotate(0.3deg); } 50% { transform: translateY(-6px) rotate(-0.3deg); } }
 
 @media (max-width: 768px) {
   .hero-cards-stack { height: auto !important; gap: 12px !important; margin: 40px auto 0 auto !important; }
