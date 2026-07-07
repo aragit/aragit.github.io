@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://aragit.github.io/architecture">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
   <style>
+    /* CSS remains exactly as provided in the original draft */
     :root {
       --bg: #0d1117;
       --text: #e6edf3;
@@ -34,230 +35,100 @@
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* NAV */
-    .arch-nav {
-      position: sticky; top: 0; z-index: 100;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background 200ms ease, border-color 200ms ease;
-    }
+    .arch-nav { position: sticky; top: 0; z-index: 100; background: transparent; border-bottom: 1px solid transparent; transition: background 200ms ease, border-color 200ms ease; }
     .arch-nav.scrolled { background: var(--bg); border-bottom-color: var(--sep); }
-    .arch-nav-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 56px; padding: 0 24px;
-    }
+    .arch-nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 24px; }
     .arch-nav-brand { font-weight: 500; font-size: 15px; color: var(--text); text-decoration: none; }
     .arch-nav-brand:hover { text-decoration: none; }
     .arch-nav-links { display: flex; gap: 24px; list-style: none; }
-    .arch-nav-links a {
-      font-size: 14px; color: var(--muted); font-weight: 400;
-      text-decoration: none; padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      transition: color 150ms, border-color 150ms;
-    }
+    .arch-nav-links a { font-size: 14px; color: var(--muted); font-weight: 400; text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color 150ms, border-color 150ms; }
     .arch-nav-links a:hover { color: var(--text); text-decoration: none; }
     .arch-nav-links a.active { color: var(--text); border-bottom-color: var(--blue); }
     .arch-hamburger { display: none; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
 
-    /* LAYOUT */
     .arch-wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
     .arch-section { padding: 56px 0; border-top: 1px solid var(--sep); }
     .arch-section:first-of-type { border-top: none; }
-    .arch-section-title {
-      font-size: 24px; font-weight: 500; color: var(--text);
-      margin-bottom: 8px; line-height: 1.3;
-    }
-    .arch-section-intro {
-      font-size: 16px; color: var(--muted); line-height: 1.6;
-      max-width: 720px; margin-bottom: 24px;
-    }
+    .arch-section-title { font-size: 24px; font-weight: 500; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+    .arch-section-intro { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 720px; margin-bottom: 24px; }
 
-    /* HERO */
     .arch-hero { padding: 80px 0 48px; border-top: none; }
-    .arch-hero h1 {
-      font-size: 32px; font-weight: 500; color: var(--text);
-      letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px;
-    }
-    .arch-hero-sub {
-      font-size: 16px; color: var(--muted); line-height: 1.6;
-      max-width: 640px; margin-bottom: 24px;
-    }
-    .arch-thesis {
-      font-size: 16px; font-weight: 500; color: var(--text);
-      border-left: 2px solid var(--blue); padding-left: 16px;
-      margin-top: 24px; line-height: 1.5;
-    }
+    .arch-hero h1 { font-size: 32px; font-weight: 500; color: var(--text); letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px; }
+    .arch-hero-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 640px; margin-bottom: 24px; }
+    .arch-thesis { font-size: 16px; font-weight: 500; color: var(--text); border-left: 2px solid var(--blue); padding-left: 16px; margin-top: 24px; line-height: 1.5; }
 
-    /* 7-LAYER STACK */
     .layer-stack { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
-    .layer-bar {
-      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
-      padding: 12px 16px; display: flex; align-items: baseline; gap: 16px;
-      transition: border-color 150ms ease;
-    }
+    .layer-bar { background: var(--terminal); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; display: flex; align-items: baseline; gap: 16px; transition: border-color 150ms ease; }
     .layer-bar:hover { border-color: var(--hover-border); }
     .layer-num { font-family: 'Courier New', Consolas, monospace; font-size: 14px; color: var(--blue); min-width: 24px; }
     .layer-name { font-size: 16px; font-weight: 500; color: var(--text); min-width: 160px; }
     .layer-desc { font-size: 14px; color: var(--muted); }
 
-    /* PATTERN SECTIONS */
-    .pattern-marker {
-      font-family: 'Courier New', Consolas, monospace;
-      font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px;
-    }
+    .pattern-marker { font-family: 'Courier New', Consolas, monospace; font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px; }
     .pattern-title { font-size: 28px; font-weight: 500; color: var(--text); margin-bottom: 16px; }
-    .pattern-liability {
-      font-size: 14px; font-weight: 500; margin-bottom: 16px; line-height: 1.5;
-    }
-    .pattern-mechanism {
-      font-size: 16px; color: var(--muted); line-height: 1.6;
-      max-width: 680px; margin-bottom: 16px;
-    }
-    .pattern-when {
-      font-size: 14px; color: var(--muted); font-style: italic;
-      margin-bottom: 16px;
-    }
+    .pattern-liability { font-size: 14px; font-weight: 500; margin-bottom: 16px; line-height: 1.5; }
+    .pattern-mechanism { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 680px; margin-bottom: 16px; }
+    .pattern-when { font-size: 14px; color: var(--muted); font-style: italic; margin-bottom: 16px; }
 
-    /* REPO ANCHOR */
-    .repo-anchor {
-      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
-      padding: 12px 16px; margin-bottom: 16px;
-      display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
-      transition: background 150ms ease;
-    }
+    .repo-anchor { background: var(--terminal); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; transition: background 150ms ease; }
     .repo-anchor:hover { background: var(--hover-bg); }
     .repo-name { font-size: 14px; font-weight: 500; color: var(--text); }
     .repo-path { font-family: 'Courier New', Consolas, monospace; font-size: 13px; color: var(--blue); }
-    .repo-badge {
-      display: inline-block; font-size: 11px; padding: 2px 8px;
-      border-radius: 10px; font-weight: 400;
-    }
+    .repo-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 400; }
     .repo-badge.public { background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); }
     .repo-badge.private { background: color-mix(in srgb, var(--muted) 12%, transparent); color: var(--muted); }
     .repo-badge.archived { background: #21262d; color: #8b949e; }
     .repo-badge.tests { background: #21262d; color: var(--muted); }
-    .repo-secondary {
-      margin-left: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
-      margin-bottom: 16px;
-    }
+    .repo-secondary { margin-left: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
     .repo-deprecated { opacity: 0.5; text-decoration: line-through; }
-    .repo-deprecated-note {
-      font-size: 12px; color: #8b949e; font-style: italic;
-      margin-top: -8px; margin-bottom: 16px; padding-left: 16px;
-    }
-    .repo-sub-label {
-      font-size: 12px; font-weight: 500; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.05em;
-      margin-top: 12px; margin-bottom: 8px;
-    }
+    .repo-deprecated-note { font-size: 12px; color: #8b949e; font-style: italic; margin-top: -8px; margin-bottom: 16px; padding-left: 16px; }
+    .repo-sub-label { font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 12px; margin-bottom: 8px; }
 
-    /* TERMINAL */
-    .terminal-box {
-      background: var(--terminal); border: 1px solid var(--border);
-      border-radius: 6px; font-family: 'Courier New', Consolas, monospace;
-      font-size: 13px; line-height: 1.6; width: 100%;
-      overflow: hidden; margin-bottom: 16px;
-      transition: border-color 150ms ease;
-    }
+    .terminal-box { background: var(--terminal); border: 1px solid var(--border); border-radius: 6px; font-family: 'Courier New', Consolas, monospace; font-size: 13px; line-height: 1.6; width: 100%; overflow: hidden; margin-bottom: 16px; transition: border-color 150ms ease; }
     .terminal-box:hover { border-color: var(--hover-border); }
-    .terminal-header {
-      background: #1a1a1a; padding: 8px 12px;
-      display: flex; gap: 6px; border-bottom: 1px solid #252525;
-      align-items: center;
-    }
+    .terminal-header { background: #1a1a1a; padding: 8px 12px; display: flex; gap: 6px; border-bottom: 1px solid #252525; align-items: center; }
     .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .dot-red { background: #ff5f56; }
     .dot-yellow { background: #ffbd2e; }
     .dot-green { background: #27c93f; }
-    .terminal-title {
-      margin: 0 auto; color: #666; font-size: 11px;
-      letter-spacing: 0.5px; text-transform: uppercase;
-    }
+    .terminal-title { margin: 0 auto; color: #666; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; }
     .terminal-body { padding: 16px; color: var(--muted); overflow-x: auto; }
-    .terminal-nested {
-      margin-left: 16px; padding-left: 16px;
-      border-left: 2px solid var(--sep);
-    }
+    .terminal-nested { margin-left: 16px; padding-left: 16px; border-left: 2px solid var(--sep); }
 
-    /* SYNTAX */
     .t-blue { color: var(--blue); }
     .t-green { color: var(--green); font-weight: bold; }
     .t-red { color: var(--red); font-weight: bold; }
     .t-purple { color: var(--purple); }
     .t-muted { color: var(--muted); }
 
-    /* FAILURE MODES */
-    .failure-title {
-      font-size: 14px; font-weight: 500; color: var(--text);
-      margin-top: 24px; margin-bottom: 12px;
-    }
+    .failure-title { font-size: 14px; font-weight: 500; color: var(--text); margin-top: 24px; margin-bottom: 12px; }
     .failure-list { list-style: none; }
-    .failure-list li {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;
-    }
-    .failure-list li::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--red); flex-shrink: 0; margin-top: 7px;
-    }
+    .failure-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+    .failure-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 7px; }
     .failure-list li strong { color: var(--text); font-weight: 500; }
 
-    /* TABLES */
     .arch-table-wrap { overflow-x: auto; margin-bottom: 24px; }
     .arch-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    .arch-table th {
-      background: var(--terminal); color: var(--text); font-weight: 500;
-      font-size: 13px; text-align: left; padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .arch-table td {
-      padding: 12px 16px; border-bottom: 1px solid var(--sep);
-      color: var(--muted); vertical-align: top; line-height: 1.5;
-    }
+    .arch-table th { background: var(--terminal); color: var(--text); font-weight: 500; font-size: 13px; text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .arch-table td { padding: 12px 16px; border-bottom: 1px solid var(--sep); color: var(--muted); vertical-align: top; line-height: 1.5; }
     .arch-table td:first-child { color: var(--text); font-weight: 500; }
     .arch-table tr:hover td { background: rgba(9,9,9,0.5); }
 
-    /* GITHUB BUTTON */
-    .gh-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1px solid var(--blue); color: var(--blue); background: transparent;
-      padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 400;
-      transition: background 150ms ease; cursor: pointer; text-decoration: none;
-    }
+    .gh-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--blue); color: var(--blue); background: transparent; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 400; transition: background 150ms ease; cursor: pointer; text-decoration: none; }
     .gh-btn:hover { background: rgba(88,166,255,0.1); text-decoration: none; }
 
-    /* INVARIANT LIST */
     .invariant-list { list-style: none; margin: 16px 0; }
-    .invariant-list li {
-      display: flex; align-items: flex-start; gap: 12px;
-      margin-bottom: 12px; font-size: 16px; color: var(--text); line-height: 1.5;
-    }
-    .invariant-check {
-      width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px;
-    }
+    .invariant-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 16px; color: var(--text); line-height: 1.5; }
+    .invariant-check { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; }
 
-    /* AXIOMIS SECTION */
-    .axiomis-section {
-      background: var(--terminal); border-top: 2px solid var(--blue);
-      padding: 48px 0;
-    }
-    .axiomis-closing {
-      font-size: 18px; color: var(--text); font-weight: 500;
-      font-style: italic; margin-top: 24px; line-height: 1.5;
-    }
+    .axiomis-section { background: var(--terminal); border-top: 2px solid var(--blue); padding: 48px 0; }
+    .axiomis-closing { font-size: 18px; color: var(--text); font-weight: 500; font-style: italic; margin-top: 24px; line-height: 1.5; }
 
-    /* CONTACT */
-    .contact-links {
-      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
-    }
-    .contact-links a {
-      font-size: 14px; color: var(--blue); text-decoration: none;
-    }
+    .contact-links { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .contact-links a { font-size: 14px; color: var(--blue); text-decoration: none; }
     .contact-links a:hover { text-decoration: underline; }
     .contact-sep { color: var(--muted); }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .layer-stack { gap: 6px; }
       .layer-bar { padding: 10px 12px; gap: 12px; }
@@ -272,12 +143,7 @@
       .terminal-box { font-size: 12px; }
       .terminal-body { padding: 12px; font-size: 11px; }
       .arch-nav-links { display: none; }
-      .arch-nav-links.open {
-        display: flex; flex-direction: column;
-        position: absolute; top: 56px; left: 0; right: 0;
-        background: var(--bg); border-bottom: 1px solid var(--sep);
-        padding: 16px 24px; gap: 16px;
-      }
+      .arch-nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--sep); padding: 16px 24px; gap: 16px; }
       .arch-hamburger { display: block; }
       .arch-table { font-size: 13px; }
       .arch-table th, .arch-table td { padding: 10px 12px; }
@@ -407,13 +273,13 @@
         <span class="repo-badge tests">LangGraph state machine, Neo4j in-loop verification</span>
       </div>
 
-      <p class="repo-sub-label">System 1 feeder</p>
+      <p class="repo-sub-label">System 1 perception feeder</p>
       <div class="repo-anchor" style="margin-left:16px;">
-        <span class="repo-name">DeepSeek Reasoning Fine-Tuning</span>
-        <span class="repo-path">aragit/deepseek-reasoning-finetuning</span>
+        <span class="repo-name">MedGemma Clinical Fine-Tuning</span>
+        <span class="repo-path">aragit/medgemma-reasoning-finetuning</span>
         <span class="repo-badge public">Public</span>
       </div>
-      <p style="font-size:13px; color:var(--muted); line-height:1.5; max-width:600px; margin-left:16px; margin-bottom:16px;">Medical chain-of-thought LoRA alignment pipeline. The fine-tuned model acts as the perception layer that feeds structured clinical reasoning into the symbolic guardrails of the GraphRAG system.</p>
+      <p style="font-size:13px; color:var(--muted); line-height:1.5; max-width:600px; margin-left:16px; margin-bottom:16px;">Medical chain-of-thought alignment pipeline for google/MedGemma-4B-IT. This custom open-weight model acts as the localized perception layer, feeding strictly formatted clinical reasoning into the symbolic guardrails of the GraphRAG system.</p>
 
       <div class="terminal-box">
         <div class="terminal-header">
@@ -422,11 +288,11 @@
         </div>
         <div class="terminal-body">
 <span class="t-blue">[INGEST]</span>     Patient note: "persistent cough, weight loss"<br>
-<span class="t-blue">[SPECULATE]</span>  DeepSeek-R1 proposes diagnostic triplets<br>
+<span class="t-blue">[SPECULATE]</span>  MedGemma-4B-IT proposes diagnostic triplets<br>
 <span class="t-blue">[RETRIEVE]</span>   Qdrant: 12 ontology concepts | Neo4j: 34 taxonomic edges<br>
 <span class="t-red">[VERIFY]</span>     Cypher validation: lung_ca→metastasis edge <span class="t-red">MISSING</span><br>
 <span class="t-purple">[CORRECT]</span>    Confidence: 0.82 → 0.72 (decay -0.1)<br>
-<span class="t-purple">[REGEN]</span>      Feed violations + reasoning trace back to R1<br>
+<span class="t-purple">[REGEN]</span>      Feed violations + reasoning trace back to LLM<br>
 <span class="t-green">[VERIFY]</span>     Corrected path validated<br>
 <span class="t-blue">[SYNTHESIZE]</span> Grounded RAG output with citations<br>
 <span class="t-blue">[AUDIT]</span>      Trace committed. Zero PHI persisted.<br>
@@ -462,7 +328,7 @@
         <span class="repo-path">aragit/autonomous-procurement-swarm</span>
         <span class="repo-badge archived">Archived</span>
       </div>
-      <p class="repo-deprecated-note">Architecturally redundant. The Nash Marketing Agents repo completely outclasses it. Archived for reference.</p>
+      <p class="repo-deprecated-note">Architecturally redundant. The Nash Marketing Agents repo mathematically outclasses it. Archived for reference.</p>
 
       <div class="terminal-box">
         <div class="terminal-header">
@@ -501,11 +367,10 @@
           <tr><th>Level</th><th>What it means</th><th>Example</th></tr>
         </thead>
         <tbody>
-          <tr><td>Unit tests</td><td>Component-level correctness</td><td>pytest across all repos</td></tr>
+          <tr><td>Unit tests</td><td>Component-level correctness</td><td>pytest across all production repos</td></tr>
           <tr><td>Property-based tests</td><td>Invariant verification across input distributions</td><td>Nash: 49 tests for monotonicity, IR, Nash bounds</td></tr>
-          <tr><td>Benchmark alignment</td><td>Standardized task performance against published metrics</td><td>Demand Forecasting: M5 WAPE/RMSSE</td></tr>
-          <tr><td>Biophysical validation</td><td>Domain-specific physical constraint verification</td><td>Protein Binder: clash scores, RMSD, docking affinity</td></tr>
-          <tr><td>Audit trails</td><td>Immutable, cryptographically signed execution records</td><td>Clinical systems: full reasoning trace to ledger</td></tr>
+          <tr><td>Benchmark alignment</td><td>Standardized task performance against published metrics</td><td>Demand Forecasting: TimesFM/Chronos-2 aligned to M5 WAPE</td></tr>
+          <tr><td>Audit trails</td><td>Immutable, cryptographically signed execution records</td><td>Clinical systems: full reasoning trace committed to ledger</td></tr>
         </tbody>
       </table>
     </div>
@@ -554,9 +419,9 @@
           <tr><th>Claim we do not make</th><th>Why</th></tr>
         </thead>
         <tbody>
-          <tr><td>"Native neural-symbolic binding" (Kautz Type 6)</td><td>Our symbolic verifiers are external systems (Neo4j, OPA, SciPy), not compiled into neural weights</td></tr>
-          <tr><td>"Logic as differentiable loss" (Kautz Type 5)</td><td>Our policies are hard constraints (Rego, Cypher), not soft regularization terms</td></tr>
-          <tr><td>"Neuro-symbolic by post-hoc validation"</td><td>Post-hoc checking is standard ML, not a structural pattern. Our validation is in-loop or pre-execution.</td></tr>
+          <tr><td>"Native neural-symbolic binding" (Kautz Type 6)</td><td>Our symbolic verifiers are external systems (Neo4j, OPA, SciPy), not natively compiled into neural weights.</td></tr>
+          <tr><td>"Logic as differentiable loss" (Kautz Type 5)</td><td>Our policies are hard constraints (Rego, Cypher) executing at runtime, not soft regularization terms during training.</td></tr>
+          <tr><td>"Neuro-symbolic by post-hoc validation"</td><td>Post-hoc checking is standard ML (e.g., our Flow-Matching Protein Binder). It is not a structural neuro-symbolic pattern. Our agentic validation is strictly in-loop or pre-execution.</td></tr>
         </tbody>
       </table>
     </div>
