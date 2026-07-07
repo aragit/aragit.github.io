@@ -11256,38 +11256,38 @@ div#services .cards .card.card-wide .card-actions {
 #home.hero .hero-orb {
   position: absolute !important;
   border-radius: 50% !important;
-  filter: blur(80px) !important;
-  opacity: 0.5 !important;
+  filter: blur(60px) !important;
+  opacity: 0.6 !important;
   animation: hero-orb-float 20s ease-in-out infinite !important;
 }
 
 #home.hero .hero-orb-1 {
-  width: 600px !important;
-  height: 600px !important;
-  background: radial-gradient(circle, #ff6b00 0%, transparent 70%) !important;
-  top: -15% !important;
-  left: -10% !important;
+  width: 700px !important;
+  height: 700px !important;
+  background: radial-gradient(circle, #ff6b00 0%, transparent 60%) !important;
+  top: -20% !important;
+  left: -15% !important;
   animation-delay: 0s !important;
 }
 
 #home.hero .hero-orb-2 {
-  width: 500px !important;
-  height: 500px !important;
-  background: radial-gradient(circle, #5fd3ff 0%, transparent 70%) !important;
-  top: 20% !important;
-  right: -8% !important;
+  width: 600px !important;
+  height: 600px !important;
+  background: radial-gradient(circle, #5fd3ff 0%, transparent 60%) !important;
+  top: 15% !important;
+  right: -10% !important;
   animation-delay: -7s !important;
-  opacity: 0.35 !important;
+  opacity: 0.45 !important;
 }
 
 #home.hero .hero-orb-3 {
-  width: 400px !important;
-  height: 400px !important;
-  background: radial-gradient(circle, #ff6b00 0%, transparent 70%) !important;
-  bottom: -10% !important;
-  left: 30% !important;
+  width: 500px !important;
+  height: 500px !important;
+  background: radial-gradient(circle, #ff6b00 0%, transparent 60%) !important;
+  bottom: -15% !important;
+  left: 25% !important;
   animation-delay: -14s !important;
-  opacity: 0.25 !important;
+  opacity: 0.3 !important;
 }
 
 @keyframes hero-orb-float {
