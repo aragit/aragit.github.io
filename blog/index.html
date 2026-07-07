@@ -605,12 +605,7 @@
             <div class="blog-grid-overlay"></div>
         </div>
         <div class="container" style="position:relative;z-index:1;">
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px; color: #cccccc;">Exploring the cutting edge of Artificial Intelligence, Large Language Models, and practical machine learning solutions for healthcare, Marketing, and beyond.</p>
-
-            <!-- Fixed Subscription Button in Hero -->
-            <button class="hero-subscribe-btn" id="heroSubscribeBtn">
-                <i class="fas fa-envelope"></i> Subscribe to Updates
-            </button>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #cccccc;">Exploring the cutting edge of Artificial Intelligence, Large Language Models, and practical machine learning solutions for healthcare, Marketing, and beyond.</p>
         </div>
     </section>
 
@@ -934,23 +929,12 @@
             
             // Subscription functionality - FIXED
             const subscriptionModal = document.getElementById('subscriptionModal');
-            const heroSubscribeBtn = document.getElementById('heroSubscribeBtn');
             const modalClose = document.getElementById('modalClose');
             const subscriptionForm = document.getElementById('subscriptionForm');
             const modalSubscriptionForm = document.getElementById('modalSubscriptionForm');
             const subscriptionToast = document.getElementById('subscriptionToast');
             const toastClose = document.getElementById('toastClose');
             const toastMessage = document.getElementById('toastMessage');
-            
-            // Open modal from hero CTA - FIXED
-            if (heroSubscribeBtn) {
-                heroSubscribeBtn.addEventListener('click', () => {
-                    subscriptionModal.classList.add('active');
-                    console.log('Hero subscribe button clicked');
-                });
-            } else {
-                console.error('Hero subscribe button not found');
-            }
             
             // Close modal
             if (modalClose) {
