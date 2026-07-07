@@ -76,13 +76,21 @@
     .sec-title { font-size: 2.25rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 1rem; }
     .sec-intro { font-size: 1.125rem; color: var(--text-muted); max-width: 700px; margin-bottom: 4rem; }
 
-    /* BENTO GRID (The Stack) */
-    .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .bento-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem; transition: var(--transition); display: flex; flex-direction: column; gap: 1rem; }
-    .bento-card:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
-    .bento-num { font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-dim); }
-    .bento-title { font-size: 1.25rem; font-weight: 500; color: var(--text-main); }
-    .bento-desc { font-size: 0.95rem; color: var(--text-muted); }
+    /* PIPELINE STACK LAYOUT */
+    .stack-pipeline { position: relative; display: flex; flex-direction: column; gap: 1.5rem; padding-left: 4rem; margin-top: 2rem; }
+    .stack-pipeline::before { content: ''; position: absolute; top: 1rem; bottom: 1rem; left: 1.4rem; width: 2px; background: linear-gradient(to bottom, var(--accent-purple), var(--accent-blue), var(--accent-green)); opacity: 0.4; }
+    .stack-layer { position: relative; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem 2rem; transition: var(--transition); }
+    .stack-layer:hover { border-color: var(--border-strong); transform: translateX(6px); background: var(--bg-surface-hover); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    .stack-node { position: absolute; left: -3.6rem; top: 1.5rem; width: 2rem; height: 2rem; background: var(--bg-base); border: 2px solid var(--border-subtle); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); z-index: 2; transition: var(--transition); }
+    .stack-layer:hover .stack-node { border-color: var(--accent-blue); box-shadow: 0 0 15px var(--accent-blue-glow); color: var(--accent-blue); }
+    .layer-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .layer-header i { color: var(--text-dim); font-size: 1.25rem; transition: var(--transition); }
+    .stack-layer:hover .layer-header i { color: var(--accent-blue); }
+    .layer-title { font-size: 1.25rem; font-weight: 500; color: var(--text-main); }
+    .layer-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem; max-width: 800px; }
+    .layer-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); transition: var(--transition); }
+    .stack-layer:hover .tech-tag { color: var(--text-muted); border-color: rgba(255,255,255,0.1); }
 
     /* ASYMMETRICAL PATTERN SHOWCASE */
     .pattern-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin-bottom: 6rem; align-items: start; }
@@ -141,6 +149,13 @@
     .ax-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
     .ax-list li { display: flex; align-items: center; gap: 1rem; font-size: 1.05rem; }
     .ax-list i { color: var(--accent-blue); }
+
+    @media (max-width: 768px) {
+      .stack-pipeline { padding-left: 3rem; }
+      .stack-pipeline::before { left: 0.9rem; }
+      .stack-node { left: -2.6rem; width: 1.5rem; height: 1.5rem; font-size: 0.6rem; }
+      .stack-layer { padding: 1.25rem; }
+    }
   </style>
 </head>
 <body>
@@ -174,27 +189,118 @@
       <h2 class="sec-title">The composable stack</h2>
       <p class="sec-intro">Every system implements a complete production pipeline mapped to a unified architecture. Layers are decoupled, allowing rapid transfer across clinical, financial, and competitive domains.</p>
       
-      <div class="bento-grid">
-        <div class="bento-card">
-          <span class="bento-num">07</span><h3 class="bento-title">Meta-Cognition</h3><p class="bento-desc">Self-monitoring, confidence decay, and drift detection mechanisms.</p>
+      <div class="stack-pipeline">
+        <!-- Layer 07 -->
+        <div class="stack-layer">
+          <div class="stack-node">07</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-network-wired"></i>
+              <h3 class="layer-title">Meta-Cognition</h3>
+            </div>
+            <p class="layer-desc">Top-level arbitration and system health monitoring. Evaluates model drift and dynamically adjusts confidence thresholds.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Confidence Decay</span>
+              <span class="tech-tag">Uncertainty Quantification</span>
+              <span class="tech-tag">Drift Detection</span>
+            </div>
+          </div>
         </div>
-        <div class="bento-card">
-          <span class="bento-num">06</span><h3 class="bento-title">Governance</h3><p class="bento-desc">Policy-as-Code (OPA/Rego), mathematical validation, hard guardrails.</p>
+        <!-- Layer 06 -->
+        <div class="stack-layer">
+          <div class="stack-node">06</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-shield-halved"></i>
+              <h3 class="layer-title">Governance</h3>
+            </div>
+            <p class="layer-desc">The deterministic safety net. Mathematical validation and hard guardrails that cannot be bypassed by neural outputs.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Policy-as-Code</span>
+              <span class="tech-tag">OPA / Rego</span>
+              <span class="tech-tag">Neuro-Symbolic Guards</span>
+            </div>
+          </div>
         </div>
-        <div class="bento-card">
-          <span class="bento-num">05</span><h3 class="bento-title">Execution</h3><p class="bento-desc">Idempotent tool dispatch, stateful workflows, strict DAG commits.</p>
+        <!-- Layer 05 -->
+        <div class="stack-layer">
+          <div class="stack-node">05</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-bolt"></i>
+              <h3 class="layer-title">Execution</h3>
+            </div>
+            <p class="layer-desc">Translates validated reasoning into real-world impact. Enforces idempotent tool dispatch and strict transactional state.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Idempotency</span>
+              <span class="tech-tag">Stateful Workflows</span>
+              <span class="tech-tag">DAG Commits</span>
+            </div>
+          </div>
         </div>
-        <div class="bento-card">
-          <span class="bento-num">04</span><h3 class="bento-title">Reasoning</h3><p class="bento-desc">Dynamic planning, cyclic state machines, constraint evaluation.</p>
+        <!-- Layer 04 -->
+        <div class="stack-layer">
+          <div class="stack-node">04</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-diagram-project"></i>
+              <h3 class="layer-title">Reasoning</h3>
+            </div>
+            <p class="layer-desc">The orchestration engine. Handles dynamic planning, multi-agent arbitration, and speculative constraint evaluation.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Cyclic State Machines</span>
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">Dynamic Planning</span>
+            </div>
+          </div>
         </div>
-        <div class="bento-card">
-          <span class="bento-num">03</span><h3 class="bento-title">Tool Registry</h3><p class="bento-desc">MCP, ontologies, biophysical calculators, Nash equilibrium solvers.</p>
+        <!-- Layer 03 -->
+        <div class="stack-layer">
+          <div class="stack-node">03</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-toolbox"></i>
+              <h3 class="layer-title">Tool Registry</h3>
+            </div>
+            <p class="layer-desc">The interface to external capabilities, specialized mathematical solvers, and protocol boundaries.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">MCP Integration</span>
+              <span class="tech-tag">Nash Equilibrium Solvers</span>
+              <span class="tech-tag">Biophysical Calculators</span>
+            </div>
+          </div>
         </div>
-        <div class="bento-card">
-          <span class="bento-num">02</span><h3 class="bento-title">Memory</h3><p class="bento-desc">Temporal state tracking, episodic execution logs, vector context.</p>
+        <!-- Layer 02 -->
+        <div class="stack-layer">
+          <div class="stack-node">02</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-database"></i>
+              <h3 class="layer-title">Memory</h3>
+            </div>
+            <p class="layer-desc">Manages temporal state and contextual awareness. Separates short-term episodic logs from long-term vector embeddings.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Vector Hydration</span>
+              <span class="tech-tag">Episodic Logs</span>
+              <span class="tech-tag">Temporal Context</span>
+            </div>
+          </div>
         </div>
-        <div class="bento-card">
-          <span class="bento-num">01</span><h3 class="bento-title">Perception</h3><p class="bento-desc">Unstructured telemetry into validated semantic hydration.</p>
+        <!-- Layer 01 -->
+        <div class="stack-layer">
+          <div class="stack-node">01</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-eye"></i>
+              <h3 class="layer-title">Perception</h3>
+            </div>
+            <p class="layer-desc">The ingestion layer. Transforms unstructured telemetry into validated, formatted semantic entities for the reasoning engine.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Open-Weight SLMs</span>
+              <span class="tech-tag">MedGemma-4B-IT</span>
+              <span class="tech-tag">TimesFM</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
