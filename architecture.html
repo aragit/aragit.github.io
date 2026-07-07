@@ -69,13 +69,23 @@
       overflow: hidden;
       background: linear-gradient(180deg, #0d1117 0%, #0a0e14 100%);
     }
-    .arch-banner canvas {
+    .arch-banner-grid {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
+      bottom: 10%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .arch-banner-svg {
       width: 100%;
       height: 100%;
-      opacity: 0.9;
+      display: block;
+    }
+    .arch-grid-blue,
+    .arch-grid-cyan {
+      opacity: 0.95;
+      mix-blend-mode: screen;
+      stroke-linecap: round;
     }
     .arch-banner-content {
       position: relative;
@@ -93,28 +103,26 @@
       font-weight: 600;
       color: #ffffff;
       letter-spacing: -1px;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 20px rgba(0, 180, 255, 0.3);
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(88, 166, 255, 0.25);
     }
-    .arch-banner-sub {
-      font-size: 18px;
+    .arch-banner-quote {
+      font-size: 16px;
       color: #8b949e;
       font-weight: 400;
+      max-width: 640px;
+      line-height: 1.6;
+      font-style: italic;
     }
     @media (max-width: 768px) {
       .arch-banner { height: 300px; }
       .arch-banner-title { font-size: 32px; }
-      .arch-banner-sub { font-size: 15px; }
+      .arch-banner-quote { font-size: 14px; }
     }
 
     /* HERO */
     .arch-hero { padding: 80px 0 48px; border-top: none; }
-    .arch-hero h1 { font-size: 32px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 16px; }
     .arch-hero-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 640px; margin-bottom: 24px; }
-    .arch-thesis {
-      font-size: 16px; font-weight: 500; color: var(--text);
-      border-left: 2px solid var(--blue); padding-left: 16px; margin-top: 24px;
-    }
 
     /* 7-LAYER STACK */
     .layer-stack { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
@@ -303,20 +311,43 @@
 </nav>
 
 <!-- BANNER -->
-<div class="arch-banner" id="archBanner">
-  <canvas id="meshCanvas"></canvas>
+<div class="arch-banner" id="archBanner" aria-hidden="true">
+  <div class="arch-banner-grid">
+    <svg class="arch-banner-svg" viewBox="0 0 1200 400" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="archGridBlue" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse" y2="400">
+          <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.55" />
+          <stop offset="35%" stop-color="#58a6ff" stop-opacity="0.18" />
+          <stop offset="60%" stop-color="#58a6ff" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="archGridCyan" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse" y2="400">
+          <stop offset="0%" stop-color="#3fb950" stop-opacity="0.25" />
+          <stop offset="50%" stop-color="#3fb950" stop-opacity="0.08" />
+          <stop offset="100%" stop-color="#3fb950" stop-opacity="0" />
+        </linearGradient>
+        <mask id="archFadeMask">
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#archMaskGrad)" />
+        </mask>
+        <linearGradient id="archMaskGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+          <stop offset="55%" stop-color="#fff" stop-opacity="0.6" />
+          <stop offset="85%" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g class="arch-grid-blue" stroke="url(#archGridBlue)" fill="none" stroke-width="1" mask="url(#archFadeMask)"></g>
+      <g class="arch-grid-cyan" stroke="url(#archGridCyan)" fill="none" stroke-width="1" mask="url(#archFadeMask)"></g>
+    </svg>
+  </div>
   <div class="arch-banner-content">
     <h1 class="arch-banner-title">Architecture of Agentic Systems</h1>
-    <p class="arch-banner-sub">Neuro-symbolic system design for high-liability AI</p>
+    <p class="arch-banner-quote">The maturity of enterprise AI is measured not in model scale, but in how reliably probabilistic reasoning is bound by deterministic execution.</p>
   </div>
 </div>
 
 <!-- HERO -->
 <section class="arch-section arch-hero" id="hero">
   <div class="arch-wrap">
-    <h1>Architecture of Agentic Systems</h1>
     <p class="arch-hero-sub">We do not deploy models or optimize prompts. We engineer compound systems — architectures where neural reasoning and symbolic governance are composed into standardized layers that transfer across high-liability industries.</p>
-    <div class="arch-thesis">The maturity of enterprise AI is measured not in model scale, but in how reliably probabilistic reasoning is bound by deterministic execution.</div>
 
     <!-- 7-LAYER STACK -->
     <div class="layer-stack">
@@ -656,95 +687,44 @@ const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => links.classList.toggle('open'));
 
-// Wireframe Mesh Banner Animation
+// Static wireframe grid for banner (matches main page hero-grid pattern)
 (function() {
-  const canvas = document.getElementById('meshCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width, height, cols, rows, points;
-  const spacing = 30;
-  const waveAmplitude = 35;
-  const waveSpeed = 0.0008;
-  const time = { value: 0 };
+  const NS = 'http://www.w3.org/2000/svg';
+  const banner = document.getElementById('archBanner');
+  if (!banner) return;
 
-  function resize() {
-    width = canvas.width = canvas.offsetWidth;
-    height = canvas.height = canvas.offsetHeight;
-    cols = Math.ceil(width / spacing) + 1;
-    rows = Math.ceil(height / spacing) + 1;
-    points = [];
-    for (let y = 0; y < rows; y++) {
-      points[y] = [];
-      for (let x = 0; x < cols; x++) {
-        points[y][x] = { x: x * spacing, y: y * spacing, baseY: y * spacing };
-      }
-    }
+  const svg = banner.querySelector('.arch-banner-svg');
+  const blueGroup = svg.querySelector('g.arch-grid-blue');
+  const cyanGroup = svg.querySelector('g.arch-grid-cyan');
+
+  const w = 1200, h = 400;
+  const spacing = 40;
+  const perspective = 0.6;
+
+  // Draw horizontal lines with perspective (closer together at bottom)
+  for (let y = 0; y <= h; y += spacing) {
+    const line = document.createElementNS(NS, 'line');
+    const perspY = y + (y * y / h) * perspective;
+    line.setAttribute('x1', '0');
+    line.setAttribute('y1', String(Math.min(perspY, h)));
+    line.setAttribute('x2', String(w));
+    line.setAttribute('y2', String(Math.min(perspY, h)));
+    blueGroup.appendChild(line);
   }
 
-  function getWaveOffset(x, y, t) {
-    const wave1 = Math.sin((x * 0.015) + (y * 0.01) + t) * waveAmplitude;
-    const wave2 = Math.sin((x * 0.02) - (y * 0.012) + t * 1.3) * (waveAmplitude * 0.6);
-    const wave3 = Math.cos((x * 0.01) + (y * 0.018) + t * 0.7) * (waveAmplitude * 0.4);
-    return wave1 + wave2 + wave3;
+  // Draw vertical lines converging toward center bottom
+  const cx = w / 2;
+  const vanishY = h * 1.1;
+  for (let x = 0; x <= w; x += spacing) {
+    const line = document.createElementNS(NS, 'line');
+    const topX = x;
+    const botX = cx + (x - cx) * 0.3;
+    line.setAttribute('x1', String(topX));
+    line.setAttribute('y1', '0');
+    line.setAttribute('x2', String(botX));
+    line.setAttribute('y2', String(vanishY));
+    cyanGroup.appendChild(line);
   }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-
-    // Update Y positions
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        const p = points[y][x];
-        p.y = p.baseY + getWaveOffset(p.x, p.baseY, time.value);
-      }
-    }
-
-    // Draw vertical lines
-    ctx.strokeStyle = 'rgba(88, 166, 255, 0.12)';
-    ctx.lineWidth = 0.6;
-    for (let x = 0; x < cols; x++) {
-      ctx.beginPath();
-      for (let y = 0; y < rows; y++) {
-        const p = points[y][x];
-        if (y === 0) ctx.moveTo(p.x, p.y);
-        else ctx.lineTo(p.x, p.y);
-      }
-      ctx.stroke();
-    }
-
-    // Draw horizontal lines
-    ctx.strokeStyle = 'rgba(88, 166, 255, 0.15)';
-    ctx.lineWidth = 0.6;
-    for (let y = 0; y < rows; y++) {
-      ctx.beginPath();
-      for (let x = 0; x < cols; x++) {
-        const p = points[y][x];
-        if (x === 0) ctx.moveTo(p.x, p.y);
-        else ctx.lineTo(p.x, p.y);
-      }
-      ctx.stroke();
-    }
-
-    // Draw brighter intersection nodes
-    ctx.fillStyle = 'rgba(88, 166, 255, 0.35)';
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        const p = points[y][x];
-        if ((x + y) % 3 === 0) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-    }
-
-    time.value += waveSpeed * 1000;
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-  draw();
 })();
 </script>
 </body>
