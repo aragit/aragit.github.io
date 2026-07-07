@@ -61,6 +61,52 @@
     .arch-section-title { font-size: 24px; font-weight: 500; color: var(--text); margin-bottom: 16px; }
     .arch-section-intro { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 720px; margin-bottom: 32px; }
 
+    /* BANNER */
+    .arch-banner {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #0d1117 0%, #0a0e14 100%);
+    }
+    .arch-banner canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
+    }
+    .arch-banner-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 0 24px;
+    }
+    .arch-banner-title {
+      font-size: 48px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(0, 180, 255, 0.3);
+    }
+    .arch-banner-sub {
+      font-size: 18px;
+      color: #8b949e;
+      font-weight: 400;
+    }
+    @media (max-width: 768px) {
+      .arch-banner { height: 300px; }
+      .arch-banner-title { font-size: 32px; }
+      .arch-banner-sub { font-size: 15px; }
+    }
+
     /* HERO */
     .arch-hero { padding: 80px 0 48px; border-top: none; }
     .arch-hero h1 { font-size: 32px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 16px; }
@@ -255,6 +301,15 @@
     </ul>
   </div>
 </nav>
+
+<!-- BANNER -->
+<div class="arch-banner" id="archBanner">
+  <canvas id="meshCanvas"></canvas>
+  <div class="arch-banner-content">
+    <h1 class="arch-banner-title">Architecture of Agentic Systems</h1>
+    <p class="arch-banner-sub">Neuro-symbolic system design for high-liability AI</p>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="arch-section arch-hero" id="hero">
@@ -600,6 +655,97 @@ window.addEventListener('scroll', () => {
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+// Wireframe Mesh Banner Animation
+(function() {
+  const canvas = document.getElementById('meshCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height, cols, rows, points;
+  const spacing = 30;
+  const waveAmplitude = 35;
+  const waveSpeed = 0.0008;
+  const time = { value: 0 };
+
+  function resize() {
+    width = canvas.width = canvas.offsetWidth;
+    height = canvas.height = canvas.offsetHeight;
+    cols = Math.ceil(width / spacing) + 1;
+    rows = Math.ceil(height / spacing) + 1;
+    points = [];
+    for (let y = 0; y < rows; y++) {
+      points[y] = [];
+      for (let x = 0; x < cols; x++) {
+        points[y][x] = { x: x * spacing, y: y * spacing, baseY: y * spacing };
+      }
+    }
+  }
+
+  function getWaveOffset(x, y, t) {
+    const wave1 = Math.sin((x * 0.015) + (y * 0.01) + t) * waveAmplitude;
+    const wave2 = Math.sin((x * 0.02) - (y * 0.012) + t * 1.3) * (waveAmplitude * 0.6);
+    const wave3 = Math.cos((x * 0.01) + (y * 0.018) + t * 0.7) * (waveAmplitude * 0.4);
+    return wave1 + wave2 + wave3;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Update Y positions
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        const p = points[y][x];
+        p.y = p.baseY + getWaveOffset(p.x, p.baseY, time.value);
+      }
+    }
+
+    // Draw vertical lines
+    ctx.strokeStyle = 'rgba(88, 166, 255, 0.12)';
+    ctx.lineWidth = 0.6;
+    for (let x = 0; x < cols; x++) {
+      ctx.beginPath();
+      for (let y = 0; y < rows; y++) {
+        const p = points[y][x];
+        if (y === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.stroke();
+    }
+
+    // Draw horizontal lines
+    ctx.strokeStyle = 'rgba(88, 166, 255, 0.15)';
+    ctx.lineWidth = 0.6;
+    for (let y = 0; y < rows; y++) {
+      ctx.beginPath();
+      for (let x = 0; x < cols; x++) {
+        const p = points[y][x];
+        if (x === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.stroke();
+    }
+
+    // Draw brighter intersection nodes
+    ctx.fillStyle = 'rgba(88, 166, 255, 0.35)';
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        const p = points[y][x];
+        if ((x + y) % 3 === 0) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    time.value += waveSpeed * 1000;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  draw();
+})();
 </script>
 </body>
 </html>
