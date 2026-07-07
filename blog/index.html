@@ -82,21 +82,70 @@
         .blog-hero {
             text-align: center;
             padding: 100px 0 60px;
-            background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+            background: #000;
             position: relative;
             overflow: hidden;
         }
-        
-        .blog-hero::before {
-            content: '';
+
+        .blog-hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(74, 74, 240, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(240, 74, 74, 0.15) 0%, transparent 50%);
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .blog-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: blogOrbFloat 20s ease-in-out infinite;
+        }
+
+        .blog-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #ff6b00 0%, transparent 60%);
+            top: -20%;
+            left: -10%;
+            opacity: 0.5;
+        }
+
+        .blog-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #5fd3ff 0%, transparent 60%);
+            top: 10%;
+            right: -8%;
+            animation-delay: -7s;
+            opacity: 0.35;
+        }
+
+        .blog-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ff6b00 0%, transparent 60%);
+            bottom: -15%;
+            left: 30%;
+            animation-delay: -14s;
+            opacity: 0.25;
+        }
+
+        @keyframes blogOrbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -20px) scale(1.05); }
+            50% { transform: translate(-20px, 30px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
+        }
+
+        .blog-grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 70%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 70%);
         }
         
         .blog-hero h1 {
@@ -549,10 +598,16 @@
 
     <!-- Blog Hero Section -->
     <section class="blog-hero">
-        <div class="container">
+        <div class="blog-hero-bg" aria-hidden="true">
+            <div class="blog-orb blog-orb-1"></div>
+            <div class="blog-orb blog-orb-2"></div>
+            <div class="blog-orb blog-orb-3"></div>
+            <div class="blog-grid-overlay"></div>
+        </div>
+        <div class="container" style="position:relative;z-index:1;">
             <h1>AI Versia</h1>
             <p>Exploring the cutting edge of Artificial Intelligence, Large Language Models, and practical machine learning solutions for healthcare, Marketing, and beyond.</p>
-            
+
             <!-- Fixed Subscription Button in Hero -->
             <button class="hero-subscribe-btn" id="heroSubscribeBtn">
                 <i class="fas fa-envelope"></i> Subscribe to Updates
