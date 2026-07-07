@@ -507,9 +507,6 @@
           console.warn('Hero grid not present: #home.hero');
           return;
         }
-
-        // Skip old SVG grid when new hero-bg background is in use
-        if (hero.querySelector('.hero-bg')) return;
     
         // ---------- tunables ----------
         const orangeSpacing = 90;   // grid density for orange lines
