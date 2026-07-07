@@ -728,12 +728,8 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Arash Nicoomanesh. Exploring the AI Versia.</p>
-            <div style="margin-top: 20px;">
-                <button class="subscription-btn" id="footerSubscribeBtn" style="padding: 10px 20px;">
-                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
-                </button>
-            </div>
+            <p>&copy; 2026 Arash Nicoomanesh. Exploring the AI Versia.</p>
+
         </div>
     </footer>
 
@@ -766,7 +762,6 @@
             // Subscription functionality - FIXED
             const subscriptionModal = document.getElementById('subscriptionModal');
             const heroSubscribeBtn = document.getElementById('heroSubscribeBtn');
-            const footerSubscribeBtn = document.getElementById('footerSubscribeBtn');
             const modalClose = document.getElementById('modalClose');
             const subscriptionForm = document.getElementById('subscriptionForm');
             const modalSubscriptionForm = document.getElementById('modalSubscriptionForm');
@@ -782,13 +777,6 @@
                 });
             } else {
                 console.error('Hero subscribe button not found');
-            }
-            
-            // Open modal from footer CTA
-            if (footerSubscribeBtn) {
-                footerSubscribeBtn.addEventListener('click', () => {
-                    subscriptionModal.classList.add('active');
-                });
             }
             
             // Close modal
