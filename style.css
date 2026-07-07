@@ -82,6 +82,7 @@ h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
 .card-actions{text-align:center;padding-top:.6rem}
 .cta-secondary{display:inline-block;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.04);color:var(--muted-2);background:transparent}
 .cta-secondary:hover{border-color:var(--accent);color:var(--accent)}
+#portfolio .cta-secondary:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,0.48);background:linear-gradient(180deg,#383838 0%,#2a2a2a 100%);border-color:var(--accent);color:var(--accent)}
 .card-actions .service-btn, .card-actions a.service-btn, button.service-btn{background:#2f2f2f;color:var(--accent);border:1px solid rgba(255,255,255,0.04);padding:.5rem 1rem;border-radius:999px;font-weight:700}
 .card-actions .service-btn:hover, .card-actions a.service-btn:hover, button.service-btn:hover{background:#444;color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
 
