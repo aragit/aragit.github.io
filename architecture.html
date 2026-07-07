@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Architecture — Arash Nicoomanesh | Agentic AI Architect</title>
-  <meta name="description" content="Neuro-symbolic system architecture for high-liability AI. Type 2, Type 6, and Type 5 compound systems with policy-as-code governance.">
+  <meta name="description" content="Production agentic AI architectures for high-liability environments. Guarded Execution, Verify-Then-Generate, and Algorithmic Arbitration patterns with property-based tests and immutable audit trails.">
   <link rel="canonical" href="https://aragit.github.io/architecture">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
   <style>
@@ -16,17 +16,16 @@
       --green: #3fb950;
       --red: #f85149;
       --purple: #d2a8ff;
-      --amber: #e67e22;
-      --terminal: #090909;
-      --term-header: #1a1a1a;
+      --terminal: #161b22;
       --border: #30363d;
       --sep: #21262d;
       --hover-border: #484f58;
+      --hover-bg: #1c2128;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -41,381 +40,247 @@
       background: transparent;
       border-bottom: 1px solid transparent;
       transition: background 200ms ease, border-color 200ms ease;
-      padding: 0 24px;
     }
     .arch-nav.scrolled { background: var(--bg); border-bottom-color: var(--sep); }
     .arch-nav-inner {
       max-width: 900px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      height: 56px;
+      height: 56px; padding: 0 24px;
     }
-    .arch-nav-brand { font-weight: 500; font-size: 15px; color: var(--text); }
+    .arch-nav-brand { font-weight: 500; font-size: 15px; color: var(--text); text-decoration: none; }
+    .arch-nav-brand:hover { text-decoration: none; }
     .arch-nav-links { display: flex; gap: 24px; list-style: none; }
-    .arch-nav-links a { font-size: 14px; color: var(--muted); transition: color 150ms; }
-    .arch-nav-links a:hover, .arch-nav-links a.active { color: var(--text); text-decoration: none; }
+    .arch-nav-links a {
+      font-size: 14px; color: var(--muted); font-weight: 400;
+      text-decoration: none; padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 150ms, border-color 150ms;
+    }
+    .arch-nav-links a:hover { color: var(--text); text-decoration: none; }
+    .arch-nav-links a.active { color: var(--text); border-bottom-color: var(--blue); }
     .arch-hamburger { display: none; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
-
-    /* SECTION NAV */
-    .section-nav {
-      position: sticky; top: 56px; z-index: 90;
-      background: var(--bg); border-bottom: 1px solid var(--sep);
-      padding: 0 24px; overflow-x: auto; white-space: nowrap;
-      display: none;
-    }
-    .section-nav.visible { display: block; }
-    .section-nav-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; gap: 0;
-    }
-    .section-nav a {
-      display: inline-block; padding: 10px 16px;
-      font-size: 13px; color: var(--muted); text-decoration: none;
-      border-bottom: 2px solid transparent; transition: color 150ms, border-color 150ms;
-    }
-    .section-nav a:hover { color: var(--text); }
-    .section-nav a.active { color: var(--blue); border-bottom-color: var(--blue); }
 
     /* LAYOUT */
     .arch-wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
     .arch-section { padding: 56px 0; border-top: 1px solid var(--sep); }
     .arch-section:first-of-type { border-top: none; }
-    .arch-section-title { font-size: 24px; font-weight: 500; color: var(--text); margin-bottom: 16px; text-align: center; }
-    .arch-section-intro { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 720px; margin-bottom: 32px; text-align: center; margin-left: auto; margin-right: auto; }
-
-    /* BANNER */
-    .arch-banner {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-      background: linear-gradient(180deg, #0d1117 0%, #0a0e14 100%);
+    .arch-section-title {
+      font-size: 24px; font-weight: 500; color: var(--text);
+      margin-bottom: 8px; line-height: 1.3;
     }
-    .arch-banner-grid {
-      position: absolute;
-      inset: 0;
-      bottom: 10%;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .arch-banner-svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    .arch-grid-blue,
-    .arch-grid-cyan {
-      opacity: 0.95;
-      mix-blend-mode: screen;
-      stroke-linecap: round;
-    }
-    .arch-banner-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-      padding: 0 24px;
-    }
-    .arch-banner-title {
-      font-size: 48px;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
-      text-shadow: 0 2px 20px rgba(88, 166, 255, 0.25);
-    }
-    .arch-banner-quote {
-      font-size: 16px;
-      color: #8b949e;
-      font-weight: 400;
-      max-width: 640px;
-      line-height: 1.6;
-      font-style: italic;
-    }
-    @media (max-width: 768px) {
-      .arch-banner { height: 300px; }
-      .arch-banner-title { font-size: 32px; }
-      .arch-banner-quote { font-size: 14px; }
+    .arch-section-intro {
+      font-size: 16px; color: var(--muted); line-height: 1.6;
+      max-width: 720px; margin-bottom: 24px;
     }
 
     /* HERO */
     .arch-hero { padding: 80px 0 48px; border-top: none; }
-    .arch-hero-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 640px; margin-bottom: 24px; text-align: center; margin-left: auto; margin-right: auto; }
+    .arch-hero h1 {
+      font-size: 32px; font-weight: 500; color: var(--text);
+      letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .arch-hero-sub {
+      font-size: 16px; color: var(--muted); line-height: 1.6;
+      max-width: 640px; margin-bottom: 24px;
+    }
+    .arch-thesis {
+      font-size: 16px; font-weight: 500; color: var(--text);
+      border-left: 2px solid var(--blue); padding-left: 16px;
+      margin-top: 24px; line-height: 1.5;
+    }
 
     /* 7-LAYER STACK */
-    .layer-stack { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+    .layer-stack { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
     .layer-bar {
       background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
       padding: 12px 16px; display: flex; align-items: baseline; gap: 16px;
       transition: border-color 150ms ease;
     }
     .layer-bar:hover { border-color: var(--hover-border); }
-    .layer-num { font-family: 'Courier New', Consolas, monospace; font-size: 14px; color: var(--blue); min-width: 28px; }
+    .layer-num { font-family: 'Courier New', Consolas, monospace; font-size: 14px; color: var(--blue); min-width: 24px; }
     .layer-name { font-size: 16px; font-weight: 500; color: var(--text); min-width: 160px; }
     .layer-desc { font-size: 14px; color: var(--muted); }
 
-    /* DECISION FRAMEWORK */
-    .decision-tree { margin-top: 32px; }
-    .decision-node { border-left: 2px solid var(--border); padding-left: 20px; margin-bottom: 16px; }
-    .decision-node .question {
-      font-size: 16px; font-weight: 500; color: var(--text);
-      margin-bottom: 16px; line-height: 1.5;
-    }
-    .branches { display: flex; flex-direction: column; gap: 12px; }
-    .branch { display: flex; align-items: flex-start; gap: 12px; }
-    .branch .arrow { color: var(--muted); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-    .branch .result, .branch .next-question { flex: 1; }
-    .result {
-      padding: 14px 18px; border-radius: 8px; border: 1px solid var(--border);
-    }
-    .result strong { display: block; font-size: 15px; margin-bottom: 6px; }
-    .result p { font-size: 14px; color: var(--muted); line-height: 1.5; margin: 0; }
-    .result.type2 { background: rgba(88,166,255,0.06); border-color: rgba(88,166,255,0.2); }
-    .result.type2 strong { color: var(--blue); }
-    .result.type6 { background: rgba(63,185,80,0.06); border-color: rgba(63,185,80,0.2); }
-    .result.type6 strong { color: var(--green); }
-    .result.type5 { background: rgba(230,126,34,0.06); border-color: rgba(230,126,34,0.2); }
-    .result.type5 strong { color: var(--amber); }
-    .result.type2-start { background: rgba(88,166,255,0.04); border-color: var(--border); }
-    .result.type2-start strong { color: var(--text); }
-
-    /* CALLOUT */
-    .callout {
-      padding: 24px; border-radius: 8px; margin: 32px 0;
-      border: 1px solid var(--border);
-    }
-    .callout h4 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
-    .callout p { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
-    .callout p:last-child { margin-bottom: 0; }
-    .callout.evolution-path {
-      background: linear-gradient(135deg, rgba(88,166,255,0.05) 0%, rgba(63,185,80,0.05) 100%);
-      border-left: 3px solid var(--blue);
-    }
-
-    /* TABLES */
-    .arch-table-wrap { overflow-x: auto; margin-bottom: 32px; }
-    .arch-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    .arch-table th {
-      background: var(--terminal); color: var(--text); font-weight: 500; font-size: 14px;
-      text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border);
-    }
-    .arch-table td { padding: 12px 16px; border-bottom: 1px solid var(--sep); color: var(--muted); vertical-align: top; }
-    .arch-table td:first-child { color: var(--text); font-weight: 500; }
-    .arch-table td.mono { font-family: 'Courier New', Consolas, monospace; color: var(--blue); font-size: 13px; }
-    .arch-table tr:hover td { background: rgba(9,9,9,0.5); }
-    .arch-table tbody tr[data-scroll] { cursor: pointer; }
-    .arch-table tbody tr[data-scroll]:hover td { background: rgba(88,166,255,0.06); }
-    .read-more-indicator { font-size: 12px; color: var(--blue); opacity: 0; transition: opacity 150ms; }
-    .arch-table tbody tr[data-scroll]:hover .read-more-indicator { opacity: 1; }
-    .table-footnote { font-size: 13px; color: var(--muted); margin-top: -20px; margin-bottom: 32px; font-style: italic; }
-
-    /* TYPE MARKER */
-    .type-marker {
+    /* PATTERN SECTIONS */
+    .pattern-marker {
       font-family: 'Courier New', Consolas, monospace;
       font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px;
     }
-    .type-title { font-size: 28px; font-weight: 500; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .type-badge {
-      display: inline-block; font-size: 12px; padding: 4px 10px; border-radius: 12px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-weight: 400; letter-spacing: 0; text-transform: none;
+    .pattern-title { font-size: 28px; font-weight: 500; color: var(--text); margin-bottom: 16px; }
+    .pattern-liability {
+      font-size: 14px; font-weight: 500; margin-bottom: 16px; line-height: 1.5;
     }
-    .type-badge.red { background: color-mix(in srgb, var(--red) 12%, transparent); color: var(--red); }
-    .type-badge.orange { background: color-mix(in srgb, #e06020 12%, transparent); color: #e06020; }
-    .type-badge.blue { background: color-mix(in srgb, var(--blue) 12%, transparent); color: var(--blue); }
-    .type-badge.green { background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); }
-    .type-meta { font-size: 14px; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .type-meta-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-    .type-desc { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 680px; margin-bottom: 24px; }
+    .pattern-mechanism {
+      font-size: 16px; color: var(--muted); line-height: 1.6;
+      max-width: 680px; margin-bottom: 16px;
+    }
+    .pattern-when {
+      font-size: 14px; color: var(--muted); font-style: italic;
+      margin-bottom: 16px;
+    }
 
-    /* FAILURE MODES */
-    .failure-modes {
-      margin-top: 24px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
-      border-left: 3px solid var(--red);
+    /* REPO ANCHOR */
+    .repo-anchor {
+      background: var(--terminal); border: 1px solid var(--border); border-radius: 6px;
+      padding: 12px 16px; margin-bottom: 16px;
+      display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+      transition: background 150ms ease;
     }
-    .failure-modes summary {
-      padding: 14px 18px; cursor: pointer; font-family: 'Courier New', Consolas, monospace;
-      font-size: 14px; font-weight: 500; color: var(--red); background: rgba(248,81,73,0.04);
-      list-style: none; display: flex; align-items: center; gap: 8px;
-      transition: background 150ms;
+    .repo-anchor:hover { background: var(--hover-bg); }
+    .repo-name { font-size: 14px; font-weight: 500; color: var(--text); }
+    .repo-path { font-family: 'Courier New', Consolas, monospace; font-size: 13px; color: var(--blue); }
+    .repo-badge {
+      display: inline-block; font-size: 11px; padding: 2px 8px;
+      border-radius: 10px; font-weight: 400;
     }
-    .failure-modes summary::-webkit-details-marker { display: none; }
-    .failure-modes summary::before { content: '▸'; transition: transform 150ms; }
-    .failure-modes[open] summary::before { transform: rotate(90deg); }
-    .failure-modes summary:hover { background: rgba(248,81,73,0.08); }
-    .failure-modes ul { padding: 16px 18px 16px 36px; margin: 0; }
-    .failure-modes li { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
-    .failure-modes li:last-child { margin-bottom: 0; }
-    .failure-modes li strong { color: var(--text); font-weight: 500; }
+    .repo-badge.public { background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); }
+    .repo-badge.private { background: color-mix(in srgb, var(--muted) 12%, transparent); color: var(--muted); }
+    .repo-badge.archived { background: #21262d; color: #8b949e; }
+    .repo-badge.tests { background: #21262d; color: var(--muted); }
+    .repo-secondary {
+      margin-left: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .repo-deprecated { opacity: 0.5; text-decoration: line-through; }
+    .repo-deprecated-note {
+      font-size: 12px; color: #8b949e; font-style: italic;
+      margin-top: -8px; margin-bottom: 16px; padding-left: 16px;
+    }
+    .repo-sub-label {
+      font-size: 12px; font-weight: 500; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-top: 12px; margin-bottom: 8px;
+    }
 
-    /* TERMINAL BOX */
+    /* TERMINAL */
     .terminal-box {
-      background: var(--terminal);
-      border: 1px solid #333;
-      border-radius: 6px;
-      font-family: 'Courier New', Consolas, monospace;
-      font-size: 13px;
-      line-height: 1.6;
-      width: 100%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      overflow: hidden;
-      margin-bottom: 24px;
+      background: var(--terminal); border: 1px solid var(--border);
+      border-radius: 6px; font-family: 'Courier New', Consolas, monospace;
+      font-size: 13px; line-height: 1.6; width: 100%;
+      overflow: hidden; margin-bottom: 16px;
       transition: border-color 150ms ease;
     }
     .terminal-box:hover { border-color: var(--hover-border); }
     .terminal-header {
-      background: var(--term-header);
-      padding: 8px 12px;
-      display: flex;
-      gap: 6px;
-      border-bottom: 1px solid #252525;
+      background: #1a1a1a; padding: 8px 12px;
+      display: flex; gap: 6px; border-bottom: 1px solid #252525;
       align-items: center;
-    }
-    .terminal-title {
-      margin: 0 auto;
-      color: #666;
-      font-size: 11px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
     }
     .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .dot-red { background: #ff5f56; }
     .dot-yellow { background: #ffbd2e; }
     .dot-green { background: #27c93f; }
-    .terminal-body {
-      padding: 14px 16px;
-      color: #cccccc;
-      line-height: 1.7;
-      overflow-x: auto;
+    .terminal-title {
+      margin: 0 auto; color: #666; font-size: 11px;
+      letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .terminal-body { padding: 16px; color: var(--muted); overflow-x: auto; }
+    .terminal-nested {
+      margin-left: 16px; padding-left: 16px;
+      border-left: 2px solid var(--sep);
     }
 
-    /* ALTERNATING TYPE LAYOUT */
-    .type-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: start;
-      margin-top: 24px;
-    }
-    .type-split.reverse { direction: rtl; }
-    .type-split.reverse > * { direction: ltr; }
-    .type-text-side { display: flex; flex-direction: column; gap: 16px; }
-    .type-text-side .gh-btn { align-self: flex-start; }
-    .type-terminal-side { display: flex; flex-direction: column; gap: 16px; }
-    @media (max-width: 768px) {
-      .type-split { grid-template-columns: 1fr; }
-      .type-split.reverse { direction: ltr; }
-    }
-
-    /* Syntax colors */
-    .cmd { color: #f2f2f2; }
-    .kwd { color: #c586c0; }
-    .str { color: #ce9178; }
-    .num { color: #b5cea8; }
-    .cmt { color: #6a9955; }
-    .pass { color: #4ade80; font-weight: bold; }
-    .fail { color: #f87171; font-weight: bold; }
-    .warn { color: #facc15; font-weight: bold; }
+    /* SYNTAX */
     .t-blue { color: var(--blue); }
-    .t-green { color: var(--green); }
-    .t-red { color: var(--red); }
+    .t-green { color: var(--green); font-weight: bold; }
+    .t-red { color: var(--red); font-weight: bold; }
     .t-purple { color: var(--purple); }
     .t-muted { color: var(--muted); }
 
-    /* CODE BLOCK */
-    .code-block {
-      background: var(--terminal); border: 1px solid #333; border-radius: 6px;
-      padding: 16px; font-family: 'Courier New', Consolas, monospace;
-      font-size: 13px; line-height: 1.6; overflow-x: auto; white-space: pre; margin-bottom: 24px;
+    /* FAILURE MODES */
+    .failure-title {
+      font-size: 14px; font-weight: 500; color: var(--text);
+      margin-top: 24px; margin-bottom: 12px;
     }
+    .failure-list { list-style: none; }
+    .failure-list li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 8px;
+    }
+    .failure-list li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0; margin-top: 7px;
+    }
+    .failure-list li strong { color: var(--text); font-weight: 500; }
 
-    /* METADATA TABLE */
-    .meta-table { width: 100%; margin-bottom: 24px; }
-    .meta-table td { padding: 6px 0; vertical-align: top; font-size: 14px; }
-    .meta-label {
-      font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;
-      width: 120px; padding-right: 16px;
+    /* TABLES */
+    .arch-table-wrap { overflow-x: auto; margin-bottom: 24px; }
+    .arch-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .arch-table th {
+      background: var(--terminal); color: var(--text); font-weight: 500;
+      font-size: 13px; text-align: left; padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
     }
-    .meta-value { color: var(--text); }
+    .arch-table td {
+      padding: 12px 16px; border-bottom: 1px solid var(--sep);
+      color: var(--muted); vertical-align: top; line-height: 1.5;
+    }
+    .arch-table td:first-child { color: var(--text); font-weight: 500; }
+    .arch-table tr:hover td { background: rgba(9,9,9,0.5); }
 
     /* GITHUB BUTTON */
     .gh-btn {
       display: inline-flex; align-items: center; gap: 8px;
       border: 1px solid var(--blue); color: var(--blue); background: transparent;
-      padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500;
+      padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 400;
       transition: background 150ms ease; cursor: pointer; text-decoration: none;
     }
     .gh-btn:hover { background: rgba(88,166,255,0.1); text-decoration: none; }
 
-    /* BULLET LIST */
-    .arch-list { list-style: none; margin: 16px 0; }
-    .arch-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 15px; color: var(--muted); }
-    .arch-list li strong { color: var(--text); font-weight: 500; }
-
-    /* EDGE MATRIX TABLE */
-    .edge-matrix { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 24px; }
-    .edge-matrix th {
-      background: var(--terminal); color: var(--text); font-weight: 500; font-size: 14px;
-      text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border);
+    /* INVARIANT LIST */
+    .invariant-list { list-style: none; margin: 16px 0; }
+    .invariant-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-bottom: 12px; font-size: 16px; color: var(--text); line-height: 1.5;
     }
-    .edge-matrix td { padding: 12px 16px; border-bottom: 1px solid var(--sep); color: var(--muted); vertical-align: top; }
-    .edge-matrix td:first-child { color: var(--blue); font-family: 'Courier New', Consolas, monospace; font-size: 13px; font-weight: 500; }
-    .edge-matrix tr:hover td { background: rgba(9,9,9,0.5); }
-    .note { font-size: 14px; color: var(--muted); font-style: italic; margin-top: 16px; }
-
-    /* SECTION H3 */
-    .arch-section h3 {
-      font-size: 18px; font-weight: 500; color: var(--text);
-      margin-bottom: 16px; margin-top: 32px;
+    .invariant-check {
+      width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px;
     }
-    .arch-section ul { list-style: none; margin: 16px 0; }
-    .arch-section ul li { font-size: 15px; color: var(--muted); margin-bottom: 10px; padding-left: 16px; position: relative; }
-    .arch-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); }
-    .arch-section ul li strong { color: var(--text); font-weight: 500; }
 
-    /* LAYER BADGES */
-    .layer-badge {
-      display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 4px;
-      font-family: 'Courier New', Consolas, monospace; margin-right: 4px;
+    /* AXIOMIS SECTION */
+    .axiomis-section {
+      background: var(--terminal); border-top: 2px solid var(--blue);
+      padding: 48px 0;
     }
-    .layer-badge.lb01 { background: rgba(88,166,255,0.12); color: var(--blue); }
-    .layer-badge.lb02 { background: rgba(63,185,80,0.12); color: var(--green); }
-    .layer-badge.lb03 { background: rgba(210,168,255,0.12); color: var(--purple); }
-    .layer-badge.lb04 { background: rgba(248,81,73,0.12); color: var(--red); }
-    .layer-badge.lb05 { background: rgba(230,126,34,0.12); color: var(--amber); }
-    .layer-badge.lb06 { background: rgba(255,189,46,0.12); color: #ffbd2e; }
-    .layer-badge.lb07 { background: rgba(139,148,158,0.12); color: var(--muted); }
+    .axiomis-closing {
+      font-size: 18px; color: var(--text); font-weight: 500;
+      font-style: italic; margin-top: 24px; line-height: 1.5;
+    }
 
-    /* MOBILE */
+    /* CONTACT */
+    .contact-links {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    }
+    .contact-links a {
+      font-size: 14px; color: var(--blue); text-decoration: none;
+    }
+    .contact-links a:hover { text-decoration: underline; }
+    .contact-sep { color: var(--muted); }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .section-nav a { padding: 8px 12px; font-size: 12px; }
-      .layer-stack {
-        flex-direction: row; overflow-x: auto; gap: 8px;
-        padding-bottom: 8px; -webkit-overflow-scrolling: touch;
-      }
-      .layer-bar {
-        min-width: 200px; flex-shrink: 0; flex-direction: column; gap: 4px;
-      }
+      .layer-stack { gap: 6px; }
+      .layer-bar { padding: 10px 12px; gap: 12px; }
       .layer-name { min-width: auto; }
+      .repo-anchor { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .repo-secondary { margin-left: 0; }
+      .pattern-title { font-size: 24px; }
     }
     @media (max-width: 640px) {
       .arch-hero h1 { font-size: 24px; }
       .arch-section-title { font-size: 22px; }
-      .type-title { font-size: 22px; }
-      .terminal-box, .code-block { font-size: 12px; }
+      .terminal-box { font-size: 12px; }
       .terminal-body { padding: 12px; font-size: 11px; }
       .arch-nav-links { display: none; }
-      .arch-nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--sep); padding: 16px 24px; gap: 16px; }
+      .arch-nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 56px; left: 0; right: 0;
+        background: var(--bg); border-bottom: 1px solid var(--sep);
+        padding: 16px 24px; gap: 16px;
+      }
       .arch-hamburger { display: block; }
-      .meta-table td { display: block; }
-      .meta-label { width: auto; padding-bottom: 2px; }
-      .type-title { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .decision-node { padding-left: 14px; }
-      .edge-matrix { font-size: 12px; }
-      .edge-matrix th, .edge-matrix td { padding: 8px 10px; }
+      .arch-table { font-size: 13px; }
+      .arch-table th, .arch-table td { padding: 10px 12px; }
     }
   </style>
 </head>
@@ -436,465 +301,316 @@
   </div>
 </nav>
 
-<!-- SECTION NAV (sticky sub-nav) -->
-<nav class="section-nav" id="sectionNav">
-  <div class="section-nav-inner">
-    <a href="#citadel">Citadel</a>
-    <a href="#nexus">Nexus</a>
-    <a href="#arbiter">Arbiter</a>
-    <a href="#matrix">Matrix</a>
-    <a href="#edge">Edge</a>
-    <a href="#research">Frontier</a>
-  </div>
-</nav>
-
-<!-- BANNER -->
-<div class="arch-banner" id="archBanner" aria-hidden="true">
-  <div class="arch-banner-grid">
-    <svg class="arch-banner-svg" viewBox="0 0 1200 400" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="archGridBlue" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.55" />
-          <stop offset="35%" stop-color="#58a6ff" stop-opacity="0.18" />
-          <stop offset="60%" stop-color="#58a6ff" stop-opacity="0" />
-        </linearGradient>
-        <linearGradient id="archGridCyan" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#3fb950" stop-opacity="0.3" />
-          <stop offset="50%" stop-color="#3fb950" stop-opacity="0.1" />
-          <stop offset="100%" stop-color="#3fb950" stop-opacity="0" />
-        </linearGradient>
-        <linearGradient id="archMaskGrad" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#fff" stop-opacity="1" />
-          <stop offset="55%" stop-color="#fff" stop-opacity="0.6" />
-          <stop offset="85%" stop-color="#fff" stop-opacity="0" />
-        </linearGradient>
-        <mask id="archFadeMask">
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#archMaskGrad)" />
-        </mask>
-      </defs>
-      <g class="arch-grid-blue" stroke="url(#archGridBlue)" fill="none" stroke-width="1" mask="url(#archFadeMask)"></g>
-      <g class="arch-grid-cyan" stroke="url(#archGridCyan)" fill="none" stroke-width="1.2" mask="url(#archFadeMask)"></g>
-    </svg>
-  </div>
-  <div class="arch-banner-content">
-    <h1 class="arch-banner-title">Architecture of Agentic Systems</h1>
-    <p class="arch-banner-quote">The maturity of enterprise AI is measured not in model scale, but in how reliably probabilistic reasoning is bound by deterministic execution.</p>
-  </div>
-</div>
-
 <!-- HERO -->
 <section class="arch-section arch-hero" id="hero">
   <div class="arch-wrap">
-    <p class="arch-hero-sub">We do not deploy models or optimize prompts. We engineer compound systems — architectures where neural reasoning and symbolic governance are composed into standardized layers that transfer across high-liability industries.</p>
+    <h1>Architecture of agentic systems</h1>
+    <p class="arch-hero-sub">I engineer compound systems that separate probabilistic reasoning from deterministic execution. Fifteen years across ML, deep learning, LLMs, and agentic AI — building architectures that survive in high-liability environments.</p>
+    <div class="arch-thesis">Chatbots are fragile demos. Systems engineering is a discipline.</div>
+  </div>
+</section>
 
-    <!-- 7-LAYER STACK -->
+<!-- 7-LAYER STACK -->
+<section class="arch-section" id="stack">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">The composable intelligence stack</h2>
+    <p class="arch-section-intro">Every system implements a complete production pipeline mapped to a unified architecture. The same layers transfer across clinical, financial, energy, and competitive domains — because the layers are decoupled, not the domains.</p>
+
     <div class="layer-stack">
       <div class="layer-bar"><span class="layer-num">07</span><span class="layer-name">Meta-Cognition</span><span class="layer-desc">Self-monitoring, confidence decay, drift detection</span></div>
       <div class="layer-bar"><span class="layer-num">06</span><span class="layer-name">Governance</span><span class="layer-desc">Policy-as-Code, mathematical validation, hard guards</span></div>
       <div class="layer-bar"><span class="layer-num">05</span><span class="layer-name">Execution</span><span class="layer-desc">Idempotent tool dispatch, stateful workflows, DAG commit</span></div>
-      <div class="layer-bar"><span class="layer-num">04</span><span class="layer-name">Reasoning</span><span class="layer-desc">Dynamic planning, cyclic state machines, constraint eval</span></div>
+      <div class="layer-bar"><span class="layer-num">04</span><span class="layer-name">Reasoning</span><span class="layer-desc">Dynamic planning, cyclic state machines, constraint evaluation</span></div>
       <div class="layer-bar"><span class="layer-num">03</span><span class="layer-name">Tool Registry</span><span class="layer-desc">MCP, ontologies, biophysical calculators, Nash solvers</span></div>
       <div class="layer-bar"><span class="layer-num">02</span><span class="layer-name">Memory</span><span class="layer-desc">Temporal state, episodic logs, vector context</span></div>
       <div class="layer-bar"><span class="layer-num">01</span><span class="layer-name">Perception</span><span class="layer-desc">Unstructured telemetry → validated semantic hydration</span></div>
     </div>
+  </div>
+</section>
 
-    <!-- DECISION FRAMEWORK -->
-    <div class="decision-tree">
-      <div class="decision-node">
-        <p class="question">Are human lives or safety-critical outcomes at stake?</p>
-        <div class="branches">
-          <div class="branch yes">
-            <span class="arrow">→</span>
-            <div class="result type2">
-              <strong>The Citadel (Type 2)</strong>
-              <p>Symbolic core owns execution. Neural components are strictly subordinate to hard guards. Use for: clinical decision support, autonomous vehicles, industrial control.</p>
-            </div>
-          </div>
-          <div class="branch no">
-            <span class="arrow">↓</span>
-            <div class="next-question">
-              <div class="decision-node" style="margin-top:12px;">
-                <p class="question">Is the problem space ill-defined, but with verifiable constraints?</p>
-                <div class="branches">
-                  <div class="branch yes">
-                    <span class="arrow">→</span>
-                    <div class="result type6">
-                      <strong>The Nexus (Type 6)</strong>
-                      <p>Neural core drives exploration. Symbolic verifiers sit inside the reasoning loop. Use for: scientific discovery, research synthesis, speculative design.</p>
-                    </div>
-                  </div>
-                  <div class="branch no">
-                    <span class="arrow">↓</span>
-                    <div class="next-question">
-                      <div class="decision-node" style="margin-top:12px;">
-                        <p class="question">Do multiple rational agents compete for shared resources?</p>
-                        <div class="branches">
-                          <div class="branch yes">
-                            <span class="arrow">→</span>
-                            <div class="result type5">
-                              <strong>The Arbiter (Type 5/9)</strong>
-                              <p>Parallel symbolic and neural tracks with formal mathematical arbitration. Use for: ad auctions, procurement negotiation, market mechanisms.</p>
-                            </div>
-                          </div>
-                          <div class="branch no">
-                            <span class="arrow">→</span>
-                            <div class="result type2-start">
-                              <strong>Start with Type 2, migrate to Type 6</strong>
-                              <p>Most production systems begin with deterministic safety and evolve toward cognitive flexibility as validation frameworks mature.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<!-- PRODUCTION PATTERNS -->
+<section class="arch-section" id="patterns">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">Production patterns</h2>
+    <p class="arch-section-intro">We classify systems by what must never happen — the failure mode that destroys trust, violates safety, or collapses economic value. Each pattern is a control structure that binds neural generation to deterministic verification.</p>
+
+    <!-- PATTERN A: GUARDED EXECUTION -->
+    <div id="guarded">
+      <div class="pattern-marker" style="color:var(--red);">PATTERN A</div>
+      <h3 class="pattern-title">Guarded execution</h3>
+      <p class="pattern-liability" style="color:var(--red);">Liability: A wrong action causes irreversible harm.</p>
+      <p class="pattern-mechanism">A deterministic rules engine controls the workflow. Neural models are invoked for specific, bounded fuzzy-logic tasks — but the symbolic engine owns execution, owns veto, and owns fallback. There is no override.</p>
+      <p class="pattern-when">Clinical decision support, autonomous vehicle control, industrial safety, energy grid balancing.</p>
+
+      <div class="repo-anchor">
+        <span class="repo-name">Agentic Energy Grid Balancing</span>
+        <span class="repo-path">aragit/agentic-energy-grid-balancing</span>
+        <span class="repo-badge public">Public</span>
+        <span class="repo-badge tests">~120 tests</span>
+      </div>
+      <div class="repo-secondary">
+        <span class="repo-name">Clinical Oncology Agent</span>
+        <span class="repo-path">internal/clinical-oncology-core</span>
+        <span class="repo-badge private">Private</span>
+      </div>
+
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+          <span class="terminal-title">grid-balancer — load-dispatch</span>
+        </div>
+        <div class="terminal-body">
+<span class="t-blue">[GRID]</span>      GridSimulation._run_step() executes deterministic load balancing<br>
+<span class="t-blue">[NEURAL]</span>    LLM advises battery dispatch strategy only<br>
+<span class="t-red">[GOVERN]</span>    OPA/Rego validates: frequency deviation &lt; 0.5 Hz<br>
+<span class="t-blue">[EXECUTE]</span>   Symbolic engine commits grid adjustment<br>
+<span class="t-blue">[AUDIT]</span>     Immutable trace: frequency, load, battery state<br>
+<span class="t-green">[STATUS]</span>    <span class="t-green">GRID_STABLE</span>
         </div>
       </div>
+
+      <div class="terminal-box terminal-nested">
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+          <span class="terminal-title">clinical-oncology — cardiotoxicity-guard</span>
+        </div>
+        <div class="terminal-body">
+<span class="t-blue">[PERCEIVE]</span>  Ingest EMR: ER/PR+, HER2-, Echocardiogram<br>
+<span class="t-blue">[NEURAL]</span>    Propose Regimen: AC-T (Doxorubicin)<br>
+<span class="t-red">[GOVERN]</span>    <span class="t-red">CRITICAL VETO</span> — LVEF 48% &lt; 50% (cardiotoxicity_guard.rego)<br>
+<span class="t-purple">[RE-PLAN]</span>   Select TC (Docetaxel) — safety cleared<br>
+<span class="t-blue">[COMMIT]</span>    Immutable ledger. Awaiting oncologist sign-off.<br>
+<span class="t-green">[STATUS]</span>    <span class="t-green">TREATMENT_PLAN_VALIDATED</span>
+        </div>
+      </div>
+
+      <p class="failure-title">Failure modes we engineer against</p>
+      <ul class="failure-list">
+        <li><span><strong>Neural planner deadlock:</strong> Escalate to deterministic fallback + human review</span></li>
+        <li><span><strong>Guard bypass attempt:</strong> All paths compile to DAG before runtime; no runtime interpreter</span></li>
+        <li><span><strong>Stale policy corpus:</strong> Versioned, cryptographically signed policies; full re-validation on update</span></li>
+      </ul>
+    </div>
+
+    <!-- PATTERN B: VERIFY-THEN-GENERATE -->
+    <div id="verify" style="margin-top:56px; padding-top:56px; border-top:1px solid var(--sep);">
+      <div class="pattern-marker" style="color:var(--blue);">PATTERN B</div>
+      <h3 class="pattern-title">Verify-then-generate</h3>
+      <p class="pattern-liability" style="color:var(--blue);">Liability: A wrong conclusion wastes time, money, or opportunity — but can be corrected.</p>
+      <p class="pattern-mechanism">A neural reasoner proposes a solution. An external ontology or graph verifies it. Violations trigger a self-correction feedback loop with confidence decay. After maximum iterations, control transfers to a deterministic fallback or human.</p>
+      <p class="pattern-when">Scientific discovery, differential diagnosis, research synthesis, speculative design.</p>
+
+      <div class="repo-anchor">
+        <span class="repo-name">Speculative Clinical GraphRAG</span>
+        <span class="repo-path">aragit/speculative-clinical-graphrag</span>
+        <span class="repo-badge public">Public</span>
+        <span class="repo-badge tests">LangGraph state machine, Neo4j in-loop verification</span>
+      </div>
+
+      <p class="repo-sub-label">System 1 feeder</p>
+      <div class="repo-anchor" style="margin-left:16px;">
+        <span class="repo-name">DeepSeek Reasoning Fine-Tuning</span>
+        <span class="repo-path">aragit/deepseek-reasoning-finetuning</span>
+        <span class="repo-badge public">Public</span>
+      </div>
+      <p style="font-size:13px; color:var(--muted); line-height:1.5; max-width:600px; margin-left:16px; margin-bottom:16px;">Medical chain-of-thought LoRA alignment pipeline. The fine-tuned model acts as the perception layer that feeds structured clinical reasoning into the symbolic guardrails of the GraphRAG system.</p>
+
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+          <span class="terminal-title">speculative-graphrag — differential-assessment</span>
+        </div>
+        <div class="terminal-body">
+<span class="t-blue">[INGEST]</span>     Patient note: "persistent cough, weight loss"<br>
+<span class="t-blue">[SPECULATE]</span>  DeepSeek-R1 proposes diagnostic triplets<br>
+<span class="t-blue">[RETRIEVE]</span>   Qdrant: 12 ontology concepts | Neo4j: 34 taxonomic edges<br>
+<span class="t-red">[VERIFY]</span>     Cypher validation: lung_ca→metastasis edge <span class="t-red">MISSING</span><br>
+<span class="t-purple">[CORRECT]</span>    Confidence: 0.82 → 0.72 (decay -0.1)<br>
+<span class="t-purple">[REGEN]</span>      Feed violations + reasoning trace back to R1<br>
+<span class="t-green">[VERIFY]</span>     Corrected path validated<br>
+<span class="t-blue">[SYNTHESIZE]</span> Grounded RAG output with citations<br>
+<span class="t-blue">[AUDIT]</span>      Trace committed. Zero PHI persisted.<br>
+<span class="t-green">[STATUS]</span>     <span class="t-green">DIFFERENTIAL_RESOLVED</span>
+        </div>
+      </div>
+
+      <p class="failure-title">Failure modes we engineer against</p>
+      <ul class="failure-list">
+        <li><span><strong>Max self-correction exceeded:</strong> Transfer to Guarded Execution fallback (static DAG)</span></li>
+        <li><span><strong>Verifier contradiction:</strong> Meta-cognitive arbitration weights verifiers by historical accuracy</span></li>
+        <li><span><strong>Confidence decay stall:</strong> Treat as convergence failure; trigger human handoff</span></li>
+      </ul>
+    </div>
+
+    <!-- PATTERN C: ALGORITHMIC ARBITRATION -->
+    <div id="arbitration" style="margin-top:56px; padding-top:56px; border-top:1px solid var(--sep);">
+      <div class="pattern-marker" style="color:var(--green);">PATTERN C</div>
+      <h3 class="pattern-title">Algorithmic arbitration</h3>
+      <p class="pattern-liability" style="color:var(--green);">Liability: Multiple autonomous actors compete for shared resources. No single actor can be trusted.</p>
+      <p class="pattern-mechanism">Neural agents propose strategies. A compiled mathematical engine — Nash equilibrium solver, VCG auction mechanism, LP verifier — checks every proposal against formal invariants. No strategy proceeds without mathematical proof.</p>
+      <p class="pattern-when">Ad auctions, procurement negotiation, market mechanisms, resource allocation.</p>
+
+      <div class="repo-anchor">
+        <span class="repo-name">Nash Marketing Agents</span>
+        <span class="repo-path">aragit/agentic-nash-marketing</span>
+        <span class="repo-badge public">Public</span>
+        <span class="repo-badge tests">49 property-based tests</span>
+      </div>
+
+      <div class="repo-secondary repo-deprecated">
+        <span class="repo-name">Autonomous Procurement Swarm</span>
+        <span class="repo-path">aragit/autonomous-procurement-swarm</span>
+        <span class="repo-badge archived">Archived</span>
+      </div>
+      <p class="repo-deprecated-note">Architecturally redundant. The Nash Marketing Agents repo completely outclasses it. Archived for reference.</p>
+
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+          <span class="terminal-title">nash-marketing — vcg-auction-engine</span>
+        </div>
+        <div class="terminal-body">
+<span class="t-blue">[ROUND 1]</span>     Agent-A bids $2.40 | Agent-B $1.85 | Agent-C $3.10 | Agent-D $2.70<br>
+<span class="t-purple">[ARBITRATE]</span>   VCG engine: winner charged next-highest bid ($2.70)<br>
+<span class="t-green">[VERIFY]</span>      paid ≤ bid ✓<br>
+<span class="t-purple">[NASH]</span>        SciPy optimization: equilibrium at Round 41 (Δu &lt; 0.01)<br>
+<span class="t-green">[TEST]</span>        49/49 passed — monotonicity, individual rationality, Nash bounds<br>
+<span class="t-green">[STATUS]</span>      <span class="t-green">NASH_EQUILIBRIUM_REACHED</span>
+        </div>
+      </div>
+
+      <p class="failure-title">Failure modes we engineer against</p>
+      <ul class="failure-list">
+        <li><span><strong>Nash non-convergence:</strong> Fallback to correlated equilibrium via deterministic LP solver</span></li>
+        <li><span><strong>Budget invariant violation:</strong> Immediate suspension + proportional fairness redistribution</span></li>
+        <li><span><strong>Strategy cycle detection:</strong> Switch to fictitious play (time-averaged strategies)</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- TAXONOMY -->
-<section class="arch-section" id="taxonomy">
+<!-- EVALUATION MATURITY -->
+<section class="arch-section" id="evaluation">
   <div class="arch-wrap">
-    <h2 class="arch-section-title">The Neuro-Symbolic Taxonomy</h2>
-    <p class="arch-section-intro">We classify implementations using the academic taxonomy established by Kautz, Garcez, and d'Avila Garcez. By varying the structural relationship between neural and symbolic components, we optimize along a strict spectrum of liability.</p>
+    <h2 class="arch-section-title">How we verify</h2>
+    <p class="arch-section-intro">Every pattern declares its verification level honestly. Not every system reaches every level, but every system is explicit about what it guarantees.</p>
+
     <div class="arch-table-wrap">
       <table class="arch-table">
-        <thead><tr><th>Architecture Type</th><th>Bracket Notation</th><th>Liability Profile</th><th>What It Is</th><th>Your Repos</th></tr></thead>
-        <tbody>
-          <tr id="row-citadel" data-scroll="#citadel"><td>The Citadel</td><td class="mono">Type 2: Symbolic[Neuro]</td><td>Life-critical</td><td>Symbolic core owns execution. Neural components are nested inside and subordinate to hard guards.</td><td>Clinical Oncology Agent, KYC/AML Agent, Lab Triage <span class="read-more-indicator">↓ Read more</span></td></tr>
-          <tr id="row-nexus" data-scroll="#nexus"><td>The Nexus</td><td class="mono">Type 6: Neuro[Symbolic]</td><td>High-stakes reasoning</td><td>Neural core drives exploration. Symbolic components are nested inside the neural loop as verifiers.</td><td>Speculative GraphRAG, Research Synthesizer, Protein Binder Flow <span class="read-more-indicator">↓ Read more</span></td></tr>
-          <tr id="row-arbiter" data-scroll="#arbiter"><td>The Arbiter</td><td class="mono">Type 5/9: Symbolic ↔ Neural</td><td>Competitive/market</td><td>Parallel symbolic and neural tracks with formal arbitration. Neither dominates.</td><td>Nash Marketing Agents, Procurement Swarm <span class="read-more-indicator">↓ Read more</span></td></tr>
-          <tr><td>Dual Track</td><td class="mono">Type 3: Neuro → Symbolic</td><td>Sequential pipeline</td><td>Neural perception feeds into symbolic solver. Linear flow.</td><td><em style="color:var(--muted);">[THEORETICAL — See Type 2 + Type 6 composition]</em></td></tr>
-          <tr><td>Synthesis</td><td class="mono">Type 4: Sym trains Neuro</td><td>Training-time</td><td>Symbolic engine generates training data for neural network.</td><td><em style="color:var(--muted);">[RESEARCH — See Quantum-Bound Molecular Generator for differentiable symbolic projection]</em></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-footnote">Type 3 and Type 4 are typically transient compositions in production. We engineer them by combining Type 2 and Type 6 primitives rather than implementing them as standalone architectures.</p>
-
-    <svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" style="background: #0d1117; font-family: monospace; border-radius: 12px; border: 1px solid #30363d; width: 100%; height: auto; margin-top: 32px;">
-      <defs>
-        <linearGradient id="fullSpectrum" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#8b949e" />
-          <stop offset="20%" stop-color="#ff4d4d" />
-          <stop offset="40%" stop-color="#e67e22" />
-          <stop offset="60%" stop-color="#f1c40f" />
-          <stop offset="80%" stop-color="#2ecc71" />
-          <stop offset="100%" stop-color="#00bfff" />
-        </linearGradient>
-        <linearGradient id="activeRed" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff4d4d" stop-opacity="0.15"/><stop offset="100%" stop-color="#ff4d4d" stop-opacity="0.0"/></linearGradient>
-        <linearGradient id="activeGreen" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#2ecc71" stop-opacity="0.15"/><stop offset="100%" stop-color="#2ecc71" stop-opacity="0.0"/></linearGradient>
-        <linearGradient id="activeBlue" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff" stop-opacity="0.15"/><stop offset="100%" stop-color="#00bfff" stop-opacity="0.0"/></linearGradient>
-      </defs>
-      <rect x="40" y="180" width="920" height="4" rx="2" fill="url(#fullSpectrum)" />
-      <path d="M 35 182 L 45 175 L 45 189 Z" fill="#8b949e" />
-      <path d="M 965 182 L 955 175 L 955 189 Z" fill="#00bfff" />
-      <text x="45" y="210" fill="#8b949e" font-size="10" font-weight="bold">◄ STATISTICAL HEURISTICS</text>
-      <text x="760" y="210" fill="#8b949e" font-size="10" font-weight="bold">DEEP COGNITIVE INTEGRATION ►</text>
-      <g transform="translate(40, 30)">
-        <rect x="0" y="0" width="140" height="110" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" />
-        <text x="10" y="25" fill="#8b949e" font-size="11" font-weight="bold">TYPE 1</text>
-        <text x="10" y="45" fill="#ffffff" font-size="10" font-weight="bold">Pure Neural</text>
-        <text x="10" y="70" fill="#8b949e" font-size="9">Standard LLMs</text>
-        <text x="10" y="85" fill="#8b949e" font-size="9">Token-to-Token</text>
-        <circle cx="70" cy="150" r="4" fill="#8b949e" />
-        <line x1="70" y1="110" x2="70" y2="150" stroke="#30363d" stroke-width="1" stroke-dasharray="2,2" />
-      </g>
-      <g transform="translate(195, 30)">
-        <rect x="0" y="0" width="140" height="110" rx="6" fill="url(#activeRed)" stroke="#ff4d4d" stroke-width="1.5" />
-        <text x="10" y="25" fill="#ff4d4d" font-size="11" font-weight="bold">TYPE 2 [CORE]</text>
-        <text x="10" y="45" fill="#ffffff" font-size="10" font-weight="bold">The Citadel</text>
-        <text x="10" y="65" fill="#8b949e" font-size="9">Symbolic[Neuro]</text>
-        <text x="10" y="85" fill="#ff4d4d" font-size="8" font-weight="bold">[DEPLOYED]</text>
-        <circle cx="70" cy="150" r="5" fill="#ff4d4d" />
-        <line x1="70" y1="110" x2="70" y2="150" stroke="#ff4d4d" stroke-width="1" stroke-dasharray="2,2" />
-      </g>
-      <g transform="translate(350, 30)">
-        <rect x="0" y="0" width="140" height="110" rx="6" fill="#161b22" stroke="#e67e22" stroke-width="1" />
-        <text x="10" y="25" fill="#e67e22" font-size="11" font-weight="bold">TYPE 3</text>
-        <text x="10" y="45" fill="#ffffff" font-size="10" font-weight="bold">Dual Track</text>
-        <text x="10" y="70" fill="#8b949e" font-size="9">Neural Perception</text>
-        <text x="10" y="85" fill="#8b949e" font-size="9">→ Symbolic Solver</text>
-        <circle cx="70" cy="150" r="4" fill="#e67e22" />
-        <line x1="70" y1="110" x2="70" y2="150" stroke="#e67e22" stroke-width="1" stroke-dasharray="2,2" />
-      </g>
-      <g transform="translate(505, 30)">
-        <rect x="0" y="0" width="140" height="110" rx="6" fill="#161b22" stroke="#f1c40f" stroke-width="1" />
-        <text x="10" y="25" fill="#f1c40f" font-size="11" font-weight="bold">TYPE 4</text>
-        <text x="10" y="45" fill="#ffffff" font-size="10" font-weight="bold">Synthesis</text>
-        <text x="10" y="70" fill="#8b949e" font-size="9">Sym Engine Trains</text>
-        <text x="10" y="85" fill="#8b949e" font-size="9">Neural Network</text>
-        <circle cx="70" cy="150" r="4" fill="#f1c40f" />
-        <line x1="70" y1="110" x2="70" y2="150" stroke="#f1c40f" stroke-width="1" stroke-dasharray="2,2" />
-      </g>
-      <g transform="translate(660, 30)">
-        <rect x="0" y="0" width="140" height="110" rx="6" fill="url(#activeGreen)" stroke="#2ecc71" stroke-width="1.5" />
-        <text x="10" y="25" fill="#2ecc71" font-size="11" font-weight="bold">TYPE 5 [CORE]</text>
-        <text x="10" y="45" fill="#ffffff" font-size="10" font-weight="bold">The Arbiter</text>
-        <text x="10" y="65" fill="#8b949e" font-size="9">Symbolic ↔ Neural</text>
-        <text x="10" y="85" fill="#2ecc71" font-size="8" font-weight="bold">[DEPLOYED]</text>
-        <circle cx="70" cy="150" r="5" fill="#2ecc71" />
-        <line x1="70" y1="110" x2="70" y2="150" stroke="#2ecc71" stroke-width="1" stroke-dasharray="2,2" />
-      </g>
-      <g transform="translate(815, 30)">
-        <rect x="0" y="0" width="140" height="110" rx="6" fill="url(#activeBlue)" stroke="#00bfff" stroke-width="1.5" />
-        <text x="10" y="25" fill="#00bfff" font-size="11" font-weight="bold">TYPE 6 [CORE]</text>
-        <text x="10" y="45" fill="#ffffff" font-size="10" font-weight="bold">The Nexus</text>
-        <text x="10" y="65" fill="#8b949e" font-size="9">Neural[Symbolic]</text>
-        <text x="10" y="85" fill="#00bfff" font-size="8" font-weight="bold">[DEPLOYED]</text>
-        <circle cx="70" cy="150" r="5" fill="#00bfff" />
-        <line x1="70" y1="110" x2="70" y2="150" stroke="#00bfff" stroke-width="1" stroke-dasharray="2,2" />
-      </g>
-      <text x="500" y="270" fill="#ffffff" font-size="11" text-anchor="middle" font-weight="bold">The Spectrum of Structural Liability</text>
-      <text x="500" y="295" fill="#8b949e" font-size="10" text-anchor="middle">Colored frames identify production-grade paradigms engineered within my private and public code vectors.</text>
-    </svg>
-
-    <!-- EVOLUTION PATH CALLOUT -->
-    <div class="callout evolution-path">
-      <h4>Architecture Evolution Path</h4>
-      <p>Most production systems begin as <strong>Type 2 (The Citadel)</strong> with deterministic safety guarantees, then migrate toward <strong>Type 6 (The Nexus)</strong> as symbolic validation frameworks mature. The 7-layer stack remains constant; only the control flow inverts — from <em>symbolic core with neural advisors</em> to <em>neural core with symbolic verifiers</em>.</p>
-
-    </div>
-  </div>
-</section>
-
-<!-- THE CITADEL -->
-<section class="arch-section" id="citadel">
-  <div class="arch-wrap">
-    <div class="type-marker" style="color:#e06020;">TYPE 3</div>
-    <h2 class="type-title">THE CITADEL <span class="type-badge orange">Academic Type 2 · Symbolic[Neuro]</span></h2>
-    <div class="type-meta"><span class="type-meta-dot" style="background:#e06020;"></span> Life-critical / zero-tolerance</div>
-
-    <div class="type-split">
-      <div class="type-text-side">
-        <p class="type-desc">The symbolic core owns execution. Neural networks are strictly nested inside and subordinate to deterministic guards. In high-stakes environments, an LLM must never directly control execution paths. The neural engine acts as an upstream strategist, parsing complex inputs to propose intent. This intent is compiled into a Directed Acyclic Graph (DAG). Before any node executes, a stateless symbolic validation layer evaluates the plan against hard mathematical and physiological constraints.</p>
-        <table class="meta-table">
-          <tr><td class="meta-label">System</td><td class="meta-value">Clinical Oncology Agent</td></tr>
-          <tr><td class="meta-label">Repo</td><td class="meta-value">internal/clinical-oncology-core</td></tr>
-          <tr><td class="meta-label">Stack</td><td class="meta-value">FHIR R4, HL7 v2, OPA/Rego, DAG-orchestrated</td></tr>
-        </table>
-        <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
-      </div>
-      <div class="type-terminal-side">
-        <div class="terminal-box">
-          <div class="terminal-header">
-            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-            <span class="terminal-title">clinical-oncology — cardiotoxicity-guard</span>
-          </div>
-          <div class="terminal-body">
-            <span class="cmd">$ axiomics run --case=emr-0247 --mode=deterministic</span><br>
-            <span class="cmt"># --- PERCEPTION ---</span><br>
-            <span class="cmd">[PERCEIVE]</span> Ingest EMR: ER/PR+, HER2-, Echocardiogram<br>
-            <span class="cmd">[NORMALIZE]</span> Extract semantic parameters to validated clinical vectors<br>
-            <span class="cmt"># --- NEURAL PLANNING ---</span><br>
-            <span class="cmd">[NEURAL]</span> Propose Regimen: AC-T (Doxorubicin + Cyclophosphamide)<br>
-            <span class="cmt"># --- GOVERNANCE VETO ---</span><br>
-            <span class="fail">[GOVERN]</span> <span class="fail">CRITICAL VETO via cardiotoxicity_guard.rego</span><br>
-            &nbsp;&nbsp;└─ <span class="str">LVEF</span> = 48% (&lt; 50% threshold — anthracycline blocked)<br>
-            <span class="cmt"># --- RECOVERY ---</span><br>
-            <span class="cmd">[RE-PLAN]</span> Trigger recursive neural alternative selection<br>
-            <span class="cmd">[GOVERN]</span> Evaluating Alternative: TC (Docetaxel) — safety cleared<br>
-            <span class="pass">[COMMIT]</span> State committed to immutable ledger. Awaiting oncologist sign-off.<br>
-            <span class="cmd">[STATUS]</span> <span class="pass">TREATMENT_PLAN_VALIDATED</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <details class="failure-modes">
-      <summary>Failure Modes &amp; Recovery</summary>
-      <ul>
-        <li><strong>Neural planner deadlock:</strong> When no proposed plan passes symbolic validation, the system escalates to a deterministic fallback heuristic (e.g., most conservative safe option) and flags for human review.</li>
-        <li><strong>Guard bypass attempt:</strong> All execution paths are compiled to a DAG before runtime. There is no runtime interpreter that can skip validation nodes.</li>
-        <li><strong>Stale policy corpus:</strong> Policies are versioned and cryptographically signed. A policy update triggers a full re-validation of all pending plans in the queue.</li>
-      </ul>
-    </details>
-  </div>
-</section>
-
-<!-- THE NEXUS -->
-<section class="arch-section" id="nexus">
-  <div class="arch-wrap">
-    <div class="type-marker" style="color:var(--blue);">TYPE 4</div>
-    <h2 class="type-title">THE NEXUS <span class="type-badge blue">Academic Type 6 · Neuro[Symbolic]</span></h2>
-    <div class="type-meta"><span class="type-meta-dot" style="background:var(--blue);"></span> High-stakes discovery &amp; reasoning</div>
-
-    <div class="type-split reverse">
-      <div class="type-terminal-side">
-        <div class="terminal-box">
-          <div class="terminal-header">
-            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-            <span class="terminal-title">speculative-graphrag — differential-assessment</span>
-          </div>
-          <div class="terminal-body">
-            <span class="cmd">$ graphrag assess --patient=demo-0091 --mode=speculative</span><br>
-            <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
-            <span class="cmd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
-            <span class="cmd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
-            &nbsp;&nbsp;└─ Fusion: α=0.7 vector + 0.3 graph<br>
-            <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
-            <span class="cmd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
-            <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
-            <span class="fail">[FAIL]</span> <span class="fail">Neo4j edge lung_ca→metastasis missing</span><br>
-            <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
-            <span class="cmd">[REGEN]</span> Feed violations + reasoning trace back to model<br>
-            <span class="kwd">[META-COG]</span> Confidence: 0.82 → 0.72 (decay -0.1)<br>
-            <span class="pass">[PASS]</span> Corrected path validated by all verifiers<br>
-            <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
-            <span class="cmd">[STATUS]</span> <span class="pass">DIFFERENTIAL_RESOLVED</span>
-          </div>
-        </div>
-      </div>
-      <div class="type-text-side">
-        <p class="type-desc">The neural core drives open-ended exploration. Symbolic verifiers — ontologies, graph constraints, biophysical validators — are embedded directly inside the neural reasoning loop. When problems are too complex for static DAGs, the neural core must lead using dynamic planning cycles (ReAct, LangGraph state machines). To prevent drift, symbolic components are placed inside the model's observation loop, not outside it.</p>
-        <table class="meta-table">
-          <tr><td class="meta-label">System</td><td class="meta-value">Speculative Clinical GraphRAG</td></tr>
-          <tr><td class="meta-label">Repo</td><td class="meta-value">internal/speculative-graph-rag</td></tr>
-          <tr><td class="meta-label">Stack</td><td class="meta-value">9-node LangGraph, Qdrant, Neo4j, DeepSeek-R1, SNOMED-CT</td></tr>
-        </table>
-        <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
-      </div>
-    </div>
-
-    <details class="failure-modes">
-      <summary>Failure Modes &amp; Recovery</summary>
-      <ul>
-        <li><strong>Max self-correction exceeded:</strong> After 3 regeneration cycles, confidence is floored to 0.0 and control transfers to a Type 2 fallback (static DAG with pre-approved heuristics).</li>
-        <li><strong>Verifier contradiction:</strong> When symbolic verifiers disagree, the system invokes a meta-cognitive arbitration layer that weights verifiers by historical accuracy on the current domain.</li>
-        <li><strong>Confidence decay stall:</strong> If confidence stops changing between iterations, the system treats this as convergence failure and triggers human handoff.</li>
-      </ul>
-    </details>
-  </div>
-</section>
-
-<!-- THE ARBITER -->
-<section class="arch-section" id="arbiter">
-  <div class="arch-wrap">
-    <div class="type-marker" style="color:var(--green);">TYPE 5</div>
-    <h2 class="type-title">THE ARBITER <span class="type-badge green">Academic Type 5/9 · Symbolic ↔ Neural</span></h2>
-    <div class="type-meta"><span class="type-meta-dot" style="background:var(--green);"></span> Competitive markets &amp; dynamic environments</div>
-
-    <div class="type-split">
-      <div class="type-text-side">
-        <p class="type-desc">Parallel symbolic and neural tracks interact continuously. Neither dominates; a formal mathematical engine arbitrates conflicts to maintain system invariants. When multiple autonomous agents compete, trusting heuristics or unconstrained model outputs introduces unpredictable economic risk. Neural agents maximize individual objectives, but a compiled game-theoretic engine enforces absolute structural boundaries.</p>
-        <table class="meta-table">
-          <tr><td class="meta-label">System</td><td class="meta-value">Nash Marketing Agents</td></tr>
-          <tr><td class="meta-label">Repo</td><td class="meta-value"><a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener">aragit/agentic-nash-marketing</a></td></tr>
-          <tr><td class="meta-label">Tests</td><td class="meta-value">49 property-based tests passed</td></tr>
-          <tr><td class="meta-label">Env</td><td class="meta-value">Docker production-ready</td></tr>
-        </table>
-        <h3 style="font-size:16px; font-weight:500; color:var(--text);">Property-based validation guarantees</h3>
-        <ul class="arch-list">
-          <li><span style="color:var(--green);">→</span> <span><strong>Monotonicity:</strong> Higher CPA → controlled scale progression</span></li>
-          <li><span style="color:var(--green);">→</span> <span><strong>Individual rationality:</strong> No overpayment; hard budget guardrails</span></li>
-          <li><span style="color:var(--green);">→</span> <span><strong>Nash bounds:</strong> Convergence within ε-utility tolerance</span></li>
-        </ul>
-        <a href="https://github.com/aragit" target="_blank" rel="noopener" class="gh-btn"><i class="fab fa-github"></i> View on GitHub →</a>
-      </div>
-      <div class="type-terminal-side">
-        <div class="terminal-box">
-          <div class="terminal-header">
-            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
-            <span class="terminal-title">nash-marketing — vcg-auction-engine</span>
-          </div>
-          <div class="terminal-body">
-            <span class="cmd">$ nash run --agents=4 --rounds=50 --market=display-ads</span><br>
-            <span class="cmt"># --- ROUND 1: PERSONA SPAWN ---</span><br>
-            <span class="cmd">[NEURAL]</span> Agent-A bids $2.40 | Agent-B bids $1.85 | Agent-C bids $3.10 | Agent-D bids $2.70<br>
-            <span class="cmt"># --- ARBITRATION ---</span><br>
-            <span class="pass">[ARBITRATE]</span> Invoking compiled symbolic VCG Auction Engine<br>
-            <span class="pass">[EXECUTE]</span> Winner: Agent-C allocated dominant traffic slot<br>
-            <span class="kwd">[MATHEMATICS]</span> Enforcing second-price invariant: Agent-C charged $2.70 (next-highest bid)<br>
-            <span class="pass">[VERIFY]</span> Asserting: paid_price ≤ bid_valuation ✓<br>
-            <span class="cmt"># --- CONVERGENCE ---</span><br>
-            <span class="kwd">[NASH SOLVER]</span> Executing SciPy multi-variate optimization over strategy spaces<br>
-            <span class="pass">[CONVERGENCE]</span> Stable equilibrium at Round 41 (Δu &lt; 0.01)<br>
-            <span class="pass">[TEST]</span> 49/49 property-based tests passed<br>
-            <span class="cmd">[STATUS]</span> <span class="pass">NASH_EQUILIBRIUM_REACHED</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <details class="failure-modes">
-      <summary>Failure Modes &amp; Recovery</summary>
-      <ul>
-        <li><strong>Nash non-convergence:</strong> If equilibrium is not reached within 500 iterations, the system falls back to a correlated equilibrium computed by a deterministic LP solver.</li>
-        <li><strong>Budget invariant violation:</strong> Any agent exceeding its budget is immediately suspended. Its allocated resources are redistributed via proportional fairness.</li>
-        <li><strong>Strategy cycle detection:</strong> Best-response dynamics are monitored for cycles. If detected, the system switches to fictitious play (time-averaged strategies).</li>
-      </ul>
-    </details>
-  </div>
-</section>
-
-<!-- CROSS-DOMAIN MATRIX -->
-<section class="arch-section" id="matrix">
-  <div class="arch-wrap">
-    <h2 class="arch-section-title">Cross-Domain Composable Matrix</h2>
-    <p class="arch-section-intro">Because capabilities are decoupled into normalized layers, the same architectural blueprints transfer across domains.</p>
-    <div class="arch-table-wrap">
-      <table class="arch-table">
-        <thead><tr><th>Layer</th><th>Clinical Oncology (Type 3)</th><th>Molecular Discovery (Type 4)</th><th>Algorithmic Marketing (Type 5)</th></tr></thead>
-        <tbody>
-          <tr><td class="mono"><span class="layer-badge lb07">07</span> Meta-cognition</td><td>Diagnostic confidence tracking</td><td>Fold reliability scores</td><td>Win-rate convergence tracking</td></tr>
-          <tr><td class="mono"><span class="layer-badge lb06">06</span> Governance</td><td>OPA/Rego dosing boundaries</td><td>Biophysical clash &amp; RMSD limits</td><td>VCG truthfulness &amp; budget invariants</td></tr>
-          <tr><td class="mono"><span class="layer-badge lb05">05</span> Execution</td><td>DAG-orchestrated treatment auth</td><td>Structure file generation</td><td>Traffic allocation commits</td></tr>
-          <tr><td class="mono"><span class="layer-badge lb04">04</span> Reasoning</td><td>Deterministic graph routing</td><td>Flow-matching ODE integration</td><td>LLM strategy proposal cycles</td></tr>
-          <tr><td class="mono"><span class="layer-badge lb03">03</span> Tool Registry</td><td>SNOMED-CT / NCCN calculators</td><td>Biopython validation scripts</td><td>SciPy Nash / VCG engine</td></tr>
-          <tr><td class="mono"><span class="layer-badge lb02">02</span> Memory</td><td>Episodic health records</td><td>Structural coordinate DB</td><td>Campaign performance history</td></tr>
-          <tr><td class="mono"><span class="layer-badge lb01">01</span> Perception</td><td>FHIR ingestion / clinical NLP</td><td>PDB structure parsing</td><td>Market signal ingestion</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- EDGE-FIRST -->
-<section class="arch-section" id="edge">
-  <div class="arch-wrap">
-    <h2 class="arch-section-title">The Edge-First Infrastructure</h2>
-    <p class="type-desc" style="text-align:center; margin-left:auto; margin-right:auto;">Real-world systems cannot rely entirely on centralized cloud APIs. We develop compilation pipelines that push neuro-symbolic execution to low-power edge infrastructure — without sacrificing the architecture's liability guarantees.</p>
-
-    <h3>Layer Mapping to Edge</h3>
-    <div class="arch-table-wrap">
-      <table class="edge-matrix">
         <thead>
-          <tr><th>Layer</th><th>Edge Deployment</th><th>Cloud Fallback</th></tr>
+          <tr><th>Level</th><th>What it means</th><th>Example</th></tr>
         </thead>
         <tbody>
-          <tr><td>01 Perception</td><td>On-device SLM for unstructured telemetry parsing</td><td>Foundation model for ambiguous multimodal inputs</td></tr>
-          <tr><td>02 Memory</td><td>SQLite + local vector store (Chroma Lite)</td><td>Sync to central graph DB on connection restore</td></tr>
-          <tr><td>03 Tool Registry</td><td>Compiled WASM calculators (Nash, biophysical)</td><td>Dynamic tool discovery via MCP</td></tr>
-          <tr><td>04 Reasoning</td><td>Static DAG execution (Type 2)</td><td>Dynamic planning with cloud LLM (Type 6)</td></tr>
-          <tr><td>05 Execution</td><td>Idempotent local commits with conflict-free replication</td><td>Central ledger reconciliation</td></tr>
-          <tr><td>06 Governance</td><td>OPA/Rego compiled to WASM with zero runtime dependencies</td><td>Policy update distribution</td></tr>
-          <tr><td>07 Meta-Cognition</td><td>Local confidence tracking with exponential decay</td><td>Fleet-wide drift detection via federated aggregation</td></tr>
+          <tr><td>Unit tests</td><td>Component-level correctness</td><td>pytest across all repos</td></tr>
+          <tr><td>Property-based tests</td><td>Invariant verification across input distributions</td><td>Nash: 49 tests for monotonicity, IR, Nash bounds</td></tr>
+          <tr><td>Benchmark alignment</td><td>Standardized task performance against published metrics</td><td>Demand Forecasting: M5 WAPE/RMSSE</td></tr>
+          <tr><td>Biophysical validation</td><td>Domain-specific physical constraint verification</td><td>Protein Binder: clash scores, RMSD, docking affinity</td></tr>
+          <tr><td>Audit trails</td><td>Immutable, cryptographically signed execution records</td><td>Clinical systems: full reasoning trace to ledger</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- THE EDGE -->
+<section class="arch-section" id="edge">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">Edge-first infrastructure</h2>
+    <p class="arch-section-intro">Not all reasoning happens in the cloud. We develop compilation pipelines that push execution to low-power edge infrastructure without sacrificing liability guarantees.</p>
+
+    <div class="repo-anchor" style="margin-bottom:24px;">
+      <span class="repo-name">Edge SLM Optimizer</span>
+      <span class="repo-path">aragit/edge-slm-optimizer</span>
+      <span class="repo-badge public">Public</span>
+      <a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener" class="gh-btn" style="margin-left:auto;">View on GitHub →</a>
+    </div>
+
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+        <span class="terminal-title">edge-slm — quantize-export</span>
+      </div>
+      <div class="terminal-body">
+<span class="t-blue">[QUANT]</span>       FP32 → INT8 (static) → INT4 (dynamic)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ Perplexity: 12.4 → 13.8 (&lt;15% degradation)<br>
+<span class="t-blue">[ONNX]</span>        Cross-platform CPU build<br>
+<span class="t-blue">[EXECUTORCH]</span>  ARM NEON delegate compiled<br>
+<span class="t-blue">[RPI5]</span>        Latency: 42ms/token · Power: 3.8W sustained<br>
+<span class="t-green">[PASS]</span>        All accuracy gates cleared
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONEST REFRAMES -->
+<section class="arch-section" id="honest">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">What these systems are not</h2>
+    <p class="arch-section-intro">We do not claim academic taxonomy compliance. Our systems are engineering hybrids — modular architectures where neural and symbolic components interact via explicit APIs and interfaces, not unified monolithic weights.</p>
+
+    <div class="arch-table-wrap">
+      <table class="arch-table">
+        <thead>
+          <tr><th>Claim we do not make</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>"Native neural-symbolic binding" (Kautz Type 6)</td><td>Our symbolic verifiers are external systems (Neo4j, OPA, SciPy), not compiled into neural weights</td></tr>
+          <tr><td>"Logic as differentiable loss" (Kautz Type 5)</td><td>Our policies are hard constraints (Rego, Cypher), not soft regularization terms</td></tr>
+          <tr><td>"Neuro-symbolic by post-hoc validation"</td><td>Post-hoc checking is standard ML, not a structural pattern. Our validation is in-loop or pre-execution.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p class="note">The <a href="https://github.com/aragit/edge-slm-optimizer">Edge SLM Optimizer</a> project provides the quantization and export pipelines for Layer 01-03 deployment on Raspberry Pi 5-class hardware under 5W sustained.</p>
+    <p style="font-size:16px; color:var(--text); font-weight:500; line-height:1.6; margin-top:16px;">What we do claim: Production systems with measurable guarantees — property-based tests, benchmark alignment, immutable audit trails, and deterministic escalation.</p>
   </div>
 </section>
 
-<!-- RESEARCH FRONTIER -->
-<section class="arch-section" id="research">
+<!-- AXIOMIS -->
+<section class="axiomis-section" id="axiomis">
   <div class="arch-wrap">
-    <h2 class="arch-section-title">The Research Frontier</h2>
-    <p class="type-desc" style="text-align:center; margin-left:auto; margin-right:auto;">For unconstrained scientific discovery, our multi-agent research environments use foundational model coordination with the <a href="https://modelcontextprotocol.io/">Model Context Protocol (MCP)</a>. The core engine dynamically spins up secure execution containers, pulling literature, running calculations, updating citation graphs, and self-correcting based on formal logic validations.</p>
+    <h2 class="arch-section-title" style="font-size:28px;">AXIOMIS</h2>
+    <p class="pattern-mechanism" style="margin-bottom:16px;">Our clinical intelligence system. A deterministic FHIR state machine at its core, migrating toward more flexible reasoning as validation frameworks mature — with safety invariants that are non-negotiable.</p>
 
-    <h3>Current Experiments</h3>
-    <ul>
-      <li><strong>Autonomous Hypothesis Generation:</strong> GNN-over-PubMed traversal with LLM-driven abduction. See <a href="#research">Biomedical Hypotheses Agent</a>.</li>
-      <li><strong>Differentiable Symbolic Projection:</strong> Embedding convex constraint satisfaction directly into PyTorch computation graphs via KKT conditions and Implicit Function Theorem backprop. See <a href="#research">Quantum-Bound Molecular Generator</a>.</li>
-      <li><strong>Flow Matching for Structural Biology:</strong> Replacing diffusion-based protein design with ODE-trajectory flow matching for higher binding specificity. See <a href="#research">Protein Binder Flow</a>.</li>
+    <ul class="invariant-list">
+      <li>
+        <svg class="invariant-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#3fb950" opacity="0.15"/><path d="M5 8l2 2 4-4" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Every treatment plan compiles to a DAG before execution.</span>
+      </li>
+      <li>
+        <svg class="invariant-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#3fb950" opacity="0.15"/><path d="M5 8l2 2 4-4" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Every node is pre-flight checked by OPA/Rego policies.</span>
+      </li>
+      <li>
+        <svg class="invariant-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#3fb950" opacity="0.15"/><path d="M5 8l2 2 4-4" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Every execution trace is committed to an immutable ledger.</span>
+      </li>
+      <li>
+        <svg class="invariant-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#3fb950" opacity="0.15"/><path d="M5 8l2 2 4-4" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Every override of a neural recommendation requires explicit symbolic justification.</span>
+      </li>
     </ul>
 
-    <p class="note">All frontier experiments include a mandatory Type 2 safety envelope: even speculative systems cannot bypass hard guards during self-directed exploration.</p>
+    <p class="axiomis-closing">This is how we cross the Planning Rubicon without crossing the safety line.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="arch-section" id="contact">
+  <div class="arch-wrap">
+    <h2 class="arch-section-title">Start a conversation</h2>
+    <p class="arch-section-intro" style="margin-bottom:16px;">For research collaboration, architecture consulting, or technical due diligence:</p>
+
+    <div class="contact-links">
+      <a href="https://linkedin.com/in/arashnicoomanesh" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="contact-sep">·</span>
+      <a href="https://github.com/aragit" target="_blank" rel="noopener">GitHub</a>
+      <span class="contact-sep">·</span>
+      <a href="mailto:arash@aragit.com">Email</a>
+      <span class="contact-sep">·</span>
+      <a href="#">Schedule a call</a>
+    </div>
+
+    <p style="font-size:14px; color:var(--muted); margin-top:12px;">Browse <a href="https://github.com/aragit" target="_blank" rel="noopener">public repositories</a> with test suites and benchmarks, or read the full <a href="#">Architecture Specification</a>.</p>
   </div>
 </section>
 
@@ -916,97 +632,6 @@ window.addEventListener('scroll', () => {
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => links.classList.toggle('open'));
-
-// Section nav visibility + active state
-(function() {
-  const sectionNav = document.getElementById('sectionNav');
-  const taxonomy = document.getElementById('taxonomy');
-  const navLinks = sectionNav.querySelectorAll('a');
-  const sections = ['citadel','nexus','arbiter','matrix','edge','research'].map(id => document.getElementById(id)).filter(Boolean);
-
-  // Show/hide section nav based on scroll position
-  function updateSectionNav() {
-    if (!taxonomy) return;
-    const rect = taxonomy.getBoundingClientRect();
-    sectionNav.classList.toggle('visible', rect.bottom < 0);
-  }
-
-  // Highlight active section
-  function updateActiveSection() {
-    let current = '';
-    for (const section of sections) {
-      const rect = section.getBoundingClientRect();
-      if (rect.top <= 120) current = section.id;
-    }
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href').replace('#', '');
-      link.classList.toggle('active', href === current);
-    });
-  }
-
-  window.addEventListener('scroll', () => {
-    updateSectionNav();
-    updateActiveSection();
-  }, { passive: true });
-  updateSectionNav();
-})();
-
-// Taxonomy table row click-to-scroll
-document.querySelectorAll('tr[data-scroll]').forEach(row => {
-  row.addEventListener('click', () => {
-    const target = document.querySelector(row.dataset.scroll);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-// Static wireframe grid for banner
-(function() {
-  const NS = 'http://www.w3.org/2000/svg';
-  const banner = document.getElementById('archBanner');
-  if (!banner) return;
-
-  const svg = banner.querySelector('.arch-banner-svg');
-  const blueGroup = svg.querySelector('g.arch-grid-blue');
-  const cyanGroup = svg.querySelector('g.arch-grid-cyan');
-
-  const w = 1200, h = 400;
-  const orangeSpacing = 40;
-  const blueSpacing = 80;
-
-  for (let x = 0; x <= w; x += orangeSpacing) {
-    const l = document.createElementNS(NS, 'line');
-    l.setAttribute('x1', String(x)); l.setAttribute('x2', String(x));
-    l.setAttribute('y1', '0'); l.setAttribute('y2', String(h));
-    l.setAttribute('stroke-width', '1');
-    blueGroup.appendChild(l);
-  }
-  for (let y = 0; y <= h; y += orangeSpacing) {
-    const l = document.createElementNS(NS, 'line');
-    l.setAttribute('x1', '0'); l.setAttribute('x2', String(w));
-    l.setAttribute('y1', String(y)); l.setAttribute('y2', String(y));
-    l.setAttribute('stroke-width', '1');
-    blueGroup.appendChild(l);
-  }
-  for (let x = 0; x <= w; x += blueSpacing) {
-    const l = document.createElementNS(NS, 'line');
-    const ox = x + Math.floor(blueSpacing / 4);
-    l.setAttribute('x1', String(ox)); l.setAttribute('x2', String(ox));
-    l.setAttribute('y1', '0'); l.setAttribute('y2', String(h));
-    l.setAttribute('stroke-width', '1.2');
-    cyanGroup.appendChild(l);
-  }
-  for (let y = 0; y <= h; y += blueSpacing) {
-    const l = document.createElementNS(NS, 'line');
-    const oy = y + Math.floor(blueSpacing / 4);
-    l.setAttribute('x1', '0'); l.setAttribute('x2', String(w));
-    l.setAttribute('y1', String(oy)); l.setAttribute('y2', String(oy));
-    l.setAttribute('stroke-width', '1.2');
-    cyanGroup.appendChild(l);
-  }
-
-  blueGroup.setAttribute('opacity', '0.9');
-  cyanGroup.setAttribute('opacity', '0.85');
-})();
 </script>
 </body>
 </html>
