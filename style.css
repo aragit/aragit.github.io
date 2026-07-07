@@ -11248,11 +11248,16 @@ div#services .cards .card.card-wide .card-actions {
   background: #000 !important;
 }
 
+/* Hide old grid pattern */
+#home::before {
+  display: none !important;
+}
+
 #home.hero .hero-orb {
   position: absolute !important;
   border-radius: 50% !important;
-  filter: blur(100px) !important;
-  opacity: 0.35 !important;
+  filter: blur(80px) !important;
+  opacity: 0.5 !important;
   animation: hero-orb-float 20s ease-in-out infinite !important;
 }
 
@@ -11272,7 +11277,7 @@ div#services .cards .card.card-wide .card-actions {
   top: 20% !important;
   right: -8% !important;
   animation-delay: -7s !important;
-  opacity: 0.2 !important;
+  opacity: 0.35 !important;
 }
 
 #home.hero .hero-orb-3 {
@@ -11282,7 +11287,7 @@ div#services .cards .card.card-wide .card-actions {
   bottom: -10% !important;
   left: 30% !important;
   animation-delay: -14s !important;
-  opacity: 0.15 !important;
+  opacity: 0.25 !important;
 }
 
 @keyframes hero-orb-float {
