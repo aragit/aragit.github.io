@@ -315,27 +315,27 @@
   <div class="arch-banner-grid">
     <svg class="arch-banner-svg" viewBox="0 0 1200 400" preserveAspectRatio="none">
       <defs>
-        <linearGradient id="archGridBlue" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse" y2="400">
+        <linearGradient id="archGridBlue" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.55" />
           <stop offset="35%" stop-color="#58a6ff" stop-opacity="0.18" />
           <stop offset="60%" stop-color="#58a6ff" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="archGridCyan" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse" y2="400">
-          <stop offset="0%" stop-color="#3fb950" stop-opacity="0.25" />
-          <stop offset="50%" stop-color="#3fb950" stop-opacity="0.08" />
+        <linearGradient id="archGridCyan" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#3fb950" stop-opacity="0.3" />
+          <stop offset="50%" stop-color="#3fb950" stop-opacity="0.1" />
           <stop offset="100%" stop-color="#3fb950" stop-opacity="0" />
         </linearGradient>
-        <mask id="archFadeMask">
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#archMaskGrad)" />
-        </mask>
-        <linearGradient id="archMaskGrad" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="archMaskGrad" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stop-color="#fff" stop-opacity="1" />
           <stop offset="55%" stop-color="#fff" stop-opacity="0.6" />
           <stop offset="85%" stop-color="#fff" stop-opacity="0" />
         </linearGradient>
+        <mask id="archFadeMask">
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#archMaskGrad)" />
+        </mask>
       </defs>
       <g class="arch-grid-blue" stroke="url(#archGridBlue)" fill="none" stroke-width="1" mask="url(#archFadeMask)"></g>
-      <g class="arch-grid-cyan" stroke="url(#archGridCyan)" fill="none" stroke-width="1" mask="url(#archFadeMask)"></g>
+      <g class="arch-grid-cyan" stroke="url(#archGridCyan)" fill="none" stroke-width="1.2" mask="url(#archFadeMask)"></g>
     </svg>
   </div>
   <div class="arch-banner-content">
@@ -698,33 +698,45 @@ toggle.addEventListener('click', () => links.classList.toggle('open'));
   const cyanGroup = svg.querySelector('g.arch-grid-cyan');
 
   const w = 1200, h = 400;
-  const spacing = 40;
-  const perspective = 0.6;
+  const orangeSpacing = 40;
+  const blueSpacing = 80;
 
-  // Draw horizontal lines with perspective (closer together at bottom)
-  for (let y = 0; y <= h; y += spacing) {
-    const line = document.createElementNS(NS, 'line');
-    const perspY = y + (y * y / h) * perspective;
-    line.setAttribute('x1', '0');
-    line.setAttribute('y1', String(Math.min(perspY, h)));
-    line.setAttribute('x2', String(w));
-    line.setAttribute('y2', String(Math.min(perspY, h)));
-    blueGroup.appendChild(line);
+  // Draw orange (denser) — blue-colored for arch page
+  for (let x = 0; x <= w; x += orangeSpacing) {
+    const l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', String(x)); l.setAttribute('x2', String(x));
+    l.setAttribute('y1', '0'); l.setAttribute('y2', String(h));
+    l.setAttribute('stroke-width', '1');
+    blueGroup.appendChild(l);
+  }
+  for (let y = 0; y <= h; y += orangeSpacing) {
+    const l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', '0'); l.setAttribute('x2', String(w));
+    l.setAttribute('y1', String(y)); l.setAttribute('y2', String(y));
+    l.setAttribute('stroke-width', '1');
+    blueGroup.appendChild(l);
   }
 
-  // Draw vertical lines converging toward center bottom
-  const cx = w / 2;
-  const vanishY = h * 1.1;
-  for (let x = 0; x <= w; x += spacing) {
-    const line = document.createElementNS(NS, 'line');
-    const topX = x;
-    const botX = cx + (x - cx) * 0.3;
-    line.setAttribute('x1', String(topX));
-    line.setAttribute('y1', '0');
-    line.setAttribute('x2', String(botX));
-    line.setAttribute('y2', String(vanishY));
-    cyanGroup.appendChild(line);
+  // Draw blue (sparse accent) — green-colored for arch page
+  for (let x = 0; x <= w; x += blueSpacing) {
+    const l = document.createElementNS(NS, 'line');
+    const ox = x + Math.floor(blueSpacing / 4);
+    l.setAttribute('x1', String(ox)); l.setAttribute('x2', String(ox));
+    l.setAttribute('y1', '0'); l.setAttribute('y2', String(h));
+    l.setAttribute('stroke-width', '1.2');
+    cyanGroup.appendChild(l);
   }
+  for (let y = 0; y <= h; y += blueSpacing) {
+    const l = document.createElementNS(NS, 'line');
+    const oy = y + Math.floor(blueSpacing / 4);
+    l.setAttribute('x1', '0'); l.setAttribute('x2', String(w));
+    l.setAttribute('y1', String(oy)); l.setAttribute('y2', String(oy));
+    l.setAttribute('stroke-width', '1.2');
+    cyanGroup.appendChild(l);
+  }
+
+  blueGroup.setAttribute('opacity', '0.9');
+  cyanGroup.setAttribute('opacity', '0.85');
 })();
 </script>
 </body>
