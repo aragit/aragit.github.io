@@ -703,11 +703,17 @@ a.card-link:hover{
 
 /* 1) Ensure the services cards area stretches so actions align horizontally across each row */
 #services .cards {
-  display: grid; /* keep your responsive setup */
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
-  grid-auto-rows: 1fr;         /* make rows equal-height */
-  align-items: stretch;       /* force cards to stretch to the row height */
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  #services .cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  #services .cards { grid-template-columns: 1fr; }
 }
 
 /* Make each card fill its grid cell so bottom actions align */
@@ -8103,22 +8109,6 @@ img[src*="hypoArch"],
   .specialized-services-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== RESTORED SERVICES GRID ===== */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-@media (max-width: 900px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
-  .services-grid { grid-template-columns: 1fr; }
-}
-
 /* Ensure original card sizing is respected */
 #services .service-card {
   text-align: center !important;
@@ -8129,9 +8119,6 @@ img[src*="hypoArch"],
 }
 
 /* ===== BLUEPRINT CARD ENHANCEMENTS ===== */
-
-/* Service detail text styling */
-#services .card.service-card 
 
 /* All service cards - consistent height */
 #services .cards .card.service-card {
