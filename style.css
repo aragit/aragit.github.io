@@ -10902,9 +10902,9 @@ div#services .cards .card.card-wide .card-actions {
   display: grid !important;
   grid-template-columns: 50% 50% !important;
   align-items: center !important;
-  max-width: 1100px !important;
+  max-width: 1400px !important;
   margin: 0 auto !important;
-  padding: 60px 2rem 50px 0 !important;
+  padding: 60px 2rem 50px 2rem !important;
   position: relative !important;
   z-index: 2 !important;
 }
