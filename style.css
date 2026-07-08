@@ -5279,9 +5279,10 @@ ul.insight-bullets li {
 }
 
 .solutions-header-left .section-title {
-  margin-bottom: 8px !important;
+  margin-bottom: 12px !important;
   position: sticky;
   top: 6rem;
+  line-height: 1.2;
 }
 
 .solutions-header-left .section-subtitle {
@@ -5291,6 +5292,7 @@ ul.insight-bullets li {
 .solutions-matrix {
   display: flex;
   flex-direction: column;
+  padding-top: 8px;
 }
 
 .solutions-matrix .domain-tabs {
