@@ -5269,24 +5269,31 @@ ul.insight-bullets li {
   padding: 40px 0;
 }
 
-/* Solutions header: title/subtitle left, domain tabs right */
+/* Solutions: title/subtitle left, full matrix right */
 .solutions-header-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
-  align-items: end;
+  align-items: start;
   margin-bottom: 2rem;
 }
 
 .solutions-header-left .section-title {
   margin-bottom: 8px !important;
+  position: sticky;
+  top: 6rem;
 }
 
 .solutions-header-left .section-subtitle {
   margin-bottom: 0 !important;
 }
 
-.solutions-header-right .domain-tabs {
+.solutions-matrix {
+  display: flex;
+  flex-direction: column;
+}
+
+.solutions-matrix .domain-tabs {
   margin-bottom: 0;
 }
 
@@ -5294,6 +5301,9 @@ ul.insight-bullets li {
   .solutions-header-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  .solutions-header-left .section-title {
+    position: static;
   }
 }
 
