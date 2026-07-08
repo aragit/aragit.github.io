@@ -5272,21 +5272,29 @@ ul.insight-bullets li {
 /* Solutions: title/subtitle left, full matrix right */
 .solutions-header-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2rem;
+  grid-template-columns: 240px 1fr;
+  gap: 2.5rem;
   align-items: start;
   margin-bottom: 2rem;
 }
 
 .solutions-header-left .section-title {
-  margin-bottom: 12px !important;
+  margin-bottom: 16px !important;
   position: sticky;
   top: 6rem;
-  line-height: 1.2;
+  line-height: 1.2 !important;
+  font-size: clamp(1.6rem, 3vw, 2.1rem) !important;
+  color: #fff !important;
 }
 
 .solutions-header-left .section-subtitle {
-  margin-bottom: 0 !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+  font-size: 0.95rem !important;
+  color: var(--gray) !important;
+  max-width: 380px !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
 }
 
 .solutions-matrix {
