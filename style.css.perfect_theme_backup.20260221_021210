@@ -54,24 +54,26 @@ nav
 nav.nav a:hover{color:var(--accent)}
 
 /* ---------- HERO ---------- */
-.hero{min-height:72vh;padding:85px 0 3.5rem;position:relative}
-.hero-inner{width:100%;max-width:960px;margin:0;padding:0 4rem;position:relative;z-index:1;text-align:left}
-h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
+.hero{min-height:72vh;padding:85px 0 3.5rem;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.hero-inner{max-width:960px;margin:0 auto}
+.hero-avatar{width:130px;height:130px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);display:block;margin:0 auto 1rem}
+h1{font-size:2rem;margin:.25rem 0}
 .highlight{color:var(--text)}
-.tagline{color:var(--muted);margin:0 0 1rem;font-size:1.1rem}
+.tagline{color:var(--muted);margin:0 0 1rem}
+#typewrite{font-family:"Courier New", Courier, monospace;color:#e6eef6;min-height:2.2rem;font-size:1.12rem}
+.hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:1rem 0;pointer-events:none}
+.hero-divider .line{width:170px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
 .chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display: flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
 .chess-icon{color:var(--accent);font-size:20px}
-.hero-cta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;justify-items:stretch}
+.hero-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:1.5rem;justify-items:center}
 .btn-hero{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border-radius:28px;font-weight:700;min-height:52px}
 .btn-primary{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 26px rgba(255,107,0,0.07)}
-.btn-secondary{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.15);box-shadow:none;min-height:52px;padding:.6rem 1rem;text-decoration:none}
-.btn-secondary:hover{color:#fff;border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
 .btn-hero:focus{outline:none;box-shadow:var(--focus)}
 .btn-hero:hover{transform:translateY(-2px)}
 
 /* ---------- SECTIONS & CARDS ---------- */
 .section{padding:40px 0}
-.section-title{text-align:left;margin-bottom:40px;font-size:1.6rem;font-weight:400;color:#fff}
+.section-title{text-align:center;margin-bottom:40px;font-size:1.6rem;font-weight:400;color:#fff}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
 .card{background:var(--panel);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;min-height:140px;transition:transform .18s,border-color .18s,box-shadow .22s;position:relative;overflow:visible;border:2px solid transparent}
 .card:hover{transform:translateY(-6px)}
@@ -82,7 +84,6 @@ h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
 .card-actions{text-align:center;padding-top:.6rem}
 .cta-secondary{display:inline-block;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.04);color:var(--muted-2);background:transparent}
 .cta-secondary:hover{border-color:var(--accent);color:var(--accent)}
-#portfolio .cta-secondary:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,0.48);background:linear-gradient(180deg,#383838 0%,#2a2a2a 100%);border-color:var(--accent);color:var(--accent)}
 .card-actions .service-btn, .card-actions a.service-btn, button.service-btn{background:#2f2f2f;color:var(--accent);border:1px solid rgba(255,255,255,0.04);padding:.5rem 1rem;border-radius:999px;font-weight:700}
 .card-actions .service-btn:hover, .card-actions a.service-btn:hover, button.service-btn:hover{background:#444;color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
 
@@ -221,23 +222,20 @@ body {
 /* Place this at the end of style.css and hard-refresh the page */
 
 /* ensure hero creates a stacking context and the grid sits *behind* hero content */
-#home.hero { position: relative; z-index: 0; }
+#home.hero { position: relative; overflow: hidden; z-index: 0; }
 
 /* container for the svg grid */
 #home.hero .hero-grid {
   position: absolute;
   inset: 0;
-  bottom: 10%;
-  z-index: 1;
+  z-index: -1;               /* behind hero text/content, above page background */
   pointer-events: none;
   display: block;
+  opacity: 1;                /* keep visible by default */
 }
 
-#home.hero .hero-grid-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+/* svg should fill the area */
+#home.hero .hero-grid-svg { width: 100%; height: 100%; display: block; }
 
 /* Grid lines: ensure visible but subtle */
 #home.hero .grid-lines { opacity: 0.95; mix-blend-mode: screen; stroke-linecap: round; }
@@ -317,6 +315,34 @@ body {
   border: none !important;
   box-shadow: none !important;
   border-radius: 50%; /* keeps circular crop */
+}
+
+#typewrite {
+  position: relative;
+  min-height: 2.8rem;
+  box-sizing: border-box;
+  width: max-content; /* fit content width */
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  overflow: visible;
+  white-space: nowrap; /* prevent breaking */
+}
+
+#typewrite .tw-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  line-height: 1.25;
+  word-break: normal;
+  hyphens: none;
 }
 
 /* MOBILE — scale font instead of breaking lines */
@@ -703,17 +729,11 @@ a.card-link:hover{
 
 /* 1) Ensure the services cards area stretches so actions align horizontally across each row */
 #services .cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: grid; /* keep your responsive setup */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
-  align-items: stretch;
-}
-
-@media (max-width: 900px) {
-  #services .cards { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  #services .cards { grid-template-columns: 1fr; }
+  grid-auto-rows: 1fr;         /* make rows equal-height */
+  align-items: stretch;       /* force cards to stretch to the row height */
 }
 
 /* Make each card fill its grid cell so bottom actions align */
@@ -1209,6 +1229,45 @@ a.card-link:hover{
   font-weight: 500;
   color: var(--muted);
   letter-spacing: .5px;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax 90px, 1fr));
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  padding: .6rem;
+  background: rgba(255, 255, 255, .04);
+  border-radius: 8px;
+  transition: transform .22s, background .22s;
+  filter: brightness(.92) saturate(.9);
+}
+
+.logo-grid img:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 107, 0, .08);
+  filter: brightness(1) saturate(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-grid img {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: .8rem;
+  }
 }
 
 /* ===== Tech-Stack : force small grid ===== */
@@ -1793,8 +1852,8 @@ button.service-btn:hover {
 /* Hero supporting text (non-intrusive) */
 .hero-tagline {
   margin-top: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 500;
   opacity: 0.95;
 }
 
@@ -1827,6 +1886,14 @@ p.tagline.typewriter {
   margin: 0.5rem 0 1rem; 
 }
 
+#typewrite { 
+  font-family: "Courier New", Courier, monospace; 
+  font-size: 0.9rem; 
+  color: #909090; 
+}
+
+.hero-divider { display: none !important; }
+
 /* Restore orange lines above button */
 .hero-divider {
   display: flex !important;
@@ -1854,6 +1921,13 @@ p.tagline.typewriter {
   background: #2a2a2a !important;
 }
 
+/* LOGO STYLING ONLY */
+header .logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 @keyframes logo-float {
   0%, 100% { 
     transform: translateY(0) scale(1);
@@ -1865,6 +1939,47 @@ p.tagline.typewriter {
   }
 }
 
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.hero-divider .line {
+  flex: 1;
+  max-width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b00, transparent);
+}
+
+/* 3D Rotating Logo Effect */
+
+  25% {
+    transform: perspective(1000px) rotateY(90deg) rotateX(10deg);
+    filter: drop-shadow(5px 5px 20px rgba(255, 107, 0, 0.5));
+  }
+  50% {
+    transform: perspective(1000px) rotateY(180deg) rotateX(10deg);
+    filter: drop-shadow(0 5px 25px rgba(255, 107, 0, 0.6));
+  }
+  75% {
+    transform: perspective(1000px) rotateY(270deg) rotateX(10deg);
+    filter: drop-shadow(-5px 5px 20px rgba(255, 107, 0, 0.5));
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
+    filter: drop-shadow(0 5px 15px rgba(255, 107, 0, 0.3));
+  }
+}
+
+/* Logo with disk thickness effect */
+
+/* Logo disk - no glow */
+
+/* Logo disk - NO orange glow */
+
 /* 3D Rotating Logo - NO GLOW */
 @keyframes logo-3d-rotate {
   0% { transform: perspective(1000px) rotateY(0deg) rotateX(10deg); }
@@ -1872,6 +1987,44 @@ p.tagline.typewriter {
   50% { transform: perspective(1000px) rotateY(180deg) rotateX(10deg); }
   75% { transform: perspective(1000px) rotateY(270deg) rotateX(10deg); }
   100% { transform: perspective(1000px) rotateY(360deg) rotateX(10deg); }
+}
+
+  animation-play-state: paused;
+  transform: scale(1.2);
+  border-color: #ff8533 !important;
+}
+
+/* Logo with mouse tilt effect */
+
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+  border-color: #ff8533 !important;
+}
+
+/* Logo with mouse tilt effect */
+
+/* Logo - simple orange border */
+
+/* Hero logo with orange border */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #ff6b00;
+  background: #1a1a1a;
+  padding: 3px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hero logo with orange border */
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  border: 4px solid #ff6b00 !important;
+  background: #1a1a1a !important;
+  padding: 3px !important;
+  object-fit: cover !important;
+  display: block !important;
+  box-sizing: border-box !important;
 }
 
 /* Header logo - circular with orange border, no glow */
@@ -2066,10 +2219,10 @@ header .logo img:hover {
 .hero-inner {
   padding-top: 50px !important;
   padding-bottom: 30px !important;
-  text-align: left !important;
-  max-width: 960px !important;
-  margin: 0 !important;
-  width: 100% !important;
+}
+
+.hero-avatar {
+  margin-top: 30px !important;
 }
 
 /* Insight card styling */
@@ -2319,6 +2472,16 @@ header .logo img:hover {
   opacity: 1;
 }
 
+/* Typewriter cycling text (#typewrite) - make more visible */
+#typewrite {
+  color: #c0c0c0 !important;
+  font-size: 0.95rem;
+}
+
+#typewrite .tw-inner {
+  color: #d0d0d0 !important;
+}
+
 /* Ensure all hero text has better contrast */
 .hero-inner p {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -2384,6 +2547,18 @@ p.hero-range.typewriter-orange,
   display: block;
   object-fit: cover;
   max-height: 350px;
+}
+
+/* Hero avatar - ensure MeReal2.png displays well */
+.hero-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff6b00;
+  display: block;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
 }
 
 /* Ensure images don't break layout */
@@ -3355,7 +3530,7 @@ ul.insight-bullets li {
 
 /* Headline with proper spacing below */
 .insight-headline {
-  text-align: left;
+  text-align: center;
   margin-bottom: 30px !important;
   margin-top: 0 !important;
   padding: 0 !important;
@@ -3547,7 +3722,7 @@ ul.insight-bullets li {
   font-size: 1.4rem !important;
   font-weight: 700 !important;
   color: #ffffff !important;
-  text-align: left;
+  text-align: center;
   letter-spacing: 0.01em;
 }
 
@@ -3580,17 +3755,24 @@ ul.insight-bullets li {
   margin-top: 12px !important;
   margin-bottom: 8px !important;
   padding: 0 !important;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
   color: #e0e0e0 !important;
-  text-align: left !important;
+  text-align: center !important;
   line-height: 1.4 !important;
+}
+
+/* Ensure typewriter text doesn't overlap */
+#typewrite {
+  display: block !important;
+  margin-top: 5px !important;
+  min-height: 1.4em !important;
+  position: relative !important;
 }
 
 /* Space between name and tagline */
 .hero-inner h1 {
   margin-bottom: 8px !important;
-  font-size: 3rem !important;
 }
 
 /* The subtitle below */
@@ -5008,7 +5190,7 @@ ul.insight-bullets li {
 
 /* ===== SECTION SUBTITLE STYLING ===== */
 .section-subtitle {
-  text-align: left;
+  text-align: center;
   font-size: 0.9rem;
   font-weight: 400;
   color: #a0a0a0;
@@ -5021,6 +5203,8 @@ ul.insight-bullets li {
 /* Specific adjustments */
 #portfolio .section-subtitle {
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===== SUBTITLES - LARGER, WHITE, BOLD ===== */
@@ -5033,7 +5217,7 @@ ul.insight-bullets li {
   font-size: 1.1rem !important;        /* Larger - was 0.85rem/0.9rem */
   font-weight: 600 !important;         /* Bold */
   color: #ffffff !important;           /* Pure white */
-  text-align: left !important;
+  text-align: center !important;
   margin-top: 0.5rem !important;
   margin-bottom: 2rem !important;
   letter-spacing: 0.02em !important;
@@ -5054,6 +5238,8 @@ ul.insight-bullets li {
   font-size: 1.1rem !important;
   font-weight: 600 !important;
   max-width: 700px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 #articles .section-subtitle {
@@ -5269,17 +5455,8 @@ ul.insight-bullets li {
   padding: 40px 0;
 }
 
-/* Solutions: reuses .arch-layout / .arch-left / .arch-right from Architecture Philosophy */
-.arch-right .domain-tabs {
-  margin-bottom: 0;
-}
-
-.arch-right .domain-panels {
-  position: relative;
-}
-
 #portfolio .section-title {
-  text-align: left;
+  text-align: center;
   font-size: 1.4rem;
   font-weight: 700;
   color: #ffffff;
@@ -5288,7 +5465,7 @@ ul.insight-bullets li {
 }
 
 #portfolio .section-subtitle {
-  text-align: left;
+  text-align: center;
   font-size: 1.1rem;
   font-weight: 600;
   color: #ffffff;
@@ -5296,6 +5473,8 @@ ul.insight-bullets li {
   letter-spacing: 0.02em;
   line-height: 1.5;
   max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cs-grid {
@@ -6192,7 +6371,7 @@ ul.insight-bullets li {
   margin-bottom: 1rem;
 }
 
-.link-arrow { color: #FF8C00; font-weight: 600; margin-top: 1rem; display: block; }
+.link-arrow { color: var(--accent); font-weight: 600; margin-top: 1rem; display: block; }
 
 @keyframes bento-blink { 50% { opacity: 0; } }
 
@@ -6300,7 +6479,7 @@ ul.insight-bullets li {
 
 .agent-loop { margin: 1rem 0; border-left: 2px solid var(--accent); padding-left: 12px; }
 .loop-step { font-size: 0.85rem; margin-bottom: 5px; color: var(--muted); }
-.loop-step strong { color: #FF8C00; font-size: 0.75rem; text-transform: uppercase; }
+.loop-step strong { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; }
 
 .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
 .tag { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; color: #fff; border: 1px solid rgba(255,255,255,0.1); }
@@ -6703,6 +6882,148 @@ ul.insight-bullets li {
   flex: 1;
 }
 
+/* Fix architecture diagram image */
+.bento-item.biomed-tall .card-arch-diagram,
+.bento-item img[src*="hypoArch"] {
+  width: 100% !important;
+  height: 160px !important;  /* Taller image */
+  max-height: 160px !important;
+  object-fit: contain !important;
+  margin: 15px 0 !important;
+  border-radius: 8px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  padding: 12px !important;
+  border: 1px solid rgba(255, 107, 0, 0.15) !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure image is visible */
+.bento-item.biomed-tall img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hover effect for image */
+.bento-item.biomed-tall:hover .card-arch-diagram,
+.bento-item.biomed-tall:hover img[src*="hypoArch"] {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.3) !important;
+}
+
+/* Push link to bottom */
+.bento-item.biomed-tall .link-arrow {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .bento-item.biomed-tall {
+    grid-row: span 1;
+    min-height: auto;
+  }
+  
+  .bento-item.biomed-tall .card-arch-diagram,
+  .bento-item img[src*="hypoArch"] {
+    height: 140px !important;
+    max-height: 140px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-item.biomed-tall .card-arch-diagram,
+  .bento-item img[src*="hypoArch"] {
+    height: 120px !important;
+    max-height: 120px !important;
+    padding: 8px !important;
+  }
+}
+
+/* ===== BIOMEDICAL HYPOTHESES CARD - FIXED STRUCTURE ===== */
+
+/* The card should be tall but tags stay at top */
+.bento-item.biomed-tall,
+.bento-item:has(h3:contains("Biomedical Hypotheses")) {
+  min-height: 420px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding: 20px !important;
+}
+
+/* Ensure proper ordering: title -> desc -> tags -> image -> link */
+.bento-item.biomed-tall h3 {
+  order: 1 !important;
+  margin-bottom: 8px !important;
+}
+
+.bento-item.biomed-tall .loop-step {
+  order: 2 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Tags come BEFORE image */
+.bento-item.biomed-tall .tech-tags {
+  order: 3 !important;
+  margin-bottom: 15px !important;
+  margin-top: 0 !important;
+}
+
+/* LARGE image after tags */
+.bento-item.biomed-tall img[src*="hypoArch"],
+.bento-item.biomed-tall .card-arch-diagram {
+  order: 4 !important;
+  width: 100% !important;
+  height: 220px !important;  /* Much larger */
+  max-height: 220px !important;
+  min-height: 220px !important;
+  object-fit: contain !important;
+  margin: 0 0 15px 0 !important;
+  border-radius: 10px !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  padding: 15px !important;
+  border: 1px solid rgba(255, 107, 0, 0.2) !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Link at bottom */
+.bento-item.biomed-tall .link-arrow {
+  order: 5 !important;
+  margin-top: auto !important;
+  align-self: flex-start !important;
+}
+
+/* Hover effect */
+.bento-item.biomed-tall:hover img[src*="hypoArch"] {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.25);
+  border-color: rgba(255, 107, 0, 0.4) !important;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .bento-item.biomed-tall {
+    min-height: 380px !important;
+  }
+  .bento-item.biomed-tall img[src*="hypoArch"] {
+    height: 180px !important;
+    max-height: 180px !important;
+    min-height: 180px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-item.biomed-tall img[src*="hypoArch"] {
+    height: 150px !important;
+    max-height: 150px !important;
+    min-height: 150px !important;
+    padding: 10px !important;
+  }
+}
+
 /* ===== ENLARGE CASE STUDY CARDS - ALIGN BOTTOMS ===== */
 
 /* Make the portfolio grid use equal height rows */
@@ -6835,7 +7156,26 @@ ul.insight-bullets li {
   margin-top: auto !important;
 }
 
+/* ===== REMOVE BIOMEDICAL HYPOTHESES IMAGE ===== */
 
+/* Hide any hypoArch images */
+img[src*="hypoArch"],
+.bento-item img[src*="hypoArch"],
+.bento-item.biomed-tall img {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Remove tall card styling */
+.bento-item.biomed-tall {
+  min-height: unset !important;
+  grid-row: span 1 !important;
+}
 
   
   /* All cards span single column */
@@ -7951,6 +8291,22 @@ ul.insight-bullets li {
   .specialized-services-grid { grid-template-columns: 1fr; }
 }
 
+/* ===== RESTORED SERVICES GRID ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+
 /* Ensure original card sizing is respected */
 #services .service-card {
   text-align: center !important;
@@ -7961,6 +8317,9 @@ ul.insight-bullets li {
 }
 
 /* ===== BLUEPRINT CARD ENHANCEMENTS ===== */
+
+/* Service detail text styling */
+#services .card.service-card 
 
 /* All service cards - consistent height */
 #services .cards .card.service-card {
@@ -8389,13 +8748,11 @@ div#services .cards .card.card-wide .card-actions {
   margin-left: 0 !important;
 }
 
-/* Ensure the button is centered within text area */
+/* Ensure the button stays left-aligned in this specific card */
 #services .cards .card.card-dashboard .card-actions {
-  align-self: center !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
   margin-left: 0 !important;
   padding-left: 0 !important;
-  width: 100% !important;
 }
 
 /* ===== FIX: VERTICAL CENTER FOR DASHBOARD CONTENT ===== */
@@ -8656,7 +9013,235 @@ div#services .cards .card.card-wide .card-actions {
   border-color: rgba(0, 255, 136, 0.2) !important;
 }
 
-/* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
+/* ===== ARCHITECTURE PHILOSOPHY TAGLINE - STYLISH GRID CONTAINER ===== */
+.architecture-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto 2.5rem;
+  padding: 1rem 2.5rem;
+  background: 
+    linear-gradient(135deg, rgba(204, 85, 0, 0.08) 0%, rgba(204, 85, 0, 0.02) 100%);
+  border: 1px solid rgba(204, 85, 0, 0.3);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #cc5500 !important; /* Dark orange */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 4px 15px rgba(204, 85, 0, 0.15);
+}
+
+/* Subtle grid pattern background */
+.architecture-tagline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(90deg, rgba(30, 60, 114, 0.25) 0px, rgba(30, 60, 114, 0.25) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(0deg, rgba(30, 60, 114, 0.25) 0px, rgba(30, 60, 114, 0.25) 1px, transparent 1px, transparent 20px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Corner accent lines */
+.architecture-tagline::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(30, 60, 114, 0.4);
+  pointer-events: none;
+}
+
+/* Hover effect */
+.architecture-tagline:hover {
+  border-color: rgba(30, 60, 114, 0.7);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 6px 25px rgba(30, 60, 114, 0.35);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    font-size: 0.75rem;
+    padding: 0.8rem 1.5rem;
+    letter-spacing: 0.08em;
+    margin: 1rem auto 1.5rem;
+    max-width: 100%;
+    width: calc(100% - 30px);
+  }
+}
+
+
+/* ===== FIX: TERMINAL TAGLINE OVERRIDES ===== */
+/* High specificity to overwrite previous grid styles */
+.architecture-tagline {
+  /* 1. Layout & Centering Fix */
+  display: block !important;
+  width: fit-content !important;  /* Shrink to text size */
+  margin: 2rem auto !important;   /* Force horizontal centering */
+  max-width: 95% !important;
+  
+  /* 2. Remove Old Blue Grid/Backgrounds */
+  background-image: none !important;
+  background-color: rgba(15, 15, 15, 0.9) !important; /* Solid dark terminal bg */
+  box-shadow: none !important;    /* Remove blue glow */
+  border: none !important;        /* Reset borders */
+  
+  /* 3. New Terminal Aesthetic */
+  border-left: 4px solid #ff6b00 !important; /* Thick orange status bar */
+  padding: 12px 24px !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 1rem !important;
+  color: #ff6b00 !important;
+  letter-spacing: 0px !important; /* Standard terminal spacing */
+  text-transform: none !important;
+}
+
+/* 4. CRITICAL FIX: Reset Pseudo-elements */
+/* This stops the prompt from floating "up" and overlapping text */
+.architecture-tagline::before,
+.architecture-tagline::after {
+  position: static !important;    /* Forces them to flow INLINE with text */
+  display: inline !important;
+  background: none !important;    /* Removes any lingering grid patterns */
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  box-shadow: none !important;
+  top: auto !important;
+  left: auto !important;
+  content: "" !important;         /* Reset content to be safe before redefining */
+}
+
+/* 5. Define Terminal Prompt */
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #666 !important;         /* Dim grey prompt */
+  font-weight: 700 !important;
+  margin-right: 8px !important;
+}
+
+/* 6. Define Blinking Cursor */
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  font-size: 0.8em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    width: 90% !important;
+    white-space: normal !important;
+    font-size: 0.85rem !important;
+    text-align: left !important;
+  }
+}
+
+/* ===== FORCE IMAGE SIZE UPDATE ===== */
+.arch-diagram-img {
+  max-width: 600px !important; /* Force smaller size */
+  width: 100% !important;      /* Maintain responsiveness */
+  height: auto !important;
+  margin: 0 auto !important;   /* Ensure centering */
+}
+
+/* ===== FORCE CENTER IMAGE ===== */
+.arch-image-container {
+  display: flex !important;            /* Turn on Flexbox */
+  justify-content: center !important;  /* Center horizontally */
+  align-items: center !important;      /* Center vertically */
+  width: 100% !important;              /* Span full width of the section */
+  margin: 2rem 0 1rem 0 !important;    /* Add breathing room top/bottom */
+}
+
+.arch-diagram-img {
+  display: block !important;
+  margin: 0 auto !important;           /* Fallback centering */
+  max-width: 600px !important;         /* Restrict size */
+  width: 100% !important;              /* Responsive on mobile */
+  height: auto !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Add depth */
+  border-radius: 8px;                  /* Smooth corners */
+}
+
+/* =========================================
+   CRITICAL REFACTOR: CONSOLIDATED STYLES
+   (Replaces JS Layout Hacks & Stabilizes UI)
+   ========================================= */
+
+/* 1. Global Card Stability (Replaces JS Hack) */
+.card, 
+.cs-card, 
+#services .card, 
+#portfolio .card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 280px !important;
+  height: 100% !important;
+  background: rgba(25, 25, 25, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  box-sizing: border-box !important;
+  transform: none !important; /* Stop 3D Jitter */
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* 2. Terminal Tagline Polish (Refined) */
+.architecture-tagline {
+  display: inline-block !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  margin: 1.5rem auto 2.5rem !important;
+  background: rgba(10, 10, 10, 0.95) !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding: 10px 20px !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  color: #ff6b00 !important;
+  text-transform: none !important;
+  letter-spacing: 0px !important;
+  text-align: left !important;
+}
+
+.architecture-tagline::before {
+  content: ">_ " !important;
+  color: #e0e0e0 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  margin-right: 10px !important;
+  position: static !important;
+  display: inline !important;
+}
+
+.architecture-tagline::after {
+  content: " █" !important;
+  color: #ff6b00 !important;
+  font-size: 0.85em !important;
+  animation: terminal-blink 1s step-end infinite !important;
+  margin-left: 8px !important;
+  vertical-align: baseline !important;
+  position: static !important;
   display: inline !important;
 }
 
@@ -8721,7 +9306,35 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
-/* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
+/* ===== EMERGENCY FIX: CENTER THE TAGLINE ===== */
+.architecture-tagline {
+  /* 1. Layout: Use BLOCK + MARGIN AUTO to force centering */
+  display: block !important;       /* Must be block to accept margin: auto */
+  width: fit-content !important;   /* Shrink to fit the text */
+  margin-left: auto !important;    /* Push equally from left */
+  margin-right: auto !important;   /* Push equally from right */
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+
+  /* 2. Visuals: Keep the clean terminal look */
+  background: rgba(10, 10, 10, 0.95) !important;
+  border-left: 3px solid #ff6b00 !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding: 10px 20px !important;
+  
+  /* 3. Text: Orange & Tech Font */
+  color: #ff6b00 !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  text-align: left !important; /* Internal text stays left (next to prompt) */
+  
+  /* 4. Reset legacy properties that cause bugs */
+  float: none !important;
+  position: static !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  border-top: none !important;
   border-right: none !important;
   border-bottom: none !important;
 }
@@ -8744,91 +9357,144 @@ div#services .cards .card.card-wide .card-actions {
 
 /* ===== ARCHITECTURAL TRIPTYCH STYLES ===== */
 
-/* ===== ARCHITECTURE PHILOSOPHY: 2-COLUMN ASYMMETRIC LAYOUT ===== */
-.arch-layout {
+.triptych-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
-.arch-left {
-  position: sticky;
-  top: 6rem;
-}
-
-.arch-left h2 {
-  font-size: clamp(1.6rem, 3vw, 2.1rem) !important;
-  margin-bottom: 1.2rem !important;
-}
-
-.arch-left p {
-  color: #a1a1aa;
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-
-.arch-right {
+.triptych-card {
   display: flex;
   flex-direction: column;
-}
-
-.arch-pillar {
-  padding: 2rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.arch-pillar:last-child {
-  border-bottom: none;
-}
-
-.arch-tag {
-  font-family: 'Courier New', monospace;
-  font-size: 0.75rem;
-  color: #ff6b00;
-  letter-spacing: 0.08em;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-
-.arch-pillar h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #fff;
-  margin: 0 0 0.75rem 0;
-}
-
-.arch-pillar p {
-  color: #a1a1aa;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.sota-link {
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 500;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
   text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
 }
 
-.sota-link:hover {
-  color: #5fd3ff;
+.triptych-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.triptych-card h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.triptych-card p {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-align: center;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.triptych-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: auto;
+  transition: transform 0.2s ease;
+  display: block;
+}
+
+.triptych-card:hover {
+  transform: translateY(-5px);
+}
+
+.triptych-card:hover .triptych-link {
   transform: translateX(4px);
 }
 
+/* --- Theme Colors --- */
+
+/* Core: Blue */
+.core-card { border-top: 1px solid rgba(0, 123, 255, 0.5); }
+.core-card .triptych-icon { color: #007bff; text-shadow: 0 0 15px rgba(0, 123, 255, 0.4); }
+.core-card .triptych-link { color: #007bff; }
+.core-card:hover { border-color: #007bff; box-shadow: 0 0 30px rgba(0, 123, 255, 0.15); }
+
+/* Range: Purple */
+.range-card { border-top: 1px solid rgba(157, 0, 255, 0.5); }
+.range-card .triptych-icon { color: #9d00ff; text-shadow: 0 0 15px rgba(157, 0, 255, 0.4); }
+.range-card .triptych-link { color: #9d00ff; }
+.range-card:hover { border-color: #9d00ff; box-shadow: 0 0 30px rgba(157, 0, 255, 0.15); }
+
+/* Scale: Green */
+.scale-card { border-top: 1px solid rgba(0, 255, 136, 0.5); }
+.scale-card .triptych-icon { color: #00ff88; text-shadow: 0 0 15px rgba(0, 255, 136, 0.4); }
+.scale-card .triptych-link { color: #00ff88; }
+.scale-card:hover { border-color: #00ff88; box-shadow: 0 0 30px rgba(0, 255, 136, 0.15); }
+
+/* Mobile */
 @media (max-width: 900px) {
-  .arch-layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .triptych-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+/* ===== QUICK TWEAK: LARGER ARCHITECTURE TAGLINE ===== */
+.architecture-tagline {
+  font-size: 1.25rem !important; /* Increased from 1rem to 1.25rem */
+  font-weight: 500 !important;   /* Ensure it stays readable */
+}
+
+/* Adjust for mobile screens so it fits */
+@media (max-width: 600px) {
+  .architecture-tagline {
+    font-size: 0.95rem !important; /* Slightly larger on mobile too */
   }
-  .arch-left {
-    position: static;
-  }
+}
+
+/* ===== FIX: TRIPTYCH LINKS (Normal Text) ===== */
+.triptych-link {
+  text-transform: none !important;  /* Removes ALL CAPS */
+  font-weight: 400 !important;      /* Removes Bold */
+  font-size: 0.9rem !important;     /* Ensure readability */
+  letter-spacing: normal !important;
+}
+
+/* ===== FIX: TRIPTYCH LINKS (Refined) ===== */
+.triptych-link {
+  text-transform: none !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  font-size: 0.9rem !important;
+  margin-top: auto;
+  display: inline-block;
+}
+
+/* ===== RE-SKIN: Multi-Agent Scale (Green -> Orange) ===== */
+.scale-card {
+  border-top: 1px solid rgba(255, 107, 0, 0.5) !important;
+}
+
+.scale-card .triptych-icon {
+  color: #ff6b00 !important;
+  text-shadow: 0 0 15px rgba(255, 107, 0, 0.6) !important;
+}
+
+.scale-card .triptych-link {
+  color: #ff6b00 !important;
+}
+
+.scale-card:hover {
+  border-color: #ff6b00 !important;
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.2) !important;
 }
 
 /* ===== QUICK TWEAK: LARGER ARCHITECTURE IMAGE ===== */
@@ -9054,7 +9720,134 @@ div#services .cards .card.card-wide .card-actions {
   .docked-terminal { font-size: 0.8rem !important; padding: 10px !important; }
 }
 
+/* =======================================================
+   THE "BEAUTIFUL THEME" PORT (Consulting -> Triptych)
+   ======================================================= */
 
+/* 1. Base Card Setup (Dark Charcoal & Container) */
+.triptych-card {
+  position: relative !important;
+  overflow: hidden !important;
+  background: rgba(20, 20, 20, 0.95) !important; /* Deep dark base */
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  /* Ensure text sits ABOVE the grid */
+  z-index: 1 !important; 
+}
+
+/* Ensure content inside clicks/selects */
+.triptych-card > * {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* 2. LAYER 1: The Dot Matrix Texture (::before) - Applied to ALL */
+.triptych-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important; /* Behind text, above base */
+  pointer-events: none !important;
+  background-image: radial-gradient(circle at 6px 6px, rgba(255,255,255,0.035) 0 1px, transparent 1px);
+  background-size: 16px 16px !important;
+  opacity: 0.10 !important;
+  mix-blend-mode: screen !important;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%);
+  transition: opacity 0.3s ease !important;
+}
+
+/* 3. LAYER 2: The Grid Overlay (::after) - SHARED PROPERTIES */
+.triptych-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  mix-blend-mode: screen !important;
+  transition: opacity .28s ease, transform .28s cubic-bezier(.2,.9,.25,1) !important;
+  opacity: 0.60 !important;
+  background-size: auto, auto, auto, auto, 32px 32px !important;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%);
+}
+
+/* 4. GRID TYPE A: Blue & Orange (Core & Scale) */
+.core-card::after,
+.scale-card::after {
+  background-image:
+    /* Orange Lines */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    /* BLUE Accent Lines */
+    repeating-linear-gradient(90deg, rgba(95,211,255,0.14) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(95,211,255,0.12) 0 2px, transparent 2px calc(10px)),
+    /* Tile Tint */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+}
+
+/* 5. GRID TYPE B: Purple & Orange (Stochastic Range) */
+.range-card::after {
+  background-image:
+    /* Orange Lines (Same) */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    /* PURPLE Accent Lines (Replaced Blue) */
+    repeating-linear-gradient(90deg, rgba(157, 0, 255, 0.2) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(157, 0, 255, 0.18) 0 2px, transparent 2px calc(10px)),
+    /* Tile Tint (Same) */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+}
+
+/* 6. Hover Interactions */
+.triptych-card:hover::after {
+  opacity: 0.72 !important;
+  transform: translateY(-6px) !important; /* Lift effect */
+}
+.triptych-card:hover::before {
+  opacity: 0.14 !important; /* Brighten dots */
+}
+
+/* ===== TWEAK: DARK BLUE + PURPLE GRID FOR RANGE CARD ===== */
+.range-card::after {
+  background-image:
+    /* 1. DARK BLUE Lines (Replaces Orange) */
+    repeating-linear-gradient(90deg, rgba(0, 60, 180, 0.3) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(0, 60, 180, 0.25) 0 1px, transparent 1px calc(16px)),
+    
+    /* 2. DARKER PURPLE Accent Lines (Unchanged) */
+    repeating-linear-gradient(90deg, rgba(90, 0, 160, 0.25) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(90, 0, 160, 0.22) 0 2px, transparent 2px calc(10px)),
+    
+    /* 3. Tile Tint (Unchanged) */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+}
+
+/* ===== TWEAK: DARK RED GRID FOR SCALE CARD ===== */
+.scale-card::after {
+  background-image:
+    /* 1. Orange Lines (Unchanged) */
+    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
+    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
+    
+    /* 2. DARK RED Accent Lines (Replaces Blue) */
+    repeating-linear-gradient(90deg, rgba(150, 0, 0, 0.3) 0 2px, transparent 2px calc(10px)),
+    repeating-linear-gradient(0deg,  rgba(150, 0, 0, 0.25) 0 2px, transparent 2px calc(10px)),
+    
+    /* 3. Tile Tint (Unchanged) */
+    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
+}
+
+/* ===== FIX: Remove Orange Border/Glow on Scale Card Hover ===== */
+.scale-card:hover {
+  /* Reset border to standard base color (removes the flashing orange border) */
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  
+  /* Preserve the static Orange Top Border so it doesn't disappear */
+  border-top-color: rgba(255, 107, 0, 0.5) !important;
+  
+  /* Remove the orange glow shadow */
+  box-shadow: none !important;
+}
 
 /* ===== FIX: Remove Orange Border/Glow on Scale Card Hover ===== */
 .scale-card:hover {
@@ -9162,44 +9955,30 @@ div#services .cards .card.card-wide .card-actions {
    TERMINAL TAGLINE OVERRIDES
    ========================================= */
 .architecture-tagline {
-  border-left: none !important;
-  padding-left: 0 !important;
-  font-family: 'Inter', system-ui, sans-serif !important;
-  font-size: 1.6rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 1px !important;
-  text-align: center !important;
-  background: linear-gradient(
-    90deg,
-    #ff6b00,
-    #ff9a56,
-    #ffcc00,
-    #4af626,
-    #00d4ff,
-    #7b61ff,
-    #ff6b00
-  ) !important;
-  background-size: 300% 100% !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  animation: wave-color 6s ease-in-out infinite !important;
-  text-shadow: none !important;
-}
-
-@keyframes wave-color {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  border-left: none !important;       /* Removes the vertical orange line */
+  padding-left: 0 !important;         /* Removes the spacing left by the border */
+  color: #4af626 !important;          /* Terminal Green */
+  font-family: 'Fira Code', 'Courier New', monospace !important;
+  font-weight: 500 !important;
+  text-shadow: 0 0 8px rgba(74, 246, 38, 0.2); /* Slight phosphor glow */
 }
 
 .architecture-tagline .prompt-sign {
-  display: none !important;
+  color: #4af626 !important;
+  margin-right: 8px;
+  font-weight: bold;
 }
 
 .architecture-tagline .cursor-blink {
-  display: none !important;
+  color: #4af626 !important;
+  margin-left: 4px;
+  animation: term-blink 1s step-end infinite;
+}
+
+/* The blinking animation */
+@keyframes term-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* Forcefully remove any old CSS-injected prompts or cursors */
@@ -9257,7 +10036,21 @@ div#services .cards .card.card-wide .card-actions {
   text-shadow: 0 0 8px rgba(74, 246, 38, 0.3) !important; /* CRT glow effect */
 }
 
+.prompt-sign {
+  font-weight: bold !important;
+  margin-right: 8px !important;
+}
 
+.cursor-blink {
+  margin-left: 4px !important;
+  animation: term-blink 1s step-end infinite !important;
+}
+
+/* The actual blinking logic */
+@keyframes term-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 /* =========================================
    7TH PRINCIPLE CAPSTONE LAYOUT
@@ -9677,7 +10470,7 @@ div#services .cards .card.card-wide .card-actions {
 
 /* Section Subtitle Styling */
 .section-subtitle {
-    text-align: left;
+    text-align: center;
     font-size: 1.2rem;
     color: #a1a1aa; /* Subtle gray */
     margin-top: -1rem; /* Pull it closer to the H2 */
@@ -10215,13 +11008,47 @@ div#services .cards .card.card-wide .card-actions {
   gap: 0.5rem;
 }
 
+/* Canonical hero avatar fallback + unify */
+#home .hero-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent, #ff6b00);
+  display: block;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 30px rgba(255,107,0,0.18);
+  background-color: rgba(0,0,0,0.04);
+}
+
+/* Prevent broken/missing avatar from collapsing layout */
+#home .hero-avatar[hidden], #home .hero-avatar[src=''] {
+  visibility: hidden;
+  width: 130px;
+  height: 130px;
+}
+
+/* Canonical typewriter block */
+#typewrite {
+  position: relative;
+  min-height: 2.6rem;
+  width: 100%;
+  max-width: 680px;
+  margin: 0.5rem auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: visible;
+}
+#typewrite .tw-inner {
+  position: relative; /* prefer relative to avoid layout collapse */
+  display: inline-block;
+  transform: none;
+}
+
 /* Scoped hero-inner padding so hero adjustments don't bleed into next sections */
 #home.hero .hero-inner {
   padding-top: 50px;
   padding-bottom: 30px;
-  text-align: left !important;
-  margin: 0 !important;
-  width: 100% !important;
 }
 
 /* Canonical chat/open button styling */
@@ -10267,27 +11094,31 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #typewrite {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  color: #c0c0c0 !important;
-  font-size: 0.95rem;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 auto !important;
+  display: block !important;
+  text-align: center !important;
   position: relative !important;
   min-height: 2.8rem !important;
 }
 
 #typewrite .tw-inner {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: inline-block !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+
+/* ===== PREMIUM TERMINAL TYPEWRITER ===== */
+#typewrite .tw-inner {
   position: relative !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  white-space: pre !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  color: #d0d0d0 !important;
+  display: inline-block !important;
+  padding-left: 1.8rem; /* Room for the >_ prompt */
 }
 
 /* The >_ Prompt */
@@ -10347,6 +11178,46 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
+
+/* ===== FIX: Balance Typewriter Centering ===== */
+/* Desktop */
+#typewrite .tw-inner {
+  padding-right: 1.8rem !important; 
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  #typewrite .tw-inner {
+    padding-right: 1.4rem !important;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  #typewrite .tw-inner {
+    padding-right: 1.1rem !important;
+  }
+}
+
+
+/* ===== FINAL FIX: True Dynamic Flex Centering ===== */
+#typewrite {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+#typewrite .tw-inner {
+  /* Strip away the flawed padding hacks */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  
+  /* Flexbox automatically hugs and centers all 3 elements (prompt, text, cursor) */
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: pre !important; /* ensures spaces in text are respected */
+}
 
 /* Put the prompt back into normal flow */
 #typewrite .tw-inner::before {
@@ -10596,65 +11467,6 @@ div#services .cards .card.card-wide .card-actions {
   }
 }
 
-/* =========================================
-   AGENTIC SOLUTIONS (BENTO) CYBER-CYAN THEME
-   ========================================= */
-
-/* 1. Apply the Deep Dark Cyan Gradient to ALL Bento Cards */
-#portfolio .bento-grid .bento-item,
-#portfolio .bento-grid .card-featured {
-    background: linear-gradient(145deg, rgba(14, 18, 26, 0.95) 0%, rgba(5, 5, 8, 1) 100%) !important;
-    border: 1px solid rgba(6, 182, 212, 0.15) !important;
-}
-
-/* 2. Strip inner solid backgrounds so the dark glass shows through */
-#portfolio .bento-grid .bento-item > div,
-#portfolio .bento-grid .bento-item .featured-flex,
-#portfolio .bento-grid .bento-item .featured-info {
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-}
-
-/* 3. The Animated Cyan Top Line */
-#portfolio .bento-grid .bento-item::after {
-    content: '';
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 3px !important; 
-    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.4s ease !important;
-    z-index: 50 !important; 
-    pointer-events: none;
-}
-
-/* 4. Hover State: Show line, elevate, subtle cyan outer glow */
-#portfolio .bento-grid .bento-item:hover::after {
-    transform: scaleX(1) !important;
-}
-
-#portfolio .bento-grid .bento-item:hover {
-    transform: translateY(-5px) !important;
-    border-color: rgba(6, 182, 212, 0.5) !important;
-    /* Keeps the inside dark, adds a cyan glow to the outside */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(6, 182, 212, 0.15) !important;
-}
-
-/* 5. Text highlights on hover */
-#portfolio .bento-grid .bento-item:hover h3 {
-    color: #06b6d4 !important;
-    transition: color 0.3s ease !important;
-}
-
-/* 6. Keep the terminal box pure black */
-#portfolio .bento-grid .bento-item .featured-terminal {
-    background: #000000 !important; 
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
 
 /* =========================================
    HYBRID TERMINAL-GLASS FOOTER
@@ -10687,55 +11499,32 @@ div#services .cards .card.card-wide .card-actions {
     z-index: 1;
 }
 
-/* Footer Headers Alignment Fix */
-.footer-logo,
-.footer-nav h4,
-.footer-contact h4 {
-    font-size: 1.15rem !important;      
-    font-weight: 700 !important;        
-    color: #ffffff !important;
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;     
-    text-transform: none !important;    
-    letter-spacing: normal !important;  
-    display: flex !important;           
-    align-items: center !important;     
-    height: 35px !important;            
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
-.footer-logo {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 20px;
-    letter-spacing: -0.3px;
-}
+.footer-logo i { color: var(--accent); margin-right: 10px; }
 .footer-motto { color: #9ca3af; max-width: 300px; margin-bottom: 25px; }
 .footer-socials { display: flex; gap: 15px; }
 .footer-socials a { color: #9ca3af; font-size: 1.2rem; transition: 0.3s ease; }
 .footer-socials a:hover { color: var(--accent); transform: translateY(-3px); }
 
+.footer-nav h4, .footer-contact h4 {
+    color: #fff; margin-bottom: 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+}
 .footer-links { list-style: none; padding: 0; }
 .footer-links li { margin-bottom: 12px; }
 .footer-links a { color: #9ca3af; text-decoration: none; transition: 0.3s; }
 .footer-links a:hover { color: var(--accent); padding-left: 5px; }
 
-/* Cyber CTA Styling */
-.cyber-cta {
-    display: inline-block; background: #0a0a0a; color: #10b981; 
-    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-    padding: 12px 20px; border: 1px solid rgba(16, 185, 129, 0.3);
-    border-radius: 4px; text-decoration: none; transition: all 0.3s ease;
-    box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05); margin-top: 10px; cursor: pointer;
+.footer-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255, 107, 0, 0.1); color: var(--accent); border: 1px solid var(--accent);
+    padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: 0.3s;
 }
-.cyber-cta:hover {
-    background: rgba(16, 185, 129, 0.1); border-color: #10b981;
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2), inset 0 0 15px rgba(16, 185, 129, 0.1);
-    color: #fff; transform: translateY(-2px);
-}
-.cyber-cta .prompt-arrow { color: var(--accent); margin-right: 8px; font-weight: bold; }
-.cyber-cta .blink-cursor { color: #10b981; animation: terminalBlink 1s step-end infinite; margin-left: 5px; }
-@keyframes terminalBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.footer-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 0 20px rgba(255, 107, 0, 0.3); }
 
 /* Terminal Bar Styling */
 .footer-terminal-bar {
@@ -10748,18 +11537,25 @@ div#services .cards .card.card-wide .card-actions {
     width: 8px; height: 8px; background: #10b981; border-radius: 50%;
     box-shadow: 0 0 8px #10b981; animation: pulse 2s infinite;
 }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
 
 .terminal-logs {
     font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent);
     opacity: 0.6; min-width: 250px; text-align: right; white-space: nowrap; overflow: hidden;
     animation: textFlicker 3s infinite;
 }
-@keyframes textFlicker { 0% { opacity: 0.6; } 50% { opacity: 0.5; } 100% { opacity: 0.6; } }
+
+@keyframes textFlicker {
+  0% { opacity: 0.6; } 50% { opacity: 0.5; } 100% { opacity: 0.6; }
+}
 
 @media (max-width: 768px) {
     .footer-content { grid-template-columns: 1fr; text-align: center; }
-    .footer-logo, .footer-nav h4, .footer-contact h4 { justify-content: center !important; }
     .footer-motto { margin: 0 auto 25px auto; }
     .footer-socials { justify-content: center; }
     .footer-terminal-bar { flex-direction: column; gap: 15px; }
@@ -10767,680 +11563,317 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 
-/* ========================================= */
-/* ========================================================= */
-/* --- 1. THE DICHOTOMY ENGINE (GLASS VS BLACK BOX) --- */
-/* ========================================================= */
-
-.dichotomy-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
-@media(max-width: 850px) { .dichotomy-container { grid-template-columns: 1fr; } }
-
-.dichotomy-card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden;}
-
-/* Cinematic Hover Effects */
-.black-box:hover { border-color: rgba(231, 76, 60, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(231, 76, 60, 0.05); transform: translateY(-5px); }
-.glass-box:hover { border-color: rgba(39, 201, 63, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(39, 201, 63, 0.05); transform: translateY(-5px); }
-.black-box:hover .dicho-terminal { border-color: rgba(231, 76, 60, 0.5); }
-.glass-box:hover .dicho-terminal { border-color: rgba(39, 201, 63, 0.5); }
-
-.dicho-header { display: flex; align-items: center; gap: 16px; }
-.dicho-header i { font-size: 2rem; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
-.dicho-header h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2px; }
-.dicho-header span { font-size: 0.85rem; color: var(--gray); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
-
-.dicho-desc { color: #a8aeb3; font-size: 0.95rem; line-height: 1.6; }
-
-/* Nested Terminal Windows */
-.dicho-terminal { background: #1e1e1e; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: border-color 0.3s; }
-.dicho-terminal pre { padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #d4d4d4; overflow-x: auto; margin: 0; }
-
-/* Mac Window Header Styles (Shared by Dichotomy and Blueprint) */
-.mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.mac-dot { width: 12px; height: 12px; border-radius: 50%; }
-.mac-dot.red { background: #ff5f56; } 
-.mac-dot.yellow { background: #ffbd2e; } 
-.mac-dot.green { background: #27c93f; }
-.mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
-
-/* Micro-Glitch Animation for the Black Box */
-@keyframes textGlitch {
-  0% { transform: translate(0) }
-  20% { transform: translate(-1px, 1px) }
-  40% { transform: translate(-1px, -1px) }
-  60% { transform: translate(1px, 1px) }
-  80% { transform: translate(1px, -1px) }
-  100% { transform: translate(0) }
-}
-.black-box:hover .dicho-terminal pre { animation: textGlitch 0.2s ease-in-out; }
-
-/* Feature List (Overrides default bullet points) */
-.dicho-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 15px; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.05);}
-.dicho-list li { color: #cbd6df; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; margin-bottom: 0; }
-.dicho-list i { font-size: 1rem; width: 16px; text-align: center; }
-.dicho-list li::before { display: none !important; }
-
-/* Blinking Cursors */
-@keyframes blinkRed { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-.blink-cursor-red { display: inline-block; width: 8px; height: 14px; background-color: #e74c3c; vertical-align: middle; margin-left: 5px; animation: blinkRed 1s step-end infinite; }
-
-@keyframes blinkGreen { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-.blink-cursor-green { display: inline-block; width: 8px; height: 14px; background-color: #27c93f; vertical-align: middle; margin-left: 5px; animation: blinkGreen 1s step-end infinite; }
-
-
-/* --- ANIMATIONS & UTILITIES --- */
-.blink {
-  animation: soft-pulse 1.5s infinite;
-  font-weight: bold;
-  color: var(--accent);
+/* =========================================
+   CYBER TERMINAL CTA
+   ========================================= */
+.cyber-cta {
+    display: inline-block;
+    background: #0a0a0a;
+    color: #10b981; /* Terminal green */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    padding: 12px 20px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05);
+    margin-top: 10px;
 }
 
-@keyframes soft-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+.cyber-cta:hover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: #10b981;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2), inset 0 0 15px rgba(16, 185, 129, 0.1);
+    color: #fff;
+    transform: translateY(-2px);
 }
 
-/* --- MEDIA QUERIES (Keep these at the bottom) --- */
-@media (max-width: 768px) { ... }
-
-/* Terminal Blink/Pulse Effect */
-.blink {
-  animation: soft-pulse 1.5s infinite;
-  font-weight: bold;
-  color: var(--accent);
+.cyber-cta .prompt-arrow {
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: bold;
 }
 
-@keyframes soft-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+.cyber-cta .blink-cursor {
+    color: #10b981;
+    animation: terminalBlink 1s step-end infinite;
+    margin-left: 5px;
 }
 
-/* Ensure the bento grid handles the layout correctly */
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+@keyframes terminalBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
-/* Optional: Button hover state for the GitHub link */
-.btn:hover {
-  background: rgba(255,255,255,0.2) !important;
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
-}
-
-/* --- TYPEWRITER CENTERING FIX FOR MOBILE --- */
-
-/* 1. Make the parent container a flexbox that forces absolute centering */
-.role-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  min-height: 3rem; /* Optional: prevents the hero section from jumping up/down when text wraps on small screens */
-}
-
-/* 3. Ensure the dynamically injected span grows from the center */
-.tw-inner {
-  display: inline-block;
-  text-align: center;
-}
 
 /* =========================================
-   HERO — CLEAN BUILD (replaces all old hero overrides)
-   Uses new class names: hero-split, hero-left, hero-right,
-   hero-cards-stack, stack-card. Old .hero-inner, .hero-text,
-   .hero-image, .hero-avatar rules are intentionally dead.
+   FOOTER HEADER ALIGNMENT FIX
    ========================================= */
-#home.hero {
-  display: block !important;
-  min-height: 72vh !important;
-  padding: 85px 0 3.5rem !important;
-  position: relative !important;
-  z-index: 0 !important;
+.footer-logo,
+.footer-nav h4,
+.footer-contact h4 {
+    font-size: 1.15rem !important;      /* Unifies the size */
+    font-weight: 700 !important;        /* Makes them all bold */
+    color: #ffffff !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;     /* Uniform bottom spacing */
+    text-transform: none !important;    /* Removes the uppercase from h4 */
+    letter-spacing: normal !important;  /* Removes the wide letter spacing */
+    display: flex !important;           /* Flexbox to control vertical alignment */
+    align-items: center !important;     /* Centers them perfectly on the horizontal axis */
+    height: 35px !important;            /* Locks the row height so they line up perfectly */
 }
 
-/* Two-column grid layout */
-#home.hero .hero-split {
-  display: grid !important;
-  grid-template-columns: 50% 50% !important;
-  align-items: center !important;
-  max-width: 1100px !important;
-  margin: 0 auto !important;
-  padding: 60px 2rem 50px 0 !important;
-  position: relative !important;
-  z-index: 2 !important;
+/* Ensure the logo icon stays properly spaced within the new flex layout */
+.footer-logo i {
+    margin-right: 10px;
+    display: block;
 }
 
-/* Left column: text */
-#home.hero .hero-left {
-  text-align: left !important;
+
+/* =========================================
+   AGENTIC SOLUTIONS (PORTFOLIO) PREMIUM THEME
+   ========================================= */
+.portfolio-card {
+    /* Deep blue-tinted dark gradient to contrast the pure dark of consulting */
+    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important; /* Matches the curve of the consulting cards */
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
 }
 
-#home.hero .hero-left h1 {
-  font-size: 3rem !important;
-  font-weight: 800 !important;
-  line-height: 1.1 !important;
-  margin: 0 0 8px 0 !important;
-  text-align: left !important;
+/* The Cyber-Cyan glowing top line (hidden until hover) */
+.portfolio-card::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
 }
 
-#home.hero .hero-left .highlight {
-  color: var(--text) !important;
+/* Reveal the glowing line on hover */
+.portfolio-card:hover::before {
+    transform: scaleX(1);
 }
 
-#home.hero .hero-left .hero-tagline {
-  font-size: 1.15rem !important;
-  font-weight: 500 !important;
-  color: #ffffff !important;
-  margin: 0 0 6px 0 !important;
-  text-align: left !important;
-  line-height: 1.4 !important;
+/* Hover state: elevate, glow, and shadow */
+.portfolio-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(6, 182, 212, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
+    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
 }
 
-#home.hero .hero-left .hero-sub {
-  font-size: 1.1rem !important;
-  color: var(--muted) !important;
-  margin: 0 0 1rem 0 !important;
-  text-align: left !important;
+/* Make the title subtlely shift to Cyan on hover */
+.portfolio-card:hover h3 {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease;
 }
 
-#home.hero .hero-left .hero-cta {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 12px !important;
-  margin-top: 1.5rem !important;
-  justify-items: stretch !important;
+/* Make the links/icons match the new theme on hover */
+.portfolio-card:hover .btn-link {
+    color: #06b6d4 !important;
 }
 
-/* Right column: card stack */
-#home.hero .hero-right {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  position: relative !important;
+
+/* =========================================
+   AGENTIC SOLUTIONS: FORCED PREMIUM THEME
+   ========================================= */
+/* 1. Force the main card wrapper to accept the gradient */
+.portfolio-card, .solution-card, .agentic-card {
+    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+    display: block !important;
+    text-decoration: none !important;
+    z-index: 1 !important;
 }
 
-#home.hero .hero-cards-stack {
-  position: relative !important;
-  width: 100% !important;
-  max-width: 420px !important;
-  height: 340px !important;
-  margin: 0 auto !important;
+/* 2. CRITICAL FIX: Strip solid backgrounds from ANY inner divs so the gradient shows through */
+.portfolio-card div, .solution-card div, .agentic-card div,
+.portfolio-card .card-content, .solution-card .card-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-#home.hero .stack-card {
-  position: absolute !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  background: rgba(20, 20, 20, 0.85) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 12px !important;
-  padding: 18px 22px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 16px !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease !important;
-  opacity: 0.15 !important;
-  will-change: transform, opacity !important;
+/* 3. The sweeping Cyber-Cyan top border */
+.portfolio-card::before, .solution-card::before, .agentic-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
+    transform: scaleX(0);
+    transition: transform 0.4s ease !important;
+    z-index: 10 !important;
 }
 
-#home.hero .stack-card.card-1 {
-  top: 0 !important;
-  left: 40px !important;
-  z-index: 4 !important;
-  padding: 14px 20px !important;
-  animation: floatCard1 6s ease-in-out infinite !important;
-  opacity: 1 !important;
+/* 4. Hover Effects: Scale line, elevate card, add cyan glow */
+.portfolio-card:hover::before, .solution-card:hover::before, .agentic-card:hover::before {
+    transform: scaleX(1) !important;
 }
 
-#home.hero .stack-card.card-2 {
-  top: 55px !important;
-  left: 70px !important;
-  z-index: 3 !important;
-  width: 85% !important;
-  padding: 20px 22px !important;
-  animation: floatCard2 6.5s ease-in-out infinite !important;
-  animation-delay: 1s !important;
+.portfolio-card:hover, .solution-card:hover, .agentic-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(6, 182, 212, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
+    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
 }
 
-#home.hero .stack-card.card-3 {
-  top: 125px !important;
-  left: 5px !important;
-  z-index: 2 !important;
-  padding: 24px 22px !important;
-  animation: floatCard3 7s ease-in-out infinite !important;
-  animation-delay: 2s !important;
+/* 5. Text Highlights on Hover */
+.portfolio-card:hover h3, .solution-card:hover h3, .agentic-card:hover h3 {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease !important;
 }
 
-#home.hero .stack-card.card-4 {
-  top: 185px !important;
-  left: 210px !important;
-  z-index: 3 !important;
-  width: 55% !important;
-  padding: 14px 18px !important;
-  animation: floatCard4 7.5s ease-in-out infinite !important;
-  animation-delay: 0.5s !important;
+.portfolio-card:hover .btn-link, .portfolio-card:hover .tags span {
+    color: #06b6d4 !important;
+    border-color: rgba(6, 182, 212, 0.3) !important;
 }
 
-/* Card 5: vertical capabilities (background layer, behind top 3) */
-#home.hero .stack-card.card-5 {
-  top: -30px !important;
-  left: 300px !important;
-  z-index: 10 !important;
-  width: 280px !important;
-  padding: 20px 18px !important;
-  animation: floatCard5 8s ease-in-out infinite !important;
-  animation-delay: 1.5s !important;
+
+/* =========================================
+   AGENTIC SOLUTIONS (#services) CYBER-CYAN THEME
+   ========================================= */
+/* 1. Force the main card wrapper inside the Agentic section to accept the gradient */
+#services .service-card {
+    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+    z-index: 1 !important;
 }
 
-#home.hero .card-cap-list {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
+/* 2. Strip solid backgrounds from ANY inner divs so the gradient shows through */
+#services .service-card > div,
+#services .service-card .service-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-#home.hero .card-cap-item {
-  font-size: 0.75rem !important;
-  color: #8899a6 !important;
-  display: flex !important;
-  align-items: flex-start !important;
-  gap: 8px !important;
-  line-height: 1.4 !important;
+/* 3. The sweeping Cyber-Cyan top border */
+#services .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
+    transform: scaleX(0);
+    transition: transform 0.4s ease !important;
+    z-index: 10 !important;
 }
 
-#home.hero .card-cap-item i {
-  color: #58a6ff !important;
-  font-size: 0.7rem !important;
-  width: 14px !important;
-  min-width: 14px !important;
-  text-align: center !important;
-  margin-top: 2px !important;
+/* 4. Hover Effects: Scale line, elevate card, add cyan glow */
+#services .service-card:hover::before {
+    transform: scaleX(1) !important;
 }
 
-#home.hero .stack-card:hover {
-  transform: translate(4px, -4px) scale(1.02) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8) !important;
-  z-index: 10 !important;
+#services .service-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(6, 182, 212, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
+    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
 }
 
-#home.hero .card-icon {
-  font-size: 1.35rem !important;
-  color: #cbd6df !important;
-  background: rgba(255, 255, 255, 0.04) !important;
-  width: 46px !important;
-  height: 46px !important;
-  min-width: 46px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 8px !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  padding: 0 !important;
-  text-align: center !important;
-  flex-shrink: 0 !important;
+/* 5. Text Highlights on Hover */
+#services .service-card:hover h3 {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease !important;
 }
 
-#home.hero .card-content {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
+#services .service-card:hover a.learn-more,
+#services .service-card:hover .learn-more i {
+    color: #06b6d4 !important;
 }
 
-#home.hero .card-label {
-  font-size: 0.72rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1.5px !important;
-  color: #8899a6 !important;
-  font-weight: 600 !important;
+
+/* =========================================
+   DEFINITIVE FIX: AGENTIC SOLUTIONS CYBER-CYAN
+   Targeting the correct class: #portfolio .bento-item 
+   ========================================= */
+/* 1. Base State: Deep blue-tinted gradient */
+#portfolio .bento-item {
+    background: linear-gradient(145deg, rgba(10, 15, 22, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+    z-index: 1 !important;
 }
 
-#home.hero .card-content .card-title {
-  margin: 0 !important;
-  font-size: 0.75rem !important;
-  color: #8899a6 !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.2px !important;
-  line-height: 1.4 !important;
+/* 2. The sweeping Cyber-Cyan top border */
+#portfolio .bento-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent) !important;
+    transform: scaleX(0);
+    transition: transform 0.4s ease !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
 }
 
-/* Card 4: vertical tag list */
-#home.hero .card-content-vert {
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 8px !important;
+/* 3. Hover Effects: Scale line, elevate card, add cyan glow */
+#portfolio .bento-item:hover::before {
+    transform: scaleX(1) !important;
 }
 
-#home.hero .card-tags {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 5px !important;
+#portfolio .bento-item:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(6, 182, 212, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
+    background: linear-gradient(145deg, rgba(15, 22, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%) !important;
 }
 
-#home.hero .card-tag {
-  font-size: 0.65rem !important;
-  color: #b0bec5 !important;
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 4px !important;
-  padding: 3px 8px !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.3px !important;
+/* 4. Text & Link Highlights on Hover */
+#portfolio .bento-item:hover h3 {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease !important;
 }
 
-#topology-container {
-  position: relative;
-  width: 380px;
-  height: 380px;
-  overflow: hidden;
-  background-color: transparent;
+#portfolio .bento-item:hover .link-arrow {
+    color: #06b6d4 !important;
+    transition: color 0.3s ease !important;
 }
 
-#topology-container canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
+
+/* =========================================
+   BACKGROUND VISIBILITY FIX FOR BENTO CARDS
+   ========================================= */
+/* 1. Make the gradient visibly Cyan/Teal so it pops against the black background */
+#portfolio .bento-item {
+    background: linear-gradient(145deg, rgba(6, 182, 212, 0.12) 0%, rgba(10, 15, 22, 0.9) 100%) !important;
 }
 
-/* ============================================
-   AGENTIC SOLUTIONS — Two-Level Tab System
-   ============================================ */
-
-.domain-tabs {
-  display: flex;
-  justify-content: flex-start;
-  gap: 8px;
-  margin-bottom: 40px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 4px;
+/* 2. Hover state background (slightly brighter cyan) */
+#portfolio .bento-item:hover {
+    background: linear-gradient(145deg, rgba(6, 182, 212, 0.2) 0%, rgba(15, 22, 30, 0.95) 100%) !important;
 }
 
-.domain-tabs::-webkit-scrollbar { display: none; }
-
-.domain-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  background: transparent;
-  color: #a0a0a0;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-  white-space: nowrap;
-  will-change: border-color, color;
+/* 3. CRITICAL: Strip solid backgrounds off ANY internal divs so the gradient actually shows through */
+#portfolio .bento-item > div,
+#portfolio .bento-item .featured-flex,
+#portfolio .bento-item .featured-info {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-.domain-tab:hover {
-  background: rgba(255,255,255,0.03);
-  color: #fff;
-  border-color: rgba(255,255,255,0.15);
+/* Ensure the terminal box inside the featured card keeps its dark code background */
+#portfolio .bento-item .featured-terminal {
+    background: #0a0a0a !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
-
-.domain-tab.active {
-  background: rgba(255,255,255,0.06);
-  color: #fff;
-  border-color: rgba(255,255,255,0.2);
-}
-
-.domain-panels {
-  position: relative;
-}
-
-.domain-panel {
-  display: none;
-}
-
-.domain-panel.active {
-  display: block;
-}
-
-.solution-layout {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 20px;
-  min-height: 320px;
-  max-width: 900px;
-  margin: 0;
-}
-
-.usecase-tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  padding-right: 16px;
-}
-
-.usecase-tab {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--muted);
-  font-size: 0.8rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: left;
-  font-family: inherit;
-  position: relative;
-}
-
-.usecase-tab::before {
-  content: '';
-  position: absolute;
-  right: -21px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2px;
-  height: 0;
-  background: var(--accent);
-  border-radius: 1px;
-  transition: height 0.25s ease;
-}
-
-.usecase-tab:hover {
-  background: rgba(255,255,255,0.05);
-  color: var(--text);
-}
-
-.usecase-tab.active {
-  background: rgba(255,107,0,0.08);
-  color: #fff;
-}
-
-.usecase-tab.active::before {
-  height: 60%;
-}
-
-.usecase-tab-num {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--accent);
-  opacity: 0.6;
-  min-width: 20px;
-  font-family: 'SF Mono', 'Fira Code', monospace;
-}
-
-.usecase-tab.active .usecase-tab-num {
-  opacity: 1;
-}
-
-.usecase-tab-label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-height: 1.3;
-}
-
-.usecase-panels {
-  position: relative;
-  overflow: hidden;
-}
-
-.usecase-panel {
-  display: none;
-}
-
-.usecase-panel.active {
-  display: block;
-}
-
-.usecase-content {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.usecase-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.usecase-info h3 {
-  font-size: 1.1rem;
-  color: #fff;
-  font-weight: 700;
-  margin: 0;
-}
-
-.usecase-subtitle {
-  color: var(--text);
-  font-weight: 500;
-  font-size: 0.85rem;
-  margin: 0;
-}
-
-.usecase-desc {
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.usecase-info .tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 4px;
-}
-
-.usecase-info .link-arrow {
-  margin-top: 8px;
-}
-
-.usecase-visual {
-  min-width: 0;
-}
-
-.usecase-visual .terminal-box {
-  width: 100%;
-}
-
-.usecase-visual .terminal-body {
-  line-height: 1.3;
-  font-size: 0.68rem;
-  text-align: left;
-  white-space: normal;
-  word-break: break-word;
-}
-
-/* --- Mobile Responsive --- */
-@media (max-width: 900px) {
-  #topology-container {
-    display: none;
-  }
-
-  .solution-layout {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 100%;
-  }
-
-  .usecase-tabs {
-    flex-direction: row;
-    overflow-x: auto;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-right: 0;
-    padding-bottom: 12px;
-    gap: 4px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .usecase-tab::before {
-    display: none;
-  }
-
-  .usecase-tab {
-    white-space: nowrap;
-    padding: 10px 14px;
-    font-size: 0.82rem;
-  }
-
-  .usecase-content {
-    grid-template-columns: 1fr;
-  }
-
-  .usecase-visual {
-    max-width: 100%;
-  }
-
-  .domain-tabs {
-    gap: 6px;
-    flex-wrap: nowrap;
-  }
-
-  .domain-tab {
-    padding: 8px 14px;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .domain-tab {
-    padding: 7px 12px;
-    font-size: 0.75rem;
-  }
-
-  .usecase-tab-num {
-    display: none;
-  }
-}
-
-/* ============================================
-   HERO CARDS STACK — Animations & Mobile
-   ============================================ */
-@keyframes floatCard1 { 0%, 100% { transform: translateY(0) rotate(0.5deg); } 50% { transform: translateY(-10px) rotate(-0.5deg); } }
-@keyframes floatCard2 { 0%, 100% { transform: translateY(0) rotate(-0.5deg); } 50% { transform: translateY(-14px) rotate(0.5deg); } }
-@keyframes floatCard3 { 0%, 100% { transform: translateY(0) rotate(0.2deg); } 50% { transform: translateY(-8px) rotate(-0.8deg); } }
-@keyframes floatCard4 { 0%, 100% { transform: translateY(0) rotate(-0.3deg); } 50% { transform: translateY(-12px) rotate(0.4deg); } }
-@keyframes floatCard5 { 0%, 100% { transform: translateY(0) rotate(0.3deg); } 50% { transform: translateY(-6px) rotate(-0.3deg); } }
-
-@media (max-width: 768px) {
-  .hero-cards-stack { height: auto !important; gap: 12px !important; margin: 40px auto 0 auto !important; }
-  .stack-card { position: relative !important; top: auto !important; left: auto !important; animation: none !important; width: 100% !important; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important; padding: 16px !important; }
-  .stack-card:hover { transform: none !important; }
-  .stack-card.card-4 { width: 100% !important; left: auto !important; }
-  .stack-card.card-5 { width: 100% !important; left: auto !important; top: auto !important; }
-  .hero-split { grid-template-columns: 1fr !important; }
-  .hero-right { display: flex !important; justify-content: center !important; }
-}mobile-fix

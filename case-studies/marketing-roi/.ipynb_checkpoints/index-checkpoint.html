@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Marketing ROI Optimizer: The Silicon Colosseum | Arash Nicoomanesh</title>
+  <meta name="description" content="Autonomous budget reallocation using Multi-Armed Bandits and competitive multi-agent creative swarms."/>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root {
+      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
+      --accent: #ff6b00; --accent-hover: #e66000; --code-bg: #1e1e1e;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* ---------- header ---------- */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    .logo i { color: var(--accent); }
+    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(80px, 10vw, 100px) 0; border-bottom: 1px solid rgba(255,255,255,.05); background: radial-gradient(circle at top, rgba(255,107,0,0.05) 0%, var(--darker) 70%); text-align: center; }
+    .badge { display: inline-block; background: rgba(255,107,0,0.1); color: var(--accent); border: 1px solid rgba(255,107,0,0.3); padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px; color: #fff; }
+    .hero p { font-size: clamp(1.1rem, 2vw, 1.2rem); max-width: 800px; margin: 0 auto; color: var(--gray); font-weight: 400; }
+    
+    /* ---------- sections & grids ---------- */
+    section { padding: clamp(60px, 8vw, 90px) 0; }
+    .section-title { font-size: 2rem; color: #fff; margin-bottom: 20px; text-align: center; font-weight: 700; }
+    .section-subtitle { text-align:center; max-width:800px; margin:0 auto 50px auto; color:var(--gray); font-size: 1.1rem; }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    @media(max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 32px; transition: .3s; height: 100%; }
+    .card:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-3px); }
+    .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .card h3 i { color: var(--accent); }
+    .card p, .card ul { color: #a8aeb3; font-size: 0.95rem; margin-bottom: 10px; }
+    
+    /* ---------- pipeline timeline ---------- */
+    .pipeline-step { display: flex; gap: 30px; margin-bottom: 40px; }
+    .pipeline-number { flex-shrink: 0; width: 50px; height: 50px; background: rgba(255,107,0,0.1); border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+    .pipeline-content h3 { color: #fff; font-size: 1.4rem; margin-bottom: 10px; }
+    .pipeline-content p { color: #cbd6df; font-size: 1rem; line-height: 1.6; }
+    
+    /* ---------- code windows ---------- */
+    .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); margin-top: 20px; }
+    .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
+    .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+    
+    pre { padding: 24px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #d4d4d4; margin: 0; }
+    .string { color: #ce9178; }
+    .keyword { color: #569cd6; }
+    .number { color: #b5cea8; }
+    .property { color: #9cdcfe; }
+    .comment { color: #6a9955; font-style: italic; }
+
+    /* --- TERMINAL BLINK EFFECT --- */
+    @keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .blink { animation: blinkCursor 1s step-end infinite; color: #00ff00; }
+    
+    .stats-band { background: #121212; padding: 60px 0; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .stat-item h4 { font-size: 2.5rem; color: var(--accent); margin-bottom: 5px; font-weight: 800; }
+    
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: 1px solid var(--accent); }
+    .case-cta-band { padding: 60px 0; text-align: center; }
+    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo"><i class="fa-solid fa-bolt"></i>Arash Nicoomanesh</a>
+      <a href="../../index.html#portfolio" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to Portfolio</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">Swarm Intelligence & Ad-Tech</span>
+    <h1>The Silicon Colosseum: Marketing ROI Optimizer</h1>
+    <p>Using Competitive Multi-Agent Swarms and Multi-Armed Bandits to autonomously discover and exploit high-converting creative angles.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">The "Creative Fatigue" Problem</h2>
+    <p class="section-subtitle">Static ad campaigns fail because they lack the speed to adapt to live consumer sentiment. We replaced human-led A/B testing with a self-evolving creative factory.</p>
+    
+    <div class="grid-3">
+      <div class="card" style="border-top: 2px solid var(--accent);">
+        <h3><i class="fa-solid fa-hourglass-start"></i> Latency of Insight</h3>
+        <p>By the time a human analyst identifies a high-performing ad, market sentiment has already shifted. Agents react in milliseconds.</p>
+      </div>
+      <div class="card" style="border-top: 2px solid var(--accent);">
+        <h3><i class="fa-solid fa-brain"></i> Creative Stagnation</h3>
+        <p>A single LLM prompt produces repetitive results. Competitive swarms ensure "Diversity of Thought" through conflicting personas.</p>
+      </div>
+      <div class="card" style="border-top: 2px solid var(--accent);">
+        <h3><i class="fa-solid fa-coins"></i> Budget Leakage</h3>
+        <p>Rule-based reallocation often misses "Black Swan" conversion spikes. Our MAB engine uses Thompson Sampling to find winners early.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: rgba(20,20,20,0.3); border-top: 1px solid rgba(255,255,255,.02);">
+  <div class="container">
+    <h2 class="section-title">Architecture: The Forge vs. The Fortress</h2>
+    <p class="section-subtitle">Unlike my Clinical Architectures, this system prioritizes <strong>Exploration</strong>. It is designed to bet small, fail fast, and win big.</p>
+    
+    <div style="max-width: 900px; margin: 0 auto;">
+      
+      <div class="pipeline-step">
+        <div class="pipeline-number">1</div>
+        <div class="pipeline-content">
+          <h3>Persona Spawning (Silicon Colosseum)</h3>
+          <p>The orchestrator spawns multiple agents with distinct "Psychographic Personas" (e.g., Logical, Empathetic, Provocative). They are given a product brief and forced to compete for the best headline hook.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">2</div>
+        <div class="pipeline-content">
+          <h3>The Reward Signal (Bandit Feedback)</h3>
+          <p>Instead of a Policy-as-Code gate, we use a live <strong>Reward Signal</strong>. Every click, conversion, or scroll-stop event is fed back into a Multi-Armed Bandit (MAB) algorithm as a reinforcement signal.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="pipeline-number">3</div>
+        <div class="pipeline-content">
+          <h3>Autonomous Budget Reallocation</h3>
+          <p>The system utilizes <strong>Thompson Sampling</strong> to distribute traffic. It dynamically moves spend toward the "Winning" agent's creative while keeping a small percentage in "Discovery" to prevent creative fatigue.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Live Execution Logs</h2>
+    <div class="grid-2">
+      
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">swarm_colosseum_v2.log</div>
+        </div>
+        <pre><code><span class="comment">> [SPAWN] Creative_Agent_A (Persona: 'Logic')</span>
+<span class="comment">> [SPAWN] Creative_Agent_B (Persona: 'Urgency')</span>
+<span class="comment">> [SPAWN] Creative_Agent_C (Persona: 'Empathy')</span>
+<span class="keyword">[COLLABORATE]</span> Refining 'Project Nebula' hooks...
+<span class="property">AGENT_B:</span> "Only 12 seats left. Don't wait."
+<span class="property">AGENT_A:</span> "Cut 40% of overhead with Nebula."
+<span class="keyword">[JUDGE]</span> Brief merged. Variations deployed.
+<span class="blink">POLLING FOR CONVERSIONS...</span></code></pre>
+      </div>
+
+      <div class="mac-window">
+        <div class="mac-header">
+          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+          <div class="mac-title">mab_budget_allocator.py</div>
+        </div>
+        <pre><code><span class="comment"># Thompson Sampling: Exploiting the winners.</span>
+{
+  <span class="property">"variant"</span>: <span class="string">"Urgency_Hook_B"</span>,
+  <span class="property">"conversion_reward"</span>: <span class="number">1.0</span>,
+  <span class="property">"mab_update"</span>: {
+    <span class="property">"alpha"</span>: <span class="number">14.2</span>, <span class="property">"beta"</span>: <span class="number">2.1</span>
+  },
+  <span class="keyword">ACTION</span>: <span class="string">"Reallocating $450/hr to Variant_B"</span>,
+  <span class="property">"status"</span>: <span class="string">"CTR Delta: +18.4%"</span>
+}</code></pre>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container">
+    <div class="grid-3" style="text-align:center;">
+      <div class="stat-item">
+        <h4>22%</h4>
+        <p>Average ROI Increase</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Driven by millisecond-latency budget rebalancing.</span>
+      </div>
+      <div class="stat-item">
+        <h4>100+</h4>
+        <p>Creative Variations / Day</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Autonomous iteration via competitive swarms.</span>
+      </div>
+      <div class="stat-item">
+        <h4>0</h4>
+        <p>Manual A/B Management</p>
+        <span style="font-size:0.85rem; color:var(--gray);">Human-in-the-loop oversight, not execution.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case-cta-band">
+  <div class="container">
+    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 30px;">Ready to architect emergent AI swarms?</h2>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="mailto:your.email@example.com?subject=Inquiry: Marketing ROI Architecture" class="btn-primary">
+        <i class="fa-solid fa-envelope"></i> Discuss Your Swarm Strategy
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

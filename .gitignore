@@ -1,0 +1,6 @@
+*.backup.*
+*.cleanup.*
+*.cta_backup.*
+*.legacy_backup.*
+*.enterprise_update.*
+*.walkthrough_ext.*
