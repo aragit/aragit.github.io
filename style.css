@@ -11169,7 +11169,7 @@ div#services .cards .card.card-wide .card-actions {
   gap: 16px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease !important;
-  opacity: 0.15 !important;
+  opacity: 0.5 !important;
   will-change: transform, opacity !important;
 }
 
@@ -11220,6 +11220,7 @@ div#services .cards .card.card-wide .card-actions {
   padding: 20px 18px !important;
   animation: floatCard5 8s ease-in-out infinite !important;
   animation-delay: 1.5s !important;
+  opacity: 0.65 !important;
 }
 
 #home.hero .card-cap-list {
@@ -11229,8 +11230,8 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #home.hero .card-cap-item {
-  font-size: 0.75rem !important;
-  color: #8899a6 !important;
+  font-size: 0.8rem !important;
+  color: #a0b0c0 !important;
   display: flex !important;
   align-items: flex-start !important;
   gap: 8px !important;
@@ -11250,6 +11251,7 @@ div#services .cards .card.card-wide .card-actions {
   transform: translate(4px, -4px) scale(1.02) !important;
   border-color: rgba(255, 255, 255, 0.25) !important;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8) !important;
+  opacity: 1 !important;
   z-index: 10 !important;
 }
 
