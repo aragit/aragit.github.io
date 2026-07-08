@@ -119,8 +119,8 @@
 
 <section class="hero">
   <div class="container">
-    <h1>The Forge – Custom Agentic Prototype</h1>
-    <p>From validated blueprint to a <strong>production-grade agentic prototype</strong>. We engineer the deterministic architecture that brings autonomous digital workers to life. One fixed price, zero scope creep.</p>
+    <h1>Proof-of-Concept Sprint</h1>
+    <p>A 2-week build of a <strong>working prototype</strong> — not a production system. We validate core assumptions, demonstrate pattern feasibility, and produce code that can be reviewed, tested, and expanded — with explicit gaps documented for production hardening.</p>
     <a href="#request" class="btn-primary">Request a Build Quote <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
@@ -130,6 +130,11 @@
     <div class="section-title" style="text-align:center; margin-bottom:50px;">
       <h2 style="font-size: 2rem; color: #fff; margin-bottom: 10px;">The Core Architecture Pillars</h2>
       <p style="color: var(--gray); font-size: 1.1rem;">Engineering the Brain, Body, and Shield of your autonomous system.</p>
+      <div style="margin-top: 16px; padding: 12px 16px; background: rgba(255,107,0,0.05); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto;">
+        <span style="font-size: 13px; color: #a8aeb3; line-height: 1.6;">
+          <strong style="color: #ffffff;">Pattern Selection</strong> — We select the control-flow pattern (<span style="color: var(--accent);">Guarded Execution</span>, <span style="color: var(--accent);">Verify-Then-Generate</span>, or <span style="color: var(--accent);">Algorithmic Arbitration</span>) based on your liability profile and validate core assumptions within 2 weeks.
+        </span>
+      </div>
     </div>
 
     <div style="text-align:center; padding: 0 20px;">
@@ -168,6 +173,46 @@
         <li>Token-level telemetry & unit economics report</li>
         <li>Ready for "The Nexus" central orchestration</li>
       </ul>
+    </div>
+
+    <div style="margin: 32px 0; padding: 20px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
+      <h4 style="color: #e6edf3; font-size: 16px; margin-bottom: 16px; font-weight: 500;">Prototype vs. Production</h4>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+        <div>
+          <h5 style="color: #3fb950; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Included in POC</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Working core functionality</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Basic unit tests (pytest)</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Architecture pattern selection</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Docker containerization</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Documented gaps for production hardening</li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 style="color: #f85149; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Requires production engagement</h5>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> Property-based test suites (49+ tests)</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> Benchmark alignment (M5, biophysical validation)</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> Immutable audit ledger</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> OPA/Rego policy hardening</li>
+            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> CI/CD pipeline with smoke tests</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top: 16px; padding: 12px 16px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
+      <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Example POC output</span>
+      <div style="margin-top: 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://github.com/aragit/enterprise-intelligence-crew" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/enterprise-intelligence-crew</a>
+        <span style="font-size: 11px; color: #3fb950; background: color-mix(in srgb, #3fb950 12%, transparent); padding: 2px 8px; border-radius: 10px;">Public</span>
+        <span style="font-size: 11px; color: #b0b8c4; background: #21262d; padding: 2px 8px; border-radius: 10px;">3-agent pipeline</span>
+        <span style="font-size: 11px; color: #b0b8c4;">Started as POC, evolved to production</span>
+      </div>
     </div>
 
   </div>
