@@ -6970,9 +6970,8 @@ ul.insight-bullets li {
 }
 
 #portfolio .container {
-  max-width: 100% !important;
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
+  max-width: 1400px !important;
+  padding: 0 2rem !important;
   box-sizing: border-box !important;
 }
 
