@@ -11346,6 +11346,7 @@ div#services .cards .card.card-wide .card-actions {
 
 .usecase-visual {
   min-width: 0;
+  margin-top: 32px;
 }
 
 .usecase-visual .terminal-box {
