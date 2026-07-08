@@ -70,6 +70,18 @@
     /* TYPOGRAPHY */
     .hero-title { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(180deg, #fff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 680px; margin-bottom: 2rem; line-height: 1.7; }
+
+    /* Hero two-column layout */
+    .hero-layout { display: flex; align-items: center; gap: 48px; }
+    .hero-text { flex: 1; min-width: 0; }
+    .hero-img { flex: 0 0 360px; max-width: 360px; }
+    .hero-img img { width: 100%; height: auto; border-radius: 0; opacity: 0.9; transition: opacity 0.3s; }
+    .hero-img img:hover { opacity: 1; }
+    @media(max-width: 900px) {
+      .hero-layout { flex-direction: column; text-align: center; }
+      .hero-img { flex: 0 0 auto; max-width: 280px; order: -1; }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+    }
     .thesis-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.875rem; color: var(--text-main); font-weight: 500; }
     .thesis-badge i { color: var(--accent-blue); }
     
@@ -175,11 +187,18 @@
   <!-- HERO SECTION -->
   <section class="section" style="padding-top: 12rem;">
     <div class="container">
-      <div class="thesis-badge mb-6">
-        <i class="fa-solid fa-microchip"></i> Agentic Systems Architect
+      <div class="hero-layout">
+        <div class="hero-text">
+          <div class="thesis-badge mb-6">
+            <i class="fa-solid fa-microchip"></i> Agentic Systems Architect
+          </div>
+          <h1 class="hero-title">Architecture of<br>agentic systems.</h1>
+          <p class="hero-subtitle">I engineer compound systems that separate probabilistic reasoning from deterministic execution. Fifteen years across ML, LLMs, and agentic AI — building architectures that survive in high-liability clinical and enterprise environments.</p>
+        </div>
+        <div class="hero-img">
+          <img src="assets/arch2.png" alt="Architecture Diagram">
+        </div>
       </div>
-      <h1 class="hero-title">Architecture of<br>agentic systems.</h1>
-      <p class="hero-subtitle">I engineer compound systems that separate probabilistic reasoning from deterministic execution. Fifteen years across ML, LLMs, and agentic AI — building architectures that survive in high-liability clinical and enterprise environments.</p>
     </div>
   </section>
 
