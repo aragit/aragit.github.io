@@ -11672,10 +11672,6 @@ div#services .cards .card.card-wide .card-actions {
 /* Header & Glow Effects */
 .sota-header {
   margin-bottom: 4rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .sota-title-wrapper {
@@ -11725,20 +11721,19 @@ div#services .cards .card.card-wide .card-actions {
   line-height: 1.6;
 }
 
-.section-centered-header {
+.section-left-header {
   margin-bottom: 4rem;
-  text-align: center;
 }
 
-.section-centered-header .section-subtitle {
-  margin: 0 auto;
+.section-left-header .section-subtitle {
+  margin: 0;
 }
 
 .sota-header p {
   color: var(--text-muted);
   font-size: 1.1rem;
   max-width: 600px;
-  margin: 0 auto 2rem;
+  margin: 0 0 2rem;
   line-height: 1.6;
 }
 
@@ -11754,7 +11749,6 @@ div#services .cards .card.card-wide .card-actions {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin: 0 auto;
 }
 
 .sota-btn-github:hover {
