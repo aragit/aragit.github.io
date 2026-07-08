@@ -50,14 +50,7 @@
       position: relative;
       border-bottom: 1px solid var(--border);
       background-color: var(--bg);
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      background-position: center;
-      animation: gridPan 25s linear infinite;
     }
-    @keyframes gridPan { 0% { background-position: 0 0; } 100% { background-position: 0 40px; } }
     .hero::before {
       content: '';
       position: absolute;
