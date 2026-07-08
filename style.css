@@ -1256,12 +1256,13 @@ a.card-link:hover{
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 4rem;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .services-index-track {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 2.5rem;
 }
 
