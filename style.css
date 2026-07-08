@@ -5278,7 +5278,7 @@ ul.insight-bullets li {
   margin-bottom: 2rem;
 }
 
-.solutions-header-left .section-title {
+#portfolio .solutions-header-left .section-title {
   margin-bottom: 16px !important;
   position: sticky;
   top: 6rem;
@@ -5287,14 +5287,16 @@ ul.insight-bullets li {
   color: #fff !important;
 }
 
-.solutions-header-left .section-subtitle {
+#portfolio .solutions-header-left .section-subtitle {
   margin: 0 !important;
   margin-top: 0 !important;
-  font-size: 0.95rem !important;
+  font-size: 0.85rem !important;
   color: var(--gray) !important;
-  max-width: 380px !important;
+  max-width: 220px !important;
   line-height: 1.6 !important;
   font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-align: left !important;
 }
 
 .solutions-matrix {
