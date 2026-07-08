@@ -5270,20 +5270,6 @@ ul.insight-bullets li {
 }
 
 /* Solutions: reuses .arch-layout / .arch-left / .arch-right from Architecture Philosophy */
-/* Override grid for wider left column to prevent subtitle overlap */
-#portfolio .arch-layout {
-  grid-template-columns: 280px 1fr;
-}
-
-#portfolio .arch-left h2 {
-  margin-bottom: 1rem !important;
-}
-
-#portfolio .arch-left p {
-  font-size: 0.85rem !important;
-  max-width: 260px;
-}
-
 .arch-right .domain-tabs {
   margin-bottom: 0;
 }
