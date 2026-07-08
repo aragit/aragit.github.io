@@ -5269,6 +5269,34 @@ ul.insight-bullets li {
   padding: 40px 0;
 }
 
+/* Solutions header: title/subtitle left, domain tabs right */
+.solutions-header-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.solutions-header-left .section-title {
+  margin-bottom: 8px !important;
+}
+
+.solutions-header-left .section-subtitle {
+  margin-bottom: 0 !important;
+}
+
+.solutions-header-right .domain-tabs {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .solutions-header-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 #portfolio .section-title {
   text-align: left;
   font-size: 1.4rem;
