@@ -1251,6 +1251,193 @@ a.card-link:hover{
   padding-bottom: 3rem !important;   /* tweak 1–2 rem to taste */
 }
 
+/* --- SOTA 2026 SERVICES LAYOUT --- */
+.services-asymmetric-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.services-index-track {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.pipeline-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.service-row:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-row:hover {
+  padding-left: 1.2rem;
+  border-bottom-color: #5fd3ff;
+}
+
+.sr-num {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #ff6b00;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+
+.sr-content h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.3rem 0;
+  transition: color 0.3s ease;
+}
+
+.service-row:hover .sr-content h3 {
+  color: #5fd3ff;
+}
+
+.sr-subtitle {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+  margin-bottom: 0.8rem;
+}
+
+.sr-content p {
+  font-size: 0.95rem;
+  color: #b0b8c4;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sr-arrow {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-top: 0.3rem;
+}
+
+.service-row:hover .sr-arrow {
+  color: #5fd3ff;
+  transform: translateX(4px);
+}
+
+/* Foundational Substrate Styling */
+.foundational-substrate-block {
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
+  border: 1px dashed rgba(255, 107, 0, 0.2);
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+.substrate-badge {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #ff6b00;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.substrate-content-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.foundational-substrate-block h3 {
+  font-size: 1.3rem;
+  color: #fff;
+  margin: 0 0 0.7rem 0;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.foundational-substrate-block:hover h3 {
+  color: #ff6b00;
+}
+
+.foundational-substrate-block p {
+  font-size: 0.95rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0 0 1.2rem 0;
+}
+
+.substrate-cta {
+  font-size: 0.9rem;
+  color: #ff6b00;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.foundational-substrate-block:hover .substrate-cta {
+  text-decoration: underline;
+}
+
+/* Right Track: Featured Monolith */
+.services-featured-track {
+  position: sticky;
+  top: 100px;
+}
+
+.featured-service-block {
+  background: #0a0a0c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem;
+  border-radius: 6px;
+}
+
+.fs-header h3 {
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.3rem 0;
+}
+
+.fs-subtitle {
+  display: block;
+  font-size: 0.85rem;
+  color: #ff6b00;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.fs-detail {
+  font-size: 1rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .services-asymmetric-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .services-featured-track {
+    position: relative;
+    top: 0;
+  }
+}
+
 /* ===== Contact : bigger social icons ===== */
 #contact .socials a {
   font-size: 1.6rem !important;   /* default was ~1.2rem – adjust px/rem */

@@ -33,7 +33,7 @@
   </style>
 
   <!-- style (external) -->
-  <link rel="stylesheet" href="style.css?v=1783700100" />
+  <link rel="stylesheet" href="style.css?v=1783521301" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -981,86 +981,106 @@
     <section id="services" class="section" aria-labelledby="services-heading">
       <div class="container">
         
-        <div style="text-align: center; margin-bottom: 40px;">
-          <h2 id="services-heading" style="font-size: clamp(1.6rem, 3vw, 2.1rem) !important; color: #fff !important; margin-bottom: 15px !important; font-weight: 700 !important; border: none !important; padding: 0 !important; line-height: 1.3 !important;">Consulting Services</h2>
-          <p style="font-style: normal !important; color: #ffffff !important; font-size: 1.05rem !important; font-weight: 400 !important; max-width: 600px !important; margin: 0 auto !important; letter-spacing: normal !important; text-transform: none !important;">Build and Operate Intelligent Systems that Last</p>
+        <!-- Left-Aligned Section Header -->
+        <div class="section-header-left" style="margin-bottom: 3.5rem;">
+          <span class="arch-tag" style="display: inline-block; font-family: monospace; color: #ff6b00; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 1rem;">[ENG_SERVICES // 04]</span>
+          <h2 id="services-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; margin-bottom: 1rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.03em;">Consulting Services</h2>
+          <p style="color: #a1a1aa; font-size: 1.1rem; font-weight: 400; max-width: 600px; line-height: 1.6;">Build and operate intelligent systems that last. We transition probabilistic AI models into governed, zero-trust production infrastructure.</p>
         </div>
 
-        <div class="cards services-grid">
-          <a class="card service-card" href="services/the-blueprint.html" aria-label="The Blueprint">
-            <div class="card-body">
-              <h3>The Blueprint</h3>
-              <p class="service-subtitle">AI Strategy & Advisory</p>
-              <p class="service-detail">De-risk your AI investment with a comprehensive technical architecture, cost model, and execution strategy</p>
-            </div>
-            <div class="card-actions"><span class="cta-secondary">Learn more</span></div>
-          </a>
-
-          <a class="card service-card" href="services/paid-poc.html" aria-label="The Forge">
-            <div class="card-body">
-              <h3>The Forge</h3>
-              <p class="service-subtitle">Custom Agentic Prototype</p>
-              <p class="service-detail">Transform your validated blueprint into a production-grade agentic prototype. We engineer the deterministic skeleton, stateful control loops, and pre-commit verification gates required to cross the Planning-Rubicon.</p>
-            </div>
-            <div class="card-actions"><span class="cta-secondary">Learn more</span></div>
-          </a>
-
-          <a class="card service-card" href="services/deploy-scale.html" aria-label="The Nexus">
-            <div class="card-body">
-              <h3>The Nexus</h3>
-              <p class="service-subtitle">Agentic Deployment & Scale</p>
-              <p class="service-detail">Transition your prototype into a fault-tolerant agentic system. We implement Policy-as-Code guardrails, temporal state management, and token-level AgentOps for zero-trust production autonomy.</p>
-            </div>
-            <div class="card-actions"><span class="cta-secondary">Learn more</span></div>
-          </a>
-
-          <a class="card service-card" href="services/llm-engineering.html" aria-label="Generative AI & LLM Engineering">
-            <div class="card-body">
-              <h3>Generative AI & LLM Engineering</h3>
-              <p class="service-subtitle">Determinism, Neuro-Symbolic Logic and Optimization</p>
-              <p class="service-detail">Moving beyond fragile API wrappers, we engineer robust, high-stakes LLM infrastructure built for survival in enterprise production environments. We bridge the critical gap between probabilistic text generation and strict neuro-symbolic logic, ensuring your AI systems execute with absolute predictability.<br></p>
-            </div>
-            <div class="card-actions"><span class="cta-secondary">Learn more</span></div>
-          </a>
-
-          <a class="card service-card card-dashboard" href="services/agentic-ai.html" aria-label="Specialized Agentic AI Solutions">
-            <div class="dashboard-content">
-              <h3>Enterprise Agentic Orchestration</h3>
-              <p class="service-subtitle">Hub-and-Spoke Pipelines for High-Stakes Industries</p>
-              <p class="service-detail">Deploy governed, multi-agent digital workforces engineered for mission-critical environments. We architect centrally orchestrated pipelines that execute complex, state-altering workflows under strict deterministic constraints and immutable audit ledgers.<br></p>
-              <div class="card-actions"><span class="cta-secondary">Learn more</span></div>
-            </div>
-
-            <div class="dashboard-visual">
-              <div class="terminal-box">
-                <div class="terminal-header">
-                  <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                  <div class="terminal-title">crispr-orchestrator — deterministic-v2</div>
+        <div class="services-asymmetric-layout">
+          
+          <!-- Left Track: Lifecycle Pipeline + Foundational Substrate -->
+          <div class="services-index-track">
+            
+            <!-- The Lifecycle Pipeline -->
+            <div class="pipeline-group">
+              <a href="services/the-blueprint.html" class="service-row">
+                <div class="sr-num">01</div>
+                <div class="sr-content">
+                  <h3>The Blueprint</h3>
+                  <span class="sr-subtitle">AI Strategy & Advisory</span>
+                  <p>De-risk your AI investment with a comprehensive technical architecture, strict compute/token cost models, and an execution roadmap.</p>
                 </div>
-                <div class="terminal-body" style="line-height: 1.2; text-align: left; white-space: normal;">
-                  <span class="cmd">$ orchestrator run --workflow="crispr_designer" --target="Gene_HBB"</span><br>
-                  <span class="cmt"># --- STEP 1: PERCEPTION &amp; SIMULATION ---</span><br>
-                  <span class="kwd">[PERCEIVE]</span> Ingesting patient genome (3.2B base pairs).<br>
-                  <span class="kwd">[TOOL_INVOKE]</span> Cas9_Microservice -> Binding prediction...<br>
-                  &nbsp;&nbsp;└─ <span class="str">Candidate A:</span> Efficiency 99.1% (Primary)<br>
-                  &nbsp;&nbsp;└─ <span class="str">Candidate B:</span> Efficiency 84.5% (Fallback)<br>
-                  <span class="cmt"># --- STEP 2: DETERMINISTIC PLANNING ---</span><br>
-                  <span class="kwd">[PLANNER]</span> Intent matched. Compiling execution DAG...<br>
-                  <span class="kwd">[GOVERN]</span> Intercepting node: <span class="cmd">commit_design(candidate="A")</span><br>
-                  <span class="cmt"># --- STEP 3: POLICY-AS-CODE (OPA) PRE-FLIGHT ---</span><br>
-                  <span class="warn">[DENY]</span> 🛡️ <strong>POLICY_VIOLATION</strong> (rule: strict_off_target_toxicity)<br>
-                  &nbsp;&nbsp;└─ <span class="str">Critical Risk:</span> "0.4% off-target match with 'TP53' (Tumor Suppressor)."<br>
-                  <span class="cmt"># --- STEP 4: DAG RE-COMPILATION ---</span><br>
-                  <span class="kwd">[RE-PLAN]</span> Reverting to Candidate B. Re-running policy check...<br>
-                  <span class="pass">[PASS]</span> Zero critical off-target matches detected. Node approved.<br>
-                  <span class="cmt"># --- STEP 5: STATELESS EXECUTION &amp; AUDIT ---</span><br>
-                  <span class="kwd">[EXECUTE]</span> Irreversible write: finalize_design(candidate="B").<br>
-                  <span class="pass">[AUDIT_LEDGER]</span> Immutable trace cryptographically signed.<br>
-                  <span class="cmd">[STATUS]</span> <span class="blink">SAFE DESIGN LOCKED</span>...
+                <div class="sr-arrow"><i class="fas fa-arrow-right"></i></div>
+              </a>
+
+              <a href="services/paid-poc.html" class="service-row">
+                <div class="sr-num">02</div>
+                <div class="sr-content">
+                  <h3>The Forge</h3>
+                  <span class="sr-subtitle">Custom Agentic Prototype</span>
+                  <p>Transform your validated blueprint into a production-grade prototype. We engine the deterministic skeletons and stateful loops needed to scale.</p>
+                </div>
+                <div class="sr-arrow"><i class="fas fa-arrow-right"></i></div>
+              </a>
+
+              <a href="services/deploy-scale.html" class="service-row">
+                <div class="sr-num">03</div>
+                <div class="sr-content">
+                  <h3>The Nexus</h3>
+                  <span class="sr-subtitle">Agentic Deployment & Scale</span>
+                  <p>Transition code into autonomous systems. We implement Policy-as-Code guardrails, temporal state management, and strict token telemetry.</p>
+                </div>
+                <div class="sr-arrow"><i class="fas fa-arrow-right"></i></div>
+              </a>
+            </div>
+
+            <!-- Foundational Substrate (Pulled out of the sequence) -->
+            <div class="foundational-substrate-block">
+              <div class="substrate-badge">[ FOUNDATIONAL LAYER // CORE ENGINE ]</div>
+              <a href="services/llm-engineering.html" class="substrate-content-link">
+                <h3>Generative AI & LLM Engineering</h3>
+                <p>This core capability drives every stage of our pipeline. Moving beyond fragile API wrappers, we bridge the gap between probabilistic text generation and strict neuro-symbolic logic, ensuring model outputs map cleanly into deterministic execution graphs.</p>
+                <span class="substrate-cta">Explore Core Infrastructure Infrastructure →</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Track: Featured Monolith -->
+          <div class="services-featured-track">
+            <div class="featured-service-block">
+              <div class="fs-header">
+                <h3>Enterprise Agentic Orchestration</h3>
+                <span class="fs-subtitle">Hub-and-Spoke Pipelines for High-Stakes Industries</span>
+              </div>
+              <p class="fs-detail">Deploy governed, multi-agent digital workforces engineered for mission-critical environments. We architect centrally orchestrated pipelines that execute complex, state-altering workflows under strict deterministic constraints and immutable audit ledgers.</p>
+              
+              <div class="usecase-visual" style="margin: 2rem 0;">
+                <div class="terminal-box">
+                  <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <div class="terminal-title">crispr-orchestrator — deterministic-v2</div>
+                  </div>
+                  <div class="terminal-body" style="line-height: 1.4; text-align: left; white-space: normal; font-size: 0.85rem;">
+                    <span class="cmd">$ orchestrator run --workflow="crispr_designer" --target="Gene_HBB"</span><br>
+                    <span class="cmt"># --- STEP 1: PERCEPTION &amp; SIMULATION ---</span><br>
+                    <span class="kwd">[PERCEIVE]</span> Ingesting patient genome (3.2B base pairs).<br>
+                    <span class="kwd">[TOOL_INVOKE]</span> Cas9_Microservice -> Binding prediction...<br>
+                    &nbsp;&nbsp;└─ <span class="str">Candidate A:</span> Efficiency 99.1% (Primary)<br>
+                    <span class="cmt"># --- STEP 2: DETERMINISTIC PLANNING ---</span><br>
+                    <span class="kwd">[PLANNER]</span> Intent matched. Compiling execution DAG...<br>
+                    <span class="kwd">[GOVERN]</span> Intercepting node: <span class="cmd">commit_design(candidate="A")</span><br>
+                    <span class="cmt"># --- STEP 3: POLICY (OPA) PRE-FLIGHT ---</span><br>
+                    <span class="warn" style="color: #ff5f56;">[DENY]</span> <strong>POLICY_VIOLATION</strong> (rule: strict_off_target)<br>
+                    &nbsp;&nbsp;└─ <span class="str">Critical Risk:</span> "0.4% off-target match with 'TP53'."<br>
+                    <span class="cmt"># --- STEP 4: DAG RE-COMPILATION ---</span><br>
+                    <span class="kwd">[RE-PLAN]</span> Reverting to Candidate B. Re-running policy check...<br>
+                    <span class="pass" style="color: #27c93f;">[PASS]</span> Zero critical matches detected. Node approved.<br>
+                    <span class="cmt"># --- STEP 5: STATELESS EXECUTION &amp; AUDIT ---</span><br>
+                    <span class="kwd">[EXECUTE]</span> Irreversible write: finalize_design(candidate="B").<br>
+                    <span class="cmd">[STATUS]</span> <span class="blink">SAFE DESIGN LOCKED</span>...
+                  </div>
                 </div>
               </div>
+
+              <a href="services/agentic-ai.html" class="btn-hero btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; width: 100%; justify-content: center;">
+                Explore Orchestration Services <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
-          </a>
+          </div>
+
         </div>
       </div>
     </section>
