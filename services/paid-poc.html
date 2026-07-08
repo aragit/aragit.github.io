@@ -3,107 +3,412 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>The Forge – Custom Agentic Prototype | Arash Nicoomanesh</title>
+  <title>Proof-of-Concept Sprint | Arash Nicoomanesh</title>
 
-  <meta name="description" content="From validated blueprint to a production-grade agentic prototype. Fixed-price builds for deterministic, stateless, neuro-symbolic workflows."/>
-  <meta property="og:title" content="The Forge – Custom Agentic Prototype"/>
-  <meta property="og:description" content="Fixed-price development of mission-critical agentic systems."/>
+  <meta name="description" content="A 2-week build of a working prototype — not a production system. Validate core assumptions, demonstrate pattern feasibility, and produce reviewable code."/>
+  <meta property="og:title" content="Proof-of-Concept Sprint"/>
+  <meta property="og:description" content="Fixed-price prototyping for deterministic, neuro-symbolic workflows."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aragit.github.io/services/paid-poc.html"/>
-  <meta property="og:image" content="https://aragit.github.io/og-forge.png"/>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
-      --accent: #ff6b00; --accent-hover: #e66000;
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --accent: #ff6b00;
+      --accent-hover: #e66000;
+      --blue: #58a6ff;
+      --text: #c9d1d9;
+      --heading: #ffffff;
+      --muted: #8b949e;
+      --mono: 'Fira Code', monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; display: block; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
     /* ---------- header ---------- */
-    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+    .logo { font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; color: var(--heading); text-decoration: none; }
     .logo i { color: var(--accent); }
-    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn { background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 6px 16px; border-radius: 4px; font-family: var(--mono); font-size: .8rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
-    
+
     /* ---------- hero ---------- */
     .hero {
-      padding: clamp(80px, 12vw, 120px) 0;
-      text-align: center;
-      background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-        url('purpleback.jpg');
-      background-size: cover;
+      padding: clamp(60px, 10vw, 100px) 0;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
       background-position: center;
-      border-bottom: 1px solid rgba(255,255,255,.02);
     }
-    
-    .hero h1 { 
-        font-size: clamp(2.5rem, 5vw, 4rem) !important; 
-        font-weight: 800 !important; 
-        line-height: 1.15 !important; 
-        margin-bottom: 24px !important;
-        text-shadow: 0 5px 30px rgba(0,0,0,0.9) !important; 
-        color: #fff;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,107,0,0.05) 0%, transparent 60%);
+      pointer-events: none;
     }
-    .hero p { 
-        font-size: clamp(1.1rem, 2vw, 1.3rem) !important; 
-        max-width: 900px !important; 
-        margin: 0 auto 40px auto !important;
-        color: #ffffff !important; 
-        font-weight: 500 !important; 
-        text-shadow: 0 3px 20px rgba(0,0,0,0.9) !important; 
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 800px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    
-    /* ---------- buttons ---------- */
-    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
-    .btn-submit { width: 100%; margin-top: 10px; }
-    
-    /* ---------- sections ---------- */
-    section { padding: clamp(60px, 8vw, 90px) 0; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-    
-    .card { background: rgba(30,30,30,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s; position: relative; overflow: hidden; }
-    .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
-    .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
-    .card:hover::after { width: 100%; }
-    
-    .card h3 { font-size: 1.3rem; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; color: #fff; }
-    .card h3 i { color: var(--accent); font-size: 1.5rem; }
-    .card p { color: #cbd6df; font-size: 0.95rem; line-height: 1.6; }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
 
-    .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; margin-top: 20px; }
-    .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
-    .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
-    
-    /* ---------- deliverables / form ---------- */
-    .deliver-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 40px; text-align: left; }
-    .deliver-box h3 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
+    /* ---------- buttons ---------- */
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: .3s;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .btn-primary:hover { background: var(--accent-hover); box-shadow: 0 0 20px rgba(255,107,0,0.3); }
+
+    /* ---------- sections ---------- */
+    section { padding: clamp(50px, 8vw, 80px) 0; }
+
+    /* ---------- section headers ---------- */
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 {
+      font-size: 1.8rem;
+      color: var(--heading);
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-family: var(--mono);
+    }
+    .section-header p { color: var(--muted); font-size: 1.05rem; max-width: 700px; margin: 0 auto; }
+
+    /* ---------- Schematic Viewer (Image Window) ---------- */
+    .schematic-viewer {
+      max-width: 1000px;
+      margin: 0 auto 40px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .schematic-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .schematic-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #f85149; }
+    .dot-yellow { background: #d29922; }
+    .dot-green { background: #3fb950; }
+    .schematic-title {
+      flex: 1;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-right: 30px;
+    }
+    .schematic-viewer img { width: 100%; display: block; }
+
+    /* ---------- Pattern Selection Callout ---------- */
+    .pattern-callout {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 14px 18px;
+      background: rgba(255,107,0,0.05);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+    }
+    .pattern-callout span {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .pattern-callout strong { color: var(--heading); }
+    .pattern-callout .accent { color: var(--accent); font-family: var(--mono); font-size: 12px; }
+
+    /* ---------- DAG Node Cards (Grid-3) ---------- */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width: 900px){ .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 600px){ .grid-3 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid;
+      border-image: linear-gradient(180deg, var(--accent), var(--blue)) 1;
+      border-radius: 0 6px 6px 0;
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      box-shadow: 0 0 15px rgba(255,107,0,0.1);
+    }
+    .card h3 {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--heading);
+    }
+    .card h3 i { color: var(--accent); font-size: 1rem; }
+    .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ---------- Artifact Box (Deliverables) ---------- */
+    .artifact-section { background: #010409; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .artifact-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 32px;
+    }
+    .artifact-box h3 {
+      font-family: var(--mono);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .artifact-box h3 i { color: var(--accent); }
+    .artifact-box p { color: var(--muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
+
+    .checklist { list-style: none; color: var(--muted); font-size: 0.9rem; }
+    .checklist li { padding-left: 24px; position: relative; margin-bottom: 10px; line-height: 1.6; }
+    .checklist li::before {
+      content: "\f120";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 3px;
+      font-size: 12px;
+    }
+
+    /* ---------- Diff Section (Prototype vs Production) ---------- */
+    .diff-section { margin: 32px 0; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+    .diff-title {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 16px;
+    }
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media(max-width: 700px){ .diff-grid { grid-template-columns: 1fr; } }
+
+    .diff-col { padding: 16px; border-radius: 4px; }
+    .diff-col-green { background: rgba(63,185,80,0.05); border: 1px solid rgba(63,185,80,0.15); }
+    .diff-col-red { background: rgba(248,81,73,0.05); border: 1px solid rgba(248,81,73,0.15); }
+
+    .diff-col h5 {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .diff-col-green h5 { color: #3fb950; }
+    .diff-col-red h5 { color: #f85149; }
+
+    .diff-col ul { list-style: none; padding: 0; margin: 0; }
+    .diff-col li {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .diff-col-green li::before { content: '+'; position: absolute; left: 0; color: #3fb950; font-weight: 700; }
+    .diff-col-red li::before { content: '-'; position: absolute; left: 0; color: #f85149; font-weight: 700; }
+
+    /* ---------- Terminal Status Box (POC Output) ---------- */
+    .terminal-status {
+      margin-top: 16px;
+      padding: 16px;
+      background: #010409;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .terminal-status .term-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .terminal-status a {
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .terminal-status a:hover { text-decoration: underline; }
+    .term-badges { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .badge-green { color: #3fb950; background: rgba(63,185,80,0.12); }
+    .badge-muted { color: var(--muted); background: #21262d; }
+    .term-desc { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+    /* ---------- CTA / Form (CLI Style) ---------- */
+    .cta-band {
+      background: #010409;
+      text-align: center;
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+    }
+    .cta-band h2 { font-size: 2rem; margin-bottom: 12px; color: var(--heading); }
+    .cta-band p { color: var(--muted); font-size: 1.05rem; margin-bottom: 0; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    .form-box {
+      max-width: 680px;
+      margin: 40px auto 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 36px;
+      text-align: left;
+    }
+    .form-box h3 {
+      font-family: var(--mono);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 6px;
+    }
+    .form-box > p { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-    input, select, textarea { width: 100%; padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,.1); color: #fff; font-family: inherit; font-size: 1rem; transition: all .3s; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,107,0,.15); }
-    label { font-size: .9rem; color: #cbd6df; margin-bottom: 8px; display: block; font-weight: 500; }
-    ::placeholder { color: #6b7280; }
-    
-    /* ---------- cta band ---------- */
-    .cta-band { background: #121212; text-align: center; padding: 70px 0; border-top: 2px solid var(--accent); }
-    .cta-band h2 { font-size: 2.2rem; margin-bottom: 16px; color: #fff; }
-    .cta-band p { color: var(--gray); font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
-    
+    @media(max-width:600px){ .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--heading);
+      font-family: var(--sans);
+      font-size: 1rem;
+      transition: all .3s;
+      outline: none;
+      border-radius: 0;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #484f58; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--accent);
+      background: rgba(255,107,0,0.04);
+    }
+    .form-group select {
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b949e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0 center;
+      padding-right: 20px;
+    }
+    .form-group select option { background: var(--surface); color: var(--text); }
+    .form-group textarea { min-height: 100px; resize: vertical; border: 1px solid var(--border); border-radius: 4px; padding: 12px; margin-top: 4px; }
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      padding: 14px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .3s;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .btn-submit:hover { background: var(--accent-hover); box-shadow: 0 0 20px rgba(255,107,0,0.3); }
+
     /* ---------- footer ---------- */
-    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
-    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
-  
-    .artifact-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,107,0,.3); border-radius: 12px; padding: 40px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .artifact-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
+    footer {
+      text-align: center;
+      padding: 24px 0;
+      color: #484f58;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -112,32 +417,40 @@
   <div class="container">
     <div class="header-inner">
       <a href="../index.html" class="logo"><i class="fa-solid fa-hammer"></i>Arash Nicoomanesh</a>
-      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
+      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back</a>
     </div>
   </div>
 </header>
 
-<section style="padding: clamp(40px, 6vw, 60px) 0 0 0; text-align: center;">
+<section class="hero">
   <div class="container">
-    <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; margin-bottom: 16px;">Proof-of-Concept Sprint</h1>
-    <p style="color: var(--gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">A 2-week build of a <strong>working prototype</strong> — not a production system. We validate core assumptions, demonstrate pattern feasibility, and produce code that can be reviewed, tested, and expanded — with explicit gaps documented for production hardening.</p>
+    <h1>Proof-of-Concept Sprint</h1>
+    <p>A 2-week build of a <strong>working prototype</strong> — not a production system. We validate core assumptions, demonstrate pattern feasibility, and produce code that can be reviewed, tested, and expanded — with explicit gaps documented for production hardening.</p>
+    <a href="#request" class="btn-primary">Request Build Quote <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-title" style="text-align:center; margin-bottom:50px;">
-      <h2 style="font-size: 2rem; color: #fff; margin-bottom: 10px;">The Core Architecture Pillars</h2>
-      <p style="color: var(--gray); font-size: 1.1rem;">Engineering the Brain, Body, and Shield of your autonomous system.</p>
-      <div style="margin-top: 16px; padding: 12px 16px; background: rgba(255,107,0,0.05); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto;">
-        <span style="font-size: 13px; color: #a8aeb3; line-height: 1.6;">
-          <strong style="color: #ffffff;">Pattern Selection</strong> — We select the control-flow pattern (<span style="color: var(--accent);">Guarded Execution</span>, <span style="color: var(--accent);">Verify-Then-Generate</span>, or <span style="color: var(--accent);">Algorithmic Arbitration</span>) based on your liability profile and validate core assumptions within 2 weeks.
-        </span>
-      </div>
+    <div class="section-header">
+      <h2>Core Architecture Pillars</h2>
+      <p>Engineering the Brain, Body, and Shield of your autonomous system.</p>
     </div>
 
-    <div style="text-align:center; padding: 0 20px;">
-      <img src="forge_2.png" alt="The Core Architecture Pillars: Brain, Body, and Shield" style="border-radius: 12px; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 15px 40px rgba(0,0,0,0.6); max-width: 1000px; width: 100%; height: auto; margin: 0 auto; display: block;">
+    <div class="pattern-callout">
+      <span>
+        <strong>Pattern Selection</strong> — We select the control-flow pattern (<span class="accent">Guarded Execution</span>, <span class="accent">Verify-Then-Generate</span>, or <span class="accent">Algorithmic Arbitration</span>) based on your liability profile and validate core assumptions within 2 weeks.
+      </span>
+    </div>
+
+    <div class="schematic-viewer">
+      <div class="schematic-bar">
+        <div class="schematic-dot dot-red"></div>
+        <div class="schematic-dot dot-yellow"></div>
+        <div class="schematic-dot dot-green"></div>
+        <span class="schematic-title">architecture.schematic</span>
+      </div>
+      <img src="forge_2.png" alt="Core Architecture Pillars: Brain, Body, and Shield">
     </div>
 
     <div class="grid-3">
@@ -147,122 +460,117 @@
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-shield-halved"></i> The Shield (Governance)</h3>
-        <p>Before any action is taken, the DAG is intercepted by our Policy-as-Code firewall (OPA). We hardcode your business constraints, ensuring mathematical adherence to compliance.</p>
+        <p>Before any action is taken, the <span class="accent" style="font-family:var(--mono);font-size:12px;color:var(--blue);">DAG</span> is intercepted by our Policy-as-Code firewall (<span class="accent" style="font-family:var(--mono);font-size:12px;color:var(--blue);">OPA</span>). We hardcode your business constraints, ensuring mathematical adherence to compliance.</p>
       </div>
       <div class="card">
         <h3><i class="fa-solid fa-robot"></i> The Body (Execution)</h3>
-        <p>Passive, stateless tools execute the approved DAG. All reasoning is managed in volatile memory (Redis) to prevent data drift, while execution traces are committed to an immutable ledger.</p>
+        <p>Passive, stateless tools execute the approved <span class="accent" style="font-family:var(--mono);font-size:12px;color:var(--blue);">DAG</span>. All reasoning is managed in volatile memory (<span class="accent" style="font-family:var(--mono);font-size:12px;color:var(--blue);">Redis</span>) to prevent data drift, while execution traces are committed to an immutable ledger.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section style="background:#121212; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+<section class="artifact-section">
   <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px; color:#fff; font-size:2rem;">What You Walk Away With</h2>
-    
-    <div class="artifact-box" style="max-width: 900px; margin: 0 auto;">
-      <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 16px;"><i class="fa-solid fa-box-open" style="color: var(--accent); margin-right: 10px;"></i>A Production-Ready Artifact</h3>
-      <p style="color: #cbd6df; font-size: 1.05rem; margin-bottom: 24px; line-height: 1.7;">
-        We don't deliver slideware or fragile Jupyter notebooks. You receive a fully containerized, blueprint-aligned prototype running in an isolated staging sandbox.
-      </p>
+    <div class="section-header">
+      <h2>What You Walk Away With</h2>
+    </div>
+
+    <div class="artifact-box">
+      <h3><i class="fa-solid fa-box-open"></i> A Production-Ready Artifact</h3>
+      <p>We don't deliver slideware or fragile Jupyter notebooks. You receive a fully containerized, blueprint-aligned prototype running in an isolated staging sandbox.</p>
       <ul class="checklist" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
-        <li>Dockerized DAG state machine & stateless tool APIs</li>
-        <li>Volatile Redis caching & Immutable Audit logging</li>
-        <li>Token-level telemetry & unit economics report</li>
-        <li>Ready for "The Nexus" central orchestration</li>
+        <li>Dockerized DAG state machine &amp; stateless tool APIs</li>
+        <li>Volatile Redis caching &amp; Immutable Audit logging</li>
+        <li>Token-level telemetry &amp; unit economics report</li>
+        <li>Ready for central orchestration deployment</li>
       </ul>
     </div>
 
-    <div style="margin: 32px 0; padding: 20px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
-      <h4 style="color: #e6edf3; font-size: 16px; margin-bottom: 16px; font-weight: 500;">Prototype vs. Production</h4>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-
-        <div>
-          <h5 style="color: #3fb950; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Included in POC</h5>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Working core functionality</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Basic unit tests (pytest)</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Architecture pattern selection</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Docker containerization</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #3fb950;">&#x2713;</span> Documented gaps for production hardening</li>
+    <div class="diff-section">
+      <div class="diff-title">Prototype vs. Production</div>
+      <div class="diff-grid">
+        <div class="diff-col diff-col-green">
+          <h5>Included in POC</h5>
+          <ul>
+            <li>Working core functionality</li>
+            <li>Basic unit tests (pytest)</li>
+            <li>Architecture pattern selection</li>
+            <li>Docker containerization</li>
+            <li>Documented gaps for production hardening</li>
           </ul>
         </div>
-
-        <div>
-          <h5 style="color: #f85149; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Requires production engagement</h5>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> Property-based test suites (49+ tests)</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> Benchmark alignment (M5, biophysical validation)</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> Immutable audit ledger</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> OPA/Rego policy hardening</li>
-            <li style="font-size: 13px; color: #b0b8c4; margin-bottom: 8px; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #f85149;">&#x2717;</span> CI/CD pipeline with smoke tests</li>
+        <div class="diff-col diff-col-red">
+          <h5>Requires production engagement</h5>
+          <ul>
+            <li>Property-based test suites (49+ tests)</li>
+            <li>Benchmark alignment (M5, biophysical validation)</li>
+            <li>Immutable audit ledger</li>
+            <li>OPA/Rego policy hardening</li>
+            <li>CI/CD pipeline with smoke tests</li>
           </ul>
         </div>
-
       </div>
     </div>
 
-    <div style="margin-top: 16px; padding: 12px 16px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
-      <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Example POC output</span>
-      <div style="margin-top: 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-        <a href="https://github.com/aragit/enterprise-intelligence-crew" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/enterprise-intelligence-crew</a>
-        <span style="font-size: 11px; color: #3fb950; background: color-mix(in srgb, #3fb950 12%, transparent); padding: 2px 8px; border-radius: 10px;">Public</span>
-        <span style="font-size: 11px; color: #b0b8c4; background: #21262d; padding: 2px 8px; border-radius: 10px;">3-agent pipeline</span>
-        <span style="font-size: 11px; color: #b0b8c4;">Started as POC, evolved to production</span>
+    <div class="terminal-status">
+      <span class="term-label">Example POC output</span>
+      <a href="https://github.com/aragit/enterprise-intelligence-crew">aragit/enterprise-intelligence-crew</a>
+      <div class="term-badges">
+        <span class="badge badge-green">Public</span>
+        <span class="badge badge-muted">3-agent pipeline</span>
+        <span class="term-desc">Started as POC, evolved to production</span>
       </div>
     </div>
-
   </div>
 </section>
 
 <div class="cta-band">
   <div class="container">
     <h2>Ready to build the prototype?</h2>
-    <p>To guarantee delivery velocity I accept a limited number of concurrent engagements—reserve your slot today.</p>
-    
-    <div id="request" class="deliver-box" style="max-width: 700px; margin: 0 auto; margin-top:40px;">
-      <h3>Request a build quote</h3>
-      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">I build mission-critical agents, not chat wrappers. Tell me about the specific workflows, APIs, and state-changes you need to automate.</p>
+    <p>To guarantee delivery velocity I accept a limited number of concurrent engagements — reserve your slot today.</p>
+
+    <div id="request" class="form-box">
+      <h3>$ request_poc</h3>
+      <p>I build mission-critical agents, not chat wrappers. Tell me about the specific workflows, APIs, and state-changes you need to automate.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="form-row">
-          <div>
-            <label>Your name *</label>
+          <div class="form-group">
+            <label>operator_name *</label>
             <input name="name" type="text" required placeholder="Jane Doe">
           </div>
-          <div>
-            <label>Work email *</label>
+          <div class="form-group">
+            <label>email *</label>
             <input name="email" type="email" required placeholder="jane@company.com">
           </div>
         </div>
 
-        <div style="margin-bottom:20px">
-          <label>Company / organisation</label>
+        <div class="form-group">
+          <label>organization</label>
           <input name="organisation" placeholder="Acme Inc.">
         </div>
 
-        <div style="margin-bottom:20px">
-          <label>Target Architecture (Based on your Operational Risk)</label>
+        <div class="form-group">
+          <label>target_architecture</label>
           <select name="capability">
-            <option value="fortress">The Fortress (High-Liability / Deterministic Pipeline)</option>
-            <option value="forge">The Forge (Competitive Swarm / Emergent Discovery)</option>
-            <option value="studio">The Studio (Human-in-the-Loop / Reflexion)</option>
+            <option value="fortress">Fortress — High-Liability / Deterministic Pipeline</option>
+            <option value="forge">Forge — Competitive Swarm / Emergent Discovery</option>
+            <option value="studio">Studio — Human-in-the-Loop / Reflexion</option>
           </select>
         </div>
 
-        <div style="margin-bottom:24px">
-          <label>Describe the system you need *</label>
-          <textarea name="message" required placeholder="e.g. A clinical triage pipeline requiring rigid OPA guardrails and stateless execution..." style="min-height:120px"></textarea>
+        <div class="form-group">
+          <label>system_requirements *</label>
+          <textarea name="message" required placeholder="e.g. A clinical triage pipeline requiring rigid OPA guardrails and stateless execution..."></textarea>
         </div>
 
-        <input type="hidden" name="service" value="The Forge">
-        <input type="hidden" name="_subject" value="Website lead: The Forge">
+        <input type="hidden" name="service" value="Proof-of-Concept Sprint">
+        <input type="hidden" name="_subject" value="Website lead: Proof-of-Concept Sprint">
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
-        <button type="submit" class="btn-primary btn-submit"><i class="fa-solid fa-check"></i> Send request</button>
+        <button type="submit" class="btn-submit"><i class="fa-solid fa-terminal"></i> Execute Request</button>
       </form>
     </div>
   </div>
@@ -270,7 +578,7 @@
 
 <footer>
   <div class="container">
-    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+    &copy; <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
   </div>
 </footer>
 
@@ -278,7 +586,7 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
   const u = new URLSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
-    const v=u.get(p),el=document.createElement('input'); 
+    const v=u.get(p),el=document.createElement('input');
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
   });
 </script>
