@@ -5271,7 +5271,7 @@ ul.insight-bullets li {
 
 /* Solutions: reuses .arch-layout / .arch-left / .arch-right from Architecture Philosophy */
 .arch-right .domain-tabs {
-  margin-bottom: 0;
+  margin-bottom: 32px;
 }
 
 .arch-right .domain-panels {
