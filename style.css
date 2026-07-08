@@ -6963,9 +6963,7 @@ ul.insight-bullets li {
   }
 }
 
-/* Fix for horizontal overflow */
 #portfolio {
-  overflow-x: hidden !important;
   width: 100% !important;
 }
 
