@@ -5,119 +5,382 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Generative AI & LLM Engineering | Arash Nicoomanesh</title>
 
-  <meta name="description" content="Custom LLM architecture, model optimization, and reliable engineering for high-stakes AI systems. Beyond simple API wrappers."/>
+  <meta name="description" content="High-throughput inference, structured generation, and clinical-grade model alignment for neuro-symbolic AI systems."/>
   <meta property="og:title" content="Generative AI & LLM Engineering"/>
-  <meta property="og:description" content="Determinism, Neuro-Symbolic Logic, and High-Throughput Optimization."/>
+  <meta property="og:description" content="Determinism, Neuro-Symbolic Logic, and High-Throughput Optimization for production AI."/>
   <meta property="og:type" content="website"/>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
-      --accent: #ff6b00; --accent-hover: #e66000; --code-bg: #1e1e1e;
+      --bg: #050505;
+      --surface: rgba(22,27,34,0.65);
+      --surface-solid: #161b22;
+      --border: #30363d;
+      --accent: #ff6b00;
+      --accent-hover: #e66000;
+      --blue: #58a6ff;
+      --green: #3fb950;
+      --red: #f85149;
+      --cyan: #39d2c0;
+      --text: #c9d1d9;
+      --heading: #ffffff;
+      --muted: #8b949e;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; display: block; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
     /* ---------- header ---------- */
-    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(5,5,5,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+    .logo { font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; color: var(--heading); text-decoration: none; }
     .logo i { color: var(--accent); }
-    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
+    .back-btn { background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 6px 16px; border-radius: 4px; font-family: var(--mono); font-size: .8rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
-    
+
     /* ---------- hero ---------- */
     .hero {
-      padding: clamp(80px, 12vw, 120px) 0;
-      text-align: center;
-      background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
-        url('https://www.bitsathy.ac.in/wp-content/uploads/ew-what-is-generative-ai-model-1-768x512.png');
-      background-size: cover;
+      padding: clamp(60px, 10vw, 100px) 0;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
       background-position: center;
-      border-bottom: 1px solid rgba(255,255,255,.02);
+      animation: gridPan 25s linear infinite;
     }
-    .hero h1 { 
-        font-size: clamp(2.5rem, 5vw, 4rem) !important; 
-        font-weight: 800 !important; 
-        line-height: 1.15 !important; 
-        margin-bottom: 24px !important;
-        color: #fff;
+    @keyframes gridPan { 0% { background-position: 0 0; } 100% { background-position: 0 40px; } }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 40%, rgba(88,166,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
     }
-    .hero p { 
-        font-size: clamp(1.1rem, 2vw, 1.3rem) !important; 
-        max-width: 900px !important; 
-        margin: 0 auto 40px auto !important;
-        color: #e2e8f0 !important; 
-        font-weight: 400 !important; 
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 800px;
+      background: linear-gradient(135deg, #ffffff 30%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    
+    .hero p {
+      font-size: 1.05rem;
+      max-width: 700px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
     /* ---------- buttons ---------- */
-    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
-    .btn-submit { width: 100%; margin-top: 10px; }
-    
+    .btn-primary {
+      background: linear-gradient(135deg, #e05500, var(--accent));
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: .3s;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .btn-primary:hover { box-shadow: 0 0 20px rgba(255,107,0,0.3); }
+
     /* ---------- sections ---------- */
-    section { padding: clamp(60px, 8vw, 90px) 0; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    @media(max-width: 950px){ .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
-    @media(max-width: 650px){ .grid-4 { grid-template-columns: 1fr; } }
+    section { padding: clamp(50px, 8vw, 80px) 0; }
 
-    .card { background: rgba(30,30,30,0.6); border: 1px solid rgba(255,255,255,.05); border-radius: 12px; padding: 24px; transition: all 0.3s; }
-    .card:hover { transform: translateY(-3px); border-color: rgba(255,107,0,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-    .card h3 { font-size: 1.2rem; margin-bottom: 14px; color: #fff; display: flex; align-items: center; gap: 10px; }
-    .card h3 i { color: var(--accent); }
-    .card p { color: #a8aeb3; font-size: 0.95rem; line-height: 1.6; }
+    /* ---------- section headers ---------- */
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 {
+      font-size: 1.8rem;
+      color: var(--heading);
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-family: var(--mono);
+    }
+    .section-header p { color: var(--muted); font-size: 1.05rem; max-width: 700px; margin: 0 auto; }
 
-    /* ---------- VERTICAL SHOWCASE STYLES ---------- */
-    .vertical-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 80px; }
+    /* ---------- Vertical Showcase (IDE Split Pane) ---------- */
+    .vertical-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
     .vertical-showcase.reverse { direction: rtl; }
     .vertical-showcase.reverse > * { direction: ltr; }
-    @media(max-width: 900px) { 
-        .vertical-showcase { grid-template-columns: 1fr; margin-bottom: 60px; }
-        .vertical-showcase.reverse { direction: ltr; }
+    @media(max-width: 900px) {
+      .vertical-showcase { grid-template-columns: 1fr; margin-bottom: 48px; }
+      .vertical-showcase.reverse { direction: ltr; }
     }
-    
-    .showcase-content h3 { font-size: 1.8rem; color: #fff; margin-bottom: 16px; display:flex; align-items:center; gap:12px; }
-    .showcase-content h4 { color: var(--gray); font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-    .showcase-content p { color: #cbd6df; margin-bottom: 16px; line-height: 1.7; }
-    
+
+    /* Left Pane: Narrative */
+    .showcase-content h3 {
+      font-size: 1.4rem;
+      color: var(--heading);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .showcase-content h3 i { color: var(--blue); font-size: 1.1rem; }
+    .showcase-content h4 { color: var(--muted); font-size: 0.95rem; font-weight: 500; margin-bottom: 16px; }
+    .showcase-content p { color: var(--text); margin-bottom: 14px; line-height: 1.7; font-size: 0.95rem; }
+
     .tech-badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-    .tech-badge { background: rgba(255,107,0,0.1); color: var(--accent); border: 1px solid rgba(255,107,0,0.3); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+    .tech-badge {
+      background: rgba(88,166,255,0.1);
+      color: var(--blue);
+      border: 1px solid rgba(88,166,255,0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      font-weight: 600;
+    }
 
-    /* ---------- CODE WINDOWS ---------- */
-    .mac-window { background: var(--code-bg); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-    .mac-header { background: #2d2d2d; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
-    .mac-dot.red { background: #ff5f56; } .mac-dot.yellow { background: #ffbd2e; } .mac-dot.green { background: #27c93f; }
-    .mac-title { margin-left: auto; color: #858585; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
-    
-    pre { padding: 20px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.5; color: #d4d4d4; margin:0;}
-    .keyword { color: #569cd6; } .string { color: #ce9178; } .comment { color: #6a9955; font-style: italic; } .func { color: #dcdcaa; } .class { color: #4ec9b0; }
+    /* ---------- Terminal Window ---------- */
+    .terminal-window {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      background: var(--surface-solid);
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: var(--red); }
+    .dot-yellow { background: #d29922; }
+    .dot-green { background: var(--green); }
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-right: 30px;
+    }
+    .terminal-body {
+      background: #010409;
+      padding: 20px;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--green);
+      overflow-x: auto;
+    }
+    .terminal-body .prompt { color: var(--muted); }
+    .terminal-body .cmd { color: var(--blue); font-weight: 600; }
+    .terminal-body .blocked { color: var(--red); font-weight: 600; }
+    .terminal-body .pass { color: var(--green); font-weight: 600; }
+    .terminal-body .kwd { color: var(--blue); }
+    .terminal-body .comment { color: var(--muted); }
+    .terminal-body .string { color: #a5d6ff; }
 
-    .live-terminal { background: #000; padding: 20px; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #00ff00; border: 1px solid rgba(0, 255, 0, 0.2); box-shadow: inset 0 0 15px rgba(0,255,0,0.05); line-height: 1.6; }
-    
     @keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    .blink-cursor { display: inline-block; width: 8px; height: 15px; background-color: #00ff00; vertical-align: middle; margin-left: 5px; animation: blinkCursor 1s step-end infinite; }
+    .blink-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background-color: var(--green);
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blinkCursor 1s step-end infinite;
+    }
 
-    /* ---------- cta band ---------- */
-    .cta-band { background: #121212; text-align: center; padding: 70px 0; border-top: 2px solid var(--accent); }
-    
-    /* ---------- deliverables / form ---------- */
-    .deliver-box { background: rgba(22,22,22,0.8); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 40px; text-align: left; }
+    /* ---------- Code Window ---------- */
+    .code-window {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .code-window .terminal-bar { margin-bottom: 0; }
+    pre {
+      padding: 20px;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 0;
+      background: #010409;
+    }
+    .kw { color: var(--blue); font-weight: 600; }
+    .fn { color: #d2a8ff; }
+    .cls { color: var(--cyan); }
+    .str { color: #a5d6ff; }
+    .cmt { color: var(--muted); font-style: italic; }
+    .num { color: #79c0ff; }
+    .dec { color: var(--accent); }
+    .op { color: var(--red); }
+
+    /* ---------- Bento Grid (Anatomy) ---------- */
+    .bento-section { background: #010409; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media(max-width: 950px){ .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 600px){ .bento-grid { grid-template-columns: 1fr; } }
+
+    .bento-card {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .bento-card:hover {
+      border-color: rgba(88,166,255,0.3);
+      box-shadow: inset 0 0 20px rgba(88,166,255,0.05);
+    }
+    .bento-card h3 {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--heading);
+    }
+    .bento-card h3 i { color: var(--blue); font-size: 1rem; }
+    .bento-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ---------- CTA / Form (CLI Style) ---------- */
+    .cta-band {
+      background: #010409;
+      text-align: center;
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+    }
+    .cta-band h2 { font-size: 2rem; margin-bottom: 12px; color: var(--heading); }
+    .cta-band p { color: var(--muted); font-size: 1.05rem; margin-bottom: 0; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    .form-box {
+      max-width: 680px;
+      margin: 40px auto 0;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 36px;
+      text-align: left;
+    }
+    .form-box h3 {
+      font-family: var(--mono);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 6px;
+    }
+    .form-box > p { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-    input, select, textarea { width: 100%; padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,.1); color: #fff; font-family: inherit; font-size: 1rem; transition: all .3s; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,107,0,.15); }
-    label { font-size: .9rem; color: #cbd6df; margin-bottom: 8px; display: block; font-weight: 500; }
-    
-    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
-    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } }
+    @media(max-width:600px){ .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--heading);
+      font-family: var(--sans);
+      font-size: 1rem;
+      transition: all .3s;
+      outline: none;
+      border-radius: 0;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #484f58; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--accent);
+      background: rgba(255,107,0,0.04);
+    }
+    .form-group select {
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b949e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0 center;
+      padding-right: 20px;
+    }
+    .form-group select option { background: var(--surface-solid); color: var(--text); }
+    .form-group textarea { min-height: 100px; resize: vertical; border: 1px solid var(--border); border-radius: 4px; padding: 12px; margin-top: 4px; }
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      padding: 14px;
+      background: linear-gradient(135deg, #e05500, var(--accent));
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .3s;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .btn-submit:hover { box-shadow: 0 0 20px rgba(255,107,0,0.3); }
+
+    /* ---------- footer ---------- */
+    footer {
+      text-align: center;
+      padding: 24px 0;
+      color: #484f58;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -126,108 +389,173 @@
   <div class="container">
     <div class="header-inner">
       <a href="../index.html" class="logo"><i class="fa-solid fa-microchip"></i>Arash Nicoomanesh</a>
-      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
+      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back</a>
     </div>
   </div>
 </header>
 
-<section style="padding: clamp(40px, 6vw, 60px) 0 0 0; text-align: center;">
+<section class="hero">
   <div class="container">
-    <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; margin-bottom: 16px;">Generative AI & LLM Engineering</h1>
-    <p style="color: var(--gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">Determinism, Neuro-Symbolic Logic, and High-Throughput Optimization. Moving beyond API wrappers, we re-engineer model architectures for production scale. We optimize neural weights for latency, implement custom precision tuning, and design dedicated inference layers that drastically reduce compute costs without sacrificing reasoning quality.</p>
+    <h1>Generative AI &amp; LLM Engineering</h1>
+    <p>Clinical-grade inference, structured generation, and neuro-symbolic governance for high-stakes environments. From oncology triage pipelines to multi-agent clinical frameworks — we engineer model architectures that survive in production, not just in notebooks.</p>
+    <a href="#request" class="btn-primary">Submit Requirements <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </section>
 
 <section>
   <div class="container">
+
+    <!-- High-Throughput Inference -->
     <div class="vertical-showcase">
       <div class="showcase-content">
         <h3><i class="fa-solid fa-server"></i> High-Throughput Inference</h3>
-        <h4>Escaping the HuggingFace Pipeline Bottleneck</h4>
-        <p>Naive model deployment leads to GPU memory fragmentation and unacceptable Time-To-First-Token (TTFT). We implement advanced serving architectures using PagedAttention and continuous batching.</p>
-        <p>By leveraging custom CUDA kernels and optimizing precision states (AWQ/GPTQ), we maximize hardware utilization, driving down the unit cost of every token generated in production.</p>
+        <h4>Clinical-Grade Serving with Sub-200ms TTFT</h4>
+        <p>Naive model deployment leads to GPU memory fragmentation and unacceptable Time-To-First-Token (TTFT). We implement advanced serving architectures using PagedAttention and continuous batching on specialized medical models.</p>
+        <p>By leveraging custom CUDA kernels and optimizing precision states (GGUF 4-bit quantization), we maximize hardware utilization — achieving high token throughput on clinical inference workloads without sacrificing diagnostic reasoning quality.</p>
         <div class="tech-badge-container">
           <span class="tech-badge">vLLM</span>
           <span class="tech-badge">TensorRT</span>
-          <span class="tech-badge">AWQ / GPTQ</span>
+          <span class="tech-badge">GGUF 4-bit</span>
           <span class="tech-badge">Flash-Decoding</span>
-          <span class="tech-badge">SGLang</span>
+          <span class="tech-badge">TimesFM</span>
+          <span class="tech-badge">Chronos-2</span>
         </div>
-              </div>
-      
-      <div class="live-terminal">
-        > [INFO] Initializing vLLM Engine (GPU 0: NVIDIA H100)<br>
-        > [INFO] Loading weights: meta-llama/Llama-3-70B-Instruct-AWQ<br>
-        > [INFO] Quantization: AWQ (4-bit) | Precision: bfloat16<br>
-        > [INFO] Allocating KV Cache (PagedAttention)...<br>
-        > [INFO] Max sequence length: 8192 | Block size: 16<br>
-        > [CUDA] Flash-Decoding activated for generation phase.<br>
-        > [METRIC] TTFT: 142ms | TPOT: 18ms | Throughput: 4,200 tok/s<br>
-        > [STATUS] Engine ready. Listening on port 8000...<span class="blink-cursor"></span>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+          <span class="terminal-title">inference-engine.log</span>
+        </div>
+        <div class="terminal-body">
+          <span class="prompt">&gt;</span> <span class="kwd">[INFO]</span> Initializing vLLM Engine (GPU 0: NVIDIA H100)<br>
+          <span class="prompt">&gt;</span> <span class="kwd">[INFO]</span> Loading weights: <span style="color:var(--blue);">google/MedGemma-4B-IT</span><br>
+          <span class="prompt">&gt;</span> <span class="kwd">[INFO]</span> Quantization: GGUF (4-bit) | Precision: bfloat16<br>
+          <span class="prompt">&gt;</span> <span class="kwd">[INFO]</span> Allocating KV Cache (PagedAttention)...<br>
+          <span class="prompt">&gt;</span> <span class="kwd">[INFO]</span> Max sequence length: 8192 | Block size: 16<br>
+          <span class="prompt">&gt;</span> <span class="cmd">[CUDA]</span> Flash-Decoding activated for generation phase.<br>
+          <span class="prompt">&gt;</span> <span class="pass">[METRIC]</span> TTFT: 142ms | TPOT: 18ms | Throughput: 4,200 tok/s<br>
+          <span class="prompt">&gt;</span> <span class="pass">[STATUS]</span> Engine ready. Listening on port 8000...<span class="blink-cursor"></span>
+        </div>
       </div>
     </div>
 
+    <!-- Structured Generation -->
     <div class="vertical-showcase reverse">
       <div class="showcase-content">
         <h3><i class="fa-solid fa-code"></i> Structured Generation</h3>
-        <h4>Forcing LLMs to Obey Neuro-Symbolic Logic</h4>
-        <p>LLMs are probabilistic text generators, which makes them inherently dangerous for enterprise automation. "Prompting" them to output JSON frequently fails in edge cases.</p>
-        <p>We deploy frameworks that intervene directly at the logits level during the decoding process. By masking invalid tokens before they are sampled, we mathematically guarantee that the LLM output conforms perfectly to your required Pydantic schemas, RegEx, or SQL grammar.</p>
+        <h4>Medical Triage Agent Router</h4>
+        <p>LLMs are probabilistic text generators, which makes them inherently dangerous for clinical automation. "Prompting" them to output structured JSON frequently fails at the edge — where patient safety matters most.</p>
+        <p>We deploy frameworks that intervene directly at the logits level during decoding. By masking invalid tokens before sampling, we mathematically guarantee that the model output conforms to clinical Pydantic schemas — including SNOMED/ICD-10 entity mapping and deterministic routing actions.</p>
         <div class="tech-badge-container">
           <span class="tech-badge">Outlines</span>
           <span class="tech-badge">Guidance</span>
           <span class="tech-badge">DSPy</span>
-          <span class="tech-badge">LMQL</span>
+          <span class="tech-badge">MCP</span>
+          <span class="tech-badge">MedGemma-4B</span>
         </div>
       </div>
-      
-      <div class="mac-window">
-        <div class="mac-header">
-          <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
-          <div class="mac-title">deterministic_routing.py</div>
+
+      <div class="code-window">
+        <div class="terminal-bar">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+          <span class="terminal-title">triage_router.py</span>
         </div>
-        <pre><code><span class="keyword">import</span> outlines
-<span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel, Field
+        <pre><code><span class="kw">import</span> outlines
+<span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel, Field
+<span class="kw">from</span> enum <span class="kw">import</span> Enum
 
-<span class="comment"># Define the strict neuro-symbolic execution schema</span>
-<span class="keyword">class</span> <span class="class">ExecutionPlan</span>(BaseModel):
-    action: str = Field(pattern=<span class="string">"^(QUERY_DB|CALL_API|ESCALATE)$"</span>)
-    confidence: float = Field(ge=<span class="number">0.0</span>, le=<span class="number">1.0</span>)
-    parameters: dict
+<span class="cmt"># Clinical routing action space</span>
+<span class="kw">class</span> <span class="cls">TriageAction</span>(Enum):
+    ROUTE_ONCOLOGY = <span class="str">"ROUTE_ONCOLOGY"</span>
+    ROUTE_CARDIOLOGY = <span class="str">"ROUTE_CARDIOLOGY"</span>
+    MAPPED_ICD10 = <span class="str">"MAPPED_ICD10"</span>
+    ESCALATE_HITL = <span class="str">"ESCALATE_HITL"</span>
 
-<span class="comment"># Bind model and constrain the logits sampling deterministically</span>
-model = outlines.models.vllm(<span class="string">"mistralai/Mistral-7B-Instruct"</span>)
-generator = outlines.generate.json(model, ExecutionPlan)
+<span class="cmt"># Strict neuro-symbolic execution schema</span>
+<span class="kw">class</span> <span class="cls">TriageExecutionPlan</span>(BaseModel):
+    action: TriageAction
+    snomed_code: <span class="cls">str</span> = Field(pattern=<span class="str">"^[0-9]{6,10}$"</span>)
+    icd10_mapping: <span class="cls">str</span> = Field(max_length=<span class="num">10</span>)
+    confidence: <span class="cls">float</span> = Field(ge=<span class="num">0.0</span>, le=<span class="num">1.0</span>)
+    reasoning_chain: <span class="cls">list</span>[<span class="cls">str</span>]
 
-<span class="comment"># 100% Guaranteed to return a valid JSON matching the schema</span>
-result = generator(<span class="string">"Evaluate user request: Calculate Q3 revenue."</span>)</code></pre>
+<span class="cmt"># Bind MedGemma and constrain logits deterministically</span>
+model = outlines.models.vllm(<span class="str">"google/MedGemma-4B-IT"</span>)
+generator = outlines.generate.json(model, TriageExecutionPlan)
+
+<span class="cmt"># 100% Guaranteed valid clinical routing plan</span>
+result = generator(
+    <span class="str">"Persistent cough, weight loss, elevated CEA. Route."</span>
+)</code></pre>
       </div>
     </div>
 
+    <!-- Alignment & Fine-Tuning -->
     <div class="vertical-showcase">
       <div class="showcase-content">
-        <h3><i class="fa-solid fa-layer-group"></i> Alignment & Fine-Tuning</h3>
-        <h4>Domain Adaptation Without Catastrophic Forgetting</h4>
-        <p>When off-the-shelf models fail at domain-specific reasoning (like clinical triage or financial ledger math), we align them to your proprietary data.</p>
-        <p>Using Unsloth for ultra-fast gradient computation and techniques like DPO (Direct Preference Optimization), we teach models exactly *how* to reason within your domain, minimizing hallucination while drastically reducing cloud training costs.</p>
+        <h3><i class="fa-solid fa-layer-group"></i> Alignment &amp; Fine-Tuning</h3>
+        <h4>Medical Chain-of-Thought Without Catastrophic Forgetting</h4>
+        <p>When off-the-shelf models fail at domain-specific clinical reasoning, we align them to your proprietary medical data. Using Unsloth for ultra-fast gradient computation and DPO (Direct Preference Optimization), we teach models exactly how to reason within clinical constraints.</p>
+        <p>Medical-Chain-Of-Thought datasets ensure structured diagnostic reasoning while minimizing hallucination — drastically reducing training costs on specialized medical workloads.</p>
         <div class="tech-badge-container">
           <span class="tech-badge">Unsloth</span>
           <span class="tech-badge">LoRA / QLoRA</span>
-          <span class="tech-badge">DPO / ORPO</span>
+          <span class="tech-badge">DPO</span>
           <span class="tech-badge">CUDA Kernels</span>
+          <span class="tech-badge">MedGemma-4B</span>
         </div>
       </div>
-      
-      <div class="live-terminal">
-        > [TRAIN] Initiating Unsloth QLoRA fine-tuning sequence...<br>
-        > [MEMORY] Base Model: 7B | Loaded in 4-bit | VRAM footprint: 5.2GB<br>
-        > [OPTIMIZE] Triton kernels enabled for RoPE and CrossEntropyLoss.<br>
-        > [DATA] Loading Medical-Chain-Of-Thought Dataset (N=15,400)<br>
-        > [EPOCH 1/3] Step 50/480 | Loss: 1.402 | LR: 2e-4<br>
-        > [EPOCH 1/3] Step 100/480 | Loss: 0.984 | LR: 1.8e-4<br>
-        > [ALIGN] Applying Direct Preference Optimization (DPO)...<br>
-        > [EVAL] Reward margin increasing. Hallucination rate dropping.<br>
-        > [SAVE] Exporting LoRA adapters to safetensors... DONE.<span class="blink-cursor"></span>
+
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+          <span class="terminal-title">fine-tune-medical.log</span>
+        </div>
+        <div class="terminal-body">
+          <span class="prompt">&gt;</span> <span class="kwd">[TRAIN]</span> Initiating Unsloth QLoRA fine-tuning sequence...<br>
+          <span class="prompt">&gt;</span> <span class="comment">[MEMORY]</span> Base Model: <span style="color:var(--blue);">MedGemma-4B-IT</span> | 4-bit | VRAM: 5.2GB<br>
+          <span class="prompt">&gt;</span> <span class="cmd">[OPTIMIZE]</span> Triton kernels enabled for RoPE and CrossEntropyLoss.<br>
+          <span class="prompt">&gt;</span> <span class="kwd">[DATA]</span> Loading Medical-Chain-Of-Thought Dataset (N=15,400)<br>
+          <span class="prompt">&gt;</span> <span class="comment">[EPOCH 1/3]</span> Step 50/480 | Loss: 1.402 | Grad Norm: 0.8<br>
+          <span class="prompt">&gt;</span> <span class="comment">[EPOCH 2/3]</span> Step 100/480 | Loss: 0.984 | Grad Norm: 0.4<br>
+          <span class="prompt">&gt;</span> <span class="cmd">[ALIGN]</span> Applying Direct Preference Optimization (DPO)...<br>
+          <span class="prompt">&gt;</span> <span class="pass">[EVAL]</span> Reward margin increasing. Hallucination rate dropping.<br>
+          <span class="prompt">&gt;</span> <span class="pass">[SAVE]</span> Exporting LoRA adapters to safetensors... DONE.<span class="blink-cursor"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="bento-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Engineering Stack</h2>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-card">
+        <h3><i class="fa-solid fa-bolt"></i>Inference</h3>
+        <p>PagedAttention, continuous batching, GGUF quantization, Flash-Decoding for sub-200ms clinical TTFT.</p>
+      </div>
+      <div class="bento-card">
+        <h3><i class="fa-solid fa-code"></i>Structured Output</h3>
+        <p>Logits-level intervention via Outlines. Pydantic-constrained generation with SNOMED/ICD-10 mapping.</p>
+      </div>
+      <div class="bento-card">
+        <h3><i class="fa-solid fa-brain"></i>Alignment</h3>
+        <p>Unsloth QLoRA, DPO, Medical-Chain-Of-Thought datasets for domain-specific clinical reasoning.</p>
+      </div>
+      <div class="bento-card">
+        <h3><i class="fa-solid fa-shield-halved"></i>Governance</h3>
+        <p>OPA/Rego policy sidecars, immutable audit ledgers, deterministic DAG execution graphs.</p>
       </div>
     </div>
   </div>
@@ -235,43 +563,43 @@ result = generator(<span class="string">"Evaluate user request: Calculate Q3 rev
 
 <div class="cta-band">
   <div class="container">
-    <h2 style="color:#fff;">Stop paying for bloated API wrappers.</h2>
+    <h2>Stop paying for bloated API wrappers.</h2>
     <p>Own your intelligence layer. Deploy optimized, deterministic models on your own infrastructure.</p>
-    
-    <div id="request" class="deliver-box" style="max-width: 700px; margin: 0 auto; margin-top:40px;">
-      <h3>Request an Engineering Consultation</h3>
-      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">Tell me about your current inference stack, latency bottlenecks, or fine-tuning requirements.</p>
+
+    <div id="request" class="form-box">
+      <h3>$ request_engineering</h3>
+      <p>Tell me about your current inference stack, latency bottlenecks, or fine-tuning requirements.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
         <div class="form-row">
-          <div>
-            <label>Your name *</label>
+          <div class="form-group">
+            <label>operator_name *</label>
             <input name="name" type="text" required placeholder="Jane Doe">
           </div>
-          <div>
-            <label>Work email *</label>
+          <div class="form-group">
+            <label>email *</label>
             <input name="email" type="email" required placeholder="jane@company.com">
           </div>
         </div>
 
-        <div style="margin-bottom:20px">
-          <label>Company / organisation</label>
+        <div class="form-group">
+          <label>organization</label>
           <input name="organisation" placeholder="Acme Inc.">
         </div>
 
-        <div style="margin-bottom:20px">
-          <label>Primary Focus Area</label>
+        <div class="form-group">
+          <label>focus_area</label>
           <select name="capability">
             <option value="inference">Inference Optimization (vLLM, TensorRT)</option>
-            <option value="structured">Structured Generation (Outlines, DSPy)</option>
+            <option value="structured">Structured Generation (Outlines, DSPy, MCP)</option>
             <option value="finetuning">Custom Fine-Tuning (Unsloth, DPO, LoRA)</option>
             <option value="architecture">Full LLM Pipeline Architecture</option>
           </select>
         </div>
 
-        <div style="margin-bottom:24px">
-          <label>Describe your engineering bottleneck *</label>
-          <textarea name="message" required placeholder="e.g. We are experiencing high latency and cost with GPT-4, and need to deploy a fast, deterministic open-weight model..." style="min-height:120px"></textarea>
+        <div class="form-group">
+          <label>engineering_bottleneck *</label>
+          <textarea name="message" required placeholder="e.g. Need clinical-grade inference with <200ms TTFT on MedGemma-4B, structured SNOMED routing..."></textarea>
         </div>
 
         <input type="hidden" name="service" value="LLM Engineering">
@@ -279,7 +607,7 @@ result = generator(<span class="string">"Evaluate user request: Calculate Q3 rev
         <input type="hidden" name="_next" value="https://aragit.github.io/thanks.html">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
-        <button type="submit" class="btn-primary btn-submit"><i class="fa-solid fa-server"></i> Submit Requirements</button>
+        <button type="submit" class="btn-submit"><i class="fa-solid fa-terminal"></i> Execute Request</button>
       </form>
     </div>
   </div>
@@ -287,7 +615,7 @@ result = generator(<span class="string">"Evaluate user request: Calculate Q3 rev
 
 <footer>
   <div class="container">
-    © <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
+    &copy; <span id="yr"></span> Arash Nicoomanesh · Agentic AI Architecture
   </div>
 </footer>
 
@@ -295,7 +623,7 @@ result = generator(<span class="string">"Evaluate user request: Calculate Q3 rev
   document.getElementById('yr').textContent = new Date().getFullYear();
   const u = new URLSearchParams(location.search);
   ['utm_source','utm_medium','utm_campaign'].forEach(p=>{
-    const v=u.get(p),el=document.createElement('input'); 
+    const v=u.get(p),el=document.createElement('input');
     if(v){el.type='hidden';el.name=p;el.value=v;document.querySelector('form').appendChild(el);}
   });
 </script>
