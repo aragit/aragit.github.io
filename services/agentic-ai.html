@@ -175,6 +175,15 @@
           <strong><i class="fa-solid fa-network-wired"></i> Multi-Agent DAG Orchestration</strong>
           <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Governed Verification:</em> Instead of a single LLM hallucinating a diagnosis, the Planner compiles a Directed Acyclic Graph (DAG) of stateless diagnostic tools. A strict Policy-as-Code gateway intercepts any proposed action that violates HIPAA before it can be executed.</p>
         </div>
+        <div style="margin-top: 16px; padding: 12px 16px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
+          <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Validated in production</span>
+          <div style="margin-top: 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <a href="https://github.com/aragit/agentic-energy-grid-balancing" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/agentic-energy-grid-balancing</a>
+            <span style="font-size: 11px; color: #3fb950; background: color-mix(in srgb, #3fb950 12%, transparent); padding: 2px 8px; border-radius: 10px;">Public</span>
+            <span style="font-size: 11px; color: #b0b8c4; background: #21262d; padding: 2px 8px; border-radius: 10px;">~120 tests</span>
+            <span style="font-size: 11px; color: #b0b8c4;">Guarded Execution pattern</span>
+          </div>
+        </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-hospital-user" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
@@ -203,6 +212,15 @@
         <div class="guardrail-box">
           <strong><i class="fa-solid fa-server"></i> Stateless Execution & Volatile Memory</strong>
           <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Crash-Resistant Autonomy:</em> Instead of vulnerable long-running agents, we use ephemeral session states (Redis). The orchestrator executes the DAG, commits the result to the immutable ledger, and wipes the memory—ensuring zero data drift across manufacturing cycles.</p>
+        </div>
+        <div style="margin-top: 16px; padding: 12px 16px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
+          <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Validated in production</span>
+          <div style="margin-top: 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <a href="https://github.com/aragit/agentic-energy-grid-balancing" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/agentic-energy-grid-balancing</a>
+            <span style="font-size: 11px; color: #3fb950; background: color-mix(in srgb, #3fb950 12%, transparent); padding: 2px 8px; border-radius: 10px;">Public</span>
+            <span style="font-size: 11px; color: #b0b8c4; background: #21262d; padding: 2px 8px; border-radius: 10px;">~120 tests</span>
+            <span style="font-size: 11px; color: #b0b8c4;">Guarded Execution pattern · Crash-resistant autonomy</span>
+          </div>
         </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
@@ -233,6 +251,15 @@
           <strong><i class="fa-solid fa-toolbox"></i> Deterministic Tooling & MCP Grounding</strong>
           <p style="margin-bottom:0; font-size:0.95rem; color:#a8aeb3;"><em>Zero-Hallucination Math:</em> LLMs are probabilistic text predictors, not calculators. Our FinOps pipelines isolate reasoning from execution using the Model Context Protocol (MCP). The orchestrator retrieves historical context via Vector DBs, but delegates ledger mathematics to strict deterministic sandbox tools.</p>
         </div>
+        <div style="margin-top: 16px; padding: 12px 16px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
+          <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Validated in production</span>
+          <div style="margin-top: 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <a href="https://github.com/aragit/enterprise-intelligence-crew" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/enterprise-intelligence-crew</a>
+            <span style="font-size: 11px; color: #3fb950; background: color-mix(in srgb, #3fb950 12%, transparent); padding: 2px 8px; border-radius: 10px;">Public</span>
+            <span style="font-size: 11px; color: #b0b8c4; background: #21262d; padding: 2px 8px; border-radius: 10px;">3-agent pipeline</span>
+            <span style="font-size: 11px; color: #b0b8c4;">MCP sandbox · Pydantic V2 contracts</span>
+          </div>
+        </div>
       </div>
       <div class="card" style="padding:40px; text-align:center; background:rgba(20,20,20,0.8); border-color:rgba(255,107,0,0.3);">
         <i class="fa-solid fa-money-bill-transfer" style="font-size:4rem; color:var(--gray); margin-bottom:20px;"></i>
@@ -245,6 +272,7 @@
           > [MCP_EXECUTE] &lt;DuckDB_Ledger_Math&gt; Strict SQL aggregation...<br>
           > [TOOL_OUTPUT] Variance calculated deterministically: $12,450.00.<br>
           > [PLANNER] Drafting Journal Entry Adjustment...<br>
+          > <span style="color:#d2a8ff;">[VALIDATOR]</span> Symbolic check: debit/credit balance, account existence [PASS]<br>
           > [GOVERN] OPA Rule: Transaction > $10k threshold. Auto-commit disabled.<br>
           > [AUDIT_LOG] Trace logged. Awaiting dual-key CFO signature.<span class="blink-cursor"></span>
         </div>
