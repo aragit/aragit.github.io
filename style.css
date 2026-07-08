@@ -71,7 +71,7 @@ h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
 
 /* ---------- SECTIONS & CARDS ---------- */
 .section{padding:40px 0}
-.section-title{text-align:center;margin-bottom:40px;font-size:1.6rem;font-weight:400;color:#fff}
+.section-title{text-align:left;margin-bottom:40px;font-size:1.6rem;font-weight:400;color:#fff}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
 .card{background:var(--panel);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;min-height:140px;transition:transform .18s,border-color .18s,box-shadow .22s;position:relative;overflow:visible;border:2px solid transparent}
 .card:hover{transform:translateY(-6px)}
@@ -3355,7 +3355,7 @@ ul.insight-bullets li {
 
 /* Headline with proper spacing below */
 .insight-headline {
-  text-align: center;
+  text-align: left;
   margin-bottom: 30px !important;
   margin-top: 0 !important;
   padding: 0 !important;
@@ -5008,7 +5008,7 @@ ul.insight-bullets li {
 
 /* ===== SECTION SUBTITLE STYLING ===== */
 .section-subtitle {
-  text-align: center;
+  text-align: left;
   font-size: 0.9rem;
   font-weight: 400;
   color: #a0a0a0;
@@ -8902,70 +8902,65 @@ div#services .cards .card.card-wide .card-actions {
 
 /* ===== ARCHITECTURAL TRIPTYCH STYLES ===== */
 
-.sota-architecture-grid {
+/* ===== ARCHITECTURE PHILOSOPHY: 2-COLUMN ASYMMETRIC LAYOUT ===== */
+.arch-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 2rem auto 3rem;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
 }
 
-.sota-card {
-  background: #0d0d0d;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+.arch-left {
+  position: sticky;
+  top: 6rem;
+}
+
+.arch-left h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem) !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.arch-left p {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.arch-right {
   display: flex;
   flex-direction: column;
 }
 
-.sota-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.2);
+.arch-pillar {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Subtle glowing effects based on the card's theme */
-.blue-glow:hover { box-shadow: 0 8px 32px rgba(95, 211, 255, 0.08); }
-.purple-glow:hover { box-shadow: 0 8px 32px rgba(168, 85, 247, 0.08); }
-.orange-glow:hover { box-shadow: 0 8px 32px rgba(255, 107, 0, 0.08); }
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+.arch-pillar:last-child {
+  border-bottom: none;
 }
 
-.icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
+.arch-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: #ff6b00;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.75rem;
 }
 
-.blue-glow .icon-box { color: #5fd3ff; }
-.purple-glow .icon-box { color: #a855f7; }
-.orange-glow .icon-box { color: #ff6b00; }
-
-.sota-card h3 {
+.arch-pillar h3 {
   font-size: 1.25rem;
   font-weight: 600;
   color: #fff;
-  margin: 0;
+  margin: 0 0 0.75rem 0;
 }
 
-.sota-card p {
+.arch-pillar p {
   color: #a1a1aa;
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
+  margin-bottom: 1rem;
 }
 
 .sota-link {
@@ -8976,13 +8971,22 @@ div#services .cards .card.card-wide .card-actions {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.sota-link:hover { color: #5fd3ff; }
+.sota-link:hover {
+  color: #5fd3ff;
+  transform: translateX(4px);
+}
 
 @media (max-width: 900px) {
-  .sota-architecture-grid { grid-template-columns: 1fr; gap: 20px; }
+  .arch-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .arch-left {
+    position: static;
+  }
 }
 
 /* ===== QUICK TWEAK: LARGER ARCHITECTURE IMAGE ===== */
@@ -11137,7 +11141,9 @@ div#services .cards .card.card-wide .card-actions {
   align-items: center !important;
   gap: 16px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease !important;
+  opacity: 0.15 !important;
+  will-change: transform, opacity !important;
 }
 
 #home.hero .stack-card.card-1 {
@@ -11146,6 +11152,7 @@ div#services .cards .card.card-wide .card-actions {
   z-index: 4 !important;
   padding: 14px 20px !important;
   animation: floatCard1 6s ease-in-out infinite !important;
+  opacity: 1 !important;
 }
 
 #home.hero .stack-card.card-2 {
@@ -11303,38 +11310,45 @@ div#services .cards .card.card-wide .card-actions {
 
 .domain-tabs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   margin-bottom: 40px;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
 }
+
+.domain-tabs::-webkit-scrollbar { display: none; }
 
 .domain-tab {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
-  border: 1px solid rgba(255,255,255,0.1);
+  padding: 10px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 8px;
-  background: #2a2a2a;
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
+  background: transparent;
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   font-family: inherit;
+  white-space: nowrap;
+  will-change: border-color, color;
 }
 
 .domain-tab:hover {
-  background: #3a3a3a;
+  background: rgba(255,255,255,0.03);
   color: #fff;
-  border-color: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.15);
 }
 
 .domain-tab.active {
-  background: #fff;
-  color: #111;
-  border-color: #fff;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border-color: rgba(255,255,255,0.2);
 }
 
 .domain-panels {
@@ -11550,18 +11564,19 @@ div#services .cards .card.card-wide .card-actions {
 
   .domain-tabs {
     gap: 6px;
+    flex-wrap: nowrap;
   }
 
   .domain-tab {
-    padding: 10px 16px;
-    font-size: 0.85rem;
+    padding: 8px 14px;
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 600px) {
   .domain-tab {
-    padding: 8px 12px;
-    font-size: 0.8rem;
+    padding: 7px 12px;
+    font-size: 0.75rem;
   }
 
   .usecase-tab-num {
