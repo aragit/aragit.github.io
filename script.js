@@ -913,4 +913,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 
+// --- SOTA Dashboard Matrix Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+  // Domain Tab Logic
+  const domainTabs = document.querySelectorAll('.sota-domain-tab');
+  const domainPanels = document.querySelectorAll('.sota-domain-panel');
+
+  domainTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all
+      domainTabs.forEach(t => t.classList.remove('active'));
+      domainPanels.forEach(p => p.classList.remove('active'));
+
+      // Add active to clicked
+      tab.classList.add('active');
+      const targetPanel = document.getElementById(`domain-${tab.dataset.domain}`);
+      if (targetPanel) {
+          targetPanel.classList.add('active');
+          // Automatically trigger the first pill in the newly activated domain to ensure content is visible
+          const firstPill = targetPanel.querySelector('.sota-usecase-pill');
+          if (firstPill) firstPill.click();
+      }
+    });
+  });
+
+  // Use Case Pill Logic
+  const usecasePills = document.querySelectorAll('.sota-usecase-pill');
+
+  usecasePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      // Isolate to the current domain panel
+      const parentPanel = pill.closest('.sota-domain-panel');
+      const localPills = parentPanel.querySelectorAll('.sota-usecase-pill');
+      const localCards = parentPanel.querySelectorAll('.sota-usecase-card');
+
+      localPills.forEach(p => p.classList.remove('active'));
+      localCards.forEach(c => c.classList.remove('active'));
+
+      pill.classList.add('active');
+      const targetCard = document.getElementById(pill.dataset.usecase);
+      if (targetCard) targetCard.classList.add('active');
+    });
+  });
+});
+
 

@@ -11631,4 +11631,360 @@ div#services .cards .card.card-wide .card-actions {
   .stack-card.card-5 { width: 100% !important; left: auto !important; top: auto !important; }
   .hero-split { grid-template-columns: 1fr !important; }
   .hero-right { display: flex !important; justify-content: center !important; }
-}mobile-fix
+}
+
+/* ============================================================
+   SOTA COMMAND CENTER BENTO-GRID (portfolio refactor)
+   ============================================================ */
+
+/* Color Variables - Dark SOTA Theme */
+:root {
+  --bg-main: #06080d;
+  --bg-surface: #0d1117;
+  --bg-terminal: #0a0c10;
+  --border-muted: rgba(255, 255, 255, 0.08);
+  --border-glow: #58a6ff;
+  --accent-primary: #ff6b00;
+  --text-main: #e6edf3;
+  --text-muted: #8b949e;
+
+  /* Terminal Colors */
+  --term-cmd: #79c0ff;
+  --term-comment: #8b949e;
+  --term-kwd: #d2a8ff;
+  --term-pass: #3fb950;
+  --term-string: #a5d6ff;
+  --term-status: #ffa657;
+}
+
+.sota-section {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  padding: 5rem 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.sota-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header & Glow Effects */
+.sota-header {
+  margin-bottom: 4rem;
+}
+
+.sota-title-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.sota-title-wrapper h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #ffffff, #8b949e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.title-glow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,107,0,0.15) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(20px);
+  z-index: 1;
+}
+
+.sota-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+
+.sota-btn-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 107, 0, 0.1);
+  color: var(--accent-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.sota-btn-github:hover {
+  background: rgba(255, 107, 0, 0.2);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Dashboard Matrix Layout */
+.sota-matrix-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-muted);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Domain Navigation */
+.sota-domain-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-muted);
+  padding-bottom: 1.5rem;
+}
+
+.sota-domain-tab {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.sota-domain-tab:hover {
+  color: var(--text-main);
+}
+
+.sota-domain-tab.active {
+  color: var(--border-glow);
+}
+
+.sota-domain-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--border-glow);
+  box-shadow: 0 -2px 10px rgba(88, 166, 255, 0.5);
+}
+
+.sota-domain-panel {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.sota-domain-panel.active {
+    display: block;
+}
+
+/* Use Case Navigation */
+.sota-usecase-nav {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.sota-usecase-pill {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-muted);
+  color: var(--text-muted);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.sota-usecase-pill.active {
+  background: rgba(88, 166, 255, 0.1);
+  border-color: var(--border-glow);
+  color: var(--border-glow);
+}
+
+/* Bento Grid (Info + Terminal) */
+.sota-usecase-card {
+  display: none;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.sota-usecase-card.active {
+  display: grid;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Info Pane */
+.sota-info-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sota-badge {
+  align-self: flex-start;
+  background: rgba(255,255,255,0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.sota-info-pane h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.sota-subtitle {
+  color: var(--text-main);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.sota-desc {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.sota-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.sota-tech-stack span {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  background: #161b22;
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+}
+
+.sota-link-arrow {
+  color: var(--border-glow);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.3s ease;
+}
+
+.sota-link-arrow:hover {
+  gap: 0.8rem;
+}
+
+/* SOTA Terminal Pane */
+.sota-terminal-pane {
+  background: var(--bg-terminal);
+  border: 1px solid var(--border-muted);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.sota-term-header {
+  background: #161b22;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.term-traffic-lights {
+  display: flex;
+  gap: 6px;
+}
+
+.term-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.term-dot.close { background: #ff5f56; }
+.term-dot.min { background: #ffbd2e; }
+.term-dot.max { background: #27c93f; }
+
+.term-title {
+  flex: 1;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  margin-right: 42px; /* Balance traffic lights */
+}
+
+.sota-term-body {
+  padding: 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  flex: 1;
+  overflow-x: auto;
+}
+
+.term-line {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Terminal Syntax Highlighting */
+.term-prompt { color: var(--term-pass); }
+.term-cmd { color: var(--term-cmd); font-weight: 600; }
+.term-comment { color: var(--term-comment); }
+.term-kwd { color: var(--term-kwd); }
+.term-pass { color: var(--term-pass); }
+.term-string { color: var(--term-string); }
+.term-status { color: var(--term-status); font-weight: 600; }
+.term-blink { animation: blinker 1.5s linear infinite; }
+.term-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--text-main);
+  vertical-align: middle;
+  margin-left: 4px;
+  animation: blinker 1s step-end infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .sota-usecase-card {
+    grid-template-columns: 1fr;
+  }
+  .sota-terminal-pane {
+    min-height: 350px;
+  }
+}

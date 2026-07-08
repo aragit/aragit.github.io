@@ -33,7 +33,7 @@
   </style>
 
   <!-- style (external) -->
-  <link rel="stylesheet" href="style.css?v=1783522992" />
+  <link rel="stylesheet" href="style.css?v=1752076800" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -228,754 +228,634 @@
    
     
 
-    <!-- AGENTIC SOLUTIONS — Two-Level Tab System -->
-    <section id="portfolio" class="section">
-      <div class="container">
-        <div class="arch-layout">
-          <aside class="arch-left">
-            <h2><span style="font-size: clamp(1.6rem, 3vw, 2.1rem);">Agentic Solutions</span></h2>
-            <p style="color: #f2f2f2; font-size: 1.05rem; line-height: 1.7; font-weight: 400;">Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p>
-            <div class="arch-cta" style="margin-top: 2rem;">
-              <a href="https://github.com/aragit" target="_blank" class="btn-hero btn-primary" style="display: inline-flex; align-items: center; gap: .4rem;">
-                <svg height="20" width="20" viewBox="0 0 16 16" fill="#ff6b00"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-                Contribute to Github
-              </a>
-            </div>
-          </aside>
-          <div class="arch-right">
-            <!-- Level 1: Domain Tabs (horizontal) -->
-            <div class="domain-tabs" role="tablist" aria-label="Solution domains">
-              <button class="domain-tab active" role="tab" aria-selected="true" aria-controls="domain-crossdomain" data-domain="crossdomain">Cross Domain</button>
-              <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-healthcare" data-domain="healthcare">Medicare &amp; Clinical</button>
-              <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-marketing" data-domain="marketing">Marketing</button>
-              <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-fintech" data-domain="fintech">Finance &amp; RegTech</button>
-              <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-supplychain" data-domain="supplychain">Supply Chain</button>
-              <button class="domain-tab" role="tab" aria-selected="false" aria-controls="domain-research" data-domain="research">Research</button>
-            </div>
+    <!-- AGENTIC SOLUTIONS — Command Center Bento-Grid -->
+    <section id="portfolio" class="sota-section" aria-labelledby="portfolio-title">
+  <div class="sota-container">
+    
+    <header class="sota-header">
+      <div class="sota-title-wrapper">
+        <h2 id="portfolio-title">Agentic Solutions</h2>
+        <div class="title-glow" aria-hidden="true"></div>
+      </div>
+      <p>Real problems, strict constraints. Engineering autonomous systems built to survive and scale in production.</p>
+      <a href="https://github.com/aragit" target="_blank" rel="noopener noreferrer" class="sota-btn-github">
+        <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        Contribute on GitHub
+      </a>
+    </header>
 
-            <!-- Domain Panels (inside matrix right column) -->
-            <div class="domain-panels">
+    <div class="sota-matrix-dashboard">
+      
+      <nav class="sota-domain-nav" role="tablist" aria-label="Solution Domains">
+        <button class="sota-domain-tab active" role="tab" aria-selected="true" data-domain="crossdomain">Cross Domain</button>
+        <button class="sota-domain-tab" role="tab" aria-selected="false" data-domain="healthcare">Medicare &amp; Clinical</button>
+        <button class="sota-domain-tab" role="tab" aria-selected="false" data-domain="marketing">Marketing</button>
+        <button class="sota-domain-tab" role="tab" aria-selected="false" data-domain="fintech">Finance &amp; RegTech</button>
+        <button class="sota-domain-tab" role="tab" aria-selected="false" data-domain="supplychain">Supply Chain</button>
+        <button class="sota-domain-tab" role="tab" aria-selected="false" data-domain="research">Research</button>
+      </nav>
 
-          <!-- ===== CROSS DOMAIN ===== -->
-          <div class="domain-panel active" id="domain-crossdomain" role="tabpanel">
-            <div class="solution-layout">
-              <nav class="usecase-tabs" aria-label="Cross-domain use cases">
-                <button class="usecase-tab active" data-usecase="cd-edge">
-                  <span class="usecase-tab-num">01</span>
-                  <span class="usecase-tab-label">Edge SLM Optimizer</span>
-                </button>
-                <button class="usecase-tab" data-usecase="cd-crew">
-                  <span class="usecase-tab-num">02</span>
-                  <span class="usecase-tab-label">Enterprise Intelligence Crew</span>
-                </button>
-                <button class="usecase-tab" data-usecase="cd-deepseek">
-                  <span class="usecase-tab-num">03</span>
-                  <span class="usecase-tab-label">DeepSeek Reasoning Fine-Tuning</span>
-                </button>
-              </nav>
+      <div class="sota-stage">
+        
+        <div class="sota-domain-panel active" id="domain-crossdomain" role="tabpanel">
+          
+          <nav class="sota-usecase-nav" aria-label="Cross Domain Use Cases">
+            <button class="sota-usecase-pill active" data-usecase="cd-edge">01. Edge SLM</button>
+            <button class="sota-usecase-pill" data-usecase="cd-crew">02. Enterprise Crew</button>
+            <button class="sota-usecase-pill" data-usecase="cd-deepseek">03. DeepSeek LoRA</button>
+          </nav>
 
-              <div class="usecase-panels">
-
-                <!-- Edge SLM Optimizer -->
-                <div class="usecase-panel active" id="cd-edge">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Edge AI / Model Compression</span>
-                      <h3>Edge SLM Optimizer</h3>
-                      <p class="usecase-subtitle">Edge-First Small Language Model Compression &amp; Deployment Pipeline.</p>
-                      <p class="usecase-desc">Multi-stage quantization pipeline (FP32 → INT8 → INT4) with dual export targets for ONNX Runtime Mobile and ExecuTorch. Includes speculative decoding with a 100M-parameter draft model for 2x speedup, and full telemetry suite measuring watts-per-token on Raspberry Pi 5 under 5W sustained.</p>
-                      <div class="tech-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">ONNX Runtime</span>
-                        <span class="tag">ExecuTorch</span>
-                        <span class="tag">bitsandbytes</span>
-                        <span class="tag">llama.cpp</span>
-                      </div>
-                      <a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">edge-slm — quantize-deploy</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ edge_slm optimize --model=gemma-1b --target=rpi5</span><br>
-                          <span class="cmt"># --- STAGE 1: QUANTIZATION ---</span><br>
-                          <span class="kwd">[QUANT]</span> FP32 → INT8 (static) → INT4 (dynamic)<br>
-                          &nbsp;&nbsp;└─ <span class="str">Perplexity:</span> 12.4 → 13.8 (&lt;15% degradation)<br>
-                          <span class="cmt"># --- STAGE 2: EXPORT ---</span><br>
-                          <span class="kwd">[ONNX]</span> Cross-platform CPU build complete<br>
-                          <span class="kwd">[EXECUTORCH]</span> ARM NEON delegate compiled<br>
-                          <span class="cmt"># --- STAGE 3: BENCHMARK ---</span><br>
-                          <span class="kwd">[RPI5]</span> Latency: 42ms/token | Power: 3.8W<br>
-                          <span class="pass">[SPEC]</span> Draft model (100M) → 2x decode speedup<br>
-                          <span class="pass">[PASS]</span> All accuracy gates cleared.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">EDGE_READY_FOR_DEPLOY</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          <div class="sota-bento-grid">
+            
+            <div class="sota-usecase-card active" id="cd-edge">
+              <div class="sota-info-pane">
+                <span class="sota-badge">Edge AI / Model Compression</span>
+                <h3>Edge SLM Optimizer</h3>
+                <p class="sota-subtitle">Edge-First Small Language Model Compression &amp; Deployment Pipeline.</p>
+                <p class="sota-desc">Multi-stage quantization pipeline (FP32 → INT8 → INT4) with dual export targets for ONNX Runtime Mobile and ExecuTorch. Includes speculative decoding with a 100M-parameter draft model for 2x speedup, and full telemetry suite measuring watts-per-token on Raspberry Pi 5 under 5W sustained.</p>
+                <div class="sota-tech-stack">
+                  <span>PyTorch</span><span>ONNX</span><span>ExecuTorch</span><span>llama.cpp</span>
                 </div>
-
-                <!-- Enterprise Intelligence Crew -->
-                <div class="usecase-panel" id="cd-crew">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Local-First / 3-Agent Pipeline</span>
-                      <h3>Enterprise Intelligence Crew</h3>
-                      <p class="usecase-subtitle">Autonomous enterprise trend intelligence pipeline.</p>
-                      <p class="usecase-desc">Sequential 3-agent CrewAI pipeline (Trend Investigator → Risk Analyst → Copywriter) with LangGraph risk gate state machine, local-only Ollama inference, ChromaDB semantic memory, and Pydantic V2 contracts at every stage. Zero API keys, zero cloud dependency.</p>
-                      <div class="tech-tags">
-                        <span class="tag">CrewAI</span>
-                        <span class="tag">Ollama</span>
-                        <span class="tag">ChromaDB</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Pydantic V2</span>
-                      </div>
-                      <a href="https://github.com/aragit/enterprise-intelligence-crew" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">enterprise-crew — trend-intel</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ crew run --topic="edge-ai-adoption" --local</span><br>
-                          <span class="cmt"># --- AGENT 1: TREND INVESTIGATOR ---</span><br>
-                          <span class="kwd">[OLLAMA]</span> gemma2:2b analyzing trend signals...<br>
-                          <span class="kwd">[CHROMADB]</span> Retrieved 12 related research chunks<br>
-                          <span class="cmt"># --- AGENT 2: RISK ANALYST ---</span><br>
-                          <span class="kwd">[LANGGRAPH]</span> Risk gate: evaluate → approve<br>
-                          &nbsp;&nbsp;└─ <span class="str">Confidence:</span> 0.87 | Risk: LOW<br>
-                          <span class="cmt"># --- AGENT 3: COPYWRITER ---</span><br>
-                          <span class="kwd">[PYDANTIC]</span> ContentPayload validated ✓<br>
-                          <span class="pass">[PASS]</span> 3/3 agents completed. Output persisted.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">INTELLIGENCE_REPORT_READY</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- DeepSeek Reasoning Fine-Tuning -->
-                <div class="usecase-panel" id="cd-deepseek">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Reasoning Optimization</span>
-                      <h3>DeepSeek Reasoning Fine-Tuning</h3>
-                      <p class="usecase-subtitle">Medical chain-of-thought LoRA alignment pipeline.</p>
-                      <p class="usecase-desc">Efficient 4-bit parameter fine-tuning that maps diagnostic reasoning patterns into model weights. Uses Unsloth for memory-efficient training, improving structured clinical response generation while preserving general reasoning capabilities.</p>
-                      <div class="tech-tags">
-                        <span class="tag">Unsloth</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Hugging Face</span>
-                        <span class="tag">TRL</span>
-                        <span class="tag">LoRA</span>
-                      </div>
-                      <a href="https://github.com/aragit/deepseek-reasoning-finetuning" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">deepseek-lora — reasoning-train</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ train_lora --base=deepseek-r1 --bits=4 --data=clinical_cot</span><br>
-                          <span class="cmt"># --- CONFIG ---</span><br>
-                          <span class="kwd">[UNSLOTH]</span> 4-bit QLoRA: r=16, alpha=32<br>
-                          <span class="cmt"># --- TRAINING ---</span><br>
-                          <span class="kwd">[EPOCH 1/3]</span> Loss: 2.34 → 1.12 | Grad norm: 0.8<br>
-                          <span class="kwd">[EPOCH 2/3]</span> Loss: 1.12 → 0.67 | Grad norm: 0.4<br>
-                          <span class="kwd">[EPOCH 3/3]</span> Loss: 0.67 → 0.41 | Grad norm: 0.2<br>
-                          <span class="cmt"># --- EVALUATION ---</span><br>
-                          <span class="pass">[PASS]</span> Clinical accuracy: +18% vs base model<br>
-                          <span class="pass">[PASS]</span> Reasoning coherence: 0.91<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">LORA_ADAPTER_SAVED</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                <a href="https://github.com/aragit/edge-slm-optimizer" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
               </div>
-            </div>
-          </div>
 
-          <!-- ===== HEALTHCARE ===== -->
-          <div class="domain-panel" id="domain-healthcare" role="tabpanel">
-            <div class="solution-layout">
-              <!-- Level 2: Use Case Tabs (vertical) -->
-              <nav class="usecase-tabs" aria-label="Healthcare use cases">
-                <button class="usecase-tab active" data-usecase="hc-onco">
-                  <span class="usecase-tab-num">01</span>
-                  <span class="usecase-tab-label">Clinical Oncology</span>
-                </button>
-                <button class="usecase-tab" data-usecase="hc-graphrag">
-                  <span class="usecase-tab-num">02</span>
-                  <span class="usecase-tab-label">Clinical GraphRAG</span>
-                </button>
-                <button class="usecase-tab" data-usecase="hc-molecular">
-                  <span class="usecase-tab-num">03</span>
-                  <span class="usecase-tab-label">Molecular Discovery</span>
-                </button>
-                <button class="usecase-tab" data-usecase="hc-biomedical">
-                  <span class="usecase-tab-num">04</span>
-                  <span class="usecase-tab-label">Biomedical Hypotheses</span>
-                </button>
-              </nav>
-
-              <!-- Use Case Content Panels -->
-              <div class="usecase-panels">
-
-                <!-- Clinical Oncology -->
-                <div class="usecase-panel active" id="hc-onco">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Oncology-Focus</span>
-                      <h3>Clinical Oncology Agent</h3>
-                      <p class="usecase-subtitle">Navigates NCCN guidelines with toxicity-aware reasoning.</p>
-                      <p class="usecase-desc">Deterministic orchestration of multi-drug regimens via Human-in-the-Loop (HITL) safeguards, enforcing strict physiological constraints and site-specific protocols.</p>
-                      <div class="tech-tags">
-                        <span class="tag">FHIR/HL7</span>
-                        <span class="tag">Policy-as-Code</span>
-                        <span class="tag">DAG-Orchestrated</span>
-                      </div>
-                      <a href="#" class="link-arrow">View Case Study →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">onco-pathway — precision-med-v3</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ agent_core run --workflow="onco_triage" --pt_id="PT-88392"</span><br>
-                          <span class="cmt"># --- STEP 1: PERCEPTION &amp; NORMALIZATION ---</span><br>
-                          <span class="kwd">[PERCEIVE]</span> Ingesting EMR: ER/PR+, HER2-, Echocardiogram.<br>
-                          <span class="kwd">[NORMALIZE]</span> Mapping data to NCCN clinical vectors...<br>
-                          &nbsp;&nbsp;└─ <span class="str">Option A:</span> AC-T (Doxorubicin) - 92% Efficacy<br>
-                          &nbsp;&nbsp;└─ <span class="str">Option B:</span> TC (Docetaxel) - 88% Efficacy<br>
-                          <span class="cmt"># --- STEP 2: GOVERNANCE PRE-FLIGHT ---</span><br>
-                          <span class="kwd">[STRATEGIST]</span> "Option A maximizes survival. Building node..."<br>
-                          <span class="kwd">[GOVERN]</span> Intercepting node: <span class="cmd">prescribe(regimen="AC-T")</span><br>
-                          <span class="cmt"># --- STEP 3: POLICY-AS-CODE SHIELD ---</span><br>
-                          <span class="warn">[DENY]</span> <strong>POLICY_VIOLATION</strong> (rule: cardiotoxicity)<br>
-                          &nbsp;&nbsp;└─ <span class="str">Reason:</span> "Patient LVEF is 48% (Threshold >50%)."<br>
-                          <span class="cmt"># --- STEP 4: DETERMINISTIC RECOVERY ---</span><br>
-                          <span class="kwd">[RE-PLAN]</span> Reverting to Option B. Re-running policy check...<br>
-                          <span class="pass">[PASS]</span> Safety parameters cleared. Node approved.<br>
-                          <span class="cmt"># --- STEP 5: COMMIT &amp; HANDOFF ---</span><br>
-                          <span class="pass">[COMMIT]</span> Immutable record written to the ledger.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">AWAITING ONCOLOGIST SIGN-OFF</span>...
-                        </div>
-                      </div>
-                    </div>
+              <div class="sota-terminal-pane">
+                <div class="sota-term-header">
+                  <div class="term-traffic-lights" aria-hidden="true">
+                    <div class="term-dot close"></div>
+                    <div class="term-dot min"></div>
+                    <div class="term-dot max"></div>
                   </div>
+                  <div class="term-title">edge-slm &mdash; quantize-deploy</div>
                 </div>
-
-                <!-- Clinical GraphRAG -->
-                <div class="usecase-panel" id="hc-graphrag">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Clinical AI / Hybrid RAG</span>
-                      <h3>Speculative Clinical GraphRAG</h3>
-                      <p class="usecase-subtitle">9-node LangGraph with hybrid retrieval &amp; self-correction.</p>
-                      <p class="usecase-desc">Qdrant vector store + Neo4j graph traversal with fusion scoring (α=0.7). Quad-track LLM backend with SemanticRouter auto-selection. Self-correcting feedback feeds violations + prior reasoning back via regenerate_with_feedback() with confidence decay.</p>
-                      <div class="tech-tags">
-                        <span class="tag">LangGraph</span>
-                        <span class="tag">Neo4j</span>
-                        <span class="tag">Qdrant</span>
-                        <span class="tag">DeepSeek-R1</span>
-                        <span class="tag">SNOMED-CT</span>
-                      </div>
-                      <a href="https://github.com/aragit/speculative-clinical-graphrag" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">clinical-graphrag — speculate</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ /v1/speculate --note="persistent cough, weight loss"</span><br>
-                          <span class="cmt"># --- STEP 1: HYBRID RETRIEVAL ---</span><br>
-                          <span class="kwd">[QDRANT]</span> Vector search: 12 ontology concepts<br>
-                          <span class="kwd">[NEO4J]</span> Graph traversal: 34 taxonomic edges<br>
-                          &nbsp;&nbsp;└─ <span class="str">Fusion:</span> α=0.7 vector + 0.3 graph<br>
-                          <span class="cmt"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span><br>
-                          <span class="kwd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)<br>
-                          <span class="cmt"># --- STEP 3: SAFETY VERIFY ---</span><br>
-                          <span class="warn">[FAIL]</span> Neo4j edge lung_ca→metastasis missing<br>
-                          <span class="cmt"># --- STEP 4: SELF-CORRECTION (1/3) ---</span><br>
-                          <span class="kwd">[REGEN]</span> Feeding violations + reasoning trace...<br>
-                          &nbsp;&nbsp;└─ <span class="str">Confidence:</span> 0.82 → 0.72 (decay -0.1)<br>
-                          <span class="pass">[PASS]</span> Corrected path validated by all verifiers.<br>
-                          <span class="pass">[AUDIT]</span> Trace committed. Zero PHI persisted.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">AWAITING_CLINICIAN_REVIEW</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Molecular Discovery -->
-                <div class="usecase-panel" id="hc-molecular">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Drug Discovery</span>
-                      <h3>Molecular Discovery Agent</h3>
-                      <p class="usecase-subtitle">High-throughput docking agent that halts synthesis of hepatotoxic structures.</p>
-                      <p class="usecase-desc">Automated virtual screening pipeline that combines molecular docking simulations with toxicity prediction. The agent iteratively proposes candidate molecules, evaluates binding affinity, and rejects structures flagged for hepatotoxicity — all within a closed-loop autonomous workflow.</p>
-                      <div class="tech-tags">
-                        <span class="tag">Simulation</span>
-                        <span class="tag">RDKit</span>
-                        <span class="tag">AutoDock</span>
-                      </div>
-                      <a href="#" class="link-arrow">View Case Study →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">mol-screen — docking-pipeline</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ mol_screen run --target="EGFR" --rounds=200</span><br>
-                          <span class="cmt"># --- BATCH 1: VIRTUAL SCREENING ---</span><br>
-                          <span class="kwd">[DOCK]</span> Screening 200 candidates against EGFR...<br>
-                          <span class="kwd">[FILTER]</span> Top 12 by binding affinity (ΔG &lt; -8.5 kcal/mol)<br>
-                          <span class="cmt"># --- BATCH 2: TOXICITY PREDICTION ---</span><br>
-                          <span class="kwd">[ADMET]</span> Running hepatotoxicity classifier...<br>
-                          <span class="warn">[REJECT]</span> 4 candidates flagged: DILI risk > 0.7<br>
-                          <span class="pass">[PASS]</span> 8 candidates cleared all safety gates.<br>
-                          <span class="kwd">[RANK]</span> Best: compound_047 (ΔG=-9.2, DILI=0.12)<br>
-                          <span class="pass">[AUDIT]</span> Full pipeline trace persisted.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">SCREENING_COMPLETE</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Biomedical Hypotheses -->
-                <div class="usecase-panel" id="hc-biomedical">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Repurposing</span>
-                      <h3>Biomedical Hypotheses Agent</h3>
-                      <p class="usecase-subtitle">Hypothesis-driven retrieval over PubMed for repurposing leads.</p>
-                      <p class="usecase-desc">Graph Neural Network over a knowledge graph of drug-gene-disease associations. The agent generates repurposing hypotheses, validates them against PubMed evidence, and scores confidence based on citation density and pathway overlap.</p>
-                      <div class="tech-tags">
-                        <span class="tag">PubMed-KB</span>
-                        <span class="tag">GNN</span>
-                        <span class="tag">Neo4j</span>
-                      </div>
-                      <a href="case-studies/drug-repurposing/index.html" class="link-arrow">View Case Study →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">bio-hypo — repurpose-engine</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ hypo_agent propose --disease="IPF" --top_k=5</span><br>
-                          <span class="cmt"># --- STEP 1: KNOWLEDGE GRAPH TRAVERSAL ---</span><br>
-                          <span class="kwd">[GNN]</span> Querying drug-gene-disease subgraph...<br>
-                          &nbsp;&nbsp;└─ <span class="str">Nodes:</span> 1,247 | Edges: 3,891<br>
-                          <span class="cmt"># --- STEP 2: HYPOTHESIS GENERATION ---</span><br>
-                          <span class="kwd">[LLM]</span> Top candidates: nintedanib(0.91) pirfenidone(0.87)...<br>
-                          <span class="cmt"># --- STEP 3: EVIDENCE VALIDATION ---</span><br>
-                          <span class="kwd">[PUBMED]</span> Searching for supporting citations...<br>
-                          &nbsp;&nbsp;└─ <span class="str">Found:</span> 23 papers for nintedanib-IPF link<br>
-                          <span class="pass">[SCORE]</span> Confidence: 0.89 (high evidence density)<br>
-                          <span class="pass">[AUDIT]</span> Hypothesis + evidence chain persisted.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">HYPOTHESES_RANKED</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== MARKETING & AD TECH ===== -->
-          <div class="domain-panel" id="domain-marketing" role="tabpanel">
-            <div class="solution-layout">
-              <nav class="usecase-tabs" aria-label="Marketing use cases">
-                <button class="usecase-tab active" data-usecase="mk-nash">
-                  <span class="usecase-tab-num">01</span>
-                  <span class="usecase-tab-label">Nash Marketing Agents</span>
-                </button>
-                <button class="usecase-tab" data-usecase="mk-roi">
-                  <span class="usecase-tab-num">02</span>
-                  <span class="usecase-tab-label">Marketing ROI Optimizer</span>
-                </button>
-              </nav>
-
-              <div class="usecase-panels">
-
-                <!-- Nash Marketing Agents -->
-                <div class="usecase-panel active" id="mk-nash">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Game Theory / Ad Tech</span>
-                      <h3>Nash Marketing Agents</h3>
-                      <p class="usecase-subtitle">Neuro-symbolic ad auction simulator with Nash Equilibrium.</p>
-                      <p class="usecase-desc">LLM proposes stochastic bidding strategies; symbolic Nash solver validates via iterative best-response with softmax annealing. VCG second-price engine enforces paid≤bid invariant. Monte Carlo 5000-sample win-probability estimation with multi-layer budget guardrails.</p>
-                      <div class="tech-tags">
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">SciPy</span>
-                        <span class="tag">Pydantic v2</span>
-                        <span class="tag">Game Theory</span>
-                        <span class="tag">Docker</span>
-                      </div>
-                      <a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">nash-sim — auction-engine</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ nash_sim run --rounds=50 --agents=4</span><br>
-                          <span class="cmt"># --- ROUND 1: STRATEGY PROPOSAL ---</span><br>
-                          <span class="kwd">[LLM]</span> Bids: Agent-A=$2.40 B=$1.85 C=$3.10 D=$2.70<br>
-                          <span class="kwd">[SOLVER]</span> Best-response iteration (softmax τ=0.3)...<br>
-                          <span class="cmt"># --- VCG AUCTION ENGINE ---</span><br>
-                          <span class="kwd">[AUCTION]</span> Winner: Agent-C (bid $3.10)<br>
-                          &nbsp;&nbsp;└─ <span class="str">VCG payment:</span> $2.70 (next-highest bid)<br>
-                          <span class="pass">[ASSERT]</span> paid≤bid invariant: 2.70 ≤ 3.10 ✓<br>
-                          <span class="cmt"># --- BUDGET GUARDRAILS ---</span><br>
-                          <span class="warn">[WARN]</span> Agent-A budget at 22% → soft warning<br>
-                          <span class="cmt"># --- CONVERGENCE @ ROUND 41 ---</span><br>
-                          <span class="pass">[NASH]</span> Equilibrium reached. Δu &lt; 0.01<br>
-                          <span class="pass">[TEST]</span> 49/49 property-based tests passed.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">SIMULATION_COMPLETE</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Marketing ROI Optimizer -->
-                <div class="usecase-panel" id="mk-roi">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Multi-Agent / Bandits</span>
-                      <h3>Marketing ROI Optimizer</h3>
-                      <p class="usecase-subtitle">Continuously reallocates budget using Multi-Agent Swarms and Multi-Armed Bandits.</p>
-                      <p class="usecase-desc">A swarm of specialized agents — data collector, analyzer, optimizer, and reporter — collaborate to continuously monitor campaign performance and reallocate budget across channels in real-time using Thompson Sampling bandits.</p>
-                      <div class="tech-tags">
-                        <span class="tag">Bandits</span>
-                        <span class="tag">Streaming</span>
-                        <span class="tag">Multi-Agent</span>
-                      </div>
-                      <a href="case-studies/marketing-roi/index.html" class="link-arrow">View Case Study →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">roi-optimizer — budget-agent</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ roi_agent optimize --budget=$50k --channels=6</span><br>
-                          <span class="cmt"># --- COLLECT: Real-time performance data ---</span><br>
-                          <span class="kwd">[SWARM]</span> DataCollector: ingesting 6 channel feeds...<br>
-                          <span class="cmt"># --- ANALYZE: Attribution modeling ---</span><br>
-                          <span class="kwd">[SWARM]</span> Analyzer: last-touch + Shapley values<br>
-                          &nbsp;&nbsp;└─ <span class="str">Insight:</span> Google Ads CPA rose 34% this week<br>
-                          <span class="cmt"># --- OPTIMIZE: Thompson Sampling ---</span><br>
-                          <span class="kwd">[BANDIT]</span> Reallocating: Google→LinkedIn (+$4.2k)<br>
-                          <span class="pass">[ASSERT]</span> Total budget invariant: $50,000 ✓<br>
-                          <span class="cmt"># --- REPORT: Executive summary ---</span><br>
-                          <span class="pass">[SWARM]</span> Reporter: projected CPA improvement -18%<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">REALLOCATION_APPLIED</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== FINANCE / REGTECH ===== -->
-          <div class="domain-panel" id="domain-fintech" role="tabpanel">
-            <div class="solution-layout">
-              <nav class="usecase-tabs" aria-label="Finance use cases">
-                <button class="usecase-tab active" data-usecase="ft-kyc">
-                  <span class="usecase-tab-num">01</span>
-                  <span class="usecase-tab-label">KYC & AML Screening</span>
-                </button>
-              </nav>
-
-              <div class="usecase-panels">
-                <div class="usecase-panel active" id="ft-kyc">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">FinTech / RegTech</span>
-                      <h3>Automated KYC & AML Screening Agent</h3>
-                      <p class="usecase-subtitle">SLM-first ReAct agent with deterministic risk scoring.</p>
-                      <p class="usecase-desc">Single-threaded LangChain ReAct loop on CPU using 4-bit Qwen2.5-7B-Instruct. Pluggable BaseLLMBackend swaps to vLLM GPU inference via one-line config. Every tool call validated by Pydantic v2 with immutable PostgreSQL audit trails.</p>
-                      <div class="tech-tags">
-                        <span class="tag">Qwen2.5-7B</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">Neo4j UBO</span>
-                        <span class="tag">OpenSanctions</span>
-                        <span class="tag">PostgreSQL</span>
-                      </div>
-                      <a href="https://github.com/aragit/kyc-auto" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">kyc-agent — react-loop</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ kyc_agent screen --entity="Acme_Corp_Ltd"</span><br>
-                          <span class="cmt"># --- REACT TURN 1: TOOL_CALL ---</span><br>
-                          <span class="kwd">[REASON]</span> Entity requires PEP &amp; sanctions check.<br>
-                          <span class="kwd">[TOOL]</span> <span class="cmd">sanctions_check(name="Acme Corp")</span><br>
-                          &nbsp;&nbsp;└─ <span class="str">Result:</span> OFAC: CLEAR | EU: CLEAR | cache_miss<br>
-                          <span class="cmt"># --- REACT TURN 2: TOOL_CALL ---</span><br>
-                          <span class="kwd">[REASON]</span> Fetching corporate registry for UBO extraction.<br>
-                          <span class="kwd">[TOOL]</span> <span class="cmd">ubo_extract(doc="incorporation.pdf")</span><br>
-                          &nbsp;&nbsp;└─ <span class="str">Extracted:</span> 3 beneficial owners → Neo4j graph<br>
-                          <span class="cmt"># --- REACT TURN 3: DETERMINISTIC ---</span><br>
-                          <span class="kwd">[TOOL]</span> <span class="cmd">risk_score_combine()</span> <span class="cmt"># pure algorithm, no LLM</span><br>
-                          <span class="pass">[PASS]</span> Composite Risk: 12/100 (Low). Cleared.<br>
-                          <span class="pass">[AUDIT]</span> Pydantic-validated KYCPacket → PostgreSQL.<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">ONBOARDING_APPROVED</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="sota-term-body">
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">edge_slm optimize --model=gemma-1b --target=rpi5</span></div>
+                  <div class="term-line"><span class="term-comment"># --- STAGE 1: QUANTIZATION ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[QUANT]</span> FP32 &rarr; INT8 (static) &rarr; INT4 (dynamic)</div>
+                  <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Perplexity:</span> 12.4 &rarr; 13.8 (&lt;15% degradation)</div>
+                  <div class="term-line"><span class="term-comment"># --- STAGE 2: EXPORT ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[ONNX]</span> Cross-platform CPU build complete</div>
+                  <div class="term-line"><span class="term-kwd">[EXECUTORCH]</span> ARM NEON delegate compiled</div>
+                  <div class="term-line"><span class="term-comment"># --- STAGE 3: BENCHMARK ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[RPI5]</span> Latency: 42ms/token | Power: 3.8W</div>
+                  <div class="term-line"><span class="term-pass">[SPEC]</span> Draft model (100M) &rarr; 2x decode speedup</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> All accuracy gates cleared.</div>
+                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">EDGE_READY_FOR_DEPLOY</span><span class="term-cursor" aria-hidden="true"></span></div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- ===== SUPPLY CHAIN ===== -->
-          <div class="domain-panel" id="domain-supplychain" role="tabpanel">
-            <div class="solution-layout">
-              <nav class="usecase-tabs" aria-label="Supply chain use cases">
-                <button class="usecase-tab active" data-usecase="sc-demand">
-                  <span class="usecase-tab-num">01</span>
-                  <span class="usecase-tab-label">Zero-Shot Demand Foundation</span>
-                </button>
-                <button class="usecase-tab" data-usecase="sc-procurement">
-                  <span class="usecase-tab-num">02</span>
-                  <span class="usecase-tab-label">Autonomous Procurement Swarm</span>
-                </button>
-              </nav>
-
-              <div class="usecase-panels">
-
-                <!-- Zero-Shot Demand Foundation -->
-                <div class="usecase-panel active" id="sc-demand">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Zero-Shot Forecasting / MCP</span>
-                      <h3>Zero-Shot Demand Foundation</h3>
-                      <p class="usecase-subtitle">MCP Agentic Forecaster Skill with foundation models.</p>
-                      <p class="usecase-desc">Zero-shot time-series demand forecasting using Google TimesFM and Amazon Chronos-2. Dual-track evaluation (point forecast + quantile bands) aligned with M5 Competition framework. Pydantic-validated 3D tensor input with exogenous signal support for price elasticity and promotional flags.</p>
-                      <div class="tech-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TimesFM</span>
-                        <span class="tag">Chronos-2</span>
-                        <span class="tag">Pydantic v2</span>
-                        <span class="tag">M5 Benchmark</span>
-                      </div>
-                      <a href="https://github.com/aragit/zero-shot-demand-foundation" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">demand-foundation — zero-shot</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ forecast run --series=walmart_daily --horizon=128</span><br>
-                          <span class="cmt"># --- MODEL SELECTION ---</span><br>
-                          <span class="kwd">[TIMESFM]</span> google/timesfm-2.5-200m loaded<br>
-                          <span class="kwd">[CHRONOS]</span> amazon/chronos-2 loaded<br>
-                          <span class="cmt"># --- INFERENCE ---</span><br>
-                          <span class="kwd">[SHAPE]</span> (3049, 1, 16000) → (3049, 128)<br>
-                          <span class="kwd">[QUANTILE]</span> p10/p50/p90 bands computed<br>
-                          <span class="cmt"># --- M5 BENCHMARK ---</span><br>
-                          <span class="pass">[WAPE]</span> 15.2% | <span class="pass">[RMSSE]</span> 0.78<br>
-                          <span class="pass">[VALID]</span> Pydantic ForecastOutputPayload ✓<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">FORECAST_COMPLETE</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div class="sota-usecase-card" id="cd-crew">
+               <div class="sota-info-pane">
+                <span class="sota-badge">Local-First / 3-Agent Pipeline</span>
+                <h3>Enterprise Intelligence Crew</h3>
+                <p class="sota-subtitle">Autonomous enterprise trend intelligence pipeline.</p>
+                <p class="sota-desc">Sequential 3-agent CrewAI pipeline (Trend Investigator &rarr; Risk Analyst &rarr; Copywriter) with LangGraph risk gate state machine, local-only Ollama inference, ChromaDB semantic memory, and Pydantic V2 contracts at every stage. Zero API keys, zero cloud dependency.</p>
+                <div class="sota-tech-stack">
+                  <span>CrewAI</span><span>Ollama</span><span>ChromaDB</span><span>FastAPI</span><span>Pydantic V2</span>
                 </div>
-
-                <!-- Autonomous Procurement Swarm -->
-                <div class="usecase-panel" id="sc-procurement">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Turn-Based Negotiation / Market Sim</span>
-                      <h3>Autonomous Procurement Swarm</h3>
-                      <p class="usecase-subtitle">LLM-Powered Multi-Agent Contract Negotiation.</p>
-                      <p class="usecase-desc">4-agent negotiation system (Buyer, Seller, Market Intelligence, Arbiter) with stochastic market simulation using Geometric Brownian Motion and 4-state Markov chain geopolitical risk model. Reward engineering balances cost, margin, capacity utilization, and risk premiums.</p>
-                      <div class="tech-tags">
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">SciPy</span>
-                        <span class="tag">Transformers</span>
-                        <span class="tag">Pydantic v2</span>
-                        <span class="tag">Market Sim</span>
-                      </div>
-                      <a href="https://github.com/aragit/autonomous-procurement-swarm" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">procurement-swarm — negotiate</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ swarm negotiate --item="steel_coils" --rounds=20</span><br>
-                          <span class="cmt"># --- MARKET STATE ---</span><br>
-                          <span class="kwd">[SIM]</span> GBM price: $842/ton | Regime: MEDIUM<br>
-                          <span class="kwd">[RISK]</span> Markov geopolitical: LOW (p=0.72)<br>
-                          <span class="cmt"># --- TURN 5: BUYER ---</span><br>
-                          <span class="kwd">[BUYER]</span> Offer: $810/ton (cost-target: $815)<br>
-                          <span class="cmt"># --- TURN 6: SELLER ---</span><br>
-                          <span class="kwd">[SELLER]</span> Counter: $835/ton (margin: 12%)<br>
-                          <span class="cmt"># --- ARBITER ---</span><br>
-                          <span class="pass">[PASS]</span> Fair range validated. Gap: $25<br>
-                          <span class="pass">[LEDGER]</span> Hash-chain integrity ✓<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">NEGOTIATION_IN_PROGRESS</span>
-                        </div>
-                      </div>
-                    </div>
+                <a href="https://github.com/aragit/enterprise-intelligence-crew" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+              </div>
+              <div class="sota-terminal-pane">
+                <div class="sota-term-header">
+                  <div class="term-traffic-lights" aria-hidden="true">
+                    <div class="term-dot close"></div>
+                    <div class="term-dot min"></div>
+                    <div class="term-dot max"></div>
                   </div>
+                  <div class="term-title">enterprise-crew &mdash; trend-intel</div>
                 </div>
-
+                <div class="sota-term-body">
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">crew run --topic="edge-ai-adoption" --local</span></div>
+                  <div class="term-line"><span class="term-comment"># --- AGENT 1: TREND INVESTIGATOR ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[OLLAMA]</span> gemma2:2b analyzing trend signals...</div>
+                  <div class="term-line"><span class="term-kwd">[CHROMADB]</span> Retrieved 12 related research chunks</div>
+                  <div class="term-line"><span class="term-comment"># --- AGENT 2: RISK ANALYST ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[LANGGRAPH]</span> Risk gate: evaluate &rarr; approve</div>
+                  <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Confidence:</span> 0.87 | Risk: LOW</div>
+                  <div class="term-line"><span class="term-comment"># --- AGENT 3: COPYWRITER ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[PYDANTIC]</span> ContentPayload validated &#10003;</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> 3/3 agents completed. Output persisted.</div>
+                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">INTELLIGENCE_REPORT_READY</span><span class="term-cursor" aria-hidden="true"></span></div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- ===== RESEARCH ===== -->
-          <div class="domain-panel" id="domain-research" role="tabpanel">
-            <div class="solution-layout">
-              <nav class="usecase-tabs" aria-label="Research use cases">
-                <button class="usecase-tab active" data-usecase="rs-qbmg">
-                  <span class="usecase-tab-num">01</span>
-                  <span class="usecase-tab-label">Quantum-Bound Molecular Generator</span>
-                </button>
-                <button class="usecase-tab" data-usecase="rs-protein">
-                  <span class="usecase-tab-num">02</span>
-                  <span class="usecase-tab-label">Protein Binder Flow</span>
-                </button>
-              </nav>
-
-              <div class="usecase-panels">
-
-                <!-- QBMG -->
-                <div class="usecase-panel active" id="rs-qbmg">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Generative Chemistry</span>
-                      <h3>Quantum-Bound Molecular Generator</h3>
-                      <p class="usecase-subtitle">Zero-Waste Neuro-Symbolic Molecular Engine.</p>
-                      <p class="usecase-desc">Type 6 Neuro[Symbolic] architecture with symbolic physics (valency, symmetry) embedded directly into the PyTorch computation graph as differentiable convex projection. Every forward pass outputs a chemically valid bond adjacency matrix — zero compute waste. IFT backprop through KKT equilibrium enables end-to-end gradient flow.</p>
-                      <div class="tech-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">SE(3)-GNN</span>
-                        <span class="tag">Convex Optimization</span>
-                        <span class="tag">IFT</span>
-                        <span class="tag">Type 6</span>
-                      </div>
-                      <a href="https://github.com/aragit/quantum-bound-generator" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">qbmg — molecular-gen</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ qbmg generate --atoms=24 --target=C10H12N2O</span><br>
-                          <span class="cmt"># --- NEURAL PASS ---</span><br>
-                          <span class="kwd">[GNN]</span> SE(3)-equivariant forward: 24 atoms<br>
-                          &nbsp;&nbsp;└─ <span class="str">Raw adjacency:</span> 24x24 matrix (continuous)<br>
-                          <span class="cmt"># --- SYMBOLIC PROJECTION ---</span><br>
-                          <span class="kwd">[KKT]</span> Convex projection: valency constraints<br>
-                          &nbsp;&nbsp;└─ <span class="str">C≤4 O≤2 N≤3</span> enforced via KKT<br>
-                          <span class="kwd">[IFT]</span> Jacobian through KKT equilibrium ✓<br>
-                          <span class="pass">[VALID]</span> 100% chemically valid (zero waste)<br>
-                          <span class="pass">[PASS]</span> Frobenius distortion: 0.003<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">MOLECULE_GENERATED</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div class="sota-usecase-card" id="cd-deepseek">
+              <div class="sota-info-pane">
+                <span class="sota-badge">Reasoning Optimization</span>
+                <h3>DeepSeek Reasoning Fine-Tuning</h3>
+                <p class="sota-subtitle">Medical chain-of-thought LoRA alignment pipeline.</p>
+                <p class="sota-desc">Efficient 4-bit parameter fine-tuning that maps diagnostic reasoning patterns into model weights. Uses Unsloth for memory-efficient training, improving structured clinical response generation while preserving general reasoning capabilities.</p>
+                <div class="sota-tech-stack">
+                  <span>Unsloth</span><span>PyTorch</span><span>TRL</span><span>LoRA</span>
                 </div>
-
-                <!-- Protein Binder Flow -->
-                <div class="usecase-panel" id="rs-protein">
-                  <div class="usecase-content">
-                    <div class="usecase-info">
-                      <span class="badge">Computational Biology</span>
-                      <h3>Protein Binder Flow</h3>
-                      <p class="usecase-subtitle">Flow-matching protein binder generator.</p>
-                      <p class="usecase-desc">Flow matching for structural molecular generation, moving beyond diffusion-based protein design approaches. Targets novel protein-ligand binding discovery using PyTorch and Biopython, with FoldSeek for structural alignment validation.</p>
-                      <div class="tech-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Biopython</span>
-                        <span class="tag">Flow Matching</span>
-                        <span class="tag">FoldSeek</span>
-                      </div>
-                      <a href="https://github.com/aragit/Flow-Matching-Protein-Binder-Generator" target="_blank" rel="noopener noreferrer" class="link-arrow">View on GitHub →</a>
-                    </div>
-                    <div class="usecase-visual">
-                      <div class="terminal-box">
-                        <div class="terminal-header">
-                          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                          <div class="terminal-title">protein-flow — binder-gen</div>
-                        </div>
-                        <div class="terminal-body">
-                          <span class="cmd">$ flow_match generate --target=EGFR --n=100</span><br>
-                          <span class="cmt"># --- STEP 1: STRUCTURE PREP ---</span><br>
-                          <span class="kwd">[FOLDSEEK]</span> Binding site aligned: 147 residues<br>
-                          <span class="cmt"># --- STEP 2: FLOW MATCHING ---</span><br>
-                          <span class="kwd">[FLOW]</span> ODE integration: t=0 → t=1 (100 steps)<br>
-                          &nbsp;&nbsp;└─ <span class="str">Backbone RMSD:</span> 1.2Å (converged)<br>
-                          <span class="kwd">[FLOW]</span> Side-chain packing: 89% rotamer correct<br>
-                          <span class="cmt"># --- STEP 3: VALIDATION ---</span><br>
-                          <span class="pass">[PASS]</span> Docking score: -8.7 kcal/mol<br>
-                          <span class="pass">[PASS]</span> AlphaFold pLDDT: 0.82<br>
-                          <span class="cmd">[STATUS]</span> <span class="blink">100_BINDERS_GENERATED</span>
-                        </div>
-                      </div>
-                    </div>
+                <a href="https://github.com/aragit/deepseek-reasoning-finetuning" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+              </div>
+              <div class="sota-terminal-pane">
+                <div class="sota-term-header">
+                  <div class="term-traffic-lights" aria-hidden="true">
+                    <div class="term-dot close"></div>
+                    <div class="term-dot min"></div>
+                    <div class="term-dot max"></div>
                   </div>
+                  <div class="term-title">deepseek-lora &mdash; reasoning-train</div>
                 </div>
-
+                <div class="sota-term-body">
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">train_lora --base=deepseek-r1 --bits=4 --data=clinical_cot</span></div>
+                  <div class="term-line"><span class="term-comment"># --- CONFIG ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[UNSLOTH]</span> 4-bit QLoRA: r=16, alpha=32</div>
+                  <div class="term-line"><span class="term-comment"># --- TRAINING ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[EPOCH 1/3]</span> Loss: 2.34 &rarr; 1.12 | Grad norm: 0.8</div>
+                  <div class="term-line"><span class="term-kwd">[EPOCH 2/3]</span> Loss: 1.12 &rarr; 0.67 | Grad norm: 0.4</div>
+                  <div class="term-line"><span class="term-kwd">[EPOCH 3/3]</span> Loss: 0.67 &rarr; 0.41 | Grad norm: 0.2</div>
+                  <div class="term-line"><span class="term-comment"># --- EVALUATION ---</span></div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> Clinical accuracy: +18% vs base model</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> Reasoning coherence: 0.91</div>
+                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">LORA_ADAPTER_SAVED</span><span class="term-cursor" aria-hidden="true"></span></div>
+                </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
 
-          </div><!-- /arch-right -->
+        <div class="sota-domain-panel" id="domain-healthcare" role="tabpanel">
+            <nav class="sota-usecase-nav" aria-label="Healthcare Use Cases">
+              <button class="sota-usecase-pill active" data-usecase="hc-onco">01. Clinical Oncology</button>
+              <button class="sota-usecase-pill" data-usecase="hc-graphrag">02. Clinical GraphRAG</button>
+              <button class="sota-usecase-pill" data-usecase="hc-molecular">03. Molecular Discovery</button>
+              <button class="sota-usecase-pill" data-usecase="hc-biomedical">04. Biomedical Hypotheses</button>
+            </nav>
+  
+            <div class="sota-bento-grid">
+              
+              <div class="sota-usecase-card active" id="hc-onco">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Oncology-Focus</span>
+                  <h3>Clinical Oncology Agent</h3>
+                  <p class="sota-subtitle">Navigates NCCN guidelines with toxicity-aware reasoning.</p>
+                  <p class="sota-desc">Deterministic orchestration of multi-drug regimens via Human-in-the-Loop (HITL) safeguards, enforcing strict physiological constraints and site-specific protocols.</p>
+                  <div class="sota-tech-stack">
+                    <span>FHIR/HL7</span><span>Policy-as-Code</span><span>DAG-Orchestrated</span>
+                  </div>
+                  <a href="#" class="sota-link-arrow">View Case Study <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">onco-pathway &mdash; precision-med-v3</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">agent_core run --workflow="onco_triage" --pt_id="PT-88392"</span></div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 1: PERCEPTION &amp; NORMALIZATION ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[PERCEIVE]</span> Ingesting EMR: ER/PR+, HER2-, Echocardiogram.</div>
+                    <div class="term-line"><span class="term-kwd">[NORMALIZE]</span> Mapping data to NCCN clinical vectors...</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Option A:</span> AC-T (Doxorubicin) - 92% Efficacy</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Option B:</span> TC (Docetaxel) - 88% Efficacy</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 2: GOVERNANCE PRE-FLIGHT ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[STRATEGIST]</span> "Option A maximizes survival. Building node..."</div>
+                    <div class="term-line"><span class="term-kwd">[GOVERN]</span> Intercepting node: <span class="term-cmd">prescribe(regimen="AC-T")</span></div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 3: POLICY-AS-CODE SHIELD ---</span></div>
+                    <div class="term-line"><span style="color: #ff5f56; font-weight:bold;">[DENY]</span> <strong>POLICY_VIOLATION</strong> (rule: cardiotoxicity)</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Reason:</span> "Patient LVEF is 48% (Threshold &gt;50%)."</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 4: DETERMINISTIC RECOVERY ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[RE-PLAN]</span> Reverting to Option B. Re-running policy check...</div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> Safety parameters cleared. Node approved.</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 5: COMMIT &amp; HANDOFF ---</span></div>
+                    <div class="term-line"><span class="term-pass">[COMMIT]</span> Immutable record written to the ledger.</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">AWAITING ONCOLOGIST SIGN-OFF</span>...<span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
 
-        </div><!-- /arch-layout -->
-      </div><!-- /container -->
-    </section>
+              <div class="sota-usecase-card" id="hc-graphrag">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Clinical AI / Hybrid RAG</span>
+                  <h3>Speculative Clinical GraphRAG</h3>
+                  <p class="sota-subtitle">9-node LangGraph with hybrid retrieval &amp; self-correction.</p>
+                  <p class="sota-desc">Qdrant vector store + Neo4j graph traversal with fusion scoring (α=0.7). Quad-track LLM backend with SemanticRouter auto-selection. Self-correcting feedback feeds violations + prior reasoning back via regenerate_with_feedback() with confidence decay.</p>
+                  <div class="sota-tech-stack">
+                    <span>LangGraph</span><span>Neo4j</span><span>Qdrant</span><span>DeepSeek-R1</span><span>SNOMED-CT</span>
+                  </div>
+                  <a href="https://github.com/aragit/speculative-clinical-graphrag" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">clinical-graphrag &mdash; speculate</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">/v1/speculate --note="persistent cough, weight loss"</span></div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 1: HYBRID RETRIEVAL ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[QDRANT]</span> Vector search: 12 ontology concepts</div>
+                    <div class="term-line"><span class="term-kwd">[NEO4J]</span> Graph traversal: 34 taxonomic edges</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Fusion:</span> α=0.7 vector + 0.3 graph</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 2: DIFFERENTIAL ASSESSMENT ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[LLM]</span> Differentials: lung_ca(0.82) tb(0.11) sarcoid(0.07)</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 3: SAFETY VERIFY ---</span></div>
+                    <div class="term-line"><span style="color: #ffbd2e;">[FAIL]</span> Neo4j edge lung_ca&rarr;metastasis missing</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 4: SELF-CORRECTION (1/3) ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[REGEN]</span> Feeding violations + reasoning trace...</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Confidence:</span> 0.82 &rarr; 0.72 (decay -0.1)</div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> Corrected path validated by all verifiers.</div>
+                    <div class="term-line"><span class="term-pass">[AUDIT]</span> Trace committed. Zero PHI persisted.</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">AWAITING_CLINICIAN_REVIEW</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sota-usecase-card" id="hc-molecular">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Drug Discovery</span>
+                  <h3>Molecular Discovery Agent</h3>
+                  <p class="sota-subtitle">High-throughput docking agent that halts synthesis of hepatotoxic structures.</p>
+                  <p class="sota-desc">Automated virtual screening pipeline that combines molecular docking simulations with toxicity prediction. The agent iteratively proposes candidate molecules, evaluates binding affinity, and rejects structures flagged for hepatotoxicity &mdash; all within a closed-loop autonomous workflow.</p>
+                  <div class="sota-tech-stack">
+                    <span>Simulation</span><span>RDKit</span><span>AutoDock</span>
+                  </div>
+                  <a href="#" class="sota-link-arrow">View Case Study <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">mol-screen &mdash; docking-pipeline</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">mol_screen run --target="EGFR" --rounds=200</span></div>
+                    <div class="term-line"><span class="term-comment"># --- BATCH 1: VIRTUAL SCREENING ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[DOCK]</span> Screening 200 candidates against EGFR...</div>
+                    <div class="term-line"><span class="term-kwd">[FILTER]</span> Top 12 by binding affinity (ΔG &lt; -8.5 kcal/mol)</div>
+                    <div class="term-line"><span class="term-comment"># --- BATCH 2: TOXICITY PREDICTION ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[ADMET]</span> Running hepatotoxicity classifier...</div>
+                    <div class="term-line"><span style="color: #ffbd2e;">[REJECT]</span> 4 candidates flagged: DILI risk &gt; 0.7</div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> 8 candidates cleared all safety gates.</div>
+                    <div class="term-line"><span class="term-kwd">[RANK]</span> Best: compound_047 (ΔG=-9.2, DILI=0.12)</div>
+                    <div class="term-line"><span class="term-pass">[AUDIT]</span> Full pipeline trace persisted.</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">SCREENING_COMPLETE</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sota-usecase-card" id="hc-biomedical">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Repurposing</span>
+                  <h3>Biomedical Hypotheses Agent</h3>
+                  <p class="sota-subtitle">Hypothesis-driven retrieval over PubMed for repurposing leads.</p>
+                  <p class="sota-desc">Graph Neural Network over a knowledge graph of drug-gene-disease associations. The agent generates repurposing hypotheses, validates them against PubMed evidence, and scores confidence based on citation density and pathway overlap.</p>
+                  <div class="sota-tech-stack">
+                    <span>PubMed-KB</span><span>GNN</span><span>Neo4j</span>
+                  </div>
+                  <a href="case-studies/drug-repurposing/index.html" class="sota-link-arrow">View Case Study <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">bio-hypo &mdash; repurpose-engine</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">hypo_agent propose --disease="IPF" --top_k=5</span></div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 1: KNOWLEDGE GRAPH TRAVERSAL ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[GNN]</span> Querying drug-gene-disease subgraph...</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Nodes:</span> 1,247 | Edges: 3,891</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 2: HYPOTHESIS GENERATION ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[LLM]</span> Top candidates: nintedanib(0.91) pirfenidone(0.87)...</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 3: EVIDENCE VALIDATION ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[PUBMED]</span> Searching for supporting citations...</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Found:</span> 23 papers for nintedanib-IPF link</div>
+                    <div class="term-line"><span class="term-pass">[SCORE]</span> Confidence: 0.89 (high evidence density)</div>
+                    <div class="term-line"><span class="term-pass">[AUDIT]</span> Hypothesis + evidence chain persisted.</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">HYPOTHESES_RANKED</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        <div class="sota-domain-panel" id="domain-marketing" role="tabpanel">
+            <nav class="sota-usecase-nav" aria-label="Marketing Use Cases">
+              <button class="sota-usecase-pill active" data-usecase="mk-nash">01. Nash Marketing Agents</button>
+              <button class="sota-usecase-pill" data-usecase="mk-roi">02. Marketing ROI Optimizer</button>
+            </nav>
+  
+            <div class="sota-bento-grid">
+              
+              <div class="sota-usecase-card active" id="mk-nash">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Game Theory / Ad Tech</span>
+                  <h3>Nash Marketing Agents</h3>
+                  <p class="sota-subtitle">Neuro-symbolic ad auction simulator with Nash Equilibrium.</p>
+                  <p class="sota-desc">LLM proposes stochastic bidding strategies; symbolic Nash solver validates via iterative best-response with softmax annealing. VCG second-price engine enforces paid&le;bid invariant. Monte Carlo 5000-sample win-probability estimation with multi-layer budget guardrails.</p>
+                  <div class="sota-tech-stack">
+                    <span>FastAPI</span><span>SciPy</span><span>Pydantic v2</span><span>Game Theory</span><span>Docker</span>
+                  </div>
+                  <a href="https://github.com/aragit/agentic-nash-marketing" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">nash-sim &mdash; auction-engine</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">nash_sim run --rounds=50 --agents=4</span></div>
+                    <div class="term-line"><span class="term-comment"># --- ROUND 1: STRATEGY PROPOSAL ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[LLM]</span> Bids: Agent-A=$2.40 B=$1.85 C=$3.10 D=$2.70</div>
+                    <div class="term-line"><span class="term-kwd">[SOLVER]</span> Best-response iteration (softmax τ=0.3)...</div>
+                    <div class="term-line"><span class="term-comment"># --- VCG AUCTION ENGINE ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[AUCTION]</span> Winner: Agent-C (bid $3.10)</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">VCG payment:</span> $2.70 (next-highest bid)</div>
+                    <div class="term-line"><span class="term-pass">[ASSERT]</span> paid&le;bid invariant: 2.70 &le; 3.10 &#10003;</div>
+                    <div class="term-line"><span class="term-comment"># --- BUDGET GUARDRAILS ---</span></div>
+                    <div class="term-line"><span style="color: #ffbd2e;">[WARN]</span> Agent-A budget at 22% &rarr; soft warning</div>
+                    <div class="term-line"><span class="term-comment"># --- CONVERGENCE @ ROUND 41 ---</span></div>
+                    <div class="term-line"><span class="term-pass">[NASH]</span> Equilibrium reached. Δu &lt; 0.01</div>
+                    <div class="term-line"><span class="term-pass">[TEST]</span> 49/49 property-based tests passed.</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">SIMULATION_COMPLETE</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sota-usecase-card" id="mk-roi">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Multi-Agent / Bandits</span>
+                  <h3>Marketing ROI Optimizer</h3>
+                  <p class="sota-subtitle">Continuously reallocates budget using Multi-Agent Swarms and Multi-Armed Bandits.</p>
+                  <p class="sota-desc">A swarm of specialized agents &mdash; data collector, analyzer, optimizer, and reporter &mdash; collaborate to continuously monitor campaign performance and reallocate budget across channels in real-time using Thompson Sampling bandits.</p>
+                  <div class="sota-tech-stack">
+                    <span>Bandits</span><span>Streaming</span><span>Multi-Agent</span>
+                  </div>
+                  <a href="case-studies/marketing-roi/index.html" class="sota-link-arrow">View Case Study <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">roi-optimizer &mdash; budget-agent</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">roi_agent optimize --budget=$50k --channels=6</span></div>
+                    <div class="term-line"><span class="term-comment"># --- COLLECT: Real-time performance data ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[SWARM]</span> DataCollector: ingesting 6 channel feeds...</div>
+                    <div class="term-line"><span class="term-comment"># --- ANALYZE: Attribution modeling ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[SWARM]</span> Analyzer: last-touch + Shapley values</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Insight:</span> Google Ads CPA rose 34% this week</div>
+                    <div class="term-line"><span class="term-comment"># --- OPTIMIZE: Thompson Sampling ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[BANDIT]</span> Reallocating: Google&rarr;LinkedIn (+$4.2k)</div>
+                    <div class="term-line"><span class="term-pass">[ASSERT]</span> Total budget invariant: $50,000 &#10003;</div>
+                    <div class="term-line"><span class="term-comment"># --- REPORT: Executive summary ---</span></div>
+                    <div class="term-line"><span class="term-pass">[SWARM]</span> Reporter: projected CPA improvement -18%</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">REALLOCATION_APPLIED</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="sota-domain-panel" id="domain-fintech" role="tabpanel">
+            <nav class="sota-usecase-nav" aria-label="Finance Use Cases">
+              <button class="sota-usecase-pill active" data-usecase="ft-kyc">01. KYC &amp; AML Screening</button>
+            </nav>
+  
+            <div class="sota-bento-grid">
+              
+              <div class="sota-usecase-card active" id="ft-kyc">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">FinTech / RegTech</span>
+                  <h3>Automated KYC &amp; AML Screening Agent</h3>
+                  <p class="sota-subtitle">SLM-first ReAct agent with deterministic risk scoring.</p>
+                  <p class="sota-desc">Single-threaded LangChain ReAct loop on CPU using 4-bit Qwen2.5-7B-Instruct. Pluggable BaseLLMBackend swaps to vLLM GPU inference via one-line config. Every tool call validated by Pydantic v2 with immutable PostgreSQL audit trails.</p>
+                  <div class="sota-tech-stack">
+                    <span>Qwen2.5-7B</span><span>LangChain</span><span>Neo4j UBO</span><span>OpenSanctions</span><span>PostgreSQL</span>
+                  </div>
+                  <a href="https://github.com/aragit/kyc-auto" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">kyc-agent &mdash; react-loop</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">kyc_agent screen --entity="Acme_Corp_Ltd"</span></div>
+                    <div class="term-line"><span class="term-comment"># --- REACT TURN 1: TOOL_CALL ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[REASON]</span> Entity requires PEP &amp; sanctions check.</div>
+                    <div class="term-line"><span class="term-kwd">[TOOL]</span> <span class="term-cmd">sanctions_check(name="Acme Corp")</span></div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Result:</span> OFAC: CLEAR | EU: CLEAR | cache_miss</div>
+                    <div class="term-line"><span class="term-comment"># --- REACT TURN 2: TOOL_CALL ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[REASON]</span> Fetching corporate registry for UBO extraction.</div>
+                    <div class="term-line"><span class="term-kwd">[TOOL]</span> <span class="term-cmd">ubo_extract(doc="incorporation.pdf")</span></div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Extracted:</span> 3 beneficial owners &rarr; Neo4j graph</div>
+                    <div class="term-line"><span class="term-comment"># --- REACT TURN 3: DETERMINISTIC ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[TOOL]</span> <span class="term-cmd">risk_score_combine()</span> <span class="term-comment"># pure algorithm, no LLM</span></div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> Composite Risk: 12/100 (Low). Cleared.</div>
+                    <div class="term-line"><span class="term-pass">[AUDIT]</span> Pydantic-validated KYCPacket &rarr; PostgreSQL.</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">ONBOARDING_APPROVED</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="sota-domain-panel" id="domain-supplychain" role="tabpanel">
+            <nav class="sota-usecase-nav" aria-label="Supply Chain Use Cases">
+              <button class="sota-usecase-pill active" data-usecase="sc-demand">01. Zero-Shot Demand Foundation</button>
+              <button class="sota-usecase-pill" data-usecase="sc-procurement">02. Autonomous Procurement Swarm</button>
+            </nav>
+  
+            <div class="sota-bento-grid">
+              
+              <div class="sota-usecase-card active" id="sc-demand">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Zero-Shot Forecasting / MCP</span>
+                  <h3>Zero-Shot Demand Foundation</h3>
+                  <p class="sota-subtitle">MCP Agentic Forecaster Skill with foundation models.</p>
+                  <p class="sota-desc">Zero-shot time-series demand forecasting using Google TimesFM and Amazon Chronos-2. Dual-track evaluation (point forecast + quantile bands) aligned with M5 Competition framework. Pydantic-validated 3D tensor input with exogenous signal support for price elasticity and promotional flags.</p>
+                  <div class="sota-tech-stack">
+                    <span>PyTorch</span><span>TimesFM</span><span>Chronos-2</span><span>Pydantic v2</span><span>M5 Benchmark</span>
+                  </div>
+                  <a href="https://github.com/aragit/zero-shot-demand-foundation" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">demand-foundation &mdash; zero-shot</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">forecast run --series=walmart_daily --horizon=128</span></div>
+                    <div class="term-line"><span class="term-comment"># --- MODEL SELECTION ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[TIMESFM]</span> google/timesfm-2.5-200m loaded</div>
+                    <div class="term-line"><span class="term-kwd">[CHRONOS]</span> amazon/chronos-2 loaded</div>
+                    <div class="term-line"><span class="term-comment"># --- INFERENCE ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[SHAPE]</span> (3049, 1, 16000) &rarr; (3049, 128)</div>
+                    <div class="term-line"><span class="term-kwd">[QUANTILE]</span> p10/p50/p90 bands computed</div>
+                    <div class="term-line"><span class="term-comment"># --- M5 BENCHMARK ---</span></div>
+                    <div class="term-line"><span class="term-pass">[WAPE]</span> 15.2% | <span class="term-pass">[RMSSE]</span> 0.78</div>
+                    <div class="term-line"><span class="term-pass">[VALID]</span> Pydantic ForecastOutputPayload &#10003;</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">FORECAST_COMPLETE</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sota-usecase-card" id="sc-procurement">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Turn-Based Negotiation / Market Sim</span>
+                  <h3>Autonomous Procurement Swarm</h3>
+                  <p class="sota-subtitle">LLM-Powered Multi-Agent Contract Negotiation.</p>
+                  <p class="sota-desc">4-agent negotiation system (Buyer, Seller, Market Intelligence, Arbiter) with stochastic market simulation using Geometric Brownian Motion and 4-state Markov chain geopolitical risk model. Reward engineering balances cost, margin, capacity utilization, and risk premiums.</p>
+                  <div class="sota-tech-stack">
+                    <span>FastAPI</span><span>SciPy</span><span>Transformers</span><span>Pydantic v2</span><span>Market Sim</span>
+                  </div>
+                  <a href="https://github.com/aragit/autonomous-procurement-swarm" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">procurement-swarm &mdash; negotiate</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">swarm negotiate --item="steel_coils" --rounds=20</span></div>
+                    <div class="term-line"><span class="term-comment"># --- MARKET STATE ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[SIM]</span> GBM price: $842/ton | Regime: MEDIUM</div>
+                    <div class="term-line"><span class="term-kwd">[RISK]</span> Markov geopolitical: LOW (p=0.72)</div>
+                    <div class="term-line"><span class="term-comment"># --- TURN 5: BUYER ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[BUYER]</span> Offer: $810/ton (cost-target: $815)</div>
+                    <div class="term-line"><span class="term-comment"># --- TURN 6: SELLER ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[SELLER]</span> Counter: $835/ton (margin: 12%)</div>
+                    <div class="term-line"><span class="term-comment"># --- ARBITER ---</span></div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> Fair range validated. Gap: $25</div>
+                    <div class="term-line"><span class="term-pass">[LEDGER]</span> Hash-chain integrity &#10003;</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">NEGOTIATION_IN_PROGRESS</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="sota-domain-panel" id="domain-research" role="tabpanel">
+            <nav class="sota-usecase-nav" aria-label="Research Use Cases">
+              <button class="sota-usecase-pill active" data-usecase="rs-qbmg">01. Quantum-Bound Molecular Generator</button>
+              <button class="sota-usecase-pill" data-usecase="rs-protein">02. Protein Binder Flow</button>
+            </nav>
+  
+            <div class="sota-bento-grid">
+              
+              <div class="sota-usecase-card active" id="rs-qbmg">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Generative Chemistry</span>
+                  <h3>Quantum-Bound Molecular Generator</h3>
+                  <p class="sota-subtitle">Zero-Waste Neuro-Symbolic Molecular Engine.</p>
+                  <p class="sota-desc">Type 6 Neuro[Symbolic] architecture with symbolic physics (valency, symmetry) embedded directly into the PyTorch computation graph as differentiable convex projection. Every forward pass outputs a chemically valid bond adjacency matrix &mdash; zero compute waste. IFT backprop through KKT equilibrium enables end-to-end gradient flow.</p>
+                  <div class="sota-tech-stack">
+                    <span>PyTorch</span><span>SE(3)-GNN</span><span>Convex Optimization</span><span>IFT</span><span>Type 6</span>
+                  </div>
+                  <a href="https://github.com/aragit/quantum-bound-generator" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">qbmg &mdash; molecular-gen</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">qbmg generate --atoms=24 --target=C10H12N2O</span></div>
+                    <div class="term-line"><span class="term-comment"># --- NEURAL PASS ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[GNN]</span> SE(3)-equivariant forward: 24 atoms</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Raw adjacency:</span> 24x24 matrix (continuous)</div>
+                    <div class="term-line"><span class="term-comment"># --- SYMBOLIC PROJECTION ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[KKT]</span> Convex projection: valency constraints</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">C&le;4 O&le;2 N&le;3</span> enforced via KKT</div>
+                    <div class="term-line"><span class="term-kwd">[IFT]</span> Jacobian through KKT equilibrium &#10003;</div>
+                    <div class="term-line"><span class="term-pass">[VALID]</span> 100% chemically valid (zero waste)</div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> Frobenius distortion: 0.003</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">MOLECULE_GENERATED</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sota-usecase-card" id="rs-protein">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Computational Biology</span>
+                  <h3>Protein Binder Flow</h3>
+                  <p class="sota-subtitle">Flow-matching protein binder generator.</p>
+                  <p class="sota-desc">Flow matching for structural molecular generation, moving beyond diffusion-based protein design approaches. Targets novel protein-ligand binding discovery using PyTorch and Biopython, with FoldSeek for structural alignment validation.</p>
+                  <div class="sota-tech-stack">
+                    <span>PyTorch</span><span>Biopython</span><span>Flow Matching</span><span>FoldSeek</span>
+                  </div>
+                  <a href="https://github.com/aragit/Flow-Matching-Protein-Binder-Generator" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">protein-flow &mdash; binder-gen</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">flow_match generate --target=EGFR --n=100</span></div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 1: STRUCTURE PREP ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[FOLDSEEK]</span> Binding site aligned: 147 residues</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 2: FLOW MATCHING ---</span></div>
+                    <div class="term-line"><span class="term-kwd">[FLOW]</span> ODE integration: t=0 &rarr; t=1 (100 steps)</div>
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Backbone RMSD:</span> 1.2&Aring; (converged)</div>
+                    <div class="term-line"><span class="term-kwd">[FLOW]</span> Side-chain packing: 89% rotamer correct</div>
+                    <div class="term-line"><span class="term-comment"># --- STEP 3: VALIDATION ---</span></div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> Docking score: -8.7 kcal/mol</div>
+                    <div class="term-line"><span class="term-pass">[PASS]</span> AlphaFold pLDDT: 0.82</div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">100_BINDERS_GENERATED</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>    </section>
 
     <!-- SERVICES -->
     <section id="services" class="section" aria-labelledby="services-heading">
