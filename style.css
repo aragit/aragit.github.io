@@ -9823,13 +9823,14 @@ div#services .cards .card.card-wide .card-actions {
 /* Section Subtitle Styling */
 .section-subtitle {
     text-align: left;
-    font-size: 1.2rem;
-    color: #a1a1aa; /* Subtle gray */
-    margin-top: -1rem; /* Pull it closer to the H2 */
-    margin-bottom: 3rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    font-style: italic;
+    font-size: 1.1rem;
+    color: #8b949e;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
 }
 
 /* Specific subtitle polish */
