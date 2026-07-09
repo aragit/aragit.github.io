@@ -11119,9 +11119,7 @@ div#services .cards .card.card-wide .card-actions {
   position: absolute !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  background: rgba(20, 20, 20, 0.85) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(18, 18, 18, 0.97) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 12px !important;
   padding: 18px 22px !important;
@@ -11129,8 +11127,8 @@ div#services .cards .card.card-wide .card-actions {
   align-items: center !important;
   gap: 16px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease !important;
-  opacity: 0.5 !important;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, background 0.3s ease !important;
+  opacity: 0.55 !important;
   will-change: transform, opacity !important;
 }
 
@@ -11151,6 +11149,7 @@ div#services .cards .card.card-wide .card-actions {
   padding: 20px 22px !important;
   animation: floatCard2 6.5s ease-in-out infinite !important;
   animation-delay: 1s !important;
+  opacity: 0.7 !important;
 }
 
 #home.hero .stack-card.card-3 {
@@ -11160,6 +11159,7 @@ div#services .cards .card.card-wide .card-actions {
   padding: 24px 22px !important;
   animation: floatCard3 7s ease-in-out infinite !important;
   animation-delay: 2s !important;
+  opacity: 0.65 !important;
 }
 
 #home.hero .stack-card.card-4 {
@@ -11170,18 +11170,19 @@ div#services .cards .card.card-wide .card-actions {
   padding: 14px 18px !important;
   animation: floatCard4 7.5s ease-in-out infinite !important;
   animation-delay: 0.5s !important;
+  opacity: 0.6 !important;
 }
 
 /* Card 5: vertical capabilities (background layer, behind top 3) */
 #home.hero .stack-card.card-5 {
   top: -30px !important;
   left: 300px !important;
-  z-index: 10 !important;
+  z-index: 1 !important;
   width: 280px !important;
   padding: 20px 18px !important;
   animation: floatCard5 8s ease-in-out infinite !important;
   animation-delay: 1.5s !important;
-  opacity: 0.65 !important;
+  opacity: 0.5 !important;
 }
 
 #home.hero .card-cap-list {
@@ -11211,9 +11212,27 @@ div#services .cards .card.card-wide .card-actions {
 #home.hero .stack-card:hover {
   transform: translate(4px, -4px) scale(1.02) !important;
   border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 107, 0, 0.15) !important;
+  background: rgba(22, 22, 22, 1) !important;
   opacity: 1 !important;
   z-index: 10 !important;
+}
+
+#home.hero .stack-card:hover .card-label {
+  color: #a0b0c0 !important;
+}
+
+#home.hero .stack-card:hover .card-title {
+  color: #c8d0da !important;
+}
+
+#home.hero .stack-card:hover .card-tag {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #c8d0da !important;
+}
+
+#home.hero .stack-card:hover .card-cap-item {
+  color: #c0ccd8 !important;
 }
 
 #home.hero .card-icon {
@@ -11585,13 +11604,70 @@ div#services .cards .card.card-wide .card-actions {
 @keyframes floatCard5 { 0%, 100% { transform: translateY(0) rotate(0.3deg); } 50% { transform: translateY(-6px) rotate(-0.3deg); } }
 
 @media (max-width: 768px) {
-  .hero-cards-stack { height: auto !important; gap: 12px !important; margin: 40px auto 0 auto !important; }
-  .stack-card { position: relative !important; top: auto !important; left: auto !important; animation: none !important; width: 100% !important; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important; padding: 16px !important; }
-  .stack-card:hover { transform: none !important; }
-  .stack-card.card-4 { width: 100% !important; left: auto !important; }
-  .stack-card.card-5 { width: 100% !important; left: auto !important; top: auto !important; }
   .hero-split { grid-template-columns: 1fr !important; }
-  .hero-right { display: flex !important; justify-content: center !important; }
+  .hero-right { display: block !important; margin-top: 2rem !important; }
+
+  /* Replace card stack with compact capability grid */
+  .hero-cards-stack {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    margin: 0 auto !important;
+  }
+
+  .stack-card {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    animation: none !important;
+    width: 100% !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+    padding: 14px 14px !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background: rgba(18, 18, 18, 0.97) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .stack-card:hover { transform: none !important; }
+
+  /* Card 5 (capabilities) spans full width as a compact footer */
+  .stack-card.card-5 {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    left: auto !important;
+    top: auto !important;
+    padding: 12px 14px !important;
+  }
+
+  .stack-card.card-4 {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    left: auto !important;
+  }
+
+  /* Compact text for mobile */
+  .stack-card .card-label {
+    font-size: 0.65rem !important;
+    letter-spacing: 1px !important;
+  }
+  .stack-card .card-title {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+  .stack-card .card-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    font-size: 1rem !important;
+  }
+  .stack-card .card-cap-item {
+    font-size: 0.7rem !important;
+  }
 }
 
 /* ============================================================
