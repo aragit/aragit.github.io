@@ -1363,58 +1363,25 @@ a.card-link:hover{
 
 /* Foundational Substrate Styling */
 .foundational-substrate-block {
-  background: #0d1117;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-muted);
   padding: 2rem;
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Agentic Green Grid Overlay */
-.foundational-substrate-block::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 2 !important;
-  pointer-events: none !important;
-  opacity: 0.65 !important;
-  mix-blend-mode: screen !important;
-  
-  background-image:
-    /* ORANGE LINES (Standard Brand) */
-    repeating-linear-gradient(90deg, rgba(255,107,0,0.26) 0 1px, transparent 1px calc(16px)),
-    repeating-linear-gradient(0deg,  rgba(255,107,0,0.22) 0 1px, transparent 1px calc(16px)),
-
-    /* GREEN LINES (Cyber/Agentic Override) */
-    repeating-linear-gradient(90deg, rgba(0, 255, 136, 0.18) 0 2px, transparent 2px calc(10px)),
-    repeating-linear-gradient(0deg,  rgba(0, 255, 136, 0.16) 0 2px, transparent 2px calc(10px)),
-    
-    /* Tile Fill */
-    linear-gradient(45deg, rgba(0,0,0,0.18) 0 12.5%, transparent 12.5% 37.5%, rgba(0,0,0,0.18) 37.5% 50%, transparent 50% 87.5%, rgba(0,0,0,0.18) 87.5% 100%) !important;
-    
-  background-size: auto, auto, auto, auto, 32px 32px !important;
-  
-  /* Fade Mask */
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%);
-}
-
-/* Agentic Hover Glow (Green) */
 .foundational-substrate-block:hover {
-  border-color: rgba(0, 255, 136, 0.5) !important;
-  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15) !important;
+  border-color: var(--border-glow);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 15px rgba(255, 107, 0, 0.4);
 }
 
 .substrate-badge {
   font-family: monospace;
   font-size: 0.75rem;
-  color: #00ff88;
+  color: var(--border-glow);
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
-  position: relative;
-  z-index: 3;
 }
 
 .substrate-content-link {
@@ -1425,47 +1392,32 @@ a.card-link:hover{
 
 .foundational-substrate-block h3 {
   font-size: 1.3rem;
-  color: #e6edf3;
+  color: var(--text-main);
   margin: 0 0 0.7rem 0;
   font-weight: 600;
   transition: color 0.3s ease;
-  position: relative;
-  z-index: 3;
 }
 
 .foundational-substrate-block:hover h3 {
-  color: #00ff88;
+  color: var(--border-glow);
 }
 
 .foundational-substrate-block p {
   font-size: 0.95rem;
-  color: #8b949e;
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0 0 1.2rem 0;
-  position: relative;
-  z-index: 3;
 }
 
 .substrate-cta {
   font-size: 0.9rem;
-  color: #00ff88;
+  color: var(--border-glow);
   font-weight: 500;
   transition: opacity 0.3s ease;
-  position: relative;
-  z-index: 3;
 }
 
 .foundational-substrate-block:hover .substrate-cta {
   text-decoration: underline;
-}
-
-/* Agentic Tags/Text Styling */
-.substrate-badge,
-.substrate-cta {
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
 }
 
 /* Right Track: Featured Monolith */
