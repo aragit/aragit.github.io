@@ -11127,7 +11127,6 @@ div#services .cards .card.card-wide .card-actions {
   align-items: center !important;
   gap: 16px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease !important;
 }
 
 #home.hero .stack-card.card-1 {
@@ -11146,7 +11145,6 @@ div#services .cards .card.card-wide .card-actions {
   padding: 20px 22px !important;
   animation: floatCard2 6.5s ease-in-out infinite !important;
   animation-delay: 1s !important;
-  filter: brightness(0.75) !important;
 }
 
 #home.hero .stack-card.card-3 {
@@ -11156,7 +11154,6 @@ div#services .cards .card.card-wide .card-actions {
   padding: 24px 22px !important;
   animation: floatCard3 7s ease-in-out infinite !important;
   animation-delay: 2s !important;
-  filter: brightness(0.65) !important;
 }
 
 #home.hero .stack-card.card-4 {
@@ -11167,18 +11164,19 @@ div#services .cards .card.card-wide .card-actions {
   padding: 14px 18px !important;
   animation: floatCard4 7.5s ease-in-out infinite !important;
   animation-delay: 0.5s !important;
-  filter: brightness(0.6) !important;
 }
 
-/* Card 5: Core Capabilities — always in front */
+/* Card 5: Core Capabilities — always on top */
 #home.hero .stack-card.card-5 {
-  top: -30px !important;
-  left: 300px !important;
-  z-index: 10 !important;
-  width: 280px !important;
+  top: 10px !important;
+  left: 180px !important;
+  z-index: 20 !important;
+  width: 240px !important;
   padding: 20px 18px !important;
   animation: floatCard5 8s ease-in-out infinite !important;
   animation-delay: 1.5s !important;
+  border-color: rgba(255, 107, 0, 0.25) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 107, 0, 0.08) !important;
 }
 
 #home.hero .card-cap-list {
@@ -11206,28 +11204,26 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #home.hero .stack-card:hover {
-  transform: translateY(-4px) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 107, 0, 0.15) !important;
-  filter: brightness(1.1) !important;
-  z-index: 10 !important;
+  border-color: rgba(255, 107, 0, 0.35) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 107, 0, 0.12) !important;
+  z-index: 20 !important;
 }
 
 #home.hero .stack-card:hover .card-label {
-  color: #b0c0d0 !important;
+  color: #b8c8d8 !important;
 }
 
 #home.hero .stack-card:hover .card-title {
-  color: #dce4ec !important;
+  color: #e0e8f0 !important;
 }
 
 #home.hero .stack-card:hover .card-tag {
   border-color: rgba(255, 255, 255, 0.2) !important;
-  color: #dce4ec !important;
+  color: #e0e8f0 !important;
 }
 
 #home.hero .stack-card:hover .card-cap-item {
-  color: #d0dce8 !important;
+  color: #d8e4f0 !important;
 }
 
 #home.hero .card-icon {
@@ -11625,10 +11621,9 @@ div#services .cards .card.card-wide .card-actions {
     transform: none !important;
     background: #141414 !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    filter: none !important;
   }
 
-  .stack-card:hover { transform: none !important; }
+  .stack-card:hover { border-color: rgba(255, 107, 0, 0.25) !important; }
 
   /* Card 5 (capabilities) spans full width as a compact footer */
   .stack-card.card-5 {
