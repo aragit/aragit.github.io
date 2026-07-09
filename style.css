@@ -11119,7 +11119,7 @@ div#services .cards .card.card-wide .card-actions {
   position: absolute !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  background: rgba(18, 18, 18, 0.97) !important;
+  background: #141414 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 12px !important;
   padding: 18px 22px !important;
@@ -11127,8 +11127,7 @@ div#services .cards .card.card-wide .card-actions {
   align-items: center !important;
   gap: 16px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, background 0.3s ease !important;
-  opacity: 0.55 !important;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease !important;
 }
 
 #home.hero .stack-card.card-1 {
@@ -11137,7 +11136,6 @@ div#services .cards .card.card-wide .card-actions {
   z-index: 4 !important;
   padding: 14px 20px !important;
   animation: floatCard1 6s ease-in-out infinite !important;
-  opacity: 1 !important;
 }
 
 #home.hero .stack-card.card-2 {
@@ -11148,7 +11146,7 @@ div#services .cards .card.card-wide .card-actions {
   padding: 20px 22px !important;
   animation: floatCard2 6.5s ease-in-out infinite !important;
   animation-delay: 1s !important;
-  opacity: 0.7 !important;
+  filter: brightness(0.75) !important;
 }
 
 #home.hero .stack-card.card-3 {
@@ -11158,7 +11156,7 @@ div#services .cards .card.card-wide .card-actions {
   padding: 24px 22px !important;
   animation: floatCard3 7s ease-in-out infinite !important;
   animation-delay: 2s !important;
-  opacity: 0.65 !important;
+  filter: brightness(0.65) !important;
 }
 
 #home.hero .stack-card.card-4 {
@@ -11169,19 +11167,18 @@ div#services .cards .card.card-wide .card-actions {
   padding: 14px 18px !important;
   animation: floatCard4 7.5s ease-in-out infinite !important;
   animation-delay: 0.5s !important;
-  opacity: 0.6 !important;
+  filter: brightness(0.6) !important;
 }
 
-/* Card 5: vertical capabilities (background layer, behind top 3) */
+/* Card 5: Core Capabilities — always in front */
 #home.hero .stack-card.card-5 {
   top: -30px !important;
   left: 300px !important;
-  z-index: 1 !important;
+  z-index: 10 !important;
   width: 280px !important;
   padding: 20px 18px !important;
   animation: floatCard5 8s ease-in-out infinite !important;
   animation-delay: 1.5s !important;
-  opacity: 0.5 !important;
 }
 
 #home.hero .card-cap-list {
@@ -11212,8 +11209,7 @@ div#services .cards .card.card-wide .card-actions {
   transform: translateY(-4px) !important;
   border-color: rgba(255, 255, 255, 0.25) !important;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 107, 0, 0.15) !important;
-  background: rgba(22, 22, 22, 1) !important;
-  opacity: 1 !important;
+  filter: brightness(1.1) !important;
   z-index: 10 !important;
 }
 
@@ -11626,10 +11622,10 @@ div#services .cards .card.card-wide .card-actions {
     width: 100% !important;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
     padding: 14px 14px !important;
-    opacity: 1 !important;
     transform: none !important;
-    background: rgba(18, 18, 18, 0.97) !important;
+    background: #141414 !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    filter: none !important;
   }
 
   .stack-card:hover { transform: none !important; }
