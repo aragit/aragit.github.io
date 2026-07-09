@@ -78,8 +78,6 @@ h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
 .btn-terminal .btn-prompt{color:var(--accent);font-weight:700;margin-right:2px}
 .btn-terminal:hover{
   border-color:var(--accent);color:var(--accent);
-  background:rgba(255,107,0,0.06);
-  box-shadow:0 0 20px rgba(255,107,0,0.1),inset 0 0 20px rgba(255,107,0,0.03);
   transform:translateY(-2px);
 }
 .btn-terminal:focus-visible{
