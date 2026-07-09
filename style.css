@@ -11168,15 +11168,15 @@ div#services .cards .card.card-wide .card-actions {
 
 /* Card 5: Core Capabilities — always on top */
 #home.hero .stack-card.card-5 {
-  top: -15px !important;
-  left: 220px !important;
+  top: -20px !important;
+  left: 240px !important;
   z-index: 20 !important;
-  width: 240px !important;
-  padding: 20px 18px !important;
+  width: 220px !important;
+  padding: 18px 16px !important;
   animation: floatCard5 8s ease-in-out infinite !important;
   animation-delay: 1.5s !important;
-  border-color: rgba(255, 107, 0, 0.25) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 107, 0, 0.08) !important;
+  border-color: rgba(255, 107, 0, 0.3) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 107, 0, 0.1) !important;
 }
 
 #home.hero .card-cap-list {
