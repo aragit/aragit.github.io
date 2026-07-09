@@ -11129,7 +11129,6 @@ div#services .cards .card.card-wide .card-actions {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, background 0.3s ease !important;
   opacity: 0.55 !important;
-  will-change: transform, opacity !important;
 }
 
 #home.hero .stack-card.card-1 {
@@ -11210,7 +11209,7 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #home.hero .stack-card:hover {
-  transform: translate(4px, -4px) scale(1.02) !important;
+  transform: translateY(-4px) !important;
   border-color: rgba(255, 255, 255, 0.25) !important;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 107, 0, 0.15) !important;
   background: rgba(22, 22, 22, 1) !important;
@@ -11219,20 +11218,20 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #home.hero .stack-card:hover .card-label {
-  color: #a0b0c0 !important;
+  color: #b0c0d0 !important;
 }
 
 #home.hero .stack-card:hover .card-title {
-  color: #c8d0da !important;
+  color: #dce4ec !important;
 }
 
 #home.hero .stack-card:hover .card-tag {
   border-color: rgba(255, 255, 255, 0.2) !important;
-  color: #c8d0da !important;
+  color: #dce4ec !important;
 }
 
 #home.hero .stack-card:hover .card-cap-item {
-  color: #c0ccd8 !important;
+  color: #d0dce8 !important;
 }
 
 #home.hero .card-icon {
@@ -11262,14 +11261,14 @@ div#services .cards .card.card-wide .card-actions {
   font-size: 0.72rem !important;
   text-transform: uppercase !important;
   letter-spacing: 1.5px !important;
-  color: #8899a6 !important;
+  color: #a0b0c0 !important;
   font-weight: 600 !important;
 }
 
 #home.hero .card-content .card-title {
   margin: 0 !important;
   font-size: 0.75rem !important;
-  color: #8899a6 !important;
+  color: #b0bcc8 !important;
   font-weight: 400 !important;
   letter-spacing: -0.2px !important;
   line-height: 1.4 !important;
