@@ -11168,8 +11168,8 @@ div#services .cards .card.card-wide .card-actions {
 
 /* Card 5: Core Capabilities — always on top */
 #home.hero .stack-card.card-5 {
-  top: 10px !important;
-  left: 180px !important;
+  top: -15px !important;
+  left: 220px !important;
   z-index: 20 !important;
   width: 240px !important;
   padding: 20px 18px !important;
