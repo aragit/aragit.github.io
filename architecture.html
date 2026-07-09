@@ -3,795 +3,518 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SentriXIA v2.0 (AXIOMIS) | Arash Nicoomanesh</title>
-  <meta name="description" content="SentriXIA v2.0 (AXIOMIS) - A Neuro-Symbolic, Agentic, Safe, Adaptable, and Explainable AI Architecture.">
+  <title>Architecture | Arash Nicoomanesh</title>
+  <meta name="description" content="Production agentic AI architectures for high-liability environments. Guarded Execution, Verify-Then-Generate, and Algorithmic Arbitration.">
   
+  <!-- Modern Typography: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
     :root {
+      /* Deep Dark SOTA Palette */
       --bg-base: #050505;
-      --bg-surface: rgba(14, 14, 17, 0.6);
-      --bg-surface-solid: #0e0e11;
+      --bg-surface: #0e0e11;
       --bg-surface-hover: #15151a;
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-strong: rgba(255, 255, 255, 0.15);
       
-      --text-main: #e6edf3;
-      --text-muted: #8b949e;
+      --text-main: #ededef;
+      --text-muted: #a1a1aa;
       --text-dim: #71717a;
       
-      --accent-blue: #58a6ff;
-      --accent-blue-glow: rgba(88, 166, 255, 0.15);
-      --accent-purple: #a371f7;
-      --accent-purple-glow: rgba(163, 113, 247, 0.15);
-      --accent-green: #3fb950;
-      --accent-green-glow: rgba(63, 185, 80, 0.15);
-      --accent-orange: #ff6b00;
-      --accent-orange-glow: rgba(255, 107, 0, 0.15);
-      --accent-red: #f85149;
-      --accent-red-glow: rgba(248, 81, 73, 0.2);
+      --accent-blue: #3b82f6;
+      --accent-blue-glow: rgba(59, 130, 246, 0.15);
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-purple: #8b5cf6;
 
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
       
       --radius-sm: 6px;
       --radius-md: 12px;
       --radius-lg: 24px;
       
-      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      --transition-fast: all 0.15s ease-out;
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg-base);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-    }
-    
-    body {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      line-height: 1.6;
-      position: relative;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+    html { scroll-behavior: smooth; background: var(--bg-base); color: var(--text-main); font-family: var(--font-sans); }
+    body { -webkit-font-smoothing: antialiased; line-height: 1.6; position: relative; overflow-x: hidden; }
 
     /* Ambient Background Glow */
     body::before {
-      content: ''; 
-      position: fixed; 
-      top: -30%; 
-      left: -20%; 
-      width: 70vw; 
-      height: 70vh;
-      background: radial-gradient(ellipse at center, 
-        rgba(88, 166, 255, 0.03) 0%, 
-        rgba(163, 113, 247, 0.02) 30%,
-        transparent 70%);
-      filter: blur(80px); 
-      z-index: -1; 
-      pointer-events: none;
+      content: ''; position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vh;
+      background: radial-gradient(circle, var(--accent-blue-glow) 0%, transparent 70%);
+      filter: blur(100px); z-index: -1; pointer-events: none;
     }
 
-    body::after {
-      content: ''; 
-      position: fixed; 
-      bottom: -30%; 
-      right: -20%; 
-      width: 60vw; 
-      height: 60vh;
-      background: radial-gradient(ellipse at center, 
-        rgba(63, 185, 80, 0.02) 0%, 
-        transparent 70%);
-      filter: blur(100px); 
-      z-index: -1; 
-      pointer-events: none;
-    }
+    a { color: var(--text-main); text-decoration: none; transition: var(--transition); }
+    
+    /* GLASS NAVIGATION */
+    .nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle); }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); font-size: 0.875rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
 
-    .mono { 
-      font-family: var(--font-mono); 
-    }
+    /* LAYOUT CONTAINERS */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 8rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .section-last { border-bottom: none; }
 
-    /* CONTAINER */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 6rem 2rem 4rem;
-    }
+    /* TYPOGRAPHY */
+    .hero-title { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(180deg, #fff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 680px; margin-bottom: 2rem; line-height: 1.7; }
 
-    /* HEADER */
-    header {
-      margin-bottom: 5rem;
-      max-width: 900px;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
+    /* Hero two-column layout */
+    .hero-layout { display: flex; align-items: center; gap: 48px; }
+    .hero-text { flex: 1; min-width: 0; }
+    .hero-img { flex: 0 0 360px; max-width: 360px; }
+    .hero-img img { width: 100%; height: auto; border-radius: 0; opacity: 0.9; transition: opacity 0.3s; }
+    .hero-img img:hover { opacity: 1; }
+    @media(max-width: 900px) {
+      .hero-layout { flex-direction: column; text-align: center; }
+      .hero-img { flex: 0 0 auto; max-width: 280px; order: -1; }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
     }
+    .thesis-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.875rem; color: var(--text-main); font-weight: 500; }
+    .thesis-badge i { color: var(--accent-blue); }
+    
+    .sec-title { font-size: 2.25rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .sec-intro { font-size: 1.125rem; color: var(--text-muted); max-width: 700px; margin-bottom: 4rem; }
 
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      margin-bottom: 1rem;
-      letter-spacing: -0.03em;
-      font-weight: 700;
-      background: linear-gradient(135deg, #fff 0%, #a1a1aa 50%, #fff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    /* PIPELINE STACK LAYOUT */
+    .stack-pipeline { position: relative; display: flex; flex-direction: column; gap: 1.5rem; padding-left: 4rem; margin-top: 2rem; }
+    .stack-pipeline::before { content: ''; position: absolute; top: 1rem; bottom: 1rem; left: 1.4rem; width: 2px; background: linear-gradient(to bottom, var(--accent-purple), var(--accent-blue), var(--accent-green)); opacity: 0.4; }
+    .stack-layer { position: relative; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem 2rem; transition: var(--transition); }
+    .stack-layer:hover { border-color: var(--border-strong); transform: translateX(6px); background: var(--bg-surface-hover); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    .stack-node { position: absolute; left: -3.6rem; top: 1.5rem; width: 2rem; height: 2rem; background: var(--bg-base); border: 2px solid var(--border-subtle); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); z-index: 2; transition: var(--transition); }
+    .stack-layer:hover .stack-node { border-color: var(--accent-blue); box-shadow: 0 0 15px var(--accent-blue-glow); color: var(--accent-blue); }
+    .layer-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .layer-header i { color: var(--text-dim); font-size: 1.25rem; transition: var(--transition); }
+    .stack-layer:hover .layer-header i { color: var(--accent-blue); }
+    .layer-title { font-size: 1.25rem; font-weight: 500; color: var(--text-main); }
+    .layer-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem; max-width: 800px; }
+    .layer-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); transition: var(--transition); }
+    .stack-layer:hover .tech-tag { color: var(--text-muted); border-color: rgba(255,255,255,0.1); }
 
-    .subtitle {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 800px;
-    }
+    /* ASYMMETRICAL PATTERN SHOWCASE */
+    .pattern-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin-bottom: 6rem; align-items: start; }
+    @media (max-width: 900px) { .pattern-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    
+    .pattern-content { position: sticky; top: 120px; }
+    .pattern-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); margin-bottom: 1rem; display: inline-block; }
+    .pl-red { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); }
+    .pl-blue { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); }
+    .pl-green { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+    
+    .pattern-title { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .pattern-liability { font-size: 1rem; font-weight: 500; margin-bottom: 1.5rem; padding-left: 1rem; border-left: 2px solid; }
+    .pattern-desc { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    
+    /* REPO CHIPS */
+    .repo-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+    .repo-card { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+    .repo-card:hover { background: var(--bg-surface-hover); border-color: var(--border-strong); }
+    .repo-info { display: flex; flex-direction: column; gap: 0.25rem; }
+    .repo-name { font-size: 0.95rem; font-weight: 500; color: var(--text-main); }
+    .repo-path { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); }
+    .repo-badges { display: flex; gap: 0.5rem; }
+    .badge { font-size: 0.7rem; font-family: var(--font-mono); padding: 0.15rem 0.5rem; border-radius: 100px; border: 1px solid var(--border-subtle); }
+    .b-pub { color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); }
+    .b-priv { color: var(--text-muted); }
+    .b-arch { color: var(--text-dim); text-decoration: line-through; }
+    .repo-note { font-size: 0.85rem; color: var(--text-dim); font-style: italic; margin-top: -0.5rem; margin-bottom: 1rem; }
 
-    /* STACK CONTAINER */
-    .stack-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-top: 3rem;
-      position: relative;
-      padding-left: 80px;
-    }
+    /* IDE TERMINAL BLOCK */
+    .terminal { background: #0c0c0f; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 2rem; }
+    .term-header { background: #121217; padding: 0.75rem 1rem; display: flex; align-items: center; border-bottom: 1px solid var(--border-subtle); }
+    .mac-dots { display: flex; gap: 6px; }
+    .mac-dots div { width: 10px; height: 10px; border-radius: 50%; }
+    .mac-dots .close { background: #ff5f56; } .mac-dots .min { background: #ffbd2e; } .mac-dots .max { background: #27c93f; }
+    .term-title { margin: 0 auto; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); transform: translateX(-20px); }
+    .term-body { padding: 1.5rem; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.7; color: #c9d1d9; overflow-x: auto; }
+    
+    /* Syntax Highlighting */
+    .c-sys { color: #79c0ff; }
+    .c-err { color: #ff7b72; font-weight: bold; }
+    .c-warn { color: #d2a8ff; }
+    .c-ok { color: #7ee787; font-weight: bold; }
 
-    /* DATA SPINE - The continuous glowing vertical line */
-    .stack-container::before {
-      content: '';
-      position: absolute;
-      left: 32px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(
-        to bottom,
-        var(--accent-blue) 0%,
-        var(--accent-purple) 15%,
-        var(--accent-green) 35%,
-        var(--accent-orange) 50%,
-        var(--accent-blue) 65%,
-        var(--accent-blue) 75%,
-        var(--accent-red) 85%,
-        var(--accent-purple) 100%
-      );
-      opacity: 0.6;
-      box-shadow: 
-        0 0 8px rgba(88, 166, 255, 0.4),
-        0 0 20px rgba(88, 166, 255, 0.2),
-        0 0 40px rgba(88, 166, 255, 0.1);
-    }
+    /* DATA TABLES */
+    .table-container { width: 100%; overflow-x: auto; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { padding: 1rem 1.5rem; background: rgba(255,255,255,0.02); font-weight: 500; color: var(--text-main); font-size: 0.9rem; border-bottom: 1px solid var(--border-subtle); }
+    td { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 0.95rem; }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { font-weight: 500; color: var(--text-main); }
 
-    /* Spine pulse animation */
-    .stack-container::after {
-      content: '';
-      position: absolute;
-      left: 29px;
-      top: 0;
-      width: 8px;
-      height: 8px;
-      background: var(--accent-blue);
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--accent-blue), 0 0 24px var(--accent-blue);
-      animation: spinePulse 8s ease-in-out infinite;
-    }
+    /* AXIOMIS BANNER */
+    .axiomis-banner { background: linear-gradient(145deg, #0f172a, #020617); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: var(--radius-lg); padding: 4rem; position: relative; overflow: hidden; }
+    .axiomis-banner::after { content: ''; position: absolute; top: 0; right: 0; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%); }
+    .ax-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .ax-list li { display: flex; align-items: center; gap: 1rem; font-size: 1.05rem; }
+    .ax-list i { color: var(--accent-blue); }
 
-    @keyframes spinePulse {
-      0%, 100% { top: 0; background: var(--accent-blue); box-shadow: 0 0 12px var(--accent-blue), 0 0 24px var(--accent-blue); }
-      12.5% { background: var(--accent-purple); box-shadow: 0 0 12px var(--accent-purple), 0 0 24px var(--accent-purple); }
-      25% { background: var(--accent-green); box-shadow: 0 0 12px var(--accent-green), 0 0 24px var(--accent-green); }
-      37.5% { background: var(--accent-orange); box-shadow: 0 0 12px var(--accent-orange), 0 0 24px var(--accent-orange); }
-      50% { background: var(--accent-blue); box-shadow: 0 0 12px var(--accent-blue), 0 0 24px var(--accent-blue); }
-      62.5% { background: var(--accent-blue); box-shadow: 0 0 12px var(--accent-blue), 0 0 24px var(--accent-blue); }
-      75% { background: var(--accent-red); box-shadow: 0 0 12px var(--accent-red), 0 0 24px var(--accent-red); }
-      87.5% { background: var(--accent-purple); box-shadow: 0 0 12px var(--accent-purple), 0 0 24px var(--accent-purple); }
-    }
-
-    /* LAYER CARD */
-    .layer-card {
-      background: var(--bg-surface);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border-subtle);
-      padding: 1.75rem 2rem;
-      border-radius: var(--radius-md);
-      position: relative;
-      margin-bottom: 1rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: var(--transition);
-    }
-
-    .layer-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .layer-card:hover {
-      transform: translateX(4px);
-      border-color: var(--border-strong);
-      background: rgba(14, 14, 17, 0.8);
-    }
-
-    /* Staggered animation delays */
-    .layer-card:nth-child(1) { animation-delay: 0.1s; }
-    .layer-card:nth-child(2) { animation-delay: 0.2s; }
-    .layer-card:nth-child(3) { animation-delay: 0.3s; }
-    .layer-card:nth-child(4) { animation-delay: 0.4s; }
-    .layer-card:nth-child(5) { animation-delay: 0.5s; }
-    .layer-card:nth-child(6) { animation-delay: 0.6s; }
-    .layer-card:nth-child(7) { animation-delay: 0.7s; }
-    .layer-card:nth-child(8) { animation-delay: 0.8s; }
-
-    /* LAYER HEADER */
-    .layer-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 0.75rem;
-    }
-
-    .layer-id {
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.02em;
-    }
-
-    .layer-name {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .layer-purpose {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-style: italic;
-      margin-left: auto;
-    }
-
-    /* COMPONENT GROUP */
-    .component-group {
-      margin-bottom: 1rem;
-    }
-
-    .component-group:last-child {
-      margin-bottom: 0;
-    }
-
-    .component-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-      margin-bottom: 0.5rem;
-      display: block;
-      font-weight: 500;
-    }
-
-    /* TAG CONTAINER */
-    .tag-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    /* TAG - IDE-like syntax chips */
-    .tag {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      transition: var(--transition-fast);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tag::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      pointer-events: none;
-    }
-
-    .tag:hover {
-      transform: translateY(-1px);
-    }
-
-    /* LAYER-SPECIFIC COLORS */
-
-    /* L0 - Blue */
-    .l0 {
-      border-left: 4px solid var(--accent-blue);
-    }
-    .l0 .layer-id { color: var(--accent-blue); }
-    .l0:hover { 
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 20px var(--accent-blue-glow), inset 0 0 20px var(--accent-blue-glow);
-    }
-    .l0 .tag:hover {
-      border-color: rgba(88, 166, 255, 0.4);
-      color: var(--accent-blue);
-      background: rgba(88, 166, 255, 0.08);
-      box-shadow: 0 0 12px var(--accent-blue-glow);
-    }
-
-    /* L1 - Purple */
-    .l1 {
-      border-left: 4px solid var(--accent-purple);
-    }
-    .l1 .layer-id { color: var(--accent-purple); }
-    .l1:hover { 
-      border-color: var(--accent-purple);
-      box-shadow: 0 0 20px var(--accent-purple-glow), inset 0 0 20px var(--accent-purple-glow);
-    }
-    .l1 .tag:hover {
-      border-color: rgba(163, 113, 247, 0.4);
-      color: var(--accent-purple);
-      background: rgba(163, 113, 247, 0.08);
-      box-shadow: 0 0 12px var(--accent-purple-glow);
-    }
-
-    /* L2/L3 - Green */
-    .l2 {
-      border-left: 4px solid var(--accent-green);
-    }
-    .l2 .layer-id { color: var(--accent-green); }
-    .l2:hover { 
-      border-color: var(--accent-green);
-      box-shadow: 0 0 20px var(--accent-green-glow), inset 0 0 20px var(--accent-green-glow);
-    }
-    .l2 .tag:hover {
-      border-color: rgba(63, 185, 80, 0.4);
-      color: var(--accent-green);
-      background: rgba(63, 185, 80, 0.08);
-      box-shadow: 0 0 12px var(--accent-green-glow);
-    }
-
-    /* L3.5 - Orange */
-    .l3-5 {
-      border-left: 4px solid var(--accent-orange);
-    }
-    .l3-5 .layer-id { color: var(--accent-orange); }
-    .l3-5:hover { 
-      border-color: var(--accent-orange);
-      box-shadow: 0 0 20px var(--accent-orange-glow), inset 0 0 20px var(--accent-orange-glow);
-    }
-    .l3-5 .tag:hover {
-      border-color: rgba(255, 107, 0, 0.4);
-      color: var(--accent-orange);
-      background: rgba(255, 107, 0, 0.08);
-      box-shadow: 0 0 12px var(--accent-orange-glow);
-    }
-
-    /* L4 - Blue */
-    .l4 {
-      border-left: 4px solid var(--accent-blue);
-    }
-    .l4 .layer-id { color: var(--accent-blue); }
-    .l4:hover { 
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 20px var(--accent-blue-glow), inset 0 0 20px var(--accent-blue-glow);
-    }
-    .l4 .tag:hover {
-      border-color: rgba(88, 166, 255, 0.4);
-      color: var(--accent-blue);
-      background: rgba(88, 166, 255, 0.08);
-      box-shadow: 0 0 12px var(--accent-blue-glow);
-    }
-
-    /* L5 - Blue */
-    .l5 {
-      border-left: 4px solid var(--accent-blue);
-    }
-    .l5 .layer-id { color: var(--accent-blue); }
-    .l5:hover { 
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 20px var(--accent-blue-glow), inset 0 0 20px var(--accent-blue-glow);
-    }
-    .l5 .tag:hover {
-      border-color: rgba(88, 166, 255, 0.4);
-      color: var(--accent-blue);
-      background: rgba(88, 166, 255, 0.08);
-      box-shadow: 0 0 12px var(--accent-blue-glow);
-    }
-
-    /* L6 - Red (Armored Checkpoint) */
-    .l6 {
-      border-left: 4px solid var(--accent-red);
-      background: rgba(248, 81, 73, 0.03);
-      position: relative;
-    }
-
-    .l6::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: var(--radius-md);
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(248, 81, 73, 0.02) 10px,
-        rgba(248, 81, 73, 0.02) 20px
-      );
-      pointer-events: none;
-    }
-
-    .l6 .layer-id { 
-      color: var(--accent-red);
-      text-shadow: 0 0 8px var(--accent-red);
-    }
-    .l6:hover { 
-      border-color: var(--accent-red);
-      box-shadow: 
-        0 0 25px var(--accent-red-glow), 
-        inset 0 0 25px var(--accent-red-glow),
-        0 0 50px rgba(248, 81, 73, 0.1);
-    }
-    .l6 .tag {
-      border-color: rgba(248, 81, 73, 0.2);
-    }
-    .l6 .tag:hover {
-      border-color: rgba(248, 81, 73, 0.5);
-      color: var(--accent-red);
-      background: rgba(248, 81, 73, 0.1);
-      box-shadow: 0 0 15px var(--accent-red-glow);
-    }
-
-    /* L7 - Purple */
-    .l7 {
-      border-left: 4px solid var(--accent-purple);
-    }
-    .l7 .layer-id { color: var(--accent-purple); }
-    .l7:hover { 
-      border-color: var(--accent-purple);
-      box-shadow: 0 0 20px var(--accent-purple-glow), inset 0 0 20px var(--accent-purple-glow);
-    }
-    .l7 .tag:hover {
-      border-color: rgba(163, 113, 247, 0.4);
-      color: var(--accent-purple);
-      background: rgba(163, 113, 247, 0.08);
-      box-shadow: 0 0 12px var(--accent-purple-glow);
-    }
-
-    /* SAFETY TAG SPECIAL STYLE */
-    .tag-safety {
-      border-color: rgba(248, 81, 73, 0.4) !important;
-      color: var(--accent-red) !important;
-      background: rgba(248, 81, 73, 0.08);
-      animation: safetyPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes safetyPulse {
-      0%, 100% { box-shadow: 0 0 8px rgba(248, 81, 73, 0.2); }
-      50% { box-shadow: 0 0 16px rgba(248, 81, 73, 0.4); }
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .container {
-        padding: 4rem 1.5rem 3rem;
-      }
-
-      .stack-container {
-        padding-left: 60px;
-      }
-
-      .stack-container::before {
-        left: 24px;
-      }
-
-      .stack-container::after {
-        left: 21px;
-      }
-
-      .layer-card {
-        padding: 1.25rem 1.5rem;
-      }
-
-      .layer-header {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .layer-purpose {
-        margin-left: 0;
-        width: 100%;
-        margin-top: 0.5rem;
-      }
-
-      .tag {
-        font-size: 0.75rem;
-        padding: 5px 10px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-      }
-
-      .stack-container {
-        padding-left: 50px;
-      }
-
-      .stack-container::before {
-        left: 20px;
-      }
-
-      .stack-container::after {
-        left: 17px;
-      }
-
-      .layer-card {
-        padding: 1rem;
-      }
-
-      .layer-id {
-        font-size: 1rem;
-      }
-
-      .layer-name {
-        font-size: 1.05rem;
-      }
-    }
-
-    /* Scroll reveal utility */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 768px) {
+      .stack-pipeline { padding-left: 3rem; }
+      .stack-pipeline::before { left: 0.9rem; }
+      .stack-node { left: -2.6rem; width: 1.5rem; height: 1.5rem; font-size: 0.6rem; }
+      .stack-layer { padding: 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1 class="mono">SentriXIA v2.0 (AXIOMIS)</h1>
-      <p class="subtitle">
-        Level 1 Architecture breakdown. A production-grade Neuro-Symbolic system designed for safe, adaptable, and explainable execution in clinical and high-liability domains.
-      </p>
-    </header>
-
-    <div class="stack-container">
-      
-      <!-- L0 -->
-      <div class="layer-card l0">
-        <div class="layer-header">
-          <span class="layer-id mono">L0</span>
-          <span class="layer-name">Interface (Gateway)</span>
-          <span class="layer-purpose">Entry & routing layer</span>
-        </div>
-        <div class="tag-container mono">
-          <span class="tag">API Router (FastAPI)</span>
-          <span class="tag">AuthN/AuthZ (OAuth2/RBAC)</span>
-          <span class="tag">Request Validator</span>
-          <span class="tag">Session Manager</span>
-          <span class="tag">Rate Limiter</span>
-          <span class="tag">Orchestrator</span>
-          <span class="tag">Trace ID Generator</span>
-        </div>
-      </div>
-
-      <!-- L1 -->
-      <div class="layer-card l1">
-        <div class="layer-header">
-          <span class="layer-id mono">L1</span>
-          <span class="layer-name">SENSUS (Perception & Fusion)</span>
-          <span class="layer-purpose">Convert raw inputs to structured signals</span>
-        </div>
-        <div class="component-group">
-          <span class="component-title">Multimodal Pipelines</span>
-          <div class="tag-container mono">
-            <span class="tag">Text (NER, Negation, Concept Mapping)</span>
-            <span class="tag">Voice (ASR, Diarization)</span>
-            <span class="tag">Vision (DICOM/WSI, Embeddings)</span>
-            <span class="tag">Multimodal Fusion (Alignment)</span>
-          </div>
-        </div>
-        <div class="component-group">
-          <span class="component-title">Pre-Flight Safety</span>
-          <div class="tag-container mono">
-            <span class="tag tag-safety">Safety & Risk Scanner (Emergency Trigger → L6)</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- L2 / L3 -->
-      <div class="layer-card l2">
-        <div class="layer-header">
-          <span class="layer-id mono">L2/L3</span>
-          <span class="layer-name">MEMORIA (Memory & Knowledge)</span>
-          <span class="layer-purpose">Store and retrieve intelligence</span>
-        </div>
-        <div class="tag-container mono">
-          <span class="tag">Context Memory (Redis)</span>
-          <span class="tag">Semantic Memory (FAISS/Qdrant)</span>
-          <span class="tag">Episodic Memory (DuckDB)</span>
-          <span class="tag">Procedural Patterns</span>
-          <span class="tag">State Reconciliation Engine</span>
-          <span class="tag">Knowledge Graph (SPO)</span>
-        </div>
-      </div>
-
-      <!-- L3.5 -->
-      <div class="layer-card l3-5">
-        <div class="layer-header">
-          <span class="layer-id mono">L3.5</span>
-          <span class="layer-name">REGULA (Domain Adapter)</span>
-          <span class="layer-purpose">Apply domain rules and constraints</span>
-        </div>
-        <div class="tag-container mono">
-          <span class="tag">Tool Registry</span>
-          <span class="tag">Ontology Mapping (SNOMED/ICD/LOINC)</span>
-          <span class="tag">Constraint Engine (Invariants)</span>
-          <span class="tag">Domain Adapter</span>
-        </div>
-      </div>
-
-      <!-- L4 -->
-      <div class="layer-card l4">
-        <div class="layer-header">
-          <span class="layer-id mono">L4</span>
-          <span class="layer-name">RATIO (Reasoning & Planning)</span>
-          <span class="layer-purpose">Think and plan actions</span>
-        </div>
-        <div class="tag-container mono">
-          <span class="tag">Reasoner (google/MedGemma-4B-IT)</span>
-          <span class="tag">Memory Fusion</span>
-          <span class="tag">DAG Compiler</span>
-          <span class="tag">Validation Engine (Cycle Detection)</span>
-          <span class="tag">Delta Patch (Replan)</span>
-          <span class="tag">Constrained Decode</span>
-          <span class="tag">Reflexa Client</span>
-        </div>
-      </div>
-
-      <!-- L5 -->
-      <div class="layer-card l5">
-        <div class="layer-header">
-          <span class="layer-id mono">L5</span>
-          <span class="layer-name">ACTUS (Execution Layer)</span>
-          <span class="layer-purpose">Execute the compiled plan</span>
-        </div>
-        <div class="tag-container mono">
-          <span class="tag">Topological Executor (DAG)</span>
-          <span class="tag">DLM Manager</span>
-          <span class="tag">Agent Dispatcher</span>
-          <span class="tag">gRPC Execution Agent</span>
-          <span class="tag">State Proposal & Telemetry</span>
-        </div>
-      </div>
-
-      <!-- L6 -->
-      <div class="layer-card l6">
-        <div class="layer-header">
-          <span class="layer-id mono">L6</span>
-          <span class="layer-name">NORMA (Governance & Safety)</span>
-          <span class="layer-purpose">Enforce rules and safety limits</span>
-        </div>
-        <div class="tag-container mono">
-          <span class="tag">Policy Evaluator</span>
-          <span class="tag">Constraint Engine</span>
-          <span class="tag">Decision Maker (Approve/Block)</span>
-          <span class="tag">Audit Logger (Immutable)</span>
-          <span class="tag">Governed Output</span>
-        </div>
-      </div>
-
-      <!-- L7 -->
-      <div class="layer-card l7">
-        <div class="layer-header">
-          <span class="layer-id mono">L7</span>
-          <span class="layer-name">REFLEXA (Learning & Meta-Cognition)</span>
-          <span class="layer-purpose">Learn and improve system mechanics</span>
-        </div>
-        <div class="tag-container mono">
-          <span class="tag">Trace Scorer</span>
-          <span class="tag">Root Cause Analysis</span>
-          <span class="tag">Pattern Learner</span>
-          <span class="tag">Continuous Improvement</span>
-          <span class="tag">Observability (OTEL)</span>
-        </div>
-      </div>
-
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">Arash Nicoomanesh</a>
+      <ul class="nav-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#" class="active">Architecture</a></li>
+        <li><a href="https://github.com/aragit" target="_blank">GitHub</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
-  <script>
-    // Staggered cascade animation on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      const layerCards = document.querySelectorAll('.layer-card');
+  <!-- HERO SECTION -->
+  <section class="section" style="padding-top: 12rem;">
+    <div class="container">
+      <div class="hero-layout">
+        <div class="hero-text">
+          <div class="thesis-badge mb-6">
+            <i class="fa-solid fa-microchip"></i> Agentic Systems Architect
+          </div>
+          <h1 class="hero-title">Architecture of<br>agentic systems.</h1>
+          <p class="hero-subtitle">I engineer compound systems that separate probabilistic reasoning from deterministic execution. Fifteen years across ML, LLMs, and agentic AI — building architectures that survive in high-liability clinical and enterprise environments.</p>
+        </div>
+        <div class="hero-img">
+          <img src="assets/arch2.png" alt="Architecture Diagram">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7-LAYER STACK (BENTO) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="sec-title">The composable stack</h2>
+      <p class="sec-intro">Every system implements a complete production pipeline mapped to a unified architecture. Layers are decoupled, allowing rapid transfer across clinical, financial, and competitive domains.</p>
       
-      // Intersection Observer for scroll-triggered animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
+      <div class="stack-pipeline">
+        <!-- Layer 07 -->
+        <div class="stack-layer">
+          <div class="stack-node">07</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-network-wired"></i>
+              <h3 class="layer-title">Meta-Cognition</h3>
+            </div>
+            <p class="layer-desc">Top-level arbitration and system health monitoring. Evaluates model drift and dynamically adjusts confidence thresholds.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Confidence Decay</span>
+              <span class="tech-tag">Uncertainty Quantification</span>
+              <span class="tech-tag">Drift Detection</span>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 06 -->
+        <div class="stack-layer">
+          <div class="stack-node">06</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-shield-halved"></i>
+              <h3 class="layer-title">Governance</h3>
+            </div>
+            <p class="layer-desc">The deterministic safety net. Mathematical validation and hard guardrails that cannot be bypassed by neural outputs.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Policy-as-Code</span>
+              <span class="tech-tag">OPA / Rego</span>
+              <span class="tech-tag">Neuro-Symbolic Guards</span>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 05 -->
+        <div class="stack-layer">
+          <div class="stack-node">05</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-bolt"></i>
+              <h3 class="layer-title">Execution</h3>
+            </div>
+            <p class="layer-desc">Translates validated reasoning into real-world impact. Enforces idempotent tool dispatch and strict transactional state.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Idempotency</span>
+              <span class="tech-tag">Stateful Workflows</span>
+              <span class="tech-tag">DAG Commits</span>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 04 -->
+        <div class="stack-layer">
+          <div class="stack-node">04</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-diagram-project"></i>
+              <h3 class="layer-title">Reasoning</h3>
+            </div>
+            <p class="layer-desc">The orchestration engine. Handles dynamic planning, multi-agent arbitration, and speculative constraint evaluation.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Cyclic State Machines</span>
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">Dynamic Planning</span>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 03 -->
+        <div class="stack-layer">
+          <div class="stack-node">03</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-toolbox"></i>
+              <h3 class="layer-title">Tool Registry</h3>
+            </div>
+            <p class="layer-desc">The interface to external capabilities, specialized mathematical solvers, and protocol boundaries.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">MCP Integration</span>
+              <span class="tech-tag">Nash Equilibrium Solvers</span>
+              <span class="tech-tag">Biophysical Calculators</span>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 02 -->
+        <div class="stack-layer">
+          <div class="stack-node">02</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-database"></i>
+              <h3 class="layer-title">Memory</h3>
+            </div>
+            <p class="layer-desc">Manages temporal state and contextual awareness. Separates short-term episodic logs from long-term vector embeddings.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Vector Hydration</span>
+              <span class="tech-tag">Episodic Logs</span>
+              <span class="tech-tag">Temporal Context</span>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 01 -->
+        <div class="stack-layer">
+          <div class="stack-node">01</div>
+          <div class="layer-content">
+            <div class="layer-header">
+              <i class="fa-solid fa-eye"></i>
+              <h3 class="layer-title">Perception</h3>
+            </div>
+            <p class="layer-desc">The ingestion layer. Transforms unstructured telemetry into validated, formatted semantic entities for the reasoning engine.</p>
+            <div class="layer-tech">
+              <span class="tech-tag">Open-Weight SLMs</span>
+              <span class="tech-tag">MedGemma-4B-IT</span>
+              <span class="tech-tag">TimesFM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            // Add delay based on element index for cascade effect
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, index * 100);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
+  <!-- PATTERNS SHOWCASE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="sec-title">Production patterns</h2>
+      <p class="sec-intro">We classify systems by what must never happen. Each pattern is a control structure binding neural generation to strict deterministic verification.</p>
 
-      layerCards.forEach(card => {
-        observer.observe(card);
-      });
+      <!-- PATTERN A -->
+      <div class="pattern-grid">
+        <div class="pattern-content">
+          <span class="pattern-label pl-red">Pattern A</span>
+          <h3 class="pattern-title">Guarded Execution</h3>
+          <p class="pattern-liability" style="border-color: var(--accent-red); color: var(--accent-red);">Liability: A wrong action causes irreversible harm.</p>
+          <p class="pattern-desc">A deterministic rules engine controls the workflow. Neural models handle bounded fuzzy-logic tasks, but the symbolic engine owns execution, veto, and fallback. There is no override.</p>
+          <p class="pattern-desc" style="font-size: 0.9rem;"><em>Use cases: Clinical decision support, autonomous vehicles, grid balancing.</em></p>
+        </div>
+        
+        <div class="pattern-execution">
+          <div class="repo-list">
+            <a href="#" class="repo-card">
+              <div class="repo-info">
+                <span class="repo-name">Agentic Energy Grid Balancing</span>
+                <span class="repo-path">aragit/agentic-energy-grid-balancing</span>
+              </div>
+              <div class="repo-badges"><span class="badge b-pub">Public</span></div>
+            </a>
+            <div class="repo-card" style="cursor: default;">
+              <div class="repo-info">
+                <span class="repo-name">Clinical Oncology Core</span>
+                <span class="repo-path">internal/clinical-oncology-core</span>
+              </div>
+              <div class="repo-badges"><span class="badge b-priv">Private</span></div>
+            </div>
+          </div>
 
-      // Also trigger animation for header
-      const header = document.querySelector('header');
-      if (header) {
-        header.style.animation = 'fadeInUp 0.8s ease-out forwards';
-      }
-    });
+          <div class="terminal">
+            <div class="term-header">
+              <div class="mac-dots"><div class="close"></div><div class="min"></div><div class="max"></div></div>
+              <div class="term-title">clinical-oncology — cardiotoxicity-guard</div>
+            </div>
+            <div class="term-body">
+<span class="c-sys">[PERCEIVE]</span> Ingest EMR: ER/PR+, HER2-, Echocardiogram<br>
+<span class="c-sys">[NEURAL]</span>   Propose Regimen: AC-T (Doxorubicin)<br>
+<span class="c-err">[GOVERN]</span>   CRITICAL VETO — LVEF 48% &lt; 50% (cardiotoxicity.rego)<br>
+<span class="c-warn">[RE-PLAN]</span>  Select TC (Docetaxel) — safety cleared<br>
+<span class="c-sys">[COMMIT]</span>   Immutable ledger. Awaiting oncologist sign-off.<br>
+<span class="c-ok">[STATUS]</span>   TREATMENT_PLAN_VALIDATED
+            </div>
+          </div>
+        </div>
+      </div>
 
-    // Optional: Add subtle parallax to spine on scroll
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrolled = window.pageYOffset;
-          const spine = document.querySelector('.stack-container::before');
-          // Subtle effect - the CSS animation handles most of it
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-  </script>
+      <!-- PATTERN B -->
+      <div class="pattern-grid">
+        <div class="pattern-content">
+          <span class="pattern-label pl-blue">Pattern B</span>
+          <h3 class="pattern-title">Verify-then-generate</h3>
+          <p class="pattern-liability" style="border-color: var(--accent-blue); color: var(--accent-blue);">Liability: A wrong conclusion wastes resources but is correctable.</p>
+          <p class="pattern-desc">A neural reasoner proposes a solution. An external ontology or graph verifies it. Violations trigger a self-correction feedback loop. Maximum iterations lead to a deterministic fallback.</p>
+          
+          <div class="repo-list" style="margin-top: 2rem;">
+            <p style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: -0.5rem;">System 1 Perception Feeder</p>
+            <a href="#" class="repo-card">
+              <div class="repo-info">
+                <span class="repo-name">MedGemma Clinical Fine-Tuning</span>
+                <span class="repo-path">aragit/medgemma-reasoning-finetuning</span>
+              </div>
+              <div class="repo-badges"><span class="badge b-pub">Public</span></div>
+            </a>
+            <p class="pattern-desc" style="font-size: 0.85rem;">Medical CoT alignment pipeline for `google/MedGemma-4B-IT`.</p>
+          </div>
+        </div>
+        
+        <div class="pattern-execution">
+          <div class="repo-list">
+            <a href="#" class="repo-card">
+              <div class="repo-info">
+                <span class="repo-name">Speculative Clinical GraphRAG</span>
+                <span class="repo-path">aragit/speculative-clinical-graphrag</span>
+              </div>
+              <div class="repo-badges"><span class="badge b-pub">Public</span></div>
+            </a>
+          </div>
+
+          <div class="terminal">
+            <div class="term-header">
+              <div class="mac-dots"><div class="close"></div><div class="min"></div><div class="max"></div></div>
+              <div class="term-title">speculative-graphrag — differential</div>
+            </div>
+            <div class="term-body">
+<span class="c-sys">[INGEST]</span>   Patient note: "persistent cough, weight loss"<br>
+<span class="c-sys">[SPEC]</span>     MedGemma-4B-IT proposes diagnostic triplets<br>
+<span class="c-err">[VERIFY]</span>   Cypher validation: lung_ca→metastasis edge MISSING<br>
+<span class="c-warn">[CORRECT]</span>  Confidence: 0.82 → 0.72 (decay -0.1)<br>
+<span class="c-sys">[REGEN]</span>    Feed violations + reasoning trace back to LLM<br>
+<span class="c-ok">[VERIFY]</span>   Corrected path validated via Neo4j<br>
+<span class="c-ok">[STATUS]</span>   DIFFERENTIAL_RESOLVED
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATTERN C -->
+      <div class="pattern-grid">
+        <div class="pattern-content">
+          <span class="pattern-label pl-green">Pattern C</span>
+          <h3 class="pattern-title">Algorithmic Arbitration</h3>
+          <p class="pattern-liability" style="border-color: var(--accent-green); color: var(--accent-green);">Liability: Competing autonomous actors sharing resources.</p>
+          <p class="pattern-desc">Neural agents propose strategies. A compiled mathematical engine (Nash equilibrium solver, VCG auction mechanism) checks every proposal against formal invariants.</p>
+        </div>
+        
+        <div class="pattern-execution">
+          <div class="repo-list">
+            <a href="#" class="repo-card">
+              <div class="repo-info">
+                <span class="repo-name">Nash Marketing Agents</span>
+                <span class="repo-path">aragit/agentic-nash-marketing</span>
+              </div>
+              <div class="repo-badges"><span class="badge b-pub">Public</span></div>
+            </a>
+            
+            <div class="repo-card">
+              <div class="repo-info">
+                <span class="repo-name" style="color: var(--text-dim); text-decoration: line-through;">Autonomous Procurement Swarm</span>
+                <span class="repo-path">aragit/autonomous-procurement-swarm</span>
+              </div>
+              <div class="repo-badges"><span class="badge b-arch">Archived</span></div>
+            </div>
+            <p class="repo-note">Architecturally redundant. The Nash engine mathematically outclasses it.</p>
+          </div>
+
+          <div class="terminal">
+            <div class="term-header">
+              <div class="mac-dots"><div class="close"></div><div class="min"></div><div class="max"></div></div>
+              <div class="term-title">nash-marketing — vcg-auction-engine</div>
+            </div>
+            <div class="term-body">
+<span class="c-sys">[BID]</span>      Agent-A $2.40 | Agent-B $1.85 | Agent-C $3.10<br>
+<span class="c-warn">[ARBIT]</span>    VCG engine: winner charged next-highest ($2.40)<br>
+<span class="c-warn">[NASH]</span>     SciPy optimization: equilibrium at Round 41<br>
+<span class="c-ok">[TEST]</span>     49/49 passed — monotonicity, individual rationality<br>
+<span class="c-ok">[STATUS]</span>   NASH_EQUILIBRIUM_REACHED
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVALUATION & HONESTY -->
+  <section class="section">
+    <div class="container">
+      <h2 class="sec-title">Verification Maturity</h2>
+      <p class="sec-intro">We do not claim academic taxonomy compliance. Our systems are engineering hybrids. Every pattern declares its verification level honestly.</p>
+      
+      <div class="table-container mb-6">
+        <table>
+          <thead>
+            <tr><th>Level</th><th>What it means</th><th>Implementation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Unit Tests</td><td>Component-level correctness</td><td>pytest across all production repos</td></tr>
+            <tr><td>Property-based</td><td>Invariant verification across inputs</td><td>Nash: 49 tests for IR & bounds</td></tr>
+            <tr><td>Benchmarks</td><td>Standardized task performance</td><td>TimesFM/Chronos-2 aligned to M5 WAPE</td></tr>
+            <tr><td>Audit Trails</td><td>Immutable, cryptographically signed</td><td>Clinical: full trace committed to ledger</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- AXIOMIS SYSTEM BANNER -->
+  <section class="section section-last">
+    <div class="container">
+      <div class="axiomis-banner">
+        <h2 class="sec-title" style="color: #fff;">AXIOMIS</h2>
+        <p class="pattern-desc" style="max-width: 600px; color: #cbd5e1;">Our clinical intelligence system. A deterministic FHIR state machine at its core, migrating toward flexible reasoning with non-negotiable invariants.</p>
+        
+        <ul class="ax-list">
+          <li><i class="fa-solid fa-check-circle"></i> Treatment plans compile to DAGs before execution.</li>
+          <li><i class="fa-solid fa-check-circle"></i> Nodes are pre-flight checked by OPA/Rego policies.</li>
+          <li><i class="fa-solid fa-check-circle"></i> Neural overrides require explicit symbolic justification.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding: 4rem 0; border-top: 1px solid var(--border-subtle); text-align: center; margin-top: 4rem;">
+    <p style="color: var(--text-dim); font-size: 0.9rem;">© 2026 Arash Nicoomanesh · Agentic AI Architect</p>
+  </footer>
 
 </body>
 </html>
