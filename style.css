@@ -61,7 +61,35 @@ h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
 .tagline{color:var(--muted);margin:0 0 1rem;font-size:1.1rem}
 .chess-chip{background: rgba(255,255,255,0.04);backdrop-filter: blur(6px);padding:10px;border-radius:10px;display: flex;align-items:center;justify-content:center;box-shadow: 0 6px 18px rgba(0,0,0,0.45);transform: translateY(0);}
 .chess-icon{color:var(--accent);font-size:20px}
-.hero-cta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;justify-items:stretch}
+.hero-cta{display:flex;gap:12px;margin-top:1.5rem;justify-items:stretch}
+
+/* ===== TERMINAL COMMAND BUTTON (unified section CTA) ===== */
+.btn-terminal{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:13px 28px;border-radius:6px;
+  font-family:'SF Mono','Cascadia Code','JetBrains Mono',Consolas,monospace;
+  font-size:.88rem;font-weight:500;letter-spacing:.02em;
+  background:#0a0a0c;color:#e6edf3;
+  border:1px solid rgba(255,255,255,0.08);
+  text-decoration:none;cursor:pointer;
+  transition:all .25s cubic-bezier(.4,0,.2,1);
+  min-height:48px;position:relative;
+}
+.btn-terminal .btn-prompt{color:var(--accent);font-weight:700;margin-right:2px}
+.btn-terminal:hover{
+  border-color:var(--accent);color:var(--accent);
+  background:rgba(255,107,0,0.06);
+  box-shadow:0 0 20px rgba(255,107,0,0.1),inset 0 0 20px rgba(255,107,0,0.03);
+  transform:translateY(-2px);
+}
+.btn-terminal:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px;
+  box-shadow:0 0 0 4px rgba(255,107,0,0.15);
+}
+.btn-terminal:active{transform:translateY(0);transition-duration:.1s}
+.btn-terminal i,.btn-terminal svg{font-size:.9rem;flex-shrink:0}
+
+/* preserve old classes for non-section buttons (modal, etc.) */
 .btn-hero{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border-radius:28px;font-weight:700;min-height:52px}
 .btn-primary{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:#fff;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 26px rgba(255,107,0,0.07)}
 .btn-secondary{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.15);box-shadow:none;min-height:52px;padding:.6rem 1rem;text-decoration:none}
@@ -120,7 +148,7 @@ h1{font-size:3rem;font-weight:800;margin:.25rem 0;line-height:1.1}
 
 /* ---------- Responsiveness ---------- */
 @media (max-width:900px){
-  .hero-cta{grid-template-columns:1fr;gap:10px}
+  .hero-cta{flex-direction:column;gap:10px}
   .hamburger{display:block}
   nav
   nav.nav ul.active{right:0}
@@ -443,12 +471,7 @@ body {
   .about-image img { width: 60%; }
 }
 
-/* darkest "Chat with my Experience" button - no border */
-#openChatBtn {
-  background: #0d0d0d !important;   /* pure black */
-  border: none !important;
-  box-shadow: none !important;
-}
+/* openChatBtn inherits .btn-terminal — no overrides needed */
 
 /* --------------------------------------------------
    Masonry Grid – Featured Articles
@@ -2036,11 +2059,7 @@ p.tagline.typewriter {
   display: none !important;
 }
 
-/* ONLY change button background to dark grey */
-#openChatBtn,
-.btn-hero.btn-primary {
-  background: #2a2a2a !important;
-}
+/* terminal button hover glow (reserved) */
 
 @keyframes logo-float {
   0%, 100% { 
@@ -10370,16 +10389,7 @@ div#services .cards .card.card-wide .card-actions {
   width: 100% !important;
 }
 
-/* Canonical chat/open button styling */
-#openChatBtn {
-  background: linear-gradient(135deg, var(--accent-strong, #ff7a2d), var(--accent, #ff6b00));
-  color: #ffffff;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(255,107,0,0.08);
-  cursor: pointer;
-}
+/* openChatBtn inherits .btn-terminal — no overrides needed */
 
 /* Scoped safety: avoid global !important bleed for service cards (example) */
 #services .cards .card {
@@ -11092,8 +11102,7 @@ div#services .cards .card.card-wide .card-actions {
 }
 
 #home.hero .hero-left .hero-cta {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  display: flex !important;
   gap: 12px !important;
   margin-top: 1.5rem !important;
   justify-items: stretch !important;
