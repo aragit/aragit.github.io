@@ -11054,14 +11054,14 @@ div#services .cards .card.card-wide .card-actions {
   z-index: 0 !important;
 }
 
-/* Two-column grid layout */
+/* Two-column grid layout — aligned with .container */
 #home.hero .hero-split {
   display: grid !important;
   grid-template-columns: 50% 50% !important;
   align-items: center !important;
-  max-width: 1400px !important;
+  max-width: var(--container) !important;
   margin: 0 auto !important;
-  padding: 60px 2rem 50px 2rem !important;
+  padding: 60px 1rem 50px 1rem !important;
   position: relative !important;
   z-index: 2 !important;
 }
