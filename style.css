@@ -11621,6 +11621,49 @@ div#services .cards .card.card-wide .card-actions {
 
   /* Fix 3: Prevent horizontal scroll on mobile */
   html, body { overflow-x: hidden; }
+
+  /* ===== MOBILE CENTER ALIGNMENT ===== */
+
+  /* Hero: center text */
+  #home.hero .hero-left { text-align: center !important; }
+  #home.hero .hero-left h1 { text-align: center !important; }
+  #home.hero .hero-left .hero-tagline { text-align: center !important; }
+  #home.hero .hero-left .hero-sub { text-align: center !important; }
+  #home.hero .hero-left .hero-cta { justify-content: center !important; }
+
+  /* Architecture section: center text */
+  .arch-layout { text-align: center !important; }
+  .arch-left { text-align: center !important; position: static !important; }
+  .arch-left h2 { text-align: center !important; }
+  .arch-left p { text-align: center !important; }
+  .arch-left .arch-cta { display: flex !important; justify-content: center !important; }
+  .arch-pillar { text-align: center !important; }
+  .arch-pillar h3 { text-align: center !important; }
+  .arch-pillar p { text-align: center !important; }
+  .arch-pillar .sota-link { justify-content: center !important; }
+
+  /* SOTA section: center text */
+  .sota-header { text-align: center !important; }
+  .sota-header p { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+  .sota-title-wrapper { display: block !important; }
+  .sota-section { padding: 3rem 1rem !important; }
+  .sota-matrix-dashboard { padding: 1.25rem !important; }
+
+  /* Domain nav: center tabs */
+  .sota-domain-nav { justify-content: center !important; }
+  .sota-usecase-nav { justify-content: center !important; }
+
+  /* Use case card: center info pane */
+  .sota-info-pane { text-align: center !important; align-items: center !important; }
+  .sota-badge { align-self: center !important; }
+  .sota-link-arrow { justify-content: center !important; }
+
+  /* Section titles: center */
+  .section-title-gradient { text-align: center !important; }
+  .section-subtitle { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+
+  /* Manifesto */
+  .manifesto-text { text-align: center !important; }
 }
 
 /* ============================================================
