@@ -11608,28 +11608,12 @@ div#services .cards .card.card-wide .card-actions {
 @keyframes floatCard4 { 0%, 100% { transform: translateY(0) rotate(-0.3deg); } 50% { transform: translateY(-12px) rotate(0.4deg); } }
 @keyframes floatCard5 { 0%, 100% { transform: translateY(0) rotate(0.3deg); } 50% { transform: translateY(-6px) rotate(-0.3deg); } }
 
-/* Hide mobile image on desktop */
-.hero-mobile-image { display: none; }
-
 @media (max-width: 768px) {
   .hero-split { grid-template-columns: 1fr !important; }
   .hero-right { display: block !important; margin-top: 2rem !important; }
 
-  /* Hide skill cards on mobile, show architecture image instead */
+  /* Hide skill cards on mobile */
   .hero-cards-stack { display: none !important; }
-
-  .hero-mobile-image {
-    display: block !important;
-    width: 100%;
-  }
-
-  .hero-mobile-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: #141414;
-  }
 }
 
 /* ============================================================
