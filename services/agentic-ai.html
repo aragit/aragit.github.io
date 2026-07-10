@@ -123,24 +123,6 @@
     .blink-cursor { display: inline-block; width: 8px; height: 15px; background-color: var(--accent-green); vertical-align: middle; margin-left: 4px; animation: blinkCursor 1s step-end infinite; }
 
     /* ════════════════════════════════════════════
-       ANATOMY GRID
-       ════════════════════════════════════════════ */
-    .anatomy-section { background: #08080a; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 2.5rem; }
-    @media(max-width: 950px){ .grid-4 { grid-template-columns: repeat(2, 1fr); } }
-    @media(max-width: 600px){ .grid-4 { grid-template-columns: 1fr; } }
-
-    .bento-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem; transition: var(--transition); }
-    .bento-card:hover { border-color: var(--border-strong); }
-    .bento-card h3 { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 10px; color: var(--text-main); }
-    .bento-card h3 i { color: var(--accent-blue); font-size: 1rem; }
-    .bento-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
-
-    .bento-checklist { list-style: none; color: var(--text-muted); font-size: 0.9rem; }
-    .bento-checklist li { padding-left: 20px; position: relative; margin-bottom: 10px; line-height: 1.6; }
-    .bento-checklist li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-blue); box-shadow: 0 0 6px rgba(59,130,246,0.4); }
-
-    /* ════════════════════════════════════════════
        CTA — SYSTEM INTAKE
        ════════════════════════════════════════════ */
     .cta-section { padding: 6rem 0; }
@@ -369,49 +351,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════ -->
-<!-- ANATOMY -->
-<!-- ════════════════════════════════════════════ -->
-<section class="anatomy-section section">
-  <div class="container-narrow">
-    <span class="sec-tag">[ANATOMY // 00] <span class="sep">—</span> Pipeline Architecture</span>
-    <div class="grid-4">
-      <div class="bento-card">
-        <h3><i class="fa-solid fa-eye"></i>Perception</h3>
-        <ul class="bento-checklist">
-          <li>Payload sanitization &amp; PII stripping</li>
-          <li>Structured schema normalization</li>
-          <li>Live API ingestion (REST, GraphQL)</li>
-        </ul>
-      </div>
-      <div class="bento-card">
-        <h3><i class="fa-solid fa-brain"></i>Reasoning</h3>
-        <ul class="bento-checklist">
-          <li><span style="color:var(--accent-blue);font-family:var(--font-mono);font-size:12px;">DAG</span>-based execution graph compilation</li>
-          <li>Hardcoded Intent Registry mapping</li>
-          <li>Separation of planning from execution</li>
-        </ul>
-      </div>
-      <div class="bento-card">
-        <h3><i class="fa-solid fa-database"></i>Memory</h3>
-        <ul class="bento-checklist">
-          <li>Volatile Session Scratchpad (<span style="color:var(--accent-blue);font-family:var(--font-mono);font-size:12px;">Redis</span>)</li>
-          <li>Immutable Audit Ledger</li>
-          <li>Read-only Long-Term Context DB</li>
-        </ul>
-      </div>
-      <div class="bento-card">
-        <h3><i class="fa-solid fa-hand-fist"></i>Action</h3>
-        <ul class="bento-checklist">
-          <li>Passive stateless tool invocation</li>
-          <li>Pre-flight Policy-as-Code (<span style="color:var(--accent-blue);font-family:var(--font-mono);font-size:12px;">OPA</span>)</li>
-          <li>Central hub-and-spoke orchestration</li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 
