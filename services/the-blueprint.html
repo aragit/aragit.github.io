@@ -3,220 +3,301 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>The Blueprint – 2-to-3-Week AI Architecture Sprint | Arash Nicoomanesh</title>
+  <title>The Blueprint – Architecture Sprint | Arash Nicoomanesh</title>
   <meta name="description" content="De-risk your AI investment before you write a single line of code. A premium 2-to-3-week architecture sprint for enterprise leaders."/>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --dark: #121212; --darker: #0a0a0a; --gray: #9ca3af;
-      --accent: #ff6b00; --accent-hover: #e66000;
+      --bg-base: #050505;
+      --bg-surface: #0e0e11;
+      --bg-surface-hover: #15151a;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.15);
+      --text-main: #ededef;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --accent: #ff6b00;
+      --accent-orange-glow: rgba(255, 107, 0, 0.15);
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-purple: #8b5cf6;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 24px;
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--darker); color: #eaf2fb; font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    
-    /* Header */
-    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.05); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-    .logo { font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
-    .logo i { color: var(--accent); }
-    .back-btn { background: transparent; color: #cbd6df; border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 50px; font-size: .9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: .3s; }
-    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
-    
-    /* Hero - UPDATED BACKGROUND IMAGE */
-    .hero {
-      padding: clamp(80px, 12vw, 120px) 0;
-      text-align: center;
-      background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
-        url('blueback.jpg');
-      background-size: cover;
-      background-position: center;
-      border-bottom: 1px solid rgba(255,255,255,.02);
-    }
-    
-    /* Hero Scannable Badges */
-    .hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; }
-    .meta-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px; }
-    .meta-tag i { color: var(--accent); }
-    
-    /* Buttons */
-    .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: .3s; border: none; cursor: pointer; font-size: 1rem; }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
-    
-    /* Grid Section */
-    section { padding: clamp(60px, 8vw, 90px) 0; }
-    .section-title { text-align: center; margin-bottom: 50px; }
-    .section-title h2 { font-size: 2rem; color: #fff; margin-bottom: 10px; }
-    .section-title p { color: var(--gray); font-size: 1.1rem; }
-    
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    
-    /* AGENTIC CSS UPDATES: Glows, Lighter Grey, and Terms */
-    .agentic-term { color: #ffffff; font-weight: 600; border-bottom: 1px dashed var(--accent); padding-bottom: 1px; }
-    .card { background: rgba(50,50,50,0.7); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
-    .card:hover { transform: translateY(-5px); border-color: rgba(255,107,0,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,107,0,0.05); }
-    .card::after { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s ease; }
-    .card:hover::after { width: 100%; }
-    
-    .card h3 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; color: #fff; }
-    .card h3 i { color: var(--accent); font-size: 1.5rem; background: rgba(255,107,0,0.1); padding: 10px; border-radius: 8px; }
-    
-    .checklist { list-style: none; color: #a8aeb3; font-size: 0.95rem; }
-    .checklist li { padding-left: 28px; position: relative; margin-bottom: 14px; line-height: 1.5; }
-    .checklist li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); position: absolute; left: 0; top: 2px; font-size: 14px; }
-    
-    /* Trust Card (Testimonial) */
-    .trust-section { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .trust-card { max-width: 800px; margin: 0 auto; text-align: center; padding: 20px; }
-    .trust-card i { font-size: 2.5rem; color: rgba(255,107,0,0.2); margin-bottom: 20px; }
-    .trust-card blockquote { font-size: 1.3rem; font-weight: 500; color: #fff; line-height: 1.6; margin-bottom: 24px; font-style: italic; }
-    .trust-card .author { color: var(--accent); font-weight: 600; font-size: 1rem; }
-    .trust-card .company { color: var(--gray); font-size: 0.9rem; display: block; margin-top: 4px; }
-    
-    /* CTA Band */
-    .cta-band { background: #121212; text-align: center; padding: 70px 0; border-top: 2px solid var(--accent); }
-    .cta-band h2 { font-size: 2.2rem; margin-bottom: 16px; color: #fff; }
-    .cta-band p { color: var(--gray); font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
-    
-    /* Form Box */
-    .form-box { max-width: 700px; margin: 0 auto; background: rgba(22,22,22,0.8); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 40px; text-align: left; }
-    .form-box h3 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-    input, select, textarea { width: 100%; padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,.1); color: #fff; font-family: inherit; font-size: 1rem; transition: all .3s; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,107,0,.15); }
-    label { font-size: .9rem; color: #cbd6df; margin-bottom: 8px; display: block; font-weight: 500; }
-    .btn-submit { width: 100%; justify-content: center; margin-top: 10px; }
-    
-    footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
-    .matrix-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.9rem; }
-    .matrix-table th { text-align: left; padding: 12px 14px; background: rgba(255,255,255,0.03); border-bottom: 2px solid var(--accent); color: #fff; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .matrix-table td { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: #cbd6df; }
-    .matrix-table tr:last-child td { border-bottom: none; }
-    .matrix-table tr:hover td { background: rgba(255,107,0,0.03); }
-    .matrix-table .pattern-name { color: #fff; font-weight: 600; }
-    .matrix-table .cost-tier { font-family: monospace; color: var(--accent); font-weight: 600; }
-    .matrix-table .liability-cell { font-size: 0.85rem; }
 
-    @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin-bottom: 24px; color: #fff; letter-spacing: -1px; line-height: 1.15; text-shadow: 0 4px 25px rgba(0,0,0,0.8); } }
-  
-    /* === FORCED HERO ENLARGEMENT (SHRUNK DOWN) === */
-    .hero h1 { 
-        font-size: clamp(2.5rem, 5vw, 4rem) !important; 
-        font-weight: 800 !important; 
-        line-height: 1.15 !important; 
-        margin-bottom: 24px !important;
-        text-shadow: 0 5px 30px rgba(0,0,0,0.9) !important; 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg-base); color: var(--text-main); font-family: var(--font-sans); }
+    body { -webkit-font-smoothing: antialiased; line-height: 1.6; }
+
+    /* Ambient glow */
+    body::before {
+      content: ''; position: fixed; top: -20%; right: -10%; width: 50vw; height: 50vh;
+      background: radial-gradient(circle, var(--accent-orange-glow) 0%, transparent 70%);
+      filter: blur(100px); z-index: -1; pointer-events: none;
     }
-    .hero p { 
-        font-size: clamp(1.1rem, 2vw, 1.3rem) !important; 
-        max-width: 800px !important; 
-        margin: 0 auto 40px auto !important;
-        color: #ffffff !important; 
-        font-weight: 500 !important; 
-        text-shadow: 0 3px 20px rgba(0,0,0,0.9) !important; 
+
+    /* Navigation */
+    .nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.6); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; color: var(--text-main); text-decoration: none; }
+    .nav-brand i { color: var(--accent); }
+    .nav-back { color: var(--text-muted); font-size: 0.875rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); }
+    .nav-back:hover { color: var(--accent); }
+
+    /* Narrow reading column */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 6rem 0; border-bottom: 1px solid var(--border-subtle); }
+
+    /* ════════════════════════════════════════════
+       HERO — BLUEPRINT HEADER
+       ════════════════════════════════════════════ */
+    .hero { padding: 8rem 0 4rem; }
+    .hero .sys-header { margin-bottom: 2rem; }
+    .sys-id { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); font-weight: 500; display: block; margin-bottom: 1rem; letter-spacing: 0.02em; }
+    .sys-sep { color: var(--text-dim); }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1.5rem; background: linear-gradient(180deg, #fff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 640px; line-height: 1.7; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 2rem; padding: 1.25rem 0; border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); }
+    .hero-meta span { display: flex; align-items: center; gap: 0.5rem; }
+    .hero-meta .label { color: var(--text-muted); }
+    .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-green); margin-top: 1.5rem; }
+
+    /* ════════════════════════════════════════════
+       SERVICE CARDS — System Trace Format
+       ════════════════════════════════════════════ */
+    .service-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem 2.5rem; margin-bottom: 2rem; transition: var(--transition); position: relative; }
+    .service-card:hover { border-color: var(--border-strong); background: var(--bg-surface-hover); transform: translateX(4px); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    .service-card .card-tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.02em; display: block; margin-bottom: 0.5rem; }
+    .service-card .card-tag .sep { color: var(--text-dim); }
+    .service-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-main); letter-spacing: -0.02em; }
+    .trace-list { list-style: none; }
+    .trace-list li { display: flex; align-items: flex-start; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    .trace-list li:last-child { border-bottom: none; }
+    .trace-tag { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; color: var(--text-dim); white-space: nowrap; min-width: 6rem; padding-top: 0.15rem; letter-spacing: 0.02em; }
+    .trace-tag.t-in { color: var(--accent-blue); }
+    .trace-tag.t-nr { color: var(--accent-purple); }
+    .trace-tag.t-vf { color: var(--accent-green); }
+    .trace-tag.t-out { color: var(--accent); }
+    .trace-tag.t-st { color: var(--text-dim); }
+    .trace-list li strong { color: var(--text-main); font-weight: 500; }
+
+    /* Special status line */
+    .trace-status { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.1); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.8rem; }
+    .trace-status .status-code { color: var(--accent-green); font-weight: 500; }
+    .trace-status .status-label { color: var(--text-dim); }
+
+    /* ════════════════════════════════════════════
+       WIZARD OF OZ CARD — Special Styling
+       ════════════════════════════════════════════ */
+    .service-card.warning { border-left: 2px solid var(--accent-red); }
+    .service-card.warning:hover { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.08); }
+
+    /* ════════════════════════════════════════════
+       DECISION MATRIX
+       ════════════════════════════════════════════ */
+    .matrix-wrap { margin: 1.5rem 0; padding: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); }
+    .matrix-wrap .matrix-label { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); display: block; margin-bottom: 1rem; }
+    .matrix-table { width: 100%; border-collapse: collapse; }
+    .matrix-table th { text-align: left; padding: 0.75rem 1rem; background: rgba(255,255,255,0.02); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border-subtle); }
+    .matrix-table td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-muted); font-size: 0.9rem; }
+    .matrix-table tr:last-child td { border-bottom: none; }
+    .matrix-table tr:hover td { background: rgba(255,255,255,0.01); }
+    .matrix-table .cell-name { color: var(--text-main); font-weight: 500; }
+    .matrix-table .cell-cost { font-family: var(--font-mono); color: var(--accent); font-weight: 500; }
+
+    /* ════════════════════════════════════════════
+       VERIFICATION MATURITY MINI-TABLE
+       ════════════════════════════════════════════ */
+    .vtable-wrap { margin: 3rem 0; }
+    .vtable-wrap .vt-label { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); display: block; margin-bottom: 1rem; }
+    .vt-table { width: 100%; border-collapse: collapse; }
+    .vt-table th { text-align: left; padding: 0.75rem 1rem; background: rgba(255,255,255,0.02); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border-subtle); }
+    .vt-table td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-muted); font-size: 0.9rem; }
+    .vt-table tr:last-child td { border-bottom: none; }
+    .vt-table .cell-deliv { color: var(--text-main); font-weight: 500; }
+    .vt-table .cell-format { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-blue); }
+
+    /* ════════════════════════════════════════════
+       CTA — SYSTEM INTAKE
+       ════════════════════════════════════════════ */
+    .cta-section { padding: 6rem 0; }
+    .intake-box { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 3rem; }
+    .intake-box .intake-tag { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); display: block; margin-bottom: 0.5rem; }
+    .intake-box .intake-sep { color: var(--text-dim); }
+    .intake-box h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+    .intake-box .intake-desc { color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin-bottom: 2rem; line-height: 1.7; padding-bottom: 2rem; border-bottom: 1px solid var(--border-subtle); }
+    .intake-field { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+    .intake-field .field-tag { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); min-width: 8rem; padding-top: 0.85rem; }
+    .intake-field .field-tag .bracket { color: var(--accent); }
+    .intake-field input,
+    .intake-field select,
+    .intake-field textarea { flex: 1; padding: 0.75rem 1rem; background: rgba(0,0,0,0.4); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-main); font-family: var(--font-mono); font-size: 0.85rem; transition: var(--transition); }
+    .intake-field input:focus,
+    .intake-field select:focus,
+    .intake-field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-orange-glow); }
+    .intake-field input::placeholder { color: var(--text-dim); }
+    .intake-liability { display: flex; flex-wrap: wrap; gap: 0.75rem; flex: 1; }
+    .intake-liability label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono); cursor: pointer; }
+    .intake-liability input[type="checkbox"] { width: auto; accent-color: var(--accent); }
+    .intake-submit { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); }
+    .intake-status { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: rgba(255, 107, 0, 0.04); border: 1px solid rgba(255, 107, 0, 0.1); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); margin-top: 1.5rem; }
+    .intake-status .st-code { color: var(--accent); font-weight: 500; }
+    .btn-primary { background: var(--accent); color: #fff; padding: 0.85rem 2rem; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: var(--transition); border: none; cursor: pointer; font-family: var(--font-sans); }
+    .btn-primary:hover { background: #e66000; transform: translateY(-1px); box-shadow: 0 8px 25px rgba(255,107,0,.25); }
+
+    footer { text-align: center; padding: 2rem 0; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border-subtle); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container-narrow { padding: 0 1.25rem; }
+      .hero { padding: 6rem 0 2rem; }
+      .service-card { padding: 1.5rem; }
+      .trace-list li { flex-direction: column; gap: 0.25rem; }
+      .trace-tag { min-width: auto; }
+      .intake-field { flex-direction: column; gap: 0.5rem; }
+      .intake-field .field-tag { min-width: auto; padding-top: 0; }
+      .intake-liability { flex-direction: column; }
+      .intake-box { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="../index.html" class="logo"><i class="fa-solid fa-chess-knight"></i>Arash Nicoomanesh</a>
-      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>Back to main</a>
-    </div>
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand"><i class="fa-solid fa-chess-knight"></i>Arash Nicoomanesh</a>
+    <a href="../index.html" class="nav-back"><i class="fa-solid fa-arrow-left-long"></i>Back</a>
   </div>
-</header>
+</nav>
 
-<section style="padding: clamp(40px, 6vw, 60px) 0 0 0; text-align: center;">
-  <div class="container">
-    <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; margin-bottom: 16px;">De-Risk Your AI Investment Before You Write a Single Line of Code</h1>
-    <p style="color: var(--gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">An expert, 2-to-3-week architectural sprint that turns ambiguous business objectives into a production-ready, agentic architecture that won't degrade into an expensive chatbot.</p>
-  </div>
-</section>
+<!-- ════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container-narrow">
+    <div class="sys-header">
+      <span class="sys-id">[BLUEPRINT // 01] <span class="sys-sep">—</span> The Architecture Sprint</span>
+    </div>
+    <h1>De-Risk Your AI Investment Before You Write a Single Line of Code</h1>
+    <p>An expert, 2-to-3-week architectural sprint that turns ambiguous business objectives into a production-ready, agentic architecture that won't degrade into an expensive chatbot.</p>
 
-<section>
-  <div class="container">
-    <div class="section-title">
-      <h2>The Blueprint Architecture</h2>
-      <p>A comprehensive strategy mapping from board-level ROI down to token-level execution.</p>
+    <div class="hero-meta">
+      <span><span class="label">Duration:</span> 2–3 weeks</span>
+      <span><span class="label">Output:</span> Production-ready agentic architecture</span>
+      <span><span class="label">Liability:</span> De-risked before LOC-01</span>
     </div>
 
-    <div class="grid-3">
-      <div class="card">
-        <h3><i class="fa-solid fa-compass-drafting"></i>The "Agentic Feasibility" Audit</h3>
-        <ul class="checklist">
-          <li>Map your workflows against the <span class="agentic-term">Planning-Rubicon</span> to separate simple generative tasks from true autonomous agent use-cases.</li>
-          <li>Identify processes that require stateful persistence and multi-step execution, avoiding the trap of building "expensive chatbots."</li>
-          <li>Equip your board with hard payback models based on task-completion rates, not just token-generation speed.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-sitemap"></i>Neuro-Symbolic Blueprinting</h3>
-        <ul class="checklist">
-          <li>Design a strict <span class="agentic-term">Neuro-Symbolic</span> architecture that isolates the stochastic "brain" (LLM) from the deterministic "skeleton" (orchestration & tools).</li>
-          <li>Select the precise topology for your risk profile: Microservices for containment, Actor/Monoliths for low-latency, or Serverless Swarms for cost.</li>
-          <li>Map the transition from stateless API wrappers to stateful, <span class="agentic-term">POMDP</span>-aligned control loops.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-timeline"></i>The "Beyond the Wrapper" Roadmap</h3>
-        <ul class="checklist">
-          <li>Define a rigorous phase-gate roadmap: Prototype &rarr; Grounded Action &rarr; Production Autonomy.</li>
-          <li>Architect pre-commit verification loops that ensure agents validate state <i>before</i> executing irreversible real-world actions.</li>
-          <li>Identify the exact systems engineering and ML-Ops talent required to build resilient control systems, rather than prompt engineers.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-handshake"></i>Avoiding the "Wizard of Oz" Trap</h3>
-        <ul class="checklist">
-          <li>Expose hidden operational debts where HITL dependencies masquerade as autonomy. We map every "human approval" node to a deterministic veto point. If a human is required, the system is not agentic — it is a chatbot with extra steps. We quantify the exact latency and liability cost of each manual gate.</li>
-          <li>Navigate the "Build vs. Buy" dilemma using unbiased metrics on latency, liability, and vendor lock-in based on actual architectural constraints rather than vendor promises.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-shield-halved"></i>Policy-as-Code & Grounding</h3>
-        <ul class="checklist">
-          <li>Implement <span class="agentic-term">Policy-as-Code (OPA)</span> guardrails at the network layer, ensuring the LLM cannot bypass hard business logic. Example: A proposed chemotherapy regimen (AC-T) is automatically vetoed when LVEF drops below 50%. The LLM proposes; the deterministic vault enforces. This is not a suggestion — it is a non-negotiable invariant.</li>
-          <li>Establish "Instrumental Grounding" protocols so your agents can verify their environment (APIs, databases) rather than hallucinating plans.</li>
-          <li>Design a secure blast-radius containment strategy for high-liability environments (Healthcare, Finance).</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-chart-line"></i>Agency Cost Modeling</h3>
-        <ul class="checklist">
-          <li>Model the true cost of agency: moving from $0.30 per conversational query to $30+ per multi-step, verified execution task.</li>
-          <li>Execute a structural break-even analysis mapping System 1 (fast/cheap) vs. System 2 (inference-time scaling/expensive) reasoning costs.</li>
-          <li>Stress-test your unit economics against prolonged agent "waiting periods" and temporal state-decay.</li>
-          <li>Cost modeling is inseparable from verification maturity. A $30 multi-step execution task is only justified at Level 3+ verification (Property-based invariants or cryptographic audit trails). We map your budget to the minimum viable verification level — never sell unverified agency.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa-solid fa-code-branch"></i>Pattern Selection & Liability Mapping</h3>
-        <ul class="checklist">
-          <li>Explicit alignment to <span class="agentic-term">Guarded Execution</span>, <span class="agentic-term">Verify-Then-Generate</span>, or <span class="agentic-term">Algorithmic Arbitration</span> based on your domain's failure mode profile.</li>
-          <li>Map regulatory liability (HIPAA, SOC2, MiFID II) to architectural constraints that enforce compliance at the orchestration layer.</li>
-          <li>Produce a pattern-selection decision matrix with trade-off analysis for each candidate architecture.</li>
-        </ul>
-      </div>
+    <div class="status-badge">
+      <i class="fa-solid fa-circle" style="font-size: 0.5rem;"></i> ACCEPTING_ENGAGEMENTS
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div style="margin: 24px 0; padding: 20px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
-      <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Pattern Selection &amp; Liability Decision Matrix</span>
+<!-- ════════════════════════════════════════════ -->
+<!-- CARDS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container-narrow">
+
+    <!-- [AUDIT // 01] -->
+    <div class="service-card">
+      <span class="card-tag">[AUDIT // 01] <span class="sep">—</span> The "Agentic Feasibility" Audit</span>
+      <h3><i class="fa-solid fa-compass-drafting" style="color:var(--accent-blue);margin-right:8px;"></i>Feasibility Mapping</h3>
+      <ul class="trace-list">
+        <li><span class="trace-tag t-in">[INGEST]</span> <span>Board-level business objectives and domain constraints</span></li>
+        <li><span class="trace-tag t-nr">[NEURAL]</span> <span>Workflow mapping against the <strong>Planning-Rubicon</strong> — separate generative tasks from true autonomous agent use-cases</span></li>
+        <li><span class="trace-tag t-vf">[VERIFY]</span> <span>Stateful vs. stateless task classification: identify processes requiring persistent memory and multi-step execution</span></li>
+        <li><span class="trace-tag t-out">[OUTPUT]</span> <span>Board-ready payback models based on task-completion rates, not token-generation speed</span></li>
+      </ul>
+      <div class="trace-status"><span class="status-code">[STATUS]</span> <span class="status-label">FEASIBILITY_MAPPED</span></div>
+    </div>
+
+    <!-- [DESIGN // 02] -->
+    <div class="service-card">
+      <span class="card-tag">[DESIGN // 02] <span class="sep">—</span> Neuro-Symbolic Blueprinting</span>
+      <h3><i class="fa-solid fa-sitemap" style="color:var(--accent-purple);margin-right:8px;"></i>Blueprint Topology</h3>
+      <ul class="trace-list">
+        <li><span class="trace-tag t-in">[INGEST]</span> <span>Business risk profile and operational constraints</span></li>
+        <li><span class="trace-tag t-nr">[NEURAL]</span> <span>Design strict <strong>Neuro-Symbolic</strong> architecture isolating stochastic LLM from deterministic orchestration</span></li>
+        <li><span class="trace-tag t-vf">[VERIFY]</span> <span>Topology selection: Microservices for containment, Actor/Monoliths for low-latency, Serverless Swarms for cost</span></li>
+        <li><span class="trace-tag t-out">[OUTPUT]</span> <span>Transition map from stateless API wrappers to <strong>POMDP</strong>-aligned stateful control loops</span></li>
+      </ul>
+      <div class="trace-status"><span class="status-code">[STATUS]</span> <span class="status-label">TOPOLOGY_VALIDATED</span></div>
+    </div>
+
+    <!-- [ROADMAP // 03] -->
+    <div class="service-card">
+      <span class="card-tag">[ROADMAP // 03] <span class="sep">—</span> The "Beyond the Wrapper" Roadmap</span>
+      <h3><i class="fa-solid fa-timeline" style="color:var(--accent-green);margin-right:8px;"></i>Phase-Gate Execution</h3>
+      <ul class="trace-list">
+        <li><span class="trace-tag t-in">[INGEST]</span> <span>Current system boundaries and integration points</span></li>
+        <li><span class="trace-tag t-nr">[NEURAL]</span> <span>Define rigorous phase-gate roadmap: <strong>Prototype → Grounded Action → Production Autonomy</strong></span></li>
+        <li><span class="trace-tag t-vf">[VERIFY]</span> <span>Pre-commit verification loops — agents validate state <em>before</em> executing irreversible actions</span></li>
+        <li><span class="trace-tag t-out">[OUTPUT]</span> <span>Exact systems engineering and ML-Ops talent map for resilient control systems</span></li>
+      </ul>
+      <div class="trace-status"><span class="status-code">[STATUS]</span> <span class="status-label">ROADMAP_COMMITTED</span></div>
+    </div>
+
+    <!-- [GOVERN // 04] -->
+    <div class="service-card">
+      <span class="card-tag">[GOVERN // 04] <span class="sep">—</span> Policy-as-Code &amp; Grounding</span>
+      <h3><i class="fa-solid fa-shield-halved" style="color:var(--accent-red);margin-right:8px;"></i>Deterministic Guardrails</h3>
+      <ul class="trace-list">
+        <li><span class="trace-tag t-in">[INGEST]</span> <span>Regulatory requirements (HIPAA, SOC2, MiFID II) and domain invariants</span></li>
+        <li><span class="trace-tag t-nr">[NEURAL]</span> <span><strong>Policy-as-Code (OPA)</strong> guardrails at network layer — LLM cannot bypass hard business logic</span></li>
+        <li><span class="trace-tag t-st">[CLINICAL]</span> <span>Example: Chemotherapy regimen (AC-T) auto-vetoed when LVEF drops below 50%. The LLM proposes; the deterministic vault enforces. This is not a suggestion — it is a non-negotiable invariant.</span></li>
+        <li><span class="trace-tag t-vf">[VERIFY]</span> <span>"Instrumental Grounding" protocols — agents verify environment (APIs, databases) rather than hallucinating plans</span></li>
+        <li><span class="trace-tag t-out">[OUTPUT]</span> <span>Blast-radius containment strategy for high-liability environments</span></li>
+      </ul>
+      <div class="trace-status"><span class="status-code">[STATUS]</span> <span class="status-label">GOVERNANCE_LOCKED</span></div>
+    </div>
+
+    <!-- [MODEL // 05] -->
+    <div class="service-card">
+      <span class="card-tag">[MODEL // 05] <span class="sep">—</span> Agency Cost Modeling</span>
+      <h3><i class="fa-solid fa-chart-line" style="color:var(--accent);margin-right:8px;"></i>Unit Economics</h3>
+      <ul class="trace-list">
+        <li><span class="trace-tag t-in">[INGEST]</span> <span>Current query volumes, latency SLAs, and infrastructure spend</span></li>
+        <li><span class="trace-tag t-nr">[NEURAL]</span> <span>True cost of agency: $0.30 per conversational query → $30+ per multi-step verified execution task</span></li>
+        <li><span class="trace-tag t-vf">[VERIFY]</span> <span>Structural break-even: System 1 (fast/cheap) vs. System 2 (inference-time scaling) reasoning costs</span></li>
+        <li><span class="trace-tag t-vf">[VERIFY]</span> <span>Cost modeling is inseparable from verification maturity. A $30 task is only justified at Level 3+ verification (Property-based invariants or cryptographic audit trails). We map your budget to the minimum viable verification level — never sell unverified agency.</span></li>
+        <li><span class="trace-tag t-out">[OUTPUT]</span> <span>Unit economics stress-tested against agent "waiting periods" and temporal state-decay</span></li>
+      </ul>
+      <div class="trace-status"><span class="status-code">[STATUS]</span> <span class="status-label">ECONOMICS_MODELED</span></div>
+    </div>
+
+    <!-- [SELECT // 06] -->
+    <div class="service-card">
+      <span class="card-tag">[SELECT // 06] <span class="sep">—</span> Pattern Selection &amp; Liability Mapping</span>
+      <h3><i class="fa-solid fa-code-branch" style="color:var(--accent-green);margin-right:8px;"></i>Architecture Pattern Matching</h3>
+      <ul class="trace-list">
+        <li><span class="trace-tag t-in">[INGEST]</span> <span>Domain failure mode profile and regulatory liability class</span></li>
+        <li><span class="trace-tag t-nr">[NEURAL]</span> <span>Explicit alignment to <strong>Guarded Execution</strong>, <strong>Verify-Then-Generate</strong>, or <strong>Algorithmic Arbitration</strong></span></li>
+        <li><span class="trace-tag t-vf">[VERIFY]</span> <span>Regulatory liability mapped to architectural constraints — compliance at the orchestration layer</span></li>
+        <li><span class="trace-tag t-out">[OUTPUT]</span> <span>Pattern-selection decision matrix with trade-off analysis for each candidate architecture</span></li>
+      </ul>
+      <div class="trace-status"><span class="status-code">[STATUS]</span> <span class="status-label">PATTERN_SELECTED</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DECISION MATRIX -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="matrix-wrap">
+      <span class="matrix-label">[MATRIX // 00] Pattern Selection &amp; Liability Decision Matrix</span>
       <table class="matrix-table">
         <thead>
           <tr>
@@ -228,22 +309,22 @@
         </thead>
         <tbody>
           <tr>
-            <td class="pattern-name">Guarded Execution</td>
-            <td class="liability-cell">Irreversible harm</td>
+            <td class="cell-name">Guarded Execution</td>
+            <td>Irreversible harm</td>
             <td>Audit Trails + Cryptographic ledger</td>
-            <td class="cost-tier">$30+/task</td>
+            <td class="cell-cost">$30+/task</td>
           </tr>
           <tr>
-            <td class="pattern-name">Verify-Then-Generate</td>
-            <td class="liability-cell">Correctable waste</td>
+            <td class="cell-name">Verify-Then-Generate</td>
+            <td>Correctable waste</td>
             <td>Property-based + Benchmarks</td>
-            <td class="cost-tier">$5-15/task</td>
+            <td class="cell-cost">$5-15/task</td>
           </tr>
           <tr>
-            <td class="pattern-name">Algorithmic Arbitration</td>
-            <td class="liability-cell">Resource competition</td>
+            <td class="cell-name">Algorithmic Arbitration</td>
+            <td>Resource competition</td>
             <td>Nash equilibrium + Unit tests</td>
-            <td class="cost-tier">$2-8/task</td>
+            <td class="cell-cost">$2-8/task</td>
           </tr>
         </tbody>
       </table>
@@ -251,58 +332,111 @@
   </div>
 </section>
 
-<div class="cta-band">
-  <div class="container">
-    <h2>Ready to blueprint your architecture?</h2>
-    <p>Engagements are scheduled on a first-approved, first-served basis. Request your slot early to secure start-date availability.</p>
-    <p style="font-size: 13px; color: #8b949e; margin-top: 16px; line-height: 1.5;">
-      <strong style="color: #b0b8c4;">Scope boundary:</strong> The Blueprint produces architecture documents and validated designs. It does not include implementation, testing, or production deployment — those are handled by <a href="https://aragit.github.io/services/agentic-ai.html" style="color: #58a6ff; text-decoration: none;">Agentic AI Orchestration</a> and <a href="https://aragit.github.io/services/deploy-scale.html" style="color: #58a6ff; text-decoration: none;">Governed Deployment</a> services.
-    </p>
-    
-    <div id="request" class="form-box">
-      <h3>Request Proposal</h3>
-      <p style="color:#9ca3af;margin-bottom:24px;font-size:0.95rem;">I only take on projects where there is a genuine need for complex, stateful agency. Tell me about your constraint. Fill in the basics, and I will review your requirements and reply with a calendar link within 24 hours.</p>
+<!-- ════════════════════════════════════════════ -->
+<!-- DELIVERABLE VERIFICATION TABLE -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="vtable-wrap">
+      <span class="vt-label">[DELIVERABLE // 00] Verification Maturity — Blueprint Outputs</span>
+      <table class="vt-table">
+        <thead>
+          <tr>
+            <th>Deliverable</th>
+            <th>Verification Level</th>
+            <th>Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-deliv">Architecture Document</td>
+            <td>Unit Tests + Property-based</td>
+            <td class="cell-format">PDF + Markdown</td>
+          </tr>
+          <tr>
+            <td class="cell-deliv">Pattern Decision Matrix</td>
+            <td>Benchmark-aligned</td>
+            <td class="cell-format">Interactive</td>
+          </tr>
+          <tr>
+            <td class="cell-deliv">Cost Model</td>
+            <td>Audit-trail ready</td>
+            <td class="cell-format">Spreadsheet + Code</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CTA — SYSTEM INTAKE -->
+<!-- ════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container-narrow">
+    <div class="intake-box">
+      <span class="intake-tag">[INTAKE // 00] <span class="intake-sep">—</span> Request Architecture Sprint</span>
+      <h2>Initiate Engagement</h2>
+      <p class="intake-desc">I only deploy to environments where agency is genuinely required. Describe your constraint — I will review your requirements and reply with a calendar link within 24 hours.</p>
 
       <form action="https://formspree.io/f/xwpnvzwl" method="POST">
-        <div class="form-row">
-          <div>
-            <label>Your name *</label>
-            <input name="name" type="text" required placeholder="Jane Doe">
-          </div>
-          <div>
-            <label>Work email *</label>
-            <input name="email" type="email" required placeholder="jane@company.com">
-          </div>
-        </div>
-
-        <div style="margin-bottom:20px">
-          <label>Company / organisation</label>
+        <div class="intake-field">
+          <span class="field-tag"><span class="bracket">[</span>FIELD<span class="bracket">]</span> Organization:</span>
           <input name="organisation" placeholder="Acme Inc.">
         </div>
 
-        <div style="margin-bottom:20px">
-          <label>Estimated budget</label>
-          <select name="budget">
-            <option value="2k-3k">$2,000 – $3,000</option>
-            <option value="3k-5k">$3,000 – $5,000</option>
-            <option value="custom">Custom Enterprise</option>
+        <div class="intake-field">
+          <span class="field-tag"><span class="bracket">[</span>FIELD<span class="bracket">]</span> Name:</span>
+          <input name="name" type="text" required placeholder="Jane Doe">
+        </div>
+
+        <div class="intake-field">
+          <span class="field-tag"><span class="bracket">[</span>FIELD<span class="bracket">]</span> Email:</span>
+          <input name="email" type="email" required placeholder="jane@company.com">
+        </div>
+
+        <div class="intake-field">
+          <span class="field-tag"><span class="bracket">[</span>FIELD<span class="bracket">]</span> Domain:</span>
+          <select name="domain">
+            <option value="">Select domain...</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="finance">Finance</option>
+            <option value="supply-chain">Supply Chain</option>
+            <option value="marketing">Marketing</option>
+            <option value="manufacturing">Manufacturing</option>
+            <option value="other">Other</option>
           </select>
         </div>
 
-        <div style="margin-bottom:24px">
-          <label>What is your primary business objective? *</label>
-          <textarea name="message" required placeholder="e.g. reduce clinical coding time by 40%, automate technical support..." style="min-height:120px"></textarea>
+        <div class="intake-field">
+          <span class="field-tag"><span class="bracket">[</span>FIELD<span class="bracket">]</span> Liability Class:</span>
+          <div class="intake-liability">
+            <label><input type="checkbox" name="liability" value="irreversible"> Irreversible</label>
+            <label><input type="checkbox" name="liability" value="correctable"> Correctable</label>
+            <label><input type="checkbox" name="liability" value="competitive"> Competitive</label>
+          </div>
+        </div>
+
+        <div class="intake-field">
+          <span class="field-tag"><span class="bracket">[</span>FIELD<span class="bracket">]</span> Objective:</span>
+          <textarea name="message" required placeholder="Describe your business constraint..." style="min-height:120px;"></textarea>
         </div>
 
         <input type="hidden" name="service" value="The Blueprint Architecture Sprint">
         <input type="hidden" name="_subject" value="Website lead: The Blueprint">
         <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
 
-        <button type="submit" class="btn-primary btn-submit">Request My Blueprint</button>
+        <div class="intake-submit">
+          <button type="submit" class="btn-primary">Submit Intake <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
       </form>
+
+      <div class="intake-status">
+        <span class="st-code">[STATUS]</span> AWAITING_INPUT
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <footer>
   <div class="container">
