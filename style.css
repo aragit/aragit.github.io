@@ -49,8 +49,6 @@ header.site-header{position:fixed;top:0;width:100%;background:rgba(12,12,12,0.68
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem}
 
 .hamburger{display:none;background:transparent;border:0;color:var(--text);font-size:1.3rem}
-nav
-nav
 nav.nav a:hover{color:var(--accent)}
 
 /* ---------- HERO ---------- */
@@ -11610,10 +11608,19 @@ div#services .cards .card.card-wide .card-actions {
 
 @media (max-width: 768px) {
   .hero-split { grid-template-columns: 1fr !important; }
-  .hero-right { display: block !important; margin-top: 2rem !important; }
+
+  /* Fix 2: Reduce hero h1 font size on mobile */
+  #home.hero .hero-left h1 { font-size: 2rem !important; }
+  #home.hero .hero-left .hero-tagline { font-size: 1rem !important; }
+
+  /* Fix 5: Hide empty hero-right column on mobile */
+  .hero-right { display: none !important; }
 
   /* Hide skill cards on mobile */
   .hero-cards-stack { display: none !important; }
+
+  /* Fix 3: Prevent horizontal scroll on mobile */
+  html, body { overflow-x: hidden; }
 }
 
 /* ============================================================

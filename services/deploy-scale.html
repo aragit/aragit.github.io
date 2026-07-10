@@ -145,11 +145,16 @@
     @media (max-width: 768px) {
       .container-narrow { padding: 0 1.25rem; }
       .hero { padding: 6rem 0 2rem; }
+      .trace-list li { flex-direction: column; gap: 0.25rem; }
+      .trace-kwd { min-width: auto; }
+      .deploy-phases li { flex-direction: column; gap: 0.25rem; }
+      .deploy-phases li::before { min-width: auto; }
       .intake-field { flex-direction: column; gap: 0.5rem; }
       .intake-field .field-tag { min-width: auto; padding-top: 0; }
       .intake-box { padding: 1.5rem; }
       .valid-table { font-size: 0.7rem; }
       .valid-table th, .valid-table td { padding: 0.5rem 0.5rem; }
+      html, body { overflow-x: hidden; }
     }
   </style>
 </head>
