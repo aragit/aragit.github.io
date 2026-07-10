@@ -11053,7 +11053,7 @@ div#services .cards .card.card-wide .card-actions {
    ========================================= */
 #home.hero {
   display: block !important;
-  min-height: 72vh !important;
+  min-height: auto !important;
   padding: 85px 0 3.5rem !important;
   position: relative !important;
   z-index: 0 !important;
