@@ -168,6 +168,157 @@
       .stack-node { left: -2.6rem; width: 1.5rem; height: 1.5rem; font-size: 0.6rem; }
       .stack-layer { padding: 1.25rem; }
     }
+
+    /* ═══════════════════════════════════════════════════════
+       THE BIFURCATED ENGINE
+       ═══════════════════════════════════════════════════════ */
+    .bilateral-container {
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      gap: 1rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+
+    .engine-wing {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .engine-wing.stochastic {
+      border-top: 4px solid var(--accent-purple);
+    }
+
+    .engine-wing.stochastic:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      box-shadow: 0 0 60px -20px rgba(139, 92, 246, 0.15),
+                  inset 0 1px 0 rgba(139, 92, 246, 0.08);
+    }
+
+    .engine-wing.stochastic .engine-node:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 0 30px -10px rgba(139, 92, 246, 0.1);
+    }
+
+    .engine-wing.deterministic {
+      border-top: 4px solid #58a6ff;
+      background: linear-gradient(180deg, #0a0a0f 0%, #050505 100%);
+      border-color: rgba(88, 166, 255, 0.12);
+    }
+
+    .engine-wing.deterministic:hover {
+      border-color: rgba(88, 166, 255, 0.3);
+      box-shadow: 0 0 80px -20px rgba(88, 166, 255, 0.12),
+                  inset 0 1px 0 rgba(88, 166, 255, 0.1);
+    }
+
+    .engine-wing.deterministic .engine-node {
+      border-color: rgba(88, 166, 255, 0.08);
+      background: rgba(88, 166, 255, 0.02);
+    }
+
+    .engine-wing.deterministic .engine-node:hover {
+      border-color: rgba(88, 166, 255, 0.3);
+      background: rgba(88, 166, 255, 0.04);
+      box-shadow: 0 0 30px -10px rgba(88, 166, 255, 0.1);
+    }
+
+    .wing-tag {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .wing-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-top: -0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .wing-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.5rem;
+    }
+
+    .engine-node {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+
+    .engine-node:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-surface-hover);
+      transform: translateY(-2px);
+    }
+
+    .node-meta {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.05em;
+    }
+
+    .engine-node h4 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .engine-node p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .rubicon-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+      min-height: 400px;
+    }
+
+    .rubicon-line {
+      width: 1px;
+      flex: 1;
+      background: linear-gradient(to bottom, var(--accent-purple), #58a6ff);
+      opacity: 0.3;
+    }
+
+    .rubicon-pill {
+      font-size: 0.65rem;
+      background: #121217;
+      border: 1px solid var(--border-strong);
+      padding: 12px 6px;
+      border-radius: 100px;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    @media (max-width: 950px) {
+      .bilateral-container { grid-template-columns: 1fr; gap: 3rem; }
+      .rubicon-divider { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -202,123 +353,58 @@
     </div>
   </section>
 
-  <!-- 7-LAYER STACK (BENTO) -->
+  <!-- THE BIFURCATED ENGINE -->
   <section class="section">
     <div class="container">
-      <h2 class="sec-title">The composable stack</h2>
-      <p class="sec-intro">Every system implements a complete production pipeline mapped to a unified architecture. Layers are decoupled, allowing rapid transfer across clinical, financial, and competitive domains.</p>
+      <h2 class="sec-title">The Bifurcated Engine</h2>
+      <p class="sec-intro">We do not pass raw neural output directly to execution vectors. Our systems are split into two completely isolated environments that communicate only through strict structural compilers.</p>
       
-      <div class="stack-pipeline">
-        <!-- Layer 07 -->
-        <div class="stack-layer">
-          <div class="stack-node">07</div>
-          <div class="layer-content">
-            <div class="layer-header">
-              <i class="fa-solid fa-network-wired"></i>
-              <h3 class="layer-title">Meta-Cognition</h3>
-            </div>
-            <p class="layer-desc">Top-level arbitration and system health monitoring. Evaluates model drift and dynamically adjusts confidence thresholds.</p>
-            <div class="layer-tech">
-              <span class="tech-tag">Confidence Decay</span>
-              <span class="tech-tag">Uncertainty Quantification</span>
-              <span class="tech-tag">Drift Detection</span>
-            </div>
+      <div class="bilateral-container">
+        <div class="engine-wing stochastic">
+          <div class="wing-tag mono">[REASONING // 02]</div>
+          <h3 class="wing-title">The Stochastic Field</h3>
+          <p class="wing-desc">Where open-weight SLMs and reasoning agents creatively explore non-linear solution spaces, run multi-agent debates, and generate candidate traces without production risk.</p>
+          
+          <div class="engine-node">
+            <span class="node-meta mono">Perception Ingestion</span>
+            <h4>Multimodal Signal Fusion</h4>
+            <p>Converts raw text, medical telemetry, and time-series data (TimesFM) into initial embeddings.</p>
+          </div>
+
+          <div class="engine-node">
+            <span class="node-meta mono">Exploratory Planning</span>
+            <h4>Parallel Sub-Agent Swarms</h4>
+            <p>Isolated agents running LangGraph cycle-states, fanning out to model hypothetical paths.</p>
           </div>
         </div>
-        <!-- Layer 06 -->
-        <div class="stack-layer">
-          <div class="stack-node">06</div>
-          <div class="layer-content">
-            <div class="layer-header">
-              <i class="fa-solid fa-shield-halved"></i>
-              <h3 class="layer-title">Governance</h3>
-            </div>
-            <p class="layer-desc">The deterministic safety net. Mathematical validation and hard guardrails that cannot be bypassed by neural outputs.</p>
-            <div class="layer-tech">
-              <span class="tech-tag">Policy-as-Code</span>
-              <span class="tech-tag">OPA / Rego</span>
-              <span class="tech-tag">Neuro-Symbolic Guards</span>
-            </div>
-          </div>
+
+        <div class="rubicon-divider">
+          <div class="rubicon-line"></div>
+          <div class="rubicon-pill mono">THE PLANNING RUBICON</div>
+          <div class="rubicon-line"></div>
         </div>
-        <!-- Layer 05 -->
-        <div class="stack-layer">
-          <div class="stack-node">05</div>
-          <div class="layer-content">
-            <div class="layer-header">
-              <i class="fa-solid fa-bolt"></i>
-              <h3 class="layer-title">Execution</h3>
-            </div>
-            <p class="layer-desc">Translates validated reasoning into real-world impact. Enforces idempotent tool dispatch and strict transactional state.</p>
-            <div class="layer-tech">
-              <span class="tech-tag">Idempotency</span>
-              <span class="tech-tag">Stateful Workflows</span>
-              <span class="tech-tag">DAG Commits</span>
-            </div>
+
+        <div class="engine-wing deterministic">
+          <div class="wing-tag mono">[SYS_CORE // 01]</div>
+          <h3 class="wing-title">The Deterministic Vault</h3>
+          <p class="wing-desc">The absolute state platform. This rigid containment unit intercepts candidate graphs, strips away linguistic variance, and executes code via immutable transactional state lines.</p>
+          
+          <div class="engine-node">
+            <span class="node-meta mono">Symbolic Compilation</span>
+            <h4>Constrained JSON Graph Compiler</h4>
+            <p>Distills neural traces into strict mathematical DAGs, validating schema layout before runtime.</p>
           </div>
-        </div>
-        <!-- Layer 04 -->
-        <div class="stack-layer">
-          <div class="stack-node">04</div>
-          <div class="layer-content">
-            <div class="layer-header">
-              <i class="fa-solid fa-diagram-project"></i>
-              <h3 class="layer-title">Reasoning</h3>
-            </div>
-            <p class="layer-desc">The orchestration engine. Handles dynamic planning, multi-agent arbitration, and speculative constraint evaluation.</p>
-            <div class="layer-tech">
-              <span class="tech-tag">Cyclic State Machines</span>
-              <span class="tech-tag">LangGraph</span>
-              <span class="tech-tag">Dynamic Planning</span>
-            </div>
+
+          <div class="engine-node">
+            <span class="node-meta mono">Policy-as-Code Veto</span>
+            <h4>OPA / Rego Governance Firewall</h4>
+            <p>Applies non-negotiable clinical and business invariants. Catches and neutralizes hallucinations natively.</p>
           </div>
-        </div>
-        <!-- Layer 03 -->
-        <div class="stack-layer">
-          <div class="stack-node">03</div>
-          <div class="layer-content">
-            <div class="layer-header">
-              <i class="fa-solid fa-toolbox"></i>
-              <h3 class="layer-title">Tool Registry</h3>
-            </div>
-            <p class="layer-desc">The interface to external capabilities, specialized mathematical solvers, and protocol boundaries.</p>
-            <div class="layer-tech">
-              <span class="tech-tag">MCP Integration</span>
-              <span class="tech-tag">Nash Equilibrium Solvers</span>
-              <span class="tech-tag">Biophysical Calculators</span>
-            </div>
-          </div>
-        </div>
-        <!-- Layer 02 -->
-        <div class="stack-layer">
-          <div class="stack-node">02</div>
-          <div class="layer-content">
-            <div class="layer-header">
-              <i class="fa-solid fa-database"></i>
-              <h3 class="layer-title">Memory</h3>
-            </div>
-            <p class="layer-desc">Manages temporal state and contextual awareness. Separates short-term episodic logs from long-term vector embeddings.</p>
-            <div class="layer-tech">
-              <span class="tech-tag">Vector Hydration</span>
-              <span class="tech-tag">Episodic Logs</span>
-              <span class="tech-tag">Temporal Context</span>
-            </div>
-          </div>
-        </div>
-        <!-- Layer 01 -->
-        <div class="stack-layer">
-          <div class="stack-node">01</div>
-          <div class="layer-content">
-            <div class="layer-header">
-              <i class="fa-solid fa-eye"></i>
-              <h3 class="layer-title">Perception</h3>
-            </div>
-            <p class="layer-desc">The ingestion layer. Transforms unstructured telemetry into validated, formatted semantic entities for the reasoning engine.</p>
-            <div class="layer-tech">
-              <span class="tech-tag">Open-Weight SLMs</span>
-              <span class="tech-tag">MedGemma-4B-IT</span>
-              <span class="tech-tag">TimesFM</span>
-            </div>
+
+          <div class="engine-node">
+            <span class="node-meta mono">Idempotent Commit</span>
+            <h4>[ORCHESTRATION // 03] Platform Scale</h4>
+            <p>Executes transactional tasks through gRPC agents with cryptographic logging and telemetry tracing.</p>
           </div>
         </div>
       </div>
