@@ -11607,12 +11607,7 @@ div#services .cards .card.card-wide .card-actions {
 @keyframes floatCard5 { 0%, 100% { transform: translateY(0) rotate(0.3deg); } 50% { transform: translateY(-6px) rotate(-0.3deg); } }
 
 @media (max-width: 768px) {
-  .hero-split { grid-template-columns: 1fr !important; }
-  #home.hero .hero-left h1 { font-size: 2rem !important; }
-  #home.hero .hero-left .hero-tagline { font-size: 1rem !important; }
-  .hero-right { display: none !important; }
-  .hero-cards-stack { display: none !important; }
-  html, body { overflow-x: hidden; }
+  /* empty — replaced by final block at EOF */
 }
 
 /* ============================================================
@@ -12003,51 +11998,111 @@ div#services .cards .card.card-wide .card-actions {
 /* trigger deploy */
 
 /* ============================================================
-   MOBILE CENTER ALIGNMENT — LAST RULE WINS
+   MOBILE LAYOUT — SINGLE SOURCE OF TRUTH (EOF)
    ============================================================ */
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; }
 
-  /* Hero — force full width so centering works */
-  #home.hero .hero-split { max-width: 100% !important; width: 100% !important; padding: 4rem 1.25rem 2rem !important; }
-  #home.hero .hero-left { text-align: center !important; width: 100% !important; }
-  #home.hero .hero-left h1 { text-align: center !important; font-size: 2rem !important; }
-  #home.hero .hero-left .hero-tagline { text-align: center !important; font-size: 1rem !important; }
-  #home.hero .hero-left .hero-sub { text-align: center !important; }
-  #home.hero .hero-left .hero-cta { justify-content: center !important; }
+  /* ── Hero ── */
+  #home.hero .hero-split {
+    display: block !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 5rem 1.25rem 2rem !important;
+  }
+  .hero-right { display: none !important; }
+  .hero-cards-stack { display: none !important; }
+  #home.hero .hero-left {
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #home.hero .hero-left h1 {
+    text-align: center !important;
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  #home.hero .hero-left .hero-tagline {
+    text-align: center !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  #home.hero .hero-left .hero-sub {
+    text-align: center !important;
+  }
+  #home.hero .hero-left .hero-cta {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
 
-  /* Architecture */
-  .arch-layout { text-align: center !important; }
-  .arch-left { text-align: center !important; position: static !important; }
+  /* ── Architecture ── */
+  .arch-layout {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+    gap: 2rem !important;
+  }
+  .arch-left {
+    text-align: center !important;
+    position: static !important;
+  }
   .arch-left h2 { text-align: center !important; }
   .arch-left p { text-align: center !important; }
   .arch-left .arch-cta { display: flex !important; justify-content: center !important; }
-  .arch-pillar { text-align: center !important; }
+  .arch-pillar { text-align: center !important; padding: 1.5rem 0 !important; }
   .arch-pillar h3 { text-align: center !important; }
   .arch-pillar p { text-align: center !important; }
   .arch-pillar .sota-link { justify-content: center !important; }
 
-  /* SOTA / Solutions */
-  .sota-header { text-align: center !important; }
-  .sota-header p { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
-  .sota-title-wrapper { display: block !important; }
+  /* ── SOTA / Solutions ── */
   .sota-section { padding: 3rem 1rem !important; }
-  .sota-matrix-dashboard { padding: 1.25rem !important; }
-  .sota-domain-nav { justify-content: center !important; }
-  .sota-usecase-nav { justify-content: center !important; }
+  .sota-header { text-align: center !important; margin-bottom: 2rem !important; }
+  .sota-header p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+  }
+  .sota-title-wrapper { display: block !important; text-align: center !important; }
+  .sota-title-wrapper h2 { text-align: center !important; }
+  .sota-matrix-dashboard { padding: 1rem !important; }
+  .sota-domain-nav {
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
+  .sota-domain-tab { font-size: 0.85rem !important; padding: 0.4rem 0.6rem !important; }
+  .sota-usecase-nav {
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
+  .sota-usecase-pill { font-size: 0.8rem !important; padding: 0.4rem 0.8rem !important; }
   .sota-info-pane { text-align: center !important; align-items: center !important; }
   .sota-badge { align-self: center !important; }
   .sota-link-arrow { justify-content: center !important; }
+  .sota-terminal-pane { min-height: auto !important; }
 
-  /* Section titles */
+  /* ── Section titles ── */
   .section-title-gradient { text-align: center !important; }
   .section-title { text-align: center !important; }
-  .section-subtitle { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+  .section-subtitle {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
 
-  /* Services */
+  /* ── Services ── */
   .section-left-header { text-align: center !important; }
   .services-asymmetric-layout { text-align: center !important; }
+  .services-index-track,
+  .services-featured-track { width: 100% !important; }
 
-  /* Manifesto */
+  /* ── Manifesto ── */
   .manifesto-text { text-align: center !important; }
+
+  /* ── Terminal / code blocks — prevent overflow ── */
+  .terminal-body,
+  .sota-term-body,
+  .terminal-box { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
 }
