@@ -12008,8 +12008,9 @@ div#services .cards .card.card-wide .card-actions {
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; }
 
-  /* Hero */
-  #home.hero .hero-left { text-align: center !important; }
+  /* Hero — force full width so centering works */
+  #home.hero .hero-split { max-width: 100% !important; width: 100% !important; padding: 4rem 1.25rem 2rem !important; }
+  #home.hero .hero-left { text-align: center !important; width: 100% !important; }
   #home.hero .hero-left h1 { text-align: center !important; font-size: 2rem !important; }
   #home.hero .hero-left .hero-tagline { text-align: center !important; font-size: 1rem !important; }
   #home.hero .hero-left .hero-sub { text-align: center !important; }
