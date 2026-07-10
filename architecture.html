@@ -263,6 +263,25 @@
       letter-spacing: -0.02em;
     }
 
+    .wing-philosophy {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+      padding: 1rem 1.25rem;
+      border-left: 2px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.01);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .engine-wing.stochastic .wing-philosophy {
+      border-left-color: rgba(139, 92, 246, 0.4);
+    }
+
+    .engine-wing.deterministic .wing-philosophy {
+      border-left-color: rgba(88, 166, 255, 0.4);
+    }
+
     .wing-desc {
       font-size: 0.95rem;
       color: var(--text-muted);
@@ -387,6 +406,7 @@
         <div class="engine-wing stochastic">
           <div class="wing-tag mono">[REASONING // 02]</div>
           <h3 class="wing-title">The Stochastic Field</h3>
+          <p class="wing-philosophy">Intelligence requires constraints. We architect reasoning engines that creatively explore solution spaces, distilling neural output into strict deterministic execution graphs. The LLM is not the system — it is an untrusted guest operating within a pre-validated stochastic range, free to innovate but never free to execute.</p>
           <p class="wing-desc">Where open-weight SLMs and reasoning agents creatively explore non-linear solution spaces, run multi-agent debates, and generate candidate traces without production risk.</p>
           
           <div class="engine-node">
@@ -411,6 +431,7 @@
         <div class="engine-wing deterministic">
           <div class="wing-tag mono">[SYS_CORE // 01]</div>
           <h3 class="wing-title">The Deterministic Vault</h3>
+          <p class="wing-philosophy">Enterprise autonomy requires absolute reliability. Every neural output is intercepted by a rigid state machine that strips linguistic variance and enforces mathematical invariants. Governance, validation, and recovery come first. Intelligence is earned — never assumed.</p>
           <p class="wing-desc">The absolute state platform. This rigid containment unit intercepts candidate graphs, strips away linguistic variance, and executes code via immutable transactional state lines.</p>
           
           <div class="engine-node">
