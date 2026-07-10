@@ -92,6 +92,15 @@
     .btn-submit { width: 100%; justify-content: center; margin-top: 10px; }
     
     footer { text-align: center; padding: 30px 0; color: #6b7280; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.05); }
+    .matrix-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.9rem; }
+    .matrix-table th { text-align: left; padding: 12px 14px; background: rgba(255,255,255,0.03); border-bottom: 2px solid var(--accent); color: #fff; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .matrix-table td { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: #cbd6df; }
+    .matrix-table tr:last-child td { border-bottom: none; }
+    .matrix-table tr:hover td { background: rgba(255,107,0,0.03); }
+    .matrix-table .pattern-name { color: #fff; font-weight: 600; }
+    .matrix-table .cost-tier { font-family: monospace; color: var(--accent); font-weight: 600; }
+    .matrix-table .liability-cell { font-size: 0.85rem; }
+
     @media(max-width:700px){ .form-row { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin-bottom: 24px; color: #fff; letter-spacing: -1px; line-height: 1.15; text-shadow: 0 4px 25px rgba(0,0,0,0.8); } }
   
     /* === FORCED HERO ENLARGEMENT (SHRUNK DOWN) === */
@@ -168,16 +177,15 @@
       <div class="card">
         <h3><i class="fa-solid fa-handshake"></i>Avoiding the "Wizard of Oz" Trap</h3>
         <ul class="checklist">
-          <li>Align the C-suite on the reality of Agentic AI: transition expectations from "magic conversationalists" to reliable digital workers.</li>
-          <li>Expose hidden operational debts like the "Wizard of Oz" trap, where human-in-the-loop (HITL) dependencies secretly destroy ROI.</li>
-          <li>Navigate the "Build vs. Buy" dilemma using unbiased metrics on latency, liability, and vendor lock-in.</li>
+          <li>Expose hidden operational debts where HITL dependencies masquerade as autonomy. We map every "human approval" node to a deterministic veto point. If a human is required, the system is not agentic — it is a chatbot with extra steps. We quantify the exact latency and liability cost of each manual gate.</li>
+          <li>Navigate the "Build vs. Buy" dilemma using unbiased metrics on latency, liability, and vendor lock-in based on actual architectural constraints rather than vendor promises.</li>
         </ul>
       </div>
 
       <div class="card">
         <h3><i class="fa-solid fa-shield-halved"></i>Policy-as-Code & Grounding</h3>
         <ul class="checklist">
-          <li>Implement <span class="agentic-term">Policy-as-Code (OPA)</span> guardrails at the network layer, ensuring the LLM cannot bypass hard business logic.</li>
+          <li>Implement <span class="agentic-term">Policy-as-Code (OPA)</span> guardrails at the network layer, ensuring the LLM cannot bypass hard business logic. Example: A proposed chemotherapy regimen (AC-T) is automatically vetoed when LVEF drops below 50%. The LLM proposes; the deterministic vault enforces. This is not a suggestion — it is a non-negotiable invariant.</li>
           <li>Establish "Instrumental Grounding" protocols so your agents can verify their environment (APIs, databases) rather than hallucinating plans.</li>
           <li>Design a secure blast-radius containment strategy for high-liability environments (Healthcare, Finance).</li>
         </ul>
@@ -189,6 +197,7 @@
           <li>Model the true cost of agency: moving from $0.30 per conversational query to $30+ per multi-step, verified execution task.</li>
           <li>Execute a structural break-even analysis mapping System 1 (fast/cheap) vs. System 2 (inference-time scaling/expensive) reasoning costs.</li>
           <li>Stress-test your unit economics against prolonged agent "waiting periods" and temporal state-decay.</li>
+          <li>Cost modeling is inseparable from verification maturity. A $30 multi-step execution task is only justified at Level 3+ verification (Property-based invariants or cryptographic audit trails). We map your budget to the minimum viable verification level — never sell unverified agency.</li>
         </ul>
       </div>
 
@@ -206,26 +215,38 @@
 
 <section>
   <div class="container">
-    <div style="margin: 24px 0; padding: 16px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
-      <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Validated architecture patterns</span>
-      <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
-
-        <div style="padding: 12px; border: 1px solid #21262d; border-radius: 6px;">
-          <a href="https://github.com/aragit/agentic-energy-grid-balancing" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/agentic-energy-grid-balancing</a>
-          <p style="margin-top: 6px; font-size: 12px; color: #b0b8c4; line-height: 1.5;">Guarded Execution · ~120 tests · Symbolic grid simulation owns execution</p>
-        </div>
-
-        <div style="padding: 12px; border: 1px solid #21262d; border-radius: 6px;">
-          <a href="https://github.com/aragit/speculative-clinical-graphrag" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/speculative-clinical-graphrag</a>
-          <p style="margin-top: 6px; font-size: 12px; color: #b0b8c4; line-height: 1.5;">Verify-Then-Generate · LangGraph + Neo4j · Self-correction with confidence decay</p>
-        </div>
-
-        <div style="padding: 12px; border: 1px solid #21262d; border-radius: 6px;">
-          <a href="https://github.com/aragit/agentic-nash-marketing" style="color: #58a6ff; font-family: monospace; font-size: 13px; text-decoration: none;">aragit/agentic-nash-marketing</a>
-          <p style="margin-top: 6px; font-size: 12px; color: #b0b8c4; line-height: 1.5;">Algorithmic Arbitration · 49 property-based tests · VCG + Nash solver</p>
-        </div>
-
-      </div>
+    <div style="margin: 24px 0; padding: 20px; background: #161b22; border: 1px solid #30363d; border-radius: 6px;">
+      <span style="font-size: 12px; color: #b0b8c4; text-transform: uppercase; letter-spacing: 0.05em;">Pattern Selection &amp; Liability Decision Matrix</span>
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Pattern</th>
+            <th>Liability Profile</th>
+            <th>Verification Required</th>
+            <th>Cost Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pattern-name">Guarded Execution</td>
+            <td class="liability-cell">Irreversible harm</td>
+            <td>Audit Trails + Cryptographic ledger</td>
+            <td class="cost-tier">$30+/task</td>
+          </tr>
+          <tr>
+            <td class="pattern-name">Verify-Then-Generate</td>
+            <td class="liability-cell">Correctable waste</td>
+            <td>Property-based + Benchmarks</td>
+            <td class="cost-tier">$5-15/task</td>
+          </tr>
+          <tr>
+            <td class="pattern-name">Algorithmic Arbitration</td>
+            <td class="liability-cell">Resource competition</td>
+            <td>Nash equilibrium + Unit tests</td>
+            <td class="cost-tier">$2-8/task</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
