@@ -12105,4 +12105,19 @@ div#services .cards .card.card-wide .card-actions {
   .terminal-body,
   .sota-term-body,
   .terminal-box { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
+
+  /* ── SOTA domain tabs — fix underline overlap ── */
+  .sota-domain-nav {
+    padding-bottom: 0.5rem !important;
+    gap: 0.25rem !important;
+  }
+  .sota-domain-tab.active::after {
+    bottom: -0.5rem !important;
+    height: 2px !important;
+  }
+  .sota-domain-tab {
+    font-size: 0.78rem !important;
+    padding: 0.35rem 0.5rem !important;
+    position: relative !important;
+  }
 }
