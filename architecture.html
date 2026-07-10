@@ -172,6 +172,26 @@
     /* ═══════════════════════════════════════════════════════
        THE BIFURCATED ENGINE
        ═══════════════════════════════════════════════════════ */
+    .engine-diagram {
+      margin-bottom: 4rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+    }
+
+    .engine-diagram img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.95;
+      transition: var(--transition);
+    }
+
+    .engine-diagram:hover img {
+      opacity: 1;
+    }
+
     .bilateral-container {
       display: grid;
       grid-template-columns: 1fr 80px 1fr;
@@ -358,6 +378,10 @@
     <div class="container">
       <h2 class="sec-title">The Bifurcated Engine</h2>
       <p class="sec-intro">We do not pass raw neural output directly to execution vectors. Our systems are split into two completely isolated environments that communicate only through strict structural compilers.</p>
+      
+      <div class="engine-diagram">
+        <img src="assets/nsarch.png" alt="Bifurcated Neuro-Symbolic AI Engine Architecture">
+      </div>
       
       <div class="bilateral-container">
         <div class="engine-wing stochastic">
