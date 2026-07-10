@@ -11608,69 +11608,27 @@ div#services .cards .card.card-wide .card-actions {
 @keyframes floatCard4 { 0%, 100% { transform: translateY(0) rotate(-0.3deg); } 50% { transform: translateY(-12px) rotate(0.4deg); } }
 @keyframes floatCard5 { 0%, 100% { transform: translateY(0) rotate(0.3deg); } 50% { transform: translateY(-6px) rotate(-0.3deg); } }
 
+/* Hide mobile image on desktop */
+.hero-mobile-image { display: none; }
+
 @media (max-width: 768px) {
   .hero-split { grid-template-columns: 1fr !important; }
   .hero-right { display: block !important; margin-top: 2rem !important; }
 
-  /* Replace card stack with compact capability grid */
-  .hero-cards-stack {
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-    max-width: none !important;
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
-    margin: 0 auto !important;
+  /* Hide skill cards on mobile, show architecture image instead */
+  .hero-cards-stack { display: none !important; }
+
+  .hero-mobile-image {
+    display: block !important;
+    width: 100%;
   }
 
-  .stack-card {
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    animation: none !important;
-    width: 100% !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
-    padding: 14px 14px !important;
-    transform: none !important;
-    background: #141414 !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  }
-
-  .stack-card:hover { border-color: rgba(255, 107, 0, 0.25) !important; }
-
-  /* Card 5 (capabilities) spans full width as a compact footer */
-  .stack-card.card-5 {
-    grid-column: 1 / -1 !important;
-    width: 100% !important;
-    left: auto !important;
-    top: auto !important;
-    padding: 12px 14px !important;
-  }
-
-  .stack-card.card-4 {
-    grid-column: 1 / -1 !important;
-    width: 100% !important;
-    left: auto !important;
-  }
-
-  /* Compact text for mobile */
-  .stack-card .card-label {
-    font-size: 0.65rem !important;
-    letter-spacing: 1px !important;
-  }
-  .stack-card .card-title {
-    font-size: 0.78rem !important;
-    line-height: 1.35 !important;
-  }
-  .stack-card .card-icon {
-    width: 34px !important;
-    height: 34px !important;
-    min-width: 34px !important;
-    font-size: 1rem !important;
-  }
-  .stack-card .card-cap-item {
-    font-size: 0.7rem !important;
+  .hero-mobile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #141414;
   }
 }
 
