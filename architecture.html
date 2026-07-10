@@ -325,6 +325,51 @@
       color: var(--text-muted);
     }
 
+    .stochastic-cta {
+      margin-top: 0.5rem;
+      padding: 1.5rem;
+      background: rgba(139, 92, 246, 0.04);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .stochastic-cta:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      background: rgba(139, 92, 246, 0.07);
+    }
+
+    .cta-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius-sm);
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      color: #c4b5fd;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px -10px rgba(139, 92, 246, 0.2);
+    }
+
     .rubicon-divider {
       display: flex;
       flex-direction: column;
@@ -468,6 +513,11 @@
             <span class="node-meta mono">Exploratory Planning</span>
             <h4>Parallel Sub-Agent Swarms</h4>
             <p>Isolated agents running LangGraph cycle-states, fanning out to model hypothetical paths.</p>
+          </div>
+
+          <div class="stochastic-cta">
+            <p class="cta-label">Separate Agent Infrastructure from Agent Theater</p>
+            <a href="https://medium.com/@anicomanesh/the-planning-rubicon-why-the-vast-majority-of-ai-agents-are-just-expensive-chatbots-part-i-fa0409a10d8e?source=your_stories_outbox---writer_outbox_published-----------------------------------------" target="_blank" rel="noopener noreferrer" class="cta-button">Learn More about The Planning-Rubicon →</a>
           </div>
         </div>
 
