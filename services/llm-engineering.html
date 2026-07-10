@@ -75,9 +75,9 @@
        ════════════════════════════════════════════ */
     .sec-tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.02em; display: block; margin-bottom: 1.5rem; }
     .sec-tag .sep { color: var(--text-dim); }
-    .showcase-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin-bottom: 1.5rem; padding: 0.75rem 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
-    .showcase-meta span { display: flex; align-items: center; gap: 0.4rem; }
-    .showcase-meta .ml { color: var(--text-muted); }
+    .showcase-meta { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.5rem; padding: 0.75rem 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
+    .showcase-meta .meta-row { display: flex; align-items: baseline; gap: 0.5rem; }
+    .showcase-meta .ml { color: var(--text-muted); min-width: 5.5rem; flex-shrink: 0; }
 
     /* ════════════════════════════════════════════
        VERTICAL SHOWCASE (IDE Split Pane)
@@ -90,8 +90,6 @@
     .showcase-content h3 { font-size: 1.3rem; color: var(--text-main); font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; letter-spacing: -0.02em; }
     .showcase-content h3 i { color: var(--accent-blue); font-size: 1.1rem; }
     .showcase-content p { color: var(--text-muted); margin-bottom: 14px; line-height: 1.7; font-size: 0.95rem; }
-    .tech-badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-    .tech-badge { background: rgba(59,130,246,0.08); color: var(--accent-blue); border: 1px solid rgba(59,130,246,0.15); padding: 4px 10px; border-radius: var(--radius-sm); font-size: 0.75rem; font-family: var(--font-mono); font-weight: 500; }
 
     /* Terminal Window */
     .terminal-window { background: #0c0c0f; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; }
@@ -225,20 +223,12 @@
       <div class="showcase-content">
         <h3><i class="fa-solid fa-server"></i> Clinical-Grade Serving</h3>
         <div class="showcase-meta">
-          <span><span class="ml">Objective:</span> Sub-200ms TTFT on clinical inference workloads</span>
-          <span><span class="ml">Method:</span> PagedAttention + continuous batching + GGUF 4-bit</span>
-          <span><span class="ml">Hardware:</span> NVIDIA H100 | vLLM | Flash-Decoding</span>
+          <div class="meta-row"><span class="ml">Objective:</span> Sub-200ms TTFT on clinical inference workloads</div>
+          <div class="meta-row"><span class="ml">Method:</span> PagedAttention + continuous batching + GGUF 4-bit</div>
+          <div class="meta-row"><span class="ml">Hardware:</span> NVIDIA H100 | vLLM | Flash-Decoding</div>
         </div>
         <p>Naive model deployment leads to GPU memory fragmentation and unacceptable Time-To-First-Token (TTFT). We implement advanced serving architectures using PagedAttention and continuous batching on specialized medical models.</p>
         <p>By leveraging custom CUDA kernels and optimizing precision states (GGUF 4-bit quantization), we maximize hardware utilization — achieving high token throughput on clinical inference workloads without sacrificing diagnostic reasoning quality.</p>
-        <div class="tech-badge-container">
-          <span class="tech-badge">vLLM</span>
-          <span class="tech-badge">TensorRT</span>
-          <span class="tech-badge">GGUF 4-bit</span>
-          <span class="tech-badge">Flash-Decoding</span>
-          <span class="tech-badge">TimesFM</span>
-          <span class="tech-badge">Chronos-2</span>
-        </div>
       </div>
 
       <div class="terminal-window">
@@ -267,19 +257,12 @@
       <div class="showcase-content">
         <h3><i class="fa-solid fa-code"></i> Medical Triage Agent Router</h3>
         <div class="showcase-meta">
-          <span><span class="ml">Objective:</span> Mathematically guarantee valid clinical output</span>
-          <span><span class="ml">Method:</span> Logits-level token masking via Outlines</span>
-          <span><span class="ml">Schema:</span> Pydantic + SNOMED/ICD-10 deterministic routing</span>
+          <div class="meta-row"><span class="ml">Objective:</span> Mathematically guarantee valid clinical output</div>
+          <div class="meta-row"><span class="ml">Method:</span> Logits-level token masking via Outlines</div>
+          <div class="meta-row"><span class="ml">Schema:</span> Pydantic + SNOMED/ICD-10 deterministic routing</div>
         </div>
         <p>LLMs are probabilistic text generators, which makes them inherently dangerous for clinical automation. "Prompting" them to output structured JSON frequently fails at the edge — where patient safety matters most.</p>
         <p>We deploy frameworks that intervene directly at the logits level during decoding. By masking invalid tokens before sampling, we mathematically guarantee that the model output conforms to clinical Pydantic schemas — including SNOMED/ICD-10 entity mapping and deterministic routing actions.</p>
-        <div class="tech-badge-container">
-          <span class="tech-badge">Outlines</span>
-          <span class="tech-badge">Guidance</span>
-          <span class="tech-badge">DSPy</span>
-          <span class="tech-badge">MCP</span>
-          <span class="tech-badge">MedGemma-4B</span>
-        </div>
       </div>
 
       <div class="code-window">
@@ -325,19 +308,12 @@ result = generator(
       <div class="showcase-content">
         <h3><i class="fa-solid fa-layer-group"></i> Medical Chain-of-Thought Without Catastrophic Forgetting</h3>
         <div class="showcase-meta">
-          <span><span class="ml">Objective:</span> Domain-specific clinical reasoning without drift</span>
-          <span><span class="ml">Method:</span> Unsloth QLoRA + DPO on Medical-CoT datasets</span>
-          <span><span class="ml">Output:</span> LoRA adapters exported to safetensors</span>
+          <div class="meta-row"><span class="ml">Objective:</span> Domain-specific clinical reasoning without drift</div>
+          <div class="meta-row"><span class="ml">Method:</span> Unsloth QLoRA + DPO on Medical-CoT datasets</div>
+          <div class="meta-row"><span class="ml">Output:</span> LoRA adapters exported to safetensors</div>
         </div>
         <p>When off-the-shelf models fail at domain-specific clinical reasoning, we align them to your proprietary medical data. Using Unsloth for ultra-fast gradient computation and DPO (Direct Preference Optimization), we teach models exactly how to reason within clinical constraints.</p>
         <p>Medical-Chain-Of-Thought datasets ensure structured diagnostic reasoning while minimizing hallucination — drastically reducing training costs on specialized medical workloads.</p>
-        <div class="tech-badge-container">
-          <span class="tech-badge">Unsloth</span>
-          <span class="tech-badge">LoRA / QLoRA</span>
-          <span class="tech-badge">DPO</span>
-          <span class="tech-badge">CUDA Kernels</span>
-          <span class="tech-badge">MedGemma-4B</span>
-        </div>
       </div>
 
       <div class="terminal-window">
