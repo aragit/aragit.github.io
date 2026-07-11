@@ -288,17 +288,22 @@
                   <div class="term-title">edge-slm &mdash; quantize-deploy</div>
                 </div>
                 <div class="sota-term-body">
-                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">edge_slm optimize --model=gemma-1b --target=rpi5</span></div>
-                  <div class="term-line"><span class="term-comment"># --- STAGE 1: QUANTIZATION ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[QUANT]</span> FP32 &rarr; INT8 (static) &rarr; INT4 (dynamic)</div>
-                  <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Perplexity:</span> 12.4 &rarr; 13.8 (&lt;15% degradation)</div>
-                  <div class="term-line"><span class="term-comment"># --- STAGE 2: EXPORT ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[ONNX]</span> Cross-platform CPU build complete</div>
-                  <div class="term-line"><span class="term-kwd">[EXECUTORCH]</span> ARM NEON delegate compiled</div>
-                  <div class="term-line"><span class="term-comment"># --- STAGE 3: BENCHMARK ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[RPI5]</span> Latency: 42ms/token | Power: 3.8W</div>
-                  <div class="term-line"><span class="term-pass">[SPEC]</span> Draft model (100M) &rarr; 2x decode speedup</div>
-                  <div class="term-line"><span class="term-pass">[PASS]</span> All accuracy gates cleared.</div>
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python -m quantization.ptq_int8 --model gemma-3-1b</span></div>
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python -m export.onnx_exporter --model gemma-3-1b</span></div>
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python -m benchmarks.baseline --model gemma-3-1b</span></div>
+                  <div class="term-line">[baseline] Loading gemma-3-1b (1B params, FP32)...</div>
+                  <div class="term-line">[baseline] Loaded in 2.8s | Size: 2.00 GB</div>
+                  <div class="term-line">[baseline] Generating 20 tokens...</div>
+                  <div class="term-line">[baseline] Results: 12.3 tok/s | 81.3 ms/tok | 318 MB</div>
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">pytest tests/ -v --cov</span></div>
+                  <div class="term-line">test_quantization.py::TestPTQInt8::test_quantize_returns_model PASSED</div>
+                  <div class="term-line">test_quantization.py::TestPTQInt8::test_quantized_has_int8_weights PASSED</div>
+                  <div class="term-line">test_export.py::TestONNXExport::test_export_valid_graph PASSED</div>
+                  <div class="term-line">test_export.py::TestONNXExport::test_dynamic_shapes_supported PASSED</div>
+                  <div class="term-line">test_runtime.py::TestONNXRuntime::test_generate_with_tokenizer PASSED</div>
+                  <div class="term-line">test_telemetry.py::TestInferenceProfiler::test_profile_generation_returns_metrics PASSED</div>
+                  <div class="term-line">test_end_to_end.py::TestEndToEnd::test_fp32_export_then_quantize_pipeline PASSED</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> 37 passed in 18.42s</div>
                   <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">EDGE_READY_FOR_DEPLOY</span><span class="term-cursor" aria-hidden="true"></span></div>
                 </div>
               </div>
