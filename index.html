@@ -33,7 +33,7 @@
   </style>
 
   <!-- style (external) -->
-  <link rel="stylesheet" href="style.css?v=20260710200000" />
+  <link rel="stylesheet" href="style.css?v=20260711120000" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -259,8 +259,7 @@
           
           <nav class="sota-usecase-nav" aria-label="Cross Domain Use Cases">
             <button class="sota-usecase-pill active" data-usecase="cd-edge">01. Edge SLM</button>
-            <button class="sota-usecase-pill" data-usecase="cd-crew">02. Enterprise Crew</button>
-            <button class="sota-usecase-pill" data-usecase="cd-deepseek">03. DeepSeek LoRA</button>
+            <button class="sota-usecase-pill" data-usecase="cd-deepseek">02. DeepSeek LoRA</button>
           </nav>
 
           <div class="sota-bento-grid">
@@ -299,42 +298,6 @@
                   <div class="term-line"><span class="term-pass">[SPEC]</span> Draft model (100M) &rarr; 2x decode speedup</div>
                   <div class="term-line"><span class="term-pass">[PASS]</span> All accuracy gates cleared.</div>
                   <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">EDGE_READY_FOR_DEPLOY</span><span class="term-cursor" aria-hidden="true"></span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="sota-usecase-card" id="cd-crew">
-               <div class="sota-info-pane">
-                <span class="sota-badge">Local-First / 3-Agent Pipeline</span>
-                <h3>Enterprise Intelligence Crew</h3>
-                <p class="sota-subtitle">Autonomous enterprise trend intelligence pipeline.</p>
-                <p class="sota-desc">Sequential 3-agent CrewAI pipeline (Trend Investigator &rarr; Risk Analyst &rarr; Copywriter) with LangGraph risk gate state machine, local-only Ollama inference, ChromaDB semantic memory, and Pydantic V2 contracts at every stage. Zero API keys, zero cloud dependency.</p>
-                <div class="sota-tech-stack">
-                  <span>CrewAI</span><span>Ollama</span><span>ChromaDB</span><span>FastAPI</span><span>Pydantic V2</span>
-                </div>
-                <a href="https://github.com/aragit/enterprise-intelligence-crew" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
-              </div>
-              <div class="sota-terminal-pane">
-                <div class="sota-term-header">
-                  <div class="term-traffic-lights" aria-hidden="true">
-                    <div class="term-dot close"></div>
-                    <div class="term-dot min"></div>
-                    <div class="term-dot max"></div>
-                  </div>
-                  <div class="term-title">enterprise-crew &mdash; trend-intel</div>
-                </div>
-                <div class="sota-term-body">
-                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">crew run --topic="edge-ai-adoption" --local</span></div>
-                  <div class="term-line"><span class="term-comment"># --- AGENT 1: TREND INVESTIGATOR ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[OLLAMA]</span> gemma2:2b analyzing trend signals...</div>
-                  <div class="term-line"><span class="term-kwd">[CHROMADB]</span> Retrieved 12 related research chunks</div>
-                  <div class="term-line"><span class="term-comment"># --- AGENT 2: RISK ANALYST ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[LANGGRAPH]</span> Risk gate: evaluate &rarr; approve</div>
-                  <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Confidence:</span> 0.87 | Risk: LOW</div>
-                  <div class="term-line"><span class="term-comment"># --- AGENT 3: COPYWRITER ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[PYDANTIC]</span> ContentPayload validated &#10003;</div>
-                  <div class="term-line"><span class="term-pass">[PASS]</span> 3/3 agents completed. Output persisted.</div>
-                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">INTELLIGENCE_REPORT_READY</span><span class="term-cursor" aria-hidden="true"></span></div>
                 </div>
               </div>
             </div>
@@ -382,8 +345,6 @@
             <nav class="sota-usecase-nav" aria-label="Healthcare Use Cases">
               <button class="sota-usecase-pill active" data-usecase="hc-onco">01. Clinical Oncology</button>
               <button class="sota-usecase-pill" data-usecase="hc-graphrag">02. Clinical GraphRAG</button>
-              <button class="sota-usecase-pill" data-usecase="hc-molecular">03. Molecular Discovery</button>
-              <button class="sota-usecase-pill" data-usecase="hc-biomedical">04. Biomedical Hypotheses</button>
             </nav>
   
             <div class="sota-bento-grid">
@@ -467,79 +428,6 @@
                     <div class="term-line"><span class="term-pass">[PASS]</span> Corrected path validated by all verifiers.</div>
                     <div class="term-line"><span class="term-pass">[AUDIT]</span> Trace committed. Zero PHI persisted.</div>
                     <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">AWAITING_CLINICIAN_REVIEW</span><span class="term-cursor" aria-hidden="true"></span></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="sota-usecase-card" id="hc-molecular">
-                <div class="sota-info-pane">
-                  <span class="sota-badge">Drug Discovery</span>
-                  <h3>Molecular Discovery Agent</h3>
-                  <p class="sota-subtitle">High-throughput docking agent that halts synthesis of hepatotoxic structures.</p>
-                  <p class="sota-desc">Automated virtual screening pipeline that combines molecular docking simulations with toxicity prediction. The agent iteratively proposes candidate molecules, evaluates binding affinity, and rejects structures flagged for hepatotoxicity &mdash; all within a closed-loop autonomous workflow.</p>
-                  <div class="sota-tech-stack">
-                    <span>Simulation</span><span>RDKit</span><span>AutoDock</span>
-                  </div>
-                  <a href="#" class="sota-link-arrow">View Case Study <span>&rarr;</span></a>
-                </div>
-                <div class="sota-terminal-pane">
-                  <div class="sota-term-header">
-                    <div class="term-traffic-lights" aria-hidden="true">
-                      <div class="term-dot close"></div>
-                      <div class="term-dot min"></div>
-                      <div class="term-dot max"></div>
-                    </div>
-                    <div class="term-title">mol-screen &mdash; docking-pipeline</div>
-                  </div>
-                  <div class="sota-term-body">
-                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">mol_screen run --target="EGFR" --rounds=200</span></div>
-                    <div class="term-line"><span class="term-comment"># --- BATCH 1: VIRTUAL SCREENING ---</span></div>
-                    <div class="term-line"><span class="term-kwd">[DOCK]</span> Screening 200 candidates against EGFR...</div>
-                    <div class="term-line"><span class="term-kwd">[FILTER]</span> Top 12 by binding affinity (ΔG &lt; -8.5 kcal/mol)</div>
-                    <div class="term-line"><span class="term-comment"># --- BATCH 2: TOXICITY PREDICTION ---</span></div>
-                    <div class="term-line"><span class="term-kwd">[ADMET]</span> Running hepatotoxicity classifier...</div>
-                    <div class="term-line"><span style="color: #ffbd2e;">[REJECT]</span> 4 candidates flagged: DILI risk &gt; 0.7</div>
-                    <div class="term-line"><span class="term-pass">[PASS]</span> 8 candidates cleared all safety gates.</div>
-                    <div class="term-line"><span class="term-kwd">[RANK]</span> Best: compound_047 (ΔG=-9.2, DILI=0.12)</div>
-                    <div class="term-line"><span class="term-pass">[AUDIT]</span> Full pipeline trace persisted.</div>
-                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">SCREENING_COMPLETE</span><span class="term-cursor" aria-hidden="true"></span></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="sota-usecase-card" id="hc-biomedical">
-                <div class="sota-info-pane">
-                  <span class="sota-badge">Repurposing</span>
-                  <h3>Biomedical Hypotheses Agent</h3>
-                  <p class="sota-subtitle">Hypothesis-driven retrieval over PubMed for repurposing leads.</p>
-                  <p class="sota-desc">Graph Neural Network over a knowledge graph of drug-gene-disease associations. The agent generates repurposing hypotheses, validates them against PubMed evidence, and scores confidence based on citation density and pathway overlap.</p>
-                  <div class="sota-tech-stack">
-                    <span>PubMed-KB</span><span>GNN</span><span>Neo4j</span>
-                  </div>
-                  <a href="case-studies/drug-repurposing/index.html" class="sota-link-arrow">View Case Study <span>&rarr;</span></a>
-                </div>
-                <div class="sota-terminal-pane">
-                  <div class="sota-term-header">
-                    <div class="term-traffic-lights" aria-hidden="true">
-                      <div class="term-dot close"></div>
-                      <div class="term-dot min"></div>
-                      <div class="term-dot max"></div>
-                    </div>
-                    <div class="term-title">bio-hypo &mdash; repurpose-engine</div>
-                  </div>
-                  <div class="sota-term-body">
-                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">hypo_agent propose --disease="IPF" --top_k=5</span></div>
-                    <div class="term-line"><span class="term-comment"># --- STEP 1: KNOWLEDGE GRAPH TRAVERSAL ---</span></div>
-                    <div class="term-line"><span class="term-kwd">[GNN]</span> Querying drug-gene-disease subgraph...</div>
-                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Nodes:</span> 1,247 | Edges: 3,891</div>
-                    <div class="term-line"><span class="term-comment"># --- STEP 2: HYPOTHESIS GENERATION ---</span></div>
-                    <div class="term-line"><span class="term-kwd">[LLM]</span> Top candidates: nintedanib(0.91) pirfenidone(0.87)...</div>
-                    <div class="term-line"><span class="term-comment"># --- STEP 3: EVIDENCE VALIDATION ---</span></div>
-                    <div class="term-line"><span class="term-kwd">[PUBMED]</span> Searching for supporting citations...</div>
-                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span class="term-string">Found:</span> 23 papers for nintedanib-IPF link</div>
-                    <div class="term-line"><span class="term-pass">[SCORE]</span> Confidence: 0.89 (high evidence density)</div>
-                    <div class="term-line"><span class="term-pass">[AUDIT]</span> Hypothesis + evidence chain persisted.</div>
-                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">HYPOTHESES_RANKED</span><span class="term-cursor" aria-hidden="true"></span></div>
                   </div>
                 </div>
               </div>
