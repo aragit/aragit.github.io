@@ -326,17 +326,18 @@
                   <div class="term-title">vllm-ccr &mdash; cache-route</div>
                 </div>
                 <div class="sota-term-body">
-                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">vllm_ccr route --workers=4 --strategy=max_prefix</span></div>
-                  <div class="term-line"><span class="term-comment"># --- INIT: CLUSTER TOPOLOGY ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[GATEWAY]</span> FastAPI + OpenAI-compliant /v1/chat/completions</div>
-                  <div class="term-line"><span class="term-kwd">[ROUTER]</span> Radix Tree initialized &mdash; 4 workers online</div>
-                  <div class="term-line"><span class="term-comment"># --- REQUEST: COLD START ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[WORKER-0]</span> Prefix match: 0.00 | TTFT: 550ms (cold)</div>
-                  <div class="term-line"><span class="term-comment"># --- REQUEST: WARM PREFIX MATCH ---</span></div>
-                  <div class="term-line"><span class="term-pass">[HIT]</span> Radix overlap: 847 tokens pinned to Worker-0</div>
-                  <div class="term-line"><span class="term-pass">[PASS]</span> TTFT: 550ms &rarr; 12ms (45x improvement)</div>
-                  <div class="term-line"><span class="term-kwd">[METRICS]</span> cache_hit_ratio: 0.94 | utilization: 72%</div>
-                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">CLUSTER_WARM_ROUTING_ACTIVE</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">uv run python -m vllm_ccr.main</span></div>
+                  <div class="term-line"><span class="term-comment"># --- COLD START ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[WORKER-0]</span> cache_hit_ratio: 0.0 | ttft_ms: 550.0</div>
+                  <div class="term-line"><span class="term-comment"># --- WARM PREFIX MATCH (same system prefix) ---</span></div>
+                  <div class="term-line"><span class="term-pass">[HIT]</span> prefix_tokens_matched: 14 | assigned_worker_id: 0</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> ttft_ms: 550.0 &rarr; 12.0 | cache_hit_ratio: 0.583</div>
+                  <div class="term-line"><span class="term-comment"># --- /metrics (prometheus) ---</span></div>
+                  <div class="term-line">vllm_ccr_requests_total{model=&quot;vllm-ccr-sim&quot;} 2.0</div>
+                  <div class="term-line">vllm_ccr_cache_hits_total{model=&quot;vllm-ccr-sim&quot;} 1.0</div>
+                  <div class="term-line">vllm_ccr_worker_utilization{worker_id=&quot;0&quot;} 0.031</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> 48 tests passed in 2.34s</div>
+                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">CACHE_ROUTER_READY</span><span class="term-cursor" aria-hidden="true"></span></div>
                 </div>
               </div>
             </div>
@@ -364,16 +365,18 @@
                 </div>
                 <div class="sota-term-body">
                   <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python -m evaluator.benchmark</span></div>
-                  <div class="term-line"><span class="term-comment"># --- PHASE 1: DRIFT DETECTION ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[PCA]</span> 1536D &rarr; 1D manifold projection (87.2% variance)</div>
-                  <div class="term-line"><span class="term-kwd">[JSD]</span> Jensen-Shannon Divergence: 0.13 (below 0.15 threshold)</div>
-                  <div class="term-line"><span class="term-comment"># --- PHASE 2: ARCHITECTURE BENCHMARK ---</span></div>
-                  <div class="term-line"><span class="term-kwd">[AGENTIC]</span> Precision: 0.92 | Faithfulness: 0.89 | 1.45s</div>
-                  <div class="term-line"><span class="term-kwd">[NAIVE]</span> Precision: 0.74 | Faithfulness: 0.71 | 0.38s</div>
-                  <div class="term-line"><span class="term-comment"># --- PHASE 3: TELEMETRY ---</span></div>
-                  <div class="term-line"><span class="term-pass">[PASS]</span> Agentic RAG: +24% precision, 3.8x latency cost</div>
-                  <div class="term-line"><span class="term-pass">[PASS]</span> Streamlit dashboard: localhost:8501</div>
-                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">DRIFT_BASELINE_ESTABLISHED</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  <div class="term-line">INFO - --- Starting Evaluation for NaiveRAG ---</div>
+                  <div class="term-line">INFO - --- Starting Evaluation for AgenticRAG ---</div>
+                  <div class="term-line">INFO - FINAL BENCHMARK SUMMARY:</div>
+                  <div class="term-line">&nbsp;&nbsp;Pipeline &nbsp;&nbsp;&nbsp;| Avg Precision | Avg Faithfulness | Avg Latency</div>
+                  <div class="term-line">&nbsp;&nbsp;AgenticRAG | 0.92 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 0.89 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 1.45s</div>
+                  <div class="term-line">&nbsp;&nbsp;NaiveRAG &nbsp;&nbsp;| 0.74 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 0.71 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 0.38s</div>
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">pytest tests/ -v</span></div>
+                  <div class="term-line">test_drift_math.py::test_drift_monitor_zero_divergence PASSED</div>
+                  <div class="term-line">test_drift_math.py::test_drift_monitor_detects_significant_shift PASSED</div>
+                  <div class="term-line">test_e2e.py::test_end_to_end_benchmark_execution PASSED</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> 3 passed in 1.12s</div>
+                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">EVALUATION_COMPLETE</span><span class="term-cursor" aria-hidden="true"></span></div>
                 </div>
               </div>
             </div>
