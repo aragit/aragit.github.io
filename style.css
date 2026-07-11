@@ -11841,7 +11841,7 @@ div#services .cards .card.card-wide .card-actions {
 .sota-info-pane {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .sota-badge {
