@@ -259,7 +259,9 @@
           
           <nav class="sota-usecase-nav" aria-label="Cross Domain Use Cases">
             <button class="sota-usecase-pill active" data-usecase="cd-edge">01. Edge SLM</button>
-            <button class="sota-usecase-pill" data-usecase="cd-deepseek">02. DeepSeek LoRA</button>
+            <button class="sota-usecase-pill" data-usecase="cd-vllm-ccr">02. vLLM Cache Router</button>
+            <button class="sota-usecase-pill" data-usecase="cd-rag-drift">03. RAG Drift Evaluator</button>
+            <button class="sota-usecase-pill" data-usecase="cd-deepseek">04. DeepSeek LoRA</button>
           </nav>
 
           <div class="sota-bento-grid">
@@ -298,6 +300,80 @@
                   <div class="term-line"><span class="term-pass">[SPEC]</span> Draft model (100M) &rarr; 2x decode speedup</div>
                   <div class="term-line"><span class="term-pass">[PASS]</span> All accuracy gates cleared.</div>
                   <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">EDGE_READY_FOR_DEPLOY</span><span class="term-cursor" aria-hidden="true"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sota-usecase-card" id="cd-vllm-ccr">
+              <div class="sota-info-pane">
+                <span class="sota-badge">Distributed Inference / KV-Cache</span>
+                <h3>vLLM Context Cache Router</h3>
+                <p class="sota-subtitle">State-Aware Smart Router for Distributed KV-Cache Optimization.</p>
+                <p class="sota-desc">Concurrency-hardened gateway using Radix Tree prefix-matching to pin incoming requests to the worker with the warmest cache overlap. Thread-safe Block Manager with RLock isolation, deterministic LRU eviction, and native backpressure via HTTP 429 load shedding. Reduces TTFT by 40%+ across multi-agent orchestration loops.</p>
+                <div class="sota-tech-stack">
+                  <span>Python</span><span>FastAPI</span><span>Pydantic</span><span>Prometheus</span>
+                </div>
+                <a href="https://github.com/aragit/vllm-context-cache-router" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+              </div>
+
+              <div class="sota-terminal-pane">
+                <div class="sota-term-header">
+                  <div class="term-traffic-lights" aria-hidden="true">
+                    <div class="term-dot close"></div>
+                    <div class="term-dot min"></div>
+                    <div class="term-dot max"></div>
+                  </div>
+                  <div class="term-title">vllm-ccr &mdash; cache-route</div>
+                </div>
+                <div class="sota-term-body">
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">vllm_ccr route --workers=4 --strategy=max_prefix</span></div>
+                  <div class="term-line"><span class="term-comment"># --- INIT: CLUSTER TOPOLOGY ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[GATEWAY]</span> FastAPI + OpenAI-compliant /v1/chat/completions</div>
+                  <div class="term-line"><span class="term-kwd">[ROUTER]</span> Radix Tree initialized &mdash; 4 workers online</div>
+                  <div class="term-line"><span class="term-comment"># --- REQUEST: COLD START ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[WORKER-0]</span> Prefix match: 0.00 | TTFT: 550ms (cold)</div>
+                  <div class="term-line"><span class="term-comment"># --- REQUEST: WARM PREFIX MATCH ---</span></div>
+                  <div class="term-line"><span class="term-pass">[HIT]</span> Radix overlap: 847 tokens pinned to Worker-0</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> TTFT: 550ms &rarr; 12ms (45x improvement)</div>
+                  <div class="term-line"><span class="term-kwd">[METRICS]</span> cache_hit_ratio: 0.94 | utilization: 72%</div>
+                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">CLUSTER_WARM_ROUTING_ACTIVE</span><span class="term-cursor" aria-hidden="true"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sota-usecase-card" id="cd-rag-drift">
+              <div class="sota-info-pane">
+                <span class="sota-badge">RAG Evaluation / Drift Detection</span>
+                <h3>Post-RAG Drift Evaluator</h3>
+                <p class="sota-subtitle">Latent Space Drift Telemetry &amp; Comparative RAG Architecture Benchmark.</p>
+                <p class="sota-desc">Statistical framework detecting population-level distribution shifts in vector spaces via Jensen-Shannon Divergence over PCA-reduced embeddings. Benchmarks Naive (Single-Pass) RAG vs Agentic (Multi-Hop) RAG across precision, faithfulness, latency, and token footprint. Includes Streamlit observability dashboard with 2D PCA spatial telemetry.</p>
+                <div class="sota-tech-stack">
+                  <span>Python</span><span>Polars</span><span>pgvector</span><span>litellm</span>
+                </div>
+                <a href="https://github.com/aragit/post-rag-drift-evaluator" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+              </div>
+
+              <div class="sota-terminal-pane">
+                <div class="sota-term-header">
+                  <div class="term-traffic-lights" aria-hidden="true">
+                    <div class="term-dot close"></div>
+                    <div class="term-dot min"></div>
+                    <div class="term-dot max"></div>
+                  </div>
+                  <div class="term-title">rag-drift &mdash; evaluate</div>
+                </div>
+                <div class="sota-term-body">
+                  <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python -m evaluator.benchmark</span></div>
+                  <div class="term-line"><span class="term-comment"># --- PHASE 1: DRIFT DETECTION ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[PCA]</span> 1536D &rarr; 1D manifold projection (87.2% variance)</div>
+                  <div class="term-line"><span class="term-kwd">[JSD]</span> Jensen-Shannon Divergence: 0.13 (below 0.15 threshold)</div>
+                  <div class="term-line"><span class="term-comment"># --- PHASE 2: ARCHITECTURE BENCHMARK ---</span></div>
+                  <div class="term-line"><span class="term-kwd">[AGENTIC]</span> Precision: 0.92 | Faithfulness: 0.89 | 1.45s</div>
+                  <div class="term-line"><span class="term-kwd">[NAIVE]</span> Precision: 0.74 | Faithfulness: 0.71 | 0.38s</div>
+                  <div class="term-line"><span class="term-comment"># --- PHASE 3: TELEMETRY ---</span></div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> Agentic RAG: +24% precision, 3.8x latency cost</div>
+                  <div class="term-line"><span class="term-pass">[PASS]</span> Streamlit dashboard: localhost:8501</div>
+                  <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">DRIFT_BASELINE_ESTABLISHED</span><span class="term-cursor" aria-hidden="true"></span></div>
                 </div>
               </div>
             </div>
