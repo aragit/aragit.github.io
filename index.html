@@ -33,7 +33,7 @@
   </style>
 
   <!-- style (external) -->
-  <link rel="stylesheet" href="style.css?v=20260711130000" />
+  <link rel="stylesheet" href="style.css?v=20260712150000" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -427,13 +427,30 @@
 
         <div class="sota-domain-panel" id="domain-healthcare" role="tabpanel">
             <nav class="sota-usecase-nav" aria-label="Healthcare Use Cases">
-              <button class="sota-usecase-pill active" data-usecase="hc-onco">01. Clinical Oncology</button>
-              <button class="sota-usecase-pill" data-usecase="hc-graphrag">02. Clinical GraphRAG</button>
+              <button class="sota-usecase-pill active" data-usecase="hc-triage">01. Clinical Triage Orchestrator</button>
+              <button class="sota-usecase-pill" data-usecase="hc-onco">02. Clinical Oncology</button>
+              <button class="sota-usecase-pill" data-usecase="hc-graphrag">03. Clinical GraphRAG</button>
             </nav>
   
             <div class="sota-bento-grid">
-              
-              <div class="sota-usecase-card active" id="hc-onco">
+
+              <div class="sota-usecase-card active" id="hc-triage">
+                <div class="sota-info-pane">
+                  <span class="sota-badge">Clinical AI / Neuro-Symbolic</span>
+                  <h3>Clinical Triage Agentic Orchestrator</h3>
+                  <p class="sota-subtitle">Enterprise-grade Neuro-Symbolic Orchestrator for high-stakes clinical triage.</p>
+                  <p class="sota-desc">Deterministic-to-probabilistic execution boundary combining OPA-style policy guardrails, SNOMED CT / ICD-10-CM ontology extraction, hybrid Qdrant vector store, and grammar-constrained local LLM decoding. Sub-30ms emergency fast-path on consumer-grade CPU hardware.</p>
+                  <div class="sota-tech-stack">
+                    <span>FastAPI</span><span>Streamlit</span><span>Qdrant</span><span>Gemma 3n</span><span>Docker</span>
+                  </div>
+                  <a href="https://github.com/aragit/clinical-triage-agentic-orchestrator" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
+                </div>
+                <div class="sota-dashboard-pane">
+                  <img src="https://raw.githubusercontent.com/aragit/clinical-triage-agentic-orchestrator/main/assets/triage_1.png" alt="Clinical Triage Dashboard" class="sota-dashboard-img" loading="lazy">
+                </div>
+              </div>
+
+              <div class="sota-usecase-card" id="hc-onco">
                 <div class="sota-info-pane">
                   <span class="sota-badge">Oncology-Focus</span>
                   <h3>Clinical Oncology Agent</h3>

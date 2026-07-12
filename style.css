@@ -11983,6 +11983,25 @@ div#services .cards .card.card-wide .card-actions {
   50% { opacity: 0; }
 }
 
+/* SOTA Dashboard Pane */
+.sota-dashboard-pane {
+  border: 1px solid var(--border-muted);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+}
+
+.sota-dashboard-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .sota-usecase-card {
@@ -12080,6 +12099,7 @@ div#services .cards .card.card-wide .card-actions {
   .sota-badge { align-self: center !important; }
   .sota-link-arrow { justify-content: center !important; }
   .sota-terminal-pane { min-height: auto !important; }
+  .sota-dashboard-pane { min-height: auto !important; }
 
   /* ── Section titles ── */
   .section-title-gradient { text-align: center !important; }
