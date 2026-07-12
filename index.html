@@ -33,7 +33,7 @@
   </style>
 
   <!-- style (external) -->
-  <link rel="stylesheet" href="style.css?v=20260712150000" />
+  <link rel="stylesheet" href="style.css?v=20260712160000" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -445,7 +445,7 @@
                   </div>
                   <a href="https://github.com/aragit/clinical-triage-agentic-orchestrator" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
                 </div>
-                <div class="sota-dashboard-pane">
+                <div class="sota-dashboard-pane" onclick="openDashboardLightbox(this)" role="button" tabindex="0" aria-label="Enlarge dashboard image">
                   <img src="https://raw.githubusercontent.com/aragit/clinical-triage-agentic-orchestrator/main/assets/triage_1.png" alt="Clinical Triage Dashboard" class="sota-dashboard-img" loading="lazy">
                 </div>
               </div>
@@ -1055,6 +1055,12 @@
         <p id="modalMsg" class="form-msg" aria-live="polite"></p>
       </form>
     </div>
+  </div>
+
+  <!-- DASHBOARD LIGHTBOX -->
+  <div id="dashboardLightbox" class="dashboard-lightbox" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeDashboardLightbox(event)">
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <img id="lbImage" src="" alt="Dashboard enlarged view">
   </div>
 
   <!-- CHAT MODAL -->

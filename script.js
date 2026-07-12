@@ -957,4 +957,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Dashboard Lightbox
+function openDashboardLightbox(pane) {
+  const img = pane.querySelector('.sota-dashboard-img');
+  if (!img) return;
+  const lb = document.getElementById('dashboardLightbox');
+  const lbImg = document.getElementById('lbImage');
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+  lb.classList.add('active');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDashboardLightbox(e) {
+  if (e.target.closest('.lb-close') || e.target.classList.contains('dashboard-lightbox')) {
+    const lb = document.getElementById('dashboardLightbox');
+    lb.classList.remove('active');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const lb = document.getElementById('dashboardLightbox');
+    if (lb && lb.classList.contains('active')) {
+      lb.classList.remove('active');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
 
