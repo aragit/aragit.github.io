@@ -33,7 +33,7 @@
   </style>
 
   <!-- style (external) -->
-  <link rel="stylesheet" href="style.css?v=20260712160000" />
+  <link rel="stylesheet" href="style.css?v=20260712170000" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -445,8 +445,29 @@
                   </div>
                   <a href="https://github.com/aragit/clinical-triage-agentic-orchestrator" target="_blank" rel="noopener noreferrer" class="sota-link-arrow">Inspect Repository <span>&rarr;</span></a>
                 </div>
-                <div class="sota-dashboard-pane" onclick="openDashboardLightbox(this)" role="button" tabindex="0" aria-label="Enlarge dashboard image">
-                  <img src="https://raw.githubusercontent.com/aragit/clinical-triage-agentic-orchestrator/main/assets/triage_1.png" alt="Clinical Triage Dashboard" class="sota-dashboard-img" loading="lazy">
+                <div class="sota-terminal-pane">
+                  <div class="sota-term-header">
+                    <div class="term-traffic-lights" aria-hidden="true">
+                      <div class="term-dot close"></div>
+                      <div class="term-dot min"></div>
+                      <div class="term-dot max"></div>
+                    </div>
+                    <div class="term-title">clinical-triage &mdash; orchestrate</div>
+                  </div>
+                  <div class="sota-term-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">docker compose up --build</span></div>
+                    <div class="term-line">[triage-llm-server] llama-cpp server at 0.0.0.0:8000</div>
+                    <div class="term-line">[triage-api] uvicorn on 0.0.0.0:8080 &mdash; 5 guidelines seeded</div>
+                    <div class="term-line">[triage-ui] streamlit dashboard on 0.0.0.0:8501</div>
+                    <div class="term-line"><span class="term-comment"># --- EMERGENCY BYPASS (sub-30ms) ---</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">curl -X POST localhost:8080/webhook/fulfillment \</span></div>
+                    <div class="term-line">&nbsp;&nbsp;-d '{"patient": "severe chest pain and difficulty breathing"}'</div>
+                    <div class="term-line"><span class="term-kwd">[OPA]</span> cardiac-emergency, respiratory-emergency triggered</div>
+                    <div class="term-line"><span class="term-kwd">[FSM]</span> intake &rarr; <span style="color:#ff5f56;font-weight:bold;">escalation</span></div>
+                    <div class="term-line"><span class="term-kwd">[NLP]</span> SNOMED:29857009 ICD-10:R07.9 &mdash; confidence: 1.0</div>
+                    <div class="term-line"><span style="color:#ff5f56;font-weight:bold;">[DENY]</span> llm_bypassed: true &mdash; <span class="term-cmd">latency: 24.4ms</span></div>
+                    <div class="term-line"><span class="term-status">[STATUS]</span> <span class="term-blink">EMERGENCY &mdash; CALL 911</span><span class="term-cursor" aria-hidden="true"></span></div>
+                  </div>
                 </div>
               </div>
 
@@ -1055,12 +1076,6 @@
         <p id="modalMsg" class="form-msg" aria-live="polite"></p>
       </form>
     </div>
-  </div>
-
-  <!-- DASHBOARD LIGHTBOX -->
-  <div id="dashboardLightbox" class="dashboard-lightbox" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeDashboardLightbox(event)">
-    <button class="lb-close" aria-label="Close">&times;</button>
-    <img id="lbImage" src="" alt="Dashboard enlarged view">
   </div>
 
   <!-- CHAT MODAL -->
