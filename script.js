@@ -48,7 +48,6 @@
     safeSetYear();
     initHamburger();
     initServiceModal();
-    initChatModal();
     initTypewriter();
     attachFormUX();
     heroGridDebug();
@@ -277,107 +276,6 @@
         console.error('Failed to close modal', err);
       }
     }
-  }
-
-  /* -------------------------
-     Chat Modal + safe iframe handling
-     ------------------------- */
-  function initChatModal() {
-    const openBtn = document.getElementById('openChatBtn');
-    const chatModal = document.getElementById('chatModal');
-    const chatClose = document.getElementById('chatClose');
-    const chatFrame = document.getElementById('chatFrame');
-    const thinkingBubble = document.getElementById('parentThinkingBubble');
-
-    // helper to show/hide thinking bubble
-    function showThinking(on) {
-      if (!thinkingBubble) return;
-      thinkingBubble.setAttribute('aria-hidden', on ? 'false' : 'true');
-      // CSS displays based on [aria-hidden="false"]
-    }
-
-    if (!chatModal || !openBtn || !chatClose || !chatFrame) {
-      // If any piece is missing, don't error — degrade gracefully
-      if (!openBtn) console.warn('Chat open button (#openChatBtn) not found');
-      return;
-    }
-
-    // open chat
-    openBtn.addEventListener('click', (ev) => {
-      ev.preventDefault();
-      chatModal.setAttribute('aria-hidden', 'false');
-      // set focus to close button for keyboard users
-      chatClose.focus();
-
-      // After opening, try to request status from iframe
-      try {
-        // Post a status request - iframe may ignore if not supporting postMessage
-        chatFrame.contentWindow.postMessage({ type: 'request-status' }, '*');
-      } catch (err) {
-        // Cross-origin: cannot access contentWindow? contentWindow exists but DOM access is not attempted.
-        // We don't attempt contentDocument; just show parent bubble as a fallback.
-        console.warn('postMessage to iframe failed (cross-origin?) — falling back to parent indicator', err);
-        // Show a brief thinking indicator so users know something's happening
-        showThinking(true);
-        // hide after 3s as best-effort
-        setTimeout(() => showThinking(false), 3000);
-      }
-    });
-
-    chatClose.addEventListener('click', (ev) => {
-      ev.preventDefault();
-      chatModal.setAttribute('aria-hidden', 'true');
-      openBtn.focus();
-      showThinking(false);
-    });
-
-    // close chat on backdrop click
-    chatModal.addEventListener('click', (ev) => {
-      if (ev.target === chatModal) {
-        chatModal.setAttribute('aria-hidden', 'true');
-        openBtn.focus();
-      }
-    });
-
-    // ESC to close chat modal
-    document.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Escape' && chatModal.getAttribute('aria-hidden') === 'false') {
-        chatModal.setAttribute('aria-hidden', 'true');
-        openBtn.focus();
-        showThinking(false);
-      }
-    });
-
-    // Listen for messages from iframe (postMessage)
-    window.addEventListener('message', (e) => {
-      try {
-        if (!e || !e.data) return;
-        const data = e.data;
-        if (typeof data !== 'object') return;
-        // accepted message types: thinking:on | thinking:off
-        if (data.type === 'thinking:on') {
-          showThinking(true);
-        } else if (data.type === 'thinking:off') {
-          showThinking(false);
-        } else if (data.type === 'ready') {
-          // optional: iframe indicates readiness
-          showThinking(false);
-        }
-        // ignore other messages
-      } catch (err) {
-        // Be defensive: errors here shouldn't break the page
-        console.error('Error handling postMessage', err);
-      }
-    });
-
-    // Also attempt to request status when iframe loads (try/catch avoids cross-origin DOM attempts)
-    chatFrame.addEventListener('load', () => {
-      try {
-        chatFrame.contentWindow.postMessage({ type: 'request-status' }, '*');
-      } catch (err) {
-        // ignore — cross-origin
-      }
-    });
   }
 
   /* -------------------------

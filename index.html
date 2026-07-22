@@ -116,10 +116,6 @@
           <h1 id="hero-title">Arash <br><span class="highlight">Nicoomanesh</span></h1>
           <p class="hero-tagline">Bridging Strategic Business Intent<br>with Adaptive Agentic Systems</p>
           <div class="hero-cta">
-            <button class="btn-terminal" id="openChatBtn" aria-haspopup="dialog">
-              <span class="btn-prompt">&gt;</span> Chat with my Experience
-            </button>
-
           </div>
         </div>
         <div class="hero-right">
@@ -1078,32 +1074,7 @@
     </div>
   </div>
 
-  <!-- CHAT MODAL -->
-  <div id="chatModal" class="chat-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="chatModalTitle">
-    <div class="chat-modal-content">
-      <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
-      <div id="parentThinkingBubble" class="thinking-bubble" aria-hidden="true"><i class="fas fa-spinner fa-pulse" aria-hidden="true"></i> Thinking…</div>
-      <iframe id="chatFrame"
-        title="Chat with my experience"
-        allow="camera; microphone; clipboard-read; clipboard-write"
-        loading="lazy"></iframe>
-    </div>
-  </div>
-
-  <script src="config.js"></script>
-  <script>
-    // Set iframe src from config (token injected at deploy time)
-    (function() {
-      var cfg = window.AETHRON_CONFIG;
-      var frame = document.getElementById('chatFrame');
-      if (cfg && cfg.spaceUrl && frame) {
-        frame.src = cfg.spaceUrl;
-      } else if (frame) {
-        frame.src = 'https://arnic-exp-chat-rag.hf.space';
-      }
-    })();
-  </script>
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
     
 </body>
 </html>
