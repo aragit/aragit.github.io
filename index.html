@@ -1084,13 +1084,25 @@
       <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
       <div id="parentThinkingBubble" class="thinking-bubble" aria-hidden="true"><i class="fas fa-spinner fa-pulse" aria-hidden="true"></i> Thinking…</div>
       <iframe id="chatFrame"
-        src="https://arnic-exp-chat-rag.hf.space"
         title="Chat with my experience"
         allow="camera; microphone; clipboard-read; clipboard-write"
         loading="lazy"></iframe>
     </div>
   </div>
 
+  <script src="config.js"></script>
+  <script>
+    // Set iframe src from config (token injected at deploy time)
+    (function() {
+      var cfg = window.AETHRON_CONFIG;
+      var frame = document.getElementById('chatFrame');
+      if (cfg && cfg.spaceUrl && frame) {
+        frame.src = cfg.spaceUrl;
+      } else if (frame) {
+        frame.src = 'https://arnic-exp-chat-rag.hf.space';
+      }
+    })();
+  </script>
   <script src="script.js?v=6"></script>
     
 </body>
