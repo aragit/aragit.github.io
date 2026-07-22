@@ -1079,8 +1079,19 @@
   </div>
 
   <!-- CHAT MODAL -->
-  <script src="script.js"></script>
+  <div id="chatModal" class="chat-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="chatModalTitle">
+    <div class="chat-modal-content">
+      <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+      <div id="parentThinkingBubble" class="thinking-bubble" aria-hidden="true"><i class="fas fa-spinner fa-pulse" aria-hidden="true"></i> Thinking…</div>
+      <iframe id="chatFrame"
+        src="https://arnic-exp-chat-rag.hf.space"
+        title="Chat with my experience"
+        allow="camera; microphone; clipboard-read; clipboard-write"
+        loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <script src="script.js?v=6"></script>
     
 </body>
 </html>
-fix
