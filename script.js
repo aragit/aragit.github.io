@@ -972,7 +972,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if (Array.isArray(data) && data.length) {
             const lastMsg = data[data.length - 1];
             if (lastMsg && typeof lastMsg === 'object' && lastMsg.role === 'assistant') {
-              answer = lastMsg.content || '';
+              // Gradio 6.0: content may be {text: "...", type: "text"} or plain string
+              const c = lastMsg.content;
+              answer = (typeof c === 'object' && c !== null && c.text) ? c.text : (c || '');
             }
           } else if (typeof data === 'string') {
             answer = data;
@@ -993,7 +995,7 @@ document.addEventListener('DOMContentLoaded', () => {
         appendBubble(answer, 'assistant', sources);
 
       } catch (err) {
-        console.error('[Aethron] Prediction error:', err);
+        console.error('[Aethron] Error:', err.message || err);
         appendBubble('Something went wrong connecting to the RAG engine. Please try again.', 'assistant');
       } finally {
         typing.hidden = true;
