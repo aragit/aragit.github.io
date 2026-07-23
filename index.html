@@ -116,9 +116,9 @@
           <h1 id="hero-title">Arash <br><span class="highlight">Nicoomanesh</span></h1>
           <p class="hero-tagline">Bridging Strategic Business Intent<br>with Adaptive Agentic Systems</p>
           <div class="hero-cta">
-            <a href="https://huggingface.co/spaces/Arnic/exp-chat-rag" target="_blank" rel="noopener noreferrer" class="btn-terminal">
+            <button type="button" class="btn-terminal" id="chat-widget-toggle">
               <span class="btn-prompt">&gt;</span> Chat with my Experience
-            </a>
+            </button>
           </div>
         </div>
         <div class="hero-right">
@@ -1077,7 +1077,54 @@
     </div>
   </div>
 
-  <script src="script.js?v=7"></script>
+  <!-- ═══════════════════════════════════════════════════════
+       AETHRON NATIVE CHAT WIDGET
+       ═══════════════════════════════════════════════════════ -->
+  <div id="chat-widget-overlay" class="chat-widget-overlay" aria-hidden="true"></div>
+
+  <div id="chat-widget-modal" class="chat-widget-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="chat-widget-title">
+    <div class="chat-widget-header">
+      <div class="chat-widget-header-left">
+        <span class="chat-widget-logo" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M10 17v4"/><path d="M14 17v4"/></svg>
+        </span>
+        <div>
+          <h2 id="chat-widget-title" class="chat-widget-title">Aethron</h2>
+          <span class="chat-widget-status"><span class="chat-widget-status-dot"></span> Online</span>
+        </div>
+      </div>
+      <button id="chat-widget-close" class="chat-widget-close" aria-label="Close chat">&times;</button>
+    </div>
+
+    <div id="chat-messages" class="chat-widget-messages">
+      <div class="chat-widget-welcome">
+        <p class="chat-widget-welcome-title">Ask me anything about Arash</p>
+        <p class="chat-widget-welcome-sub">Skills, experience, projects, architecture &mdash; all sourced from the portfolio.</p>
+        <div class="chat-widget-suggestions">
+          <button class="chat-widget-suggestion" data-q="What is Arash's experience with neuro-symbolic systems?">Neuro-symbolic experience</button>
+          <button class="chat-widget-suggestion" data-q="What are his core technical skills?">Core technical skills</button>
+          <button class="chat-widget-suggestion" data-q="Tell me about the AXIOMIS architecture">AXIOMIS architecture</button>
+          <button class="chat-widget-suggestion" data-q="What publications has he written?">Publications</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="chat-typing" class="chat-widget-typing" aria-live="polite" hidden>
+      <span class="chat-typing-dot"></span>
+      <span class="chat-typing-dot"></span>
+      <span class="chat-typing-dot"></span>
+      <span class="chat-typing-label">Aethron is thinking&hellip;</span>
+    </div>
+
+    <form id="chat-form" class="chat-widget-form">
+      <input id="chat-input" class="chat-widget-input" type="text" placeholder="Ask about Arash's portfolio&hellip;" autocomplete="off" aria-label="Chat message" />
+      <button id="chat-submit" class="chat-widget-send" type="submit" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <script src="script.js?v=8"></script>
     
 </body>
 </html>

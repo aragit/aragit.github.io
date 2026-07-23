@@ -853,6 +853,155 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetCard) targetCard.classList.add('active');
     });
   });
+
+  /* ═══════════════════════════════════════════════════════
+     AETHRON NATIVE CHAT WIDGET
+     ═══════════════════════════════════════════════════════ */
+  initChatWidget();
+
+  function initChatWidget() {
+    const toggle  = document.getElementById('chat-widget-toggle');
+    const modal   = document.getElementById('chat-widget-modal');
+    const overlay = document.getElementById('chat-widget-overlay');
+    const closeBtn= document.getElementById('chat-widget-close');
+    const form    = document.getElementById('chat-form');
+    const input   = document.getElementById('chat-input');
+    const msgs    = document.getElementById('chat-messages');
+    const typing  = document.getElementById('chat-typing');
+    const sendBtn = document.getElementById('chat-submit');
+    const suggestions = document.querySelectorAll('.chat-widget-suggestion');
+
+    if (!toggle || !modal) return;
+
+    let gradioClient = null;
+    let isOpen        = false;
+
+    /* ── Gradio Client init ── */
+    async function initGradioClient() {
+      try {
+        const { Client } = await import('https://cdn.jsdelivr.net/npm/@gradio/client/+esm');
+        gradioClient = await Client.connect('Arnic/exp-chat-rag');
+        console.log('[Aethron] Gradio client connected');
+      } catch (err) {
+        console.error('[Aethron] Gradio client connection failed:', err);
+      }
+    }
+    initGradioClient();
+
+    /* ── Open / Close ── */
+    function openChat() {
+      isOpen = true;
+      modal.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-hidden', 'false');
+      input.focus();
+    }
+    function closeChat() {
+      isOpen = false;
+      modal.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+      toggle.focus();
+    }
+
+    toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    closeBtn.addEventListener('click', closeChat);
+    overlay.addEventListener('click', closeChat);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) closeChat();
+    });
+
+    /* ── Suggestion pills ── */
+    suggestions.forEach(btn => {
+      btn.addEventListener('click', () => {
+        input.value = btn.dataset.q;
+        form.dispatchEvent(new Event('submit'));
+      });
+    });
+
+    /* ── Message rendering ── */
+    function appendBubble(text, role, sources) {
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble chat-bubble-${role}`;
+
+      let html = escapeHtml(text).replace(/\n/g, '<br>');
+
+      if (role === 'assistant' && sources && sources.length) {
+        html += `<div class="chat-bubble-sources"><strong>Sources:</strong> ${escapeHtml(sources.join(' | '))}</div>`;
+      }
+
+      bubble.innerHTML = html;
+      msgs.appendChild(bubble);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    /* ── Submit handler ── */
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+
+      // Clear welcome screen on first message
+      const welcome = msgs.querySelector('.chat-widget-welcome');
+      if (welcome) welcome.remove();
+
+      // Append user bubble
+      appendBubble(q, 'user');
+      input.value = '';
+
+      // Show typing
+      typing.hidden = false;
+      sendBtn.disabled = true;
+      msgs.scrollTop = msgs.scrollHeight;
+
+      try {
+        let answer = '';
+        let sources = [];
+
+        if (gradioClient) {
+          const result = await gradioClient.predict('/respond', {
+            data: [q, []]
+          });
+
+          const data = result.data;
+          // API returns flat list of all messages; latest assistant is always last
+          if (Array.isArray(data) && data.length) {
+            const lastMsg = data[data.length - 1];
+            if (lastMsg && typeof lastMsg === 'object' && lastMsg.role === 'assistant') {
+              answer = lastMsg.content || '';
+            }
+          } else if (typeof data === 'string') {
+            answer = data;
+          }
+
+          // Extract sources from the formatted response text
+          const srcMatch = answer.match(/\*\*Sources?\*\*:\s*(.+)/i);
+          if (srcMatch) {
+            sources = srcMatch[1].split(/\s*\|?\s*/).map(s => s.trim()).filter(Boolean);
+            answer = answer.replace(/\n?\*\*Sources?\*\*:\s*.+/i, '').trim();
+          }
+        }
+
+        if (!answer) {
+          answer = 'I could not reach the RAG engine. Please try again in a moment.';
+        }
+
+        appendBubble(answer, 'assistant', sources);
+
+      } catch (err) {
+        console.error('[Aethron] Prediction error:', err);
+        appendBubble('Something went wrong connecting to the RAG engine. Please try again.', 'assistant');
+      } finally {
+        typing.hidden = true;
+        sendBtn.disabled = false;
+        input.focus();
+      }
+    });
+  }
 });
 
 
