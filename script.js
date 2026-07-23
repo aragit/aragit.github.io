@@ -997,7 +997,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       } catch (err) {
         console.error('[Aethron] Error:', err.message || err);
-        appendBubble('Something went wrong connecting to the RAG engine. Please try again.', 'assistant');
+        const msg = String(err.message || err);
+        let userMsg;
+        if (msg.includes('ZeroGPU') || msg.includes('exceeded') || msg.includes('quota')) {
+          userMsg = 'Aethron is temporarily unavailable due to high demand. Please try again in a few minutes.';
+        } else if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('CORS')) {
+          userMsg = 'Network error — please check your connection and try again.';
+        } else if (msg.includes('timeout') || msg.includes('Timeout')) {
+          userMsg = 'Aethron took too long to respond. The system may be under heavy load — please try again.';
+        } else {
+          userMsg = 'Something went wrong. Aethron may be under maintenance — please try again shortly.';
+        }
+        appendBubble(userMsg, 'assistant');
       } finally {
         typing.hidden = true;
         sendBtn.disabled = false;
