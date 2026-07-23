@@ -964,7 +964,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (gradioClient) {
           const result = await gradioClient.predict('/respond', {
-            data: [q, []]
+            message: q,
+            history: []
           });
 
           const data = result.data;
